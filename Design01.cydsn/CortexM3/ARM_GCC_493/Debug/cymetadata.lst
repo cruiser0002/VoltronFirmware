@@ -1,0 +1,926 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"cymetadata.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	cy_metadata
+  19              		.global	cy_meta_flashprotect
+  20              		.global	cy_meta_wonvl
+  21              		.global	cy_meta_custnvl
+  22              		.global	cy_meta_configecc
+  23              		.section	.cyconfigecc,"a",%progbits
+  24              		.align	2
+  25              		.type	cy_meta_configecc, %object
+  26              		.size	cy_meta_configecc, 408
+  27              	cy_meta_configecc:
+  28 0000 04       		.byte	4
+  29 0001 52       		.byte	82
+  30 0002 00       		.byte	0
+  31 0003 40       		.byte	64
+  32 0004 01       		.byte	1
+  33 0005 5B       		.byte	91
+  34 0006 00       		.byte	0
+  35 0007 40       		.byte	64
+  36 0008 03       		.byte	3
+  37 0009 03       		.byte	3
+  38 000a 01       		.byte	1
+  39 000b 40       		.byte	64
+  40 000c 03       		.byte	3
+  41 000d 0B       		.byte	11
+  42 000e 01       		.byte	1
+  43 000f 40       		.byte	64
+  44 0010 08       		.byte	8
+  45 0011 0C       		.byte	12
+  46 0012 01       		.byte	1
+  47 0013 40       		.byte	64
+  48 0014 09       		.byte	9
+  49 0015 0D       		.byte	13
+  50 0016 01       		.byte	1
+  51 0017 40       		.byte	64
+  52 0018 04       		.byte	4
+  53 0019 15       		.byte	21
+  54 001a 01       		.byte	1
+  55 001b 40       		.byte	64
+  56 001c 02       		.byte	2
+  57 001d 17       		.byte	23
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 2
+
+
+  58 001e 01       		.byte	1
+  59 001f 40       		.byte	64
+  60 0020 02       		.byte	2
+  61 0021 19       		.byte	25
+  62 0022 01       		.byte	1
+  63 0023 40       		.byte	64
+  64 0024 04       		.byte	4
+  65 0025 1B       		.byte	27
+  66 0026 01       		.byte	1
+  67 0027 40       		.byte	64
+  68 0028 0D       		.byte	13
+  69 0029 40       		.byte	64
+  70 002a 01       		.byte	1
+  71 002b 40       		.byte	64
+  72 002c 0D       		.byte	13
+  73 002d 41       		.byte	65
+  74 002e 01       		.byte	1
+  75 002f 40       		.byte	64
+  76 0030 02       		.byte	2
+  77 0031 42       		.byte	66
+  78 0032 01       		.byte	1
+  79 0033 40       		.byte	64
+  80 0034 01       		.byte	1
+  81 0035 43       		.byte	67
+  82 0036 01       		.byte	1
+  83 0037 40       		.byte	64
+  84 0038 06       		.byte	6
+  85 0039 45       		.byte	69
+  86 003a 01       		.byte	1
+  87 003b 40       		.byte	64
+  88 003c 04       		.byte	4
+  89 003d 46       		.byte	70
+  90 003e 01       		.byte	1
+  91 003f 40       		.byte	64
+  92 0040 01       		.byte	1
+  93 0041 47       		.byte	71
+  94 0042 01       		.byte	1
+  95 0043 40       		.byte	64
+  96 0044 07       		.byte	7
+  97 0045 48       		.byte	72
+  98 0046 01       		.byte	1
+  99 0047 40       		.byte	64
+ 100 0048 10       		.byte	16
+ 101 0049 49       		.byte	73
+ 102 004a 01       		.byte	1
+ 103 004b 40       		.byte	64
+ 104 004c 0E       		.byte	14
+ 105 004d 4C       		.byte	76
+ 106 004e 01       		.byte	1
+ 107 004f 40       		.byte	64
+ 108 0050 07       		.byte	7
+ 109 0051 4D       		.byte	77
+ 110 0052 01       		.byte	1
+ 111 0053 40       		.byte	64
+ 112 0054 03       		.byte	3
+ 113 0055 51       		.byte	81
+ 114 0056 01       		.byte	1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 3
+
+
+ 115 0057 40       		.byte	64
+ 116 0058 10       		.byte	16
+ 117 0059 06       		.byte	6
+ 118 005a 11       		.byte	17
+ 119 005b 04       		.byte	4
+ 120 005c 60       		.byte	96
+ 121 005d 01       		.byte	1
+ 122 005e 64       		.byte	100
+ 123 005f 03       		.byte	3
+ 124 0060 2F       		.byte	47
+ 125 0061 84       		.byte	-124
+ 126 0062 E8       		.byte	-24
+ 127 0063 04       		.byte	4
+ 128 0064 EC       		.byte	-20
+ 129 0065 08       		.byte	8
+ 130 0066 EE       		.byte	-18
+ 131 0067 04       		.byte	4
+ 132 0068 AC       		.byte	-84
+ 133 0069 40       		.byte	64
+ 134 006a B7       		.byte	-73
+ 135 006b 20       		.byte	32
+ 136 006c E8       		.byte	-24
+ 137 006d 02       		.byte	2
+ 138 006e 3A       		.byte	58
+ 139 006f 03       		.byte	3
+ 140 0070 58       		.byte	88
+ 141 0071 04       		.byte	4
+ 142 0072 5C       		.byte	92
+ 143 0073 08       		.byte	8
+ 144 0074 5F       		.byte	95
+ 145 0075 31       		.byte	49
+ 146 0076 BA       		.byte	-70
+ 147 0077 30       		.byte	48
+ 148 0078 D8       		.byte	-40
+ 149 0079 04       		.byte	4
+ 150 007a DC       		.byte	-36
+ 151 007b 08       		.byte	8
+ 152 007c DF       		.byte	-33
+ 153 007d 11       		.byte	17
+ 154 007e 1B       		.byte	27
+ 155 007f 20       		.byte	32
+ 156 0080 1C       		.byte	28
+ 157 0081 80       		.byte	-128
+ 158 0082 7A       		.byte	122
+ 159 0083 08       		.byte	8
+ 160 0084 7E       		.byte	126
+ 161 0085 80       		.byte	-128
+ 162 0086 A2       		.byte	-94
+ 163 0087 88       		.byte	-120
+ 164 0088 AA       		.byte	-86
+ 165 0089 08       		.byte	8
+ 166 008a AE       		.byte	-82
+ 167 008b 80       		.byte	-128
+ 168 008c DE       		.byte	-34
+ 169 008d 84       		.byte	-124
+ 170 008e EE       		.byte	-18
+ 171 008f 04       		.byte	4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 4
+
+
+ 172 0090 E0       		.byte	-32
+ 173 0091 08       		.byte	8
+ 174 0092 E4       		.byte	-28
+ 175 0093 01       		.byte	1
+ 176 0094 E8       		.byte	-24
+ 177 0095 10       		.byte	16
+ 178 0096 EA       		.byte	-22
+ 179 0097 01       		.byte	1
+ 180 0098 E2       		.byte	-30
+ 181 0099 01       		.byte	1
+ 182 009a E6       		.byte	-26
+ 183 009b 04       		.byte	4
+ 184 009c E2       		.byte	-30
+ 185 009d 01       		.byte	1
+ 186 009e E6       		.byte	-26
+ 187 009f 04       		.byte	4
+ 188 00a0 E0       		.byte	-32
+ 189 00a1 08       		.byte	8
+ 190 00a2 E4       		.byte	-28
+ 191 00a3 01       		.byte	1
+ 192 00a4 E8       		.byte	-24
+ 193 00a5 10       		.byte	16
+ 194 00a6 EA       		.byte	-22
+ 195 00a7 01       		.byte	1
+ 196 00a8 14       		.byte	20
+ 197 00a9 40       		.byte	64
+ 198 00aa 15       		.byte	21
+ 199 00ab 04       		.byte	4
+ 200 00ac 17       		.byte	23
+ 201 00ad 10       		.byte	16
+ 202 00ae 30       		.byte	48
+ 203 00af 80       		.byte	-128
+ 204 00b0 35       		.byte	53
+ 205 00b1 10       		.byte	16
+ 206 00b2 3B       		.byte	59
+ 207 00b3 02       		.byte	2
+ 208 00b4 3C       		.byte	60
+ 209 00b5 40       		.byte	64
+ 210 00b6 3F       		.byte	63
+ 211 00b7 01       		.byte	1
+ 212 00b8 41       		.byte	65
+ 213 00b9 80       		.byte	-128
+ 214 00ba C4       		.byte	-60
+ 215 00bb A0       		.byte	-96
+ 216 00bc CC       		.byte	-52
+ 217 00bd 30       		.byte	48
+ 218 00be CE       		.byte	-50
+ 219 00bf E0       		.byte	-32
+ 220 00c0 D0       		.byte	-48
+ 221 00c1 10       		.byte	16
+ 222 00c2 10       		.byte	16
+ 223 00c3 80       		.byte	-128
+ 224 00c4 13       		.byte	19
+ 225 00c5 01       		.byte	1
+ 226 00c6 97       		.byte	-105
+ 227 00c7 01       		.byte	1
+ 228 00c8 A4       		.byte	-92
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 5
+
+
+ 229 00c9 80       		.byte	-128
+ 230 00ca A8       		.byte	-88
+ 231 00cb 40       		.byte	64
+ 232 00cc A9       		.byte	-87
+ 233 00cd 10       		.byte	16
+ 234 00ce AB       		.byte	-85
+ 235 00cf 11       		.byte	17
+ 236 00d0 AC       		.byte	-84
+ 237 00d1 40       		.byte	64
+ 238 00d2 AD       		.byte	-83
+ 239 00d3 84       		.byte	-124
+ 240 00d4 C4       		.byte	-60
+ 241 00d5 10       		.byte	16
+ 242 00d6 E8       		.byte	-24
+ 243 00d7 20       		.byte	32
+ 244 00d8 EC       		.byte	-20
+ 245 00d9 10       		.byte	16
+ 246 00da EE       		.byte	-18
+ 247 00db 20       		.byte	32
+ 248 00dc 3E       		.byte	62
+ 249 00dd 10       		.byte	16
+ 250 00de CE       		.byte	-50
+ 251 00df 20       		.byte	32
+ 252 00e0 96       		.byte	-106
+ 253 00e1 10       		.byte	16
+ 254 00e2 54       		.byte	84
+ 255 00e3 20       		.byte	32
+ 256 00e4 56       		.byte	86
+ 257 00e5 02       		.byte	2
+ 258 00e6 A7       		.byte	-89
+ 259 00e7 80       		.byte	-128
+ 260 00e8 AB       		.byte	-85
+ 261 00e9 80       		.byte	-128
+ 262 00ea D4       		.byte	-44
+ 263 00eb 02       		.byte	2
+ 264 00ec D6       		.byte	-42
+ 265 00ed 04       		.byte	4
+ 266 00ee A7       		.byte	-89
+ 267 00ef 80       		.byte	-128
+ 268 00f0 AC       		.byte	-84
+ 269 00f1 20       		.byte	32
+ 270 00f2 B6       		.byte	-74
+ 271 00f3 02       		.byte	2
+ 272 00f4 E8       		.byte	-24
+ 273 00f5 02       		.byte	2
+ 274 00f6 A7       		.byte	-89
+ 275 00f7 80       		.byte	-128
+ 276 00f8 24       		.byte	36
+ 277 00f9 08       		.byte	8
+ 278 00fa 80       		.byte	-128
+ 279 00fb 08       		.byte	8
+ 280 00fc 81       		.byte	-127
+ 281 00fd 08       		.byte	8
+ 282 00fe 96       		.byte	-106
+ 283 00ff 10       		.byte	16
+ 284 0100 C8       		.byte	-56
+ 285 0101 20       		.byte	32
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 6
+
+
+ 286 0102 E2       		.byte	-30
+ 287 0103 80       		.byte	-128
+ 288 0104 E6       		.byte	-26
+ 289 0105 20       		.byte	32
+ 290 0106 12       		.byte	18
+ 291 0107 20       		.byte	32
+ 292 0108 16       		.byte	22
+ 293 0109 40       		.byte	64
+ 294 010a 70       		.byte	112
+ 295 010b 08       		.byte	8
+ 296 010c 75       		.byte	117
+ 297 010d 08       		.byte	8
+ 298 010e 82       		.byte	-126
+ 299 010f 20       		.byte	32
+ 300 0110 86       		.byte	-122
+ 301 0111 40       		.byte	64
+ 302 0112 99       		.byte	-103
+ 303 0113 08       		.byte	8
+ 304 0114 A0       		.byte	-96
+ 305 0115 08       		.byte	8
+ 306 0116 AA       		.byte	-86
+ 307 0117 10       		.byte	16
+ 308 0118 B4       		.byte	-76
+ 309 0119 04       		.byte	4
+ 310 011a C4       		.byte	-60
+ 311 011b 30       		.byte	48
+ 312 011c DC       		.byte	-36
+ 313 011d 80       		.byte	-128
+ 314 011e DE       		.byte	-34
+ 315 011f 20       		.byte	32
+ 316 0120 E0       		.byte	-32
+ 317 0121 10       		.byte	16
+ 318 0122 E4       		.byte	-28
+ 319 0123 80       		.byte	-128
+ 320 0124 EA       		.byte	-22
+ 321 0125 80       		.byte	-128
+ 322 0126 12       		.byte	18
+ 323 0127 80       		.byte	-128
+ 324 0128 13       		.byte	19
+ 325 0129 20       		.byte	32
+ 326 012a 17       		.byte	23
+ 327 012b 04       		.byte	4
+ 328 012c 1F       		.byte	31
+ 329 012d 80       		.byte	-128
+ 330 012e 34       		.byte	52
+ 331 012f 02       		.byte	2
+ 332 0130 7B       		.byte	123
+ 333 0131 10       		.byte	16
+ 334 0132 7F       		.byte	127
+ 335 0133 40       		.byte	64
+ 336 0134 82       		.byte	-126
+ 337 0135 80       		.byte	-128
+ 338 0136 83       		.byte	-125
+ 339 0137 04       		.byte	4
+ 340 0138 A7       		.byte	-89
+ 341 0139 80       		.byte	-128
+ 342 013a C4       		.byte	-60
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 7
+
+
+ 343 013b 0E       		.byte	14
+ 344 013c C6       		.byte	-58
+ 345 013d 01       		.byte	1
+ 346 013e CC       		.byte	-52
+ 347 013f 01       		.byte	1
+ 348 0140 DE       		.byte	-34
+ 349 0141 03       		.byte	3
+ 350 0142 83       		.byte	-125
+ 351 0143 10       		.byte	16
+ 352 0144 87       		.byte	-121
+ 353 0145 40       		.byte	64
+ 354 0146 97       		.byte	-105
+ 355 0147 80       		.byte	-128
+ 356 0148 A7       		.byte	-89
+ 357 0149 10       		.byte	16
+ 358 014a AB       		.byte	-85
+ 359 014b 20       		.byte	32
+ 360 014c B4       		.byte	-76
+ 361 014d 02       		.byte	2
+ 362 014e E8       		.byte	-24
+ 363 014f 08       		.byte	8
+ 364 0150 00       		.byte	0
+ 365 0151 0F       		.byte	15
+ 366 0152 03       		.byte	3
+ 367 0153 C0       		.byte	-64
+ 368 0154 10       		.byte	16
+ 369 0155 AA       		.byte	-86
+ 370 0156 00       		.byte	0
+ 371 0157 00       		.byte	0
+ 372 0158 00       		.byte	0
+ 373 0159 00       		.byte	0
+ 374 015a 00       		.byte	0
+ 375 015b 00       		.byte	0
+ 376 015c 00       		.byte	0
+ 377 015d 00       		.byte	0
+ 378 015e EC       		.byte	-20
+ 379 015f 00       		.byte	0
+ 380 0160 03       		.byte	3
+ 381 0161 00       		.byte	0
+ 382 0162 00       		.byte	0
+ 383 0163 00       		.byte	0
+ 384 0164 03       		.byte	3
+ 385 0165 00       		.byte	0
+ 386 0166 03       		.byte	3
+ 387 0167 00       		.byte	0
+ 388 0168 00       		.byte	0
+ 389 0169 03       		.byte	3
+ 390 016a 00       		.byte	0
+ 391 016b 00       		.byte	0
+ 392 016c 00       		.byte	0
+ 393 016d 02       		.byte	2
+ 394 016e 00       		.byte	0
+ 395 016f 00       		.byte	0
+ 396 0170 00       		.byte	0
+ 397 0171 00       		.byte	0
+ 398 0172 00       		.byte	0
+ 399 0173 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 8
+
+
+ 400 0174 00       		.byte	0
+ 401 0175 00       		.byte	0
+ 402 0176 00       		.byte	0
+ 403 0177 00       		.byte	0
+ 404 0178 00       		.byte	0
+ 405 0179 00       		.byte	0
+ 406 017a 30       		.byte	48
+ 407 017b 00       		.byte	0
+ 408 017c 00       		.byte	0
+ 409 017d 07       		.byte	7
+ 410 017e 07       		.byte	7
+ 411 017f 00       		.byte	0
+ 412 0180 06       		.byte	6
+ 413 0181 00       		.byte	0
+ 414 0182 00       		.byte	0
+ 415 0183 00       		.byte	0
+ 416 0184 00       		.byte	0
+ 417 0185 00       		.byte	0
+ 418 0186 00       		.byte	0
+ 419 0187 00       		.byte	0
+ 420 0188 00       		.byte	0
+ 421 0189 00       		.byte	0
+ 422 018a 81       		.byte	-127
+ 423 018b 00       		.byte	0
+ 424 018c 00       		.byte	0
+ 425 018d 01       		.byte	1
+ 426 018e 00       		.byte	0
+ 427 018f 00       		.byte	0
+ 428 0190 00       		.byte	0
+ 429 0191 03       		.byte	3
+ 430 0192 00       		.byte	0
+ 431 0193 00       		.byte	0
+ 432 0194 00       		.byte	0
+ 433 0195 08       		.byte	8
+ 434 0196 00       		.byte	0
+ 435 0197 00       		.byte	0
+ 436              		.section	.cywolatch,"a",%progbits
+ 437              		.align	2
+ 438              		.type	cy_meta_wonvl, %object
+ 439              		.size	cy_meta_wonvl, 4
+ 440              	cy_meta_wonvl:
+ 441 0000 BC       		.byte	-68
+ 442 0001 90       		.byte	-112
+ 443 0002 AC       		.byte	-84
+ 444 0003 AF       		.byte	-81
+ 445              		.section	.cycustnvl,"a",%progbits
+ 446              		.align	2
+ 447              		.type	cy_meta_custnvl, %object
+ 448              		.size	cy_meta_custnvl, 4
+ 449              	cy_meta_custnvl:
+ 450 0000 00       		.byte	0
+ 451 0001 00       		.byte	0
+ 452 0002 40       		.byte	64
+ 453 0003 05       		.byte	5
+ 454              		.section	.cymeta,"a",%progbits
+ 455              		.align	2
+ 456              		.type	cy_metadata, %object
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 9
+
+
+ 457              		.size	cy_metadata, 12
+ 458              	cy_metadata:
+ 459 0000 00       		.byte	0
+ 460 0001 01       		.byte	1
+ 461 0002 2E       		.byte	46
+ 462 0003 16       		.byte	22
+ 463 0004 10       		.byte	16
+ 464 0005 69       		.byte	105
+ 465 0006 00       		.byte	0
+ 466 0007 01       		.byte	1
+ 467 0008 00       		.byte	0
+ 468 0009 00       		.byte	0
+ 469 000a 00       		.byte	0
+ 470 000b 00       		.byte	0
+ 471              		.section	.cyflashprotect,"a",%progbits
+ 472              		.align	2
+ 473              		.type	cy_meta_flashprotect, %object
+ 474              		.size	cy_meta_flashprotect, 256
+ 475              	cy_meta_flashprotect:
+ 476 0000 00000000 		.space	256
+ 476      00000000 
+ 476      00000000 
+ 476      00000000 
+ 476      00000000 
+ 477              		.text
+ 478              	.Letext0:
+ 479              		.file 1 ".\\Generated_Source\\PSoC5\\cymetadata.c"
+ 480              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 481              		.section	.debug_info,"",%progbits
+ 482              	.Ldebug_info0:
+ 483 0000 37010000 		.4byte	0x137
+ 484 0004 0400     		.2byte	0x4
+ 485 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 486 000a 04       		.byte	0x4
+ 487 000b 01       		.uleb128 0x1
+ 488 000c D3000000 		.4byte	.LASF18
+ 489 0010 01       		.byte	0x1
+ 490 0011 3F000000 		.4byte	.LASF19
+ 491 0015 00000000 		.4byte	.LASF20
+ 492 0019 00000000 		.4byte	.Ldebug_line0
+ 493 001d 02       		.uleb128 0x2
+ 494 001e 01       		.byte	0x1
+ 495 001f 06       		.byte	0x6
+ 496 0020 DD010000 		.4byte	.LASF0
+ 497 0024 02       		.uleb128 0x2
+ 498 0025 01       		.byte	0x1
+ 499 0026 08       		.byte	0x8
+ 500 0027 77000000 		.4byte	.LASF1
+ 501 002b 02       		.uleb128 0x2
+ 502 002c 02       		.byte	0x2
+ 503 002d 05       		.byte	0x5
+ 504 002e C4010000 		.4byte	.LASF2
+ 505 0032 02       		.uleb128 0x2
+ 506 0033 02       		.byte	0x2
+ 507 0034 07       		.byte	0x7
+ 508 0035 97000000 		.4byte	.LASF3
+ 509 0039 02       		.uleb128 0x2
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 10
+
+
+ 510 003a 04       		.byte	0x4
+ 511 003b 05       		.byte	0x5
+ 512 003c D4010000 		.4byte	.LASF4
+ 513 0040 02       		.uleb128 0x2
+ 514 0041 04       		.byte	0x4
+ 515 0042 07       		.byte	0x7
+ 516 0043 85000000 		.4byte	.LASF5
+ 517 0047 02       		.uleb128 0x2
+ 518 0048 08       		.byte	0x8
+ 519 0049 05       		.byte	0x5
+ 520 004a B1010000 		.4byte	.LASF6
+ 521 004e 02       		.uleb128 0x2
+ 522 004f 08       		.byte	0x8
+ 523 0050 07       		.byte	0x7
+ 524 0051 6E010000 		.4byte	.LASF7
+ 525 0055 03       		.uleb128 0x3
+ 526 0056 04       		.byte	0x4
+ 527 0057 05       		.byte	0x5
+ 528 0058 696E7400 		.ascii	"int\000"
+ 529 005c 02       		.uleb128 0x2
+ 530 005d 04       		.byte	0x4
+ 531 005e 07       		.byte	0x7
+ 532 005f 61010000 		.4byte	.LASF8
+ 533 0063 04       		.uleb128 0x4
+ 534 0064 CE010000 		.4byte	.LASF21
+ 535 0068 02       		.byte	0x2
+ 536 0069 9201     		.2byte	0x192
+ 537 006b 24000000 		.4byte	0x24
+ 538 006f 02       		.uleb128 0x2
+ 539 0070 04       		.byte	0x4
+ 540 0071 04       		.byte	0x4
+ 541 0072 71000000 		.4byte	.LASF9
+ 542 0076 02       		.uleb128 0x2
+ 543 0077 08       		.byte	0x8
+ 544 0078 04       		.byte	0x4
+ 545 0079 AA000000 		.4byte	.LASF10
+ 546 007d 02       		.uleb128 0x2
+ 547 007e 01       		.byte	0x1
+ 548 007f 08       		.byte	0x8
+ 549 0080 BF010000 		.4byte	.LASF11
+ 550 0084 05       		.uleb128 0x5
+ 551 0085 63000000 		.4byte	0x63
+ 552 0089 95000000 		.4byte	0x95
+ 553 008d 06       		.uleb128 0x6
+ 554 008e 95000000 		.4byte	0x95
+ 555 0092 9701     		.2byte	0x197
+ 556 0094 00       		.byte	0
+ 557 0095 02       		.uleb128 0x2
+ 558 0096 04       		.byte	0x4
+ 559 0097 07       		.byte	0x7
+ 560 0098 A8010000 		.4byte	.LASF12
+ 561 009c 07       		.uleb128 0x7
+ 562 009d C1000000 		.4byte	.LASF13
+ 563 00a1 01       		.byte	0x1
+ 564 00a2 1F       		.byte	0x1f
+ 565 00a3 AD000000 		.4byte	0xad
+ 566 00a7 05       		.uleb128 0x5
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 11
+
+
+ 567 00a8 03       		.byte	0x3
+ 568 00a9 00000000 		.4byte	cy_meta_configecc
+ 569 00ad 08       		.uleb128 0x8
+ 570 00ae 84000000 		.4byte	0x84
+ 571 00b2 05       		.uleb128 0x5
+ 572 00b3 63000000 		.4byte	0x63
+ 573 00b7 C2000000 		.4byte	0xc2
+ 574 00bb 09       		.uleb128 0x9
+ 575 00bc 95000000 		.4byte	0x95
+ 576 00c0 03       		.byte	0x3
+ 577 00c1 00       		.byte	0
+ 578 00c2 07       		.uleb128 0x7
+ 579 00c3 B1000000 		.4byte	.LASF14
+ 580 00c7 01       		.byte	0x1
+ 581 00c8 5F       		.byte	0x5f
+ 582 00c9 D3000000 		.4byte	0xd3
+ 583 00cd 05       		.uleb128 0x5
+ 584 00ce 03       		.byte	0x3
+ 585 00cf 00000000 		.4byte	cy_meta_custnvl
+ 586 00d3 08       		.uleb128 0x8
+ 587 00d4 B2000000 		.4byte	0xb2
+ 588 00d8 07       		.uleb128 0x7
+ 589 00d9 9A010000 		.4byte	.LASF15
+ 590 00dd 01       		.byte	0x1
+ 591 00de 6D       		.byte	0x6d
+ 592 00df E9000000 		.4byte	0xe9
+ 593 00e3 05       		.uleb128 0x5
+ 594 00e4 03       		.byte	0x3
+ 595 00e5 00000000 		.4byte	cy_meta_wonvl
+ 596 00e9 08       		.uleb128 0x8
+ 597 00ea B2000000 		.4byte	0xb2
+ 598 00ee 05       		.uleb128 0x5
+ 599 00ef 63000000 		.4byte	0x63
+ 600 00f3 FE000000 		.4byte	0xfe
+ 601 00f7 09       		.uleb128 0x9
+ 602 00f8 95000000 		.4byte	0x95
+ 603 00fc FF       		.byte	0xff
+ 604 00fd 00       		.byte	0
+ 605 00fe 07       		.uleb128 0x7
+ 606 00ff 85010000 		.4byte	.LASF16
+ 607 0103 01       		.byte	0x1
+ 608 0104 7B       		.byte	0x7b
+ 609 0105 0F010000 		.4byte	0x10f
+ 610 0109 05       		.uleb128 0x5
+ 611 010a 03       		.byte	0x3
+ 612 010b 00000000 		.4byte	cy_meta_flashprotect
+ 613 010f 08       		.uleb128 0x8
+ 614 0110 EE000000 		.4byte	0xee
+ 615 0114 05       		.uleb128 0x5
+ 616 0115 63000000 		.4byte	0x63
+ 617 0119 24010000 		.4byte	0x124
+ 618 011d 09       		.uleb128 0x9
+ 619 011e 95000000 		.4byte	0x95
+ 620 0122 0B       		.byte	0xb
+ 621 0123 00       		.byte	0
+ 622 0124 07       		.uleb128 0x7
+ 623 0125 65000000 		.4byte	.LASF17
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 12
+
+
+ 624 0129 01       		.byte	0x1
+ 625 012a A8       		.byte	0xa8
+ 626 012b 35010000 		.4byte	0x135
+ 627 012f 05       		.uleb128 0x5
+ 628 0130 03       		.byte	0x3
+ 629 0131 00000000 		.4byte	cy_metadata
+ 630 0135 08       		.uleb128 0x8
+ 631 0136 14010000 		.4byte	0x114
+ 632 013a 00       		.byte	0
+ 633              		.section	.debug_abbrev,"",%progbits
+ 634              	.Ldebug_abbrev0:
+ 635 0000 01       		.uleb128 0x1
+ 636 0001 11       		.uleb128 0x11
+ 637 0002 01       		.byte	0x1
+ 638 0003 25       		.uleb128 0x25
+ 639 0004 0E       		.uleb128 0xe
+ 640 0005 13       		.uleb128 0x13
+ 641 0006 0B       		.uleb128 0xb
+ 642 0007 03       		.uleb128 0x3
+ 643 0008 0E       		.uleb128 0xe
+ 644 0009 1B       		.uleb128 0x1b
+ 645 000a 0E       		.uleb128 0xe
+ 646 000b 10       		.uleb128 0x10
+ 647 000c 17       		.uleb128 0x17
+ 648 000d 00       		.byte	0
+ 649 000e 00       		.byte	0
+ 650 000f 02       		.uleb128 0x2
+ 651 0010 24       		.uleb128 0x24
+ 652 0011 00       		.byte	0
+ 653 0012 0B       		.uleb128 0xb
+ 654 0013 0B       		.uleb128 0xb
+ 655 0014 3E       		.uleb128 0x3e
+ 656 0015 0B       		.uleb128 0xb
+ 657 0016 03       		.uleb128 0x3
+ 658 0017 0E       		.uleb128 0xe
+ 659 0018 00       		.byte	0
+ 660 0019 00       		.byte	0
+ 661 001a 03       		.uleb128 0x3
+ 662 001b 24       		.uleb128 0x24
+ 663 001c 00       		.byte	0
+ 664 001d 0B       		.uleb128 0xb
+ 665 001e 0B       		.uleb128 0xb
+ 666 001f 3E       		.uleb128 0x3e
+ 667 0020 0B       		.uleb128 0xb
+ 668 0021 03       		.uleb128 0x3
+ 669 0022 08       		.uleb128 0x8
+ 670 0023 00       		.byte	0
+ 671 0024 00       		.byte	0
+ 672 0025 04       		.uleb128 0x4
+ 673 0026 16       		.uleb128 0x16
+ 674 0027 00       		.byte	0
+ 675 0028 03       		.uleb128 0x3
+ 676 0029 0E       		.uleb128 0xe
+ 677 002a 3A       		.uleb128 0x3a
+ 678 002b 0B       		.uleb128 0xb
+ 679 002c 3B       		.uleb128 0x3b
+ 680 002d 05       		.uleb128 0x5
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 13
+
+
+ 681 002e 49       		.uleb128 0x49
+ 682 002f 13       		.uleb128 0x13
+ 683 0030 00       		.byte	0
+ 684 0031 00       		.byte	0
+ 685 0032 05       		.uleb128 0x5
+ 686 0033 01       		.uleb128 0x1
+ 687 0034 01       		.byte	0x1
+ 688 0035 49       		.uleb128 0x49
+ 689 0036 13       		.uleb128 0x13
+ 690 0037 01       		.uleb128 0x1
+ 691 0038 13       		.uleb128 0x13
+ 692 0039 00       		.byte	0
+ 693 003a 00       		.byte	0
+ 694 003b 06       		.uleb128 0x6
+ 695 003c 21       		.uleb128 0x21
+ 696 003d 00       		.byte	0
+ 697 003e 49       		.uleb128 0x49
+ 698 003f 13       		.uleb128 0x13
+ 699 0040 2F       		.uleb128 0x2f
+ 700 0041 05       		.uleb128 0x5
+ 701 0042 00       		.byte	0
+ 702 0043 00       		.byte	0
+ 703 0044 07       		.uleb128 0x7
+ 704 0045 34       		.uleb128 0x34
+ 705 0046 00       		.byte	0
+ 706 0047 03       		.uleb128 0x3
+ 707 0048 0E       		.uleb128 0xe
+ 708 0049 3A       		.uleb128 0x3a
+ 709 004a 0B       		.uleb128 0xb
+ 710 004b 3B       		.uleb128 0x3b
+ 711 004c 0B       		.uleb128 0xb
+ 712 004d 49       		.uleb128 0x49
+ 713 004e 13       		.uleb128 0x13
+ 714 004f 3F       		.uleb128 0x3f
+ 715 0050 19       		.uleb128 0x19
+ 716 0051 02       		.uleb128 0x2
+ 717 0052 18       		.uleb128 0x18
+ 718 0053 00       		.byte	0
+ 719 0054 00       		.byte	0
+ 720 0055 08       		.uleb128 0x8
+ 721 0056 26       		.uleb128 0x26
+ 722 0057 00       		.byte	0
+ 723 0058 49       		.uleb128 0x49
+ 724 0059 13       		.uleb128 0x13
+ 725 005a 00       		.byte	0
+ 726 005b 00       		.byte	0
+ 727 005c 09       		.uleb128 0x9
+ 728 005d 21       		.uleb128 0x21
+ 729 005e 00       		.byte	0
+ 730 005f 49       		.uleb128 0x49
+ 731 0060 13       		.uleb128 0x13
+ 732 0061 2F       		.uleb128 0x2f
+ 733 0062 0B       		.uleb128 0xb
+ 734 0063 00       		.byte	0
+ 735 0064 00       		.byte	0
+ 736 0065 00       		.byte	0
+ 737              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 14
+
+
+ 738 0000 14000000 		.4byte	0x14
+ 739 0004 0200     		.2byte	0x2
+ 740 0006 00000000 		.4byte	.Ldebug_info0
+ 741 000a 04       		.byte	0x4
+ 742 000b 00       		.byte	0
+ 743 000c 0000     		.2byte	0
+ 744 000e 0000     		.2byte	0
+ 745 0010 00000000 		.4byte	0
+ 746 0014 00000000 		.4byte	0
+ 747              		.section	.debug_line,"",%progbits
+ 748              	.Ldebug_line0:
+ 749 0000 4F000000 		.section	.debug_str,"MS",%progbits,1
+ 749      02004900 
+ 749      00000201 
+ 749      FB0E0D00 
+ 749      01010101 
+ 750              	.LASF20:
+ 751 0000 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 751      73657273 
+ 751      5C637275 
+ 751      69736572 
+ 751      5C446F63 
+ 752 002e 6E5C4465 		.ascii	"n\\Design01.cydsn\000"
+ 752      7369676E 
+ 752      30312E63 
+ 752      7964736E 
+ 752      00
+ 753              	.LASF19:
+ 754 003f 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\cymetadata.c\000"
+ 754      6E657261 
+ 754      7465645F 
+ 754      536F7572 
+ 754      63655C50 
+ 755              	.LASF17:
+ 756 0065 63795F6D 		.ascii	"cy_metadata\000"
+ 756      65746164 
+ 756      61746100 
+ 757              	.LASF9:
+ 758 0071 666C6F61 		.ascii	"float\000"
+ 758      7400
+ 759              	.LASF1:
+ 760 0077 756E7369 		.ascii	"unsigned char\000"
+ 760      676E6564 
+ 760      20636861 
+ 760      7200
+ 761              	.LASF5:
+ 762 0085 6C6F6E67 		.ascii	"long unsigned int\000"
+ 762      20756E73 
+ 762      69676E65 
+ 762      6420696E 
+ 762      7400
+ 763              	.LASF3:
+ 764 0097 73686F72 		.ascii	"short unsigned int\000"
+ 764      7420756E 
+ 764      7369676E 
+ 764      65642069 
+ 764      6E7400
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 15
+
+
+ 765              	.LASF10:
+ 766 00aa 646F7562 		.ascii	"double\000"
+ 766      6C6500
+ 767              	.LASF14:
+ 768 00b1 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 768      6574615F 
+ 768      63757374 
+ 768      6E766C00 
+ 769              	.LASF13:
+ 770 00c1 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 770      6574615F 
+ 770      636F6E66 
+ 770      69676563 
+ 770      6300
+ 771              	.LASF18:
+ 772 00d3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 772      4320342E 
+ 772      392E3320 
+ 772      32303135 
+ 772      30333033 
+ 773 0106 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 773      20726576 
+ 773      6973696F 
+ 773      6E203232 
+ 773      31323230 
+ 774 0139 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 774      66756E63 
+ 774      74696F6E 
+ 774      2D736563 
+ 774      74696F6E 
+ 775              	.LASF8:
+ 776 0161 756E7369 		.ascii	"unsigned int\000"
+ 776      676E6564 
+ 776      20696E74 
+ 776      00
+ 777              	.LASF7:
+ 778 016e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 778      206C6F6E 
+ 778      6720756E 
+ 778      7369676E 
+ 778      65642069 
+ 779              	.LASF16:
+ 780 0185 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 780      6574615F 
+ 780      666C6173 
+ 780      6870726F 
+ 780      74656374 
+ 781              	.LASF15:
+ 782 019a 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 782      6574615F 
+ 782      776F6E76 
+ 782      6C00
+ 783              	.LASF12:
+ 784 01a8 73697A65 		.ascii	"sizetype\000"
+ 784      74797065 
+ 784      00
+ 785              	.LASF6:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccYef4L3.s 			page 16
+
+
+ 786 01b1 6C6F6E67 		.ascii	"long long int\000"
+ 786      206C6F6E 
+ 786      6720696E 
+ 786      7400
+ 787              	.LASF11:
+ 788 01bf 63686172 		.ascii	"char\000"
+ 788      00
+ 789              	.LASF2:
+ 790 01c4 73686F72 		.ascii	"short int\000"
+ 790      7420696E 
+ 790      7400
+ 791              	.LASF21:
+ 792 01ce 75696E74 		.ascii	"uint8\000"
+ 792      3800
+ 793              	.LASF4:
+ 794 01d4 6C6F6E67 		.ascii	"long int\000"
+ 794      20696E74 
+ 794      00
+ 795              	.LASF0:
+ 796 01dd 7369676E 		.ascii	"signed char\000"
+ 796      65642063 
+ 796      68617200 
+ 797              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

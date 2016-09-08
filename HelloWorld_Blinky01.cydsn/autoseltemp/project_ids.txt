@@ -1,0 +1,9 @@
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\Design01.cydsn\Design01.cyprj|e74f0bb9-5c96-4243-993b-cfb7dd18c0d4
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|9852a5cf-3bb3-4945-93cf-829ba19fe9a8
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|9897589d-22c7-4762-b138-ad9d2cd9134d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|7e21031f-1aa8-4ee5-ab0b-54e91cb23702
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|80df8f88-25d7-4c1e-a5fb-21f584e3e4a5
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\HelloWorld_Blinky01.cydsn\HelloWorld_Blinky01.cyprj|d22b76b3-cada-410f-9148-ebc5a6df4985
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b0a766bd-3150-49b6-90c0-7643b1f9cd52
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\Design02.cydsn\Design02.cyprj|74162b4a-efaa-4646-9c9f-eef77fa61564
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\testcode.cydsn\testcode.cyprj|64e548e5-7bf7-4a93-ac8f-466eeed634aa

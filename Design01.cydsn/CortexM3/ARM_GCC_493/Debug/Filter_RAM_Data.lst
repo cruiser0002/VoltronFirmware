@@ -1,0 +1,1601 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_RAM_Data.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Filter_cfsm
+  19              		.global	Filter_acu
+  20              		.global	Filter_data_b
+  21              		.global	Filter_data_a
+  22              		.global	Filter_control
+  23              		.section	.rodata
+  24              		.align	2
+  25              		.type	Filter_cfsm, %object
+  26              		.size	Filter_cfsm, 256
+  27              	Filter_cfsm:
+  28 0000 21       		.byte	33
+  29 0001 F8       		.byte	-8
+  30 0002 05       		.byte	5
+  31 0003 01       		.byte	1
+  32 0004 42       		.byte	66
+  33 0005 10       		.byte	16
+  34 0006 86       		.byte	-122
+  35 0007 40       		.byte	64
+  36 0008 64       		.byte	100
+  37 0009 F8       		.byte	-8
+  38 000a 15       		.byte	21
+  39 000b 01       		.byte	1
+  40 000c 81       		.byte	-127
+  41 000d F8       		.byte	-8
+  42 000e 05       		.byte	5
+  43 000f 01       		.byte	1
+  44 0010 43       		.byte	67
+  45 0011 51       		.byte	81
+  46 0012 8E       		.byte	-114
+  47 0013 21       		.byte	33
+  48 0014 00       		.byte	0
+  49 0015 00       		.byte	0
+  50 0016 00       		.byte	0
+  51 0017 00       		.byte	0
+  52 0018 00       		.byte	0
+  53 0019 00       		.byte	0
+  54 001a 00       		.byte	0
+  55 001b 00       		.byte	0
+  56 001c 00       		.byte	0
+  57 001d 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 2
+
+
+  58 001e 00       		.byte	0
+  59 001f 00       		.byte	0
+  60 0020 00       		.byte	0
+  61 0021 00       		.byte	0
+  62 0022 00       		.byte	0
+  63 0023 00       		.byte	0
+  64 0024 00       		.byte	0
+  65 0025 00       		.byte	0
+  66 0026 00       		.byte	0
+  67 0027 00       		.byte	0
+  68 0028 00       		.byte	0
+  69 0029 00       		.byte	0
+  70 002a 00       		.byte	0
+  71 002b 00       		.byte	0
+  72 002c 00       		.byte	0
+  73 002d 00       		.byte	0
+  74 002e 00       		.byte	0
+  75 002f 00       		.byte	0
+  76 0030 00       		.byte	0
+  77 0031 00       		.byte	0
+  78 0032 00       		.byte	0
+  79 0033 00       		.byte	0
+  80 0034 00       		.byte	0
+  81 0035 00       		.byte	0
+  82 0036 00       		.byte	0
+  83 0037 00       		.byte	0
+  84 0038 00       		.byte	0
+  85 0039 00       		.byte	0
+  86 003a 00       		.byte	0
+  87 003b 00       		.byte	0
+  88 003c 00       		.byte	0
+  89 003d 00       		.byte	0
+  90 003e 00       		.byte	0
+  91 003f 00       		.byte	0
+  92 0040 00       		.byte	0
+  93 0041 00       		.byte	0
+  94 0042 00       		.byte	0
+  95 0043 00       		.byte	0
+  96 0044 00       		.byte	0
+  97 0045 00       		.byte	0
+  98 0046 00       		.byte	0
+  99 0047 00       		.byte	0
+ 100 0048 00       		.byte	0
+ 101 0049 00       		.byte	0
+ 102 004a 00       		.byte	0
+ 103 004b 00       		.byte	0
+ 104 004c 00       		.byte	0
+ 105 004d 00       		.byte	0
+ 106 004e 00       		.byte	0
+ 107 004f 00       		.byte	0
+ 108 0050 00       		.byte	0
+ 109 0051 00       		.byte	0
+ 110 0052 00       		.byte	0
+ 111 0053 00       		.byte	0
+ 112 0054 00       		.byte	0
+ 113 0055 00       		.byte	0
+ 114 0056 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 3
+
+
+ 115 0057 00       		.byte	0
+ 116 0058 00       		.byte	0
+ 117 0059 00       		.byte	0
+ 118 005a 00       		.byte	0
+ 119 005b 00       		.byte	0
+ 120 005c 00       		.byte	0
+ 121 005d 00       		.byte	0
+ 122 005e 00       		.byte	0
+ 123 005f 00       		.byte	0
+ 124 0060 00       		.byte	0
+ 125 0061 00       		.byte	0
+ 126 0062 00       		.byte	0
+ 127 0063 00       		.byte	0
+ 128 0064 00       		.byte	0
+ 129 0065 00       		.byte	0
+ 130 0066 00       		.byte	0
+ 131 0067 00       		.byte	0
+ 132 0068 00       		.byte	0
+ 133 0069 00       		.byte	0
+ 134 006a 00       		.byte	0
+ 135 006b 00       		.byte	0
+ 136 006c 00       		.byte	0
+ 137 006d 00       		.byte	0
+ 138 006e 00       		.byte	0
+ 139 006f 00       		.byte	0
+ 140 0070 00       		.byte	0
+ 141 0071 00       		.byte	0
+ 142 0072 00       		.byte	0
+ 143 0073 00       		.byte	0
+ 144 0074 00       		.byte	0
+ 145 0075 00       		.byte	0
+ 146 0076 00       		.byte	0
+ 147 0077 00       		.byte	0
+ 148 0078 00       		.byte	0
+ 149 0079 00       		.byte	0
+ 150 007a 00       		.byte	0
+ 151 007b 00       		.byte	0
+ 152 007c 00       		.byte	0
+ 153 007d 00       		.byte	0
+ 154 007e 00       		.byte	0
+ 155 007f 00       		.byte	0
+ 156 0080 00       		.byte	0
+ 157 0081 00       		.byte	0
+ 158 0082 00       		.byte	0
+ 159 0083 00       		.byte	0
+ 160 0084 00       		.byte	0
+ 161 0085 00       		.byte	0
+ 162 0086 00       		.byte	0
+ 163 0087 00       		.byte	0
+ 164 0088 00       		.byte	0
+ 165 0089 00       		.byte	0
+ 166 008a 00       		.byte	0
+ 167 008b 00       		.byte	0
+ 168 008c 00       		.byte	0
+ 169 008d 00       		.byte	0
+ 170 008e 00       		.byte	0
+ 171 008f 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 4
+
+
+ 172 0090 00       		.byte	0
+ 173 0091 00       		.byte	0
+ 174 0092 00       		.byte	0
+ 175 0093 00       		.byte	0
+ 176 0094 00       		.byte	0
+ 177 0095 00       		.byte	0
+ 178 0096 00       		.byte	0
+ 179 0097 00       		.byte	0
+ 180 0098 00       		.byte	0
+ 181 0099 00       		.byte	0
+ 182 009a 00       		.byte	0
+ 183 009b 00       		.byte	0
+ 184 009c 00       		.byte	0
+ 185 009d 00       		.byte	0
+ 186 009e 00       		.byte	0
+ 187 009f 00       		.byte	0
+ 188 00a0 00       		.byte	0
+ 189 00a1 00       		.byte	0
+ 190 00a2 00       		.byte	0
+ 191 00a3 00       		.byte	0
+ 192 00a4 00       		.byte	0
+ 193 00a5 00       		.byte	0
+ 194 00a6 00       		.byte	0
+ 195 00a7 00       		.byte	0
+ 196 00a8 00       		.byte	0
+ 197 00a9 00       		.byte	0
+ 198 00aa 00       		.byte	0
+ 199 00ab 00       		.byte	0
+ 200 00ac 00       		.byte	0
+ 201 00ad 00       		.byte	0
+ 202 00ae 00       		.byte	0
+ 203 00af 00       		.byte	0
+ 204 00b0 00       		.byte	0
+ 205 00b1 00       		.byte	0
+ 206 00b2 00       		.byte	0
+ 207 00b3 00       		.byte	0
+ 208 00b4 00       		.byte	0
+ 209 00b5 00       		.byte	0
+ 210 00b6 00       		.byte	0
+ 211 00b7 00       		.byte	0
+ 212 00b8 00       		.byte	0
+ 213 00b9 00       		.byte	0
+ 214 00ba 00       		.byte	0
+ 215 00bb 00       		.byte	0
+ 216 00bc 00       		.byte	0
+ 217 00bd 00       		.byte	0
+ 218 00be 00       		.byte	0
+ 219 00bf 00       		.byte	0
+ 220 00c0 00       		.byte	0
+ 221 00c1 00       		.byte	0
+ 222 00c2 00       		.byte	0
+ 223 00c3 00       		.byte	0
+ 224 00c4 00       		.byte	0
+ 225 00c5 00       		.byte	0
+ 226 00c6 00       		.byte	0
+ 227 00c7 00       		.byte	0
+ 228 00c8 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 5
+
+
+ 229 00c9 00       		.byte	0
+ 230 00ca 00       		.byte	0
+ 231 00cb 00       		.byte	0
+ 232 00cc 00       		.byte	0
+ 233 00cd 00       		.byte	0
+ 234 00ce 00       		.byte	0
+ 235 00cf 00       		.byte	0
+ 236 00d0 00       		.byte	0
+ 237 00d1 00       		.byte	0
+ 238 00d2 00       		.byte	0
+ 239 00d3 00       		.byte	0
+ 240 00d4 00       		.byte	0
+ 241 00d5 00       		.byte	0
+ 242 00d6 00       		.byte	0
+ 243 00d7 00       		.byte	0
+ 244 00d8 00       		.byte	0
+ 245 00d9 00       		.byte	0
+ 246 00da 00       		.byte	0
+ 247 00db 00       		.byte	0
+ 248 00dc 00       		.byte	0
+ 249 00dd 00       		.byte	0
+ 250 00de 00       		.byte	0
+ 251 00df 00       		.byte	0
+ 252 00e0 00       		.byte	0
+ 253 00e1 00       		.byte	0
+ 254 00e2 00       		.byte	0
+ 255 00e3 00       		.byte	0
+ 256 00e4 00       		.byte	0
+ 257 00e5 00       		.byte	0
+ 258 00e6 00       		.byte	0
+ 259 00e7 00       		.byte	0
+ 260 00e8 00       		.byte	0
+ 261 00e9 00       		.byte	0
+ 262 00ea 00       		.byte	0
+ 263 00eb 00       		.byte	0
+ 264 00ec 00       		.byte	0
+ 265 00ed 00       		.byte	0
+ 266 00ee 00       		.byte	0
+ 267 00ef 00       		.byte	0
+ 268 00f0 00       		.byte	0
+ 269 00f1 00       		.byte	0
+ 270 00f2 00       		.byte	0
+ 271 00f3 00       		.byte	0
+ 272 00f4 00       		.byte	0
+ 273 00f5 00       		.byte	0
+ 274 00f6 00       		.byte	0
+ 275 00f7 00       		.byte	0
+ 276 00f8 00       		.byte	0
+ 277 00f9 00       		.byte	0
+ 278 00fa 00       		.byte	0
+ 279 00fb 00       		.byte	0
+ 280 00fc 00       		.byte	0
+ 281 00fd 00       		.byte	0
+ 282 00fe 00       		.byte	0
+ 283 00ff 00       		.byte	0
+ 284              		.type	Filter_acu, %object
+ 285              		.size	Filter_acu, 64
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 6
+
+
+ 286              	Filter_acu:
+ 287 0100 FF       		.byte	-1
+ 288 0101 3F       		.byte	63
+ 289 0102 00       		.byte	0
+ 290 0103 00       		.byte	0
+ 291 0104 00       		.byte	0
+ 292 0105 00       		.byte	0
+ 293 0106 00       		.byte	0
+ 294 0107 00       		.byte	0
+ 295 0108 00       		.byte	0
+ 296 0109 00       		.byte	0
+ 297 010a 00       		.byte	0
+ 298 010b 00       		.byte	0
+ 299 010c 00       		.byte	0
+ 300 010d 00       		.byte	0
+ 301 010e 00       		.byte	0
+ 302 010f 00       		.byte	0
+ 303 0110 00       		.byte	0
+ 304 0111 00       		.byte	0
+ 305 0112 00       		.byte	0
+ 306 0113 00       		.byte	0
+ 307 0114 00       		.byte	0
+ 308 0115 00       		.byte	0
+ 309 0116 00       		.byte	0
+ 310 0117 00       		.byte	0
+ 311 0118 00       		.byte	0
+ 312 0119 00       		.byte	0
+ 313 011a 00       		.byte	0
+ 314 011b 00       		.byte	0
+ 315 011c 00       		.byte	0
+ 316 011d 00       		.byte	0
+ 317 011e 00       		.byte	0
+ 318 011f 00       		.byte	0
+ 319 0120 00       		.byte	0
+ 320 0121 00       		.byte	0
+ 321 0122 00       		.byte	0
+ 322 0123 00       		.byte	0
+ 323 0124 00       		.byte	0
+ 324 0125 00       		.byte	0
+ 325 0126 00       		.byte	0
+ 326 0127 00       		.byte	0
+ 327 0128 00       		.byte	0
+ 328 0129 00       		.byte	0
+ 329 012a 00       		.byte	0
+ 330 012b 00       		.byte	0
+ 331 012c 00       		.byte	0
+ 332 012d 00       		.byte	0
+ 333 012e 00       		.byte	0
+ 334 012f 00       		.byte	0
+ 335 0130 00       		.byte	0
+ 336 0131 00       		.byte	0
+ 337 0132 00       		.byte	0
+ 338 0133 00       		.byte	0
+ 339 0134 00       		.byte	0
+ 340 0135 00       		.byte	0
+ 341 0136 00       		.byte	0
+ 342 0137 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 7
+
+
+ 343 0138 00       		.byte	0
+ 344 0139 00       		.byte	0
+ 345 013a 00       		.byte	0
+ 346 013b 00       		.byte	0
+ 347 013c 00       		.byte	0
+ 348 013d 00       		.byte	0
+ 349 013e 00       		.byte	0
+ 350 013f 00       		.byte	0
+ 351              		.type	Filter_data_b, %object
+ 352              		.size	Filter_data_b, 512
+ 353              	Filter_data_b:
+ 354 0140 81       		.byte	-127
+ 355 0141 FF       		.byte	-1
+ 356 0142 FF       		.byte	-1
+ 357 0143 00       		.byte	0
+ 358 0144 50       		.byte	80
+ 359 0145 FF       		.byte	-1
+ 360 0146 FF       		.byte	-1
+ 361 0147 00       		.byte	0
+ 362 0148 0F       		.byte	15
+ 363 0149 FF       		.byte	-1
+ 364 014a FF       		.byte	-1
+ 365 014b 00       		.byte	0
+ 366 014c B9       		.byte	-71
+ 367 014d FE       		.byte	-2
+ 368 014e FF       		.byte	-1
+ 369 014f 00       		.byte	0
+ 370 0150 4F       		.byte	79
+ 371 0151 FE       		.byte	-2
+ 372 0152 FF       		.byte	-1
+ 373 0153 00       		.byte	0
+ 374 0154 D4       		.byte	-44
+ 375 0155 FD       		.byte	-3
+ 376 0156 FF       		.byte	-1
+ 377 0157 00       		.byte	0
+ 378 0158 4F       		.byte	79
+ 379 0159 FD       		.byte	-3
+ 380 015a FF       		.byte	-1
+ 381 015b 00       		.byte	0
+ 382 015c CF       		.byte	-49
+ 383 015d FC       		.byte	-4
+ 384 015e FF       		.byte	-1
+ 385 015f 00       		.byte	0
+ 386 0160 66       		.byte	102
+ 387 0161 FC       		.byte	-4
+ 388 0162 FF       		.byte	-1
+ 389 0163 00       		.byte	0
+ 390 0164 28       		.byte	40
+ 391 0165 FC       		.byte	-4
+ 392 0166 FF       		.byte	-1
+ 393 0167 00       		.byte	0
+ 394 0168 30       		.byte	48
+ 395 0169 FC       		.byte	-4
+ 396 016a FF       		.byte	-1
+ 397 016b 00       		.byte	0
+ 398 016c 9A       		.byte	-102
+ 399 016d FC       		.byte	-4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 8
+
+
+ 400 016e FF       		.byte	-1
+ 401 016f 00       		.byte	0
+ 402 0170 82       		.byte	-126
+ 403 0171 FD       		.byte	-3
+ 404 0172 FF       		.byte	-1
+ 405 0173 00       		.byte	0
+ 406 0174 01       		.byte	1
+ 407 0175 FF       		.byte	-1
+ 408 0176 FF       		.byte	-1
+ 409 0177 00       		.byte	0
+ 410 0178 2D       		.byte	45
+ 411 0179 01       		.byte	1
+ 412 017a 00       		.byte	0
+ 413 017b 00       		.byte	0
+ 414 017c 15       		.byte	21
+ 415 017d 04       		.byte	4
+ 416 017e 00       		.byte	0
+ 417 017f 00       		.byte	0
+ 418 0180 BD       		.byte	-67
+ 419 0181 07       		.byte	7
+ 420 0182 00       		.byte	0
+ 421 0183 00       		.byte	0
+ 422 0184 1B       		.byte	27
+ 423 0185 0C       		.byte	12
+ 424 0186 00       		.byte	0
+ 425 0187 00       		.byte	0
+ 426 0188 17       		.byte	23
+ 427 0189 11       		.byte	17
+ 428 018a 00       		.byte	0
+ 429 018b 00       		.byte	0
+ 430 018c 86       		.byte	-122
+ 431 018d 16       		.byte	22
+ 432 018e 00       		.byte	0
+ 433 018f 00       		.byte	0
+ 434 0190 2A       		.byte	42
+ 435 0191 1C       		.byte	28
+ 436 0192 00       		.byte	0
+ 437 0193 00       		.byte	0
+ 438 0194 B1       		.byte	-79
+ 439 0195 21       		.byte	33
+ 440 0196 00       		.byte	0
+ 441 0197 00       		.byte	0
+ 442 0198 B9       		.byte	-71
+ 443 0199 26       		.byte	38
+ 444 019a 00       		.byte	0
+ 445 019b 00       		.byte	0
+ 446 019c CB       		.byte	-53
+ 447 019d 2A       		.byte	42
+ 448 019e 00       		.byte	0
+ 449 019f 00       		.byte	0
+ 450 01a0 6A       		.byte	106
+ 451 01a1 2D       		.byte	45
+ 452 01a2 00       		.byte	0
+ 453 01a3 00       		.byte	0
+ 454 01a4 0C       		.byte	12
+ 455 01a5 2E       		.byte	46
+ 456 01a6 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 9
+
+
+ 457 01a7 00       		.byte	0
+ 458 01a8 2C       		.byte	44
+ 459 01a9 2C       		.byte	44
+ 460 01aa 00       		.byte	0
+ 461 01ab 00       		.byte	0
+ 462 01ac 4C       		.byte	76
+ 463 01ad 27       		.byte	39
+ 464 01ae 00       		.byte	0
+ 465 01af 00       		.byte	0
+ 466 01b0 FF       		.byte	-1
+ 467 01b1 1E       		.byte	30
+ 468 01b2 00       		.byte	0
+ 469 01b3 00       		.byte	0
+ 470 01b4 F7       		.byte	-9
+ 471 01b5 12       		.byte	18
+ 472 01b6 00       		.byte	0
+ 473 01b7 00       		.byte	0
+ 474 01b8 09       		.byte	9
+ 475 01b9 03       		.byte	3
+ 476 01ba 00       		.byte	0
+ 477 01bb 00       		.byte	0
+ 478 01bc 3B       		.byte	59
+ 479 01bd EF       		.byte	-17
+ 480 01be FF       		.byte	-1
+ 481 01bf 00       		.byte	0
+ 482 01c0 CD       		.byte	-51
+ 483 01c1 D7       		.byte	-41
+ 484 01c2 FF       		.byte	-1
+ 485 01c3 00       		.byte	0
+ 486 01c4 3C       		.byte	60
+ 487 01c5 BD       		.byte	-67
+ 488 01c6 FF       		.byte	-1
+ 489 01c7 00       		.byte	0
+ 490 01c8 4A       		.byte	74
+ 491 01c9 A0       		.byte	-96
+ 492 01ca FF       		.byte	-1
+ 493 01cb 00       		.byte	0
+ 494 01cc 01       		.byte	1
+ 495 01cd 82       		.byte	-126
+ 496 01ce FF       		.byte	-1
+ 497 01cf 00       		.byte	0
+ 498 01d0 AC       		.byte	-84
+ 499 01d1 63       		.byte	99
+ 500 01d2 FF       		.byte	-1
+ 501 01d3 00       		.byte	0
+ 502 01d4 D6       		.byte	-42
+ 503 01d5 46       		.byte	70
+ 504 01d6 FF       		.byte	-1
+ 505 01d7 00       		.byte	0
+ 506 01d8 42       		.byte	66
+ 507 01d9 2D       		.byte	45
+ 508 01da FF       		.byte	-1
+ 509 01db 00       		.byte	0
+ 510 01dc DA       		.byte	-38
+ 511 01dd 18       		.byte	24
+ 512 01de FF       		.byte	-1
+ 513 01df 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 10
+
+
+ 514 01e0 A0       		.byte	-96
+ 515 01e1 0B       		.byte	11
+ 516 01e2 FF       		.byte	-1
+ 517 01e3 00       		.byte	0
+ 518 01e4 9D       		.byte	-99
+ 519 01e5 07       		.byte	7
+ 520 01e6 FF       		.byte	-1
+ 521 01e7 00       		.byte	0
+ 522 01e8 C8       		.byte	-56
+ 523 01e9 0E       		.byte	14
+ 524 01ea FF       		.byte	-1
+ 525 01eb 00       		.byte	0
+ 526 01ec F1       		.byte	-15
+ 527 01ed 22       		.byte	34
+ 528 01ee FF       		.byte	-1
+ 529 01ef 00       		.byte	0
+ 530 01f0 A8       		.byte	-88
+ 531 01f1 45       		.byte	69
+ 532 01f2 FF       		.byte	-1
+ 533 01f3 00       		.byte	0
+ 534 01f4 26       		.byte	38
+ 535 01f5 78       		.byte	120
+ 536 01f6 FF       		.byte	-1
+ 537 01f7 00       		.byte	0
+ 538 01f8 37       		.byte	55
+ 539 01f9 BB       		.byte	-69
+ 540 01fa FF       		.byte	-1
+ 541 01fb 00       		.byte	0
+ 542 01fc 29       		.byte	41
+ 543 01fd 0F       		.byte	15
+ 544 01fe 00       		.byte	0
+ 545 01ff 00       		.byte	0
+ 546 0200 BC       		.byte	-68
+ 547 0201 73       		.byte	115
+ 548 0202 00       		.byte	0
+ 549 0203 00       		.byte	0
+ 550 0204 1B       		.byte	27
+ 551 0205 E8       		.byte	-24
+ 552 0206 00       		.byte	0
+ 553 0207 00       		.byte	0
+ 554 0208 D4       		.byte	-44
+ 555 0209 6A       		.byte	106
+ 556 020a 01       		.byte	1
+ 557 020b 00       		.byte	0
+ 558 020c E0       		.byte	-32
+ 559 020d F9       		.byte	-7
+ 560 020e 01       		.byte	1
+ 561 020f 00       		.byte	0
+ 562 0210 A8       		.byte	-88
+ 563 0211 92       		.byte	-110
+ 564 0212 02       		.byte	2
+ 565 0213 00       		.byte	0
+ 566 0214 17       		.byte	23
+ 567 0215 32       		.byte	50
+ 568 0216 03       		.byte	3
+ 569 0217 00       		.byte	0
+ 570 0218 AE       		.byte	-82
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 11
+
+
+ 571 0219 D4       		.byte	-44
+ 572 021a 03       		.byte	3
+ 573 021b 00       		.byte	0
+ 574 021c A2       		.byte	-94
+ 575 021d 76       		.byte	118
+ 576 021e 04       		.byte	4
+ 577 021f 00       		.byte	0
+ 578 0220 F7       		.byte	-9
+ 579 0221 13       		.byte	19
+ 580 0222 05       		.byte	5
+ 581 0223 00       		.byte	0
+ 582 0224 A6       		.byte	-90
+ 583 0225 A8       		.byte	-88
+ 584 0226 05       		.byte	5
+ 585 0227 00       		.byte	0
+ 586 0228 C0       		.byte	-64
+ 587 0229 30       		.byte	48
+ 588 022a 06       		.byte	6
+ 589 022b 00       		.byte	0
+ 590 022c 93       		.byte	-109
+ 591 022d A8       		.byte	-88
+ 592 022e 06       		.byte	6
+ 593 022f 00       		.byte	0
+ 594 0230 CB       		.byte	-53
+ 595 0231 0C       		.byte	12
+ 596 0232 07       		.byte	7
+ 597 0233 00       		.byte	0
+ 598 0234 96       		.byte	-106
+ 599 0235 5A       		.byte	90
+ 600 0236 07       		.byte	7
+ 601 0237 00       		.byte	0
+ 602 0238 BA       		.byte	-70
+ 603 0239 8F       		.byte	-113
+ 604 023a 07       		.byte	7
+ 605 023b 00       		.byte	0
+ 606 023c B0       		.byte	-80
+ 607 023d AA       		.byte	-86
+ 608 023e 07       		.byte	7
+ 609 023f 00       		.byte	0
+ 610 0240 B0       		.byte	-80
+ 611 0241 AA       		.byte	-86
+ 612 0242 07       		.byte	7
+ 613 0243 00       		.byte	0
+ 614 0244 BA       		.byte	-70
+ 615 0245 8F       		.byte	-113
+ 616 0246 07       		.byte	7
+ 617 0247 00       		.byte	0
+ 618 0248 96       		.byte	-106
+ 619 0249 5A       		.byte	90
+ 620 024a 07       		.byte	7
+ 621 024b 00       		.byte	0
+ 622 024c CB       		.byte	-53
+ 623 024d 0C       		.byte	12
+ 624 024e 07       		.byte	7
+ 625 024f 00       		.byte	0
+ 626 0250 93       		.byte	-109
+ 627 0251 A8       		.byte	-88
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 12
+
+
+ 628 0252 06       		.byte	6
+ 629 0253 00       		.byte	0
+ 630 0254 C0       		.byte	-64
+ 631 0255 30       		.byte	48
+ 632 0256 06       		.byte	6
+ 633 0257 00       		.byte	0
+ 634 0258 A6       		.byte	-90
+ 635 0259 A8       		.byte	-88
+ 636 025a 05       		.byte	5
+ 637 025b 00       		.byte	0
+ 638 025c F7       		.byte	-9
+ 639 025d 13       		.byte	19
+ 640 025e 05       		.byte	5
+ 641 025f 00       		.byte	0
+ 642 0260 A2       		.byte	-94
+ 643 0261 76       		.byte	118
+ 644 0262 04       		.byte	4
+ 645 0263 00       		.byte	0
+ 646 0264 AE       		.byte	-82
+ 647 0265 D4       		.byte	-44
+ 648 0266 03       		.byte	3
+ 649 0267 00       		.byte	0
+ 650 0268 17       		.byte	23
+ 651 0269 32       		.byte	50
+ 652 026a 03       		.byte	3
+ 653 026b 00       		.byte	0
+ 654 026c A8       		.byte	-88
+ 655 026d 92       		.byte	-110
+ 656 026e 02       		.byte	2
+ 657 026f 00       		.byte	0
+ 658 0270 E0       		.byte	-32
+ 659 0271 F9       		.byte	-7
+ 660 0272 01       		.byte	1
+ 661 0273 00       		.byte	0
+ 662 0274 D4       		.byte	-44
+ 663 0275 6A       		.byte	106
+ 664 0276 01       		.byte	1
+ 665 0277 00       		.byte	0
+ 666 0278 1B       		.byte	27
+ 667 0279 E8       		.byte	-24
+ 668 027a 00       		.byte	0
+ 669 027b 00       		.byte	0
+ 670 027c BC       		.byte	-68
+ 671 027d 73       		.byte	115
+ 672 027e 00       		.byte	0
+ 673 027f 00       		.byte	0
+ 674 0280 29       		.byte	41
+ 675 0281 0F       		.byte	15
+ 676 0282 00       		.byte	0
+ 677 0283 00       		.byte	0
+ 678 0284 37       		.byte	55
+ 679 0285 BB       		.byte	-69
+ 680 0286 FF       		.byte	-1
+ 681 0287 00       		.byte	0
+ 682 0288 26       		.byte	38
+ 683 0289 78       		.byte	120
+ 684 028a FF       		.byte	-1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 13
+
+
+ 685 028b 00       		.byte	0
+ 686 028c A8       		.byte	-88
+ 687 028d 45       		.byte	69
+ 688 028e FF       		.byte	-1
+ 689 028f 00       		.byte	0
+ 690 0290 F1       		.byte	-15
+ 691 0291 22       		.byte	34
+ 692 0292 FF       		.byte	-1
+ 693 0293 00       		.byte	0
+ 694 0294 C8       		.byte	-56
+ 695 0295 0E       		.byte	14
+ 696 0296 FF       		.byte	-1
+ 697 0297 00       		.byte	0
+ 698 0298 9D       		.byte	-99
+ 699 0299 07       		.byte	7
+ 700 029a FF       		.byte	-1
+ 701 029b 00       		.byte	0
+ 702 029c A0       		.byte	-96
+ 703 029d 0B       		.byte	11
+ 704 029e FF       		.byte	-1
+ 705 029f 00       		.byte	0
+ 706 02a0 DA       		.byte	-38
+ 707 02a1 18       		.byte	24
+ 708 02a2 FF       		.byte	-1
+ 709 02a3 00       		.byte	0
+ 710 02a4 42       		.byte	66
+ 711 02a5 2D       		.byte	45
+ 712 02a6 FF       		.byte	-1
+ 713 02a7 00       		.byte	0
+ 714 02a8 D6       		.byte	-42
+ 715 02a9 46       		.byte	70
+ 716 02aa FF       		.byte	-1
+ 717 02ab 00       		.byte	0
+ 718 02ac AC       		.byte	-84
+ 719 02ad 63       		.byte	99
+ 720 02ae FF       		.byte	-1
+ 721 02af 00       		.byte	0
+ 722 02b0 01       		.byte	1
+ 723 02b1 82       		.byte	-126
+ 724 02b2 FF       		.byte	-1
+ 725 02b3 00       		.byte	0
+ 726 02b4 4A       		.byte	74
+ 727 02b5 A0       		.byte	-96
+ 728 02b6 FF       		.byte	-1
+ 729 02b7 00       		.byte	0
+ 730 02b8 3C       		.byte	60
+ 731 02b9 BD       		.byte	-67
+ 732 02ba FF       		.byte	-1
+ 733 02bb 00       		.byte	0
+ 734 02bc CD       		.byte	-51
+ 735 02bd D7       		.byte	-41
+ 736 02be FF       		.byte	-1
+ 737 02bf 00       		.byte	0
+ 738 02c0 3B       		.byte	59
+ 739 02c1 EF       		.byte	-17
+ 740 02c2 FF       		.byte	-1
+ 741 02c3 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 14
+
+
+ 742 02c4 09       		.byte	9
+ 743 02c5 03       		.byte	3
+ 744 02c6 00       		.byte	0
+ 745 02c7 00       		.byte	0
+ 746 02c8 F7       		.byte	-9
+ 747 02c9 12       		.byte	18
+ 748 02ca 00       		.byte	0
+ 749 02cb 00       		.byte	0
+ 750 02cc FF       		.byte	-1
+ 751 02cd 1E       		.byte	30
+ 752 02ce 00       		.byte	0
+ 753 02cf 00       		.byte	0
+ 754 02d0 4C       		.byte	76
+ 755 02d1 27       		.byte	39
+ 756 02d2 00       		.byte	0
+ 757 02d3 00       		.byte	0
+ 758 02d4 2C       		.byte	44
+ 759 02d5 2C       		.byte	44
+ 760 02d6 00       		.byte	0
+ 761 02d7 00       		.byte	0
+ 762 02d8 0C       		.byte	12
+ 763 02d9 2E       		.byte	46
+ 764 02da 00       		.byte	0
+ 765 02db 00       		.byte	0
+ 766 02dc 6A       		.byte	106
+ 767 02dd 2D       		.byte	45
+ 768 02de 00       		.byte	0
+ 769 02df 00       		.byte	0
+ 770 02e0 CB       		.byte	-53
+ 771 02e1 2A       		.byte	42
+ 772 02e2 00       		.byte	0
+ 773 02e3 00       		.byte	0
+ 774 02e4 B9       		.byte	-71
+ 775 02e5 26       		.byte	38
+ 776 02e6 00       		.byte	0
+ 777 02e7 00       		.byte	0
+ 778 02e8 B1       		.byte	-79
+ 779 02e9 21       		.byte	33
+ 780 02ea 00       		.byte	0
+ 781 02eb 00       		.byte	0
+ 782 02ec 2A       		.byte	42
+ 783 02ed 1C       		.byte	28
+ 784 02ee 00       		.byte	0
+ 785 02ef 00       		.byte	0
+ 786 02f0 86       		.byte	-122
+ 787 02f1 16       		.byte	22
+ 788 02f2 00       		.byte	0
+ 789 02f3 00       		.byte	0
+ 790 02f4 17       		.byte	23
+ 791 02f5 11       		.byte	17
+ 792 02f6 00       		.byte	0
+ 793 02f7 00       		.byte	0
+ 794 02f8 1B       		.byte	27
+ 795 02f9 0C       		.byte	12
+ 796 02fa 00       		.byte	0
+ 797 02fb 00       		.byte	0
+ 798 02fc BD       		.byte	-67
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 15
+
+
+ 799 02fd 07       		.byte	7
+ 800 02fe 00       		.byte	0
+ 801 02ff 00       		.byte	0
+ 802 0300 15       		.byte	21
+ 803 0301 04       		.byte	4
+ 804 0302 00       		.byte	0
+ 805 0303 00       		.byte	0
+ 806 0304 2D       		.byte	45
+ 807 0305 01       		.byte	1
+ 808 0306 00       		.byte	0
+ 809 0307 00       		.byte	0
+ 810 0308 01       		.byte	1
+ 811 0309 FF       		.byte	-1
+ 812 030a FF       		.byte	-1
+ 813 030b 00       		.byte	0
+ 814 030c 82       		.byte	-126
+ 815 030d FD       		.byte	-3
+ 816 030e FF       		.byte	-1
+ 817 030f 00       		.byte	0
+ 818 0310 9A       		.byte	-102
+ 819 0311 FC       		.byte	-4
+ 820 0312 FF       		.byte	-1
+ 821 0313 00       		.byte	0
+ 822 0314 30       		.byte	48
+ 823 0315 FC       		.byte	-4
+ 824 0316 FF       		.byte	-1
+ 825 0317 00       		.byte	0
+ 826 0318 28       		.byte	40
+ 827 0319 FC       		.byte	-4
+ 828 031a FF       		.byte	-1
+ 829 031b 00       		.byte	0
+ 830 031c 66       		.byte	102
+ 831 031d FC       		.byte	-4
+ 832 031e FF       		.byte	-1
+ 833 031f 00       		.byte	0
+ 834 0320 CF       		.byte	-49
+ 835 0321 FC       		.byte	-4
+ 836 0322 FF       		.byte	-1
+ 837 0323 00       		.byte	0
+ 838 0324 4F       		.byte	79
+ 839 0325 FD       		.byte	-3
+ 840 0326 FF       		.byte	-1
+ 841 0327 00       		.byte	0
+ 842 0328 D4       		.byte	-44
+ 843 0329 FD       		.byte	-3
+ 844 032a FF       		.byte	-1
+ 845 032b 00       		.byte	0
+ 846 032c 4F       		.byte	79
+ 847 032d FE       		.byte	-2
+ 848 032e FF       		.byte	-1
+ 849 032f 00       		.byte	0
+ 850 0330 B9       		.byte	-71
+ 851 0331 FE       		.byte	-2
+ 852 0332 FF       		.byte	-1
+ 853 0333 00       		.byte	0
+ 854 0334 0F       		.byte	15
+ 855 0335 FF       		.byte	-1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 16
+
+
+ 856 0336 FF       		.byte	-1
+ 857 0337 00       		.byte	0
+ 858 0338 50       		.byte	80
+ 859 0339 FF       		.byte	-1
+ 860 033a FF       		.byte	-1
+ 861 033b 00       		.byte	0
+ 862 033c 81       		.byte	-127
+ 863 033d FF       		.byte	-1
+ 864 033e FF       		.byte	-1
+ 865 033f 00       		.byte	0
+ 866              		.type	Filter_data_a, %object
+ 867              		.size	Filter_data_a, 512
+ 868              	Filter_data_a:
+ 869 0340 00000000 		.space	512
+ 869      00000000 
+ 869      00000000 
+ 869      00000000 
+ 869      00000000 
+ 870              		.type	Filter_control, %object
+ 871              		.size	Filter_control, 256
+ 872              	Filter_control:
+ 873 0540 20       		.byte	32
+ 874 0541 13       		.byte	19
+ 875 0542 00       		.byte	0
+ 876 0543 25       		.byte	37
+ 877 0544 61       		.byte	97
+ 878 0545 17       		.byte	23
+ 879 0546 80       		.byte	-128
+ 880 0547 26       		.byte	38
+ 881 0548 01       		.byte	1
+ 882 0549 00       		.byte	0
+ 883 054a 80       		.byte	-128
+ 884 054b 26       		.byte	38
+ 885 054c E0       		.byte	-32
+ 886 054d 0E       		.byte	14
+ 887 054e 80       		.byte	-128
+ 888 054f 26       		.byte	38
+ 889 0550 C2       		.byte	-62
+ 890 0551 0C       		.byte	12
+ 891 0552 80       		.byte	-128
+ 892 0553 26       		.byte	38
+ 893 0554 02       		.byte	2
+ 894 0555 00       		.byte	0
+ 895 0556 80       		.byte	-128
+ 896 0557 06       		.byte	6
+ 897 0558 65       		.byte	101
+ 898 0559 87       		.byte	-121
+ 899 055a 18       		.byte	24
+ 900 055b 6D       		.byte	109
+ 901 055c 64       		.byte	100
+ 902 055d 09       		.byte	9
+ 903 055e 18       		.byte	24
+ 904 055f 3E       		.byte	62
+ 905 0560 00       		.byte	0
+ 906 0561 00       		.byte	0
+ 907 0562 80       		.byte	-128
+ 908 0563 26       		.byte	38
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 17
+
+
+ 909 0564 03       		.byte	3
+ 910 0565 20       		.byte	32
+ 911 0566 80       		.byte	-128
+ 912 0567 26       		.byte	38
+ 913 0568 21       		.byte	33
+ 914 0569 02       		.byte	2
+ 915 056a 18       		.byte	24
+ 916 056b 7F       		.byte	127
+ 917 056c 00       		.byte	0
+ 918 056d 00       		.byte	0
+ 919 056e 00       		.byte	0
+ 920 056f 00       		.byte	0
+ 921 0570 00       		.byte	0
+ 922 0571 00       		.byte	0
+ 923 0572 00       		.byte	0
+ 924 0573 00       		.byte	0
+ 925 0574 00       		.byte	0
+ 926 0575 00       		.byte	0
+ 927 0576 00       		.byte	0
+ 928 0577 00       		.byte	0
+ 929 0578 00       		.byte	0
+ 930 0579 00       		.byte	0
+ 931 057a 00       		.byte	0
+ 932 057b 00       		.byte	0
+ 933 057c 00       		.byte	0
+ 934 057d 00       		.byte	0
+ 935 057e 00       		.byte	0
+ 936 057f 00       		.byte	0
+ 937 0580 00       		.byte	0
+ 938 0581 00       		.byte	0
+ 939 0582 00       		.byte	0
+ 940 0583 00       		.byte	0
+ 941 0584 00       		.byte	0
+ 942 0585 00       		.byte	0
+ 943 0586 00       		.byte	0
+ 944 0587 00       		.byte	0
+ 945 0588 00       		.byte	0
+ 946 0589 00       		.byte	0
+ 947 058a 00       		.byte	0
+ 948 058b 00       		.byte	0
+ 949 058c 00       		.byte	0
+ 950 058d 00       		.byte	0
+ 951 058e 00       		.byte	0
+ 952 058f 00       		.byte	0
+ 953 0590 00       		.byte	0
+ 954 0591 00       		.byte	0
+ 955 0592 00       		.byte	0
+ 956 0593 00       		.byte	0
+ 957 0594 00       		.byte	0
+ 958 0595 00       		.byte	0
+ 959 0596 00       		.byte	0
+ 960 0597 00       		.byte	0
+ 961 0598 00       		.byte	0
+ 962 0599 00       		.byte	0
+ 963 059a 00       		.byte	0
+ 964 059b 00       		.byte	0
+ 965 059c 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 18
+
+
+ 966 059d 00       		.byte	0
+ 967 059e 00       		.byte	0
+ 968 059f 00       		.byte	0
+ 969 05a0 00       		.byte	0
+ 970 05a1 00       		.byte	0
+ 971 05a2 00       		.byte	0
+ 972 05a3 00       		.byte	0
+ 973 05a4 00       		.byte	0
+ 974 05a5 00       		.byte	0
+ 975 05a6 00       		.byte	0
+ 976 05a7 00       		.byte	0
+ 977 05a8 00       		.byte	0
+ 978 05a9 00       		.byte	0
+ 979 05aa 00       		.byte	0
+ 980 05ab 00       		.byte	0
+ 981 05ac 00       		.byte	0
+ 982 05ad 00       		.byte	0
+ 983 05ae 00       		.byte	0
+ 984 05af 00       		.byte	0
+ 985 05b0 00       		.byte	0
+ 986 05b1 00       		.byte	0
+ 987 05b2 00       		.byte	0
+ 988 05b3 00       		.byte	0
+ 989 05b4 00       		.byte	0
+ 990 05b5 00       		.byte	0
+ 991 05b6 00       		.byte	0
+ 992 05b7 00       		.byte	0
+ 993 05b8 00       		.byte	0
+ 994 05b9 00       		.byte	0
+ 995 05ba 00       		.byte	0
+ 996 05bb 00       		.byte	0
+ 997 05bc 00       		.byte	0
+ 998 05bd 00       		.byte	0
+ 999 05be 00       		.byte	0
+ 1000 05bf 00       		.byte	0
+ 1001 05c0 00       		.byte	0
+ 1002 05c1 00       		.byte	0
+ 1003 05c2 00       		.byte	0
+ 1004 05c3 00       		.byte	0
+ 1005 05c4 00       		.byte	0
+ 1006 05c5 00       		.byte	0
+ 1007 05c6 00       		.byte	0
+ 1008 05c7 00       		.byte	0
+ 1009 05c8 00       		.byte	0
+ 1010 05c9 00       		.byte	0
+ 1011 05ca 00       		.byte	0
+ 1012 05cb 00       		.byte	0
+ 1013 05cc 00       		.byte	0
+ 1014 05cd 00       		.byte	0
+ 1015 05ce 00       		.byte	0
+ 1016 05cf 00       		.byte	0
+ 1017 05d0 00       		.byte	0
+ 1018 05d1 00       		.byte	0
+ 1019 05d2 00       		.byte	0
+ 1020 05d3 00       		.byte	0
+ 1021 05d4 00       		.byte	0
+ 1022 05d5 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 19
+
+
+ 1023 05d6 00       		.byte	0
+ 1024 05d7 00       		.byte	0
+ 1025 05d8 00       		.byte	0
+ 1026 05d9 00       		.byte	0
+ 1027 05da 00       		.byte	0
+ 1028 05db 00       		.byte	0
+ 1029 05dc 00       		.byte	0
+ 1030 05dd 00       		.byte	0
+ 1031 05de 00       		.byte	0
+ 1032 05df 00       		.byte	0
+ 1033 05e0 00       		.byte	0
+ 1034 05e1 00       		.byte	0
+ 1035 05e2 00       		.byte	0
+ 1036 05e3 00       		.byte	0
+ 1037 05e4 00       		.byte	0
+ 1038 05e5 00       		.byte	0
+ 1039 05e6 00       		.byte	0
+ 1040 05e7 00       		.byte	0
+ 1041 05e8 00       		.byte	0
+ 1042 05e9 00       		.byte	0
+ 1043 05ea 00       		.byte	0
+ 1044 05eb 00       		.byte	0
+ 1045 05ec 00       		.byte	0
+ 1046 05ed 00       		.byte	0
+ 1047 05ee 00       		.byte	0
+ 1048 05ef 00       		.byte	0
+ 1049 05f0 00       		.byte	0
+ 1050 05f1 00       		.byte	0
+ 1051 05f2 00       		.byte	0
+ 1052 05f3 00       		.byte	0
+ 1053 05f4 00       		.byte	0
+ 1054 05f5 00       		.byte	0
+ 1055 05f6 00       		.byte	0
+ 1056 05f7 00       		.byte	0
+ 1057 05f8 00       		.byte	0
+ 1058 05f9 00       		.byte	0
+ 1059 05fa 00       		.byte	0
+ 1060 05fb 00       		.byte	0
+ 1061 05fc 00       		.byte	0
+ 1062 05fd 00       		.byte	0
+ 1063 05fe 00       		.byte	0
+ 1064 05ff 00       		.byte	0
+ 1065 0600 00       		.byte	0
+ 1066 0601 00       		.byte	0
+ 1067 0602 00       		.byte	0
+ 1068 0603 00       		.byte	0
+ 1069 0604 00       		.byte	0
+ 1070 0605 00       		.byte	0
+ 1071 0606 00       		.byte	0
+ 1072 0607 00       		.byte	0
+ 1073 0608 00       		.byte	0
+ 1074 0609 00       		.byte	0
+ 1075 060a 00       		.byte	0
+ 1076 060b 00       		.byte	0
+ 1077 060c 00       		.byte	0
+ 1078 060d 00       		.byte	0
+ 1079 060e 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 20
+
+
+ 1080 060f 00       		.byte	0
+ 1081 0610 00       		.byte	0
+ 1082 0611 00       		.byte	0
+ 1083 0612 00       		.byte	0
+ 1084 0613 00       		.byte	0
+ 1085 0614 00       		.byte	0
+ 1086 0615 00       		.byte	0
+ 1087 0616 00       		.byte	0
+ 1088 0617 00       		.byte	0
+ 1089 0618 00       		.byte	0
+ 1090 0619 00       		.byte	0
+ 1091 061a 00       		.byte	0
+ 1092 061b 00       		.byte	0
+ 1093 061c 00       		.byte	0
+ 1094 061d 00       		.byte	0
+ 1095 061e 00       		.byte	0
+ 1096 061f 00       		.byte	0
+ 1097 0620 00       		.byte	0
+ 1098 0621 00       		.byte	0
+ 1099 0622 00       		.byte	0
+ 1100 0623 00       		.byte	0
+ 1101 0624 00       		.byte	0
+ 1102 0625 00       		.byte	0
+ 1103 0626 00       		.byte	0
+ 1104 0627 00       		.byte	0
+ 1105 0628 00       		.byte	0
+ 1106 0629 00       		.byte	0
+ 1107 062a 00       		.byte	0
+ 1108 062b 00       		.byte	0
+ 1109 062c 00       		.byte	0
+ 1110 062d 00       		.byte	0
+ 1111 062e 00       		.byte	0
+ 1112 062f 00       		.byte	0
+ 1113 0630 00       		.byte	0
+ 1114 0631 00       		.byte	0
+ 1115 0632 00       		.byte	0
+ 1116 0633 00       		.byte	0
+ 1117 0634 00       		.byte	0
+ 1118 0635 00       		.byte	0
+ 1119 0636 00       		.byte	0
+ 1120 0637 00       		.byte	0
+ 1121 0638 00       		.byte	0
+ 1122 0639 00       		.byte	0
+ 1123 063a 00       		.byte	0
+ 1124 063b 00       		.byte	0
+ 1125 063c 00       		.byte	0
+ 1126 063d 00       		.byte	0
+ 1127 063e 00       		.byte	0
+ 1128 063f 00       		.byte	0
+ 1129              		.text
+ 1130              	.Letext0:
+ 1131              		.file 1 ".\\Generated_Source\\PSoC5\\Filter_RAM_Data.c"
+ 1132              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 1133              		.section	.debug_info,"",%progbits
+ 1134              	.Ldebug_info0:
+ 1135 0000 27010000 		.4byte	0x127
+ 1136 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 21
+
+
+ 1137 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1138 000a 04       		.byte	0x4
+ 1139 000b 01       		.uleb128 0x1
+ 1140 000c 94000000 		.4byte	.LASF18
+ 1141 0010 01       		.byte	0x1
+ 1142 0011 95010000 		.4byte	.LASF19
+ 1143 0015 55000000 		.4byte	.LASF20
+ 1144 0019 00000000 		.4byte	.Ldebug_line0
+ 1145 001d 02       		.uleb128 0x2
+ 1146 001e 04       		.byte	0x4
+ 1147 001f 05       		.byte	0x5
+ 1148 0020 696E7400 		.ascii	"int\000"
+ 1149 0024 03       		.uleb128 0x3
+ 1150 0025 04       		.byte	0x4
+ 1151 0026 07       		.byte	0x7
+ 1152 0027 0E000000 		.4byte	.LASF0
+ 1153 002b 03       		.uleb128 0x3
+ 1154 002c 01       		.byte	0x1
+ 1155 002d 06       		.byte	0x6
+ 1156 002e 74010000 		.4byte	.LASF1
+ 1157 0032 03       		.uleb128 0x3
+ 1158 0033 01       		.byte	0x1
+ 1159 0034 08       		.byte	0x8
+ 1160 0035 22010000 		.4byte	.LASF2
+ 1161 0039 03       		.uleb128 0x3
+ 1162 003a 02       		.byte	0x2
+ 1163 003b 05       		.byte	0x5
+ 1164 003c C0010000 		.4byte	.LASF3
+ 1165 0040 03       		.uleb128 0x3
+ 1166 0041 02       		.byte	0x2
+ 1167 0042 07       		.byte	0x7
+ 1168 0043 61010000 		.4byte	.LASF4
+ 1169 0047 03       		.uleb128 0x3
+ 1170 0048 04       		.byte	0x4
+ 1171 0049 05       		.byte	0x5
+ 1172 004a 35010000 		.4byte	.LASF5
+ 1173 004e 03       		.uleb128 0x3
+ 1174 004f 04       		.byte	0x4
+ 1175 0050 07       		.byte	0x7
+ 1176 0051 2C000000 		.4byte	.LASF6
+ 1177 0055 03       		.uleb128 0x3
+ 1178 0056 08       		.byte	0x8
+ 1179 0057 05       		.byte	0x5
+ 1180 0058 00000000 		.4byte	.LASF7
+ 1181 005c 03       		.uleb128 0x3
+ 1182 005d 08       		.byte	0x8
+ 1183 005e 07       		.byte	0x7
+ 1184 005f 3E000000 		.4byte	.LASF8
+ 1185 0063 03       		.uleb128 0x3
+ 1186 0064 04       		.byte	0x4
+ 1187 0065 07       		.byte	0x7
+ 1188 0066 D6010000 		.4byte	.LASF9
+ 1189 006a 03       		.uleb128 0x3
+ 1190 006b 01       		.byte	0x1
+ 1191 006c 08       		.byte	0x8
+ 1192 006d 30010000 		.4byte	.LASF10
+ 1193 0071 04       		.uleb128 0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 22
+
+
+ 1194 0072 26000000 		.4byte	.LASF21
+ 1195 0076 02       		.byte	0x2
+ 1196 0077 9201     		.2byte	0x192
+ 1197 0079 32000000 		.4byte	0x32
+ 1198 007d 03       		.uleb128 0x3
+ 1199 007e 04       		.byte	0x4
+ 1200 007f 04       		.byte	0x4
+ 1201 0080 8F010000 		.4byte	.LASF11
+ 1202 0084 03       		.uleb128 0x3
+ 1203 0085 08       		.byte	0x8
+ 1204 0086 04       		.byte	0x4
+ 1205 0087 3E010000 		.4byte	.LASF12
+ 1206 008b 05       		.uleb128 0x5
+ 1207 008c 71000000 		.4byte	0x71
+ 1208 0090 9B000000 		.4byte	0x9b
+ 1209 0094 06       		.uleb128 0x6
+ 1210 0095 63000000 		.4byte	0x63
+ 1211 0099 3F       		.byte	0x3f
+ 1212 009a 00       		.byte	0
+ 1213 009b 05       		.uleb128 0x5
+ 1214 009c 71000000 		.4byte	0x71
+ 1215 00a0 AB000000 		.4byte	0xab
+ 1216 00a4 06       		.uleb128 0x6
+ 1217 00a5 63000000 		.4byte	0x63
+ 1218 00a9 FF       		.byte	0xff
+ 1219 00aa 00       		.byte	0
+ 1220 00ab 07       		.uleb128 0x7
+ 1221 00ac 80010000 		.4byte	.LASF13
+ 1222 00b0 01       		.byte	0x1
+ 1223 00b1 04       		.byte	0x4
+ 1224 00b2 BC000000 		.4byte	0xbc
+ 1225 00b6 05       		.uleb128 0x5
+ 1226 00b7 03       		.byte	0x3
+ 1227 00b8 00000000 		.4byte	Filter_control
+ 1228 00bc 08       		.uleb128 0x8
+ 1229 00bd 9B000000 		.4byte	0x9b
+ 1230 00c1 05       		.uleb128 0x5
+ 1231 00c2 71000000 		.4byte	0x71
+ 1232 00c6 D2000000 		.4byte	0xd2
+ 1233 00ca 09       		.uleb128 0x9
+ 1234 00cb 63000000 		.4byte	0x63
+ 1235 00cf FF01     		.2byte	0x1ff
+ 1236 00d1 00       		.byte	0
+ 1237 00d2 07       		.uleb128 0x7
+ 1238 00d3 45010000 		.4byte	.LASF14
+ 1239 00d7 01       		.byte	0x1
+ 1240 00d8 28       		.byte	0x28
+ 1241 00d9 E3000000 		.4byte	0xe3
+ 1242 00dd 05       		.uleb128 0x5
+ 1243 00de 03       		.byte	0x3
+ 1244 00df 00000000 		.4byte	Filter_data_a
+ 1245 00e3 08       		.uleb128 0x8
+ 1246 00e4 C1000000 		.4byte	0xc1
+ 1247 00e8 07       		.uleb128 0x7
+ 1248 00e9 53010000 		.4byte	.LASF15
+ 1249 00ed 01       		.byte	0x1
+ 1250 00ee 6C       		.byte	0x6c
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 23
+
+
+ 1251 00ef F9000000 		.4byte	0xf9
+ 1252 00f3 05       		.uleb128 0x5
+ 1253 00f4 03       		.byte	0x3
+ 1254 00f5 00000000 		.4byte	Filter_data_b
+ 1255 00f9 08       		.uleb128 0x8
+ 1256 00fa C1000000 		.4byte	0xc1
+ 1257 00fe 07       		.uleb128 0x7
+ 1258 00ff CA010000 		.4byte	.LASF16
+ 1259 0103 01       		.byte	0x1
+ 1260 0104 BC       		.byte	0xbc
+ 1261 0105 0F010000 		.4byte	0x10f
+ 1262 0109 05       		.uleb128 0x5
+ 1263 010a 03       		.byte	0x3
+ 1264 010b 00000000 		.4byte	Filter_cfsm
+ 1265 010f 08       		.uleb128 0x8
+ 1266 0110 9B000000 		.4byte	0x9b
+ 1267 0114 07       		.uleb128 0x7
+ 1268 0115 1B000000 		.4byte	.LASF17
+ 1269 0119 01       		.byte	0x1
+ 1270 011a B0       		.byte	0xb0
+ 1271 011b 25010000 		.4byte	0x125
+ 1272 011f 05       		.uleb128 0x5
+ 1273 0120 03       		.byte	0x3
+ 1274 0121 00000000 		.4byte	Filter_acu
+ 1275 0125 08       		.uleb128 0x8
+ 1276 0126 8B000000 		.4byte	0x8b
+ 1277 012a 00       		.byte	0
+ 1278              		.section	.debug_abbrev,"",%progbits
+ 1279              	.Ldebug_abbrev0:
+ 1280 0000 01       		.uleb128 0x1
+ 1281 0001 11       		.uleb128 0x11
+ 1282 0002 01       		.byte	0x1
+ 1283 0003 25       		.uleb128 0x25
+ 1284 0004 0E       		.uleb128 0xe
+ 1285 0005 13       		.uleb128 0x13
+ 1286 0006 0B       		.uleb128 0xb
+ 1287 0007 03       		.uleb128 0x3
+ 1288 0008 0E       		.uleb128 0xe
+ 1289 0009 1B       		.uleb128 0x1b
+ 1290 000a 0E       		.uleb128 0xe
+ 1291 000b 10       		.uleb128 0x10
+ 1292 000c 17       		.uleb128 0x17
+ 1293 000d 00       		.byte	0
+ 1294 000e 00       		.byte	0
+ 1295 000f 02       		.uleb128 0x2
+ 1296 0010 24       		.uleb128 0x24
+ 1297 0011 00       		.byte	0
+ 1298 0012 0B       		.uleb128 0xb
+ 1299 0013 0B       		.uleb128 0xb
+ 1300 0014 3E       		.uleb128 0x3e
+ 1301 0015 0B       		.uleb128 0xb
+ 1302 0016 03       		.uleb128 0x3
+ 1303 0017 08       		.uleb128 0x8
+ 1304 0018 00       		.byte	0
+ 1305 0019 00       		.byte	0
+ 1306 001a 03       		.uleb128 0x3
+ 1307 001b 24       		.uleb128 0x24
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 24
+
+
+ 1308 001c 00       		.byte	0
+ 1309 001d 0B       		.uleb128 0xb
+ 1310 001e 0B       		.uleb128 0xb
+ 1311 001f 3E       		.uleb128 0x3e
+ 1312 0020 0B       		.uleb128 0xb
+ 1313 0021 03       		.uleb128 0x3
+ 1314 0022 0E       		.uleb128 0xe
+ 1315 0023 00       		.byte	0
+ 1316 0024 00       		.byte	0
+ 1317 0025 04       		.uleb128 0x4
+ 1318 0026 16       		.uleb128 0x16
+ 1319 0027 00       		.byte	0
+ 1320 0028 03       		.uleb128 0x3
+ 1321 0029 0E       		.uleb128 0xe
+ 1322 002a 3A       		.uleb128 0x3a
+ 1323 002b 0B       		.uleb128 0xb
+ 1324 002c 3B       		.uleb128 0x3b
+ 1325 002d 05       		.uleb128 0x5
+ 1326 002e 49       		.uleb128 0x49
+ 1327 002f 13       		.uleb128 0x13
+ 1328 0030 00       		.byte	0
+ 1329 0031 00       		.byte	0
+ 1330 0032 05       		.uleb128 0x5
+ 1331 0033 01       		.uleb128 0x1
+ 1332 0034 01       		.byte	0x1
+ 1333 0035 49       		.uleb128 0x49
+ 1334 0036 13       		.uleb128 0x13
+ 1335 0037 01       		.uleb128 0x1
+ 1336 0038 13       		.uleb128 0x13
+ 1337 0039 00       		.byte	0
+ 1338 003a 00       		.byte	0
+ 1339 003b 06       		.uleb128 0x6
+ 1340 003c 21       		.uleb128 0x21
+ 1341 003d 00       		.byte	0
+ 1342 003e 49       		.uleb128 0x49
+ 1343 003f 13       		.uleb128 0x13
+ 1344 0040 2F       		.uleb128 0x2f
+ 1345 0041 0B       		.uleb128 0xb
+ 1346 0042 00       		.byte	0
+ 1347 0043 00       		.byte	0
+ 1348 0044 07       		.uleb128 0x7
+ 1349 0045 34       		.uleb128 0x34
+ 1350 0046 00       		.byte	0
+ 1351 0047 03       		.uleb128 0x3
+ 1352 0048 0E       		.uleb128 0xe
+ 1353 0049 3A       		.uleb128 0x3a
+ 1354 004a 0B       		.uleb128 0xb
+ 1355 004b 3B       		.uleb128 0x3b
+ 1356 004c 0B       		.uleb128 0xb
+ 1357 004d 49       		.uleb128 0x49
+ 1358 004e 13       		.uleb128 0x13
+ 1359 004f 3F       		.uleb128 0x3f
+ 1360 0050 19       		.uleb128 0x19
+ 1361 0051 02       		.uleb128 0x2
+ 1362 0052 18       		.uleb128 0x18
+ 1363 0053 00       		.byte	0
+ 1364 0054 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 25
+
+
+ 1365 0055 08       		.uleb128 0x8
+ 1366 0056 26       		.uleb128 0x26
+ 1367 0057 00       		.byte	0
+ 1368 0058 49       		.uleb128 0x49
+ 1369 0059 13       		.uleb128 0x13
+ 1370 005a 00       		.byte	0
+ 1371 005b 00       		.byte	0
+ 1372 005c 09       		.uleb128 0x9
+ 1373 005d 21       		.uleb128 0x21
+ 1374 005e 00       		.byte	0
+ 1375 005f 49       		.uleb128 0x49
+ 1376 0060 13       		.uleb128 0x13
+ 1377 0061 2F       		.uleb128 0x2f
+ 1378 0062 05       		.uleb128 0x5
+ 1379 0063 00       		.byte	0
+ 1380 0064 00       		.byte	0
+ 1381 0065 00       		.byte	0
+ 1382              		.section	.debug_aranges,"",%progbits
+ 1383 0000 14000000 		.4byte	0x14
+ 1384 0004 0200     		.2byte	0x2
+ 1385 0006 00000000 		.4byte	.Ldebug_info0
+ 1386 000a 04       		.byte	0x4
+ 1387 000b 00       		.byte	0
+ 1388 000c 0000     		.2byte	0
+ 1389 000e 0000     		.2byte	0
+ 1390 0010 00000000 		.4byte	0
+ 1391 0014 00000000 		.4byte	0
+ 1392              		.section	.debug_line,"",%progbits
+ 1393              	.Ldebug_line0:
+ 1394 0000 54000000 		.section	.debug_str,"MS",%progbits,1
+ 1394      02004E00 
+ 1394      00000201 
+ 1394      FB0E0D00 
+ 1394      01010101 
+ 1395              	.LASF7:
+ 1396 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1396      206C6F6E 
+ 1396      6720696E 
+ 1396      7400
+ 1397              	.LASF0:
+ 1398 000e 756E7369 		.ascii	"unsigned int\000"
+ 1398      676E6564 
+ 1398      20696E74 
+ 1398      00
+ 1399              	.LASF17:
+ 1400 001b 46696C74 		.ascii	"Filter_acu\000"
+ 1400      65725F61 
+ 1400      637500
+ 1401              	.LASF21:
+ 1402 0026 75696E74 		.ascii	"uint8\000"
+ 1402      3800
+ 1403              	.LASF6:
+ 1404 002c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1404      20756E73 
+ 1404      69676E65 
+ 1404      6420696E 
+ 1404      7400
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 26
+
+
+ 1405              	.LASF8:
+ 1406 003e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1406      206C6F6E 
+ 1406      6720756E 
+ 1406      7369676E 
+ 1406      65642069 
+ 1407              	.LASF20:
+ 1408 0055 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 1408      73657273 
+ 1408      5C637275 
+ 1408      69736572 
+ 1408      5C446F63 
+ 1409 0083 6E5C4465 		.ascii	"n\\Design01.cydsn\000"
+ 1409      7369676E 
+ 1409      30312E63 
+ 1409      7964736E 
+ 1409      00
+ 1410              	.LASF18:
+ 1411 0094 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1411      4320342E 
+ 1411      392E3320 
+ 1411      32303135 
+ 1411      30333033 
+ 1412 00c7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1412      20726576 
+ 1412      6973696F 
+ 1412      6E203232 
+ 1412      31323230 
+ 1413 00fa 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1413      66756E63 
+ 1413      74696F6E 
+ 1413      2D736563 
+ 1413      74696F6E 
+ 1414              	.LASF2:
+ 1415 0122 756E7369 		.ascii	"unsigned char\000"
+ 1415      676E6564 
+ 1415      20636861 
+ 1415      7200
+ 1416              	.LASF10:
+ 1417 0130 63686172 		.ascii	"char\000"
+ 1417      00
+ 1418              	.LASF5:
+ 1419 0135 6C6F6E67 		.ascii	"long int\000"
+ 1419      20696E74 
+ 1419      00
+ 1420              	.LASF12:
+ 1421 013e 646F7562 		.ascii	"double\000"
+ 1421      6C6500
+ 1422              	.LASF14:
+ 1423 0145 46696C74 		.ascii	"Filter_data_a\000"
+ 1423      65725F64 
+ 1423      6174615F 
+ 1423      6100
+ 1424              	.LASF15:
+ 1425 0153 46696C74 		.ascii	"Filter_data_b\000"
+ 1425      65725F64 
+ 1425      6174615F 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cckiOLFc.s 			page 27
+
+
+ 1425      6200
+ 1426              	.LASF4:
+ 1427 0161 73686F72 		.ascii	"short unsigned int\000"
+ 1427      7420756E 
+ 1427      7369676E 
+ 1427      65642069 
+ 1427      6E7400
+ 1428              	.LASF1:
+ 1429 0174 7369676E 		.ascii	"signed char\000"
+ 1429      65642063 
+ 1429      68617200 
+ 1430              	.LASF13:
+ 1431 0180 46696C74 		.ascii	"Filter_control\000"
+ 1431      65725F63 
+ 1431      6F6E7472 
+ 1431      6F6C00
+ 1432              	.LASF11:
+ 1433 018f 666C6F61 		.ascii	"float\000"
+ 1433      7400
+ 1434              	.LASF19:
+ 1435 0195 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_RAM_Data.c\000"
+ 1435      6E657261 
+ 1435      7465645F 
+ 1435      536F7572 
+ 1435      63655C50 
+ 1436              	.LASF3:
+ 1437 01c0 73686F72 		.ascii	"short int\000"
+ 1437      7420696E 
+ 1437      7400
+ 1438              	.LASF16:
+ 1439 01ca 46696C74 		.ascii	"Filter_cfsm\000"
+ 1439      65725F63 
+ 1439      66736D00 
+ 1440              	.LASF9:
+ 1441 01d6 73697A65 		.ascii	"sizetype\000"
+ 1441      74797065 
+ 1441      00
+ 1442              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

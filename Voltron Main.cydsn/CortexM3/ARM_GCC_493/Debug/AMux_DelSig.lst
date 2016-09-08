@@ -1,0 +1,1221 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"AMux_DelSig.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.AMux_DelSig_Start,"ax",%progbits
+  19              		.align	2
+  20              		.global	AMux_DelSig_Start
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	AMux_DelSig_Start, %function
+  24              	AMux_DelSig_Start:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\AMux_DelSig.c"
+   1:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/AMux_DelSig.c **** * File Name: AMux_DelSig.c
+   3:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Version 1.80
+   4:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+   5:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  Description:
+   6:.\Generated_Source\PSoC5/AMux_DelSig.c **** *    This file contains all functions required for the analog multiplexer
+   7:.\Generated_Source\PSoC5/AMux_DelSig.c **** *    AMux User Module.
+   8:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+   9:.\Generated_Source\PSoC5/AMux_DelSig.c **** *   Note:
+  10:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  11:.\Generated_Source\PSoC5/AMux_DelSig.c **** *******************************************************************************
+  12:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Copyright 2008-2010, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/AMux_DelSig.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/AMux_DelSig.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/AMux_DelSig.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/AMux_DelSig.c **** ********************************************************************************/
+  17:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  18:.\Generated_Source\PSoC5/AMux_DelSig.c **** #include "AMux_DelSig.h"
+  19:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  20:.\Generated_Source\PSoC5/AMux_DelSig.c **** static uint8 AMux_DelSig_lastChannel = AMux_DelSig_NULL_CHANNEL;
+  21:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  22:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  23:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Function Name: AMux_DelSig_Start
+  25:.\Generated_Source\PSoC5/AMux_DelSig.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Summary:
+  27:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  Disconnect all channels.
+  28:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  29:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Parameters:
+  30:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
+  31:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
+  33:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
+  34:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  35:.\Generated_Source\PSoC5/AMux_DelSig.c **** *******************************************************************************/
+  36:.\Generated_Source\PSoC5/AMux_DelSig.c **** void AMux_DelSig_Start(void) 
+  37:.\Generated_Source\PSoC5/AMux_DelSig.c **** {
+  27              		.loc 1 37 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 4, -8
+  34              		.cfi_offset 14, -4
+  35              	.LVL0:
+  38:.\Generated_Source\PSoC5/AMux_DelSig.c ****     uint8 chan;
+  39:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  40:.\Generated_Source\PSoC5/AMux_DelSig.c ****     for(chan = 0u; chan < AMux_DelSig_CHANNELS ; chan++)
+  36              		.loc 1 40 0
+  37 0002 0024     		movs	r4, #0
+  38 0004 07E0     		b	.L2
+  39              	.LVL1:
+  40              	.L3:
+  41:.\Generated_Source\PSoC5/AMux_DelSig.c ****     {
+  42:.\Generated_Source\PSoC5/AMux_DelSig.c **** #if (AMux_DelSig_MUXTYPE == AMux_DelSig_MUX_SINGLE)
+  43:.\Generated_Source\PSoC5/AMux_DelSig.c ****         AMux_DelSig_Unset(chan);
+  44:.\Generated_Source\PSoC5/AMux_DelSig.c **** #else
+  45:.\Generated_Source\PSoC5/AMux_DelSig.c ****         AMux_DelSig_CYAMUXSIDE_A_Unset(chan);
+  41              		.loc 1 45 0 discriminator 3
+  42 0006 2046     		mov	r0, r4
+  43 0008 FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_A_Unset
+  44              	.LVL2:
+  46:.\Generated_Source\PSoC5/AMux_DelSig.c ****         AMux_DelSig_CYAMUXSIDE_B_Unset(chan);
+  45              		.loc 1 46 0 discriminator 3
+  46 000c 2046     		mov	r0, r4
+  47 000e FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_B_Unset
+  48              	.LVL3:
+  40:.\Generated_Source\PSoC5/AMux_DelSig.c ****     {
+  49              		.loc 1 40 0 discriminator 3
+  50 0012 0134     		adds	r4, r4, #1
+  51              	.LVL4:
+  52 0014 E4B2     		uxtb	r4, r4
+  53              	.LVL5:
+  54              	.L2:
+  40:.\Generated_Source\PSoC5/AMux_DelSig.c ****     {
+  55              		.loc 1 40 0 is_stmt 0 discriminator 1
+  56 0016 032C     		cmp	r4, #3
+  57 0018 F5D9     		bls	.L3
+  47:.\Generated_Source\PSoC5/AMux_DelSig.c **** #endif
+  48:.\Generated_Source\PSoC5/AMux_DelSig.c ****     }
+  49:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  50:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_lastChannel = AMux_DelSig_NULL_CHANNEL;
+  58              		.loc 1 50 0 is_stmt 1
+  59 001a FF22     		movs	r2, #255
+  60 001c 014B     		ldr	r3, .L5
+  61 001e 1A70     		strb	r2, [r3]
+  62 0020 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 3
+
+
+  63              	.LVL6:
+  64              	.L6:
+  65 0022 00BF     		.align	2
+  66              	.L5:
+  67 0024 00000000 		.word	.LANCHOR0
+  68              		.cfi_endproc
+  69              	.LFE0:
+  70              		.size	AMux_DelSig_Start, .-AMux_DelSig_Start
+  71              		.section	.text.AMux_DelSig_Connect,"ax",%progbits
+  72              		.align	2
+  73              		.global	AMux_DelSig_Connect
+  74              		.thumb
+  75              		.thumb_func
+  76              		.type	AMux_DelSig_Connect, %function
+  77              	AMux_DelSig_Connect:
+  78              	.LFB3:
+  51:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
+  52:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  53:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  54:.\Generated_Source\PSoC5/AMux_DelSig.c **** #if (!AMux_DelSig_ATMOSTONE)
+  55:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
+  56:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Function Name: AMux_DelSig_Select
+  57:.\Generated_Source\PSoC5/AMux_DelSig.c **** ********************************************************************************
+  58:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Summary:
+  59:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  This functions first disconnects all channels then connects the given
+  60:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  channel.
+  61:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  62:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Parameters:
+  63:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  channel:  The channel to connect to the common terminal.
+  64:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  65:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
+  66:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
+  67:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  68:.\Generated_Source\PSoC5/AMux_DelSig.c **** *******************************************************************************/
+  69:.\Generated_Source\PSoC5/AMux_DelSig.c **** void AMux_DelSig_Select(uint8 channel) 
+  70:.\Generated_Source\PSoC5/AMux_DelSig.c **** {
+  71:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_DisconnectAll();        /* Disconnect all previous connections */
+  72:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_Connect(channel);       /* Make the given selection */
+  73:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_lastChannel = channel;  /* Update last channel */
+  74:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
+  75:.\Generated_Source\PSoC5/AMux_DelSig.c **** #endif
+  76:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  77:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+  78:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
+  79:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Function Name: AMux_DelSig_FastSelect
+  80:.\Generated_Source\PSoC5/AMux_DelSig.c **** ********************************************************************************
+  81:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Summary:
+  82:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  This function first disconnects the last connection made with FastSelect or
+  83:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  Select, then connects the given channel. The FastSelect function is similar
+  84:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  to the Select function, except it is faster since it only disconnects the
+  85:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  last channel selected rather than all channels.
+  86:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  87:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Parameters:
+  88:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  channel:  The channel to connect to the common terminal.
+  89:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  90:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
+  91:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 4
+
+
+  92:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+  93:.\Generated_Source\PSoC5/AMux_DelSig.c **** *******************************************************************************/
+  94:.\Generated_Source\PSoC5/AMux_DelSig.c **** void AMux_DelSig_FastSelect(uint8 channel) 
+  95:.\Generated_Source\PSoC5/AMux_DelSig.c **** {
+  96:.\Generated_Source\PSoC5/AMux_DelSig.c ****     /* Disconnect the last valid channel */
+  97:.\Generated_Source\PSoC5/AMux_DelSig.c ****     if( AMux_DelSig_lastChannel != AMux_DelSig_NULL_CHANNEL)
+  98:.\Generated_Source\PSoC5/AMux_DelSig.c ****     {
+  99:.\Generated_Source\PSoC5/AMux_DelSig.c ****         AMux_DelSig_Disconnect(AMux_DelSig_lastChannel);
+ 100:.\Generated_Source\PSoC5/AMux_DelSig.c ****     }
+ 101:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+ 102:.\Generated_Source\PSoC5/AMux_DelSig.c ****     /* Make the new channel connection */
+ 103:.\Generated_Source\PSoC5/AMux_DelSig.c **** #if (AMux_DelSig_MUXTYPE == AMux_DelSig_MUX_SINGLE)
+ 104:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_Set(channel);
+ 105:.\Generated_Source\PSoC5/AMux_DelSig.c **** #else
+ 106:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_A_Set(channel);
+ 107:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_B_Set(channel);
+ 108:.\Generated_Source\PSoC5/AMux_DelSig.c **** #endif
+ 109:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+ 110:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+ 111:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_lastChannel = channel;   /* Update last channel */
+ 112:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
+ 113:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+ 114:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+ 115:.\Generated_Source\PSoC5/AMux_DelSig.c **** #if (AMux_DelSig_MUXTYPE == AMux_DelSig_MUX_DIFF)
+ 116:.\Generated_Source\PSoC5/AMux_DelSig.c **** #if (!AMux_DelSig_ATMOSTONE)
+ 117:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
+ 118:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Function Name: AMux_DelSig_Connect
+ 119:.\Generated_Source\PSoC5/AMux_DelSig.c **** ********************************************************************************
+ 120:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Summary:
+ 121:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  This function connects the given channel without affecting other connections.
+ 122:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ 123:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Parameters:
+ 124:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  channel:  The channel to connect to the common terminal.
+ 125:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ 126:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
+ 127:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
+ 128:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ 129:.\Generated_Source\PSoC5/AMux_DelSig.c **** *******************************************************************************/
+ 130:.\Generated_Source\PSoC5/AMux_DelSig.c **** void AMux_DelSig_Connect(uint8 channel) 
+ 131:.\Generated_Source\PSoC5/AMux_DelSig.c **** {
+  79              		.loc 1 131 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              	.LVL7:
+  84 0000 10B5     		push	{r4, lr}
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 4, -8
+  87              		.cfi_offset 14, -4
+  88 0002 0446     		mov	r4, r0
+ 132:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_A_Set(channel);
+  89              		.loc 1 132 0
+  90 0004 FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_A_Set
+  91              	.LVL8:
+ 133:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_B_Set(channel);
+  92              		.loc 1 133 0
+  93 0008 2046     		mov	r0, r4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 5
+
+
+  94 000a FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_B_Set
+  95              	.LVL9:
+  96 000e 10BD     		pop	{r4, pc}
+  97              		.cfi_endproc
+  98              	.LFE3:
+  99              		.size	AMux_DelSig_Connect, .-AMux_DelSig_Connect
+ 100              		.section	.text.AMux_DelSig_Select,"ax",%progbits
+ 101              		.align	2
+ 102              		.global	AMux_DelSig_Select
+ 103              		.thumb
+ 104              		.thumb_func
+ 105              		.type	AMux_DelSig_Select, %function
+ 106              	AMux_DelSig_Select:
+ 107              	.LFB1:
+  70:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_DisconnectAll();        /* Disconnect all previous connections */
+ 108              		.loc 1 70 0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112              	.LVL10:
+ 113 0000 10B5     		push	{r4, lr}
+ 114              		.cfi_def_cfa_offset 8
+ 115              		.cfi_offset 4, -8
+ 116              		.cfi_offset 14, -4
+ 117 0002 0446     		mov	r4, r0
+  71:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_Connect(channel);       /* Make the given selection */
+ 118              		.loc 1 71 0
+ 119 0004 FFF7FEFF 		bl	AMux_DelSig_Start
+ 120              	.LVL11:
+  72:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_lastChannel = channel;  /* Update last channel */
+ 121              		.loc 1 72 0
+ 122 0008 2046     		mov	r0, r4
+ 123 000a FFF7FEFF 		bl	AMux_DelSig_Connect
+ 124              	.LVL12:
+  73:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
+ 125              		.loc 1 73 0
+ 126 000e 014B     		ldr	r3, .L11
+ 127 0010 1C70     		strb	r4, [r3]
+ 128 0012 10BD     		pop	{r4, pc}
+ 129              	.L12:
+ 130              		.align	2
+ 131              	.L11:
+ 132 0014 00000000 		.word	.LANCHOR0
+ 133              		.cfi_endproc
+ 134              	.LFE1:
+ 135              		.size	AMux_DelSig_Select, .-AMux_DelSig_Select
+ 136              		.section	.text.AMux_DelSig_Disconnect,"ax",%progbits
+ 137              		.align	2
+ 138              		.global	AMux_DelSig_Disconnect
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.type	AMux_DelSig_Disconnect, %function
+ 142              	AMux_DelSig_Disconnect:
+ 143              	.LFB4:
+ 134:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
+ 135:.\Generated_Source\PSoC5/AMux_DelSig.c **** #endif
+ 136:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 6
+
+
+ 137:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
+ 138:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Function Name: AMux_DelSig_Disconnect
+ 139:.\Generated_Source\PSoC5/AMux_DelSig.c **** ********************************************************************************
+ 140:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Summary:
+ 141:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  This function disconnects the given channel from the common or output
+ 142:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  terminal without affecting other connections.
+ 143:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ 144:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Parameters:
+ 145:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  channel:  The channel to disconnect from the common terminal.
+ 146:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ 147:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
+ 148:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
+ 149:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
+ 150:.\Generated_Source\PSoC5/AMux_DelSig.c **** *******************************************************************************/
+ 151:.\Generated_Source\PSoC5/AMux_DelSig.c **** void AMux_DelSig_Disconnect(uint8 channel) 
+ 152:.\Generated_Source\PSoC5/AMux_DelSig.c **** {
+ 144              		.loc 1 152 0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              	.LVL13:
+ 149 0000 10B5     		push	{r4, lr}
+ 150              		.cfi_def_cfa_offset 8
+ 151              		.cfi_offset 4, -8
+ 152              		.cfi_offset 14, -4
+ 153 0002 0446     		mov	r4, r0
+ 153:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_A_Unset(channel);
+ 154              		.loc 1 153 0
+ 155 0004 FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_A_Unset
+ 156              	.LVL14:
+ 154:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_B_Unset(channel);
+ 157              		.loc 1 154 0
+ 158 0008 2046     		mov	r0, r4
+ 159 000a FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_B_Unset
+ 160              	.LVL15:
+ 161 000e 10BD     		pop	{r4, pc}
+ 162              		.cfi_endproc
+ 163              	.LFE4:
+ 164              		.size	AMux_DelSig_Disconnect, .-AMux_DelSig_Disconnect
+ 165              		.section	.text.AMux_DelSig_FastSelect,"ax",%progbits
+ 166              		.align	2
+ 167              		.global	AMux_DelSig_FastSelect
+ 168              		.thumb
+ 169              		.thumb_func
+ 170              		.type	AMux_DelSig_FastSelect, %function
+ 171              	AMux_DelSig_FastSelect:
+ 172              	.LFB2:
+  95:.\Generated_Source\PSoC5/AMux_DelSig.c ****     /* Disconnect the last valid channel */
+ 173              		.loc 1 95 0
+ 174              		.cfi_startproc
+ 175              		@ args = 0, pretend = 0, frame = 0
+ 176              		@ frame_needed = 0, uses_anonymous_args = 0
+ 177              	.LVL16:
+ 178 0000 10B5     		push	{r4, lr}
+ 179              		.cfi_def_cfa_offset 8
+ 180              		.cfi_offset 4, -8
+ 181              		.cfi_offset 14, -4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 7
+
+
+ 182 0002 0446     		mov	r4, r0
+  97:.\Generated_Source\PSoC5/AMux_DelSig.c ****     {
+ 183              		.loc 1 97 0
+ 184 0004 074B     		ldr	r3, .L18
+ 185 0006 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 186              	.LVL17:
+ 187 0008 FF28     		cmp	r0, #255
+ 188 000a 01D0     		beq	.L16
+  99:.\Generated_Source\PSoC5/AMux_DelSig.c ****     }
+ 189              		.loc 1 99 0
+ 190 000c FFF7FEFF 		bl	AMux_DelSig_Disconnect
+ 191              	.LVL18:
+ 192              	.L16:
+ 106:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_B_Set(channel);
+ 193              		.loc 1 106 0
+ 194 0010 2046     		mov	r0, r4
+ 195 0012 FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_A_Set
+ 196              	.LVL19:
+ 107:.\Generated_Source\PSoC5/AMux_DelSig.c **** #endif
+ 197              		.loc 1 107 0
+ 198 0016 2046     		mov	r0, r4
+ 199 0018 FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_B_Set
+ 200              	.LVL20:
+ 111:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
+ 201              		.loc 1 111 0
+ 202 001c 014B     		ldr	r3, .L18
+ 203 001e 1C70     		strb	r4, [r3]
+ 204 0020 10BD     		pop	{r4, pc}
+ 205              	.L19:
+ 206 0022 00BF     		.align	2
+ 207              	.L18:
+ 208 0024 00000000 		.word	.LANCHOR0
+ 209              		.cfi_endproc
+ 210              	.LFE2:
+ 211              		.size	AMux_DelSig_FastSelect, .-AMux_DelSig_FastSelect
+ 212              		.data
+ 213              		.set	.LANCHOR0,. + 0
+ 214              		.type	AMux_DelSig_lastChannel, %object
+ 215              		.size	AMux_DelSig_lastChannel, 1
+ 216              	AMux_DelSig_lastChannel:
+ 217 0000 FF       		.byte	-1
+ 218              		.text
+ 219              	.Letext0:
+ 220              		.file 2 ".\\Generated_Source\\PSoC5\\cyfitter_cfg.h"
+ 221              		.file 3 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 222              		.section	.debug_info,"",%progbits
+ 223              	.Ldebug_info0:
+ 224 0000 45020000 		.4byte	0x245
+ 225 0004 0400     		.2byte	0x4
+ 226 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 227 000a 04       		.byte	0x4
+ 228 000b 01       		.uleb128 0x1
+ 229 000c 01010000 		.4byte	.LASF23
+ 230 0010 01       		.byte	0x1
+ 231 0011 B3010000 		.4byte	.LASF24
+ 232 0015 00000000 		.4byte	.LASF25
+ 233 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 8
+
+
+ 234 001d 00000000 		.4byte	0
+ 235 0021 00000000 		.4byte	.Ldebug_line0
+ 236 0025 02       		.uleb128 0x2
+ 237 0026 01       		.byte	0x1
+ 238 0027 06       		.byte	0x6
+ 239 0028 78020000 		.4byte	.LASF0
+ 240 002c 02       		.uleb128 0x2
+ 241 002d 01       		.byte	0x1
+ 242 002e 08       		.byte	0x8
+ 243 002f 9D000000 		.4byte	.LASF1
+ 244 0033 02       		.uleb128 0x2
+ 245 0034 02       		.byte	0x2
+ 246 0035 05       		.byte	0x5
+ 247 0036 23020000 		.4byte	.LASF2
+ 248 003a 02       		.uleb128 0x2
+ 249 003b 02       		.byte	0x2
+ 250 003c 07       		.byte	0x7
+ 251 003d D4000000 		.4byte	.LASF3
+ 252 0041 02       		.uleb128 0x2
+ 253 0042 04       		.byte	0x4
+ 254 0043 05       		.byte	0x5
+ 255 0044 33020000 		.4byte	.LASF4
+ 256 0048 02       		.uleb128 0x2
+ 257 0049 04       		.byte	0x4
+ 258 004a 07       		.byte	0x7
+ 259 004b AB000000 		.4byte	.LASF5
+ 260 004f 02       		.uleb128 0x2
+ 261 0050 08       		.byte	0x8
+ 262 0051 05       		.byte	0x5
+ 263 0052 10020000 		.4byte	.LASF6
+ 264 0056 02       		.uleb128 0x2
+ 265 0057 08       		.byte	0x8
+ 266 0058 07       		.byte	0x7
+ 267 0059 9C010000 		.4byte	.LASF7
+ 268 005d 03       		.uleb128 0x3
+ 269 005e 04       		.byte	0x4
+ 270 005f 05       		.byte	0x5
+ 271 0060 696E7400 		.ascii	"int\000"
+ 272 0064 02       		.uleb128 0x2
+ 273 0065 04       		.byte	0x4
+ 274 0066 07       		.byte	0x7
+ 275 0067 8F010000 		.4byte	.LASF8
+ 276 006b 04       		.uleb128 0x4
+ 277 006c 2D020000 		.4byte	.LASF26
+ 278 0070 03       		.byte	0x3
+ 279 0071 9201     		.2byte	0x192
+ 280 0073 2C000000 		.4byte	0x2c
+ 281 0077 02       		.uleb128 0x2
+ 282 0078 04       		.byte	0x4
+ 283 0079 04       		.byte	0x4
+ 284 007a 97000000 		.4byte	.LASF9
+ 285 007e 02       		.uleb128 0x2
+ 286 007f 08       		.byte	0x8
+ 287 0080 04       		.byte	0x4
+ 288 0081 FA000000 		.4byte	.LASF10
+ 289 0085 02       		.uleb128 0x2
+ 290 0086 01       		.byte	0x1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 9
+
+
+ 291 0087 08       		.byte	0x8
+ 292 0088 1E020000 		.4byte	.LASF11
+ 293 008c 05       		.uleb128 0x5
+ 294 008d DA010000 		.4byte	.LASF12
+ 295 0091 01       		.byte	0x1
+ 296 0092 24       		.byte	0x24
+ 297 0093 00000000 		.4byte	.LFB0
+ 298 0097 28000000 		.4byte	.LFE0-.LFB0
+ 299 009b 01       		.uleb128 0x1
+ 300 009c 9C       		.byte	0x9c
+ 301 009d D5000000 		.4byte	0xd5
+ 302 00a1 06       		.uleb128 0x6
+ 303 00a2 EC010000 		.4byte	.LASF18
+ 304 00a6 01       		.byte	0x1
+ 305 00a7 26       		.byte	0x26
+ 306 00a8 6B000000 		.4byte	0x6b
+ 307 00ac 00000000 		.4byte	.LLST0
+ 308 00b0 07       		.uleb128 0x7
+ 309 00b1 0C000000 		.4byte	.LVL2
+ 310 00b5 08020000 		.4byte	0x208
+ 311 00b9 C4000000 		.4byte	0xc4
+ 312 00bd 08       		.uleb128 0x8
+ 313 00be 01       		.uleb128 0x1
+ 314 00bf 50       		.byte	0x50
+ 315 00c0 02       		.uleb128 0x2
+ 316 00c1 74       		.byte	0x74
+ 317 00c2 00       		.sleb128 0
+ 318 00c3 00       		.byte	0
+ 319 00c4 09       		.uleb128 0x9
+ 320 00c5 12000000 		.4byte	.LVL3
+ 321 00c9 19020000 		.4byte	0x219
+ 322 00cd 08       		.uleb128 0x8
+ 323 00ce 01       		.uleb128 0x1
+ 324 00cf 50       		.byte	0x50
+ 325 00d0 02       		.uleb128 0x2
+ 326 00d1 74       		.byte	0x74
+ 327 00d2 00       		.sleb128 0
+ 328 00d3 00       		.byte	0
+ 329 00d4 00       		.byte	0
+ 330 00d5 05       		.uleb128 0x5
+ 331 00d6 84020000 		.4byte	.LASF13
+ 332 00da 01       		.byte	0x1
+ 333 00db 82       		.byte	0x82
+ 334 00dc 00000000 		.4byte	.LFB3
+ 335 00e0 10000000 		.4byte	.LFE3-.LFB3
+ 336 00e4 01       		.uleb128 0x1
+ 337 00e5 9C       		.byte	0x9c
+ 338 00e6 1E010000 		.4byte	0x11e
+ 339 00ea 0A       		.uleb128 0xa
+ 340 00eb 43000000 		.4byte	.LASF15
+ 341 00ef 01       		.byte	0x1
+ 342 00f0 82       		.byte	0x82
+ 343 00f1 6B000000 		.4byte	0x6b
+ 344 00f5 2A000000 		.4byte	.LLST1
+ 345 00f9 07       		.uleb128 0x7
+ 346 00fa 08000000 		.4byte	.LVL8
+ 347 00fe 2A020000 		.4byte	0x22a
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 10
+
+
+ 348 0102 0D010000 		.4byte	0x10d
+ 349 0106 08       		.uleb128 0x8
+ 350 0107 01       		.uleb128 0x1
+ 351 0108 50       		.byte	0x50
+ 352 0109 02       		.uleb128 0x2
+ 353 010a 74       		.byte	0x74
+ 354 010b 00       		.sleb128 0
+ 355 010c 00       		.byte	0
+ 356 010d 09       		.uleb128 0x9
+ 357 010e 0E000000 		.4byte	.LVL9
+ 358 0112 3B020000 		.4byte	0x23b
+ 359 0116 08       		.uleb128 0x8
+ 360 0117 01       		.uleb128 0x1
+ 361 0118 50       		.byte	0x50
+ 362 0119 02       		.uleb128 0x2
+ 363 011a 74       		.byte	0x74
+ 364 011b 00       		.sleb128 0
+ 365 011c 00       		.byte	0
+ 366 011d 00       		.byte	0
+ 367 011e 05       		.uleb128 0x5
+ 368 011f E7000000 		.4byte	.LASF14
+ 369 0123 01       		.byte	0x1
+ 370 0124 45       		.byte	0x45
+ 371 0125 00000000 		.4byte	.LFB1
+ 372 0129 18000000 		.4byte	.LFE1-.LFB1
+ 373 012d 01       		.uleb128 0x1
+ 374 012e 9C       		.byte	0x9c
+ 375 012f 5C010000 		.4byte	0x15c
+ 376 0133 0A       		.uleb128 0xa
+ 377 0134 43000000 		.4byte	.LASF15
+ 378 0138 01       		.byte	0x1
+ 379 0139 45       		.byte	0x45
+ 380 013a 6B000000 		.4byte	0x6b
+ 381 013e 4B000000 		.4byte	.LLST2
+ 382 0142 0B       		.uleb128 0xb
+ 383 0143 08000000 		.4byte	.LVL11
+ 384 0147 8C000000 		.4byte	0x8c
+ 385 014b 09       		.uleb128 0x9
+ 386 014c 0E000000 		.4byte	.LVL12
+ 387 0150 D5000000 		.4byte	0xd5
+ 388 0154 08       		.uleb128 0x8
+ 389 0155 01       		.uleb128 0x1
+ 390 0156 50       		.byte	0x50
+ 391 0157 02       		.uleb128 0x2
+ 392 0158 74       		.byte	0x74
+ 393 0159 00       		.sleb128 0
+ 394 015a 00       		.byte	0
+ 395 015b 00       		.byte	0
+ 396 015c 05       		.uleb128 0x5
+ 397 015d BD000000 		.4byte	.LASF16
+ 398 0161 01       		.byte	0x1
+ 399 0162 97       		.byte	0x97
+ 400 0163 00000000 		.4byte	.LFB4
+ 401 0167 10000000 		.4byte	.LFE4-.LFB4
+ 402 016b 01       		.uleb128 0x1
+ 403 016c 9C       		.byte	0x9c
+ 404 016d A5010000 		.4byte	0x1a5
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 11
+
+
+ 405 0171 0A       		.uleb128 0xa
+ 406 0172 43000000 		.4byte	.LASF15
+ 407 0176 01       		.byte	0x1
+ 408 0177 97       		.byte	0x97
+ 409 0178 6B000000 		.4byte	0x6b
+ 410 017c 6C000000 		.4byte	.LLST3
+ 411 0180 07       		.uleb128 0x7
+ 412 0181 08000000 		.4byte	.LVL14
+ 413 0185 08020000 		.4byte	0x208
+ 414 0189 94010000 		.4byte	0x194
+ 415 018d 08       		.uleb128 0x8
+ 416 018e 01       		.uleb128 0x1
+ 417 018f 50       		.byte	0x50
+ 418 0190 02       		.uleb128 0x2
+ 419 0191 74       		.byte	0x74
+ 420 0192 00       		.sleb128 0
+ 421 0193 00       		.byte	0
+ 422 0194 09       		.uleb128 0x9
+ 423 0195 0E000000 		.4byte	.LVL15
+ 424 0199 19020000 		.4byte	0x219
+ 425 019d 08       		.uleb128 0x8
+ 426 019e 01       		.uleb128 0x1
+ 427 019f 50       		.byte	0x50
+ 428 01a0 02       		.uleb128 0x2
+ 429 01a1 74       		.byte	0x74
+ 430 01a2 00       		.sleb128 0
+ 431 01a3 00       		.byte	0
+ 432 01a4 00       		.byte	0
+ 433 01a5 05       		.uleb128 0x5
+ 434 01a6 4B000000 		.4byte	.LASF17
+ 435 01aa 01       		.byte	0x1
+ 436 01ab 5E       		.byte	0x5e
+ 437 01ac 00000000 		.4byte	.LFB2
+ 438 01b0 28000000 		.4byte	.LFE2-.LFB2
+ 439 01b4 01       		.uleb128 0x1
+ 440 01b5 9C       		.byte	0x9c
+ 441 01b6 F7010000 		.4byte	0x1f7
+ 442 01ba 0A       		.uleb128 0xa
+ 443 01bb 43000000 		.4byte	.LASF15
+ 444 01bf 01       		.byte	0x1
+ 445 01c0 5E       		.byte	0x5e
+ 446 01c1 6B000000 		.4byte	0x6b
+ 447 01c5 8D000000 		.4byte	.LLST4
+ 448 01c9 0B       		.uleb128 0xb
+ 449 01ca 10000000 		.4byte	.LVL18
+ 450 01ce 5C010000 		.4byte	0x15c
+ 451 01d2 07       		.uleb128 0x7
+ 452 01d3 16000000 		.4byte	.LVL19
+ 453 01d7 2A020000 		.4byte	0x22a
+ 454 01db E6010000 		.4byte	0x1e6
+ 455 01df 08       		.uleb128 0x8
+ 456 01e0 01       		.uleb128 0x1
+ 457 01e1 50       		.byte	0x50
+ 458 01e2 02       		.uleb128 0x2
+ 459 01e3 74       		.byte	0x74
+ 460 01e4 00       		.sleb128 0
+ 461 01e5 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 12
+
+
+ 462 01e6 09       		.uleb128 0x9
+ 463 01e7 1C000000 		.4byte	.LVL20
+ 464 01eb 3B020000 		.4byte	0x23b
+ 465 01ef 08       		.uleb128 0x8
+ 466 01f0 01       		.uleb128 0x1
+ 467 01f1 50       		.byte	0x50
+ 468 01f2 02       		.uleb128 0x2
+ 469 01f3 74       		.byte	0x74
+ 470 01f4 00       		.sleb128 0
+ 471 01f5 00       		.byte	0
+ 472 01f6 00       		.byte	0
+ 473 01f7 0C       		.uleb128 0xc
+ 474 01f8 7F000000 		.4byte	.LASF19
+ 475 01fc 01       		.byte	0x1
+ 476 01fd 14       		.byte	0x14
+ 477 01fe 6B000000 		.4byte	0x6b
+ 478 0202 05       		.uleb128 0x5
+ 479 0203 03       		.byte	0x3
+ 480 0204 00000000 		.4byte	AMux_DelSig_lastChannel
+ 481 0208 0D       		.uleb128 0xd
+ 482 0209 F1010000 		.4byte	.LASF20
+ 483 020d 02       		.byte	0x2
+ 484 020e 1B       		.byte	0x1b
+ 485 020f 19020000 		.4byte	0x219
+ 486 0213 0E       		.uleb128 0xe
+ 487 0214 6B000000 		.4byte	0x6b
+ 488 0218 00       		.byte	0
+ 489 0219 0D       		.uleb128 0xd
+ 490 021a 3C020000 		.4byte	.LASF21
+ 491 021e 02       		.byte	0x2
+ 492 021f 25       		.byte	0x25
+ 493 0220 2A020000 		.4byte	0x22a
+ 494 0224 0E       		.uleb128 0xe
+ 495 0225 6B000000 		.4byte	0x6b
+ 496 0229 00       		.byte	0
+ 497 022a 0D       		.uleb128 0xd
+ 498 022b 62000000 		.4byte	.LASF22
+ 499 022f 02       		.byte	0x2
+ 500 0230 1A       		.byte	0x1a
+ 501 0231 3B020000 		.4byte	0x23b
+ 502 0235 0E       		.uleb128 0xe
+ 503 0236 6B000000 		.4byte	0x6b
+ 504 023a 00       		.byte	0
+ 505 023b 0F       		.uleb128 0xf
+ 506 023c 5B020000 		.4byte	.LASF27
+ 507 0240 02       		.byte	0x2
+ 508 0241 24       		.byte	0x24
+ 509 0242 0E       		.uleb128 0xe
+ 510 0243 6B000000 		.4byte	0x6b
+ 511 0247 00       		.byte	0
+ 512 0248 00       		.byte	0
+ 513              		.section	.debug_abbrev,"",%progbits
+ 514              	.Ldebug_abbrev0:
+ 515 0000 01       		.uleb128 0x1
+ 516 0001 11       		.uleb128 0x11
+ 517 0002 01       		.byte	0x1
+ 518 0003 25       		.uleb128 0x25
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 13
+
+
+ 519 0004 0E       		.uleb128 0xe
+ 520 0005 13       		.uleb128 0x13
+ 521 0006 0B       		.uleb128 0xb
+ 522 0007 03       		.uleb128 0x3
+ 523 0008 0E       		.uleb128 0xe
+ 524 0009 1B       		.uleb128 0x1b
+ 525 000a 0E       		.uleb128 0xe
+ 526 000b 55       		.uleb128 0x55
+ 527 000c 17       		.uleb128 0x17
+ 528 000d 11       		.uleb128 0x11
+ 529 000e 01       		.uleb128 0x1
+ 530 000f 10       		.uleb128 0x10
+ 531 0010 17       		.uleb128 0x17
+ 532 0011 00       		.byte	0
+ 533 0012 00       		.byte	0
+ 534 0013 02       		.uleb128 0x2
+ 535 0014 24       		.uleb128 0x24
+ 536 0015 00       		.byte	0
+ 537 0016 0B       		.uleb128 0xb
+ 538 0017 0B       		.uleb128 0xb
+ 539 0018 3E       		.uleb128 0x3e
+ 540 0019 0B       		.uleb128 0xb
+ 541 001a 03       		.uleb128 0x3
+ 542 001b 0E       		.uleb128 0xe
+ 543 001c 00       		.byte	0
+ 544 001d 00       		.byte	0
+ 545 001e 03       		.uleb128 0x3
+ 546 001f 24       		.uleb128 0x24
+ 547 0020 00       		.byte	0
+ 548 0021 0B       		.uleb128 0xb
+ 549 0022 0B       		.uleb128 0xb
+ 550 0023 3E       		.uleb128 0x3e
+ 551 0024 0B       		.uleb128 0xb
+ 552 0025 03       		.uleb128 0x3
+ 553 0026 08       		.uleb128 0x8
+ 554 0027 00       		.byte	0
+ 555 0028 00       		.byte	0
+ 556 0029 04       		.uleb128 0x4
+ 557 002a 16       		.uleb128 0x16
+ 558 002b 00       		.byte	0
+ 559 002c 03       		.uleb128 0x3
+ 560 002d 0E       		.uleb128 0xe
+ 561 002e 3A       		.uleb128 0x3a
+ 562 002f 0B       		.uleb128 0xb
+ 563 0030 3B       		.uleb128 0x3b
+ 564 0031 05       		.uleb128 0x5
+ 565 0032 49       		.uleb128 0x49
+ 566 0033 13       		.uleb128 0x13
+ 567 0034 00       		.byte	0
+ 568 0035 00       		.byte	0
+ 569 0036 05       		.uleb128 0x5
+ 570 0037 2E       		.uleb128 0x2e
+ 571 0038 01       		.byte	0x1
+ 572 0039 3F       		.uleb128 0x3f
+ 573 003a 19       		.uleb128 0x19
+ 574 003b 03       		.uleb128 0x3
+ 575 003c 0E       		.uleb128 0xe
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 14
+
+
+ 576 003d 3A       		.uleb128 0x3a
+ 577 003e 0B       		.uleb128 0xb
+ 578 003f 3B       		.uleb128 0x3b
+ 579 0040 0B       		.uleb128 0xb
+ 580 0041 27       		.uleb128 0x27
+ 581 0042 19       		.uleb128 0x19
+ 582 0043 11       		.uleb128 0x11
+ 583 0044 01       		.uleb128 0x1
+ 584 0045 12       		.uleb128 0x12
+ 585 0046 06       		.uleb128 0x6
+ 586 0047 40       		.uleb128 0x40
+ 587 0048 18       		.uleb128 0x18
+ 588 0049 9742     		.uleb128 0x2117
+ 589 004b 19       		.uleb128 0x19
+ 590 004c 01       		.uleb128 0x1
+ 591 004d 13       		.uleb128 0x13
+ 592 004e 00       		.byte	0
+ 593 004f 00       		.byte	0
+ 594 0050 06       		.uleb128 0x6
+ 595 0051 34       		.uleb128 0x34
+ 596 0052 00       		.byte	0
+ 597 0053 03       		.uleb128 0x3
+ 598 0054 0E       		.uleb128 0xe
+ 599 0055 3A       		.uleb128 0x3a
+ 600 0056 0B       		.uleb128 0xb
+ 601 0057 3B       		.uleb128 0x3b
+ 602 0058 0B       		.uleb128 0xb
+ 603 0059 49       		.uleb128 0x49
+ 604 005a 13       		.uleb128 0x13
+ 605 005b 02       		.uleb128 0x2
+ 606 005c 17       		.uleb128 0x17
+ 607 005d 00       		.byte	0
+ 608 005e 00       		.byte	0
+ 609 005f 07       		.uleb128 0x7
+ 610 0060 898201   		.uleb128 0x4109
+ 611 0063 01       		.byte	0x1
+ 612 0064 11       		.uleb128 0x11
+ 613 0065 01       		.uleb128 0x1
+ 614 0066 31       		.uleb128 0x31
+ 615 0067 13       		.uleb128 0x13
+ 616 0068 01       		.uleb128 0x1
+ 617 0069 13       		.uleb128 0x13
+ 618 006a 00       		.byte	0
+ 619 006b 00       		.byte	0
+ 620 006c 08       		.uleb128 0x8
+ 621 006d 8A8201   		.uleb128 0x410a
+ 622 0070 00       		.byte	0
+ 623 0071 02       		.uleb128 0x2
+ 624 0072 18       		.uleb128 0x18
+ 625 0073 9142     		.uleb128 0x2111
+ 626 0075 18       		.uleb128 0x18
+ 627 0076 00       		.byte	0
+ 628 0077 00       		.byte	0
+ 629 0078 09       		.uleb128 0x9
+ 630 0079 898201   		.uleb128 0x4109
+ 631 007c 01       		.byte	0x1
+ 632 007d 11       		.uleb128 0x11
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 15
+
+
+ 633 007e 01       		.uleb128 0x1
+ 634 007f 31       		.uleb128 0x31
+ 635 0080 13       		.uleb128 0x13
+ 636 0081 00       		.byte	0
+ 637 0082 00       		.byte	0
+ 638 0083 0A       		.uleb128 0xa
+ 639 0084 05       		.uleb128 0x5
+ 640 0085 00       		.byte	0
+ 641 0086 03       		.uleb128 0x3
+ 642 0087 0E       		.uleb128 0xe
+ 643 0088 3A       		.uleb128 0x3a
+ 644 0089 0B       		.uleb128 0xb
+ 645 008a 3B       		.uleb128 0x3b
+ 646 008b 0B       		.uleb128 0xb
+ 647 008c 49       		.uleb128 0x49
+ 648 008d 13       		.uleb128 0x13
+ 649 008e 02       		.uleb128 0x2
+ 650 008f 17       		.uleb128 0x17
+ 651 0090 00       		.byte	0
+ 652 0091 00       		.byte	0
+ 653 0092 0B       		.uleb128 0xb
+ 654 0093 898201   		.uleb128 0x4109
+ 655 0096 00       		.byte	0
+ 656 0097 11       		.uleb128 0x11
+ 657 0098 01       		.uleb128 0x1
+ 658 0099 31       		.uleb128 0x31
+ 659 009a 13       		.uleb128 0x13
+ 660 009b 00       		.byte	0
+ 661 009c 00       		.byte	0
+ 662 009d 0C       		.uleb128 0xc
+ 663 009e 34       		.uleb128 0x34
+ 664 009f 00       		.byte	0
+ 665 00a0 03       		.uleb128 0x3
+ 666 00a1 0E       		.uleb128 0xe
+ 667 00a2 3A       		.uleb128 0x3a
+ 668 00a3 0B       		.uleb128 0xb
+ 669 00a4 3B       		.uleb128 0x3b
+ 670 00a5 0B       		.uleb128 0xb
+ 671 00a6 49       		.uleb128 0x49
+ 672 00a7 13       		.uleb128 0x13
+ 673 00a8 02       		.uleb128 0x2
+ 674 00a9 18       		.uleb128 0x18
+ 675 00aa 00       		.byte	0
+ 676 00ab 00       		.byte	0
+ 677 00ac 0D       		.uleb128 0xd
+ 678 00ad 2E       		.uleb128 0x2e
+ 679 00ae 01       		.byte	0x1
+ 680 00af 3F       		.uleb128 0x3f
+ 681 00b0 19       		.uleb128 0x19
+ 682 00b1 03       		.uleb128 0x3
+ 683 00b2 0E       		.uleb128 0xe
+ 684 00b3 3A       		.uleb128 0x3a
+ 685 00b4 0B       		.uleb128 0xb
+ 686 00b5 3B       		.uleb128 0x3b
+ 687 00b6 0B       		.uleb128 0xb
+ 688 00b7 27       		.uleb128 0x27
+ 689 00b8 19       		.uleb128 0x19
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 16
+
+
+ 690 00b9 3C       		.uleb128 0x3c
+ 691 00ba 19       		.uleb128 0x19
+ 692 00bb 01       		.uleb128 0x1
+ 693 00bc 13       		.uleb128 0x13
+ 694 00bd 00       		.byte	0
+ 695 00be 00       		.byte	0
+ 696 00bf 0E       		.uleb128 0xe
+ 697 00c0 05       		.uleb128 0x5
+ 698 00c1 00       		.byte	0
+ 699 00c2 49       		.uleb128 0x49
+ 700 00c3 13       		.uleb128 0x13
+ 701 00c4 00       		.byte	0
+ 702 00c5 00       		.byte	0
+ 703 00c6 0F       		.uleb128 0xf
+ 704 00c7 2E       		.uleb128 0x2e
+ 705 00c8 01       		.byte	0x1
+ 706 00c9 3F       		.uleb128 0x3f
+ 707 00ca 19       		.uleb128 0x19
+ 708 00cb 03       		.uleb128 0x3
+ 709 00cc 0E       		.uleb128 0xe
+ 710 00cd 3A       		.uleb128 0x3a
+ 711 00ce 0B       		.uleb128 0xb
+ 712 00cf 3B       		.uleb128 0x3b
+ 713 00d0 0B       		.uleb128 0xb
+ 714 00d1 27       		.uleb128 0x27
+ 715 00d2 19       		.uleb128 0x19
+ 716 00d3 3C       		.uleb128 0x3c
+ 717 00d4 19       		.uleb128 0x19
+ 718 00d5 00       		.byte	0
+ 719 00d6 00       		.byte	0
+ 720 00d7 00       		.byte	0
+ 721              		.section	.debug_loc,"",%progbits
+ 722              	.Ldebug_loc0:
+ 723              	.LLST0:
+ 724 0000 02000000 		.4byte	.LVL0
+ 725 0004 06000000 		.4byte	.LVL1
+ 726 0008 0200     		.2byte	0x2
+ 727 000a 30       		.byte	0x30
+ 728 000b 9F       		.byte	0x9f
+ 729 000c 06000000 		.4byte	.LVL1
+ 730 0010 14000000 		.4byte	.LVL4
+ 731 0014 0100     		.2byte	0x1
+ 732 0016 54       		.byte	0x54
+ 733 0017 16000000 		.4byte	.LVL5
+ 734 001b 22000000 		.4byte	.LVL6
+ 735 001f 0100     		.2byte	0x1
+ 736 0021 54       		.byte	0x54
+ 737 0022 00000000 		.4byte	0
+ 738 0026 00000000 		.4byte	0
+ 739              	.LLST1:
+ 740 002a 00000000 		.4byte	.LVL7
+ 741 002e 07000000 		.4byte	.LVL8-1
+ 742 0032 0100     		.2byte	0x1
+ 743 0034 50       		.byte	0x50
+ 744 0035 07000000 		.4byte	.LVL8-1
+ 745 0039 10000000 		.4byte	.LFE3
+ 746 003d 0400     		.2byte	0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 17
+
+
+ 747 003f F3       		.byte	0xf3
+ 748 0040 01       		.uleb128 0x1
+ 749 0041 50       		.byte	0x50
+ 750 0042 9F       		.byte	0x9f
+ 751 0043 00000000 		.4byte	0
+ 752 0047 00000000 		.4byte	0
+ 753              	.LLST2:
+ 754 004b 00000000 		.4byte	.LVL10
+ 755 004f 07000000 		.4byte	.LVL11-1
+ 756 0053 0100     		.2byte	0x1
+ 757 0055 50       		.byte	0x50
+ 758 0056 07000000 		.4byte	.LVL11-1
+ 759 005a 18000000 		.4byte	.LFE1
+ 760 005e 0400     		.2byte	0x4
+ 761 0060 F3       		.byte	0xf3
+ 762 0061 01       		.uleb128 0x1
+ 763 0062 50       		.byte	0x50
+ 764 0063 9F       		.byte	0x9f
+ 765 0064 00000000 		.4byte	0
+ 766 0068 00000000 		.4byte	0
+ 767              	.LLST3:
+ 768 006c 00000000 		.4byte	.LVL13
+ 769 0070 07000000 		.4byte	.LVL14-1
+ 770 0074 0100     		.2byte	0x1
+ 771 0076 50       		.byte	0x50
+ 772 0077 07000000 		.4byte	.LVL14-1
+ 773 007b 10000000 		.4byte	.LFE4
+ 774 007f 0400     		.2byte	0x4
+ 775 0081 F3       		.byte	0xf3
+ 776 0082 01       		.uleb128 0x1
+ 777 0083 50       		.byte	0x50
+ 778 0084 9F       		.byte	0x9f
+ 779 0085 00000000 		.4byte	0
+ 780 0089 00000000 		.4byte	0
+ 781              	.LLST4:
+ 782 008d 00000000 		.4byte	.LVL16
+ 783 0091 08000000 		.4byte	.LVL17
+ 784 0095 0100     		.2byte	0x1
+ 785 0097 50       		.byte	0x50
+ 786 0098 08000000 		.4byte	.LVL17
+ 787 009c 28000000 		.4byte	.LFE2
+ 788 00a0 0400     		.2byte	0x4
+ 789 00a2 F3       		.byte	0xf3
+ 790 00a3 01       		.uleb128 0x1
+ 791 00a4 50       		.byte	0x50
+ 792 00a5 9F       		.byte	0x9f
+ 793 00a6 00000000 		.4byte	0
+ 794 00aa 00000000 		.4byte	0
+ 795              		.section	.debug_aranges,"",%progbits
+ 796 0000 3C000000 		.4byte	0x3c
+ 797 0004 0200     		.2byte	0x2
+ 798 0006 00000000 		.4byte	.Ldebug_info0
+ 799 000a 04       		.byte	0x4
+ 800 000b 00       		.byte	0
+ 801 000c 0000     		.2byte	0
+ 802 000e 0000     		.2byte	0
+ 803 0010 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 18
+
+
+ 804 0014 28000000 		.4byte	.LFE0-.LFB0
+ 805 0018 00000000 		.4byte	.LFB3
+ 806 001c 10000000 		.4byte	.LFE3-.LFB3
+ 807 0020 00000000 		.4byte	.LFB1
+ 808 0024 18000000 		.4byte	.LFE1-.LFB1
+ 809 0028 00000000 		.4byte	.LFB4
+ 810 002c 10000000 		.4byte	.LFE4-.LFB4
+ 811 0030 00000000 		.4byte	.LFB2
+ 812 0034 28000000 		.4byte	.LFE2-.LFB2
+ 813 0038 00000000 		.4byte	0
+ 814 003c 00000000 		.4byte	0
+ 815              		.section	.debug_ranges,"",%progbits
+ 816              	.Ldebug_ranges0:
+ 817 0000 00000000 		.4byte	.LFB0
+ 818 0004 28000000 		.4byte	.LFE0
+ 819 0008 00000000 		.4byte	.LFB3
+ 820 000c 10000000 		.4byte	.LFE3
+ 821 0010 00000000 		.4byte	.LFB1
+ 822 0014 18000000 		.4byte	.LFE1
+ 823 0018 00000000 		.4byte	.LFB4
+ 824 001c 10000000 		.4byte	.LFE4
+ 825 0020 00000000 		.4byte	.LFB2
+ 826 0024 28000000 		.4byte	.LFE2
+ 827 0028 00000000 		.4byte	0
+ 828 002c 00000000 		.4byte	0
+ 829              		.section	.debug_line,"",%progbits
+ 830              	.Ldebug_line0:
+ 831 0000 D9000000 		.section	.debug_str,"MS",%progbits,1
+ 831      02005C00 
+ 831      00000201 
+ 831      FB0E0D00 
+ 831      01010101 
+ 832              	.LASF25:
+ 833 0000 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 833      73657273 
+ 833      5C637275 
+ 833      69736572 
+ 833      5C446F63 
+ 834 002e 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
+ 834      6C74726F 
+ 834      6E204D61 
+ 834      696E2E63 
+ 834      7964736E 
+ 835              	.LASF15:
+ 836 0043 6368616E 		.ascii	"channel\000"
+ 836      6E656C00 
+ 837              	.LASF17:
+ 838 004b 414D7578 		.ascii	"AMux_DelSig_FastSelect\000"
+ 838      5F44656C 
+ 838      5369675F 
+ 838      46617374 
+ 838      53656C65 
+ 839              	.LASF22:
+ 840 0062 414D7578 		.ascii	"AMux_DelSig_CYAMUXSIDE_A_Set\000"
+ 840      5F44656C 
+ 840      5369675F 
+ 840      4359414D 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 19
+
+
+ 840      55585349 
+ 841              	.LASF19:
+ 842 007f 414D7578 		.ascii	"AMux_DelSig_lastChannel\000"
+ 842      5F44656C 
+ 842      5369675F 
+ 842      6C617374 
+ 842      4368616E 
+ 843              	.LASF9:
+ 844 0097 666C6F61 		.ascii	"float\000"
+ 844      7400
+ 845              	.LASF1:
+ 846 009d 756E7369 		.ascii	"unsigned char\000"
+ 846      676E6564 
+ 846      20636861 
+ 846      7200
+ 847              	.LASF5:
+ 848 00ab 6C6F6E67 		.ascii	"long unsigned int\000"
+ 848      20756E73 
+ 848      69676E65 
+ 848      6420696E 
+ 848      7400
+ 849              	.LASF16:
+ 850 00bd 414D7578 		.ascii	"AMux_DelSig_Disconnect\000"
+ 850      5F44656C 
+ 850      5369675F 
+ 850      44697363 
+ 850      6F6E6E65 
+ 851              	.LASF3:
+ 852 00d4 73686F72 		.ascii	"short unsigned int\000"
+ 852      7420756E 
+ 852      7369676E 
+ 852      65642069 
+ 852      6E7400
+ 853              	.LASF14:
+ 854 00e7 414D7578 		.ascii	"AMux_DelSig_Select\000"
+ 854      5F44656C 
+ 854      5369675F 
+ 854      53656C65 
+ 854      637400
+ 855              	.LASF10:
+ 856 00fa 646F7562 		.ascii	"double\000"
+ 856      6C6500
+ 857              	.LASF23:
+ 858 0101 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 858      4320342E 
+ 858      392E3320 
+ 858      32303135 
+ 858      30333033 
+ 859 0134 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 859      20726576 
+ 859      6973696F 
+ 859      6E203232 
+ 859      31323230 
+ 860 0167 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 860      66756E63 
+ 860      74696F6E 
+ 860      2D736563 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 20
+
+
+ 860      74696F6E 
+ 861              	.LASF8:
+ 862 018f 756E7369 		.ascii	"unsigned int\000"
+ 862      676E6564 
+ 862      20696E74 
+ 862      00
+ 863              	.LASF7:
+ 864 019c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 864      206C6F6E 
+ 864      6720756E 
+ 864      7369676E 
+ 864      65642069 
+ 865              	.LASF24:
+ 866 01b3 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\AMux_DelSig.c\000"
+ 866      6E657261 
+ 866      7465645F 
+ 866      536F7572 
+ 866      63655C50 
+ 867              	.LASF12:
+ 868 01da 414D7578 		.ascii	"AMux_DelSig_Start\000"
+ 868      5F44656C 
+ 868      5369675F 
+ 868      53746172 
+ 868      7400
+ 869              	.LASF18:
+ 870 01ec 6368616E 		.ascii	"chan\000"
+ 870      00
+ 871              	.LASF20:
+ 872 01f1 414D7578 		.ascii	"AMux_DelSig_CYAMUXSIDE_A_Unset\000"
+ 872      5F44656C 
+ 872      5369675F 
+ 872      4359414D 
+ 872      55585349 
+ 873              	.LASF6:
+ 874 0210 6C6F6E67 		.ascii	"long long int\000"
+ 874      206C6F6E 
+ 874      6720696E 
+ 874      7400
+ 875              	.LASF11:
+ 876 021e 63686172 		.ascii	"char\000"
+ 876      00
+ 877              	.LASF2:
+ 878 0223 73686F72 		.ascii	"short int\000"
+ 878      7420696E 
+ 878      7400
+ 879              	.LASF26:
+ 880 022d 75696E74 		.ascii	"uint8\000"
+ 880      3800
+ 881              	.LASF4:
+ 882 0233 6C6F6E67 		.ascii	"long int\000"
+ 882      20696E74 
+ 882      00
+ 883              	.LASF21:
+ 884 023c 414D7578 		.ascii	"AMux_DelSig_CYAMUXSIDE_B_Unset\000"
+ 884      5F44656C 
+ 884      5369675F 
+ 884      4359414D 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccdn2sYg.s 			page 21
+
+
+ 884      55585349 
+ 885              	.LASF27:
+ 886 025b 414D7578 		.ascii	"AMux_DelSig_CYAMUXSIDE_B_Set\000"
+ 886      5F44656C 
+ 886      5369675F 
+ 886      4359414D 
+ 886      55585349 
+ 887              	.LASF0:
+ 888 0278 7369676E 		.ascii	"signed char\000"
+ 888      65642063 
+ 888      68617200 
+ 889              	.LASF13:
+ 890 0284 414D7578 		.ascii	"AMux_DelSig_Connect\000"
+ 890      5F44656C 
+ 890      5369675F 
+ 890      436F6E6E 
+ 890      65637400 
+ 891              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

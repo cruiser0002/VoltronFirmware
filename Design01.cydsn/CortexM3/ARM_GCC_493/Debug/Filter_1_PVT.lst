@@ -1,0 +1,605 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_1_PVT.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Filter_1_SetInterruptMode,"ax",%progbits
+  19              		.align	2
+  20              		.global	Filter_1_SetInterruptMode
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Filter_1_SetInterruptMode, %function
+  24              	Filter_1_SetInterruptMode:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\Filter_1_PVT.c"
+   1:.\Generated_Source\PSoC5/Filter_1_PVT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * File Name: Filter_1_PVT.c
+   3:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+   5:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Description:
+   6:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  This file provides source code for FILT component internal functions.
+   7:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+   8:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Note:
+   9:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  
+  10:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *******************************************************************************
+  11:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/Filter_1_PVT.c **** ********************************************************************************/
+  16:.\Generated_Source\PSoC5/Filter_1_PVT.c **** 
+  17:.\Generated_Source\PSoC5/Filter_1_PVT.c **** #include "Filter_1_PVT.h"
+  18:.\Generated_Source\PSoC5/Filter_1_PVT.c **** 
+  19:.\Generated_Source\PSoC5/Filter_1_PVT.c **** 
+  20:.\Generated_Source\PSoC5/Filter_1_PVT.c **** /*******************************************************************************
+  21:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Function Name: Filter_1_SetInterruptMode
+  22:.\Generated_Source\PSoC5/Filter_1_PVT.c **** ********************************************************************************
+  23:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  24:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Summary:
+  25:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  Assign the events which will trigger a DFB interrupt to be triggered. 
+  26:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  27:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Parameters:  
+  28:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  events:  Bits [0:5] of events represent the events which will trigger DFB
+  29:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *           interrupts.
+  30:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            Bit 0 - Output value ready in the holding register on channel A
+  31:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            Bit 1 - Output value ready in the holding register on channel B
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            Bit 2 - '1' written to Semaphore 0  - See Note
+  33:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            Bit 3 - '1' written to Semaphore 1  - See Note
+  34:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            Bit 4 - '1' written to Semaphore 2
+  35:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  36:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Return: 
+  37:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  void
+  38:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  39:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Note:
+  40:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  Semaphore 0 and Semaphore 1 should not be configured as both a DMA request 
+  41:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  and an interrupt event, because, after one clock cycle, the system 
+  42:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  automatically clears any semaphore which triggered a DMA request.
+  43:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  44:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *******************************************************************************/
+  45:.\Generated_Source\PSoC5/Filter_1_PVT.c **** void Filter_1_SetInterruptMode(uint8 events) 
+  46:.\Generated_Source\PSoC5/Filter_1_PVT.c **** {
+  27              		.loc 1 46 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  47:.\Generated_Source\PSoC5/Filter_1_PVT.c ****     events &= Filter_1_EVENT_MASK;
+  33              		.loc 1 47 0
+  34 0000 00F01F00 		and	r0, r0, #31
+  35              	.LVL1:
+  48:.\Generated_Source\PSoC5/Filter_1_PVT.c ****     Filter_1_INT_CTRL_REG = events;
+  36              		.loc 1 48 0
+  37 0004 014B     		ldr	r3, .L2
+  38 0006 1870     		strb	r0, [r3]
+  39 0008 7047     		bx	lr
+  40              	.L3:
+  41 000a 00BF     		.align	2
+  42              	.L2:
+  43 000c 98C70040 		.word	1073792920
+  44              		.cfi_endproc
+  45              	.LFE0:
+  46              		.size	Filter_1_SetInterruptMode, .-Filter_1_SetInterruptMode
+  47              		.section	.text.Filter_1_SetDMAMode,"ax",%progbits
+  48              		.align	2
+  49              		.global	Filter_1_SetDMAMode
+  50              		.thumb
+  51              		.thumb_func
+  52              		.type	Filter_1_SetDMAMode, %function
+  53              	Filter_1_SetDMAMode:
+  54              	.LFB1:
+  49:.\Generated_Source\PSoC5/Filter_1_PVT.c **** }
+  50:.\Generated_Source\PSoC5/Filter_1_PVT.c **** 
+  51:.\Generated_Source\PSoC5/Filter_1_PVT.c **** 
+  52:.\Generated_Source\PSoC5/Filter_1_PVT.c **** /*******************************************************************************
+  53:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Function Name: Filter_1_SetDMAMode
+  54:.\Generated_Source\PSoC5/Filter_1_PVT.c **** ********************************************************************************
+  55:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  56:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Summary:
+  57:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  Assign the events which will trigger a DMA request for the DFB.  There are 
+  58:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  two different DMA requests that can be triggered.
+  59:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  60:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Parameters:  
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 3
+
+
+  61:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  events:  A set of 4 bits which configure what event, if any, triggers a DMA 
+  62:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *           request for the DFB.  
+  63:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *           Bits [0:1] configure the trigger for DMA Request 1
+  64:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *           Bits [2:3] configure the trigger for DMA Request 2
+  65:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            DMA Request 1: 
+  66:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               0 - no request will be generated
+  67:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               1 - Output value ready in the holding register on channel A
+  68:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               2 - Semaphore 0
+  69:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               3 - Sempahore 1
+  70:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *            DMA Request 2: 
+  71:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               0 - no request will be generated
+  72:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               1 - Output value ready in the holding register on channel B
+  73:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               2 - Semaphore 0
+  74:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *               3 - Sempahore 1
+  75:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  76:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Return: 
+  77:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  void
+  78:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  79:.\Generated_Source\PSoC5/Filter_1_PVT.c **** * Note:
+  80:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  Semaphore 0 and Semaphore 1 should not be configured as both a DMA request 
+  81:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  and an interrupt event, because, after one clock cycle, the system 
+  82:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *  automatically clears any semaphore which triggered a DMA request.
+  83:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *
+  84:.\Generated_Source\PSoC5/Filter_1_PVT.c **** *******************************************************************************/
+  85:.\Generated_Source\PSoC5/Filter_1_PVT.c **** void Filter_1_SetDMAMode(uint8 events) 
+  86:.\Generated_Source\PSoC5/Filter_1_PVT.c **** {
+  55              		.loc 1 86 0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59              		@ link register save eliminated.
+  60              	.LVL2:
+  87:.\Generated_Source\PSoC5/Filter_1_PVT.c ****     events &= Filter_1_DMA_CTRL_MASK;
+  61              		.loc 1 87 0
+  62 0000 00F00F00 		and	r0, r0, #15
+  63              	.LVL3:
+  88:.\Generated_Source\PSoC5/Filter_1_PVT.c ****     Filter_1_DMA_CTRL_REG = events;
+  64              		.loc 1 88 0
+  65 0004 014B     		ldr	r3, .L5
+  66 0006 1870     		strb	r0, [r3]
+  67 0008 7047     		bx	lr
+  68              	.L6:
+  69 000a 00BF     		.align	2
+  70              	.L5:
+  71 000c 9CC70040 		.word	1073792924
+  72              		.cfi_endproc
+  73              	.LFE1:
+  74              		.size	Filter_1_SetDMAMode, .-Filter_1_SetDMAMode
+  75              		.text
+  76              	.Letext0:
+  77              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+  78              		.section	.debug_info,"",%progbits
+  79              	.Ldebug_info0:
+  80 0000 E7000000 		.4byte	0xe7
+  81 0004 0400     		.2byte	0x4
+  82 0006 00000000 		.4byte	.Ldebug_abbrev0
+  83 000a 04       		.byte	0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 4
+
+
+  84 000b 01       		.uleb128 0x1
+  85 000c A7000000 		.4byte	.LASF16
+  86 0010 01       		.byte	0x1
+  87 0011 35000000 		.4byte	.LASF17
+  88 0015 58010000 		.4byte	.LASF18
+  89 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  90 001d 00000000 		.4byte	0
+  91 0021 00000000 		.4byte	.Ldebug_line0
+  92 0025 02       		.uleb128 0x2
+  93 0026 04       		.byte	0x4
+  94 0027 05       		.byte	0x5
+  95 0028 696E7400 		.ascii	"int\000"
+  96 002c 03       		.uleb128 0x3
+  97 002d 04       		.byte	0x4
+  98 002e 07       		.byte	0x7
+  99 002f 0E000000 		.4byte	.LASF0
+ 100 0033 03       		.uleb128 0x3
+ 101 0034 01       		.byte	0x1
+ 102 0035 06       		.byte	0x6
+ 103 0036 AA010000 		.4byte	.LASF1
+ 104 003a 03       		.uleb128 0x3
+ 105 003b 01       		.byte	0x1
+ 106 003c 08       		.byte	0x8
+ 107 003d 35010000 		.4byte	.LASF2
+ 108 0041 03       		.uleb128 0x3
+ 109 0042 02       		.byte	0x2
+ 110 0043 05       		.byte	0x5
+ 111 0044 BC010000 		.4byte	.LASF3
+ 112 0048 03       		.uleb128 0x3
+ 113 0049 02       		.byte	0x2
+ 114 004a 07       		.byte	0x7
+ 115 004b 97010000 		.4byte	.LASF4
+ 116 004f 03       		.uleb128 0x3
+ 117 0050 04       		.byte	0x4
+ 118 0051 05       		.byte	0x5
+ 119 0052 48010000 		.4byte	.LASF5
+ 120 0056 03       		.uleb128 0x3
+ 121 0057 04       		.byte	0x4
+ 122 0058 07       		.byte	0x7
+ 123 0059 63000000 		.4byte	.LASF6
+ 124 005d 03       		.uleb128 0x3
+ 125 005e 08       		.byte	0x8
+ 126 005f 05       		.byte	0x5
+ 127 0060 00000000 		.4byte	.LASF7
+ 128 0064 03       		.uleb128 0x3
+ 129 0065 08       		.byte	0x8
+ 130 0066 07       		.byte	0x7
+ 131 0067 75000000 		.4byte	.LASF8
+ 132 006b 03       		.uleb128 0x3
+ 133 006c 04       		.byte	0x4
+ 134 006d 07       		.byte	0x7
+ 135 006e CB010000 		.4byte	.LASF9
+ 136 0072 03       		.uleb128 0x3
+ 137 0073 01       		.byte	0x1
+ 138 0074 08       		.byte	0x8
+ 139 0075 43010000 		.4byte	.LASF10
+ 140 0079 04       		.uleb128 0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 5
+
+
+ 141 007a 5D000000 		.4byte	.LASF13
+ 142 007e 02       		.byte	0x2
+ 143 007f 9201     		.2byte	0x192
+ 144 0081 3A000000 		.4byte	0x3a
+ 145 0085 03       		.uleb128 0x3
+ 146 0086 04       		.byte	0x4
+ 147 0087 04       		.byte	0x4
+ 148 0088 B6010000 		.4byte	.LASF11
+ 149 008c 03       		.uleb128 0x3
+ 150 008d 08       		.byte	0x8
+ 151 008e 04       		.byte	0x4
+ 152 008f 51010000 		.4byte	.LASF12
+ 153 0093 04       		.uleb128 0x4
+ 154 0094 C6010000 		.4byte	.LASF14
+ 155 0098 02       		.byte	0x2
+ 156 0099 3C02     		.2byte	0x23c
+ 157 009b 9F000000 		.4byte	0x9f
+ 158 009f 05       		.uleb128 0x5
+ 159 00a0 79000000 		.4byte	0x79
+ 160 00a4 06       		.uleb128 0x6
+ 161 00a5 1B000000 		.4byte	.LASF19
+ 162 00a9 01       		.byte	0x1
+ 163 00aa 2D       		.byte	0x2d
+ 164 00ab 00000000 		.4byte	.LFB0
+ 165 00af 10000000 		.4byte	.LFE0-.LFB0
+ 166 00b3 01       		.uleb128 0x1
+ 167 00b4 9C       		.byte	0x9c
+ 168 00b5 C9000000 		.4byte	0xc9
+ 169 00b9 07       		.uleb128 0x7
+ 170 00ba 8C000000 		.4byte	.LASF15
+ 171 00be 01       		.byte	0x1
+ 172 00bf 2D       		.byte	0x2d
+ 173 00c0 79000000 		.4byte	0x79
+ 174 00c4 00000000 		.4byte	.LLST0
+ 175 00c8 00       		.byte	0
+ 176 00c9 08       		.uleb128 0x8
+ 177 00ca 93000000 		.4byte	.LASF20
+ 178 00ce 01       		.byte	0x1
+ 179 00cf 55       		.byte	0x55
+ 180 00d0 00000000 		.4byte	.LFB1
+ 181 00d4 10000000 		.4byte	.LFE1-.LFB1
+ 182 00d8 01       		.uleb128 0x1
+ 183 00d9 9C       		.byte	0x9c
+ 184 00da 07       		.uleb128 0x7
+ 185 00db 8C000000 		.4byte	.LASF15
+ 186 00df 01       		.byte	0x1
+ 187 00e0 55       		.byte	0x55
+ 188 00e1 79000000 		.4byte	0x79
+ 189 00e5 1E000000 		.4byte	.LLST1
+ 190 00e9 00       		.byte	0
+ 191 00ea 00       		.byte	0
+ 192              		.section	.debug_abbrev,"",%progbits
+ 193              	.Ldebug_abbrev0:
+ 194 0000 01       		.uleb128 0x1
+ 195 0001 11       		.uleb128 0x11
+ 196 0002 01       		.byte	0x1
+ 197 0003 25       		.uleb128 0x25
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 6
+
+
+ 198 0004 0E       		.uleb128 0xe
+ 199 0005 13       		.uleb128 0x13
+ 200 0006 0B       		.uleb128 0xb
+ 201 0007 03       		.uleb128 0x3
+ 202 0008 0E       		.uleb128 0xe
+ 203 0009 1B       		.uleb128 0x1b
+ 204 000a 0E       		.uleb128 0xe
+ 205 000b 55       		.uleb128 0x55
+ 206 000c 17       		.uleb128 0x17
+ 207 000d 11       		.uleb128 0x11
+ 208 000e 01       		.uleb128 0x1
+ 209 000f 10       		.uleb128 0x10
+ 210 0010 17       		.uleb128 0x17
+ 211 0011 00       		.byte	0
+ 212 0012 00       		.byte	0
+ 213 0013 02       		.uleb128 0x2
+ 214 0014 24       		.uleb128 0x24
+ 215 0015 00       		.byte	0
+ 216 0016 0B       		.uleb128 0xb
+ 217 0017 0B       		.uleb128 0xb
+ 218 0018 3E       		.uleb128 0x3e
+ 219 0019 0B       		.uleb128 0xb
+ 220 001a 03       		.uleb128 0x3
+ 221 001b 08       		.uleb128 0x8
+ 222 001c 00       		.byte	0
+ 223 001d 00       		.byte	0
+ 224 001e 03       		.uleb128 0x3
+ 225 001f 24       		.uleb128 0x24
+ 226 0020 00       		.byte	0
+ 227 0021 0B       		.uleb128 0xb
+ 228 0022 0B       		.uleb128 0xb
+ 229 0023 3E       		.uleb128 0x3e
+ 230 0024 0B       		.uleb128 0xb
+ 231 0025 03       		.uleb128 0x3
+ 232 0026 0E       		.uleb128 0xe
+ 233 0027 00       		.byte	0
+ 234 0028 00       		.byte	0
+ 235 0029 04       		.uleb128 0x4
+ 236 002a 16       		.uleb128 0x16
+ 237 002b 00       		.byte	0
+ 238 002c 03       		.uleb128 0x3
+ 239 002d 0E       		.uleb128 0xe
+ 240 002e 3A       		.uleb128 0x3a
+ 241 002f 0B       		.uleb128 0xb
+ 242 0030 3B       		.uleb128 0x3b
+ 243 0031 05       		.uleb128 0x5
+ 244 0032 49       		.uleb128 0x49
+ 245 0033 13       		.uleb128 0x13
+ 246 0034 00       		.byte	0
+ 247 0035 00       		.byte	0
+ 248 0036 05       		.uleb128 0x5
+ 249 0037 35       		.uleb128 0x35
+ 250 0038 00       		.byte	0
+ 251 0039 49       		.uleb128 0x49
+ 252 003a 13       		.uleb128 0x13
+ 253 003b 00       		.byte	0
+ 254 003c 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 7
+
+
+ 255 003d 06       		.uleb128 0x6
+ 256 003e 2E       		.uleb128 0x2e
+ 257 003f 01       		.byte	0x1
+ 258 0040 3F       		.uleb128 0x3f
+ 259 0041 19       		.uleb128 0x19
+ 260 0042 03       		.uleb128 0x3
+ 261 0043 0E       		.uleb128 0xe
+ 262 0044 3A       		.uleb128 0x3a
+ 263 0045 0B       		.uleb128 0xb
+ 264 0046 3B       		.uleb128 0x3b
+ 265 0047 0B       		.uleb128 0xb
+ 266 0048 27       		.uleb128 0x27
+ 267 0049 19       		.uleb128 0x19
+ 268 004a 11       		.uleb128 0x11
+ 269 004b 01       		.uleb128 0x1
+ 270 004c 12       		.uleb128 0x12
+ 271 004d 06       		.uleb128 0x6
+ 272 004e 40       		.uleb128 0x40
+ 273 004f 18       		.uleb128 0x18
+ 274 0050 9742     		.uleb128 0x2117
+ 275 0052 19       		.uleb128 0x19
+ 276 0053 01       		.uleb128 0x1
+ 277 0054 13       		.uleb128 0x13
+ 278 0055 00       		.byte	0
+ 279 0056 00       		.byte	0
+ 280 0057 07       		.uleb128 0x7
+ 281 0058 05       		.uleb128 0x5
+ 282 0059 00       		.byte	0
+ 283 005a 03       		.uleb128 0x3
+ 284 005b 0E       		.uleb128 0xe
+ 285 005c 3A       		.uleb128 0x3a
+ 286 005d 0B       		.uleb128 0xb
+ 287 005e 3B       		.uleb128 0x3b
+ 288 005f 0B       		.uleb128 0xb
+ 289 0060 49       		.uleb128 0x49
+ 290 0061 13       		.uleb128 0x13
+ 291 0062 02       		.uleb128 0x2
+ 292 0063 17       		.uleb128 0x17
+ 293 0064 00       		.byte	0
+ 294 0065 00       		.byte	0
+ 295 0066 08       		.uleb128 0x8
+ 296 0067 2E       		.uleb128 0x2e
+ 297 0068 01       		.byte	0x1
+ 298 0069 3F       		.uleb128 0x3f
+ 299 006a 19       		.uleb128 0x19
+ 300 006b 03       		.uleb128 0x3
+ 301 006c 0E       		.uleb128 0xe
+ 302 006d 3A       		.uleb128 0x3a
+ 303 006e 0B       		.uleb128 0xb
+ 304 006f 3B       		.uleb128 0x3b
+ 305 0070 0B       		.uleb128 0xb
+ 306 0071 27       		.uleb128 0x27
+ 307 0072 19       		.uleb128 0x19
+ 308 0073 11       		.uleb128 0x11
+ 309 0074 01       		.uleb128 0x1
+ 310 0075 12       		.uleb128 0x12
+ 311 0076 06       		.uleb128 0x6
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 8
+
+
+ 312 0077 40       		.uleb128 0x40
+ 313 0078 18       		.uleb128 0x18
+ 314 0079 9742     		.uleb128 0x2117
+ 315 007b 19       		.uleb128 0x19
+ 316 007c 00       		.byte	0
+ 317 007d 00       		.byte	0
+ 318 007e 00       		.byte	0
+ 319              		.section	.debug_loc,"",%progbits
+ 320              	.Ldebug_loc0:
+ 321              	.LLST0:
+ 322 0000 00000000 		.4byte	.LVL0
+ 323 0004 04000000 		.4byte	.LVL1
+ 324 0008 0100     		.2byte	0x1
+ 325 000a 50       		.byte	0x50
+ 326 000b 04000000 		.4byte	.LVL1
+ 327 000f 10000000 		.4byte	.LFE0
+ 328 0013 0100     		.2byte	0x1
+ 329 0015 50       		.byte	0x50
+ 330 0016 00000000 		.4byte	0
+ 331 001a 00000000 		.4byte	0
+ 332              	.LLST1:
+ 333 001e 00000000 		.4byte	.LVL2
+ 334 0022 04000000 		.4byte	.LVL3
+ 335 0026 0100     		.2byte	0x1
+ 336 0028 50       		.byte	0x50
+ 337 0029 04000000 		.4byte	.LVL3
+ 338 002d 10000000 		.4byte	.LFE1
+ 339 0031 0100     		.2byte	0x1
+ 340 0033 50       		.byte	0x50
+ 341 0034 00000000 		.4byte	0
+ 342 0038 00000000 		.4byte	0
+ 343              		.section	.debug_aranges,"",%progbits
+ 344 0000 24000000 		.4byte	0x24
+ 345 0004 0200     		.2byte	0x2
+ 346 0006 00000000 		.4byte	.Ldebug_info0
+ 347 000a 04       		.byte	0x4
+ 348 000b 00       		.byte	0
+ 349 000c 0000     		.2byte	0
+ 350 000e 0000     		.2byte	0
+ 351 0010 00000000 		.4byte	.LFB0
+ 352 0014 10000000 		.4byte	.LFE0-.LFB0
+ 353 0018 00000000 		.4byte	.LFB1
+ 354 001c 10000000 		.4byte	.LFE1-.LFB1
+ 355 0020 00000000 		.4byte	0
+ 356 0024 00000000 		.4byte	0
+ 357              		.section	.debug_ranges,"",%progbits
+ 358              	.Ldebug_ranges0:
+ 359 0000 00000000 		.4byte	.LFB0
+ 360 0004 10000000 		.4byte	.LFE0
+ 361 0008 00000000 		.4byte	.LFB1
+ 362 000c 10000000 		.4byte	.LFE1
+ 363 0010 00000000 		.4byte	0
+ 364 0014 00000000 		.4byte	0
+ 365              		.section	.debug_line,"",%progbits
+ 366              	.Ldebug_line0:
+ 367 0000 74000000 		.section	.debug_str,"MS",%progbits,1
+ 367      02004B00 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 9
+
+
+ 367      00000201 
+ 367      FB0E0D00 
+ 367      01010101 
+ 368              	.LASF7:
+ 369 0000 6C6F6E67 		.ascii	"long long int\000"
+ 369      206C6F6E 
+ 369      6720696E 
+ 369      7400
+ 370              	.LASF0:
+ 371 000e 756E7369 		.ascii	"unsigned int\000"
+ 371      676E6564 
+ 371      20696E74 
+ 371      00
+ 372              	.LASF19:
+ 373 001b 46696C74 		.ascii	"Filter_1_SetInterruptMode\000"
+ 373      65725F31 
+ 373      5F536574 
+ 373      496E7465 
+ 373      72727570 
+ 374              	.LASF17:
+ 375 0035 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_1_PVT.c\000"
+ 375      6E657261 
+ 375      7465645F 
+ 375      536F7572 
+ 375      63655C50 
+ 376              	.LASF13:
+ 377 005d 75696E74 		.ascii	"uint8\000"
+ 377      3800
+ 378              	.LASF6:
+ 379 0063 6C6F6E67 		.ascii	"long unsigned int\000"
+ 379      20756E73 
+ 379      69676E65 
+ 379      6420696E 
+ 379      7400
+ 380              	.LASF8:
+ 381 0075 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 381      206C6F6E 
+ 381      6720756E 
+ 381      7369676E 
+ 381      65642069 
+ 382              	.LASF15:
+ 383 008c 6576656E 		.ascii	"events\000"
+ 383      747300
+ 384              	.LASF20:
+ 385 0093 46696C74 		.ascii	"Filter_1_SetDMAMode\000"
+ 385      65725F31 
+ 385      5F536574 
+ 385      444D414D 
+ 385      6F646500 
+ 386              	.LASF16:
+ 387 00a7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 387      4320342E 
+ 387      392E3320 
+ 387      32303135 
+ 387      30333033 
+ 388 00da 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 388      20726576 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 10
+
+
+ 388      6973696F 
+ 388      6E203232 
+ 388      31323230 
+ 389 010d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 389      66756E63 
+ 389      74696F6E 
+ 389      2D736563 
+ 389      74696F6E 
+ 390              	.LASF2:
+ 391 0135 756E7369 		.ascii	"unsigned char\000"
+ 391      676E6564 
+ 391      20636861 
+ 391      7200
+ 392              	.LASF10:
+ 393 0143 63686172 		.ascii	"char\000"
+ 393      00
+ 394              	.LASF5:
+ 395 0148 6C6F6E67 		.ascii	"long int\000"
+ 395      20696E74 
+ 395      00
+ 396              	.LASF12:
+ 397 0151 646F7562 		.ascii	"double\000"
+ 397      6C6500
+ 398              	.LASF18:
+ 399 0158 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 399      73657273 
+ 399      5C637275 
+ 399      69736572 
+ 399      5C446F63 
+ 400 0186 6E5C4465 		.ascii	"n\\Design01.cydsn\000"
+ 400      7369676E 
+ 400      30312E63 
+ 400      7964736E 
+ 400      00
+ 401              	.LASF4:
+ 402 0197 73686F72 		.ascii	"short unsigned int\000"
+ 402      7420756E 
+ 402      7369676E 
+ 402      65642069 
+ 402      6E7400
+ 403              	.LASF1:
+ 404 01aa 7369676E 		.ascii	"signed char\000"
+ 404      65642063 
+ 404      68617200 
+ 405              	.LASF11:
+ 406 01b6 666C6F61 		.ascii	"float\000"
+ 406      7400
+ 407              	.LASF3:
+ 408 01bc 73686F72 		.ascii	"short int\000"
+ 408      7420696E 
+ 408      7400
+ 409              	.LASF14:
+ 410 01c6 72656738 		.ascii	"reg8\000"
+ 410      00
+ 411              	.LASF9:
+ 412 01cb 73697A65 		.ascii	"sizetype\000"
+ 412      74797065 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccOMJtXj.s 			page 11
+
+
+ 412      00
+ 413              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

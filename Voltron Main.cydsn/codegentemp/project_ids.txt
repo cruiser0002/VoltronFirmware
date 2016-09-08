@@ -1,0 +1,7 @@
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\Design01.cydsn\Design01.cyprj|ee68f376-77fb-4443-b0a9-c62d0934f5a7
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|bd22060c-69a0-4cde-a9cf-0e93c8321cd9
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|430070dd-8918-4413-b9a4-daad0ad695d8
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|49487450-db97-4d93-819a-e395a6daa1d7
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|12a6484c-06a8-40cd-9292-cd0638c75306
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main.cyprj|9fc24c0b-5bd4-46bb-a8e3-9353076aab0d
+C:\Users\cruiser\Documents\PSoC Creator\Voltron\testcode.cydsn\testcode.cyprj|5315676d-2c33-4d7d-b6e8-434f32a83443

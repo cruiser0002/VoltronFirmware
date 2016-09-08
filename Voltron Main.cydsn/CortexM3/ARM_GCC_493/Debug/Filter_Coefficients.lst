@@ -1,0 +1,581 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_Coefficients.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Filter_ChannelBFirCoefficients
+  19              		.global	Filter_ChannelAFirCoefficients
+  20              		.section	.rodata
+  21              		.align	2
+  22              		.type	Filter_ChannelBFirCoefficients, %object
+  23              		.size	Filter_ChannelBFirCoefficients, 100
+  24              	Filter_ChannelBFirCoefficients:
+  25 0000 4F       		.byte	79
+  26 0001 8A       		.byte	-118
+  27 0002 00       		.byte	0
+  28 0003 00       		.byte	0
+  29 0004 AE       		.byte	-82
+  30 0005 C9       		.byte	-55
+  31 0006 00       		.byte	0
+  32 0007 00       		.byte	0
+  33 0008 83       		.byte	-125
+  34 0009 44       		.byte	68
+  35 000a 01       		.byte	1
+  36 000b 00       		.byte	0
+  37 000c D9       		.byte	-39
+  38 000d FB       		.byte	-5
+  39 000e 01       		.byte	1
+  40 000f 00       		.byte	0
+  41 0010 84       		.byte	-124
+  42 0011 EA       		.byte	-22
+  43 0012 02       		.byte	2
+  44 0013 00       		.byte	0
+  45 0014 43       		.byte	67
+  46 0015 05       		.byte	5
+  47 0016 04       		.byte	4
+  48 0017 00       		.byte	0
+  49 0018 80       		.byte	-128
+  50 0019 3B       		.byte	59
+  51 001a 05       		.byte	5
+  52 001b 00       		.byte	0
+  53 001c B6       		.byte	-74
+  54 001d 78       		.byte	120
+  55 001e 06       		.byte	6
+  56 001f 00       		.byte	0
+  57 0020 47       		.byte	71
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 2
+
+
+  58 0021 A6       		.byte	-90
+  59 0022 07       		.byte	7
+  60 0023 00       		.byte	0
+  61 0024 98       		.byte	-104
+  62 0025 AD       		.byte	-83
+  63 0026 08       		.byte	8
+  64 0027 00       		.byte	0
+  65 0028 3F       		.byte	63
+  66 0029 7A       		.byte	122
+  67 002a 09       		.byte	9
+  68 002b 00       		.byte	0
+  69 002c 03       		.byte	3
+  70 002d FC       		.byte	-4
+  71 002e 09       		.byte	9
+  72 002f 00       		.byte	0
+  73 0030 78       		.byte	120
+  74 0031 28       		.byte	40
+  75 0032 0A       		.byte	10
+  76 0033 00       		.byte	0
+  77 0034 03       		.byte	3
+  78 0035 FC       		.byte	-4
+  79 0036 09       		.byte	9
+  80 0037 00       		.byte	0
+  81 0038 3F       		.byte	63
+  82 0039 7A       		.byte	122
+  83 003a 09       		.byte	9
+  84 003b 00       		.byte	0
+  85 003c 98       		.byte	-104
+  86 003d AD       		.byte	-83
+  87 003e 08       		.byte	8
+  88 003f 00       		.byte	0
+  89 0040 47       		.byte	71
+  90 0041 A6       		.byte	-90
+  91 0042 07       		.byte	7
+  92 0043 00       		.byte	0
+  93 0044 B6       		.byte	-74
+  94 0045 78       		.byte	120
+  95 0046 06       		.byte	6
+  96 0047 00       		.byte	0
+  97 0048 80       		.byte	-128
+  98 0049 3B       		.byte	59
+  99 004a 05       		.byte	5
+ 100 004b 00       		.byte	0
+ 101 004c 43       		.byte	67
+ 102 004d 05       		.byte	5
+ 103 004e 04       		.byte	4
+ 104 004f 00       		.byte	0
+ 105 0050 84       		.byte	-124
+ 106 0051 EA       		.byte	-22
+ 107 0052 02       		.byte	2
+ 108 0053 00       		.byte	0
+ 109 0054 D9       		.byte	-39
+ 110 0055 FB       		.byte	-5
+ 111 0056 01       		.byte	1
+ 112 0057 00       		.byte	0
+ 113 0058 83       		.byte	-125
+ 114 0059 44       		.byte	68
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 3
+
+
+ 115 005a 01       		.byte	1
+ 116 005b 00       		.byte	0
+ 117 005c AE       		.byte	-82
+ 118 005d C9       		.byte	-55
+ 119 005e 00       		.byte	0
+ 120 005f 00       		.byte	0
+ 121 0060 4F       		.byte	79
+ 122 0061 8A       		.byte	-118
+ 123 0062 00       		.byte	0
+ 124 0063 00       		.byte	0
+ 125              		.type	Filter_ChannelAFirCoefficients, %object
+ 126              		.size	Filter_ChannelAFirCoefficients, 100
+ 127              	Filter_ChannelAFirCoefficients:
+ 128 0064 4F       		.byte	79
+ 129 0065 8A       		.byte	-118
+ 130 0066 00       		.byte	0
+ 131 0067 00       		.byte	0
+ 132 0068 AE       		.byte	-82
+ 133 0069 C9       		.byte	-55
+ 134 006a 00       		.byte	0
+ 135 006b 00       		.byte	0
+ 136 006c 83       		.byte	-125
+ 137 006d 44       		.byte	68
+ 138 006e 01       		.byte	1
+ 139 006f 00       		.byte	0
+ 140 0070 D9       		.byte	-39
+ 141 0071 FB       		.byte	-5
+ 142 0072 01       		.byte	1
+ 143 0073 00       		.byte	0
+ 144 0074 84       		.byte	-124
+ 145 0075 EA       		.byte	-22
+ 146 0076 02       		.byte	2
+ 147 0077 00       		.byte	0
+ 148 0078 43       		.byte	67
+ 149 0079 05       		.byte	5
+ 150 007a 04       		.byte	4
+ 151 007b 00       		.byte	0
+ 152 007c 80       		.byte	-128
+ 153 007d 3B       		.byte	59
+ 154 007e 05       		.byte	5
+ 155 007f 00       		.byte	0
+ 156 0080 B6       		.byte	-74
+ 157 0081 78       		.byte	120
+ 158 0082 06       		.byte	6
+ 159 0083 00       		.byte	0
+ 160 0084 47       		.byte	71
+ 161 0085 A6       		.byte	-90
+ 162 0086 07       		.byte	7
+ 163 0087 00       		.byte	0
+ 164 0088 98       		.byte	-104
+ 165 0089 AD       		.byte	-83
+ 166 008a 08       		.byte	8
+ 167 008b 00       		.byte	0
+ 168 008c 3F       		.byte	63
+ 169 008d 7A       		.byte	122
+ 170 008e 09       		.byte	9
+ 171 008f 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 4
+
+
+ 172 0090 03       		.byte	3
+ 173 0091 FC       		.byte	-4
+ 174 0092 09       		.byte	9
+ 175 0093 00       		.byte	0
+ 176 0094 78       		.byte	120
+ 177 0095 28       		.byte	40
+ 178 0096 0A       		.byte	10
+ 179 0097 00       		.byte	0
+ 180 0098 03       		.byte	3
+ 181 0099 FC       		.byte	-4
+ 182 009a 09       		.byte	9
+ 183 009b 00       		.byte	0
+ 184 009c 3F       		.byte	63
+ 185 009d 7A       		.byte	122
+ 186 009e 09       		.byte	9
+ 187 009f 00       		.byte	0
+ 188 00a0 98       		.byte	-104
+ 189 00a1 AD       		.byte	-83
+ 190 00a2 08       		.byte	8
+ 191 00a3 00       		.byte	0
+ 192 00a4 47       		.byte	71
+ 193 00a5 A6       		.byte	-90
+ 194 00a6 07       		.byte	7
+ 195 00a7 00       		.byte	0
+ 196 00a8 B6       		.byte	-74
+ 197 00a9 78       		.byte	120
+ 198 00aa 06       		.byte	6
+ 199 00ab 00       		.byte	0
+ 200 00ac 80       		.byte	-128
+ 201 00ad 3B       		.byte	59
+ 202 00ae 05       		.byte	5
+ 203 00af 00       		.byte	0
+ 204 00b0 43       		.byte	67
+ 205 00b1 05       		.byte	5
+ 206 00b2 04       		.byte	4
+ 207 00b3 00       		.byte	0
+ 208 00b4 84       		.byte	-124
+ 209 00b5 EA       		.byte	-22
+ 210 00b6 02       		.byte	2
+ 211 00b7 00       		.byte	0
+ 212 00b8 D9       		.byte	-39
+ 213 00b9 FB       		.byte	-5
+ 214 00ba 01       		.byte	1
+ 215 00bb 00       		.byte	0
+ 216 00bc 83       		.byte	-125
+ 217 00bd 44       		.byte	68
+ 218 00be 01       		.byte	1
+ 219 00bf 00       		.byte	0
+ 220 00c0 AE       		.byte	-82
+ 221 00c1 C9       		.byte	-55
+ 222 00c2 00       		.byte	0
+ 223 00c3 00       		.byte	0
+ 224 00c4 4F       		.byte	79
+ 225 00c5 8A       		.byte	-118
+ 226 00c6 00       		.byte	0
+ 227 00c7 00       		.byte	0
+ 228              		.text
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 5
+
+
+ 229              	.Letext0:
+ 230              		.file 1 ".\\Generated_Source\\PSoC5\\Filter_Coefficients.c"
+ 231              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 232              		.section	.debug_info,"",%progbits
+ 233              	.Ldebug_info0:
+ 234 0000 C4000000 		.4byte	0xc4
+ 235 0004 0400     		.2byte	0x4
+ 236 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 237 000a 04       		.byte	0x4
+ 238 000b 01       		.uleb128 0x1
+ 239 000c AC000000 		.4byte	.LASF15
+ 240 0010 01       		.byte	0x1
+ 241 0011 7C010000 		.4byte	.LASF16
+ 242 0015 1B000000 		.4byte	.LASF17
+ 243 0019 00000000 		.4byte	.Ldebug_line0
+ 244 001d 02       		.uleb128 0x2
+ 245 001e 04       		.byte	0x4
+ 246 001f 05       		.byte	0x5
+ 247 0020 696E7400 		.ascii	"int\000"
+ 248 0024 03       		.uleb128 0x3
+ 249 0025 04       		.byte	0x4
+ 250 0026 07       		.byte	0x7
+ 251 0027 0E000000 		.4byte	.LASF0
+ 252 002b 03       		.uleb128 0x3
+ 253 002c 01       		.byte	0x1
+ 254 002d 06       		.byte	0x6
+ 255 002e 70010000 		.4byte	.LASF1
+ 256 0032 03       		.uleb128 0x3
+ 257 0033 01       		.byte	0x1
+ 258 0034 08       		.byte	0x8
+ 259 0035 3A010000 		.4byte	.LASF2
+ 260 0039 03       		.uleb128 0x3
+ 261 003a 02       		.byte	0x2
+ 262 003b 05       		.byte	0x5
+ 263 003c B1010000 		.4byte	.LASF3
+ 264 0040 03       		.uleb128 0x3
+ 265 0041 02       		.byte	0x2
+ 266 0042 07       		.byte	0x7
+ 267 0043 5D010000 		.4byte	.LASF4
+ 268 0047 03       		.uleb128 0x3
+ 269 0048 04       		.byte	0x4
+ 270 0049 05       		.byte	0x5
+ 271 004a 4D010000 		.4byte	.LASF5
+ 272 004e 03       		.uleb128 0x3
+ 273 004f 04       		.byte	0x4
+ 274 0050 07       		.byte	0x7
+ 275 0051 64000000 		.4byte	.LASF6
+ 276 0055 03       		.uleb128 0x3
+ 277 0056 08       		.byte	0x8
+ 278 0057 05       		.byte	0x5
+ 279 0058 00000000 		.4byte	.LASF7
+ 280 005c 03       		.uleb128 0x3
+ 281 005d 08       		.byte	0x8
+ 282 005e 07       		.byte	0x7
+ 283 005f 95000000 		.4byte	.LASF8
+ 284 0063 03       		.uleb128 0x3
+ 285 0064 04       		.byte	0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 6
+
+
+ 286 0065 07       		.byte	0x7
+ 287 0066 DA010000 		.4byte	.LASF9
+ 288 006a 03       		.uleb128 0x3
+ 289 006b 01       		.byte	0x1
+ 290 006c 08       		.byte	0x8
+ 291 006d 48010000 		.4byte	.LASF10
+ 292 0071 04       		.uleb128 0x4
+ 293 0072 5E000000 		.4byte	.LASF18
+ 294 0076 02       		.byte	0x2
+ 295 0077 9201     		.2byte	0x192
+ 296 0079 32000000 		.4byte	0x32
+ 297 007d 03       		.uleb128 0x3
+ 298 007e 04       		.byte	0x4
+ 299 007f 04       		.byte	0x4
+ 300 0080 AB010000 		.4byte	.LASF11
+ 301 0084 03       		.uleb128 0x3
+ 302 0085 08       		.byte	0x8
+ 303 0086 04       		.byte	0x4
+ 304 0087 56010000 		.4byte	.LASF12
+ 305 008b 05       		.uleb128 0x5
+ 306 008c 71000000 		.4byte	0x71
+ 307 0090 9B000000 		.4byte	0x9b
+ 308 0094 06       		.uleb128 0x6
+ 309 0095 63000000 		.4byte	0x63
+ 310 0099 63       		.byte	0x63
+ 311 009a 00       		.byte	0
+ 312 009b 07       		.uleb128 0x7
+ 313 009c BB010000 		.4byte	.LASF13
+ 314 00a0 01       		.byte	0x1
+ 315 00a1 11       		.byte	0x11
+ 316 00a2 AC000000 		.4byte	0xac
+ 317 00a6 05       		.uleb128 0x5
+ 318 00a7 03       		.byte	0x3
+ 319 00a8 00000000 		.4byte	Filter_ChannelAFirCoefficients
+ 320 00ac 08       		.uleb128 0x8
+ 321 00ad 8B000000 		.4byte	0x8b
+ 322 00b1 07       		.uleb128 0x7
+ 323 00b2 76000000 		.4byte	.LASF14
+ 324 00b6 01       		.byte	0x1
+ 325 00b7 53       		.byte	0x53
+ 326 00b8 C2000000 		.4byte	0xc2
+ 327 00bc 05       		.uleb128 0x5
+ 328 00bd 03       		.byte	0x3
+ 329 00be 00000000 		.4byte	Filter_ChannelBFirCoefficients
+ 330 00c2 08       		.uleb128 0x8
+ 331 00c3 8B000000 		.4byte	0x8b
+ 332 00c7 00       		.byte	0
+ 333              		.section	.debug_abbrev,"",%progbits
+ 334              	.Ldebug_abbrev0:
+ 335 0000 01       		.uleb128 0x1
+ 336 0001 11       		.uleb128 0x11
+ 337 0002 01       		.byte	0x1
+ 338 0003 25       		.uleb128 0x25
+ 339 0004 0E       		.uleb128 0xe
+ 340 0005 13       		.uleb128 0x13
+ 341 0006 0B       		.uleb128 0xb
+ 342 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 7
+
+
+ 343 0008 0E       		.uleb128 0xe
+ 344 0009 1B       		.uleb128 0x1b
+ 345 000a 0E       		.uleb128 0xe
+ 346 000b 10       		.uleb128 0x10
+ 347 000c 17       		.uleb128 0x17
+ 348 000d 00       		.byte	0
+ 349 000e 00       		.byte	0
+ 350 000f 02       		.uleb128 0x2
+ 351 0010 24       		.uleb128 0x24
+ 352 0011 00       		.byte	0
+ 353 0012 0B       		.uleb128 0xb
+ 354 0013 0B       		.uleb128 0xb
+ 355 0014 3E       		.uleb128 0x3e
+ 356 0015 0B       		.uleb128 0xb
+ 357 0016 03       		.uleb128 0x3
+ 358 0017 08       		.uleb128 0x8
+ 359 0018 00       		.byte	0
+ 360 0019 00       		.byte	0
+ 361 001a 03       		.uleb128 0x3
+ 362 001b 24       		.uleb128 0x24
+ 363 001c 00       		.byte	0
+ 364 001d 0B       		.uleb128 0xb
+ 365 001e 0B       		.uleb128 0xb
+ 366 001f 3E       		.uleb128 0x3e
+ 367 0020 0B       		.uleb128 0xb
+ 368 0021 03       		.uleb128 0x3
+ 369 0022 0E       		.uleb128 0xe
+ 370 0023 00       		.byte	0
+ 371 0024 00       		.byte	0
+ 372 0025 04       		.uleb128 0x4
+ 373 0026 16       		.uleb128 0x16
+ 374 0027 00       		.byte	0
+ 375 0028 03       		.uleb128 0x3
+ 376 0029 0E       		.uleb128 0xe
+ 377 002a 3A       		.uleb128 0x3a
+ 378 002b 0B       		.uleb128 0xb
+ 379 002c 3B       		.uleb128 0x3b
+ 380 002d 05       		.uleb128 0x5
+ 381 002e 49       		.uleb128 0x49
+ 382 002f 13       		.uleb128 0x13
+ 383 0030 00       		.byte	0
+ 384 0031 00       		.byte	0
+ 385 0032 05       		.uleb128 0x5
+ 386 0033 01       		.uleb128 0x1
+ 387 0034 01       		.byte	0x1
+ 388 0035 49       		.uleb128 0x49
+ 389 0036 13       		.uleb128 0x13
+ 390 0037 01       		.uleb128 0x1
+ 391 0038 13       		.uleb128 0x13
+ 392 0039 00       		.byte	0
+ 393 003a 00       		.byte	0
+ 394 003b 06       		.uleb128 0x6
+ 395 003c 21       		.uleb128 0x21
+ 396 003d 00       		.byte	0
+ 397 003e 49       		.uleb128 0x49
+ 398 003f 13       		.uleb128 0x13
+ 399 0040 2F       		.uleb128 0x2f
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 8
+
+
+ 400 0041 0B       		.uleb128 0xb
+ 401 0042 00       		.byte	0
+ 402 0043 00       		.byte	0
+ 403 0044 07       		.uleb128 0x7
+ 404 0045 34       		.uleb128 0x34
+ 405 0046 00       		.byte	0
+ 406 0047 03       		.uleb128 0x3
+ 407 0048 0E       		.uleb128 0xe
+ 408 0049 3A       		.uleb128 0x3a
+ 409 004a 0B       		.uleb128 0xb
+ 410 004b 3B       		.uleb128 0x3b
+ 411 004c 0B       		.uleb128 0xb
+ 412 004d 49       		.uleb128 0x49
+ 413 004e 13       		.uleb128 0x13
+ 414 004f 3F       		.uleb128 0x3f
+ 415 0050 19       		.uleb128 0x19
+ 416 0051 02       		.uleb128 0x2
+ 417 0052 18       		.uleb128 0x18
+ 418 0053 00       		.byte	0
+ 419 0054 00       		.byte	0
+ 420 0055 08       		.uleb128 0x8
+ 421 0056 26       		.uleb128 0x26
+ 422 0057 00       		.byte	0
+ 423 0058 49       		.uleb128 0x49
+ 424 0059 13       		.uleb128 0x13
+ 425 005a 00       		.byte	0
+ 426 005b 00       		.byte	0
+ 427 005c 00       		.byte	0
+ 428              		.section	.debug_aranges,"",%progbits
+ 429 0000 14000000 		.4byte	0x14
+ 430 0004 0200     		.2byte	0x2
+ 431 0006 00000000 		.4byte	.Ldebug_info0
+ 432 000a 04       		.byte	0x4
+ 433 000b 00       		.byte	0
+ 434 000c 0000     		.2byte	0
+ 435 000e 0000     		.2byte	0
+ 436 0010 00000000 		.4byte	0
+ 437 0014 00000000 		.4byte	0
+ 438              		.section	.debug_line,"",%progbits
+ 439              	.Ldebug_line0:
+ 440 0000 58000000 		.section	.debug_str,"MS",%progbits,1
+ 440      02005200 
+ 440      00000201 
+ 440      FB0E0D00 
+ 440      01010101 
+ 441              	.LASF7:
+ 442 0000 6C6F6E67 		.ascii	"long long int\000"
+ 442      206C6F6E 
+ 442      6720696E 
+ 442      7400
+ 443              	.LASF0:
+ 444 000e 756E7369 		.ascii	"unsigned int\000"
+ 444      676E6564 
+ 444      20696E74 
+ 444      00
+ 445              	.LASF17:
+ 446 001b 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 9
+
+
+ 446      73657273 
+ 446      5C637275 
+ 446      69736572 
+ 446      5C446F63 
+ 447 0049 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
+ 447      6C74726F 
+ 447      6E204D61 
+ 447      696E2E63 
+ 447      7964736E 
+ 448              	.LASF18:
+ 449 005e 75696E74 		.ascii	"uint8\000"
+ 449      3800
+ 450              	.LASF6:
+ 451 0064 6C6F6E67 		.ascii	"long unsigned int\000"
+ 451      20756E73 
+ 451      69676E65 
+ 451      6420696E 
+ 451      7400
+ 452              	.LASF14:
+ 453 0076 46696C74 		.ascii	"Filter_ChannelBFirCoefficients\000"
+ 453      65725F43 
+ 453      68616E6E 
+ 453      656C4246 
+ 453      6972436F 
+ 454              	.LASF8:
+ 455 0095 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 455      206C6F6E 
+ 455      6720756E 
+ 455      7369676E 
+ 455      65642069 
+ 456              	.LASF15:
+ 457 00ac 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 457      4320342E 
+ 457      392E3320 
+ 457      32303135 
+ 457      30333033 
+ 458 00df 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 458      20726576 
+ 458      6973696F 
+ 458      6E203232 
+ 458      31323230 
+ 459 0112 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 459      66756E63 
+ 459      74696F6E 
+ 459      2D736563 
+ 459      74696F6E 
+ 460              	.LASF2:
+ 461 013a 756E7369 		.ascii	"unsigned char\000"
+ 461      676E6564 
+ 461      20636861 
+ 461      7200
+ 462              	.LASF10:
+ 463 0148 63686172 		.ascii	"char\000"
+ 463      00
+ 464              	.LASF5:
+ 465 014d 6C6F6E67 		.ascii	"long int\000"
+ 465      20696E74 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cccZoCQe.s 			page 10
+
+
+ 465      00
+ 466              	.LASF12:
+ 467 0156 646F7562 		.ascii	"double\000"
+ 467      6C6500
+ 468              	.LASF4:
+ 469 015d 73686F72 		.ascii	"short unsigned int\000"
+ 469      7420756E 
+ 469      7369676E 
+ 469      65642069 
+ 469      6E7400
+ 470              	.LASF1:
+ 471 0170 7369676E 		.ascii	"signed char\000"
+ 471      65642063 
+ 471      68617200 
+ 472              	.LASF16:
+ 473 017c 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_Coefficients.c\000"
+ 473      6E657261 
+ 473      7465645F 
+ 473      536F7572 
+ 473      63655C50 
+ 474              	.LASF11:
+ 475 01ab 666C6F61 		.ascii	"float\000"
+ 475      7400
+ 476              	.LASF3:
+ 477 01b1 73686F72 		.ascii	"short int\000"
+ 477      7420696E 
+ 477      7400
+ 478              	.LASF13:
+ 479 01bb 46696C74 		.ascii	"Filter_ChannelAFirCoefficients\000"
+ 479      65725F43 
+ 479      68616E6E 
+ 479      656C4146 
+ 479      6972436F 
+ 480              	.LASF9:
+ 481 01da 73697A65 		.ascii	"sizetype\000"
+ 481      74797065 
+ 481      00
+ 482              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

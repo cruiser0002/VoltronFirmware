@@ -1,0 +1,1093 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Filter_SaveConfig,"ax",%progbits
+  19              		.align	2
+  20              		.global	Filter_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Filter_SaveConfig, %function
+  24              	Filter_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\Filter_PM.c"
+   1:.\Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Filter_PM.c **** * File Name: Filter_PM.c
+   3:.\Generated_Source\PSoC5/Filter_PM.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/Filter_PM.c **** *
+   5:.\Generated_Source\PSoC5/Filter_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/Filter_PM.c **** *  This file provides the power managaer API source code for the FILT component.
+   7:.\Generated_Source\PSoC5/Filter_PM.c **** *
+   8:.\Generated_Source\PSoC5/Filter_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/Filter_PM.c **** *  
+  10:.\Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************
+  11:.\Generated_Source\PSoC5/Filter_PM.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/Filter_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC5/Filter_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC5/Filter_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************/
+  16:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  17:.\Generated_Source\PSoC5/Filter_PM.c **** #include "Filter_PVT.h"
+  18:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  19:.\Generated_Source\PSoC5/Filter_PM.c **** static Filter_backupStruct  Filter_backup = 
+  20:.\Generated_Source\PSoC5/Filter_PM.c **** {
+  21:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_DISABLED,
+  22:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_RUN_MASK,
+  23:.\Generated_Source\PSoC5/Filter_PM.c ****     
+  24:.\Generated_Source\PSoC5/Filter_PM.c **** };
+  25:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  26:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  27:.\Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+  28:.\Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_SaveConfig
+  29:.\Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+  30:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  31:.\Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/Filter_PM.c **** *  Saves the current user configuration.
+  33:.\Generated_Source\PSoC5/Filter_PM.c **** *  
+  34:.\Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+  35:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+  36:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  37:.\Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+  38:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+  39:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  40:.\Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+  41:.\Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  This global structure variable is used to store 
+  42:.\Generated_Source\PSoC5/Filter_PM.c **** *  configuration registers which are non retention whenever user wants to go 
+  43:.\Generated_Source\PSoC5/Filter_PM.c **** *  sleep mode by calling Sleep() API.
+  44:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  45:.\Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+  46:.\Generated_Source\PSoC5/Filter_PM.c **** void Filter_SaveConfig(void) 
+  47:.\Generated_Source\PSoC5/Filter_PM.c **** {
+  27              		.loc 1 47 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 70B4     		push	{r4, r5, r6}
+  33              		.cfi_def_cfa_offset 12
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 6, -4
+  48:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sr = Filter_SR_REG;
+  37              		.loc 1 48 0
+  38 0002 0D4B     		ldr	r3, .L3
+  39 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  40 0006 0D4C     		ldr	r4, .L3+4
+  41 0008 A370     		strb	r3, [r4, #2]
+  49:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sema = Filter_SEMA_REG;
+  42              		.loc 1 49 0
+  43 000a 0D4B     		ldr	r3, .L3+8
+  44 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  45 000e E370     		strb	r3, [r4, #3]
+  50:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  51:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Put DFB RAM on the bus */
+  52:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_BUS;
+  46              		.loc 1 52 0
+  47 0010 0C4E     		ldr	r6, .L3+12
+  48 0012 3F23     		movs	r3, #63
+  49 0014 3370     		strb	r3, [r6]
+  53:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  54:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Save the ACU RAM as this is not retension */
+  55:.\Generated_Source\PSoC5/Filter_PM.c ****     (void)memcpy(Filter_backup.saveAcu,
+  50              		.loc 1 55 0
+  51 0016 0434     		adds	r4, r4, #4
+  52 0018 0B4D     		ldr	r5, .L3+16
+  53 001a 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+  54 001c 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+  55 001e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+  56 0020 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+  57 0022 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+  58 0024 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+  59 0026 95E80F00 		ldmia	r5, {r0, r1, r2, r3}
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 3
+
+
+  60 002a 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+  56:.\Generated_Source\PSoC5/Filter_PM.c ****         Filter_ACU_RAM, Filter_ACU_RAM_SIZE); 
+  57:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  58:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Take DFB RAM off the bus */
+  59:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_DFB;
+  61              		.loc 1 59 0
+  62 002e 0023     		movs	r3, #0
+  63 0030 3370     		strb	r3, [r6]
+  60:.\Generated_Source\PSoC5/Filter_PM.c **** }
+  64              		.loc 1 60 0
+  65 0032 70BC     		pop	{r4, r5, r6}
+  66              		.cfi_restore 6
+  67              		.cfi_restore 5
+  68              		.cfi_restore 4
+  69              		.cfi_def_cfa_offset 0
+  70 0034 7047     		bx	lr
+  71              	.L4:
+  72 0036 00BF     		.align	2
+  73              	.L3:
+  74 0038 84C70040 		.word	1073792900
+  75 003c 00000000 		.word	.LANCHOR0
+  76 0040 90C70040 		.word	1073792912
+  77 0044 8CC70040 		.word	1073792908
+  78 0048 00C70040 		.word	1073792768
+  79              		.cfi_endproc
+  80              	.LFE0:
+  81              		.size	Filter_SaveConfig, .-Filter_SaveConfig
+  82              		.section	.text.Filter_RestoreConfig,"ax",%progbits
+  83              		.align	2
+  84              		.global	Filter_RestoreConfig
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	Filter_RestoreConfig, %function
+  88              	Filter_RestoreConfig:
+  89              	.LFB1:
+  61:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  62:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  63:.\Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+  64:.\Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_RestoreConfig
+  65:.\Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+  66:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  67:.\Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+  68:.\Generated_Source\PSoC5/Filter_PM.c **** *  Restores the current user configuration.
+  69:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  70:.\Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+  71:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+  72:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  73:.\Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+  74:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+  75:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  76:.\Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+  77:.\Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  This global structure variable is used to restore 
+  78:.\Generated_Source\PSoC5/Filter_PM.c **** *  configuration registers which are non retention whenever user wants to switch 
+  79:.\Generated_Source\PSoC5/Filter_PM.c **** *  to active power mode by calling Wakeup() API.
+  80:.\Generated_Source\PSoC5/Filter_PM.c **** *
+  81:.\Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+  82:.\Generated_Source\PSoC5/Filter_PM.c **** void Filter_RestoreConfig(void) 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 4
+
+
+  83:.\Generated_Source\PSoC5/Filter_PM.c **** {
+  90              		.loc 1 83 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  95 0000 70B4     		push	{r4, r5, r6}
+  96              		.cfi_def_cfa_offset 12
+  97              		.cfi_offset 4, -12
+  98              		.cfi_offset 5, -8
+  99              		.cfi_offset 6, -4
+  84:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_SR_REG = Filter_backup.sr;
+ 100              		.loc 1 84 0
+ 101 0002 0F4C     		ldr	r4, .L7
+ 102 0004 A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
+ 103 0006 0F4B     		ldr	r3, .L7+4
+ 104 0008 1A70     		strb	r2, [r3]
+  85:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_SEMA_REG = Filter_backup.sema;
+ 105              		.loc 1 85 0
+ 106 000a E278     		ldrb	r2, [r4, #3]	@ zero_extendqisi2
+ 107 000c 0C33     		adds	r3, r3, #12
+ 108 000e 1A70     		strb	r2, [r3]
+  86:.\Generated_Source\PSoC5/Filter_PM.c ****     
+  87:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Power on DFB before initializing the RAMs */
+  88:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_PM_ACT_CFG_REG |= Filter_PM_ACT_MSK;
+ 109              		.loc 1 88 0
+ 110 0010 0D4A     		ldr	r2, .L7+8
+ 111 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 112 0014 43F01003 		orr	r3, r3, #16
+ 113 0018 1370     		strb	r3, [r2]
+  89:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  90:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Put DFB RAM on the bus */
+  91:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_BUS;
+ 114              		.loc 1 91 0
+ 115 001a 0C4E     		ldr	r6, .L7+12
+ 116 001c 3F23     		movs	r3, #63
+ 117 001e 3370     		strb	r3, [r6]
+  92:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  93:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Restore ACU RAM as this is not retension */
+  94:.\Generated_Source\PSoC5/Filter_PM.c ****     (void)memcpy(Filter_ACU_RAM,
+ 118              		.loc 1 94 0
+ 119 0020 0B4D     		ldr	r5, .L7+16
+ 120 0022 0434     		adds	r4, r4, #4
+ 121 0024 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 122 0026 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 123 0028 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 124 002a 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 125 002c 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 126 002e 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 127 0030 94E80F00 		ldmia	r4, {r0, r1, r2, r3}
+ 128 0034 85E80F00 		stmia	r5, {r0, r1, r2, r3}
+  95:.\Generated_Source\PSoC5/Filter_PM.c ****         Filter_backup.saveAcu, Filter_ACU_RAM_SIZE); 
+  96:.\Generated_Source\PSoC5/Filter_PM.c **** 
+  97:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Take DFB RAM off the bus */
+  98:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_DFB;
+ 129              		.loc 1 98 0
+ 130 0038 0023     		movs	r3, #0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 5
+
+
+ 131 003a 3370     		strb	r3, [r6]
+  99:.\Generated_Source\PSoC5/Filter_PM.c **** }
+ 132              		.loc 1 99 0
+ 133 003c 70BC     		pop	{r4, r5, r6}
+ 134              		.cfi_restore 6
+ 135              		.cfi_restore 5
+ 136              		.cfi_restore 4
+ 137              		.cfi_def_cfa_offset 0
+ 138 003e 7047     		bx	lr
+ 139              	.L8:
+ 140              		.align	2
+ 141              	.L7:
+ 142 0040 00000000 		.word	.LANCHOR0
+ 143 0044 84C70040 		.word	1073792900
+ 144 0048 A6430040 		.word	1073759142
+ 145 004c 8CC70040 		.word	1073792908
+ 146 0050 00C70040 		.word	1073792768
+ 147              		.cfi_endproc
+ 148              	.LFE1:
+ 149              		.size	Filter_RestoreConfig, .-Filter_RestoreConfig
+ 150              		.section	.text.Filter_Sleep,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	Filter_Sleep
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.type	Filter_Sleep, %function
+ 156              	Filter_Sleep:
+ 157              	.LFB2:
+ 100:.\Generated_Source\PSoC5/Filter_PM.c **** 
+ 101:.\Generated_Source\PSoC5/Filter_PM.c **** 
+ 102:.\Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+ 103:.\Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_Sleep
+ 104:.\Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+ 105:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 106:.\Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+ 107:.\Generated_Source\PSoC5/Filter_PM.c **** *  Disables block's operation and saves its configuration. Should be called 
+ 108:.\Generated_Source\PSoC5/Filter_PM.c **** *  just prior to entering sleep.
+ 109:.\Generated_Source\PSoC5/Filter_PM.c **** *  
+ 110:.\Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+ 111:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 112:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 113:.\Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+ 114:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 115:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 116:.\Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+ 117:.\Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  The structure field 'enableState' is modified 
+ 118:.\Generated_Source\PSoC5/Filter_PM.c **** *  depending on the enable state of the block before entering to sleep mode.
+ 119:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 120:.\Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+ 121:.\Generated_Source\PSoC5/Filter_PM.c **** void Filter_Sleep(void) 
+ 122:.\Generated_Source\PSoC5/Filter_PM.c **** {
+ 158              		.loc 1 122 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162 0000 08B5     		push	{r3, lr}
+ 163              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 6
+
+
+ 164              		.cfi_offset 3, -8
+ 165              		.cfi_offset 14, -4
+ 123:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Save Filter enable state */
+ 124:.\Generated_Source\PSoC5/Filter_PM.c ****     if(Filter_PM_ACT_MSK == (Filter_PM_ACT_CFG_REG & Filter_PM_ACT_MSK))
+ 166              		.loc 1 124 0
+ 167 0002 084B     		ldr	r3, .L13
+ 168 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 169 0006 13F0100F 		tst	r3, #16
+ 170 000a 03D0     		beq	.L10
+ 125:.\Generated_Source\PSoC5/Filter_PM.c ****     {
+ 126:.\Generated_Source\PSoC5/Filter_PM.c ****         /* Component is enabled */
+ 127:.\Generated_Source\PSoC5/Filter_PM.c ****         Filter_backup.enableState = Filter_ENABLED;
+ 171              		.loc 1 127 0
+ 172 000c 0122     		movs	r2, #1
+ 173 000e 064B     		ldr	r3, .L13+4
+ 174 0010 1A70     		strb	r2, [r3]
+ 175 0012 02E0     		b	.L11
+ 176              	.L10:
+ 128:.\Generated_Source\PSoC5/Filter_PM.c ****     }
+ 129:.\Generated_Source\PSoC5/Filter_PM.c ****     else
+ 130:.\Generated_Source\PSoC5/Filter_PM.c ****     {
+ 131:.\Generated_Source\PSoC5/Filter_PM.c ****         /* Component is disabled */
+ 132:.\Generated_Source\PSoC5/Filter_PM.c ****         Filter_backup.enableState = Filter_DISABLED;
+ 177              		.loc 1 132 0
+ 178 0014 0022     		movs	r2, #0
+ 179 0016 044B     		ldr	r3, .L13+4
+ 180 0018 1A70     		strb	r2, [r3]
+ 181              	.L11:
+ 133:.\Generated_Source\PSoC5/Filter_PM.c ****     }
+ 134:.\Generated_Source\PSoC5/Filter_PM.c **** 
+ 135:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Save the configuration */
+ 136:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_SaveConfig();
+ 182              		.loc 1 136 0
+ 183 001a FFF7FEFF 		bl	Filter_SaveConfig
+ 184              	.LVL0:
+ 137:.\Generated_Source\PSoC5/Filter_PM.c ****     
+ 138:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Stop the component */
+ 139:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_Stop();
+ 185              		.loc 1 139 0
+ 186 001e FFF7FEFF 		bl	Filter_Stop
+ 187              	.LVL1:
+ 188 0022 08BD     		pop	{r3, pc}
+ 189              	.L14:
+ 190              		.align	2
+ 191              	.L13:
+ 192 0024 A6430040 		.word	1073759142
+ 193 0028 00000000 		.word	.LANCHOR0
+ 194              		.cfi_endproc
+ 195              	.LFE2:
+ 196              		.size	Filter_Sleep, .-Filter_Sleep
+ 197              		.section	.text.Filter_Wakeup,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	Filter_Wakeup
+ 200              		.thumb
+ 201              		.thumb_func
+ 202              		.type	Filter_Wakeup, %function
+ 203              	Filter_Wakeup:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 7
+
+
+ 204              	.LFB3:
+ 140:.\Generated_Source\PSoC5/Filter_PM.c **** }
+ 141:.\Generated_Source\PSoC5/Filter_PM.c **** 
+ 142:.\Generated_Source\PSoC5/Filter_PM.c **** 
+ 143:.\Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+ 144:.\Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_Wakeup
+ 145:.\Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+ 146:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 147:.\Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+ 148:.\Generated_Source\PSoC5/Filter_PM.c **** *  Enables block's operation and restores its configuration. Should be called
+ 149:.\Generated_Source\PSoC5/Filter_PM.c **** *  just after awaking from sleep.
+ 150:.\Generated_Source\PSoC5/Filter_PM.c **** *  
+ 151:.\Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+ 152:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 153:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 154:.\Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+ 155:.\Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 156:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 157:.\Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+ 158:.\Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  The structure field 'enableState' is used to 
+ 159:.\Generated_Source\PSoC5/Filter_PM.c **** *  restore the enable state of block after wakeup from sleep mode.
+ 160:.\Generated_Source\PSoC5/Filter_PM.c **** *
+ 161:.\Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+ 162:.\Generated_Source\PSoC5/Filter_PM.c **** void Filter_Wakeup(void) 
+ 163:.\Generated_Source\PSoC5/Filter_PM.c **** {
+ 205              		.loc 1 163 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209 0000 08B5     		push	{r3, lr}
+ 210              		.cfi_def_cfa_offset 8
+ 211              		.cfi_offset 3, -8
+ 212              		.cfi_offset 14, -4
+ 164:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Restore the configuration */
+ 165:.\Generated_Source\PSoC5/Filter_PM.c ****     Filter_RestoreConfig();
+ 213              		.loc 1 165 0
+ 214 0002 FFF7FEFF 		bl	Filter_RestoreConfig
+ 215              	.LVL2:
+ 166:.\Generated_Source\PSoC5/Filter_PM.c ****     
+ 167:.\Generated_Source\PSoC5/Filter_PM.c ****     /* Enable's the component operation */
+ 168:.\Generated_Source\PSoC5/Filter_PM.c ****     if(Filter_backup.enableState == Filter_ENABLED)
+ 216              		.loc 1 168 0
+ 217 0006 034B     		ldr	r3, .L18
+ 218 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 219 000a 012B     		cmp	r3, #1
+ 220 000c 01D1     		bne	.L15
+ 169:.\Generated_Source\PSoC5/Filter_PM.c ****     {
+ 170:.\Generated_Source\PSoC5/Filter_PM.c ****         Filter_Enable();
+ 221              		.loc 1 170 0
+ 222 000e FFF7FEFF 		bl	Filter_Enable
+ 223              	.LVL3:
+ 224              	.L15:
+ 225 0012 08BD     		pop	{r3, pc}
+ 226              	.L19:
+ 227              		.align	2
+ 228              	.L18:
+ 229 0014 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 8
+
+
+ 230              		.cfi_endproc
+ 231              	.LFE3:
+ 232              		.size	Filter_Wakeup, .-Filter_Wakeup
+ 233              		.data
+ 234              		.align	2
+ 235              		.set	.LANCHOR0,. + 0
+ 236              		.type	Filter_backup, %object
+ 237              		.size	Filter_backup, 68
+ 238              	Filter_backup:
+ 239 0000 00       		.byte	0
+ 240 0001 01       		.byte	1
+ 241 0002 00000000 		.space	66
+ 241      00000000 
+ 241      00000000 
+ 241      00000000 
+ 241      00000000 
+ 242              		.text
+ 243              	.Letext0:
+ 244              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 245              		.file 3 ".\\Generated_Source\\PSoC5\\Filter.H"
+ 246              		.section	.debug_info,"",%progbits
+ 247              	.Ldebug_info0:
+ 248 0000 9C010000 		.4byte	0x19c
+ 249 0004 0400     		.2byte	0x4
+ 250 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 251 000a 04       		.byte	0x4
+ 252 000b 01       		.uleb128 0x1
+ 253 000c 16010000 		.4byte	.LASF26
+ 254 0010 01       		.byte	0x1
+ 255 0011 F1000000 		.4byte	.LASF27
+ 256 0015 00000000 		.4byte	.LASF28
+ 257 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 258 001d 00000000 		.4byte	0
+ 259 0021 00000000 		.4byte	.Ldebug_line0
+ 260 0025 02       		.uleb128 0x2
+ 261 0026 04       		.byte	0x4
+ 262 0027 05       		.byte	0x5
+ 263 0028 696E7400 		.ascii	"int\000"
+ 264 002c 03       		.uleb128 0x3
+ 265 002d 04       		.byte	0x4
+ 266 002e 07       		.byte	0x7
+ 267 002f A4010000 		.4byte	.LASF0
+ 268 0033 03       		.uleb128 0x3
+ 269 0034 01       		.byte	0x1
+ 270 0035 06       		.byte	0x6
+ 271 0036 1F020000 		.4byte	.LASF1
+ 272 003a 03       		.uleb128 0x3
+ 273 003b 01       		.byte	0x1
+ 274 003c 08       		.byte	0x8
+ 275 003d 7E000000 		.4byte	.LASF2
+ 276 0041 03       		.uleb128 0x3
+ 277 0042 02       		.byte	0x2
+ 278 0043 05       		.byte	0x5
+ 279 0044 F8010000 		.4byte	.LASF3
+ 280 0048 03       		.uleb128 0x3
+ 281 0049 02       		.byte	0x2
+ 282 004a 07       		.byte	0x7
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 9
+
+
+ 283 004b 2B020000 		.4byte	.LASF4
+ 284 004f 03       		.uleb128 0x3
+ 285 0050 04       		.byte	0x4
+ 286 0051 05       		.byte	0x5
+ 287 0052 0A020000 		.4byte	.LASF5
+ 288 0056 03       		.uleb128 0x3
+ 289 0057 04       		.byte	0x4
+ 290 0058 07       		.byte	0x7
+ 291 0059 9D000000 		.4byte	.LASF6
+ 292 005d 03       		.uleb128 0x3
+ 293 005e 08       		.byte	0x8
+ 294 005f 05       		.byte	0x5
+ 295 0060 E5010000 		.4byte	.LASF7
+ 296 0064 03       		.uleb128 0x3
+ 297 0065 08       		.byte	0x8
+ 298 0066 07       		.byte	0x7
+ 299 0067 C5010000 		.4byte	.LASF8
+ 300 006b 03       		.uleb128 0x3
+ 301 006c 04       		.byte	0x4
+ 302 006d 07       		.byte	0x7
+ 303 006e DC010000 		.4byte	.LASF9
+ 304 0072 03       		.uleb128 0x3
+ 305 0073 01       		.byte	0x1
+ 306 0074 08       		.byte	0x8
+ 307 0075 F3010000 		.4byte	.LASF10
+ 308 0079 04       		.uleb128 0x4
+ 309 007a AF000000 		.4byte	.LASF11
+ 310 007e 02       		.byte	0x2
+ 311 007f 9201     		.2byte	0x192
+ 312 0081 3A000000 		.4byte	0x3a
+ 313 0085 04       		.uleb128 0x4
+ 314 0086 EA000000 		.4byte	.LASF12
+ 315 008a 02       		.byte	0x2
+ 316 008b 9301     		.2byte	0x193
+ 317 008d 48000000 		.4byte	0x48
+ 318 0091 03       		.uleb128 0x3
+ 319 0092 04       		.byte	0x4
+ 320 0093 04       		.byte	0x4
+ 321 0094 78000000 		.4byte	.LASF13
+ 322 0098 03       		.uleb128 0x3
+ 323 0099 08       		.byte	0x8
+ 324 009a 04       		.byte	0x4
+ 325 009b C3000000 		.4byte	.LASF14
+ 326 009f 04       		.uleb128 0x4
+ 327 00a0 98000000 		.4byte	.LASF15
+ 328 00a4 02       		.byte	0x2
+ 329 00a5 3C02     		.2byte	0x23c
+ 330 00a7 AB000000 		.4byte	0xab
+ 331 00ab 05       		.uleb128 0x5
+ 332 00ac 79000000 		.4byte	0x79
+ 333 00b0 06       		.uleb128 0x6
+ 334 00b1 44       		.byte	0x44
+ 335 00b2 03       		.byte	0x3
+ 336 00b3 30       		.byte	0x30
+ 337 00b4 F3000000 		.4byte	0xf3
+ 338 00b8 07       		.uleb128 0x7
+ 339 00b9 13020000 		.4byte	.LASF16
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 10
+
+
+ 340 00bd 03       		.byte	0x3
+ 341 00be 32       		.byte	0x32
+ 342 00bf 79000000 		.4byte	0x79
+ 343 00c3 00       		.byte	0
+ 344 00c4 08       		.uleb128 0x8
+ 345 00c5 637200   		.ascii	"cr\000"
+ 346 00c8 03       		.byte	0x3
+ 347 00c9 33       		.byte	0x33
+ 348 00ca 79000000 		.4byte	0x79
+ 349 00ce 01       		.byte	0x1
+ 350 00cf 08       		.uleb128 0x8
+ 351 00d0 737200   		.ascii	"sr\000"
+ 352 00d3 03       		.byte	0x3
+ 353 00d4 34       		.byte	0x34
+ 354 00d5 79000000 		.4byte	0x79
+ 355 00d9 02       		.byte	0x2
+ 356 00da 07       		.uleb128 0x7
+ 357 00db 43000000 		.4byte	.LASF17
+ 358 00df 03       		.byte	0x3
+ 359 00e0 35       		.byte	0x35
+ 360 00e1 79000000 		.4byte	0x79
+ 361 00e5 03       		.byte	0x3
+ 362 00e6 07       		.uleb128 0x7
+ 363 00e7 02020000 		.4byte	.LASF18
+ 364 00eb 03       		.byte	0x3
+ 365 00ec 36       		.byte	0x36
+ 366 00ed F3000000 		.4byte	0xf3
+ 367 00f1 04       		.byte	0x4
+ 368 00f2 00       		.byte	0
+ 369 00f3 09       		.uleb128 0x9
+ 370 00f4 79000000 		.4byte	0x79
+ 371 00f8 03010000 		.4byte	0x103
+ 372 00fc 0A       		.uleb128 0xa
+ 373 00fd 6B000000 		.4byte	0x6b
+ 374 0101 3F       		.byte	0x3f
+ 375 0102 00       		.byte	0
+ 376 0103 0B       		.uleb128 0xb
+ 377 0104 B1010000 		.4byte	.LASF19
+ 378 0108 03       		.byte	0x3
+ 379 0109 37       		.byte	0x37
+ 380 010a B0000000 		.4byte	0xb0
+ 381 010e 0C       		.uleb128 0xc
+ 382 010f CA000000 		.4byte	.LASF20
+ 383 0113 01       		.byte	0x1
+ 384 0114 2E       		.byte	0x2e
+ 385 0115 00000000 		.4byte	.LFB0
+ 386 0119 4C000000 		.4byte	.LFE0-.LFB0
+ 387 011d 01       		.uleb128 0x1
+ 388 011e 9C       		.byte	0x9c
+ 389 011f 0C       		.uleb128 0xc
+ 390 0120 63000000 		.4byte	.LASF21
+ 391 0124 01       		.byte	0x1
+ 392 0125 52       		.byte	0x52
+ 393 0126 00000000 		.4byte	.LFB1
+ 394 012a 54000000 		.4byte	.LFE1-.LFB1
+ 395 012e 01       		.uleb128 0x1
+ 396 012f 9C       		.byte	0x9c
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 11
+
+
+ 397 0130 0D       		.uleb128 0xd
+ 398 0131 48000000 		.4byte	.LASF22
+ 399 0135 01       		.byte	0x1
+ 400 0136 79       		.byte	0x79
+ 401 0137 00000000 		.4byte	.LFB2
+ 402 013b 2C000000 		.4byte	.LFE2-.LFB2
+ 403 013f 01       		.uleb128 0x1
+ 404 0140 9C       		.byte	0x9c
+ 405 0141 58010000 		.4byte	0x158
+ 406 0145 0E       		.uleb128 0xe
+ 407 0146 1E000000 		.4byte	.LVL0
+ 408 014a 0E010000 		.4byte	0x10e
+ 409 014e 0E       		.uleb128 0xe
+ 410 014f 22000000 		.4byte	.LVL1
+ 411 0153 91010000 		.4byte	0x191
+ 412 0157 00       		.byte	0
+ 413 0158 0D       		.uleb128 0xd
+ 414 0159 B5000000 		.4byte	.LASF23
+ 415 015d 01       		.byte	0x1
+ 416 015e A2       		.byte	0xa2
+ 417 015f 00000000 		.4byte	.LFB3
+ 418 0163 18000000 		.4byte	.LFE3-.LFB3
+ 419 0167 01       		.uleb128 0x1
+ 420 0168 9C       		.byte	0x9c
+ 421 0169 80010000 		.4byte	0x180
+ 422 016d 0E       		.uleb128 0xe
+ 423 016e 06000000 		.4byte	.LVL2
+ 424 0172 1F010000 		.4byte	0x11f
+ 425 0176 0E       		.uleb128 0xe
+ 426 0177 12000000 		.4byte	.LVL3
+ 427 017b 98010000 		.4byte	0x198
+ 428 017f 00       		.byte	0
+ 429 0180 0F       		.uleb128 0xf
+ 430 0181 DC000000 		.4byte	.LASF29
+ 431 0185 01       		.byte	0x1
+ 432 0186 13       		.byte	0x13
+ 433 0187 03010000 		.4byte	0x103
+ 434 018b 05       		.uleb128 0x5
+ 435 018c 03       		.byte	0x3
+ 436 018d 00000000 		.4byte	Filter_backup
+ 437 0191 10       		.uleb128 0x10
+ 438 0192 8C000000 		.4byte	.LASF24
+ 439 0196 03       		.byte	0x3
+ 440 0197 3F       		.byte	0x3f
+ 441 0198 10       		.uleb128 0x10
+ 442 0199 55000000 		.4byte	.LASF25
+ 443 019d 03       		.byte	0x3
+ 444 019e 4B       		.byte	0x4b
+ 445 019f 00       		.byte	0
+ 446              		.section	.debug_abbrev,"",%progbits
+ 447              	.Ldebug_abbrev0:
+ 448 0000 01       		.uleb128 0x1
+ 449 0001 11       		.uleb128 0x11
+ 450 0002 01       		.byte	0x1
+ 451 0003 25       		.uleb128 0x25
+ 452 0004 0E       		.uleb128 0xe
+ 453 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 12
+
+
+ 454 0006 0B       		.uleb128 0xb
+ 455 0007 03       		.uleb128 0x3
+ 456 0008 0E       		.uleb128 0xe
+ 457 0009 1B       		.uleb128 0x1b
+ 458 000a 0E       		.uleb128 0xe
+ 459 000b 55       		.uleb128 0x55
+ 460 000c 17       		.uleb128 0x17
+ 461 000d 11       		.uleb128 0x11
+ 462 000e 01       		.uleb128 0x1
+ 463 000f 10       		.uleb128 0x10
+ 464 0010 17       		.uleb128 0x17
+ 465 0011 00       		.byte	0
+ 466 0012 00       		.byte	0
+ 467 0013 02       		.uleb128 0x2
+ 468 0014 24       		.uleb128 0x24
+ 469 0015 00       		.byte	0
+ 470 0016 0B       		.uleb128 0xb
+ 471 0017 0B       		.uleb128 0xb
+ 472 0018 3E       		.uleb128 0x3e
+ 473 0019 0B       		.uleb128 0xb
+ 474 001a 03       		.uleb128 0x3
+ 475 001b 08       		.uleb128 0x8
+ 476 001c 00       		.byte	0
+ 477 001d 00       		.byte	0
+ 478 001e 03       		.uleb128 0x3
+ 479 001f 24       		.uleb128 0x24
+ 480 0020 00       		.byte	0
+ 481 0021 0B       		.uleb128 0xb
+ 482 0022 0B       		.uleb128 0xb
+ 483 0023 3E       		.uleb128 0x3e
+ 484 0024 0B       		.uleb128 0xb
+ 485 0025 03       		.uleb128 0x3
+ 486 0026 0E       		.uleb128 0xe
+ 487 0027 00       		.byte	0
+ 488 0028 00       		.byte	0
+ 489 0029 04       		.uleb128 0x4
+ 490 002a 16       		.uleb128 0x16
+ 491 002b 00       		.byte	0
+ 492 002c 03       		.uleb128 0x3
+ 493 002d 0E       		.uleb128 0xe
+ 494 002e 3A       		.uleb128 0x3a
+ 495 002f 0B       		.uleb128 0xb
+ 496 0030 3B       		.uleb128 0x3b
+ 497 0031 05       		.uleb128 0x5
+ 498 0032 49       		.uleb128 0x49
+ 499 0033 13       		.uleb128 0x13
+ 500 0034 00       		.byte	0
+ 501 0035 00       		.byte	0
+ 502 0036 05       		.uleb128 0x5
+ 503 0037 35       		.uleb128 0x35
+ 504 0038 00       		.byte	0
+ 505 0039 49       		.uleb128 0x49
+ 506 003a 13       		.uleb128 0x13
+ 507 003b 00       		.byte	0
+ 508 003c 00       		.byte	0
+ 509 003d 06       		.uleb128 0x6
+ 510 003e 13       		.uleb128 0x13
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 13
+
+
+ 511 003f 01       		.byte	0x1
+ 512 0040 0B       		.uleb128 0xb
+ 513 0041 0B       		.uleb128 0xb
+ 514 0042 3A       		.uleb128 0x3a
+ 515 0043 0B       		.uleb128 0xb
+ 516 0044 3B       		.uleb128 0x3b
+ 517 0045 0B       		.uleb128 0xb
+ 518 0046 01       		.uleb128 0x1
+ 519 0047 13       		.uleb128 0x13
+ 520 0048 00       		.byte	0
+ 521 0049 00       		.byte	0
+ 522 004a 07       		.uleb128 0x7
+ 523 004b 0D       		.uleb128 0xd
+ 524 004c 00       		.byte	0
+ 525 004d 03       		.uleb128 0x3
+ 526 004e 0E       		.uleb128 0xe
+ 527 004f 3A       		.uleb128 0x3a
+ 528 0050 0B       		.uleb128 0xb
+ 529 0051 3B       		.uleb128 0x3b
+ 530 0052 0B       		.uleb128 0xb
+ 531 0053 49       		.uleb128 0x49
+ 532 0054 13       		.uleb128 0x13
+ 533 0055 38       		.uleb128 0x38
+ 534 0056 0B       		.uleb128 0xb
+ 535 0057 00       		.byte	0
+ 536 0058 00       		.byte	0
+ 537 0059 08       		.uleb128 0x8
+ 538 005a 0D       		.uleb128 0xd
+ 539 005b 00       		.byte	0
+ 540 005c 03       		.uleb128 0x3
+ 541 005d 08       		.uleb128 0x8
+ 542 005e 3A       		.uleb128 0x3a
+ 543 005f 0B       		.uleb128 0xb
+ 544 0060 3B       		.uleb128 0x3b
+ 545 0061 0B       		.uleb128 0xb
+ 546 0062 49       		.uleb128 0x49
+ 547 0063 13       		.uleb128 0x13
+ 548 0064 38       		.uleb128 0x38
+ 549 0065 0B       		.uleb128 0xb
+ 550 0066 00       		.byte	0
+ 551 0067 00       		.byte	0
+ 552 0068 09       		.uleb128 0x9
+ 553 0069 01       		.uleb128 0x1
+ 554 006a 01       		.byte	0x1
+ 555 006b 49       		.uleb128 0x49
+ 556 006c 13       		.uleb128 0x13
+ 557 006d 01       		.uleb128 0x1
+ 558 006e 13       		.uleb128 0x13
+ 559 006f 00       		.byte	0
+ 560 0070 00       		.byte	0
+ 561 0071 0A       		.uleb128 0xa
+ 562 0072 21       		.uleb128 0x21
+ 563 0073 00       		.byte	0
+ 564 0074 49       		.uleb128 0x49
+ 565 0075 13       		.uleb128 0x13
+ 566 0076 2F       		.uleb128 0x2f
+ 567 0077 0B       		.uleb128 0xb
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 14
+
+
+ 568 0078 00       		.byte	0
+ 569 0079 00       		.byte	0
+ 570 007a 0B       		.uleb128 0xb
+ 571 007b 16       		.uleb128 0x16
+ 572 007c 00       		.byte	0
+ 573 007d 03       		.uleb128 0x3
+ 574 007e 0E       		.uleb128 0xe
+ 575 007f 3A       		.uleb128 0x3a
+ 576 0080 0B       		.uleb128 0xb
+ 577 0081 3B       		.uleb128 0x3b
+ 578 0082 0B       		.uleb128 0xb
+ 579 0083 49       		.uleb128 0x49
+ 580 0084 13       		.uleb128 0x13
+ 581 0085 00       		.byte	0
+ 582 0086 00       		.byte	0
+ 583 0087 0C       		.uleb128 0xc
+ 584 0088 2E       		.uleb128 0x2e
+ 585 0089 00       		.byte	0
+ 586 008a 3F       		.uleb128 0x3f
+ 587 008b 19       		.uleb128 0x19
+ 588 008c 03       		.uleb128 0x3
+ 589 008d 0E       		.uleb128 0xe
+ 590 008e 3A       		.uleb128 0x3a
+ 591 008f 0B       		.uleb128 0xb
+ 592 0090 3B       		.uleb128 0x3b
+ 593 0091 0B       		.uleb128 0xb
+ 594 0092 27       		.uleb128 0x27
+ 595 0093 19       		.uleb128 0x19
+ 596 0094 11       		.uleb128 0x11
+ 597 0095 01       		.uleb128 0x1
+ 598 0096 12       		.uleb128 0x12
+ 599 0097 06       		.uleb128 0x6
+ 600 0098 40       		.uleb128 0x40
+ 601 0099 18       		.uleb128 0x18
+ 602 009a 9742     		.uleb128 0x2117
+ 603 009c 19       		.uleb128 0x19
+ 604 009d 00       		.byte	0
+ 605 009e 00       		.byte	0
+ 606 009f 0D       		.uleb128 0xd
+ 607 00a0 2E       		.uleb128 0x2e
+ 608 00a1 01       		.byte	0x1
+ 609 00a2 3F       		.uleb128 0x3f
+ 610 00a3 19       		.uleb128 0x19
+ 611 00a4 03       		.uleb128 0x3
+ 612 00a5 0E       		.uleb128 0xe
+ 613 00a6 3A       		.uleb128 0x3a
+ 614 00a7 0B       		.uleb128 0xb
+ 615 00a8 3B       		.uleb128 0x3b
+ 616 00a9 0B       		.uleb128 0xb
+ 617 00aa 27       		.uleb128 0x27
+ 618 00ab 19       		.uleb128 0x19
+ 619 00ac 11       		.uleb128 0x11
+ 620 00ad 01       		.uleb128 0x1
+ 621 00ae 12       		.uleb128 0x12
+ 622 00af 06       		.uleb128 0x6
+ 623 00b0 40       		.uleb128 0x40
+ 624 00b1 18       		.uleb128 0x18
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 15
+
+
+ 625 00b2 9742     		.uleb128 0x2117
+ 626 00b4 19       		.uleb128 0x19
+ 627 00b5 01       		.uleb128 0x1
+ 628 00b6 13       		.uleb128 0x13
+ 629 00b7 00       		.byte	0
+ 630 00b8 00       		.byte	0
+ 631 00b9 0E       		.uleb128 0xe
+ 632 00ba 898201   		.uleb128 0x4109
+ 633 00bd 00       		.byte	0
+ 634 00be 11       		.uleb128 0x11
+ 635 00bf 01       		.uleb128 0x1
+ 636 00c0 31       		.uleb128 0x31
+ 637 00c1 13       		.uleb128 0x13
+ 638 00c2 00       		.byte	0
+ 639 00c3 00       		.byte	0
+ 640 00c4 0F       		.uleb128 0xf
+ 641 00c5 34       		.uleb128 0x34
+ 642 00c6 00       		.byte	0
+ 643 00c7 03       		.uleb128 0x3
+ 644 00c8 0E       		.uleb128 0xe
+ 645 00c9 3A       		.uleb128 0x3a
+ 646 00ca 0B       		.uleb128 0xb
+ 647 00cb 3B       		.uleb128 0x3b
+ 648 00cc 0B       		.uleb128 0xb
+ 649 00cd 49       		.uleb128 0x49
+ 650 00ce 13       		.uleb128 0x13
+ 651 00cf 02       		.uleb128 0x2
+ 652 00d0 18       		.uleb128 0x18
+ 653 00d1 00       		.byte	0
+ 654 00d2 00       		.byte	0
+ 655 00d3 10       		.uleb128 0x10
+ 656 00d4 2E       		.uleb128 0x2e
+ 657 00d5 00       		.byte	0
+ 658 00d6 3F       		.uleb128 0x3f
+ 659 00d7 19       		.uleb128 0x19
+ 660 00d8 03       		.uleb128 0x3
+ 661 00d9 0E       		.uleb128 0xe
+ 662 00da 3A       		.uleb128 0x3a
+ 663 00db 0B       		.uleb128 0xb
+ 664 00dc 3B       		.uleb128 0x3b
+ 665 00dd 0B       		.uleb128 0xb
+ 666 00de 27       		.uleb128 0x27
+ 667 00df 19       		.uleb128 0x19
+ 668 00e0 3C       		.uleb128 0x3c
+ 669 00e1 19       		.uleb128 0x19
+ 670 00e2 00       		.byte	0
+ 671 00e3 00       		.byte	0
+ 672 00e4 00       		.byte	0
+ 673              		.section	.debug_aranges,"",%progbits
+ 674 0000 34000000 		.4byte	0x34
+ 675 0004 0200     		.2byte	0x2
+ 676 0006 00000000 		.4byte	.Ldebug_info0
+ 677 000a 04       		.byte	0x4
+ 678 000b 00       		.byte	0
+ 679 000c 0000     		.2byte	0
+ 680 000e 0000     		.2byte	0
+ 681 0010 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 16
+
+
+ 682 0014 4C000000 		.4byte	.LFE0-.LFB0
+ 683 0018 00000000 		.4byte	.LFB1
+ 684 001c 54000000 		.4byte	.LFE1-.LFB1
+ 685 0020 00000000 		.4byte	.LFB2
+ 686 0024 2C000000 		.4byte	.LFE2-.LFB2
+ 687 0028 00000000 		.4byte	.LFB3
+ 688 002c 18000000 		.4byte	.LFE3-.LFB3
+ 689 0030 00000000 		.4byte	0
+ 690 0034 00000000 		.4byte	0
+ 691              		.section	.debug_ranges,"",%progbits
+ 692              	.Ldebug_ranges0:
+ 693 0000 00000000 		.4byte	.LFB0
+ 694 0004 4C000000 		.4byte	.LFE0
+ 695 0008 00000000 		.4byte	.LFB1
+ 696 000c 54000000 		.4byte	.LFE1
+ 697 0010 00000000 		.4byte	.LFB2
+ 698 0014 2C000000 		.4byte	.LFE2
+ 699 0018 00000000 		.4byte	.LFB3
+ 700 001c 18000000 		.4byte	.LFE3
+ 701 0020 00000000 		.4byte	0
+ 702 0024 00000000 		.4byte	0
+ 703              		.section	.debug_line,"",%progbits
+ 704              	.Ldebug_line0:
+ 705 0000 AE000000 		.section	.debug_str,"MS",%progbits,1
+ 705      02005400 
+ 705      00000201 
+ 705      FB0E0D00 
+ 705      01010101 
+ 706              	.LASF28:
+ 707 0000 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 707      73657273 
+ 707      5C637275 
+ 707      69736572 
+ 707      5C446F63 
+ 708 002e 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
+ 708      6C74726F 
+ 708      6E204D61 
+ 708      696E2E63 
+ 708      7964736E 
+ 709              	.LASF17:
+ 710 0043 73656D61 		.ascii	"sema\000"
+ 710      00
+ 711              	.LASF22:
+ 712 0048 46696C74 		.ascii	"Filter_Sleep\000"
+ 712      65725F53 
+ 712      6C656570 
+ 712      00
+ 713              	.LASF25:
+ 714 0055 46696C74 		.ascii	"Filter_Enable\000"
+ 714      65725F45 
+ 714      6E61626C 
+ 714      6500
+ 715              	.LASF21:
+ 716 0063 46696C74 		.ascii	"Filter_RestoreConfig\000"
+ 716      65725F52 
+ 716      6573746F 
+ 716      7265436F 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 17
+
+
+ 716      6E666967 
+ 717              	.LASF13:
+ 718 0078 666C6F61 		.ascii	"float\000"
+ 718      7400
+ 719              	.LASF2:
+ 720 007e 756E7369 		.ascii	"unsigned char\000"
+ 720      676E6564 
+ 720      20636861 
+ 720      7200
+ 721              	.LASF24:
+ 722 008c 46696C74 		.ascii	"Filter_Stop\000"
+ 722      65725F53 
+ 722      746F7000 
+ 723              	.LASF15:
+ 724 0098 72656738 		.ascii	"reg8\000"
+ 724      00
+ 725              	.LASF6:
+ 726 009d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 726      20756E73 
+ 726      69676E65 
+ 726      6420696E 
+ 726      7400
+ 727              	.LASF11:
+ 728 00af 75696E74 		.ascii	"uint8\000"
+ 728      3800
+ 729              	.LASF23:
+ 730 00b5 46696C74 		.ascii	"Filter_Wakeup\000"
+ 730      65725F57 
+ 730      616B6575 
+ 730      7000
+ 731              	.LASF14:
+ 732 00c3 646F7562 		.ascii	"double\000"
+ 732      6C6500
+ 733              	.LASF20:
+ 734 00ca 46696C74 		.ascii	"Filter_SaveConfig\000"
+ 734      65725F53 
+ 734      61766543 
+ 734      6F6E6669 
+ 734      6700
+ 735              	.LASF29:
+ 736 00dc 46696C74 		.ascii	"Filter_backup\000"
+ 736      65725F62 
+ 736      61636B75 
+ 736      7000
+ 737              	.LASF12:
+ 738 00ea 75696E74 		.ascii	"uint16\000"
+ 738      313600
+ 739              	.LASF27:
+ 740 00f1 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_PM.c\000"
+ 740      6E657261 
+ 740      7465645F 
+ 740      536F7572 
+ 740      63655C50 
+ 741              	.LASF26:
+ 742 0116 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 742      4320342E 
+ 742      392E3320 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 18
+
+
+ 742      32303135 
+ 742      30333033 
+ 743 0149 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 743      20726576 
+ 743      6973696F 
+ 743      6E203232 
+ 743      31323230 
+ 744 017c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 744      66756E63 
+ 744      74696F6E 
+ 744      2D736563 
+ 744      74696F6E 
+ 745              	.LASF0:
+ 746 01a4 756E7369 		.ascii	"unsigned int\000"
+ 746      676E6564 
+ 746      20696E74 
+ 746      00
+ 747              	.LASF19:
+ 748 01b1 46696C74 		.ascii	"Filter_backupStruct\000"
+ 748      65725F62 
+ 748      61636B75 
+ 748      70537472 
+ 748      75637400 
+ 749              	.LASF8:
+ 750 01c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 750      206C6F6E 
+ 750      6720756E 
+ 750      7369676E 
+ 750      65642069 
+ 751              	.LASF9:
+ 752 01dc 73697A65 		.ascii	"sizetype\000"
+ 752      74797065 
+ 752      00
+ 753              	.LASF7:
+ 754 01e5 6C6F6E67 		.ascii	"long long int\000"
+ 754      206C6F6E 
+ 754      6720696E 
+ 754      7400
+ 755              	.LASF10:
+ 756 01f3 63686172 		.ascii	"char\000"
+ 756      00
+ 757              	.LASF3:
+ 758 01f8 73686F72 		.ascii	"short int\000"
+ 758      7420696E 
+ 758      7400
+ 759              	.LASF18:
+ 760 0202 73617665 		.ascii	"saveAcu\000"
+ 760      41637500 
+ 761              	.LASF5:
+ 762 020a 6C6F6E67 		.ascii	"long int\000"
+ 762      20696E74 
+ 762      00
+ 763              	.LASF16:
+ 764 0213 656E6162 		.ascii	"enableState\000"
+ 764      6C655374 
+ 764      61746500 
+ 765              	.LASF1:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccm8ogoE.s 			page 19
+
+
+ 766 021f 7369676E 		.ascii	"signed char\000"
+ 766      65642063 
+ 766      68617200 
+ 767              	.LASF4:
+ 768 022b 73686F72 		.ascii	"short unsigned int\000"
+ 768      7420756E 
+ 768      7369676E 
+ 768      65642069 
+ 768      6E7400
+ 769              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

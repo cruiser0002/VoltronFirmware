@@ -1,0 +1,1374 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PGA3.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.PGA3_Enable,"ax",%progbits
+  19              		.align	2
+  20              		.global	PGA3_Enable
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	PGA3_Enable, %function
+  24              	PGA3_Enable:
+  25              	.LFB1:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\PGA3.c"
+   1:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/PGA3.c **** * File Name: PGA3.c  
+   3:.\Generated_Source\PSoC5/PGA3.c **** * Version 2.0
+   4:.\Generated_Source\PSoC5/PGA3.c **** *
+   5:.\Generated_Source\PSoC5/PGA3.c **** * Description:
+   6:.\Generated_Source\PSoC5/PGA3.c **** *  This file provides the source code to the API for the PGA 
+   7:.\Generated_Source\PSoC5/PGA3.c **** *  User Module.
+   8:.\Generated_Source\PSoC5/PGA3.c **** *
+   9:.\Generated_Source\PSoC5/PGA3.c **** * Note:
+  10:.\Generated_Source\PSoC5/PGA3.c **** *
+  11:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/PGA3.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/PGA3.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/PGA3.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/PGA3.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/PGA3.c **** 
+  18:.\Generated_Source\PSoC5/PGA3.c **** #include "PGA3.h"
+  19:.\Generated_Source\PSoC5/PGA3.c **** 
+  20:.\Generated_Source\PSoC5/PGA3.c **** #if (!CY_PSOC5A)
+  21:.\Generated_Source\PSoC5/PGA3.c ****     #if (CYDEV_VARIABLE_VDDA == 1u)
+  22:.\Generated_Source\PSoC5/PGA3.c ****         #include "CyScBoostClk.h"
+  23:.\Generated_Source\PSoC5/PGA3.c ****     #endif /* (CYDEV_VARIABLE_VDDA == 1u) */
+  24:.\Generated_Source\PSoC5/PGA3.c **** #endif /* (!CY_PSOC5A) */
+  25:.\Generated_Source\PSoC5/PGA3.c **** 
+  26:.\Generated_Source\PSoC5/PGA3.c **** #if (CY_PSOC5A)
+  27:.\Generated_Source\PSoC5/PGA3.c ****     static PGA3_BACKUP_STRUCT  PGA3_P5backup;
+  28:.\Generated_Source\PSoC5/PGA3.c **** #endif /* (CY_ PSOC5A) */
+  29:.\Generated_Source\PSoC5/PGA3.c **** 
+  30:.\Generated_Source\PSoC5/PGA3.c **** uint8 PGA3_initVar = 0u;
+  31:.\Generated_Source\PSoC5/PGA3.c **** 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/PGA3.c **** 
+  33:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************   
+  34:.\Generated_Source\PSoC5/PGA3.c **** * Function Name: PGA3_Init
+  35:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+  36:.\Generated_Source\PSoC5/PGA3.c **** *
+  37:.\Generated_Source\PSoC5/PGA3.c **** * Summary:
+  38:.\Generated_Source\PSoC5/PGA3.c **** *  Initialize component's parameters to the parameters set by user in the 
+  39:.\Generated_Source\PSoC5/PGA3.c **** *  customizer of the component placed onto schematic. Usually called in 
+  40:.\Generated_Source\PSoC5/PGA3.c **** *  PGA3_Start().
+  41:.\Generated_Source\PSoC5/PGA3.c **** *
+  42:.\Generated_Source\PSoC5/PGA3.c **** * Parameters:
+  43:.\Generated_Source\PSoC5/PGA3.c **** *  void
+  44:.\Generated_Source\PSoC5/PGA3.c **** *
+  45:.\Generated_Source\PSoC5/PGA3.c **** * Return:
+  46:.\Generated_Source\PSoC5/PGA3.c **** *  void
+  47:.\Generated_Source\PSoC5/PGA3.c **** *
+  48:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+  49:.\Generated_Source\PSoC5/PGA3.c **** void PGA3_Init(void) 
+  50:.\Generated_Source\PSoC5/PGA3.c **** {
+  51:.\Generated_Source\PSoC5/PGA3.c ****     /* Set PGA mode */
+  52:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_CR0_REG = PGA3_MODE_PGA;      
+  53:.\Generated_Source\PSoC5/PGA3.c ****     /* Set non-inverting PGA mode and reference mode */
+  54:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_CR1_REG |= PGA3_PGA_NINV;  
+  55:.\Generated_Source\PSoC5/PGA3.c ****     /* Set default gain and ref mode */
+  56:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_CR2_REG = PGA3_VREF_MODE;
+  57:.\Generated_Source\PSoC5/PGA3.c ****     /* Set gain and compensation */
+  58:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_SetGain(PGA3_DEFAULT_GAIN);
+  59:.\Generated_Source\PSoC5/PGA3.c ****     /* Set power */
+  60:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_SetPower(PGA3_DEFAULT_POWER);
+  61:.\Generated_Source\PSoC5/PGA3.c **** }
+  62:.\Generated_Source\PSoC5/PGA3.c **** 
+  63:.\Generated_Source\PSoC5/PGA3.c **** 
+  64:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************   
+  65:.\Generated_Source\PSoC5/PGA3.c **** * Function Name: PGA3_Enable
+  66:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+  67:.\Generated_Source\PSoC5/PGA3.c **** *
+  68:.\Generated_Source\PSoC5/PGA3.c **** * Summary:
+  69:.\Generated_Source\PSoC5/PGA3.c **** *  Enables the PGA block operation.
+  70:.\Generated_Source\PSoC5/PGA3.c **** *
+  71:.\Generated_Source\PSoC5/PGA3.c **** * Parameters:
+  72:.\Generated_Source\PSoC5/PGA3.c **** *  void
+  73:.\Generated_Source\PSoC5/PGA3.c **** *
+  74:.\Generated_Source\PSoC5/PGA3.c **** * Return:
+  75:.\Generated_Source\PSoC5/PGA3.c **** *  void
+  76:.\Generated_Source\PSoC5/PGA3.c **** *
+  77:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+  78:.\Generated_Source\PSoC5/PGA3.c **** void PGA3_Enable(void) 
+  79:.\Generated_Source\PSoC5/PGA3.c **** {
+  27              		.loc 1 79 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  80:.\Generated_Source\PSoC5/PGA3.c ****     /* This is to restore the value of register CR1 and CR2 which is saved 
+  81:.\Generated_Source\PSoC5/PGA3.c ****       in prior to the modifications in stop() API */
+  82:.\Generated_Source\PSoC5/PGA3.c ****     #if (CY_PSOC5A)
+  83:.\Generated_Source\PSoC5/PGA3.c ****         if(PGA3_P5backup.enableState == 1u)
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 3
+
+
+  84:.\Generated_Source\PSoC5/PGA3.c ****         {
+  85:.\Generated_Source\PSoC5/PGA3.c ****             PGA3_CR1_REG = PGA3_P5backup.scCR1Reg;
+  86:.\Generated_Source\PSoC5/PGA3.c ****             PGA3_CR2_REG = PGA3_P5backup.scCR2Reg;
+  87:.\Generated_Source\PSoC5/PGA3.c ****             PGA3_P5backup.enableState = 0u;
+  88:.\Generated_Source\PSoC5/PGA3.c ****         }
+  89:.\Generated_Source\PSoC5/PGA3.c ****     #endif /* CY_PSOC5A */   
+  90:.\Generated_Source\PSoC5/PGA3.c **** 
+  91:.\Generated_Source\PSoC5/PGA3.c ****     /* Enable power to the Amp in Active mode*/
+  92:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_PM_ACT_CFG_REG |= PGA3_ACT_PWR_EN;
+  32              		.loc 1 92 0
+  33 0000 084A     		ldr	r2, .L2
+  34 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  35 0004 43F00103 		orr	r3, r3, #1
+  36 0008 1370     		strb	r3, [r2]
+  93:.\Generated_Source\PSoC5/PGA3.c **** 
+  94:.\Generated_Source\PSoC5/PGA3.c ****     /* Enable power to the Amp in Alternative Active mode*/
+  95:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_PM_STBY_CFG_REG |= PGA3_STBY_PWR_EN;
+  37              		.loc 1 95 0
+  38 000a 1032     		adds	r2, r2, #16
+  39 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  40 000e 43F00103 		orr	r3, r3, #1
+  41 0012 1370     		strb	r3, [r2]
+  96:.\Generated_Source\PSoC5/PGA3.c ****     
+  97:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_PUMP_CR1_REG |= PGA3_PUMP_CR1_SC_CLKSEL;
+  42              		.loc 1 97 0
+  43 0014 02F5A552 		add	r2, r2, #5280
+  44 0018 1E32     		adds	r2, r2, #30
+  45 001a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  46 001c 43F08003 		orr	r3, r3, #128
+  47 0020 1370     		strb	r3, [r2]
+  48 0022 7047     		bx	lr
+  49              	.L3:
+  50              		.align	2
+  51              	.L2:
+  52 0024 A9430040 		.word	1073759145
+  53              		.cfi_endproc
+  54              	.LFE1:
+  55              		.size	PGA3_Enable, .-PGA3_Enable
+  56              		.section	.text.PGA3_Stop,"ax",%progbits
+  57              		.align	2
+  58              		.global	PGA3_Stop
+  59              		.thumb
+  60              		.thumb_func
+  61              		.type	PGA3_Stop, %function
+  62              	PGA3_Stop:
+  63              	.LFB3:
+  98:.\Generated_Source\PSoC5/PGA3.c ****     
+  99:.\Generated_Source\PSoC5/PGA3.c ****     #if (!CY_PSOC5A)
+ 100:.\Generated_Source\PSoC5/PGA3.c ****         #if (CYDEV_VARIABLE_VDDA == 1u)
+ 101:.\Generated_Source\PSoC5/PGA3.c ****             if(CyScPumpEnabled == 1u)
+ 102:.\Generated_Source\PSoC5/PGA3.c ****             {
+ 103:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_BSTCLK_REG &= (uint8)(~PGA3_BST_CLK_INDEX_MASK);
+ 104:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_BSTCLK_REG |= PGA3_BST_CLK_EN | CyScBoostClk__INDEX;
+ 105:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_SC_MISC_REG |= PGA3_PUMP_FORCE;
+ 106:.\Generated_Source\PSoC5/PGA3.c ****                 CyScBoostClk_Start();
+ 107:.\Generated_Source\PSoC5/PGA3.c ****             }
+ 108:.\Generated_Source\PSoC5/PGA3.c ****             else
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 4
+
+
+ 109:.\Generated_Source\PSoC5/PGA3.c ****             {
+ 110:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_BSTCLK_REG &= (uint8)(~PGA3_BST_CLK_EN);
+ 111:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_SC_MISC_REG &= (uint8)(~PGA3_PUMP_FORCE);
+ 112:.\Generated_Source\PSoC5/PGA3.c ****             }
+ 113:.\Generated_Source\PSoC5/PGA3.c ****         #endif /* (CYDEV_VARIABLE_VDDA == 1u) */
+ 114:.\Generated_Source\PSoC5/PGA3.c ****     #endif /* (!CY_PSOC5A) */
+ 115:.\Generated_Source\PSoC5/PGA3.c **** }
+ 116:.\Generated_Source\PSoC5/PGA3.c **** 
+ 117:.\Generated_Source\PSoC5/PGA3.c **** 
+ 118:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************
+ 119:.\Generated_Source\PSoC5/PGA3.c **** * Function Name: PGA3_Start
+ 120:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+ 121:.\Generated_Source\PSoC5/PGA3.c **** *
+ 122:.\Generated_Source\PSoC5/PGA3.c **** * Summary:
+ 123:.\Generated_Source\PSoC5/PGA3.c **** *  The start function initializes the PGA with the default values and sets
+ 124:.\Generated_Source\PSoC5/PGA3.c **** *  the power to the given level. A power level of 0, is same as executing
+ 125:.\Generated_Source\PSoC5/PGA3.c **** *  the stop function.
+ 126:.\Generated_Source\PSoC5/PGA3.c **** *
+ 127:.\Generated_Source\PSoC5/PGA3.c **** * Parameters:
+ 128:.\Generated_Source\PSoC5/PGA3.c **** *  void
+ 129:.\Generated_Source\PSoC5/PGA3.c **** *
+ 130:.\Generated_Source\PSoC5/PGA3.c **** * Return:
+ 131:.\Generated_Source\PSoC5/PGA3.c **** *  void
+ 132:.\Generated_Source\PSoC5/PGA3.c **** *
+ 133:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+ 134:.\Generated_Source\PSoC5/PGA3.c **** void PGA3_Start(void) 
+ 135:.\Generated_Source\PSoC5/PGA3.c **** {
+ 136:.\Generated_Source\PSoC5/PGA3.c **** 
+ 137:.\Generated_Source\PSoC5/PGA3.c ****     /* This is to restore the value of register CR1 and CR2 which is saved 
+ 138:.\Generated_Source\PSoC5/PGA3.c ****       in prior to the modification in stop() API */
+ 139:.\Generated_Source\PSoC5/PGA3.c **** 
+ 140:.\Generated_Source\PSoC5/PGA3.c ****     if(PGA3_initVar == 0u)
+ 141:.\Generated_Source\PSoC5/PGA3.c ****     {
+ 142:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_Init();
+ 143:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_initVar = 1u;
+ 144:.\Generated_Source\PSoC5/PGA3.c ****     }
+ 145:.\Generated_Source\PSoC5/PGA3.c **** 
+ 146:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_Enable();
+ 147:.\Generated_Source\PSoC5/PGA3.c **** }
+ 148:.\Generated_Source\PSoC5/PGA3.c **** 
+ 149:.\Generated_Source\PSoC5/PGA3.c **** 
+ 150:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************
+ 151:.\Generated_Source\PSoC5/PGA3.c **** * Function Name: PGA3_Stop
+ 152:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+ 153:.\Generated_Source\PSoC5/PGA3.c **** *
+ 154:.\Generated_Source\PSoC5/PGA3.c **** * Summary:
+ 155:.\Generated_Source\PSoC5/PGA3.c **** *  Powers down amplifier to lowest power state.
+ 156:.\Generated_Source\PSoC5/PGA3.c **** *
+ 157:.\Generated_Source\PSoC5/PGA3.c **** * Parameters:
+ 158:.\Generated_Source\PSoC5/PGA3.c **** *  void
+ 159:.\Generated_Source\PSoC5/PGA3.c **** *
+ 160:.\Generated_Source\PSoC5/PGA3.c **** * Return:
+ 161:.\Generated_Source\PSoC5/PGA3.c **** *  void
+ 162:.\Generated_Source\PSoC5/PGA3.c **** *
+ 163:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+ 164:.\Generated_Source\PSoC5/PGA3.c **** void PGA3_Stop(void) 
+ 165:.\Generated_Source\PSoC5/PGA3.c **** { 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 5
+
+
+  64              		.loc 1 165 0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+ 166:.\Generated_Source\PSoC5/PGA3.c ****     /* Disble power to the Amp in Active mode template */
+ 167:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_PM_ACT_CFG_REG &= (uint8)(~PGA3_ACT_PWR_EN);
+  69              		.loc 1 167 0
+  70 0000 054A     		ldr	r2, .L5
+  71 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  72 0004 03F0FE03 		and	r3, r3, #254
+  73 0008 1370     		strb	r3, [r2]
+ 168:.\Generated_Source\PSoC5/PGA3.c **** 
+ 169:.\Generated_Source\PSoC5/PGA3.c ****     /* Disble power to the Amp in Alternative Active mode template */
+ 170:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_PM_STBY_CFG_REG &= (uint8)(~PGA3_STBY_PWR_EN);
+  74              		.loc 1 170 0
+  75 000a 1032     		adds	r2, r2, #16
+  76 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  77 000e 03F0FE03 		and	r3, r3, #254
+  78 0012 1370     		strb	r3, [r2]
+  79 0014 7047     		bx	lr
+  80              	.L6:
+  81 0016 00BF     		.align	2
+  82              	.L5:
+  83 0018 A9430040 		.word	1073759145
+  84              		.cfi_endproc
+  85              	.LFE3:
+  86              		.size	PGA3_Stop, .-PGA3_Stop
+  87              		.section	.text.PGA3_SetPower,"ax",%progbits
+  88              		.align	2
+  89              		.global	PGA3_SetPower
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	PGA3_SetPower, %function
+  93              	PGA3_SetPower:
+  94              	.LFB4:
+ 171:.\Generated_Source\PSoC5/PGA3.c **** 
+ 172:.\Generated_Source\PSoC5/PGA3.c ****     #if (!CY_PSOC5A)
+ 173:.\Generated_Source\PSoC5/PGA3.c ****         #if (CYDEV_VARIABLE_VDDA == 1u)
+ 174:.\Generated_Source\PSoC5/PGA3.c ****             PGA3_BSTCLK_REG &= (uint8)(~PGA3_BST_CLK_EN);
+ 175:.\Generated_Source\PSoC5/PGA3.c ****             /* Disable pumps only if there aren't any SC block in use */
+ 176:.\Generated_Source\PSoC5/PGA3.c ****             if ((PGA3_PM_ACT_CFG_REG & PGA3_PM_ACT_CFG_MASK) == 0u)
+ 177:.\Generated_Source\PSoC5/PGA3.c ****             {
+ 178:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_SC_MISC_REG &= (uint8)(~PGA3_PUMP_FORCE);
+ 179:.\Generated_Source\PSoC5/PGA3.c ****                 PGA3_PUMP_CR1_REG &= (uint8)(~PGA3_PUMP_CR1_SC_CLKSEL);
+ 180:.\Generated_Source\PSoC5/PGA3.c ****                 CyScBoostClk_Stop();
+ 181:.\Generated_Source\PSoC5/PGA3.c ****             }
+ 182:.\Generated_Source\PSoC5/PGA3.c ****         #endif /* CYDEV_VARIABLE_VDDA == 1u */
+ 183:.\Generated_Source\PSoC5/PGA3.c ****     #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+ 184:.\Generated_Source\PSoC5/PGA3.c **** 
+ 185:.\Generated_Source\PSoC5/PGA3.c ****     /* This sets PGA in zero current mode and output routes are valid */
+ 186:.\Generated_Source\PSoC5/PGA3.c ****     #if (CY_PSOC5A)
+ 187:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_P5backup.scCR1Reg = PGA3_CR1_REG;
+ 188:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_P5backup.scCR2Reg = PGA3_CR2_REG;
+ 189:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_CR1_REG = 0x00u;
+ 190:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_CR2_REG = 0x00u;
+ 191:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_P5backup.enableState = 1u;
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 6
+
+
+ 192:.\Generated_Source\PSoC5/PGA3.c ****     #endif /* CY_PSOC5A */
+ 193:.\Generated_Source\PSoC5/PGA3.c **** }
+ 194:.\Generated_Source\PSoC5/PGA3.c **** 
+ 195:.\Generated_Source\PSoC5/PGA3.c **** 
+ 196:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************
+ 197:.\Generated_Source\PSoC5/PGA3.c **** * Function Name: PGA3_SetPower
+ 198:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+ 199:.\Generated_Source\PSoC5/PGA3.c **** *
+ 200:.\Generated_Source\PSoC5/PGA3.c **** * Summary:
+ 201:.\Generated_Source\PSoC5/PGA3.c **** *  Set the power of the PGA.
+ 202:.\Generated_Source\PSoC5/PGA3.c **** *
+ 203:.\Generated_Source\PSoC5/PGA3.c **** * Parameters:
+ 204:.\Generated_Source\PSoC5/PGA3.c **** *  power: Sets power level between (0) and (3) high power
+ 205:.\Generated_Source\PSoC5/PGA3.c **** *
+ 206:.\Generated_Source\PSoC5/PGA3.c **** * Return:
+ 207:.\Generated_Source\PSoC5/PGA3.c **** *  void
+ 208:.\Generated_Source\PSoC5/PGA3.c **** *
+ 209:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+ 210:.\Generated_Source\PSoC5/PGA3.c **** void PGA3_SetPower(uint8 power) 
+ 211:.\Generated_Source\PSoC5/PGA3.c **** {
+  95              		.loc 1 211 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		@ link register save eliminated.
+ 100              	.LVL0:
+ 212:.\Generated_Source\PSoC5/PGA3.c ****     uint8 tmpCR;
+ 213:.\Generated_Source\PSoC5/PGA3.c **** 
+ 214:.\Generated_Source\PSoC5/PGA3.c ****     tmpCR = PGA3_CR1_REG & (uint8)(~PGA3_DRIVE_MASK);
+ 101              		.loc 1 214 0
+ 102 0000 044A     		ldr	r2, .L8
+ 103 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 104 0004 03F0FC03 		and	r3, r3, #252
+ 105              	.LVL1:
+ 215:.\Generated_Source\PSoC5/PGA3.c ****     tmpCR |= (power & PGA3_DRIVE_MASK);
+ 106              		.loc 1 215 0
+ 107 0008 00F00300 		and	r0, r0, #3
+ 108              	.LVL2:
+ 109 000c 1843     		orrs	r0, r0, r3
+ 110              	.LVL3:
+ 216:.\Generated_Source\PSoC5/PGA3.c ****     PGA3_CR1_REG = tmpCR;  
+ 111              		.loc 1 216 0
+ 112 000e 1070     		strb	r0, [r2]
+ 113 0010 7047     		bx	lr
+ 114              	.L9:
+ 115 0012 00BF     		.align	2
+ 116              	.L8:
+ 117 0014 01580040 		.word	1073764353
+ 118              		.cfi_endproc
+ 119              	.LFE4:
+ 120              		.size	PGA3_SetPower, .-PGA3_SetPower
+ 121              		.section	.text.PGA3_SetGain,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	PGA3_SetGain
+ 124              		.thumb
+ 125              		.thumb_func
+ 126              		.type	PGA3_SetGain, %function
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 7
+
+
+ 127              	PGA3_SetGain:
+ 128              	.LFB5:
+ 217:.\Generated_Source\PSoC5/PGA3.c **** }
+ 218:.\Generated_Source\PSoC5/PGA3.c **** 
+ 219:.\Generated_Source\PSoC5/PGA3.c **** 
+ 220:.\Generated_Source\PSoC5/PGA3.c **** /*******************************************************************************
+ 221:.\Generated_Source\PSoC5/PGA3.c **** * Function Name: PGA3_SetGain
+ 222:.\Generated_Source\PSoC5/PGA3.c **** ********************************************************************************
+ 223:.\Generated_Source\PSoC5/PGA3.c **** *
+ 224:.\Generated_Source\PSoC5/PGA3.c **** * Summary:
+ 225:.\Generated_Source\PSoC5/PGA3.c **** *  This function sets values of the input and feedback resistors to set a 
+ 226:.\Generated_Source\PSoC5/PGA3.c **** *  specific gain of the amplifier.
+ 227:.\Generated_Source\PSoC5/PGA3.c **** *
+ 228:.\Generated_Source\PSoC5/PGA3.c **** * Parameters:
+ 229:.\Generated_Source\PSoC5/PGA3.c **** *  gain: Gain value of PGA (See header file for gain values.)
+ 230:.\Generated_Source\PSoC5/PGA3.c **** *
+ 231:.\Generated_Source\PSoC5/PGA3.c **** * Return:
+ 232:.\Generated_Source\PSoC5/PGA3.c **** *  void 
+ 233:.\Generated_Source\PSoC5/PGA3.c **** *
+ 234:.\Generated_Source\PSoC5/PGA3.c **** *******************************************************************************/
+ 235:.\Generated_Source\PSoC5/PGA3.c **** void PGA3_SetGain(uint8 gain) 
+ 236:.\Generated_Source\PSoC5/PGA3.c **** {
+ 129              		.loc 1 236 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 24
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 134              	.LVL4:
+ 135 0000 10B4     		push	{r4}
+ 136              		.cfi_def_cfa_offset 4
+ 137              		.cfi_offset 4, -4
+ 138 0002 87B0     		sub	sp, sp, #28
+ 139              		.cfi_def_cfa_offset 32
+ 140 0004 0446     		mov	r4, r0
+ 237:.\Generated_Source\PSoC5/PGA3.c ****     /* Constant array for gain settings */
+ 238:.\Generated_Source\PSoC5/PGA3.c ****     const uint8 PGA3_GainArray[9] = { 
+ 141              		.loc 1 238 0
+ 142 0006 194B     		ldr	r3, .L13
+ 143 0008 03AA     		add	r2, sp, #12
+ 144 000a 1868     		ldr	r0, [r3]	@ unaligned
+ 145              	.LVL5:
+ 146 000c 5968     		ldr	r1, [r3, #4]	@ unaligned
+ 147 000e 03C2     		stmia	r2!, {r0, r1}
+ 148 0010 197A     		ldrb	r1, [r3, #8]	@ zero_extendqisi2
+ 149 0012 1170     		strb	r1, [r2]
+ 239:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_0K   | PGA3_R20_40B_40K | PGA3_BIAS_LOW), /* G=1  */
+ 240:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_40K  | PGA3_R20_40B_40K | PGA3_BIAS_LOW), /* G=2  */
+ 241:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_120K | PGA3_R20_40B_40K | PGA3_BIAS_LOW), /* G=4  */
+ 242:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_280K | PGA3_R20_40B_40K | PGA3_BIAS_LOW), /* G=8  */
+ 243:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_600K | PGA3_R20_40B_40K | PGA3_BIAS_LOW), /* G=16 */
+ 244:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_460K | PGA3_R20_40B_40K | PGA3_BIAS_LOW), /* G=24, Sets Rin as 20k */
+ 245:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_620K | PGA3_R20_40B_20K | PGA3_BIAS_LOW), /* G=32 */
+ 246:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_470K | PGA3_R20_40B_20K | PGA3_BIAS_LOW), /* G=48, Sets Rin as 10k */
+ 247:.\Generated_Source\PSoC5/PGA3.c ****         (PGA3_RVAL_490K | PGA3_R20_40B_20K | PGA3_BIAS_LOW)  /* G=50, Sets Rin as 10k */
+ 248:.\Generated_Source\PSoC5/PGA3.c ****     };
+ 249:.\Generated_Source\PSoC5/PGA3.c ****     
+ 250:.\Generated_Source\PSoC5/PGA3.c ****     /* Constant array for gain compenstion settings */
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 8
+
+
+ 251:.\Generated_Source\PSoC5/PGA3.c ****     const uint8 PGA3_GainComp[9] = { 
+ 150              		.loc 1 251 0
+ 151 0014 6A46     		mov	r2, sp
+ 152 0016 53F80C0F 		ldr	r0, [r3, #12]!	@ unaligned
+ 153 001a 5968     		ldr	r1, [r3, #4]	@ unaligned
+ 154 001c 03C2     		stmia	r2!, {r0, r1}
+ 155 001e 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+ 156 0020 1370     		strb	r3, [r2]
+ 252:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_4P35PF  | (uint8)( PGA3_REDC_00 >> 2 )), /* G=1  */
+ 253:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_4P35PF  | (uint8)( PGA3_REDC_01 >> 2 )), /* G=2  */
+ 254:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P0PF   | (uint8)( PGA3_REDC_01 >> 2 )), /* G=4  */
+ 255:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P0PF   | (uint8)( PGA3_REDC_01 >> 2 )), /* G=8  */
+ 256:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P6PF   | (uint8)( PGA3_REDC_01 >> 2 )), /* G=16 */
+ 257:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P6PF   | (uint8)( PGA3_REDC_11 >> 2 )), /* G=24 */
+ 258:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P6PF   | (uint8)( PGA3_REDC_11 >> 2 )), /* G=32 */
+ 259:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P6PF   | (uint8)( PGA3_REDC_00 >> 2 )), /* G=48 */
+ 260:.\Generated_Source\PSoC5/PGA3.c ****         ( PGA3_COMP_3P6PF   | (uint8)( PGA3_REDC_00 >> 2 ))  /* G=50 */
+ 261:.\Generated_Source\PSoC5/PGA3.c ****     };
+ 262:.\Generated_Source\PSoC5/PGA3.c ****     
+ 263:.\Generated_Source\PSoC5/PGA3.c ****     /* Only set new gain if it is a valid gain */
+ 264:.\Generated_Source\PSoC5/PGA3.c ****     if( gain <= PGA3_GAIN_MAX)
+ 157              		.loc 1 264 0
+ 158 0022 082C     		cmp	r4, #8
+ 159 0024 1ED8     		bhi	.L10
+ 265:.\Generated_Source\PSoC5/PGA3.c ****     {
+ 266:.\Generated_Source\PSoC5/PGA3.c ****         /* Clear resistors, redc, and bias */
+ 267:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_CR2_REG &= (uint8)(~(PGA3_RVAL_MASK | PGA3_R20_40B_MASK | 
+ 160              		.loc 1 267 0
+ 161 0026 1249     		ldr	r1, .L13+4
+ 162 0028 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 163 002a 03F08003 		and	r3, r3, #128
+ 164 002e DBB2     		uxtb	r3, r3
+ 165 0030 0B70     		strb	r3, [r1]
+ 268:.\Generated_Source\PSoC5/PGA3.c ****                                 PGA3_REDC_MASK | PGA3_BIAS_MASK ));
+ 269:.\Generated_Source\PSoC5/PGA3.c **** 
+ 270:.\Generated_Source\PSoC5/PGA3.c ****         /* Set gain value resistors, redc comp, and bias */
+ 271:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_CR2_REG |= (PGA3_GainArray[gain] |
+ 166              		.loc 1 271 0
+ 167 0032 0878     		ldrb	r0, [r1]	@ zero_extendqisi2
+ 168 0034 06AB     		add	r3, sp, #24
+ 169 0036 1C44     		add	r4, r4, r3
+ 170 0038 14F80C3C 		ldrb	r3, [r4, #-12]	@ zero_extendqisi2
+ 272:.\Generated_Source\PSoC5/PGA3.c ****                                 ((uint8)(PGA3_GainComp[gain] << 2 ) & PGA3_REDC_MASK));
+ 171              		.loc 1 272 0
+ 172 003c 14F8182C 		ldrb	r2, [r4, #-24]	@ zero_extendqisi2
+ 173 0040 9200     		lsls	r2, r2, #2
+ 271:.\Generated_Source\PSoC5/PGA3.c ****                                 ((uint8)(PGA3_GainComp[gain] << 2 ) & PGA3_REDC_MASK));
+ 174              		.loc 1 271 0
+ 175 0042 02F00C02 		and	r2, r2, #12
+ 176 0046 1343     		orrs	r3, r3, r2
+ 177 0048 0343     		orrs	r3, r3, r0
+ 178 004a 0B70     		strb	r3, [r1]
+ 273:.\Generated_Source\PSoC5/PGA3.c **** 
+ 274:.\Generated_Source\PSoC5/PGA3.c ****         /* Clear sc_comp  */
+ 275:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_CR1_REG &= (uint8)(~PGA3_COMP_MASK);
+ 179              		.loc 1 275 0
+ 180 004c 094A     		ldr	r2, .L13+8
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 9
+
+
+ 181 004e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 182 0050 03F0F303 		and	r3, r3, #243
+ 183 0054 1370     		strb	r3, [r2]
+ 276:.\Generated_Source\PSoC5/PGA3.c ****         /* Set sc_comp  */
+ 277:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_CR1_REG |= ( PGA3_GainComp[gain] | PGA3_COMP_MASK );
+ 184              		.loc 1 277 0
+ 185 0056 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 186 0058 14F8183C 		ldrb	r3, [r4, #-24]	@ zero_extendqisi2
+ 187 005c 0B43     		orrs	r3, r3, r1
+ 188 005e 43F00C03 		orr	r3, r3, #12
+ 189 0062 1370     		strb	r3, [r2]
+ 190              	.L10:
+ 278:.\Generated_Source\PSoC5/PGA3.c ****     }
+ 279:.\Generated_Source\PSoC5/PGA3.c **** }
+ 191              		.loc 1 279 0
+ 192 0064 07B0     		add	sp, sp, #28
+ 193              		.cfi_def_cfa_offset 4
+ 194              		@ sp needed
+ 195 0066 5DF8044B 		ldr	r4, [sp], #4
+ 196              		.cfi_restore 4
+ 197              		.cfi_def_cfa_offset 0
+ 198 006a 7047     		bx	lr
+ 199              	.L14:
+ 200              		.align	2
+ 201              	.L13:
+ 202 006c 00000000 		.word	.LANCHOR0
+ 203 0070 02580040 		.word	1073764354
+ 204 0074 01580040 		.word	1073764353
+ 205              		.cfi_endproc
+ 206              	.LFE5:
+ 207              		.size	PGA3_SetGain, .-PGA3_SetGain
+ 208              		.section	.text.PGA3_Init,"ax",%progbits
+ 209              		.align	2
+ 210              		.global	PGA3_Init
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.type	PGA3_Init, %function
+ 214              	PGA3_Init:
+ 215              	.LFB0:
+  50:.\Generated_Source\PSoC5/PGA3.c ****     /* Set PGA mode */
+ 216              		.loc 1 50 0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220 0000 08B5     		push	{r3, lr}
+ 221              		.cfi_def_cfa_offset 8
+ 222              		.cfi_offset 3, -8
+ 223              		.cfi_offset 14, -4
+  52:.\Generated_Source\PSoC5/PGA3.c ****     /* Set non-inverting PGA mode and reference mode */
+ 224              		.loc 1 52 0
+ 225 0002 0C22     		movs	r2, #12
+ 226 0004 074B     		ldr	r3, .L17
+ 227 0006 1A70     		strb	r2, [r3]
+  54:.\Generated_Source\PSoC5/PGA3.c ****     /* Set default gain and ref mode */
+ 228              		.loc 1 54 0
+ 229 0008 074A     		ldr	r2, .L17+4
+ 230 000a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 10
+
+
+ 231 000c 43F02003 		orr	r3, r3, #32
+ 232 0010 1370     		strb	r3, [r2]
+  56:.\Generated_Source\PSoC5/PGA3.c ****     /* Set gain and compensation */
+ 233              		.loc 1 56 0
+ 234 0012 0020     		movs	r0, #0
+ 235 0014 054B     		ldr	r3, .L17+8
+ 236 0016 1870     		strb	r0, [r3]
+  58:.\Generated_Source\PSoC5/PGA3.c ****     /* Set power */
+ 237              		.loc 1 58 0
+ 238 0018 FFF7FEFF 		bl	PGA3_SetGain
+ 239              	.LVL6:
+  60:.\Generated_Source\PSoC5/PGA3.c **** }
+ 240              		.loc 1 60 0
+ 241 001c 0320     		movs	r0, #3
+ 242 001e FFF7FEFF 		bl	PGA3_SetPower
+ 243              	.LVL7:
+ 244 0022 08BD     		pop	{r3, pc}
+ 245              	.L18:
+ 246              		.align	2
+ 247              	.L17:
+ 248 0024 00580040 		.word	1073764352
+ 249 0028 01580040 		.word	1073764353
+ 250 002c 02580040 		.word	1073764354
+ 251              		.cfi_endproc
+ 252              	.LFE0:
+ 253              		.size	PGA3_Init, .-PGA3_Init
+ 254              		.section	.text.PGA3_Start,"ax",%progbits
+ 255              		.align	2
+ 256              		.global	PGA3_Start
+ 257              		.thumb
+ 258              		.thumb_func
+ 259              		.type	PGA3_Start, %function
+ 260              	PGA3_Start:
+ 261              	.LFB2:
+ 135:.\Generated_Source\PSoC5/PGA3.c **** 
+ 262              		.loc 1 135 0
+ 263              		.cfi_startproc
+ 264              		@ args = 0, pretend = 0, frame = 0
+ 265              		@ frame_needed = 0, uses_anonymous_args = 0
+ 266 0000 08B5     		push	{r3, lr}
+ 267              		.cfi_def_cfa_offset 8
+ 268              		.cfi_offset 3, -8
+ 269              		.cfi_offset 14, -4
+ 140:.\Generated_Source\PSoC5/PGA3.c ****     {
+ 270              		.loc 1 140 0
+ 271 0002 054B     		ldr	r3, .L22
+ 272 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 273 0006 23B9     		cbnz	r3, .L20
+ 142:.\Generated_Source\PSoC5/PGA3.c ****         PGA3_initVar = 1u;
+ 274              		.loc 1 142 0
+ 275 0008 FFF7FEFF 		bl	PGA3_Init
+ 276              	.LVL8:
+ 143:.\Generated_Source\PSoC5/PGA3.c ****     }
+ 277              		.loc 1 143 0
+ 278 000c 0122     		movs	r2, #1
+ 279 000e 024B     		ldr	r3, .L22
+ 280 0010 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 11
+
+
+ 281              	.L20:
+ 146:.\Generated_Source\PSoC5/PGA3.c **** }
+ 282              		.loc 1 146 0
+ 283 0012 FFF7FEFF 		bl	PGA3_Enable
+ 284              	.LVL9:
+ 285 0016 08BD     		pop	{r3, pc}
+ 286              	.L23:
+ 287              		.align	2
+ 288              	.L22:
+ 289 0018 00000000 		.word	.LANCHOR1
+ 290              		.cfi_endproc
+ 291              	.LFE2:
+ 292              		.size	PGA3_Start, .-PGA3_Start
+ 293              		.global	PGA3_initVar
+ 294              		.section	.rodata
+ 295              		.align	2
+ 296              		.set	.LANCHOR0,. + 0
+ 297              	.LC0:
+ 298 0000 01       		.byte	1
+ 299 0001 11       		.byte	17
+ 300 0002 21       		.byte	33
+ 301 0003 31       		.byte	49
+ 302 0004 41       		.byte	65
+ 303 0005 61       		.byte	97
+ 304 0006 53       		.byte	83
+ 305 0007 63       		.byte	99
+ 306 0008 73       		.byte	115
+ 307 0009 000000   		.space	3
+ 308              	.LC1:
+ 309 000c 08       		.byte	8
+ 310 000d 09       		.byte	9
+ 311 000e 01       		.byte	1
+ 312 000f 01       		.byte	1
+ 313 0010 05       		.byte	5
+ 314 0011 07       		.byte	7
+ 315 0012 07       		.byte	7
+ 316 0013 04       		.byte	4
+ 317 0014 04       		.byte	4
+ 318 0015 000000   		.bss
+ 319              		.set	.LANCHOR1,. + 0
+ 320              		.type	PGA3_initVar, %object
+ 321              		.size	PGA3_initVar, 1
+ 322              	PGA3_initVar:
+ 323 0000 00       		.space	1
+ 324              		.text
+ 325              	.Letext0:
+ 326              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 327              		.section	.debug_info,"",%progbits
+ 328              	.Ldebug_info0:
+ 329 0000 C3010000 		.4byte	0x1c3
+ 330 0004 0400     		.2byte	0x4
+ 331 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 332 000a 04       		.byte	0x4
+ 333 000b 01       		.uleb128 0x1
+ 334 000c E8000000 		.4byte	.LASF26
+ 335 0010 01       		.byte	0x1
+ 336 0011 60000000 		.4byte	.LASF27
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 12
+
+
+ 337 0015 13000000 		.4byte	.LASF28
+ 338 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 339 001d 00000000 		.4byte	0
+ 340 0021 00000000 		.4byte	.Ldebug_line0
+ 341 0025 02       		.uleb128 0x2
+ 342 0026 01       		.byte	0x1
+ 343 0027 06       		.byte	0x6
+ 344 0028 01020000 		.4byte	.LASF0
+ 345 002c 02       		.uleb128 0x2
+ 346 002d 01       		.byte	0x1
+ 347 002e 08       		.byte	0x8
+ 348 002f AC000000 		.4byte	.LASF1
+ 349 0033 02       		.uleb128 0x2
+ 350 0034 02       		.byte	0x2
+ 351 0035 05       		.byte	0x5
+ 352 0036 EE010000 		.4byte	.LASF2
+ 353 003a 02       		.uleb128 0x2
+ 354 003b 02       		.byte	0x2
+ 355 003c 07       		.byte	0x7
+ 356 003d 80000000 		.4byte	.LASF3
+ 357 0041 02       		.uleb128 0x2
+ 358 0042 04       		.byte	0x4
+ 359 0043 05       		.byte	0x5
+ 360 0044 F8010000 		.4byte	.LASF4
+ 361 0048 02       		.uleb128 0x2
+ 362 0049 04       		.byte	0x4
+ 363 004a 07       		.byte	0x7
+ 364 004b BF000000 		.4byte	.LASF5
+ 365 004f 02       		.uleb128 0x2
+ 366 0050 08       		.byte	0x8
+ 367 0051 05       		.byte	0x5
+ 368 0052 D1010000 		.4byte	.LASF6
+ 369 0056 02       		.uleb128 0x2
+ 370 0057 08       		.byte	0x8
+ 371 0058 07       		.byte	0x7
+ 372 0059 83010000 		.4byte	.LASF7
+ 373 005d 03       		.uleb128 0x3
+ 374 005e 04       		.byte	0x4
+ 375 005f 05       		.byte	0x5
+ 376 0060 696E7400 		.ascii	"int\000"
+ 377 0064 02       		.uleb128 0x2
+ 378 0065 04       		.byte	0x4
+ 379 0066 07       		.byte	0x7
+ 380 0067 76010000 		.4byte	.LASF8
+ 381 006b 04       		.uleb128 0x4
+ 382 006c D1000000 		.4byte	.LASF12
+ 383 0070 02       		.byte	0x2
+ 384 0071 9201     		.2byte	0x192
+ 385 0073 2C000000 		.4byte	0x2c
+ 386 0077 02       		.uleb128 0x2
+ 387 0078 04       		.byte	0x4
+ 388 0079 04       		.byte	0x4
+ 389 007a 98000000 		.4byte	.LASF9
+ 390 007e 02       		.uleb128 0x2
+ 391 007f 08       		.byte	0x8
+ 392 0080 04       		.byte	0x4
+ 393 0081 E1000000 		.4byte	.LASF10
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 13
+
+
+ 394 0085 02       		.uleb128 0x2
+ 395 0086 01       		.byte	0x1
+ 396 0087 08       		.byte	0x8
+ 397 0088 DF010000 		.4byte	.LASF11
+ 398 008c 04       		.uleb128 0x4
+ 399 008d BA000000 		.4byte	.LASF13
+ 400 0091 02       		.byte	0x2
+ 401 0092 3C02     		.2byte	0x23c
+ 402 0094 98000000 		.4byte	0x98
+ 403 0098 05       		.uleb128 0x5
+ 404 0099 6B000000 		.4byte	0x6b
+ 405 009d 02       		.uleb128 0x2
+ 406 009e 04       		.byte	0x4
+ 407 009f 07       		.byte	0x7
+ 408 00a0 C2010000 		.4byte	.LASF14
+ 409 00a4 06       		.uleb128 0x6
+ 410 00a5 9A010000 		.4byte	.LASF15
+ 411 00a9 01       		.byte	0x1
+ 412 00aa 4E       		.byte	0x4e
+ 413 00ab 00000000 		.4byte	.LFB1
+ 414 00af 28000000 		.4byte	.LFE1-.LFB1
+ 415 00b3 01       		.uleb128 0x1
+ 416 00b4 9C       		.byte	0x9c
+ 417 00b5 06       		.uleb128 0x6
+ 418 00b6 E4010000 		.4byte	.LASF16
+ 419 00ba 01       		.byte	0x1
+ 420 00bb A4       		.byte	0xa4
+ 421 00bc 00000000 		.4byte	.LFB3
+ 422 00c0 1C000000 		.4byte	.LFE3-.LFB3
+ 423 00c4 01       		.uleb128 0x1
+ 424 00c5 9C       		.byte	0x9c
+ 425 00c6 07       		.uleb128 0x7
+ 426 00c7 9E000000 		.4byte	.LASF17
+ 427 00cb 01       		.byte	0x1
+ 428 00cc D2       		.byte	0xd2
+ 429 00cd 00000000 		.4byte	.LFB4
+ 430 00d1 18000000 		.4byte	.LFE4-.LFB4
+ 431 00d5 01       		.uleb128 0x1
+ 432 00d6 9C       		.byte	0x9c
+ 433 00d7 FA000000 		.4byte	0xfa
+ 434 00db 08       		.uleb128 0x8
+ 435 00dc CB010000 		.4byte	.LASF19
+ 436 00e0 01       		.byte	0x1
+ 437 00e1 D2       		.byte	0xd2
+ 438 00e2 6B000000 		.4byte	0x6b
+ 439 00e6 00000000 		.4byte	.LLST0
+ 440 00ea 09       		.uleb128 0x9
+ 441 00eb 00000000 		.4byte	.LASF21
+ 442 00ef 01       		.byte	0x1
+ 443 00f0 D4       		.byte	0xd4
+ 444 00f1 6B000000 		.4byte	0x6b
+ 445 00f5 21000000 		.4byte	.LLST1
+ 446 00f9 00       		.byte	0
+ 447 00fa 07       		.uleb128 0x7
+ 448 00fb 06000000 		.4byte	.LASF18
+ 449 00ff 01       		.byte	0x1
+ 450 0100 EB       		.byte	0xeb
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 14
+
+
+ 451 0101 00000000 		.4byte	.LFB5
+ 452 0105 78000000 		.4byte	.LFE5-.LFB5
+ 453 0109 01       		.uleb128 0x1
+ 454 010a 9C       		.byte	0x9c
+ 455 010b 3B010000 		.4byte	0x13b
+ 456 010f 08       		.uleb128 0x8
+ 457 0110 93000000 		.4byte	.LASF20
+ 458 0114 01       		.byte	0x1
+ 459 0115 EB       		.byte	0xeb
+ 460 0116 6B000000 		.4byte	0x6b
+ 461 011a 3F000000 		.4byte	.LLST2
+ 462 011e 0A       		.uleb128 0xa
+ 463 011f A6010000 		.4byte	.LASF22
+ 464 0123 01       		.byte	0x1
+ 465 0124 EE       		.byte	0xee
+ 466 0125 4B010000 		.4byte	0x14b
+ 467 0129 02       		.uleb128 0x2
+ 468 012a 91       		.byte	0x91
+ 469 012b 6C       		.sleb128 -20
+ 470 012c 0A       		.uleb128 0xa
+ 471 012d 52000000 		.4byte	.LASF23
+ 472 0131 01       		.byte	0x1
+ 473 0132 FB       		.byte	0xfb
+ 474 0133 50010000 		.4byte	0x150
+ 475 0137 02       		.uleb128 0x2
+ 476 0138 91       		.byte	0x91
+ 477 0139 60       		.sleb128 -32
+ 478 013a 00       		.byte	0
+ 479 013b 0B       		.uleb128 0xb
+ 480 013c 6B000000 		.4byte	0x6b
+ 481 0140 4B010000 		.4byte	0x14b
+ 482 0144 0C       		.uleb128 0xc
+ 483 0145 9D000000 		.4byte	0x9d
+ 484 0149 08       		.byte	0x8
+ 485 014a 00       		.byte	0
+ 486 014b 0D       		.uleb128 0xd
+ 487 014c 3B010000 		.4byte	0x13b
+ 488 0150 0D       		.uleb128 0xd
+ 489 0151 3B010000 		.4byte	0x13b
+ 490 0155 07       		.uleb128 0x7
+ 491 0156 D7000000 		.4byte	.LASF24
+ 492 015a 01       		.byte	0x1
+ 493 015b 31       		.byte	0x31
+ 494 015c 00000000 		.4byte	.LFB0
+ 495 0160 30000000 		.4byte	.LFE0-.LFB0
+ 496 0164 01       		.uleb128 0x1
+ 497 0165 9C       		.byte	0x9c
+ 498 0166 8D010000 		.4byte	0x18d
+ 499 016a 0E       		.uleb128 0xe
+ 500 016b 1C000000 		.4byte	.LVL6
+ 501 016f FA000000 		.4byte	0xfa
+ 502 0173 7D010000 		.4byte	0x17d
+ 503 0177 0F       		.uleb128 0xf
+ 504 0178 01       		.uleb128 0x1
+ 505 0179 50       		.byte	0x50
+ 506 017a 01       		.uleb128 0x1
+ 507 017b 30       		.byte	0x30
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 15
+
+
+ 508 017c 00       		.byte	0
+ 509 017d 10       		.uleb128 0x10
+ 510 017e 22000000 		.4byte	.LVL7
+ 511 0182 C6000000 		.4byte	0xc6
+ 512 0186 0F       		.uleb128 0xf
+ 513 0187 01       		.uleb128 0x1
+ 514 0188 50       		.byte	0x50
+ 515 0189 01       		.uleb128 0x1
+ 516 018a 33       		.byte	0x33
+ 517 018b 00       		.byte	0
+ 518 018c 00       		.byte	0
+ 519 018d 07       		.uleb128 0x7
+ 520 018e 0D020000 		.4byte	.LASF25
+ 521 0192 01       		.byte	0x1
+ 522 0193 86       		.byte	0x86
+ 523 0194 00000000 		.4byte	.LFB2
+ 524 0198 1C000000 		.4byte	.LFE2-.LFB2
+ 525 019c 01       		.uleb128 0x1
+ 526 019d 9C       		.byte	0x9c
+ 527 019e B5010000 		.4byte	0x1b5
+ 528 01a2 11       		.uleb128 0x11
+ 529 01a3 0C000000 		.4byte	.LVL8
+ 530 01a7 55010000 		.4byte	0x155
+ 531 01ab 11       		.uleb128 0x11
+ 532 01ac 16000000 		.4byte	.LVL9
+ 533 01b0 A4000000 		.4byte	0xa4
+ 534 01b4 00       		.byte	0
+ 535 01b5 12       		.uleb128 0x12
+ 536 01b6 B5010000 		.4byte	.LASF29
+ 537 01ba 01       		.byte	0x1
+ 538 01bb 1E       		.byte	0x1e
+ 539 01bc 6B000000 		.4byte	0x6b
+ 540 01c0 05       		.uleb128 0x5
+ 541 01c1 03       		.byte	0x3
+ 542 01c2 00000000 		.4byte	PGA3_initVar
+ 543 01c6 00       		.byte	0
+ 544              		.section	.debug_abbrev,"",%progbits
+ 545              	.Ldebug_abbrev0:
+ 546 0000 01       		.uleb128 0x1
+ 547 0001 11       		.uleb128 0x11
+ 548 0002 01       		.byte	0x1
+ 549 0003 25       		.uleb128 0x25
+ 550 0004 0E       		.uleb128 0xe
+ 551 0005 13       		.uleb128 0x13
+ 552 0006 0B       		.uleb128 0xb
+ 553 0007 03       		.uleb128 0x3
+ 554 0008 0E       		.uleb128 0xe
+ 555 0009 1B       		.uleb128 0x1b
+ 556 000a 0E       		.uleb128 0xe
+ 557 000b 55       		.uleb128 0x55
+ 558 000c 17       		.uleb128 0x17
+ 559 000d 11       		.uleb128 0x11
+ 560 000e 01       		.uleb128 0x1
+ 561 000f 10       		.uleb128 0x10
+ 562 0010 17       		.uleb128 0x17
+ 563 0011 00       		.byte	0
+ 564 0012 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 16
+
+
+ 565 0013 02       		.uleb128 0x2
+ 566 0014 24       		.uleb128 0x24
+ 567 0015 00       		.byte	0
+ 568 0016 0B       		.uleb128 0xb
+ 569 0017 0B       		.uleb128 0xb
+ 570 0018 3E       		.uleb128 0x3e
+ 571 0019 0B       		.uleb128 0xb
+ 572 001a 03       		.uleb128 0x3
+ 573 001b 0E       		.uleb128 0xe
+ 574 001c 00       		.byte	0
+ 575 001d 00       		.byte	0
+ 576 001e 03       		.uleb128 0x3
+ 577 001f 24       		.uleb128 0x24
+ 578 0020 00       		.byte	0
+ 579 0021 0B       		.uleb128 0xb
+ 580 0022 0B       		.uleb128 0xb
+ 581 0023 3E       		.uleb128 0x3e
+ 582 0024 0B       		.uleb128 0xb
+ 583 0025 03       		.uleb128 0x3
+ 584 0026 08       		.uleb128 0x8
+ 585 0027 00       		.byte	0
+ 586 0028 00       		.byte	0
+ 587 0029 04       		.uleb128 0x4
+ 588 002a 16       		.uleb128 0x16
+ 589 002b 00       		.byte	0
+ 590 002c 03       		.uleb128 0x3
+ 591 002d 0E       		.uleb128 0xe
+ 592 002e 3A       		.uleb128 0x3a
+ 593 002f 0B       		.uleb128 0xb
+ 594 0030 3B       		.uleb128 0x3b
+ 595 0031 05       		.uleb128 0x5
+ 596 0032 49       		.uleb128 0x49
+ 597 0033 13       		.uleb128 0x13
+ 598 0034 00       		.byte	0
+ 599 0035 00       		.byte	0
+ 600 0036 05       		.uleb128 0x5
+ 601 0037 35       		.uleb128 0x35
+ 602 0038 00       		.byte	0
+ 603 0039 49       		.uleb128 0x49
+ 604 003a 13       		.uleb128 0x13
+ 605 003b 00       		.byte	0
+ 606 003c 00       		.byte	0
+ 607 003d 06       		.uleb128 0x6
+ 608 003e 2E       		.uleb128 0x2e
+ 609 003f 00       		.byte	0
+ 610 0040 3F       		.uleb128 0x3f
+ 611 0041 19       		.uleb128 0x19
+ 612 0042 03       		.uleb128 0x3
+ 613 0043 0E       		.uleb128 0xe
+ 614 0044 3A       		.uleb128 0x3a
+ 615 0045 0B       		.uleb128 0xb
+ 616 0046 3B       		.uleb128 0x3b
+ 617 0047 0B       		.uleb128 0xb
+ 618 0048 27       		.uleb128 0x27
+ 619 0049 19       		.uleb128 0x19
+ 620 004a 11       		.uleb128 0x11
+ 621 004b 01       		.uleb128 0x1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 17
+
+
+ 622 004c 12       		.uleb128 0x12
+ 623 004d 06       		.uleb128 0x6
+ 624 004e 40       		.uleb128 0x40
+ 625 004f 18       		.uleb128 0x18
+ 626 0050 9742     		.uleb128 0x2117
+ 627 0052 19       		.uleb128 0x19
+ 628 0053 00       		.byte	0
+ 629 0054 00       		.byte	0
+ 630 0055 07       		.uleb128 0x7
+ 631 0056 2E       		.uleb128 0x2e
+ 632 0057 01       		.byte	0x1
+ 633 0058 3F       		.uleb128 0x3f
+ 634 0059 19       		.uleb128 0x19
+ 635 005a 03       		.uleb128 0x3
+ 636 005b 0E       		.uleb128 0xe
+ 637 005c 3A       		.uleb128 0x3a
+ 638 005d 0B       		.uleb128 0xb
+ 639 005e 3B       		.uleb128 0x3b
+ 640 005f 0B       		.uleb128 0xb
+ 641 0060 27       		.uleb128 0x27
+ 642 0061 19       		.uleb128 0x19
+ 643 0062 11       		.uleb128 0x11
+ 644 0063 01       		.uleb128 0x1
+ 645 0064 12       		.uleb128 0x12
+ 646 0065 06       		.uleb128 0x6
+ 647 0066 40       		.uleb128 0x40
+ 648 0067 18       		.uleb128 0x18
+ 649 0068 9742     		.uleb128 0x2117
+ 650 006a 19       		.uleb128 0x19
+ 651 006b 01       		.uleb128 0x1
+ 652 006c 13       		.uleb128 0x13
+ 653 006d 00       		.byte	0
+ 654 006e 00       		.byte	0
+ 655 006f 08       		.uleb128 0x8
+ 656 0070 05       		.uleb128 0x5
+ 657 0071 00       		.byte	0
+ 658 0072 03       		.uleb128 0x3
+ 659 0073 0E       		.uleb128 0xe
+ 660 0074 3A       		.uleb128 0x3a
+ 661 0075 0B       		.uleb128 0xb
+ 662 0076 3B       		.uleb128 0x3b
+ 663 0077 0B       		.uleb128 0xb
+ 664 0078 49       		.uleb128 0x49
+ 665 0079 13       		.uleb128 0x13
+ 666 007a 02       		.uleb128 0x2
+ 667 007b 17       		.uleb128 0x17
+ 668 007c 00       		.byte	0
+ 669 007d 00       		.byte	0
+ 670 007e 09       		.uleb128 0x9
+ 671 007f 34       		.uleb128 0x34
+ 672 0080 00       		.byte	0
+ 673 0081 03       		.uleb128 0x3
+ 674 0082 0E       		.uleb128 0xe
+ 675 0083 3A       		.uleb128 0x3a
+ 676 0084 0B       		.uleb128 0xb
+ 677 0085 3B       		.uleb128 0x3b
+ 678 0086 0B       		.uleb128 0xb
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 18
+
+
+ 679 0087 49       		.uleb128 0x49
+ 680 0088 13       		.uleb128 0x13
+ 681 0089 02       		.uleb128 0x2
+ 682 008a 17       		.uleb128 0x17
+ 683 008b 00       		.byte	0
+ 684 008c 00       		.byte	0
+ 685 008d 0A       		.uleb128 0xa
+ 686 008e 34       		.uleb128 0x34
+ 687 008f 00       		.byte	0
+ 688 0090 03       		.uleb128 0x3
+ 689 0091 0E       		.uleb128 0xe
+ 690 0092 3A       		.uleb128 0x3a
+ 691 0093 0B       		.uleb128 0xb
+ 692 0094 3B       		.uleb128 0x3b
+ 693 0095 0B       		.uleb128 0xb
+ 694 0096 49       		.uleb128 0x49
+ 695 0097 13       		.uleb128 0x13
+ 696 0098 02       		.uleb128 0x2
+ 697 0099 18       		.uleb128 0x18
+ 698 009a 00       		.byte	0
+ 699 009b 00       		.byte	0
+ 700 009c 0B       		.uleb128 0xb
+ 701 009d 01       		.uleb128 0x1
+ 702 009e 01       		.byte	0x1
+ 703 009f 49       		.uleb128 0x49
+ 704 00a0 13       		.uleb128 0x13
+ 705 00a1 01       		.uleb128 0x1
+ 706 00a2 13       		.uleb128 0x13
+ 707 00a3 00       		.byte	0
+ 708 00a4 00       		.byte	0
+ 709 00a5 0C       		.uleb128 0xc
+ 710 00a6 21       		.uleb128 0x21
+ 711 00a7 00       		.byte	0
+ 712 00a8 49       		.uleb128 0x49
+ 713 00a9 13       		.uleb128 0x13
+ 714 00aa 2F       		.uleb128 0x2f
+ 715 00ab 0B       		.uleb128 0xb
+ 716 00ac 00       		.byte	0
+ 717 00ad 00       		.byte	0
+ 718 00ae 0D       		.uleb128 0xd
+ 719 00af 26       		.uleb128 0x26
+ 720 00b0 00       		.byte	0
+ 721 00b1 49       		.uleb128 0x49
+ 722 00b2 13       		.uleb128 0x13
+ 723 00b3 00       		.byte	0
+ 724 00b4 00       		.byte	0
+ 725 00b5 0E       		.uleb128 0xe
+ 726 00b6 898201   		.uleb128 0x4109
+ 727 00b9 01       		.byte	0x1
+ 728 00ba 11       		.uleb128 0x11
+ 729 00bb 01       		.uleb128 0x1
+ 730 00bc 31       		.uleb128 0x31
+ 731 00bd 13       		.uleb128 0x13
+ 732 00be 01       		.uleb128 0x1
+ 733 00bf 13       		.uleb128 0x13
+ 734 00c0 00       		.byte	0
+ 735 00c1 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 19
+
+
+ 736 00c2 0F       		.uleb128 0xf
+ 737 00c3 8A8201   		.uleb128 0x410a
+ 738 00c6 00       		.byte	0
+ 739 00c7 02       		.uleb128 0x2
+ 740 00c8 18       		.uleb128 0x18
+ 741 00c9 9142     		.uleb128 0x2111
+ 742 00cb 18       		.uleb128 0x18
+ 743 00cc 00       		.byte	0
+ 744 00cd 00       		.byte	0
+ 745 00ce 10       		.uleb128 0x10
+ 746 00cf 898201   		.uleb128 0x4109
+ 747 00d2 01       		.byte	0x1
+ 748 00d3 11       		.uleb128 0x11
+ 749 00d4 01       		.uleb128 0x1
+ 750 00d5 31       		.uleb128 0x31
+ 751 00d6 13       		.uleb128 0x13
+ 752 00d7 00       		.byte	0
+ 753 00d8 00       		.byte	0
+ 754 00d9 11       		.uleb128 0x11
+ 755 00da 898201   		.uleb128 0x4109
+ 756 00dd 00       		.byte	0
+ 757 00de 11       		.uleb128 0x11
+ 758 00df 01       		.uleb128 0x1
+ 759 00e0 31       		.uleb128 0x31
+ 760 00e1 13       		.uleb128 0x13
+ 761 00e2 00       		.byte	0
+ 762 00e3 00       		.byte	0
+ 763 00e4 12       		.uleb128 0x12
+ 764 00e5 34       		.uleb128 0x34
+ 765 00e6 00       		.byte	0
+ 766 00e7 03       		.uleb128 0x3
+ 767 00e8 0E       		.uleb128 0xe
+ 768 00e9 3A       		.uleb128 0x3a
+ 769 00ea 0B       		.uleb128 0xb
+ 770 00eb 3B       		.uleb128 0x3b
+ 771 00ec 0B       		.uleb128 0xb
+ 772 00ed 49       		.uleb128 0x49
+ 773 00ee 13       		.uleb128 0x13
+ 774 00ef 3F       		.uleb128 0x3f
+ 775 00f0 19       		.uleb128 0x19
+ 776 00f1 02       		.uleb128 0x2
+ 777 00f2 18       		.uleb128 0x18
+ 778 00f3 00       		.byte	0
+ 779 00f4 00       		.byte	0
+ 780 00f5 00       		.byte	0
+ 781              		.section	.debug_loc,"",%progbits
+ 782              	.Ldebug_loc0:
+ 783              	.LLST0:
+ 784 0000 00000000 		.4byte	.LVL0
+ 785 0004 0C000000 		.4byte	.LVL2
+ 786 0008 0100     		.2byte	0x1
+ 787 000a 50       		.byte	0x50
+ 788 000b 0C000000 		.4byte	.LVL2
+ 789 000f 18000000 		.4byte	.LFE4
+ 790 0013 0400     		.2byte	0x4
+ 791 0015 F3       		.byte	0xf3
+ 792 0016 01       		.uleb128 0x1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 20
+
+
+ 793 0017 50       		.byte	0x50
+ 794 0018 9F       		.byte	0x9f
+ 795 0019 00000000 		.4byte	0
+ 796 001d 00000000 		.4byte	0
+ 797              	.LLST1:
+ 798 0021 08000000 		.4byte	.LVL1
+ 799 0025 0E000000 		.4byte	.LVL3
+ 800 0029 0100     		.2byte	0x1
+ 801 002b 53       		.byte	0x53
+ 802 002c 0E000000 		.4byte	.LVL3
+ 803 0030 18000000 		.4byte	.LFE4
+ 804 0034 0100     		.2byte	0x1
+ 805 0036 50       		.byte	0x50
+ 806 0037 00000000 		.4byte	0
+ 807 003b 00000000 		.4byte	0
+ 808              	.LLST2:
+ 809 003f 00000000 		.4byte	.LVL4
+ 810 0043 0C000000 		.4byte	.LVL5
+ 811 0047 0100     		.2byte	0x1
+ 812 0049 50       		.byte	0x50
+ 813 004a 0C000000 		.4byte	.LVL5
+ 814 004e 78000000 		.4byte	.LFE5
+ 815 0052 0400     		.2byte	0x4
+ 816 0054 F3       		.byte	0xf3
+ 817 0055 01       		.uleb128 0x1
+ 818 0056 50       		.byte	0x50
+ 819 0057 9F       		.byte	0x9f
+ 820 0058 00000000 		.4byte	0
+ 821 005c 00000000 		.4byte	0
+ 822              		.section	.debug_aranges,"",%progbits
+ 823 0000 44000000 		.4byte	0x44
+ 824 0004 0200     		.2byte	0x2
+ 825 0006 00000000 		.4byte	.Ldebug_info0
+ 826 000a 04       		.byte	0x4
+ 827 000b 00       		.byte	0
+ 828 000c 0000     		.2byte	0
+ 829 000e 0000     		.2byte	0
+ 830 0010 00000000 		.4byte	.LFB1
+ 831 0014 28000000 		.4byte	.LFE1-.LFB1
+ 832 0018 00000000 		.4byte	.LFB3
+ 833 001c 1C000000 		.4byte	.LFE3-.LFB3
+ 834 0020 00000000 		.4byte	.LFB4
+ 835 0024 18000000 		.4byte	.LFE4-.LFB4
+ 836 0028 00000000 		.4byte	.LFB5
+ 837 002c 78000000 		.4byte	.LFE5-.LFB5
+ 838 0030 00000000 		.4byte	.LFB0
+ 839 0034 30000000 		.4byte	.LFE0-.LFB0
+ 840 0038 00000000 		.4byte	.LFB2
+ 841 003c 1C000000 		.4byte	.LFE2-.LFB2
+ 842 0040 00000000 		.4byte	0
+ 843 0044 00000000 		.4byte	0
+ 844              		.section	.debug_ranges,"",%progbits
+ 845              	.Ldebug_ranges0:
+ 846 0000 00000000 		.4byte	.LFB1
+ 847 0004 28000000 		.4byte	.LFE1
+ 848 0008 00000000 		.4byte	.LFB3
+ 849 000c 1C000000 		.4byte	.LFE3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 21
+
+
+ 850 0010 00000000 		.4byte	.LFB4
+ 851 0014 18000000 		.4byte	.LFE4
+ 852 0018 00000000 		.4byte	.LFB5
+ 853 001c 78000000 		.4byte	.LFE5
+ 854 0020 00000000 		.4byte	.LFB0
+ 855 0024 30000000 		.4byte	.LFE0
+ 856 0028 00000000 		.4byte	.LFB2
+ 857 002c 1C000000 		.4byte	.LFE2
+ 858 0030 00000000 		.4byte	0
+ 859 0034 00000000 		.4byte	0
+ 860              		.section	.debug_line,"",%progbits
+ 861              	.Ldebug_line0:
+ 862 0000 C9000000 		.section	.debug_str,"MS",%progbits,1
+ 862      02004300 
+ 862      00000201 
+ 862      FB0E0D00 
+ 862      01010101 
+ 863              	.LASF21:
+ 864 0000 746D7043 		.ascii	"tmpCR\000"
+ 864      5200
+ 865              	.LASF18:
+ 866 0006 50474133 		.ascii	"PGA3_SetGain\000"
+ 866      5F536574 
+ 866      4761696E 
+ 866      00
+ 867              	.LASF28:
+ 868 0013 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 868      73657273 
+ 868      5C637275 
+ 868      69736572 
+ 868      5C446F63 
+ 869 0041 6E5C4465 		.ascii	"n\\Design01.cydsn\000"
+ 869      7369676E 
+ 869      30312E63 
+ 869      7964736E 
+ 869      00
+ 870              	.LASF23:
+ 871 0052 50474133 		.ascii	"PGA3_GainComp\000"
+ 871      5F476169 
+ 871      6E436F6D 
+ 871      7000
+ 872              	.LASF27:
+ 873 0060 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\PGA3.c\000"
+ 873      6E657261 
+ 873      7465645F 
+ 873      536F7572 
+ 873      63655C50 
+ 874              	.LASF3:
+ 875 0080 73686F72 		.ascii	"short unsigned int\000"
+ 875      7420756E 
+ 875      7369676E 
+ 875      65642069 
+ 875      6E7400
+ 876              	.LASF20:
+ 877 0093 6761696E 		.ascii	"gain\000"
+ 877      00
+ 878              	.LASF9:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 22
+
+
+ 879 0098 666C6F61 		.ascii	"float\000"
+ 879      7400
+ 880              	.LASF17:
+ 881 009e 50474133 		.ascii	"PGA3_SetPower\000"
+ 881      5F536574 
+ 881      506F7765 
+ 881      7200
+ 882              	.LASF1:
+ 883 00ac 756E7369 		.ascii	"unsigned char\000"
+ 883      676E6564 
+ 883      20636861 
+ 883      7200
+ 884              	.LASF13:
+ 885 00ba 72656738 		.ascii	"reg8\000"
+ 885      00
+ 886              	.LASF5:
+ 887 00bf 6C6F6E67 		.ascii	"long unsigned int\000"
+ 887      20756E73 
+ 887      69676E65 
+ 887      6420696E 
+ 887      7400
+ 888              	.LASF12:
+ 889 00d1 75696E74 		.ascii	"uint8\000"
+ 889      3800
+ 890              	.LASF24:
+ 891 00d7 50474133 		.ascii	"PGA3_Init\000"
+ 891      5F496E69 
+ 891      7400
+ 892              	.LASF10:
+ 893 00e1 646F7562 		.ascii	"double\000"
+ 893      6C6500
+ 894              	.LASF26:
+ 895 00e8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 895      4320342E 
+ 895      392E3320 
+ 895      32303135 
+ 895      30333033 
+ 896 011b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 896      20726576 
+ 896      6973696F 
+ 896      6E203232 
+ 896      31323230 
+ 897 014e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 897      66756E63 
+ 897      74696F6E 
+ 897      2D736563 
+ 897      74696F6E 
+ 898              	.LASF8:
+ 899 0176 756E7369 		.ascii	"unsigned int\000"
+ 899      676E6564 
+ 899      20696E74 
+ 899      00
+ 900              	.LASF7:
+ 901 0183 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 901      206C6F6E 
+ 901      6720756E 
+ 901      7369676E 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccd7pyzP.s 			page 23
+
+
+ 901      65642069 
+ 902              	.LASF15:
+ 903 019a 50474133 		.ascii	"PGA3_Enable\000"
+ 903      5F456E61 
+ 903      626C6500 
+ 904              	.LASF22:
+ 905 01a6 50474133 		.ascii	"PGA3_GainArray\000"
+ 905      5F476169 
+ 905      6E417272 
+ 905      617900
+ 906              	.LASF29:
+ 907 01b5 50474133 		.ascii	"PGA3_initVar\000"
+ 907      5F696E69 
+ 907      74566172 
+ 907      00
+ 908              	.LASF14:
+ 909 01c2 73697A65 		.ascii	"sizetype\000"
+ 909      74797065 
+ 909      00
+ 910              	.LASF19:
+ 911 01cb 706F7765 		.ascii	"power\000"
+ 911      7200
+ 912              	.LASF6:
+ 913 01d1 6C6F6E67 		.ascii	"long long int\000"
+ 913      206C6F6E 
+ 913      6720696E 
+ 913      7400
+ 914              	.LASF11:
+ 915 01df 63686172 		.ascii	"char\000"
+ 915      00
+ 916              	.LASF16:
+ 917 01e4 50474133 		.ascii	"PGA3_Stop\000"
+ 917      5F53746F 
+ 917      7000
+ 918              	.LASF2:
+ 919 01ee 73686F72 		.ascii	"short int\000"
+ 919      7420696E 
+ 919      7400
+ 920              	.LASF4:
+ 921 01f8 6C6F6E67 		.ascii	"long int\000"
+ 921      20696E74 
+ 921      00
+ 922              	.LASF0:
+ 923 0201 7369676E 		.ascii	"signed char\000"
+ 923      65642063 
+ 923      68617200 
+ 924              	.LASF25:
+ 925 020d 50474133 		.ascii	"PGA3_Start\000"
+ 925      5F537461 
+ 925      727400
+ 926              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

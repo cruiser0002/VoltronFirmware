@@ -1,0 +1,131 @@
+dont_use_io iocell 1 0
+dont_use_io iocell 1 1
+dont_use_io iocell 1 3
+set_location "\SPIS:BSPIS:TxStsReg\" statusicell 3 2 4 
+set_location "\FreqDiv_1:count_2\" macrocell 2 0 0 1
+set_location "\SPIS:BSPIS:mosi_buf_overrun_fin\" macrocell 2 1 0 1
+set_location "\SPIS:BSPIS:mosi_tmp\" macrocell 3 1 0 1
+set_location "\SPIS:BSPIS:mosi_buf_overrun\" macrocell 3 1 0 3
+set_location "\FreqDiv_2:count_6\" macrocell 3 2 1 2
+set_location "\SPIS:BSPIS:mosi_to_dp\" macrocell 3 1 0 0
+set_location "\SPIS:BSPIS:BitCounter\" count7cell 3 1 7 
+set_location "\SPIS:BSPIS:tx_load\" macrocell 3 1 0 2
+set_location "\SPIS:BSPIS:byte_complete\" macrocell 3 1 1 2
+set_location "\FreqDiv_2:count_7\" macrocell 3 2 0 3
+set_location "\FreqDiv_1:count_0\" macrocell 2 0 0 3
+set_location "\FreqDiv_1:count_3\" macrocell 2 0 0 0
+set_location "\SPIS:BSPIS:rx_status_4\" macrocell 2 1 1 0
+set_location "\FreqDiv_2:count_2\" macrocell 2 2 0 1
+set_location "\FreqDiv_2:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_8\" macrocell 3 2 0 2
+set_location "\FreqDiv_1:count_8\" macrocell 3 0 1 0
+set_location "\SPIS:BSPIS:dpcounter_one_reg\" macrocell 2 1 1 3
+set_location "\FreqDiv_2:not_last_reset\" macrocell 2 2 1 0
+set_location "__ONE__" macrocell 3 1 1 1
+set_location "\FreqDiv_2:count_5\" macrocell 3 2 0 1
+set_location "\FreqDiv_2:count_0\" macrocell 2 2 0 3
+set_location "\FreqDiv_2:count_3\" macrocell 2 2 0 0
+set_location "\FreqDiv_1:count_9\" macrocell 3 0 1 1
+set_location "\SPIS:BSPIS:sR8:Dp:u0\" datapathcell 3 1 2 
+set_location "\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\" macrocell 3 0 0 2
+set_location "\FreqDiv_2:count_8\" macrocell 3 2 1 0
+set_location "\SPIS:BSPIS:tx_status_0\" macrocell 3 1 1 0
+set_location "\FreqDiv_1:not_last_reset\" macrocell 2 0 1 0
+set_location "Net_6875" macrocell 3 0 0 0
+set_location "\FreqDiv_1:count_1\" macrocell 2 0 0 2
+set_location "Net_20" macrocell 2 1 0 2
+set_location "\FreqDiv_1:count_5\" macrocell 3 0 0 1
+set_location "Net_1821" macrocell 2 1 0 3
+set_location "\FreqDiv_2:count_4\" macrocell 3 2 1 3
+set_location "\FreqDiv_2:count_9\" macrocell 3 2 1 1
+set_location "Net_6881" macrocell 3 2 0 0
+set_location "\FreqDiv_1:count_6\" macrocell 3 0 0 3
+set_location "\FreqDiv_2:count_1\" macrocell 2 2 0 2
+set_location "\SPIS:BSPIS:RxStsReg\" statusicell 2 1 4 
+set_location "\SPIS:BSPIS:rx_buf_overrun\" macrocell 2 1 0 0
+set_location "\FreqDiv_1:count_4\" macrocell 3 0 1 3
+set_location "\FreqDiv_1:count_7\" macrocell 3 0 1 2
+# Note: port 12 is the logical name for port 7
+set_io "Pin_LED_PWMB(0)" iocell 12 1
+set_location "FILTER2RAM1" drqcell -1 -1 8
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_location "isr_shift_sar2" interrupt -1 -1 4
+set_location "isr_shift_sar1" interrupt -1 -1 0
+set_location "\I2C:I2C_Prim\" i2ccell -1 -1 0
+set_location "RAM2FILTER2" drqcell -1 -1 3
+set_location "\USBFS_1:ep_0\" interrupt -1 -1 24
+set_location "\USBFS_1:ep_1\" interrupt -1 -1 3
+set_location "\VDAC1:viDAC8\" vidaccell -1 -1 2
+set_location "\VDAC2:viDAC8\" vidaccell -1 -1 0
+set_location "\VDAC3:viDAC8\" vidaccell -1 -1 1
+set_location "\VDAC4:viDAC8\" vidaccell -1 -1 3
+set_location "FILTER2RAM2" drqcell -1 -1 9
+set_location "\SPIS:BSPIS:sync_1\" synccell 3 0 5 0
+set_location "\USBFS_1:dp_int\" interrupt -1 -1 12
+set_location "\DelSig:IRQ\" interrupt -1 -1 29
+set_location "\I2C:isr\" interrupt -1 -1 15
+set_location "RAM2FILTER1" drqcell -1 -1 2
+set_location "\USBFS_1:Dp\" logicalport -1 -1 8
+set_location "\SAR2:IRQ\" interrupt -1 -1 2
+set_location "\SAR1:IRQ\" interrupt -1 -1 1
+# Note: port 12 is the logical name for port 7
+set_io "Pin_LED_PWMA(0)" iocell 12 2
+set_location "SAR2RAM2" drqcell -1 -1 1
+set_location "\Filter:DFB\" dfbcell -1 -1 0
+set_location "\USBFS_1:USB\" usbcell -1 -1 0
+set_location "\SPIS:BSPIS:sync_2\" synccell 3 0 5 1
+set_location "\USBFS_1:bus_reset\" interrupt -1 -1 23
+# Note: port 12 is the logical name for port 7
+set_io "I2C_Pins(0)" iocell 12 4
+set_location "SAR2FILTER1" drqcell -1 -1 4
+set_location "SAR2FILTER2" drqcell -1 -1 5
+set_location "\USBFS_1:arb_int\" interrupt -1 -1 22
+set_location "\PWM1:PWMHW\" timercell -1 -1 0
+set_location "\PWM2:PWMHW\" timercell -1 -1 1
+set_location "\SAR1:ADC_SAR\" sarcell -1 -1 0
+set_io "Dedicated_Output" iocell 0 1
+set_io "Dedicated_Output_1" iocell 3 6
+set_location "\SPIS:BSPIS:sync_3\" synccell 2 0 5 0
+set_location "\Opamp_1:ABuf\" abufcell -1 -1 2
+set_location "\Opamp_2:ABuf\" abufcell -1 -1 3
+set_location "\Opamp_3:ABuf\" abufcell -1 -1 1
+set_location "\Opamp_4:ABuf\" abufcell -1 -1 0
+set_location "\DelSig:DSM\" dsmodcell -1 -1 0
+set_io "Pin_test1(0)" iocell 3 1
+set_location "\SAR2:ADC_SAR\" sarcell -1 -1 1
+set_io "SPI_SCLK(0)" iocell 2 7
+set_location "SAR2RAM1" drqcell -1 -1 0
+set_location "\PGA_Inv_1:SC\" sccell -1 -1 0
+set_location "\PGA_Inv_2:SC\" sccell -1 -1 1
+set_location "\DelSig:DEC\" decimatorcell -1 -1 0
+set_io "SPI_MISO(0)" iocell 2 5
+# Note: port 12 is the logical name for port 7
+set_io "I2C_Pins(1)" iocell 12 5
+set_io "Pin_LED_AMPB(0)" iocell 3 7
+set_io "Pin_LED_AMPA(0)" iocell 0 0
+set_io "\SAR1:Bypass(0)\" iocell 0 4
+# Note: port 15 is the logical name for port 8
+set_io "\USBFS_1:Dm(0)\" iocell 15 7
+set_io "Pin_DAC1(0)" iocell 0 7
+set_io "Pin_TIA1(0)" iocell 2 1
+set_io "\SAR2:Bypass(0)\" iocell 0 2
+set_io "Pin_DAC2(0)" iocell 0 6
+set_io "Pin_TIA2(0)" iocell 2 2
+# Note: port 15 is the logical name for port 8
+set_io "Pin_DAC3(0)" iocell 15 1
+set_io "Pin_TIA3(0)" iocell 1 7
+set_io "Pin_VDDAdiv2(0)" iocell 1 4
+# Note: port 15 is the logical name for port 8
+set_io "Pin_DAC4(0)" iocell 15 0
+set_io "Pin_TIA4(0)" iocell 1 6
+set_io "Pin_TIA1P5(0)" iocell 0 5
+set_io "Pin_TIA3P5(0)" iocell 3 5
+set_io "\DelSig:Bypass_P03(0)\" iocell 0 3
+set_io "Pin_DACREF(0)" iocell 1 5
+set_io "SPI_SS(0)" iocell 2 4
+set_location "I2C_Pins(1)_SYNC" synccell 2 2 5 0
+set_location "I2C_Pins(0)_SYNC" synccell 2 2 5 1
+set_location "\SPIS:BSPIS:sync_4\" synccell 2 0 5 1
+set_io "Pin_test2(0)" iocell 3 2
+set_io "SPI_MOSI(0)" iocell 2 6
+# Note: port 15 is the logical name for port 8
+set_io "\USBFS_1:Dp(0)\" iocell 15 6
