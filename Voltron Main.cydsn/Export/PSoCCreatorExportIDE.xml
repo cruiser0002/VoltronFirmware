@@ -185,34 +185,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI_SS_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI_SS.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI_SS.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_audio.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_audio.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_boot.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_cdc.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_cdc.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_cls.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_descr.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_drv.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_episr.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_hid.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_hid.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_pm.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_std.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_vnd.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_midi.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_midi.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_pvt.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_cydmac.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_msc.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_msc.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_Dm_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_Dm.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_Dm.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_Dp_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_Dp.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBFS_1_Dp.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_DACREF_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_DACREF.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_DACREF.h</File>
@@ -292,12 +264,38 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\I2C_Pins_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\I2C_Pins.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\I2C_Pins.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test2_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test2.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test2.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready2.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready2.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_audio.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_audio.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_boot.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_cdc.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_cdc.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_cls.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_descr.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_drv.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_episr.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_hid.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_hid.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_pm.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_std.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_vnd.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_midi.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_midi.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_pvt.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_cydmac.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_msc.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_msc.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dm_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dm.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dm.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dp_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dp.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dp.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Export\ARM_GCC_Generic">

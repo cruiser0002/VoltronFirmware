@@ -40,27 +40,27 @@ void DMA_RAM2VDAC_Config() {
     CyDmaChEnable(DMA_RAM2DAC_Chan, 1);
 }
 
-void DMA_FILT2RAM_Config() {
-    /* Defines for DMA_FILT2RAM */
-    #define DMA_FILT2RAM_BYTES_PER_BURST 4
-    #define DMA_FILT2RAM_REQUEST_PER_BURST 1
-    #define DMA_FILT2RAM_SRC_BASE (CYDEV_PERIPH_BASE)
-    #define DMA_FILT2RAM_DST_BASE (CYDEV_SRAM_BASE)
-
-    /* Variable declarations for DMA_FILT2RAM */
-    /* Move these variable declarations to the top of the function */
-    uint8 DMA_FILT2RAM_Chan;
-    uint8 DMA_FILT2RAM_TD[1];
-
-    /* DMA Configuration for DMA_FILT2RAM */
-    DMA_FILT2RAM_Chan = DMA_FILT2RAM_DmaInitialize(DMA_FILT2RAM_BYTES_PER_BURST, DMA_FILT2RAM_REQUEST_PER_BURST, 
-        HI16(DMA_FILT2RAM_SRC_BASE), HI16(DMA_FILT2RAM_DST_BASE));
-    DMA_FILT2RAM_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(DMA_FILT2RAM_TD[0], 256, DMA_FILT2RAM_TD[0], DMA_FILT2RAM__TD_TERMOUT_EN | TD_INC_DST_ADR);
-    CyDmaTdSetAddress(DMA_FILT2RAM_TD[0], LO16((uint32)Filter_HOLDA_PTR), LO16((uint32)buffer));
-    CyDmaChSetInitialTd(DMA_FILT2RAM_Chan, DMA_FILT2RAM_TD[0]);
-    CyDmaChEnable(DMA_FILT2RAM_Chan, 1);
-}
+//void DMA_FILT2RAM_Config() {
+//    /* Defines for DMA_FILT2RAM */
+//    #define DMA_FILT2RAM_BYTES_PER_BURST 4
+//    #define DMA_FILT2RAM_REQUEST_PER_BURST 1
+//    #define DMA_FILT2RAM_SRC_BASE (CYDEV_PERIPH_BASE)
+//    #define DMA_FILT2RAM_DST_BASE (CYDEV_SRAM_BASE)
+//
+//    /* Variable declarations for DMA_FILT2RAM */
+//    /* Move these variable declarations to the top of the function */
+//    uint8 DMA_FILT2RAM_Chan;
+//    uint8 DMA_FILT2RAM_TD[1];
+//
+//    /* DMA Configuration for DMA_FILT2RAM */
+//    DMA_FILT2RAM_Chan = DMA_FILT2RAM_DmaInitialize(DMA_FILT2RAM_BYTES_PER_BURST, DMA_FILT2RAM_REQUEST_PER_BURST, 
+//        HI16(DMA_FILT2RAM_SRC_BASE), HI16(DMA_FILT2RAM_DST_BASE));
+//    DMA_FILT2RAM_TD[0] = CyDmaTdAllocate();
+//    CyDmaTdSetConfiguration(DMA_FILT2RAM_TD[0], 256, DMA_FILT2RAM_TD[0], DMA_FILT2RAM__TD_TERMOUT_EN | TD_INC_DST_ADR);
+//    CyDmaTdSetAddress(DMA_FILT2RAM_TD[0], LO16((uint32)Filter_HOLDA_PTR), LO16((uint32)buffer));
+//    CyDmaChSetInitialTd(DMA_FILT2RAM_Chan, DMA_FILT2RAM_TD[0]);
+//    CyDmaChEnable(DMA_FILT2RAM_Chan, 1);
+//}
 
 CY_ISR( isr_1_routine ) {
     i2cbuf[0] = 0;
