@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/08/2016 at 23:27
+// 09/09/2016 at 23:00
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -888,7 +888,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v"
 `endif
 
-// SPI_Slave_v2_70(BidirectMode=false, ClockInternal=true, ControlFileName=SPI_Slave_Default.ctl, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CyGetRegReplacementString_1=CY_GET_REG8, CyGetRegReplacementString_2=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DesiredBitRate=1000000, FixedPlacementEnabled=false, InternalInterruptEnabled=0, InternalRxInterruptEnabled=0, InternalTxInterruptEnabled=0, InterruptOnByteComplete=false, InterruptOnDone=false, InterruptOnRXEmpty=false, InterruptOnRXFull=false, InterruptOnRXNotEmpty=false, InterruptOnRXOverrun=false, InterruptOnTXEmpty=false, InterruptOnTXFull=false, InterruptOnTXNotFull=false, IntOnByteComp=0, IntOnRXEmpty=0, IntOnRXFull=0, IntOnRXNotEmpty=0, IntOnRXOver=0, IntOnSPIDone=0, IntOnTXEmpty=0, IntOnTXFull=0, IntOnTXNotFull=0, Mode=0, ModeUseZero=1, MultiSlaveEnable=true, NumberOfDataBits=8, PSoC3_ES2_PSoC5_ES1=false, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, RxBufferSize=4, ShiftDir=0, SiliconRevisionReplacementString=es3, TxBufferSize=4, UseInternalInterrupt=false, UseRxInternalInterrupt=false, UseTxInternalInterrupt=false, VerilogSectionReplacementString=sR8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=SPI_Slave_v2_70, CY_CONTROL_FILE=SPI_Slave_Default.ctl, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SPIS, CY_INSTANCE_SHORT_NAME=SPIS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SPIS, )
+// SPI_Slave_v2_70(BidirectMode=false, ClockInternal=true, ControlFileName=SPI_Slave_Default.ctl, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CyGetRegReplacementString_1=CY_GET_REG8, CyGetRegReplacementString_2=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DesiredBitRate=4000000, FixedPlacementEnabled=false, InternalInterruptEnabled=0, InternalRxInterruptEnabled=0, InternalTxInterruptEnabled=0, InterruptOnByteComplete=false, InterruptOnDone=false, InterruptOnRXEmpty=false, InterruptOnRXFull=false, InterruptOnRXNotEmpty=true, InterruptOnRXOverrun=false, InterruptOnTXEmpty=false, InterruptOnTXFull=false, InterruptOnTXNotFull=false, IntOnByteComp=0, IntOnRXEmpty=0, IntOnRXFull=0, IntOnRXNotEmpty=1, IntOnRXOver=0, IntOnSPIDone=0, IntOnTXEmpty=0, IntOnTXFull=0, IntOnTXNotFull=0, Mode=0, ModeUseZero=1, MultiSlaveEnable=true, NumberOfDataBits=8, PSoC3_ES2_PSoC5_ES1=false, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, RxBufferSize=4, ShiftDir=0, SiliconRevisionReplacementString=es3, TxBufferSize=4, UseInternalInterrupt=false, UseRxInternalInterrupt=false, UseTxInternalInterrupt=false, VerilogSectionReplacementString=sR8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=SPI_Slave_v2_70, CY_CONTROL_FILE=SPI_Slave_Default.ctl, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SPIS, CY_INSTANCE_SHORT_NAME=SPIS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SPIS, )
 module SPI_Slave_v2_70_11 (
     ss,
     mosi,
@@ -948,7 +948,7 @@ module SPI_Slave_v2_70_11 (
 		#(.id("7cc94224-6408-4653-9386-90558f8d2e67/426fcbe0-714d-4404-8fa8-581ff40c30f1"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("500000000"),
+		  .period("125000000"),
 		  .is_direct(0),
 		  .is_digital(1))
 		IntClock
@@ -1000,6 +1000,19 @@ module Filter_v2_30_12 (
 
 
 endmodule
+
+// Component: FreqDiv_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
+`endif
 
 // Component: cy_constant_v1_0
 `ifdef CY_BLK_DIR
@@ -2004,6 +2017,8 @@ module top ;
           wire  Net_6543;
           wire  Net_850;
           wire  Net_837;
+          wire  Net_7107;
+          wire  Net_7101;
           wire  Net_7041;
           wire  Net_6982;
           wire  Net_6981;
@@ -2013,8 +2028,6 @@ module top ;
           wire  Net_6916;
           wire  Net_6986;
           wire  Net_4221;
-          wire  Net_2247;
-          wire  Net_2246;
           wire  Net_2245;
           wire  Net_2244;
           wire  Net_2243;
@@ -2057,6 +2070,9 @@ module top ;
     electrical  Net_260;
     electrical  Net_157;
     electrical  Net_259;
+          wire  Net_7100;
+          wire  Net_2246;
+          wire  Net_2247;
           wire  Net_7051;
           wire  Net_7050;
     electrical  Net_61;
@@ -2908,7 +2924,7 @@ module top ;
         .sdat(Net_2245),
         .rx_interrupt(Net_2246),
         .miso_oe(Net_1821),
-        .reset(1'b0));
+        .reset(Net_2247));
     defparam SPIS.NumberOfDataBits = 8;
     defparam SPIS.ShiftDir = 0;
 
@@ -3483,10 +3499,101 @@ module top ;
 		  .nrq(Net_6982));
 
 
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_spi_rx
+		 (.int_signal(Net_2246));
+
+
     Filter_v2_30_12 Filter (
         .DMA_Req_A(Net_7051),
         .DMA_Req_B(Net_7050),
         .Interrupt(Net_7041));
+
+	wire [0:0] tmpOE__Pin_test1_net;
+	wire [0:0] tmpFB_0__Pin_test1_net;
+	wire [0:0] tmpIO_0__Pin_test1_net;
+	wire [0:0] tmpINTERRUPT_0__Pin_test1_net;
+	electrical [0:0] tmpSIOVREF__Pin_test1_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("104017df-8947-496f-b047-7cd6b9d209be"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Pin_test1
+		 (.oe(tmpOE__Pin_test1_net),
+		  .y({Net_7101}),
+		  .fb({tmpFB_0__Pin_test1_net[0:0]}),
+		  .io({tmpIO_0__Pin_test1_net[0:0]}),
+		  .siovref(tmpSIOVREF__Pin_test1_net),
+		  .interrupt({tmpINTERRUPT_0__Pin_test1_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Pin_test1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    FreqDiv_v1_0 FreqDiv_1 (
+        .en(Net_7100),
+        .div(Net_7101),
+        .reset(1'b0),
+        .clock(Net_2246));
+    defparam FreqDiv_1.Divider = 2;
+    defparam FreqDiv_1.highPulse = 1;
+    defparam FreqDiv_1.numBits = 1;
 
     assign Net_837 = 1'h0;
 
@@ -3957,6 +4064,8 @@ module top ;
         .nVref(Net_7016),
         .mi(1'b0));
 
+    assign Net_7100 = 1'h1;
+
     ADC_SAR_v3_0_17 SAR1 (
         .vplus(Net_61),
         .vminus(Net_62),
@@ -3983,6 +4092,8 @@ module top ;
         .aclk(1'b0),
         .vdac_ref(Net_7021),
         .eos(Net_7022));
+
+    assign Net_2247 = 1'h0;
 
 
 	cy_isr_v1_0

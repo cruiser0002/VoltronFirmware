@@ -1,5 +1,5 @@
 -- Project:   Voltron Main
--- Generated: 09/08/2016 23:27:27
+-- Generated: 09/09/2016 23:00:20
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Voltron Main\ IS
@@ -8,6 +8,7 @@ ENTITY \Voltron Main\ IS
         Pin_LED_PWMB(0)_PAD : OUT std_ulogic;
         SPI_MISO(0)_PAD : OUT std_ulogic;
         Pin_LED_PWMA(0)_PAD : OUT std_ulogic;
+        Pin_test1(0)_PAD : OUT std_ulogic;
         SPI_SCLK(0)_PAD : IN std_ulogic;
         SPI_MOSI(0)_PAD : IN std_ulogic;
         I2C_Pins(0)_PAD : INOUT std_ulogic;
@@ -46,6 +47,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE udbclken_assigned OF Net_17 : SIGNAL IS "False";
     SIGNAL Net_1821 : bit;
     SIGNAL Net_20 : bit;
+    SIGNAL Net_2246 : bit;
     SIGNAL Net_4221 : bit;
     SIGNAL Net_4245 : bit;
     SIGNAL Net_5352 : bit;
@@ -63,6 +65,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Net_7050 : bit;
     SIGNAL Net_7051 : bit;
     SIGNAL Net_7070 : bit;
+    SIGNAL Net_7101 : bit;
     SIGNAL Net_74 : bit;
     SIGNAL Pin_DAC1(0)__PA : bit;
     SIGNAL Pin_DAC2(0)__PA : bit;
@@ -80,6 +83,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Pin_TIA3P5(0)__PA : bit;
     SIGNAL Pin_TIA4(0)__PA : bit;
     SIGNAL Pin_VDDAdiv2(0)__PA : bit;
+    SIGNAL Pin_test1(0)__PA : bit;
     SIGNAL SPI_MISO(0)__PA : bit;
     SIGNAL SPI_MOSI(0)__PA : bit;
     SIGNAL SPI_SCLK(0)__PA : bit;
@@ -109,6 +113,8 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL \DelSig:mod_reset\ : bit;
     SIGNAL \Filter:Net_8\ : bit;
     SIGNAL \Filter:Net_9\ : bit;
+    SIGNAL \FreqDiv_1:count_0\ : bit;
+    SIGNAL \FreqDiv_1:not_last_reset\ : bit;
     SIGNAL \I2C:Net_172\ : bit;
     SIGNAL \I2C:Net_173\ : bit;
     SIGNAL \I2C:Net_174\ : bit;
@@ -258,23 +264,25 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE Location OF Pin_TIA1P5(0) : LABEL IS "P0[5]";
     ATTRIBUTE lib_model OF Pin_LED_AMPA(0) : LABEL IS "iocell19";
     ATTRIBUTE Location OF Pin_LED_AMPA(0) : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF SPI_SCLK(0) : LABEL IS "iocell20";
+    ATTRIBUTE lib_model OF Pin_test1(0) : LABEL IS "iocell20";
+    ATTRIBUTE Location OF Pin_test1(0) : LABEL IS "P3[3]";
+    ATTRIBUTE lib_model OF SPI_SCLK(0) : LABEL IS "iocell21";
     ATTRIBUTE Location OF SPI_SCLK(0) : LABEL IS "P2[7]";
-    ATTRIBUTE lib_model OF SPI_MOSI(0) : LABEL IS "iocell21";
+    ATTRIBUTE lib_model OF SPI_MOSI(0) : LABEL IS "iocell22";
     ATTRIBUTE Location OF SPI_MOSI(0) : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF I2C_Pins(0) : LABEL IS "iocell22";
+    ATTRIBUTE lib_model OF I2C_Pins(0) : LABEL IS "iocell23";
     ATTRIBUTE Location OF I2C_Pins(0) : LABEL IS "P12[4]";
-    ATTRIBUTE lib_model OF I2C_Pins(1) : LABEL IS "iocell23";
+    ATTRIBUTE lib_model OF I2C_Pins(1) : LABEL IS "iocell24";
     ATTRIBUTE Location OF I2C_Pins(1) : LABEL IS "P12[5]";
-    ATTRIBUTE lib_model OF Pin_DACREF(0) : LABEL IS "iocell24";
+    ATTRIBUTE lib_model OF Pin_DACREF(0) : LABEL IS "iocell25";
     ATTRIBUTE Location OF Pin_DACREF(0) : LABEL IS "P1[5]";
-    ATTRIBUTE lib_model OF Pin_TIA3(0) : LABEL IS "iocell25";
+    ATTRIBUTE lib_model OF Pin_TIA3(0) : LABEL IS "iocell26";
     ATTRIBUTE Location OF Pin_TIA3(0) : LABEL IS "P1[7]";
-    ATTRIBUTE lib_model OF \DelSig:Bypass_P03(0)\ : LABEL IS "iocell26";
+    ATTRIBUTE lib_model OF \DelSig:Bypass_P03(0)\ : LABEL IS "iocell27";
     ATTRIBUTE Location OF \DelSig:Bypass_P03(0)\ : LABEL IS "P0[3]";
-    ATTRIBUTE lib_model OF \SAR1:Bypass(0)\ : LABEL IS "iocell27";
+    ATTRIBUTE lib_model OF \SAR1:Bypass(0)\ : LABEL IS "iocell28";
     ATTRIBUTE Location OF \SAR1:Bypass(0)\ : LABEL IS "P0[4]";
-    ATTRIBUTE lib_model OF \SAR2:Bypass(0)\ : LABEL IS "iocell28";
+    ATTRIBUTE lib_model OF \SAR2:Bypass(0)\ : LABEL IS "iocell29";
     ATTRIBUTE Location OF \SAR2:Bypass(0)\ : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:tx_load\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:byte_complete\ : LABEL IS "macrocell2";
@@ -287,13 +295,13 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE lib_model OF Net_1821 : LABEL IS "macrocell9";
     ATTRIBUTE Location OF \Opamp_2:ABuf\ : LABEL IS "F(OpAmp,3)";
     ATTRIBUTE Location OF \PGA_Inv_2:SC\ : LABEL IS "F(SC,1)";
-    ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell29";
+    ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell30";
     ATTRIBUTE Location OF Dedicated_Output_1 : LABEL IS "P3[6]";
-    ATTRIBUTE Location OF \PGA_Inv_1:SC\ : LABEL IS "F(SC,2)";
+    ATTRIBUTE Location OF \PGA_Inv_1:SC\ : LABEL IS "F(SC,0)";
     ATTRIBUTE Location OF \VDAC4:viDAC8\ : LABEL IS "F(VIDAC,3)";
     ATTRIBUTE Location OF \VDAC3:viDAC8\ : LABEL IS "F(VIDAC,1)";
-    ATTRIBUTE Location OF \VDAC2:viDAC8\ : LABEL IS "F(VIDAC,2)";
-    ATTRIBUTE Location OF \VDAC1:viDAC8\ : LABEL IS "F(VIDAC,0)";
+    ATTRIBUTE Location OF \VDAC2:viDAC8\ : LABEL IS "F(VIDAC,0)";
+    ATTRIBUTE Location OF \VDAC1:viDAC8\ : LABEL IS "F(VIDAC,2)";
     ATTRIBUTE Location OF \Opamp_1:ABuf\ : LABEL IS "F(OpAmp,2)";
     ATTRIBUTE Location OF \Opamp_4:ABuf\ : LABEL IS "F(OpAmp,0)";
     ATTRIBUTE Location OF \Opamp_3:ABuf\ : LABEL IS "F(OpAmp,1)";
@@ -316,6 +324,9 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE lib_model OF \SPIS:BSPIS:dpcounter_one_reg\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : LABEL IS "macrocell12";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_tmp\ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF Net_7101 : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \FreqDiv_1:not_last_reset\ : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF \FreqDiv_1:count_0\ : LABEL IS "macrocell16";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT clockblockcell
@@ -2448,6 +2459,98 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    Pin_test1:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "104017df-8947-496f-b047-7cd6b9d209be",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Pin_test1(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Pin_test1",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Pin_test1(0)__PA,
+            oe => open,
+            pin_input => Net_7101,
+            pad_out => Pin_test1(0)_PAD,
+            pad_in => Pin_test1(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     SPI_SCLK:logicalport
         GENERIC MAP(
             drive_mode => "001",
@@ -3554,7 +3657,8 @@ BEGIN
             status_3 => \SPIS:BSPIS:dpMOSI_fifo_not_empty\,
             status_2 => open,
             status_1 => open,
-            status_0 => open);
+            status_0 => open,
+            interrupt => Net_2246);
 
     \SPIS:BSPIS:sR8:Dp:u0\:datapathcell
         GENERIC MAP(
@@ -3638,6 +3742,13 @@ BEGIN
             dmareq => Net_119,
             termin => '0',
             termout => Net_6982,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_spi_rx:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => Net_2246,
             clock => ClockBlock_BUS_CLK);
 
     \Filter:DFB\:dfbcell
@@ -3896,5 +4007,41 @@ BEGIN
             q => \SPIS:BSPIS:mosi_tmp\,
             clock_0 => Net_17,
             main_0 => Net_16);
+
+    Net_7101:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => Net_7101,
+            clk_en => Net_2246,
+            clock_0 => \SPIS:Net_81\,
+            main_0 => \FreqDiv_1:not_last_reset\,
+            main_1 => \FreqDiv_1:count_0\);
+
+    \FreqDiv_1:not_last_reset\:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => \FreqDiv_1:not_last_reset\,
+            clk_en => Net_2246,
+            clock_0 => \SPIS:Net_81\);
+
+    \FreqDiv_1:count_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => \FreqDiv_1:count_0\,
+            clk_en => Net_2246,
+            clock_0 => \SPIS:Net_81\,
+            main_0 => \FreqDiv_1:not_last_reset\);
 
 END __DEFAULT__;

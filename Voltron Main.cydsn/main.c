@@ -59,6 +59,8 @@ void start_resources()
     Filter_SetDalign(Filter_HOLDB_DALIGN, Filter_ENABLED);
     Filter_SetCoherency(Filter_CHANNEL_B, Filter_KEY_MID);
     
+    SPIS_Start();
+    
 }
 
 CY_ISR(shift_sar1_handler) 
@@ -87,12 +89,20 @@ CY_ISR(filter_ready2_handler)
     i2cbuf[3] = filtermem2[24];
 }
 
+CY_ISR(spi_rx_handler)
+{
+    VDAC1_SetValue(SPIS_ReadRxData());
+}
+
 void start_interrupts()
 {
     //isr_shift_sar1_StartEx(shift_sar1_handler);
     //isr_shift_sar2_StartEx(shift_sar2_handler);
     isr_filter_ready1_StartEx(filter_ready1_handler);
     isr_filter_ready2_StartEx(filter_ready2_handler);
+    isr_spi_rx_StartEx(spi_rx_handler);
+    
+    //SPIS_EnableRxInt();
 }
 
 void DMA_SAR2RAM1_config()
@@ -306,10 +316,14 @@ int main()
     
     for(;;)
     {
-        i2cbuf[0] = filtermem1[0] >> 8;
-        i2cbuf[1] = filtermem1[0];
-        i2cbuf[2] = filtermem2[0] >> 8;
-        i2cbuf[3] = filtermem2[0];
+//        i2cbuf[0] = filtermem1[0] >> 8;
+//        i2cbuf[1] = filtermem1[0];
+//        i2cbuf[2] = filtermem2[0] >> 8;
+//        i2cbuf[3] = filtermem2[0];
+
+        //VDAC1_SetValue(SPIS_ReadRxData());
+        //VDAC4_SetValue(SPIS_ReadRxData());
+        //SPIS_ClearRxBuffer();
         
         CyDelay(1);
     }

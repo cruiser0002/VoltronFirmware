@@ -143,6 +143,8 @@
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR2FILTER1_dma.h" value="NONE;SAR2FILTER1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR2FILTER2_dma.c" value="ARM_C_FILE;SAR2FILTER2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR2FILTER2_dma.h" value="NONE;SAR2FILTER2" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_spi_rx.c" value="ARM_C_FILE;isr_spi_rx" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_spi_rx.h" value="NONE;isr_spi_rx" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter.c" value="ARM_C_FILE;Filter" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter.h" value="NONE;Filter" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_PM.c" value="ARM_C_FILE;Filter" />
@@ -150,6 +152,9 @@
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_PVT.h" value="NONE;Filter" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_RAM_Data.c" value="ARM_C_FILE;Filter" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_Coefficients.c" value="ARM_C_FILE;Filter" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1_aliases.h" value="NONE;Pin_test1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1.c" value="ARM_C_FILE;Pin_test1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1.h" value="NONE;Pin_test1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\PWM2.c" value="ARM_C_FILE;PWM2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\PWM2.h" value="NONE;PWM2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\PWM2_PM.c" value="ARM_C_FILE;PWM2" />
