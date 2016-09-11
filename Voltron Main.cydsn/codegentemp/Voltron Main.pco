@@ -1,5 +1,5 @@
 # Voltron Main
-# 2016-09-11 20:11:42Z
+# 2016-09-11 20:26:15Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -38,19 +38,18 @@ set_io "\DelSig:Bypass_P03(0)\" iocell 0 3
 set_io "\SAR1:Bypass(0)\" iocell 0 4
 set_io "\SAR2:Bypass(0)\" iocell 0 2
 set_io "Pin_test1(0)" iocell 3 3
-set_location "\SPIS:BSPIS:tx_load\" 1 3 0 1
-set_location "\SPIS:BSPIS:byte_complete\" 0 3 0 2
-set_location "\SPIS:BSPIS:rx_buf_overrun\" 1 3 0 2
-set_location "I2C_Pins(0)_SYNC" 0 5 5 0
-set_location "Net_20" 0 4 1 1
-set_location "\SPIS:BSPIS:mosi_buf_overrun\" 1 3 1 0
-set_location "\SPIS:BSPIS:tx_status_0\" 0 3 1 3
-set_location "\SPIS:BSPIS:rx_status_4\" 1 4 1 1
-set_location "\SPIS:BSPIS:mosi_to_dp\" 1 4 1 0
-set_location "Net_1821" 0 5 1 1
+set_location "\SPIS:BSPIS:tx_load\" 0 4 1 0
+set_location "\SPIS:BSPIS:byte_complete\" 0 4 0 0
+set_location "\SPIS:BSPIS:rx_buf_overrun\" 0 3 0 3
+set_location "I2C_Pins(0)_SYNC" 1 5 5 0
+set_location "Net_20" 0 5 0 3
+set_location "\SPIS:BSPIS:mosi_buf_overrun\" 0 4 0 2
+set_location "\SPIS:BSPIS:tx_status_0\" 1 4 1 1
+set_location "\SPIS:BSPIS:rx_status_4\" 1 4 0 3
+set_location "\SPIS:BSPIS:mosi_to_dp\" 0 5 0 0
+set_location "Net_1821" 0 5 1 3
 set_location "\Opamp_2:ABuf\" abufcell -1 -1 3
 set_location "\PGA_Inv_2:SC\" sccell -1 -1 1
-set_io "Dedicated_Output_1" iocell 3 6
 set_location "\PGA_Inv_1:SC\" sccell -1 -1 0
 set_location "\VDAC4:viDAC8\" vidaccell -1 -1 3
 set_location "\VDAC3:viDAC8\" vidaccell -1 -1 1
@@ -67,15 +66,15 @@ set_location "\USB:bus_reset\" interrupt -1 -1 23
 set_location "\USB:arb_int\" interrupt -1 -1 22
 set_location "FILTER2RAM1" drqcell -1 -1 8
 set_location "FILTER2RAM2" drqcell -1 -1 9
-set_location "__ONE__" 1 2 1 1
-set_location "\SPIS:BSPIS:sync_1\" 1 3 5 0
-set_location "\SPIS:BSPIS:sync_2\" 1 3 5 1
-set_location "\SPIS:BSPIS:sync_3\" 1 3 5 2
-set_location "\SPIS:BSPIS:sync_4\" 1 3 5 3
-set_location "\SPIS:BSPIS:BitCounter\" 1 5 7
-set_location "\SPIS:BSPIS:TxStsReg\" 0 3 4
-set_location "\SPIS:BSPIS:RxStsReg\" 1 4 4
-set_location "\SPIS:BSPIS:sR8:Dp:u0\" 1 4 2
+set_location "__ONE__" 0 3 0 0
+set_location "\SPIS:BSPIS:sync_1\" 0 3 5 0
+set_location "\SPIS:BSPIS:sync_2\" 0 3 5 1
+set_location "\SPIS:BSPIS:sync_3\" 0 3 5 2
+set_location "\SPIS:BSPIS:sync_4\" 0 3 5 3
+set_location "\SPIS:BSPIS:BitCounter\" 0 5 7
+set_location "\SPIS:BSPIS:TxStsReg\" 1 4 4
+set_location "\SPIS:BSPIS:RxStsReg\" 1 3 4
+set_location "\SPIS:BSPIS:sR8:Dp:u0\" 0 5 2
 set_location "SAR2RAM2" drqcell -1 -1 1
 set_location "isr_shift_sar1" interrupt -1 -1 0
 set_location "isr_shift_sar2" interrupt -1 -1 7
@@ -92,7 +91,7 @@ set_location "RAM2FILTER2" drqcell -1 -1 5
 set_location "RAM2FILTER1" drqcell -1 -1 4
 set_location "\DelSig:DSM\" dsmodcell -1 -1 0
 set_location "\DelSig:IRQ\" interrupt -1 -1 29
-set_location "I2C_Pins(1)_SYNC" 0 5 5 1
+set_location "I2C_Pins(1)_SYNC" 0 4 5 0
 set_location "\DelSig:DEC\" decimatorcell -1 -1 0
 set_location "isr_shift1" interrupt -1 -1 6
 set_location "\SAR1:IRQ\" interrupt -1 -1 1
@@ -103,14 +102,14 @@ set_location "\SAR2:ADC_SAR\" sarcell -1 -1 1
 set_location "SHIFT2RAM" drqcell -1 -1 2
 set_location "SPI2SHIFT" drqcell -1 -1 10
 set_location "isr_filter_ready1" interrupt -1 -1 4
-set_location "\ShiftBy1_1:Datapath_1:u0\" 0 5 2
+set_location "\ShiftBy1_1:Datapath_1:u0\" 1 3 2
 set_location "isr_filter_ready2" interrupt -1 -1 5
-set_location "\SPIS:BSPIS:dpcounter_one_reg\" 1 3 1 2
-set_location "\SPIS:BSPIS:mosi_buf_overrun_fin\" 1 3 1 3
-set_location "\SPIS:BSPIS:mosi_tmp\" 1 4 0 1
-set_location "\FreqDiv_1:not_last_reset\" 1 5 0 2
-set_location "Net_7992" 1 5 0 0
-set_location "\FreqDiv_1:count_0\" 1 5 0 1
-set_location "Net_8011" 0 5 1 3
-set_location "\ShiftBy1_1:Datapath_1_select_0\" 1 5 1 0
-set_location "\ShiftBy1_1:Datapath_1_select_1\" 0 5 0 3
+set_location "\SPIS:BSPIS:dpcounter_one_reg\" 0 4 1 1
+set_location "\SPIS:BSPIS:mosi_buf_overrun_fin\" 0 3 1 0
+set_location "\SPIS:BSPIS:mosi_tmp\" 0 5 0 1
+set_location "\FreqDiv_1:not_last_reset\" 1 4 0 2
+set_location "Net_7992" 1 4 0 0
+set_location "\FreqDiv_1:count_0\" 1 4 0 1
+set_location "Net_8011" 1 3 1 3
+set_location "\ShiftBy1_1:Datapath_1_select_0\" 1 3 0 0
+set_io "Dedicated_Output_1" iocell 3 6

@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/11/2016 at 13:11
+// 09/11/2016 at 13:26
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1979,8 +1979,6 @@ module ShiftBy1 (
 /* ==================== Wire and Register Declarations ==================== */
 localparam [1:0] Start = 2'b00;
 localparam [1:0] shift1 = 2'b01;
-localparam [1:0] Idle1 = 2'b10;
-localparam [1:0] Idle2 = 2'b11;
 wire Datapath_1_d0_load;
 wire Datapath_1_d1_load;
 wire Datapath_1_f0_load;
@@ -2000,7 +1998,7 @@ assign Datapath_1_f1_load = (1'b0);
 assign Datapath_1_route_si = (1'b0);
 assign Datapath_1_route_ci = (1'b0);
 assign Datapath_1_select[0] = (SM1[0]);
-assign Datapath_1_select[1] = (SM1[1]);
+assign Datapath_1_select[1] = (1'b0);
 assign Datapath_1_select[2] = (1'b0);
 
 /* ==================== Datapath_1 (Width: 8) Instantiation ==================== */
@@ -2008,8 +2006,8 @@ parameter Datapath_1_dpconfig0 =
 {
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM0: Start */
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP___SL, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM1: Shift */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM2: Idle1 */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM3: Idle2 */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM2:  */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM3:  */
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM4:  */
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM5:  */
     `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM6:  */
@@ -2067,23 +2065,7 @@ begin : Start_state_logic
         end
         shift1 : 
         begin
-            dsignal <= (1'b0);
-            if (( 1'b1 ) == 1'b1)
-            begin
-                SM1 <= Idle1 ;
-            end
-        end
-        Idle1 : 
-        begin
             dsignal <= (1'b1);
-            if (( 1'b1 ) == 1'b1)
-            begin
-                SM1 <= Idle2 ;
-            end
-        end
-        Idle2 : 
-        begin
-            dsignal <= (1'b0);
             if (( 1'b1 ) == 1'b1)
             begin
                 SM1 <= Start ;

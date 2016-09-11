@@ -2,7 +2,7 @@
 --	Conversion of Voltron Main.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Sep 11 13:11:37 2016
+--	Sun Sep 11 13:26:09 2016
 --
 
 USE cypress.cypress.all;
@@ -748,7 +748,6 @@ SIGNAL \ShiftBy1_1:Datapath_1_route_ci\ : bit;
 SIGNAL \ShiftBy1_1:Datapath_1_select_0\ : bit;
 SIGNAL \ShiftBy1_1:SM1_0\ : bit;
 SIGNAL \ShiftBy1_1:Datapath_1_select_1\ : bit;
-SIGNAL \ShiftBy1_1:SM1_1\ : bit;
 SIGNAL \ShiftBy1_1:Datapath_1_select_2\ : bit;
 SIGNAL Net_7871 : bit;
 SIGNAL \ShiftBy1_1:Datapath_1:ce0\ : bit;
@@ -815,6 +814,7 @@ SIGNAL \ShiftBy1_1:Datapath_1:f1_bus_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \ShiftBy1_1:Datapath_1:f1_bus_stat_reg\:SIGNAL IS 2;
 SIGNAL \ShiftBy1_1:Datapath_1:f1_blk_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \ShiftBy1_1:Datapath_1:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \ShiftBy1_1:SM1_1\ : bit;
 SIGNAL \SPIS:BSPIS:dpcounter_one_reg\\D\ : bit;
 SIGNAL \SPIS:BSPIS:mosi_buf_overrun_fin\\D\ : bit;
 SIGNAL \SPIS:BSPIS:mosi_tmp\\D\ : bit;
@@ -860,13 +860,10 @@ Net_7992D <= (\FreqDiv_1:count_0\
 \FreqDiv_1:count_0\\D\ <= ((not \FreqDiv_1:count_0\ and \FreqDiv_1:not_last_reset\)
 	OR (not \FreqDiv_1:not_last_reset\ and \FreqDiv_1:count_0\));
 
-\ShiftBy1_1:dsignal\\D\ <= ((not \ShiftBy1_1:Datapath_1_select_0\ and \ShiftBy1_1:Datapath_1_select_1\));
+\ShiftBy1_1:dsignal\\D\ <= ((not \ShiftBy1_1:SM1_1\ and \ShiftBy1_1:Datapath_1_select_0\)
+	OR (Net_8011 and \ShiftBy1_1:SM1_1\));
 
-\ShiftBy1_1:SM1_1\\D\ <= ((not \ShiftBy1_1:Datapath_1_select_1\ and \ShiftBy1_1:Datapath_1_select_0\)
-	OR (not \ShiftBy1_1:Datapath_1_select_0\ and \ShiftBy1_1:Datapath_1_select_1\));
-
-\ShiftBy1_1:SM1_0\\D\ <= ((not \ShiftBy1_1:Datapath_1_select_0\ and \ShiftBy1_1:Datapath_1_select_1\)
-	OR (not \ShiftBy1_1:Datapath_1_select_0\ and Net_7925));
+\ShiftBy1_1:SM1_0\\D\ <= ((not \ShiftBy1_1:Datapath_1_select_0\ and not \ShiftBy1_1:SM1_1\ and Net_7925));
 
 Pin_TIA4:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"ee71237e-cb9b-4c3f-8f8c-4cadfd6cf1bd",
@@ -3490,7 +3487,7 @@ Pin_test1:cy_psoc3_pins_v1_10
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>Net_7871,
-		cs_addr=>(zero, \ShiftBy1_1:Datapath_1_select_1\, \ShiftBy1_1:Datapath_1_select_0\),
+		cs_addr=>(zero, zero, \ShiftBy1_1:Datapath_1_select_0\),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>zero,
@@ -3598,8 +3595,8 @@ Net_7992:cy_dff
 		clk=>Net_7871,
 		q=>\ShiftBy1_1:Datapath_1_select_0\);
 \ShiftBy1_1:SM1_1\:cy_dff
-	PORT MAP(d=>\ShiftBy1_1:SM1_1\\D\,
+	PORT MAP(d=>zero,
 		clk=>Net_7871,
-		q=>\ShiftBy1_1:Datapath_1_select_1\);
+		q=>\ShiftBy1_1:SM1_1\);
 
 END R_T_L;

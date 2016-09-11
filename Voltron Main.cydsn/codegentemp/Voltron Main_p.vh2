@@ -1,5 +1,5 @@
 -- Project:   Voltron Main
--- Generated: 09/11/2016 13:11:40
+-- Generated: 09/11/2016 13:26:14
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Voltron Main\ IS
@@ -197,7 +197,6 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE global_signal OF \SPIS:Net_81\ : SIGNAL IS true;
     SIGNAL \SPIS:Net_81_local\ : bit;
     SIGNAL \ShiftBy1_1:Datapath_1_select_0\ : bit;
-    SIGNAL \ShiftBy1_1:Datapath_1_select_1\ : bit;
     SIGNAL \\\USB:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USB:Dp(0)\\__PA\ : bit;
     SIGNAL \USB:Net_1010\ : bit;
@@ -301,8 +300,6 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE lib_model OF Net_1821 : LABEL IS "macrocell9";
     ATTRIBUTE Location OF \Opamp_2:ABuf\ : LABEL IS "F(OpAmp,3)";
     ATTRIBUTE Location OF \PGA_Inv_2:SC\ : LABEL IS "F(SC,1)";
-    ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell30";
-    ATTRIBUTE Location OF Dedicated_Output_1 : LABEL IS "P3[6]";
     ATTRIBUTE Location OF \PGA_Inv_1:SC\ : LABEL IS "F(SC,0)";
     ATTRIBUTE Location OF \VDAC4:viDAC8\ : LABEL IS "F(VIDAC,3)";
     ATTRIBUTE Location OF \VDAC3:viDAC8\ : LABEL IS "F(VIDAC,1)";
@@ -339,7 +336,8 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE lib_model OF \FreqDiv_1:count_0\ : LABEL IS "macrocell16";
     ATTRIBUTE lib_model OF Net_8011 : LABEL IS "macrocell17";
     ATTRIBUTE lib_model OF \ShiftBy1_1:Datapath_1_select_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \ShiftBy1_1:Datapath_1_select_1\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell30";
+    ATTRIBUTE Location OF Dedicated_Output_1 : LABEL IS "P3[6]";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT clockblockcell
@@ -3416,21 +3414,6 @@ BEGIN
             dyn_cntl_udb => open,
             modout => \PGA_Inv_2:Net_30\);
 
-    Dedicated_Output_1:iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Dedicated_Output_1__PA,
-            in_clock => open,
-            in_clock_en => open,
-            in_reset => open,
-            out_clock => open,
-            out_clock_en => open,
-            out_reset => open);
-
     \PGA_Inv_1:SC\:sccell
         GENERIC MAP(
             cy_registers => "")
@@ -4050,7 +4033,6 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            cs_addr_1 => \ShiftBy1_1:Datapath_1_select_1\,
             cs_addr_0 => \ShiftBy1_1:Datapath_1_select_0\,
             busclk => ClockBlock_BUS_CLK);
 
@@ -4129,35 +4111,38 @@ BEGIN
 
     Net_8011:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1)",
+            eqn_main => "(main_0)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
             q => Net_8011,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \ShiftBy1_1:Datapath_1_select_0\,
-            main_1 => \ShiftBy1_1:Datapath_1_select_1\);
+            main_0 => \ShiftBy1_1:Datapath_1_select_0\);
 
     \ShiftBy1_1:Datapath_1_select_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2)",
+            eqn_main => "(main_0 * !main_1)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
             q => \ShiftBy1_1:Datapath_1_select_0\,
             clock_0 => ClockBlock_BUS_CLK,
             main_0 => Net_7925,
-            main_1 => \ShiftBy1_1:Datapath_1_select_0\,
-            main_2 => \ShiftBy1_1:Datapath_1_select_1\);
+            main_1 => \ShiftBy1_1:Datapath_1_select_0\);
 
-    \ShiftBy1_1:Datapath_1_select_1\:macrocell
+    Dedicated_Output_1:iocell
         GENERIC MAP(
-            eqn_main => "(main_0)",
-            clk_inv => '0',
-            clken_mode => 1)
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            q => \ShiftBy1_1:Datapath_1_select_1\,
-            clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \ShiftBy1_1:Datapath_1_select_0\);
+            pa_out => Dedicated_Output_1__PA,
+            in_clock => open,
+            in_clock_en => open,
+            in_reset => open,
+            out_clock => open,
+            out_clock_en => open,
+            out_reset => open);
 
 END __DEFAULT__;

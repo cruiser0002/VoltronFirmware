@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
   29:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Parameters:
   30:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
   31:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 2
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
   60 001c 014B     		ldr	r3, .L5
   61 001e 1A70     		strb	r2, [r3]
   62 0020 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 3
 
 
   63              	.LVL6:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
   89:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
   90:.\Generated_Source\PSoC5/AMux_DelSig.c **** * Return:
   91:.\Generated_Source\PSoC5/AMux_DelSig.c **** *  void
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 4
 
 
   92:.\Generated_Source\PSoC5/AMux_DelSig.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  133:.\Generated_Source\PSoC5/AMux_DelSig.c ****     AMux_DelSig_CYAMUXSIDE_B_Set(channel);
   92              		.loc 1 133 0
   93 0008 2046     		mov	r0, r4
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 5
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 5
 
 
   94 000a FFF7FEFF 		bl	AMux_DelSig_CYAMUXSIDE_B_Set
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  134:.\Generated_Source\PSoC5/AMux_DelSig.c **** }
  135:.\Generated_Source\PSoC5/AMux_DelSig.c **** #endif
  136:.\Generated_Source\PSoC5/AMux_DelSig.c **** 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 6
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 6
 
 
  137:.\Generated_Source\PSoC5/AMux_DelSig.c **** /*******************************************************************************
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  179              		.cfi_def_cfa_offset 8
  180              		.cfi_offset 4, -8
  181              		.cfi_offset 14, -4
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 7
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 7
 
 
  182 0002 0446     		mov	r4, r0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  231 0011 B3010000 		.4byte	.LASF24
  232 0015 00000000 		.4byte	.LASF25
  233 0019 00000000 		.4byte	.Ldebug_ranges0+0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 8
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 8
 
 
  234 001d 00000000 		.4byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  288 0081 FA000000 		.4byte	.LASF10
  289 0085 02       		.uleb128 0x2
  290 0086 01       		.byte	0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 9
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 9
 
 
  291 0087 08       		.byte	0x8
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  345 00f9 07       		.uleb128 0x7
  346 00fa 08000000 		.4byte	.LVL8
  347 00fe 2A020000 		.4byte	0x22a
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 10
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 10
 
 
  348 0102 0D010000 		.4byte	0x10d
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  402 016b 01       		.uleb128 0x1
  403 016c 9C       		.byte	0x9c
  404 016d A5010000 		.4byte	0x1a5
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 11
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 11
 
 
  405 0171 0A       		.uleb128 0xa
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  459 01e3 74       		.byte	0x74
  460 01e4 00       		.sleb128 0
  461 01e5 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 12
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 12
 
 
  462 01e6 09       		.uleb128 0x9
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  516 0001 11       		.uleb128 0x11
  517 0002 01       		.byte	0x1
  518 0003 25       		.uleb128 0x25
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 13
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 13
 
 
  519 0004 0E       		.uleb128 0xe
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  573 003a 19       		.uleb128 0x19
  574 003b 03       		.uleb128 0x3
  575 003c 0E       		.uleb128 0xe
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 14
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 14
 
 
  576 003d 3A       		.uleb128 0x3a
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  630 0079 898201   		.uleb128 0x4109
  631 007c 01       		.byte	0x1
  632 007d 11       		.uleb128 0x11
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 15
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 15
 
 
  633 007e 01       		.uleb128 0x1
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  687 00b6 0B       		.uleb128 0xb
  688 00b7 27       		.uleb128 0x27
  689 00b8 19       		.uleb128 0x19
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 16
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 16
 
 
  690 00b9 3C       		.uleb128 0x3c
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  744 0035 07000000 		.4byte	.LVL8-1
  745 0039 10000000 		.4byte	.LFE3
  746 003d 0400     		.2byte	0x4
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 17
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 17
 
 
  747 003f F3       		.byte	0xf3
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  801 000c 0000     		.2byte	0
  802 000e 0000     		.2byte	0
  803 0010 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 18
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 18
 
 
  804 0014 28000000 		.4byte	.LFE0-.LFB0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  840      5F44656C 
  840      5369675F 
  840      4359414D 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 19
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 19
 
 
  840      55585349 
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  860      66756E63 
  860      74696F6E 
  860      2D736563 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 20
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 20
 
 
  860      74696F6E 
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 1
  884      5F44656C 
  884      5369675F 
  884      4359414D 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccA8qx1p.s 			page 21
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\cclruRXO.s 			page 21
 
 
  884      55585349 

@@ -280,16 +280,6 @@
 <file name=".\Generated_Source\PSoC5\project.h" />
 <file name=".\cyapicallbacks.h" />
 <file name=".\main.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\ShiftBy1_1_ShiftBy1.o">
-<dep name=".\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.c" />
-<dep name=".\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.h" />
-<dep name=".\Generated_Source\PSoC5\ShiftBy1_1_defs.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-</file>
-<file name=".\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\AMux_DelSig.o">
 <dep name=".\Generated_Source\PSoC5\AMux_DelSig.c" />
 <dep name=".\Generated_Source\PSoC5\AMux_DelSig.h" />
@@ -1389,6 +1379,16 @@
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\SPI_SS.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\ShiftBy1_1_ShiftBy1.o">
+<dep name=".\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.c" />
+<dep name=".\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftBy1_1_defs.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\USB.o">
 <dep name=".\Generated_Source\PSoC5\CyDmac.h" />
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
@@ -6141,7 +6141,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="131180983160911948" />
+<deps_time v="131180991892581371" />
 <top_block v="TopDesign" />
 <last_generation v="2" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
@@ -6262,7 +6262,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131180984277245798" />
+<deps_time v="131180992200758997" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
