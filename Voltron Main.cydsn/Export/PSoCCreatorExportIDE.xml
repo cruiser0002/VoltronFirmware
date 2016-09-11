@@ -301,6 +301,27 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USB_Dp.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_spi_rx.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_spi_rx.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy1_1_defs.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_shift1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_shift1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2RAM_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2RAM_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2SHIFT_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2SHIFT_dma.h</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="BUILD" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\ShiftBy2\API">
+        <Files Root="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn">
+          <File BuildType="BUILD" Toolchain="">.\ShiftBy2\API\ShiftBy2.h</File>
+          <File BuildType="BUILD" Toolchain="">.\ShiftBy2\API\ShiftBy2.c</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="BUILD" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\ShiftBy1\API">
+        <Files Root="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn">
+          <File BuildType="BUILD" Toolchain="">.\ShiftBy1\API\ShiftBy1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\ShiftBy1\API\ShiftBy1.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Export\ARM_GCC_Generic">

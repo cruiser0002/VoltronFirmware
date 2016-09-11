@@ -5,3 +5,4 @@ C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomp
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|12a6484c-06a8-40cd-9292-cd0638c75306
 C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main.cyprj|9fc24c0b-5bd4-46bb-a8e3-9353076aab0d
 C:\Users\cruiser\Documents\PSoC Creator\Voltron\testcode.cydsn\testcode.cyprj|5315676d-2c33-4d7d-b6e8-434f32a83443
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|9652aa6f-22b0-490d-9216-60aff36b3bf2

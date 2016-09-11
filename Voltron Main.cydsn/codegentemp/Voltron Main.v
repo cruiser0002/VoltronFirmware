@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/09/2016 at 23:00
+// 09/11/2016 at 00:01
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -888,7 +888,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v"
 `endif
 
-// SPI_Slave_v2_70(BidirectMode=false, ClockInternal=true, ControlFileName=SPI_Slave_Default.ctl, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CyGetRegReplacementString_1=CY_GET_REG8, CyGetRegReplacementString_2=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DesiredBitRate=4000000, FixedPlacementEnabled=false, InternalInterruptEnabled=0, InternalRxInterruptEnabled=0, InternalTxInterruptEnabled=0, InterruptOnByteComplete=false, InterruptOnDone=false, InterruptOnRXEmpty=false, InterruptOnRXFull=false, InterruptOnRXNotEmpty=true, InterruptOnRXOverrun=false, InterruptOnTXEmpty=false, InterruptOnTXFull=false, InterruptOnTXNotFull=false, IntOnByteComp=0, IntOnRXEmpty=0, IntOnRXFull=0, IntOnRXNotEmpty=1, IntOnRXOver=0, IntOnSPIDone=0, IntOnTXEmpty=0, IntOnTXFull=0, IntOnTXNotFull=0, Mode=0, ModeUseZero=1, MultiSlaveEnable=true, NumberOfDataBits=8, PSoC3_ES2_PSoC5_ES1=false, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, RxBufferSize=4, ShiftDir=0, SiliconRevisionReplacementString=es3, TxBufferSize=4, UseInternalInterrupt=false, UseRxInternalInterrupt=false, UseTxInternalInterrupt=false, VerilogSectionReplacementString=sR8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=SPI_Slave_v2_70, CY_CONTROL_FILE=SPI_Slave_Default.ctl, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SPIS, CY_INSTANCE_SHORT_NAME=SPIS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SPIS, )
+// SPI_Slave_v2_70(BidirectMode=false, ClockInternal=true, ControlFileName=SPI_Slave_Default.ctl, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CyGetRegReplacementString_1=CY_GET_REG8, CyGetRegReplacementString_2=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DesiredBitRate=1000000, FixedPlacementEnabled=false, InternalInterruptEnabled=0, InternalRxInterruptEnabled=0, InternalTxInterruptEnabled=0, InterruptOnByteComplete=false, InterruptOnDone=false, InterruptOnRXEmpty=false, InterruptOnRXFull=false, InterruptOnRXNotEmpty=true, InterruptOnRXOverrun=false, InterruptOnTXEmpty=false, InterruptOnTXFull=false, InterruptOnTXNotFull=false, IntOnByteComp=0, IntOnRXEmpty=0, IntOnRXFull=0, IntOnRXNotEmpty=1, IntOnRXOver=0, IntOnSPIDone=0, IntOnTXEmpty=0, IntOnTXFull=0, IntOnTXNotFull=0, Mode=0, ModeUseZero=1, MultiSlaveEnable=true, NumberOfDataBits=8, PSoC3_ES2_PSoC5_ES1=false, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, RxBufferSize=4, ShiftDir=0, SiliconRevisionReplacementString=es3, TxBufferSize=4, UseInternalInterrupt=false, UseRxInternalInterrupt=false, UseTxInternalInterrupt=false, VerilogSectionReplacementString=sR8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=SPI_Slave_v2_70, CY_CONTROL_FILE=SPI_Slave_Default.ctl, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SPIS, CY_INSTANCE_SHORT_NAME=SPIS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SPIS, )
 module SPI_Slave_v2_70_11 (
     ss,
     mosi,
@@ -948,7 +948,7 @@ module SPI_Slave_v2_70_11 (
 		#(.id("7cc94224-6408-4653-9386-90558f8d2e67/426fcbe0-714d-4404-8fa8-581ff40c30f1"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("125000000"),
+		  .period("500000000"),
 		  .is_direct(0),
 		  .is_digital(1))
 		IntClock
@@ -962,7 +962,7 @@ module SPI_Slave_v2_70_11 (
 
 endmodule
 
-// Filter_v2_30(ChannelEnableA=true, ChannelEnableB=true, ChannelSettingsA=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=5.9508333563632>\r\n<filterGain_Linear=1.984>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=20>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelSettingsB=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=5.9508333563632>\r\n<filterGain_Linear=1.984>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=20>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelTypeA=1, ChannelTypeB=1, CoefficientEntryEnableA=false, CoefficientEntryEnableB=false, DisplaySettingsA=50307, DisplaySettingsB=50307, DmaEnableA=true, DmaEnableB=true, IrqEnableA=false, IrqEnableB=false, MinBusClockVal=66, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=Filter_v2_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Filter, CY_INSTANCE_SHORT_NAME=Filter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Filter, )
+// Filter_v2_30(ChannelEnableA=true, ChannelEnableB=true, ChannelSettingsA=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=1.48901437909182>\r\n<filterGain_Linear=1.187>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=40>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelSettingsB=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=5.9508333563632>\r\n<filterGain_Linear=1.984>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=20>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelTypeA=1, ChannelTypeB=1, CoefficientEntryEnableA=false, CoefficientEntryEnableB=false, DisplaySettingsA=50307, DisplaySettingsB=50307, DmaEnableA=true, DmaEnableB=true, IrqEnableA=false, IrqEnableB=false, MinBusClockVal=66, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=Filter_v2_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Filter, CY_INSTANCE_SHORT_NAME=Filter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Filter, )
 module Filter_v2_30_12 (
     DMA_Req_A,
     DMA_Req_B,
@@ -1000,19 +1000,6 @@ module Filter_v2_30_12 (
 
 
 endmodule
-
-// Component: FreqDiv_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
-`endif
 
 // Component: cy_constant_v1_0
 `ifdef CY_BLK_DIR
@@ -1512,6 +1499,19 @@ module ADC_DelSig_v3_20_16 (
 
 endmodule
 
+// Component: FreqDiv_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
+`endif
+
 // Component: cy_vref_v1_60
 `ifdef CY_BLK_DIR
 `undef CY_BLK_DIR
@@ -1967,29 +1967,167 @@ module ADC_SAR_v3_0_18 (
 
 endmodule
 
+`include "cypress.v"
+/* ==================== Include Component Definitions ==================== */
+
+module ShiftBy1 (
+    input wire clock, 
+    input wire go, 
+    output wire done
+);
+
+/* ==================== Wire and Register Declarations ==================== */
+localparam [1:0] Start = 2'b00;
+localparam [1:0] shift1 = 2'b01;
+localparam [1:0] Idle1 = 2'b10;
+localparam [1:0] Idle2 = 2'b11;
+wire Datapath_1_d0_load;
+wire Datapath_1_d1_load;
+wire Datapath_1_f0_load;
+wire Datapath_1_f1_load;
+wire Datapath_1_route_si;
+wire Datapath_1_route_ci;
+wire  [2:0] Datapath_1_select;
+reg dsignal;
+reg  [1:0] SM1;
+
+/* ==================== Assignment of Combinatorial Variables ==================== */
+assign done = (dsignal);
+assign Datapath_1_d0_load = (1'b0);
+assign Datapath_1_d1_load = (1'b0);
+assign Datapath_1_f0_load = (1'b0);
+assign Datapath_1_f1_load = (1'b0);
+assign Datapath_1_route_si = (1'b0);
+assign Datapath_1_route_ci = (1'b0);
+assign Datapath_1_select[0] = (SM1[0]);
+assign Datapath_1_select[1] = (SM1[1]);
+assign Datapath_1_select[2] = (1'b0);
+
+/* ==================== Datapath_1 (Width: 8) Instantiation ==================== */
+parameter Datapath_1_dpconfig0 = 
+{
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM0: Start */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP___SL, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM1: Shift */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM2: Idle1 */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM3: Idle2 */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM4:  */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM5:  */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM6:  */
+    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM7:  */
+    8'hFF, 8'h00, /* CFG9 */
+    8'hFF, 8'hFF, /* CFG11-10 */
+    `SC_CMPB_A1_D1, `SC_CMPA_A0_D1, `SC_CI_B_ARITH, `SC_CI_A_ARITH, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL, `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_DEFSI, `SC_SI_A_DEFSI, /* CFG13-12 */
+    `SC_A0_SRC_ACC, `SC_SHIFT_SL, 1'b0, `SC_SR_SRC_REG, `SC_FIFO1_BUS, `SC_FIFO0_BUS, `SC_MSB_ENBL, `SC_MSB_BIT7, `SC_MSB_NOCHN, `SC_FB_NOCHN, `SC_CMP1_NOCHN, `SC_CMP0_NOCHN, /* CFG15-14 */
+    3'b000, `SC_FIFO_SYNC__ADD, 2'b000, `SC_FIFO1_DYN_OF, `SC_FIFO0_DYN_OF, `SC_FIFO_CLK1_POS, `SC_FIFO_CLK0_POS, `SC_FIFO_CLK__DP, `SC_FIFO_CAP_AX, `SC_FIFO_LEVEL, `SC_FIFO__SYNC, `SC_EXTCRC_DSBL, `SC_WRK16CAT_DSBL /* CFG17-16 */
+};
+cy_psoc3_dp8 #(
+    .cy_dpconfig_a( Datapath_1_dpconfig0 ),
+    .d0_init_a( 8'b00000000 ),
+    .d1_init_a( 8'b00000000 ),
+    .a0_init_a( 8'b00000000 ),
+    .a1_init_a( 8'b00000000 ))
+    Datapath_1(
+        .clk( clock ),
+        .cs_addr( Datapath_1_select ),
+        .route_si( Datapath_1_route_si ),
+        .route_ci( Datapath_1_route_ci ),
+        .f0_load( Datapath_1_f0_load ),
+        .f1_load( Datapath_1_f1_load ),
+        .d0_load( Datapath_1_d0_load ),
+        .d1_load( Datapath_1_d1_load ),
+        .ce0(  ), 
+        .cl0(  ), 
+        .z0(  ), 
+        .ff0(  ), 
+        .ce1(  ), 
+        .cl1(  ), 
+        .z1(  ), 
+        .ff1(  ), 
+        .ov_msb(  ), 
+        .co_msb(  ), 
+        .cmsb(  ), 
+        .so(  ), 
+        .f0_bus_stat(  ), 
+        .f0_blk_stat(  ), 
+        .f1_bus_stat(  ), 
+        .f1_blk_stat(  )
+    );
+
+/* ==================== State Machine: SM1 ==================== */
+always @ (posedge clock)
+begin : Start_state_logic
+    case(SM1)
+        Start : 
+        begin
+            dsignal <= (1'b0);
+            if (( go ) == 1'b1)
+            begin
+                SM1 <= shift1 ;
+            end
+        end
+        shift1 : 
+        begin
+            dsignal <= (1'b0);
+            if (( 1'b1 ) == 1'b1)
+            begin
+                SM1 <= Idle1 ;
+            end
+        end
+        Idle1 : 
+        begin
+            dsignal <= (1'b1);
+            if (( 1'b1 ) == 1'b1)
+            begin
+                SM1 <= Idle2 ;
+            end
+        end
+        Idle2 : 
+        begin
+            dsignal <= (1'b0);
+            if (( 1'b1 ) == 1'b1)
+            begin
+                SM1 <= Start ;
+            end
+        end
+        default :
+        begin
+            SM1 <= Start;
+        end
+    endcase
+end
+
+endmodule
+
 // top
 module top ;
 
-          wire  Net_7022;
-    electrical  Net_7021;
-          wire  Net_7020;
-          wire  Net_7019;
-          wire  Net_6998;
-          wire  Net_7006;
-    electrical  Net_7005;
-          wire  Net_7004;
-          wire  Net_7003;
-          wire  Net_7017;
-    electrical  Net_7016;
-          wire  Net_7015;
-          wire  Net_7014;
-          wire  Net_7013;
-          wire  Net_7025;
-          wire  Net_7024;
-          wire  Net_7023;
-          wire  Net_7028;
-          wire  Net_7027;
-          wire  Net_7026;
+          wire  Net_7957;
+          wire  Net_7933;
+          wire  Net_7932;
+          wire  Net_7925;
+          wire  Net_7851;
+    electrical  Net_7850;
+          wire  Net_7849;
+          wire  Net_7848;
+          wire  Net_7847;
+          wire  Net_7846;
+    electrical  Net_7845;
+          wire  Net_7844;
+          wire  Net_7843;
+          wire  Net_7944;
+          wire  Net_7943;
+          wire  Net_7873;
+          wire  Net_7841;
+    electrical  Net_7840;
+          wire  Net_7839;
+          wire  Net_7838;
+          wire  Net_7837;
+          wire  Net_7836;
+          wire  Net_7835;
+          wire  Net_7834;
+          wire  Net_7833;
+          wire  Net_7832;
+          wire  Net_7831;
     electrical  Net_6306;
     electrical  Net_224;
           wire  Net_6565;
@@ -2017,16 +2155,16 @@ module top ;
           wire  Net_6543;
           wire  Net_850;
           wire  Net_837;
-          wire  Net_7107;
-          wire  Net_7101;
-          wire  Net_7041;
-          wire  Net_6982;
-          wire  Net_6981;
-          wire  Net_7039;
-          wire  Net_6983;
-          wire  Net_6985;
-          wire  Net_6916;
-          wire  Net_6986;
+          wire  Net_7935;
+          wire  Net_7942;
+          wire  Net_7824;
+          wire  Net_7823;
+          wire  Net_7822;
+          wire  Net_7821;
+          wire  Net_7820;
+          wire  Net_7819;
+          wire  Net_7818;
+          wire  Net_7817;
           wire  Net_4221;
           wire  Net_2245;
           wire  Net_2244;
@@ -2038,22 +2176,22 @@ module top ;
     electrical  Net_90;
           wire  Net_6692;
           wire  Net_6691;
-          wire  Net_7070;
+          wire  Net_6689;
           wire  Net_6688;
           wire  Net_5353;
           wire  Net_5352;
-    electrical  Net_6992;
-    electrical  Net_6991;
-    electrical  Net_6990;
-    electrical  Net_6989;
-    electrical  Net_6988;
-    electrical  Net_6987;
+    electrical  Net_7816;
+    electrical  Net_7815;
+    electrical  Net_7814;
+    electrical  Net_7813;
+    electrical  Net_7812;
+    electrical  Net_7811;
     electrical  Net_261;
     electrical  Net_156;
     electrical  Net_225;
     electrical  Net_160;
-    electrical  Net_6925;
-    electrical  Net_6924;
+    electrical  Net_7810;
+    electrical  Net_7809;
     electrical  Net_30;
           wire [7:0] Net_246;
           wire  Net_245;
@@ -2070,11 +2208,12 @@ module top ;
     electrical  Net_260;
     electrical  Net_157;
     electrical  Net_259;
-          wire  Net_7100;
-          wire  Net_2246;
+          wire  Net_7955;
+          wire  Net_7906;
+          wire  Net_7871;
           wire  Net_2247;
           wire  Net_7051;
-          wire  Net_7050;
+          wire  Net_6690;
     electrical  Net_61;
     electrical  Net_62;
     electrical  Net_55;
@@ -2295,8 +2434,8 @@ module top ;
 
     OpAmp_v1_90_7 Opamp_1 (
         .Vplus(Net_231),
-        .Vout(Net_6924),
-        .Vminus(Net_6925));
+        .Vout(Net_7809),
+        .Vminus(Net_7810));
     defparam Opamp_1.Mode = 1;
 
     OpAmp_v1_90_8 Opamp_4 (
@@ -2316,12 +2455,12 @@ module top ;
     
     cy_psoc3_amux_v1_0 AMux_DelSig_CYAMUXSIDE_A(
         .muxin({
-            Net_6989,
-            Net_6987,
+            Net_7813,
+            Net_7811,
             Net_55,
             Net_61
             }),
-        .vout(Net_6991)
+        .vout(Net_7815)
         );
     
     defparam AMux_DelSig_CYAMUXSIDE_A.muxin_width = 4;
@@ -2334,12 +2473,12 @@ module top ;
     
     cy_psoc3_amux_v1_0 AMux_DelSig_CYAMUXSIDE_B(
         .muxin({
-            Net_6990,
-            Net_6988,
+            Net_7814,
+            Net_7812,
             Net_6630,
             Net_62
             }),
-        .vout(Net_6992)
+        .vout(Net_7816)
         );
     
     defparam AMux_DelSig_CYAMUXSIDE_B.muxin_width = 4;
@@ -2445,14 +2584,14 @@ module top ;
 		FILTER2RAM1
 		 (.drq(Net_7051),
 		  .trq(1'b0),
-		  .nrq(Net_7070));
+		  .nrq(Net_6689));
 
 
 
 	cy_dma_v1_0
 		#(.drq_type(2'b10))
 		FILTER2RAM2
-		 (.drq(Net_7050),
+		 (.drq(Net_6690),
 		  .trq(1'b0),
 		  .nrq(Net_6692));
 
@@ -2922,7 +3061,7 @@ module top ;
         .clock(1'b0),
         .tx_interrupt(Net_2244),
         .sdat(Net_2245),
-        .rx_interrupt(Net_2246),
+        .rx_interrupt(Net_7906),
         .miso_oe(Net_1821),
         .reset(Net_2247));
     defparam SPIS.NumberOfDataBits = 8;
@@ -3445,7 +3584,7 @@ module top ;
 		 (.oe(tmpOE__Pin_LED_AMPA_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__Pin_LED_AMPA_net[0:0]}),
-		  .analog({Net_6924}),
+		  .analog({Net_7809}),
 		  .io({tmpIO_0__Pin_LED_AMPA_net[0:0]}),
 		  .siovref(tmpSIOVREF__Pin_LED_AMPA_net),
 		  .interrupt({tmpINTERRUPT_0__Pin_LED_AMPA_net[0:0]}),
@@ -3464,21 +3603,21 @@ module top ;
 		SAR2RAM2
 		 (.drq(Net_119),
 		  .trq(1'b0),
-		  .nrq(Net_6916));
+		  .nrq(Net_7818));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_shift_sar1
-		 (.int_signal(Net_6985));
+		 (.int_signal(Net_7819));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_shift_sar2
-		 (.int_signal(Net_6916));
+		 (.int_signal(Net_7818));
 
 
 
@@ -3487,7 +3626,7 @@ module top ;
 		SAR2FILTER1
 		 (.drq(Net_124),
 		  .trq(1'b0),
-		  .nrq(Net_7039));
+		  .nrq(Net_7821));
 
 
 
@@ -3496,104 +3635,31 @@ module top ;
 		SAR2FILTER2
 		 (.drq(Net_119),
 		  .trq(1'b0),
-		  .nrq(Net_6982));
+		  .nrq(Net_7823));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_spi_rx
-		 (.int_signal(Net_2246));
+		 (.int_signal(Net_7955));
 
 
     Filter_v2_30_12 Filter (
         .DMA_Req_A(Net_7051),
-        .DMA_Req_B(Net_7050),
-        .Interrupt(Net_7041));
+        .DMA_Req_B(Net_6690),
+        .Interrupt(Net_7824));
 
-	wire [0:0] tmpOE__Pin_test1_net;
-	wire [0:0] tmpFB_0__Pin_test1_net;
-	wire [0:0] tmpIO_0__Pin_test1_net;
-	wire [0:0] tmpINTERRUPT_0__Pin_test1_net;
-	electrical [0:0] tmpSIOVREF__Pin_test1_net;
+    assign Net_7942 = 1'h1;
 
-	cy_psoc3_pins_v1_10
-		#(.id("104017df-8947-496f-b047-7cd6b9d209be"),
-		  .drive_mode(3'b110),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
-		  .input_clk_en(0),
-		  .input_sync(1'b1),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("O"),
-		  .por_state(4),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b1),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
-		  .width(1),
-		  .ovt_hyst_trim(1'b0),
-		  .ovt_needed(1'b0),
-		  .ovt_slew_control(2'b00),
-		  .input_buffer_sel(2'b00))
-		Pin_test1
-		 (.oe(tmpOE__Pin_test1_net),
-		  .y({Net_7101}),
-		  .fb({tmpFB_0__Pin_test1_net[0:0]}),
-		  .io({tmpIO_0__Pin_test1_net[0:0]}),
-		  .siovref(tmpSIOVREF__Pin_test1_net),
-		  .interrupt({tmpINTERRUPT_0__Pin_test1_net[0:0]}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
 
-	assign tmpOE__Pin_test1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	cy_dma_v1_0
+		#(.drq_type(2'b10))
+		SPI2RAM
+		 (.drq(Net_7906),
+		  .trq(1'b0),
+		  .nrq(Net_7955));
 
-    FreqDiv_v1_0 FreqDiv_1 (
-        .en(Net_7100),
-        .div(Net_7101),
-        .reset(1'b0),
-        .clock(Net_2246));
-    defparam FreqDiv_1.Divider = 2;
-    defparam FreqDiv_1.highPulse = 1;
-    defparam FreqDiv_1.numBits = 1;
 
     assign Net_837 = 1'h0;
 
@@ -3963,7 +4029,7 @@ module top ;
 		RAM2FILTER2
 		 (.drq(1'b0),
 		  .trq(1'b0),
-		  .nrq(Net_7028));
+		  .nrq(Net_7833));
 
 
 
@@ -3972,7 +4038,7 @@ module top ;
 		RAM2FILTER1
 		 (.drq(1'b0),
 		  .trq(1'b0),
-		  .nrq(Net_7025));
+		  .nrq(Net_7836));
 
 
 	wire [0:0] tmpOE__Pin_TIA3_net;
@@ -4056,15 +4122,29 @@ module top ;
     assign Net_6544 = 1'h0;
 
     ADC_DelSig_v3_20_16 DelSig (
-        .vplus(Net_6991),
-        .vminus(Net_6992),
+        .vplus(Net_7815),
+        .vminus(Net_7816),
         .soc(1'b1),
-        .eoc(Net_7014),
+        .eoc(Net_7838),
         .aclk(1'b0),
-        .nVref(Net_7016),
+        .nVref(Net_7840),
         .mi(1'b0));
 
-    assign Net_7100 = 1'h1;
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_shift1
+		 (.int_signal(Net_7873));
+
+
+    FreqDiv_v1_0 FreqDiv_1 (
+        .en(Net_7942),
+        .div(Net_7943),
+        .reset(Net_7944),
+        .clock(Net_7906));
+    defparam FreqDiv_1.Divider = 2;
+    defparam FreqDiv_1.highPulse = 1;
+    defparam FreqDiv_1.numBits = 1;
 
     ADC_SAR_v3_0_17 SAR1 (
         .vplus(Net_61),
@@ -4072,8 +4152,8 @@ module top ;
         .soc(1'b0),
         .eoc(Net_124),
         .aclk(1'b0),
-        .vdac_ref(Net_7005),
-        .eos(Net_7006));
+        .vdac_ref(Net_7845),
+        .eos(Net_7846));
 
 
 	cy_dma_v1_0
@@ -4081,7 +4161,7 @@ module top ;
 		SAR2RAM1
 		 (.drq(Net_124),
 		  .trq(1'b0),
-		  .nrq(Net_6985));
+		  .nrq(Net_7819));
 
 
     ADC_SAR_v3_0_18 SAR2 (
@@ -4090,16 +4170,121 @@ module top ;
         .soc(1'b0),
         .eoc(Net_119),
         .aclk(1'b0),
-        .vdac_ref(Net_7021),
-        .eos(Net_7022));
+        .vdac_ref(Net_7850),
+        .eos(Net_7851));
+
+    assign Net_7944 = 1'h0;
 
     assign Net_2247 = 1'h0;
+
+    assign Net_7925 = 1'h0;
+
+
+	cy_dma_v1_0
+		#(.drq_type(2'b10))
+		SPI2SHIFT
+		 (.drq(Net_7906),
+		  .trq(1'b0),
+		  .nrq(Net_7933));
+
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_filter_ready1
-		 (.int_signal(Net_7070));
+		 (.int_signal(Net_6689));
+
+
+	wire [0:0] tmpOE__Pin_test1_net;
+	wire [0:0] tmpFB_0__Pin_test1_net;
+	wire [0:0] tmpIO_0__Pin_test1_net;
+	wire [0:0] tmpINTERRUPT_0__Pin_test1_net;
+	electrical [0:0] tmpSIOVREF__Pin_test1_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("9737cd6b-90d4-4bcb-aa8b-6375accff437"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Pin_test1
+		 (.oe(tmpOE__Pin_test1_net),
+		  .y({Net_7943}),
+		  .fb({tmpFB_0__Pin_test1_net[0:0]}),
+		  .io({tmpIO_0__Pin_test1_net[0:0]}),
+		  .siovref(tmpSIOVREF__Pin_test1_net),
+		  .interrupt({tmpINTERRUPT_0__Pin_test1_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Pin_test1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    ShiftBy1 ShiftBy1_1 (
+        .clock(Net_7871),
+        .go(Net_7925),
+        .done(Net_7873));
+
+
+	cy_clock_v1_0
+		#(.id("2e9d3660-d219-4bd2-8a93-308effd3a111"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_4
+		 (.clock_out(Net_7871));
 
 
 

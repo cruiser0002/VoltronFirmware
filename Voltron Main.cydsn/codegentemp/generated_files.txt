@@ -152,9 +152,8 @@
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_PVT.h" value="NONE;Filter" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_RAM_Data.c" value="ARM_C_FILE;Filter" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Filter_Coefficients.c" value="ARM_C_FILE;Filter" />
-  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1_aliases.h" value="NONE;Pin_test1" />
-  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1.c" value="ARM_C_FILE;Pin_test1" />
-  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1.h" value="NONE;Pin_test1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SPI2RAM_dma.c" value="ARM_C_FILE;SPI2RAM" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SPI2RAM_dma.h" value="NONE;SPI2RAM" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\PWM2.c" value="ARM_C_FILE;PWM2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\PWM2.h" value="NONE;PWM2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\PWM2_PM.c" value="ARM_C_FILE;PWM2" />
@@ -189,6 +188,8 @@
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\DelSig.h" value="NONE;DelSig" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\DelSig_PM.c" value="ARM_C_FILE;DelSig" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\DelSig_INT.c" value="ARM_C_FILE;DelSig" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_shift1.c" value="ARM_C_FILE;isr_shift1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_shift1.h" value="NONE;isr_shift1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR1.c" value="ARM_C_FILE;SAR1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR1.h" value="NONE;SAR1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR1_INT.c" value="ARM_C_FILE;SAR1" />
@@ -199,8 +200,16 @@
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR2.h" value="NONE;SAR2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR2_INT.c" value="ARM_C_FILE;SAR2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SAR2_PM.c" value="ARM_C_FILE;SAR2" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SPI2SHIFT_dma.c" value="ARM_C_FILE;SPI2SHIFT" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\SPI2SHIFT_dma.h" value="NONE;SPI2SHIFT" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_filter_ready1.c" value="ARM_C_FILE;isr_filter_ready1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_filter_ready1.h" value="NONE;isr_filter_ready1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1_aliases.h" value="NONE;Pin_test1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1.c" value="ARM_C_FILE;Pin_test1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\Pin_test1.h" value="NONE;Pin_test1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\ShiftBy1_1_ShiftBy1.h" value="NONE;ShiftBy1_1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\ShiftBy1_1_ShiftBy1.c" value="ARM_C_FILE;ShiftBy1_1" />
+  <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\ShiftBy1_1_defs.h" value="NONE;ShiftBy1_1" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_filter_ready2.c" value="ARM_C_FILE;isr_filter_ready2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\isr_filter_ready2.h" value="NONE;isr_filter_ready2" />
   <file name="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\codegentemp\USB_Dm_aliases.h" value="NONE;USB_Dm" />

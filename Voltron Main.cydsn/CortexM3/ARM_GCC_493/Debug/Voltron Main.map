@@ -23,7 +23,7 @@ Archive member included because of file (symbol)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
                               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o) (I2C_ISR)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                              .\CortexM3\ARM_GCC_493\Debug\main.o (SPIS_ReadRxData)
+                              .\CortexM3\ARM_GCC_493\Debug\main.o (SPIS_Start)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
                               .\CortexM3\ARM_GCC_493\Debug\main.o (VDAC4_SetValue)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
@@ -70,6 +70,12 @@ Archive member included because of file (symbol)
                               .\CortexM3\ARM_GCC_493\Debug\main.o (isr_filter_ready2_StartEx)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
                               .\CortexM3\ARM_GCC_493\Debug\main.o (isr_spi_rx_StartEx)
+.\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+                              .\CortexM3\ARM_GCC_493\Debug\main.o (ShiftBy1_1_GetOutput)
+.\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                              .\CortexM3\ARM_GCC_493\Debug\main.o (isr_shift1_StartEx)
+.\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+                              .\CortexM3\ARM_GCC_493\Debug\main.o (SPI2RAM_DmaInitialize)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
                               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o) (CyFlash_SetWaitCycles)
 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
@@ -105,7 +111,7 @@ Allocating common symbols
 Common symbol       size              file
 
 SAR2_shift          0x2               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-filtermem1          0x64              .\CortexM3\ARM_GCC_493\Debug\main.o
+filtermem1          0x40              .\CortexM3\ARM_GCC_493\Debug\main.o
 I2C_curStatus       0x1               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
 SAR1_countsPerVolt  0x2               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
 I2C_dataPtrS1       0x4               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
@@ -119,7 +125,7 @@ SAR1_countsPer10Volt
                     0x4               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
 I2C_bufSizeS1       0x2               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
 I2C_curState        0x1               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-filtermem2          0x64              .\CortexM3\ARM_GCC_493\Debug\main.o
+filtermem2          0x40              .\CortexM3\ARM_GCC_493\Debug\main.o
 I2C_rwOffsetS1      0x1               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
 SAR2_countsPerVolt  0x2               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
 SPIS_swStatusTx     0x1               .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
@@ -464,6 +470,8 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
  .text.SPIS_WriteTxDataZero
                 0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .text.SPIS_ReadRxData
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
  .text.SPIS_GetRxBufferSize
                 0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
  .text.SPIS_GetTxBufferSize
@@ -665,7 +673,7 @@ Discarded input sections
  .data          0x00000000        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
  .text.RAM2FILTER1_DmaInitialize
-                0x00000000       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+                0x00000000       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
  .text.RAM2FILTER1_DmaRelease
                 0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
@@ -729,9 +737,39 @@ Discarded input sections
  .text.isr_spi_rx_Stop
                 0x00000000       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
  .text.isr_spi_rx_SetPending
-                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
  .text.isr_spi_rx_ClearPending
-                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .text.ShiftBy1_1_SetInput
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .text.ShiftBy1_1_GetInput
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_Interrupt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_GetVector
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_GetPriority
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_GetState
+                0x00000000       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_Stop
+                0x00000000       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_SetPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text.isr_shift1_ClearPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .text.SPI2RAM_DmaRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
  .bss           0x00000000        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
@@ -895,7 +933,7 @@ END GROUP
                 0x00000040                CY_METADATA_SIZE = 0x40
                 0x00000000                CY_APPL_LOADABLE = 0x0
                 0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
-                0x1fff8258                PROVIDE (__cy_heap_start, _end)
+                0x1fff8220                PROVIDE (__cy_heap_start, _end)
                 0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
                 0x20008000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x10000))
                 0x20007800                PROVIDE (__cy_heap_end, (__cy_stack - 0x800))
@@ -910,7 +948,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 0x00000000                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x1a0e
+.text           0x00000000     0x1b3e
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -934,384 +972,408 @@ END GROUP
                 0x0000009c       0x18 .\CortexM3\ARM_GCC_493\Debug\main.o
                 0x0000009c                filter_ready2_handler
  .text.spi_rx_handler
-                0x000000b4        0xc .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000000b4       0x10 .\CortexM3\ARM_GCC_493\Debug\main.o
                 0x000000b4                spi_rx_handler
+ .text.shift1_handler
+                0x000000c4        0xc .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000000c4                shift1_handler
  .text.start_resources
-                0x000000c0       0x90 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000000c0                start_resources
+                0x000000d0       0x90 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000000d0                start_resources
  .text.start_interrupts
-                0x00000150       0x24 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x00000150                start_interrupts
+                0x00000160       0x2c .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x00000160                start_interrupts
  .text.DMA_SAR2FILTER1_config
-                0x00000174       0x44 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x00000174                DMA_SAR2FILTER1_config
+                0x0000018c       0x44 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x0000018c                DMA_SAR2FILTER1_config
  .text.DMA_SAR2FILTER2_config
-                0x000001b8       0x44 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000001b8                DMA_SAR2FILTER2_config
+                0x000001d0       0x44 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000001d0                DMA_SAR2FILTER2_config
  .text.DMA_FILTER2RAM1_config
-                0x000001fc       0x48 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000001fc                DMA_FILTER2RAM1_config
+                0x00000214       0x48 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x00000214                DMA_FILTER2RAM1_config
  .text.DMA_FILTER2RAM2_config
-                0x00000244       0x48 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x00000244                DMA_FILTER2RAM2_config
+                0x0000025c       0x48 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x0000025c                DMA_FILTER2RAM2_config
+ .text.DMA_SPI2RAM_config
+                0x000002a4       0x48 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000002a4                DMA_SPI2RAM_config
  .text.start_DMAs
-                0x0000028c       0x14 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x0000028c                start_DMAs
- .text.main     0x000002a0       0x18 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000002a0                main
+                0x000002ec       0x18 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000002ec                start_DMAs
+ .text.main     0x00000304       0x18 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x00000304                main
  .text.IntDefaultHandler
-                0x000002b8        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x000002b8                IntDefaultHandler
- .text.Start_c  0x000002bc       0x4c .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x000002bc                Start_c
+                0x0000031c        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x0000031c                IntDefaultHandler
+ .text.Start_c  0x00000320       0x4c .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x00000320                Start_c
  .text.initialize_psoc
-                0x00000308       0x78 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x00000308                initialize_psoc
+                0x0000036c       0x78 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x0000036c                initialize_psoc
  .text.CyClockStartupError
-                0x00000380        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x000003e4        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .text.cfg_write_bytes32
-                0x00000384       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x000003e8       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .text.CYMEMZERO
-                0x000003b8        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x0000041c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .text.AnalogSetDefault
-                0x000003c4      0x134 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x00000428      0x134 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .text.CYCONFIGCPY
-                0x000004f8        0x8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x0000055c        0x8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .text.ClockSetup
-                0x00000500      0x10c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x00000564      0x10c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .text.cyfitter_cfg
-                0x0000060c      0x1ac .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
-                0x0000060c                cyfitter_cfg
- .text          0x000007b8       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
-                0x000007b8                CyDelayCycles
-                0x000007c8                CyEnterCriticalSection
-                0x000007d0                CyExitCriticalSection
+                0x00000670      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x00000670                cyfitter_cfg
+ .text          0x00000850       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
+                0x00000850                CyDelayCycles
+                0x00000860                CyEnterCriticalSection
+                0x00000868                CyExitCriticalSection
  .text.CyDmacConfigure
-                0x000007d8       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x000007d8                CyDmacConfigure
+                0x00000870       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x00000870                CyDmacConfigure
  .text.CyDmaChEnable
-                0x0000080c       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x0000080c                CyDmaChEnable
+                0x000008a4       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x000008a4                CyDmaChEnable
  .text.CyDmaChPriority
-                0x00000844       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x00000844                CyDmaChPriority
+                0x000008dc       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x000008dc                CyDmaChPriority
  .text.CyDmaChSetExtendedAddress
-                0x00000868       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x00000868                CyDmaChSetExtendedAddress
+                0x00000900       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x00000900                CyDmaChSetExtendedAddress
  .text.CyDmaChSetInitialTd
-                0x0000089c       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x0000089c                CyDmaChSetInitialTd
+                0x00000934       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x00000934                CyDmaChSetInitialTd
  .text.CyDmaChSetConfiguration
-                0x000008b4       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x000008b4                CyDmaChSetConfiguration
+                0x0000094c       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x0000094c                CyDmaChSetConfiguration
  .text.CyDmaTdAllocate
-                0x000008fc       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x000008fc                CyDmaTdAllocate
+                0x00000994       0x34 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x00000994                CyDmaTdAllocate
  .text.CyDmaTdSetConfiguration
-                0x00000930       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x00000930                CyDmaTdSetConfiguration
+                0x000009c8       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x000009c8                CyDmaTdSetConfiguration
  .text.CyDmaTdSetAddress
-                0x00000958       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
-                0x00000958                CyDmaTdSetAddress
- .text.CyHalt   0x00000974        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
-                0x00000974                CyHalt
- .text.CyDelay  0x00000978       0x2c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
-                0x00000978                CyDelay
+                0x000009f0       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x000009f0                CyDmaTdSetAddress
+ .text.CyHalt   0x00000a0c        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+                0x00000a0c                CyHalt
+ .text.CyDelay  0x00000a10       0x2c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+                0x00000a10                CyDelay
  .text.CyDelayUs
-                0x000009a4       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
-                0x000009a4                CyDelayUs
+                0x00000a3c       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+                0x00000a3c                CyDelayUs
  .text.CyIntSetVector
-                0x000009b8       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
-                0x000009b8                CyIntSetVector
+                0x00000a50       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+                0x00000a50                CyIntSetVector
  .text.CyIntSetPriority
-                0x000009e0       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
-                0x000009e0                CyIntSetPriority
+                0x00000a78       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+                0x00000a78                CyIntSetPriority
  .text.Filter_Init
-                0x00000a10       0xcc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
-                0x00000a10                Filter_Init
+                0x00000aa8       0xcc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x00000aa8                Filter_Init
  .text.Filter_Enable
-                0x00000adc       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
-                0x00000adc                Filter_Enable
+                0x00000b74       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x00000b74                Filter_Enable
  .text.Filter_Start
-                0x00000b04       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
-                0x00000b04                Filter_Start
+                0x00000b9c       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x00000b9c                Filter_Start
  .text.Filter_SetCoherency
-                0x00000b20       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
-                0x00000b20                Filter_SetCoherency
+                0x00000bb8       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x00000bb8                Filter_SetCoherency
  .text.Filter_SetDalign
-                0x00000b68       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
-                0x00000b68                Filter_SetDalign
+                0x00000c00       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x00000c00                Filter_SetDalign
  .text.Filter_SetInterruptMode
-                0x00000b88       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
-                0x00000b88                Filter_SetInterruptMode
+                0x00000c20       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+                0x00000c20                Filter_SetInterruptMode
  .text.Filter_SetDMAMode
-                0x00000b98       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
-                0x00000b98                Filter_SetDMAMode
+                0x00000c30       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+                0x00000c30                Filter_SetDMAMode
  .text.I2C_Init
-                0x00000ba8       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-                0x00000ba8                I2C_Init
+                0x00000c40       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x00000c40                I2C_Init
  .text.I2C_Enable
-                0x00000c18       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-                0x00000c18                I2C_Enable
+                0x00000cb0       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x00000cb0                I2C_Enable
  .text.I2C_Start
-                0x00000c48       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-                0x00000c48                I2C_Start
+                0x00000ce0       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x00000ce0                I2C_Start
  .text.I2C_SetBuffer1
-                0x00000c64       0x50 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-                0x00000c64                I2C_SetBuffer1
- .text.I2C_ISR  0x00000cb4      0x1c4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
-                0x00000cb4                I2C_ISR
+                0x00000cfc       0x50 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x00000cfc                I2C_SetBuffer1
+ .text.I2C_ISR  0x00000d4c      0x1c4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+                0x00000d4c                I2C_ISR
  .text.SPIS_Enable
-                0x00000e78       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000e78                SPIS_Enable
+                0x00000f10       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000f10                SPIS_Enable
  .text.SPIS_ReadTxStatus
-                0x00000ea8        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000ea8                SPIS_ReadTxStatus
+                0x00000f40        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000f40                SPIS_ReadTxStatus
  .text.SPIS_ReadRxStatus
-                0x00000eb4        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000eb4                SPIS_ReadRxStatus
- .text.SPIS_ReadRxData
-                0x00000ec0        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000ec0                SPIS_ReadRxData
+                0x00000f4c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000f4c                SPIS_ReadRxStatus
  .text.SPIS_ClearFIFO
-                0x00000ecc       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000ecc                SPIS_ClearFIFO
+                0x00000f58       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000f58                SPIS_ClearFIFO
  .text.SPIS_Init
-                0x00000f08       0x2c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000f08                SPIS_Init
+                0x00000f94       0x2c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000f94                SPIS_Init
  .text.SPIS_Start
-                0x00000f34       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x00000f34                SPIS_Start
+                0x00000fc0       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000fc0                SPIS_Start
  .text.VDAC4_Enable
-                0x00000f50       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000f50                VDAC4_Enable
+                0x00000fdc       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00000fdc                VDAC4_Enable
  .text.VDAC4_SetSpeed
-                0x00000f6c       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000f6c                VDAC4_SetSpeed
+                0x00000ff8       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00000ff8                VDAC4_SetSpeed
  .text.VDAC4_SetValue
-                0x00000f88        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000f88                VDAC4_SetValue
+                0x00001014        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00001014                VDAC4_SetValue
  .text.VDAC4_DacTrim
-                0x00000f94       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000f94                VDAC4_DacTrim
+                0x00001020       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00001020                VDAC4_DacTrim
  .text.VDAC4_SetRange
-                0x00000fb8       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000fb8                VDAC4_SetRange
+                0x00001044       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00001044                VDAC4_SetRange
  .text.VDAC4_Init
-                0x00000fd8       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000fd8                VDAC4_Init
+                0x00001064       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00001064                VDAC4_Init
  .text.VDAC4_Start
-                0x00000ff8       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x00000ff8                VDAC4_Start
+                0x00001084       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00001084                VDAC4_Start
  .text.VDAC3_Enable
-                0x0000101c       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x0000101c                VDAC3_Enable
+                0x000010a8       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x000010a8                VDAC3_Enable
  .text.VDAC3_SetSpeed
-                0x00001038       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x00001038                VDAC3_SetSpeed
+                0x000010c4       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x000010c4                VDAC3_SetSpeed
  .text.VDAC3_SetValue
-                0x00001054        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x00001054                VDAC3_SetValue
+                0x000010e0        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x000010e0                VDAC3_SetValue
  .text.VDAC3_DacTrim
-                0x00001060       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x00001060                VDAC3_DacTrim
+                0x000010ec       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x000010ec                VDAC3_DacTrim
  .text.VDAC3_SetRange
-                0x00001084       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x00001084                VDAC3_SetRange
+                0x00001110       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x00001110                VDAC3_SetRange
  .text.VDAC3_Init
-                0x000010a4       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x000010a4                VDAC3_Init
+                0x00001130       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x00001130                VDAC3_Init
  .text.VDAC3_Start
-                0x000010c4       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x000010c4                VDAC3_Start
+                0x00001150       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x00001150                VDAC3_Start
  .text.VDAC2_Enable
-                0x000010e8       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x000010e8                VDAC2_Enable
+                0x00001174       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x00001174                VDAC2_Enable
  .text.VDAC2_SetSpeed
-                0x00001104       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x00001104                VDAC2_SetSpeed
+                0x00001190       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x00001190                VDAC2_SetSpeed
  .text.VDAC2_SetValue
-                0x00001120        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x00001120                VDAC2_SetValue
+                0x000011ac        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x000011ac                VDAC2_SetValue
  .text.VDAC2_DacTrim
-                0x0000112c       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x0000112c                VDAC2_DacTrim
+                0x000011b8       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x000011b8                VDAC2_DacTrim
  .text.VDAC2_SetRange
-                0x00001150       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x00001150                VDAC2_SetRange
+                0x000011dc       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x000011dc                VDAC2_SetRange
  .text.VDAC2_Init
-                0x00001170       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x00001170                VDAC2_Init
+                0x000011fc       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x000011fc                VDAC2_Init
  .text.VDAC2_Start
-                0x00001190       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x00001190                VDAC2_Start
+                0x0000121c       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x0000121c                VDAC2_Start
  .text.VDAC1_Enable
-                0x000011b4       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x000011b4                VDAC1_Enable
+                0x00001240       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x00001240                VDAC1_Enable
  .text.VDAC1_SetSpeed
-                0x000011d0       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x000011d0                VDAC1_SetSpeed
+                0x0000125c       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x0000125c                VDAC1_SetSpeed
  .text.VDAC1_SetValue
-                0x000011ec        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x000011ec                VDAC1_SetValue
+                0x00001278        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x00001278                VDAC1_SetValue
  .text.VDAC1_DacTrim
-                0x000011f8       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x000011f8                VDAC1_DacTrim
+                0x00001284       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x00001284                VDAC1_DacTrim
  .text.VDAC1_SetRange
-                0x0000121c       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x0000121c                VDAC1_SetRange
+                0x000012a8       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x000012a8                VDAC1_SetRange
  .text.VDAC1_Init
-                0x0000123c       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x0000123c                VDAC1_Init
+                0x000012c8       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x000012c8                VDAC1_Init
  .text.VDAC1_Start
-                0x0000125c       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x0000125c                VDAC1_Start
+                0x000012e8       0x24 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x000012e8                VDAC1_Start
  .text.PWM2_Enable
-                0x00001280       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x00001280                PWM2_Enable
+                0x0000130c       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x0000130c                PWM2_Enable
  .text.PWM2_WritePeriod
-                0x000012a8        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x000012a8                PWM2_WritePeriod
+                0x00001334        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x00001334                PWM2_WritePeriod
  .text.PWM2_WriteCompare
-                0x000012b4        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x000012b4                PWM2_WriteCompare
+                0x00001340        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x00001340                PWM2_WriteCompare
  .text.PWM2_SetInterruptMode
-                0x000012c0        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x000012c0                PWM2_SetInterruptMode
+                0x0000134c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x0000134c                PWM2_SetInterruptMode
  .text.PWM2_Init
-                0x000012cc       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x000012cc                PWM2_Init
+                0x00001358       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x00001358                PWM2_Init
  .text.PWM2_Start
-                0x00001344       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x00001344                PWM2_Start
+                0x000013d0       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x000013d0                PWM2_Start
  .text.PWM1_Enable
-                0x00001360       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x00001360                PWM1_Enable
+                0x000013ec       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x000013ec                PWM1_Enable
  .text.PWM1_WritePeriod
-                0x00001388        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x00001388                PWM1_WritePeriod
+                0x00001414        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x00001414                PWM1_WritePeriod
  .text.PWM1_WriteCompare
-                0x00001394        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x00001394                PWM1_WriteCompare
+                0x00001420        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x00001420                PWM1_WriteCompare
  .text.PWM1_SetInterruptMode
-                0x000013a0        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x000013a0                PWM1_SetInterruptMode
+                0x0000142c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x0000142c                PWM1_SetInterruptMode
  .text.PWM1_Init
-                0x000013ac       0x74 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x000013ac                PWM1_Init
+                0x00001438       0x74 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x00001438                PWM1_Init
  .text.PWM1_Start
-                0x00001420       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x00001420                PWM1_Start
+                0x000014ac       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x000014ac                PWM1_Start
  .text.FILTER2RAM1_DmaInitialize
-                0x0000143c       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
-                0x0000143c                FILTER2RAM1_DmaInitialize
+                0x000014c8       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+                0x000014c8                FILTER2RAM1_DmaInitialize
  .text.FILTER2RAM2_DmaInitialize
-                0x0000147c       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
-                0x0000147c                FILTER2RAM2_DmaInitialize
+                0x00001508       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+                0x00001508                FILTER2RAM2_DmaInitialize
  .text.SAR2FILTER1_DmaInitialize
-                0x000014bc       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
-                0x000014bc                SAR2FILTER1_DmaInitialize
+                0x00001548       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+                0x00001548                SAR2FILTER1_DmaInitialize
  .text.SAR2_CalcGain
-                0x000014f8       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x00001584       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
  .text.SAR2_Enable
-                0x00001568       0x94 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x00001568                SAR2_Enable
+                0x000015f4       0x94 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x000015f4                SAR2_Enable
  .text.SAR2_SetResolution
-                0x000015fc       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x000015fc                SAR2_SetResolution
+                0x00001688       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x00001688                SAR2_SetResolution
  .text.SAR2_Init
-                0x00001634       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x00001634                SAR2_Init
+                0x000016c0       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x000016c0                SAR2_Init
  .text.SAR2_Start
-                0x00001670       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x00001670                SAR2_Start
+                0x000016fc       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x000016fc                SAR2_Start
  .text.SAR2_StartConvert
-                0x0000168c       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x0000168c                SAR2_StartConvert
+                0x00001718       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x00001718                SAR2_StartConvert
  .text.SAR2_ISR
-                0x0000169c        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
-                0x0000169c                SAR2_ISR
+                0x00001728        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+                0x00001728                SAR2_ISR
  .text.SAR1_CalcGain
-                0x000016a0       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x0000172c       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
  .text.SAR1_Enable
-                0x00001710       0x94 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x00001710                SAR1_Enable
+                0x0000179c       0x94 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x0000179c                SAR1_Enable
  .text.SAR1_SetResolution
-                0x000017a4       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x000017a4                SAR1_SetResolution
+                0x00001830       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x00001830                SAR1_SetResolution
  .text.SAR1_Init
-                0x000017dc       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x000017dc                SAR1_Init
+                0x00001868       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x00001868                SAR1_Init
  .text.SAR1_Start
-                0x00001818       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x00001818                SAR1_Start
+                0x000018a4       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x000018a4                SAR1_Start
  .text.SAR1_StartConvert
-                0x00001834       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x00001834                SAR1_StartConvert
+                0x000018c0       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x000018c0                SAR1_StartConvert
  .text.SAR1_ISR
-                0x00001844        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
-                0x00001844                SAR1_ISR
+                0x000018d0        0x4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+                0x000018d0                SAR1_ISR
  .text.SAR2FILTER2_DmaInitialize
-                0x00001848       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
-                0x00001848                SAR2FILTER2_DmaInitialize
+                0x000018d4       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+                0x000018d4                SAR2FILTER2_DmaInitialize
  .text.SAR2_theACLK_SetModeRegister
-                0x00001884       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
-                0x00001884                SAR2_theACLK_SetModeRegister
+                0x00001910       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+                0x00001910                SAR2_theACLK_SetModeRegister
  .text.SAR1_theACLK_SetModeRegister
-                0x00001898       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
-                0x00001898                SAR1_theACLK_SetModeRegister
+                0x00001924       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+                0x00001924                SAR1_theACLK_SetModeRegister
  .text.isr_filter_ready1_SetVector
-                0x000018ac        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
-                0x000018ac                isr_filter_ready1_SetVector
+                0x00001938        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+                0x00001938                isr_filter_ready1_SetVector
  .text.isr_filter_ready1_SetPriority
-                0x000018b8       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
-                0x000018b8                isr_filter_ready1_SetPriority
+                0x00001944       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+                0x00001944                isr_filter_ready1_SetPriority
  .text.isr_filter_ready1_Enable
-                0x000018c8        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
-                0x000018c8                isr_filter_ready1_Enable
+                0x00001954        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+                0x00001954                isr_filter_ready1_Enable
  .text.isr_filter_ready1_Disable
-                0x000018d4        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
-                0x000018d4                isr_filter_ready1_Disable
+                0x00001960        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+                0x00001960                isr_filter_ready1_Disable
  .text.isr_filter_ready1_StartEx
-                0x000018e0       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
-                0x000018e0                isr_filter_ready1_StartEx
+                0x0000196c       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+                0x0000196c                isr_filter_ready1_StartEx
  .text.isr_filter_ready2_SetVector
-                0x000018fc        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
-                0x000018fc                isr_filter_ready2_SetVector
+                0x00001988        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+                0x00001988                isr_filter_ready2_SetVector
  .text.isr_filter_ready2_SetPriority
-                0x00001908       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
-                0x00001908                isr_filter_ready2_SetPriority
+                0x00001994       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+                0x00001994                isr_filter_ready2_SetPriority
  .text.isr_filter_ready2_Enable
-                0x00001918        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
-                0x00001918                isr_filter_ready2_Enable
+                0x000019a4        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+                0x000019a4                isr_filter_ready2_Enable
  .text.isr_filter_ready2_Disable
-                0x00001924        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
-                0x00001924                isr_filter_ready2_Disable
+                0x000019b0        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+                0x000019b0                isr_filter_ready2_Disable
  .text.isr_filter_ready2_StartEx
-                0x00001930       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
-                0x00001930                isr_filter_ready2_StartEx
+                0x000019bc       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+                0x000019bc                isr_filter_ready2_StartEx
  .text.isr_spi_rx_SetVector
-                0x0000194c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
-                0x0000194c                isr_spi_rx_SetVector
+                0x000019d8        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x000019d8                isr_spi_rx_SetVector
  .text.isr_spi_rx_SetPriority
-                0x00001958       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
-                0x00001958                isr_spi_rx_SetPriority
+                0x000019e4       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x000019e4                isr_spi_rx_SetPriority
  .text.isr_spi_rx_Enable
-                0x00001968        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
-                0x00001968                isr_spi_rx_Enable
+                0x000019f4       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x000019f4                isr_spi_rx_Enable
  .text.isr_spi_rx_Disable
-                0x00001974        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
-                0x00001974                isr_spi_rx_Disable
+                0x00001a04       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x00001a04                isr_spi_rx_Disable
  .text.isr_spi_rx_StartEx
-                0x00001980       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
-                0x00001980                isr_spi_rx_StartEx
+                0x00001a14       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x00001a14                isr_spi_rx_StartEx
+ .text.ShiftBy1_1_GetOutput
+                0x00001a30        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+                0x00001a30                ShiftBy1_1_GetOutput
+ .text.isr_shift1_SetVector
+                0x00001a3c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                0x00001a3c                isr_shift1_SetVector
+ .text.isr_shift1_SetPriority
+                0x00001a48       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                0x00001a48                isr_shift1_SetPriority
+ .text.isr_shift1_Enable
+                0x00001a58        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                0x00001a58                isr_shift1_Enable
+ .text.isr_shift1_Disable
+                0x00001a64        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                0x00001a64                isr_shift1_Disable
+ .text.isr_shift1_StartEx
+                0x00001a70       0x1c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                0x00001a70                isr_shift1_StartEx
+ .text.SPI2RAM_DmaInitialize
+                0x00001a8c       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+                0x00001a8c                SPI2RAM_DmaInitialize
  .text.__libc_init_array
-                0x0000199c       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x0000199c                __libc_init_array
- .text.memcpy   0x000019e8       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
-                0x000019e8                memcpy
- .text.memset   0x000019fe       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x000019fe                memset
+                0x00001acc       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00001acc                __libc_init_array
+ .text.memcpy   0x00001b18       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x00001b18                memcpy
+ .text.memset   0x00001b2e       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00001b2e                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -1324,88 +1386,87 @@ END GROUP
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00001a10        0x0
+.v4_bx          0x00001b40        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00001a10        0x0
+.iplt           0x00001b40        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00001a10        0x4
+.eh_frame       0x00001b40        0x4
  *(.eh_frame)
- .eh_frame      0x00001a10        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .eh_frame      0x00001a10        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
-                0x00001a14                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00001b40        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .eh_frame      0x00001b40        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+                0x00001b44                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00001a14                __exidx_end = .
+                0x00001b44                __exidx_end = .
 
-.rodata         0x00001a14      0x6e4
+.rodata         0x00001b44      0x6ec
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00001a14       0x6c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
-                0x00001a14                AMux_DelSig_CYAMUXSIDE_A__addrTable
-                0x00001a24                AMux_DelSig_CYAMUXSIDE_A__maskTable
-                0x00001a28                AMux_DelSig_CYAMUXSIDE_B__addrTable
-                0x00001a48                AMux_DelSig_CYAMUXSIDE_B__maskTable
- .rodata        0x00001a80      0x640 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
-                0x00001a80                Filter_cfsm
-                0x00001b80                Filter_acu
-                0x00001bc0                Filter_data_b
-                0x00001dc0                Filter_data_a
-                0x00001fc0                Filter_control
-                0x000020c0                . = ALIGN (0x4)
+ .rodata        0x00001b44       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x00001b44                AMux_DelSig_CYAMUXSIDE_A__addrTable
+                0x00001b54                AMux_DelSig_CYAMUXSIDE_A__maskTable
+                0x00001b58                AMux_DelSig_CYAMUXSIDE_B__addrTable
+                0x00001b78                AMux_DelSig_CYAMUXSIDE_B__maskTable
+ .rodata        0x00001bbc      0x640 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
+                0x00001bbc                Filter_cfsm
+                0x00001cbc                Filter_acu
+                0x00001cfc                Filter_data_b
+                0x00001efc                Filter_data_a
+                0x000020fc                Filter_control
+                0x000021fc                . = ALIGN (0x4)
  *(.init)
- .init          0x000020c0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x000020c0                _init
- .init          0x000020c4        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x000020cc                . = ALIGN (0x4)
-                0x000020cc                __preinit_array_start = .
+ .init          0x000021fc        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x000021fc                _init
+ .init          0x00002200        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x00002208                . = ALIGN (0x4)
+                0x00002208                __preinit_array_start = .
  *(.preinit_array)
-                0x000020cc                __preinit_array_end = .
-                0x000020cc                . = ALIGN (0x4)
-                0x000020cc                __init_array_start = .
+                0x00002208                __preinit_array_end = .
+                0x00002208                . = ALIGN (0x4)
+                0x00002208                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x000020cc        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .init_array    0x000020d0        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x000020d4                __init_array_end = .
-                0x000020d4                . = ALIGN (0x4)
+ .init_array    0x00002208        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .init_array    0x0000220c        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x00002210                __init_array_end = .
+                0x00002210                . = ALIGN (0x4)
  *(.fini)
- .fini          0x000020d4        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x000020d4                _fini
- .fini          0x000020d8        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x000020e0                . = ALIGN (0x4)
-                0x000020e0                __fini_array_start = .
+ .fini          0x00002210        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x00002210                _fini
+ .fini          0x00002214        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x0000221c                . = ALIGN (0x4)
+                0x0000221c                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x000020e0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .fini_array    0x0000221c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x000020e4                __fini_array_end = .
-                0x000020e4                . = ALIGN (0x4)
+                0x00002220                __fini_array_end = .
+                0x00002220                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x000020e4                . = ALIGN (0x4)
+                0x00002220                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x000020e4                . = ALIGN (0x4)
-                0x000020e4                __cy_regions = .
-                0x000020e4        0x4 LONG 0x20f8 __cy_region_init_ram
-                0x000020e8        0x4 LONG 0x1fff8108 __cy_region_start_data
-                0x000020ec        0x4 LONG 0x20 __cy_region_init_size_ram
-                0x000020f0        0x4 LONG 0x130 __cy_region_zero_size_ram
-                0x000020f4                __cy_regions_end = .
-                0x000020f8                . = ALIGN (0x8)
- *fill*         0x000020f4        0x4 
-                0x000020f8                _etext = .
+                0x00002220                . = ALIGN (0x4)
+                0x00002220                __cy_regions = .
+                0x00002220        0x4 LONG 0x2230 __cy_region_init_ram
+                0x00002224        0x4 LONG 0x1fff8108 __cy_region_start_data
+                0x00002228        0x4 LONG 0x28 __cy_region_init_size_ram
+                0x0000222c        0x4 LONG 0xf0 __cy_region_zero_size_ram
+                0x00002230                __cy_regions_end = .
+                0x00002230                . = ALIGN (0x8)
+                0x00002230                _etext = .
 
 .cy_checksum_exclude
-                0x000020f8        0x0
+                0x00002230        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000      0x100
@@ -1420,7 +1481,7 @@ END GROUP
  .noinit        0x1fff8104        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
                 0x1fff8104                CyResetStatus
 
-.data           0x1fff8108       0x20 load address 0x000020f8
+.data           0x1fff8108       0x28 load address 0x00002230
                 0x1fff8108                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff8108        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
@@ -1443,87 +1504,92 @@ END GROUP
                 0x1fff8126                SAR2FILTER1_DmaHandle
  .data          0x1fff8127        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
                 0x1fff8127                SAR2FILTER2_DmaHandle
-                0x1fff8128                . = ALIGN (0x8)
+ .data          0x1fff8128        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+                0x1fff8128                SPI2RAM_DmaHandle
+                0x1fff8130                . = ALIGN (0x8)
+ *fill*         0x1fff8129        0x7 
  *(.ram)
-                0x1fff8128                _edata = .
+                0x1fff8130                _edata = .
 
-.igot.plt       0x1fff8128        0x0 load address 0x00002118
+.igot.plt       0x1fff8130        0x0 load address 0x00002258
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
-.bss            0x1fff8128      0x130 load address 0x00002118
-                0x1fff8128                PROVIDE (__bss_start__, .)
+.bss            0x1fff8130       0xf0 load address 0x00002258
+                0x1fff8130                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x1fff8128       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .bss           0x1fff8144        0xc .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x1fff8144                i2cbuf
-                0x1fff8148                sarmem1
-                0x1fff814c                sarmem2
- .bss           0x1fff8150        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
-                0x1fff8150                Filter_initVar
- .bss           0x1fff8151        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-                0x1fff8151                I2C_initVar
- .bss           0x1fff8152        0x2 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
- .bss           0x1fff8154        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
-                0x1fff8154                SPIS_initVar
- .bss           0x1fff8155        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
-                0x1fff8155                VDAC4_initVar
- .bss           0x1fff8156        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
-                0x1fff8156                VDAC3_initVar
- .bss           0x1fff8157        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
-                0x1fff8157                VDAC2_initVar
- .bss           0x1fff8158        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
-                0x1fff8158                VDAC1_initVar
- .bss           0x1fff8159        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
-                0x1fff8159                PWM2_initVar
- .bss           0x1fff815a        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
-                0x1fff815a                PWM1_initVar
- .bss           0x1fff815b        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x1fff815b                SAR2_initVar
- .bss           0x1fff815c        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x1fff815c                SAR1_initVar
+ .bss           0x1fff8130       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .bss           0x1fff814c       0x10 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x1fff814c                i2cbuf
+                0x1fff8150                spimem
+                0x1fff8154                sarmem1
+                0x1fff8158                sarmem2
+ .bss           0x1fff815c        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x1fff815c                Filter_initVar
+ .bss           0x1fff815d        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x1fff815d                I2C_initVar
+ .bss           0x1fff815e        0x2 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .bss           0x1fff8160        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x1fff8160                SPIS_initVar
+ .bss           0x1fff8161        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x1fff8161                VDAC4_initVar
+ .bss           0x1fff8162        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x1fff8162                VDAC3_initVar
+ .bss           0x1fff8163        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x1fff8163                VDAC2_initVar
+ .bss           0x1fff8164        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x1fff8164                VDAC1_initVar
+ .bss           0x1fff8165        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x1fff8165                PWM2_initVar
+ .bss           0x1fff8166        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x1fff8166                PWM1_initVar
+ .bss           0x1fff8167        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x1fff8167                SAR2_initVar
+ .bss           0x1fff8168        0x1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x1fff8168                SAR1_initVar
  *(COMMON)
- *fill*         0x1fff815d        0x3 
- COMMON         0x1fff8160       0xcd .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x1fff8160                filtermem1
-                0x1fff81c4                RAM2FILTER2_Chan
-                0x1fff81c8                filtermem2
-                0x1fff822c                RAM2FILTER1_Chan
- *fill*         0x1fff822d        0x3 
- COMMON         0x1fff8230        0xf .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
-                0x1fff8230                I2C_curStatus
-                0x1fff8234                I2C_dataPtrS1
-                0x1fff8238                I2C_wrProtectS1
-                0x1fff823a                I2C_bufSizeS1
-                0x1fff823c                I2C_curState
-                0x1fff823d                I2C_rwOffsetS1
-                0x1fff823e                I2C_rwIndexS1
- *fill*         0x1fff823f        0x1 
- COMMON         0x1fff8240        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
-                0x1fff8240                SAR2_shift
-                0x1fff8244                SAR2_countsPer10Volt
-                0x1fff8248                SAR2_countsPerVolt
-                0x1fff824a                SAR2_offset
- COMMON         0x1fff824c        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
-                0x1fff824c                SAR1_countsPerVolt
-                0x1fff824e                SAR1_offset
-                0x1fff8250                SAR1_shift
-                0x1fff8254                SAR1_countsPer10Volt
-                0x1fff8258                . = ALIGN (0x8)
+ *fill*         0x1fff8169        0x3 
+ COMMON         0x1fff816c       0x85 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x1fff816c                filtermem1
+                0x1fff81ac                RAM2FILTER2_Chan
+                0x1fff81b0                filtermem2
+                0x1fff81f0                RAM2FILTER1_Chan
+ *fill*         0x1fff81f1        0x3 
+ COMMON         0x1fff81f4        0xf .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x1fff81f4                I2C_curStatus
+                0x1fff81f8                I2C_dataPtrS1
+                0x1fff81fc                I2C_wrProtectS1
+                0x1fff81fe                I2C_bufSizeS1
+                0x1fff8200                I2C_curState
+                0x1fff8201                I2C_rwOffsetS1
+                0x1fff8202                I2C_rwIndexS1
+ *fill*         0x1fff8203        0x1 
+ COMMON         0x1fff8204        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x1fff8204                SAR2_shift
+                0x1fff8208                SAR2_countsPer10Volt
+                0x1fff820c                SAR2_countsPerVolt
+                0x1fff820e                SAR2_offset
+ COMMON         0x1fff8210        0xc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x1fff8210                SAR1_countsPerVolt
+                0x1fff8212                SAR1_offset
+                0x1fff8214                SAR1_shift
+                0x1fff8218                SAR1_countsPer10Volt
+                0x1fff8220                . = ALIGN (0x8)
+ *fill*         0x1fff821c        0x4 
  *(.ram.b)
-                0x1fff8258                _end = .
-                0x1fff8258                __end = .
-                0x1fff8258                PROVIDE (end, .)
-                0x1fff8258                PROVIDE (__bss_end__, .)
-                0x000020f8                __cy_region_init_ram = LOADADDR (.data)
-                0x00000020                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x00000130                __cy_region_zero_size_ram = (_end - _edata)
+                0x1fff8220                _end = .
+                0x1fff8220                __end = .
+                0x1fff8220                PROVIDE (end, .)
+                0x1fff8220                PROVIDE (__bss_end__, .)
+                0x00002230                __cy_region_init_ram = LOADADDR (.data)
+                0x00000028                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x000000f0                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8258       0x80 load address 0x00002118
-                0x1fff8258                . = _end
-                0x1fff82d8                . = (. + 0x80)
- *fill*         0x1fff8258       0x80 
-                0x1fff82d8                __cy_heap_limit = .
+.heap           0x1fff8220       0x80 load address 0x00002258
+                0x1fff8220                . = _end
+                0x1fff82a0                . = (. + 0x80)
+ *fill*         0x1fff8220       0x80 
+                0x1fff82a0                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1539,9 +1605,9 @@ END GROUP
 .cyloadablemeta
  *(.cyloadablemeta)
 
-.cyconfigecc    0x80000000      0x3ec
+.cyconfigecc    0x80000000      0x480
  *(.cyconfigecc)
- .cyconfigecc   0x80000000      0x3ec .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .cyconfigecc   0x80000000      0x480 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                 0x80000000                cy_meta_configecc
 
 .cycustnvl      0x90000000        0x4
@@ -1570,7 +1636,7 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x00002118        0x0 load address 0x9050000c
+.rel.dyn        0x00002258        0x0 load address 0x9050000c
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .stab
@@ -1591,430 +1657,459 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000     0x1068
+.debug_aranges  0x00000000     0x1150
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0xa0 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x00000000       0xb0 .\CortexM3\ARM_GCC_493\Debug\main.o
  .debug_aranges
-                0x000000a0       0x18 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+                0x000000b0       0x18 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
  .debug_aranges
-                0x000000b8       0x48 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x000000c8       0x48 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
  .debug_aranges
-                0x00000100       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                0x00000110       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
  .debug_aranges
-                0x00000178       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
+                0x00000188       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00000198       0xd8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+                0x000001a8       0xd8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
  .debug_aranges
-                0x00000270      0x298 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+                0x00000280      0x298 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
  .debug_aranges
-                0x00000508       0x98 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+                0x00000518       0x98 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
  .debug_aranges
-                0x000005a0       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+                0x000005b0       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
  .debug_aranges
-                0x00000620       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+                0x00000630       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
  .debug_aranges
-                0x00000648       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
+                0x00000658       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
  .debug_aranges
-                0x00000660       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+                0x00000670       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
  .debug_aranges
-                0x000006b8       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+                0x000006c8       0x38 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
  .debug_aranges
-                0x000006f0       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+                0x00000700       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
  .debug_aranges
-                0x00000710       0xe0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+                0x00000720       0xe0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
  .debug_aranges
-                0x000007f0       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+                0x00000800       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
  .debug_aranges
-                0x00000848       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+                0x00000858       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
  .debug_aranges
-                0x000008a0       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+                0x000008b0       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
  .debug_aranges
-                0x000008f8       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+                0x00000908       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
  .debug_aranges
-                0x00000950       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+                0x00000960       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
  .debug_aranges
-                0x000009c8       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+                0x000009d8       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
  .debug_aranges
-                0x00000a40       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+                0x00000a50       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
  .debug_aranges
-                0x00000a68       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+                0x00000a78       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
  .debug_aranges
-                0x00000a90       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+                0x00000aa0       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
  .debug_aranges
-                0x00000ab8       0xa8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+                0x00000ac8       0xa8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
  .debug_aranges
-                0x00000b60       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+                0x00000b70       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
  .debug_aranges
-                0x00000b80       0xa8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+                0x00000b90       0xa8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
  .debug_aranges
-                0x00000c28       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+                0x00000c38       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
  .debug_aranges
-                0x00000c48       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+                0x00000c58       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
  .debug_aranges
-                0x00000c70       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+                0x00000c80       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
  .debug_aranges
-                0x00000ce0       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+                0x00000cf0       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
  .debug_aranges
-                0x00000d50       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+                0x00000d60       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
  .debug_aranges
-                0x00000d78       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+                0x00000d88       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
  .debug_aranges
-                0x00000da0       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+                0x00000db0       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
  .debug_aranges
-                0x00000dc8       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+                0x00000dd8       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
  .debug_aranges
-                0x00000df0       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+                0x00000e00       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
  .debug_aranges
-                0x00000e70       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+                0x00000e80       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
  .debug_aranges
-                0x00000ef0       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+                0x00000f00       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
  .debug_aranges
-                0x00000f70       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+                0x00000f80       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
  .debug_aranges
-                0x00000ff0       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+                0x00000fb0       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_aranges
+                0x00001030       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_aranges
+                0x00001058       0x80 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_aranges
+                0x000010d8       0x78 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x96ec
+.debug_info     0x00000000     0x9f0c
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0xde2 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_info    0x00000de2      0x13b .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
- .debug_info    0x00000f1d      0x3af .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_info    0x000012cc      0x814 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
- .debug_info    0x00001ae0       0x93 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
- .debug_info    0x00001b73      0x944 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
- .debug_info    0x000024b7     0x136f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
- .debug_info    0x00003826      0xa57 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
- .debug_info    0x0000427d      0x4cc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
- .debug_info    0x00004749       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
- .debug_info    0x00004834      0x12b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
- .debug_info    0x0000495f      0x3c8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
- .debug_info    0x00004d27      0x1ed .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
- .debug_info    0x00004f14      0x141 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
- .debug_info    0x00005055      0x4b4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
- .debug_info    0x00005509      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
- .debug_info    0x000056e9      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
- .debug_info    0x000058c9      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
- .debug_info    0x00005aa9      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
- .debug_info    0x00005c89      0x27a .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
- .debug_info    0x00005f03      0x278 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
- .debug_info    0x0000617b      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
- .debug_info    0x00006378      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
- .debug_info    0x00006575      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
- .debug_info    0x00006772      0x608 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
- .debug_info    0x00006d7a       0x92 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
- .debug_info    0x00006e0c      0x608 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
- .debug_info    0x00007414       0x92 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
- .debug_info    0x000074a6      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
- .debug_info    0x000076a3      0x283 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
- .debug_info    0x00007926      0x283 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
- .debug_info    0x00007ba9      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
- .debug_info    0x00007da6      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
- .debug_info    0x00007fa3      0x1f9 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
- .debug_info    0x0000819c      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
- .debug_info    0x00008399      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
- .debug_info    0x00008664      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
- .debug_info    0x0000892f      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
- .debug_info    0x00008bfa      0x608 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
- .debug_info    0x00009202      0x4ea .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_info    0x00000000      0xf41 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_info    0x00000f41      0x13c .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_info    0x0000107d      0x3af .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_info    0x0000142c      0x920 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+ .debug_info    0x00001d4c       0x93 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
+ .debug_info    0x00001ddf      0x944 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_info    0x00002723     0x136f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_info    0x00003a92      0xa57 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_info    0x000044e9      0x4cc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_info    0x000049b5       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_info    0x00004aa0      0x12b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
+ .debug_info    0x00004bcb      0x3c8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_info    0x00004f93      0x1ed .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_info    0x00005180      0x141 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .debug_info    0x000052c1      0x4b4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_info    0x00005775      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_info    0x00005955      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_info    0x00005b35      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_info    0x00005d15      0x1e0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_info    0x00005ef5      0x27a .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_info    0x0000616f      0x278 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_info    0x000063e7      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_info    0x000065e4      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_info    0x000067e1      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_info    0x000069de      0x608 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_info    0x00006fe6       0x92 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+ .debug_info    0x00007078      0x608 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_info    0x00007680       0x92 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+ .debug_info    0x00007712      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_info    0x0000790f      0x283 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_info    0x00007b92      0x283 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_info    0x00007e15      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_info    0x00008012      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_info    0x0000820f      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_info    0x0000840c      0x1fd .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_info    0x00008609      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_info    0x000088d4      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_info    0x00008b9f      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_info    0x00008e6a       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .debug_info    0x00008f55      0x2cb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_info    0x00009220      0x1fa .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_info    0x0000941a      0x608 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_info    0x00009a22      0x4ea .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
-.debug_abbrev   0x00000000     0x30e4
+.debug_abbrev   0x00000000     0x33fb
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x1e5 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_abbrev  0x000001e5       0x66 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
- .debug_abbrev  0x0000024b      0x200 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_abbrev  0x0000044b      0x223 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
- .debug_abbrev  0x0000066e       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
- .debug_abbrev  0x00000682      0x1cc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
- .debug_abbrev  0x0000084e      0x296 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
- .debug_abbrev  0x00000ae4      0x1ed .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
- .debug_abbrev  0x00000cd1      0x1f1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
- .debug_abbrev  0x00000ec2       0x7f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
- .debug_abbrev  0x00000f41       0x66 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
- .debug_abbrev  0x00000fa7      0x1d0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
- .debug_abbrev  0x00001177      0x12b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
- .debug_abbrev  0x000012a2       0x81 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
- .debug_abbrev  0x00001323      0x160 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
- .debug_abbrev  0x00001483       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
- .debug_abbrev  0x0000157a       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
- .debug_abbrev  0x00001671       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
- .debug_abbrev  0x00001768       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
- .debug_abbrev  0x0000185f      0x12d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
- .debug_abbrev  0x0000198c      0x12d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
- .debug_abbrev  0x00001ab9       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
- .debug_abbrev  0x00001ba4       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
- .debug_abbrev  0x00001c8f       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
- .debug_abbrev  0x00001d7a      0x1eb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
- .debug_abbrev  0x00001f65       0x42 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
- .debug_abbrev  0x00001fa7      0x1eb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
- .debug_abbrev  0x00002192       0x42 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
- .debug_abbrev  0x000021d4       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
- .debug_abbrev  0x000022bf      0x139 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
- .debug_abbrev  0x000023f8      0x139 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
- .debug_abbrev  0x00002531       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
- .debug_abbrev  0x0000261c       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
- .debug_abbrev  0x00002707       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
- .debug_abbrev  0x000027f2       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
- .debug_abbrev  0x000028dd      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
- .debug_abbrev  0x00002a50      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
- .debug_abbrev  0x00002bc3      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
- .debug_abbrev  0x00002d36      0x1ed .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
- .debug_abbrev  0x00002f23      0x1c1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_abbrev  0x000001e5       0x77 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_abbrev  0x0000025c      0x200 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_abbrev  0x0000045c      0x232 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+ .debug_abbrev  0x0000068e       0x14 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x000006a2      0x1cc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_abbrev  0x0000086e      0x296 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_abbrev  0x00000b04      0x1ed .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_abbrev  0x00000cf1      0x1f1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_abbrev  0x00000ee2       0x7f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_abbrev  0x00000f61       0x66 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
+ .debug_abbrev  0x00000fc7      0x1d0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_abbrev  0x00001197      0x12b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_abbrev  0x000012c2       0x81 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .debug_abbrev  0x00001343      0x160 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_abbrev  0x000014a3       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_abbrev  0x0000159a       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_abbrev  0x00001691       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_abbrev  0x00001788       0xf7 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_abbrev  0x0000187f      0x12d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_abbrev  0x000019ac      0x12d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_abbrev  0x00001ad9       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_abbrev  0x00001bc4       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_abbrev  0x00001caf       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_abbrev  0x00001d9a      0x1eb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_abbrev  0x00001f85       0x42 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+ .debug_abbrev  0x00001fc7      0x1eb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_abbrev  0x000021b2       0x42 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+ .debug_abbrev  0x000021f4       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_abbrev  0x000022df      0x139 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_abbrev  0x00002418      0x139 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_abbrev  0x00002551       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_abbrev  0x0000263c       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_abbrev  0x00002727       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_abbrev  0x00002812       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_abbrev  0x000028fd      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_abbrev  0x00002a70      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_abbrev  0x00002be3      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_abbrev  0x00002d56       0x99 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .debug_abbrev  0x00002def      0x173 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_abbrev  0x00002f62       0xeb .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_abbrev  0x0000304d      0x1ed .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_abbrev  0x0000323a      0x1c1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
-.debug_line     0x00000000     0x3a43
+.debug_line     0x00000000     0x3d40
  *(.debug_line)
- .debug_line    0x00000000      0x441 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_line    0x00000441       0x53 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
- .debug_line    0x00000494      0x254 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_line    0x000006e8      0x26e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
- .debug_line    0x00000956       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
- .debug_line    0x000009be      0x2e5 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
- .debug_line    0x00000ca3      0x806 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
- .debug_line    0x000014a9      0x366 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
- .debug_line    0x0000180f      0x174 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
- .debug_line    0x00001983       0x76 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
- .debug_line    0x000019f9       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
- .debug_line    0x00001a51      0x129 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
- .debug_line    0x00001b7a       0xb8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
- .debug_line    0x00001c32       0xaa .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
- .debug_line    0x00001cdc      0x245 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
- .debug_line    0x00001f21       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
- .debug_line    0x00002005       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
- .debug_line    0x000020e9       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
- .debug_line    0x000021cd       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
- .debug_line    0x000022b1      0x134 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
- .debug_line    0x000023e5      0x134 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
- .debug_line    0x00002519       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
- .debug_line    0x000025ba       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
- .debug_line    0x0000265b       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
- .debug_line    0x000026fc      0x219 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
- .debug_line    0x00002915       0x53 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
- .debug_line    0x00002968      0x219 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
- .debug_line    0x00002b81       0x53 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
- .debug_line    0x00002bd4       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
- .debug_line    0x00002c75      0x194 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
- .debug_line    0x00002e09      0x194 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
- .debug_line    0x00002f9d       0x9e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
- .debug_line    0x0000303b       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
- .debug_line    0x000030dc       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
- .debug_line    0x0000317d       0x9e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
- .debug_line    0x0000321b      0x157 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
- .debug_line    0x00003372      0x157 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
- .debug_line    0x000034c9      0x150 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
- .debug_line    0x00003619      0x1ec .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
- .debug_line    0x00003805      0x23e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_line    0x00000000      0x4a6 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_line    0x000004a6       0x53 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x000004f9      0x254 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_line    0x0000074d      0x28b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+ .debug_line    0x000009d8       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyBootAsmGnu.o)
+ .debug_line    0x00000a40      0x2e5 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_line    0x00000d25      0x806 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_line    0x0000152b      0x366 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_line    0x00001891      0x174 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_line    0x00001a05       0x76 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_line    0x00001a7b       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
+ .debug_line    0x00001ad3      0x129 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_line    0x00001bfc       0xb8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_line    0x00001cb4       0xaa .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .debug_line    0x00001d5e      0x245 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_line    0x00001fa3       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_line    0x00002087       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_line    0x0000216b       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_line    0x0000224f       0xe4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_line    0x00002333      0x134 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_line    0x00002467      0x134 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_line    0x0000259b       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_line    0x0000263c       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_line    0x000026dd       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_line    0x0000277e      0x219 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_line    0x00002997       0x53 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+ .debug_line    0x000029ea      0x219 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_line    0x00002c03       0x53 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+ .debug_line    0x00002c56       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_line    0x00002cf7      0x194 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_line    0x00002e8b      0x194 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_line    0x0000301f       0x9e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_line    0x000030bd       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_line    0x0000315e       0xa1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_line    0x000031ff       0x9e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_line    0x0000329d      0x157 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_line    0x000033f4      0x157 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_line    0x0000354b      0x150 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_line    0x0000369b       0x8e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .debug_line    0x00003729      0x150 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_line    0x00003879       0x9d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_line    0x00003916      0x1ec .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_line    0x00003b02      0x23e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
-.debug_frame    0x00000000     0x279c
+.debug_frame    0x00000000     0x2970
  *(.debug_frame)
- .debug_frame   0x00000000      0x1dc .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_frame   0x000001dc       0xac .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_frame   0x00000288      0x154 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
- .debug_frame   0x000003dc      0x1f4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
- .debug_frame   0x000005d0      0x728 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
- .debug_frame   0x00000cf8      0x1f8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
- .debug_frame   0x00000ef0      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
- .debug_frame   0x00000ff4       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
- .debug_frame   0x00001024       0xdc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
- .debug_frame   0x00001100       0x74 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
- .debug_frame   0x00001174       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
- .debug_frame   0x00001194      0x1f8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
- .debug_frame   0x0000138c       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
- .debug_frame   0x00001440       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
- .debug_frame   0x000014f4       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
- .debug_frame   0x000015a8       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
- .debug_frame   0x0000165c       0xe8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
- .debug_frame   0x00001744       0xe8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
- .debug_frame   0x0000182c       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
- .debug_frame   0x00001880       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
- .debug_frame   0x000018d4       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
- .debug_frame   0x00001928      0x1a8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
- .debug_frame   0x00001ad0       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
- .debug_frame   0x00001af0      0x1a8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
- .debug_frame   0x00001c98       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
- .debug_frame   0x00001cb8       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
- .debug_frame   0x00001d0c       0xe0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
- .debug_frame   0x00001dec       0xe0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
- .debug_frame   0x00001ecc       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
- .debug_frame   0x00001f20       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
- .debug_frame   0x00001f74       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
- .debug_frame   0x00001fc8       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
- .debug_frame   0x0000201c      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
- .debug_frame   0x00002120      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
- .debug_frame   0x00002224      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
- .debug_frame   0x00002328      0x174 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
- .debug_frame   0x0000249c      0x160 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
- .debug_frame   0x000025fc       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x00002624       0x54 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(bpabi.o)
- .debug_frame   0x00002678       0x34 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_divdi3.o)
- .debug_frame   0x000026ac       0x34 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_udivdi3.o)
- .debug_frame   0x000026e0       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00002700       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00002728       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x00002754       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
- .debug_frame   0x0000277c       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000000      0x218 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_frame   0x00000218       0xac .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_frame   0x000002c4      0x154 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+ .debug_frame   0x00000418      0x1f4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_frame   0x0000060c      0x728 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_frame   0x00000d34      0x1f8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_frame   0x00000f2c      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_frame   0x00001030       0x30 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_frame   0x00001060       0xdc .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_frame   0x0000113c       0x74 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_frame   0x000011b0       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .debug_frame   0x000011d0      0x1f8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_frame   0x000013c8       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_frame   0x0000147c       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_frame   0x00001530       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_frame   0x000015e4       0xb4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_frame   0x00001698       0xe8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_frame   0x00001780       0xe8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_frame   0x00001868       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_frame   0x000018bc       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_frame   0x00001910       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_frame   0x00001964      0x1a8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_frame   0x00001b0c       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+ .debug_frame   0x00001b2c      0x1a8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_frame   0x00001cd4       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+ .debug_frame   0x00001cf4       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_frame   0x00001d48       0xe0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_frame   0x00001e28       0xe0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_frame   0x00001f08       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_frame   0x00001f5c       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_frame   0x00001fb0       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_frame   0x00002004       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_frame   0x00002058      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_frame   0x0000215c      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_frame   0x00002260      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_frame   0x00002364       0x40 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .debug_frame   0x000023a4      0x104 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_frame   0x000024a8       0x54 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_frame   0x000024fc      0x174 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_frame   0x00002670      0x160 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_frame   0x000027d0       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x000027f8       0x54 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(bpabi.o)
+ .debug_frame   0x0000284c       0x34 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_divdi3.o)
+ .debug_frame   0x00002880       0x34 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_udivdi3.o)
+ .debug_frame   0x000028b4       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000028d4       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x000028fc       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00002928       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+ .debug_frame   0x00002950       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x328f
+.debug_str      0x00000000     0x3501
  *(.debug_str)
- .debug_str     0x00000000      0x687 .\CortexM3\ARM_GCC_493\Debug\main.o
-                                0x6cf (size before relaxing)
- .debug_str     0x00000687       0x77 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_str     0x00000000      0x6f6 .\CortexM3\ARM_GCC_493\Debug\main.o
+                                0x73e (size before relaxing)
+ .debug_str     0x000006f6       0x77 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                                 0x1ed (size before relaxing)
- .debug_str     0x000006fe      0x163 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_str     0x0000076d      0x163 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
                                 0x311 (size before relaxing)
- .debug_str     0x00000861      0x269 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
-                                0x426 (size before relaxing)
- .debug_str     0x00000aca      0x327 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_str     0x000008d0      0x29e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+                                0x45b (size before relaxing)
+ .debug_str     0x00000b6e      0x327 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
                                 0x541 (size before relaxing)
- .debug_str     0x00000df1      0x7d1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_str     0x00000e95      0x7d1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
                                 0xa26 (size before relaxing)
- .debug_str     0x000015c2      0x35b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_str     0x00001666      0x35b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
                                 0x71e (size before relaxing)
- .debug_str     0x0000191d      0x151 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_str     0x000019c1      0x151 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
                                 0x333 (size before relaxing)
- .debug_str     0x00001a6e       0x2d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_str     0x00001b12       0x2d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
                                 0x1d2 (size before relaxing)
- .debug_str     0x00001a9b       0x2b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
+ .debug_str     0x00001b3f       0x2b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_RAM_Data.o)
                                 0x1e3 (size before relaxing)
- .debug_str     0x00001ac6      0x146 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_str     0x00001b6a      0x146 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
                                 0x371 (size before relaxing)
- .debug_str     0x00001c0c       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_str     0x00001cb0       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
                                 0x269 (size before relaxing)
- .debug_str     0x00001c64       0x37 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .debug_str     0x00001d08       0x37 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
                                 0x21d (size before relaxing)
- .debug_str     0x00001c9b      0x22a .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_str     0x00001d3f      0x23a .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
                                 0x3fc (size before relaxing)
- .debug_str     0x00001ec5       0x8a .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_str     0x00001f79       0x8a .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
                                 0x222 (size before relaxing)
- .debug_str     0x00001f4f       0x7e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_str     0x00002003       0x7e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
                                 0x222 (size before relaxing)
- .debug_str     0x00001fcd       0x7e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_str     0x00002081       0x7e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
                                 0x222 (size before relaxing)
- .debug_str     0x0000204b       0x7e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_str     0x000020ff       0x7e .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
                                 0x222 (size before relaxing)
- .debug_str     0x000020c9      0x11b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_str     0x0000217d      0x11b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
                                 0x2b6 (size before relaxing)
- .debug_str     0x000021e4       0xf2 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_str     0x00002298       0xf2 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
                                 0x2b6 (size before relaxing)
- .debug_str     0x000022d6       0x93 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_str     0x0000238a       0x93 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
                                 0x284 (size before relaxing)
- .debug_str     0x00002369       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_str     0x0000241d       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
                                 0x284 (size before relaxing)
- .debug_str     0x000023c1       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_str     0x00002475       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
                                 0x284 (size before relaxing)
- .debug_str     0x00002419      0x1e3 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_str     0x000024cd      0x1e3 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
                                 0x44e (size before relaxing)
- .debug_str     0x000025fc       0x2d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+ .debug_str     0x000026b0       0x2d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
                                 0x194 (size before relaxing)
- .debug_str     0x00002629      0x18c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_str     0x000026dd      0x18c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
                                 0x44e (size before relaxing)
- .debug_str     0x000027b5       0x2d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+ .debug_str     0x00002869       0x2d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
                                 0x194 (size before relaxing)
- .debug_str     0x000027e2       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_str     0x00002896       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
                                 0x284 (size before relaxing)
- .debug_str     0x0000283a      0x183 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_str     0x000028ee      0x183 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
                                 0x32d (size before relaxing)
- .debug_str     0x000029bd      0x138 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_str     0x00002a71      0x138 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
                                 0x32d (size before relaxing)
- .debug_str     0x00002af5       0x4f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_str     0x00002ba9       0x4f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
                                 0x278 (size before relaxing)
- .debug_str     0x00002b44       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_str     0x00002bf8       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
                                 0x284 (size before relaxing)
- .debug_str     0x00002b9c       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_str     0x00002c50       0x58 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
                                 0x284 (size before relaxing)
- .debug_str     0x00002bf4       0x4f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_str     0x00002ca8       0x4f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
                                 0x278 (size before relaxing)
- .debug_str     0x00002c43      0x176 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_str     0x00002cf7      0x176 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
                                 0x345 (size before relaxing)
- .debug_str     0x00002db9      0x176 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_str     0x00002e6d      0x176 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
                                 0x345 (size before relaxing)
- .debug_str     0x00002f2f      0x11b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_str     0x00002fe3      0x11b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
                                 0x2e3 (size before relaxing)
- .debug_str     0x0000304a      0x197 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_str     0x000030fe       0x57 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+                                0x1de (size before relaxing)
+ .debug_str     0x00003155      0x11b .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+                                0x2e3 (size before relaxing)
+ .debug_str     0x00003270       0x4c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+                                0x274 (size before relaxing)
+ .debug_str     0x000032bc      0x197 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
                                 0x398 (size before relaxing)
- .debug_str     0x000031e1       0xae .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_str     0x00003453       0xae .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
                                 0x321 (size before relaxing)
 
-.debug_loc      0x00000000     0x375f
+.debug_loc      0x00000000     0x38ce
  *(.debug_loc)
- .debug_loc     0x00000000       0x4c .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_loc     0x0000004c      0x144 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_loc     0x00000190      0x23f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
- .debug_loc     0x000003cf      0xb83 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
- .debug_loc     0x00000f52      0xa11 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
- .debug_loc     0x00001963      0x1e4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
- .debug_loc     0x00001b47      0x23d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
- .debug_loc     0x00001d84       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
- .debug_loc     0x00001dc0       0x95 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
- .debug_loc     0x00001e55       0x13 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
- .debug_loc     0x00001e68       0xf3 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
- .debug_loc     0x00001f5b       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
- .debug_loc     0x00001fd4       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
- .debug_loc     0x0000204d       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
- .debug_loc     0x000020c6       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
- .debug_loc     0x0000213f       0x13 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
- .debug_loc     0x00002152       0x13 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
- .debug_loc     0x00002165       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
- .debug_loc     0x000021e9       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
- .debug_loc     0x0000226d       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
- .debug_loc     0x000022f1      0x29c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
- .debug_loc     0x0000258d      0x29f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
- .debug_loc     0x0000282c       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
- .debug_loc     0x000028b0      0x128 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
- .debug_loc     0x000029d8      0x128 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
- .debug_loc     0x00002b00       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
- .debug_loc     0x00002b84       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
- .debug_loc     0x00002c08       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
- .debug_loc     0x00002c8c       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
- .debug_loc     0x00002d10       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
- .debug_loc     0x00002d66       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
- .debug_loc     0x00002dbc       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
- .debug_loc     0x00002e12      0x300 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
- .debug_loc     0x00003112      0x64d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_loc     0x00000000       0x5f .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_loc     0x0000005f      0x144 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_loc     0x000001a3      0x2c1 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+ .debug_loc     0x00000464      0xb83 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_loc     0x00000fe7      0xa11 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_loc     0x000019f8      0x1e4 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_loc     0x00001bdc      0x23d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_loc     0x00001e19       0x3c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_loc     0x00001e55       0x95 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_loc     0x00001eea       0x13 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_loc     0x00001efd       0xf3 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_loc     0x00001ff0       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_loc     0x00002069       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_loc     0x000020e2       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_loc     0x0000215b       0x79 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_loc     0x000021d4       0x13 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_loc     0x000021e7       0x13 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_loc     0x000021fa       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_loc     0x0000227e       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_loc     0x00002302       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_loc     0x00002386      0x29c .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_loc     0x00002622      0x29f .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_loc     0x000028c1       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_loc     0x00002945      0x128 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_loc     0x00002a6d      0x128 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_loc     0x00002b95       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_loc     0x00002c19       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_loc     0x00002c9d       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_loc     0x00002d21       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_loc     0x00002da5       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_loc     0x00002dfb       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_loc     0x00002e51       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_loc     0x00002ea7       0x56 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_loc     0x00002efd       0x84 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_loc     0x00002f81      0x300 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_loc     0x00003281      0x64d .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0xdc8
+.debug_ranges   0x00000000      0xe80
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x90 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_ranges  0x00000090       0x38 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_ranges  0x000000c8       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
- .debug_ranges  0x00000130       0xc8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
- .debug_ranges  0x000001f8      0x288 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
- .debug_ranges  0x00000480       0x88 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
- .debug_ranges  0x00000508       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
- .debug_ranges  0x00000578       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
- .debug_ranges  0x00000590       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
- .debug_ranges  0x000005d8       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
- .debug_ranges  0x00000600       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
- .debug_ranges  0x00000610       0xd0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
- .debug_ranges  0x000006e0       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
- .debug_ranges  0x00000728       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
- .debug_ranges  0x00000770       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
- .debug_ranges  0x000007b8       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
- .debug_ranges  0x00000800       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
- .debug_ranges  0x00000868       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
- .debug_ranges  0x000008d0       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
- .debug_ranges  0x000008e8       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
- .debug_ranges  0x00000900       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
- .debug_ranges  0x00000918       0x98 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
- .debug_ranges  0x000009b0       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
- .debug_ranges  0x000009c0       0x98 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
- .debug_ranges  0x00000a58       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
- .debug_ranges  0x00000a68       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
- .debug_ranges  0x00000a80       0x60 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
- .debug_ranges  0x00000ae0       0x60 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
- .debug_ranges  0x00000b40       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
- .debug_ranges  0x00000b58       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
- .debug_ranges  0x00000b70       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
- .debug_ranges  0x00000b88       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
- .debug_ranges  0x00000ba0       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
- .debug_ranges  0x00000c10       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
- .debug_ranges  0x00000c80       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
- .debug_ranges  0x00000cf0       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
- .debug_ranges  0x00000d60       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+ .debug_ranges  0x00000000       0xa0 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_ranges  0x000000a0       0x38 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_ranges  0x000000d8       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyfitter_cfg.o)
+ .debug_ranges  0x00000140       0xc8 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyDmac.o)
+ .debug_ranges  0x00000208      0x288 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyLib.o)
+ .debug_ranges  0x00000490       0x88 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(cyPm.o)
+ .debug_ranges  0x00000518       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter.o)
+ .debug_ranges  0x00000588       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(Filter_PVT.o)
+ .debug_ranges  0x000005a0       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C.o)
+ .debug_ranges  0x000005e8       0x28 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_PM.o)
+ .debug_ranges  0x00000610       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(I2C_INT.o)
+ .debug_ranges  0x00000620       0xd0 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPIS.o)
+ .debug_ranges  0x000006f0       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC4.o)
+ .debug_ranges  0x00000738       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC3.o)
+ .debug_ranges  0x00000780       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC2.o)
+ .debug_ranges  0x000007c8       0x48 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(VDAC1.o)
+ .debug_ranges  0x00000810       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM2.o)
+ .debug_ranges  0x00000878       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(PWM1.o)
+ .debug_ranges  0x000008e0       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM1_dma.o)
+ .debug_ranges  0x000008f8       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(FILTER2RAM2_dma.o)
+ .debug_ranges  0x00000910       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER1_dma.o)
+ .debug_ranges  0x00000928       0x98 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2.o)
+ .debug_ranges  0x000009c0       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_INT.o)
+ .debug_ranges  0x000009d0       0x98 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1.o)
+ .debug_ranges  0x00000a68       0x10 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_INT.o)
+ .debug_ranges  0x00000a78       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2FILTER2_dma.o)
+ .debug_ranges  0x00000a90       0x60 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2_theACLK.o)
+ .debug_ranges  0x00000af0       0x60 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR1_theACLK.o)
+ .debug_ranges  0x00000b50       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM1_dma.o)
+ .debug_ranges  0x00000b68       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER2_dma.o)
+ .debug_ranges  0x00000b80       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(RAM2FILTER1_dma.o)
+ .debug_ranges  0x00000b98       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SAR2RAM2_dma.o)
+ .debug_ranges  0x00000bb0       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
+ .debug_ranges  0x00000c20       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
+ .debug_ranges  0x00000c90       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .debug_ranges  0x00000d00       0x20 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .debug_ranges  0x00000d20       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .debug_ranges  0x00000d90       0x18 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
+ .debug_ranges  0x00000da8       0x70 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+ .debug_ranges  0x00000e18       0x68 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 .\CortexM3\ARM_GCC_493\Debug\main.o
@@ -2055,6 +2150,9 @@ END GROUP
  .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready1.o)
  .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_filter_ready2.o)
  .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
+ .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
+ .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
+ .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
  .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
  .comment       0x00000000       0x71 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
 
@@ -2159,39 +2257,45 @@ END GROUP
  .ARM.attributes
                 0x000007b2       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_spi_rx.o)
  .ARM.attributes
-                0x000007e5       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
+                0x000007e5       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(ShiftBy1_1_ShiftBy1.o)
  .ARM.attributes
-                0x00000818       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
+                0x00000818       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(isr_shift1.o)
  .ARM.attributes
-                0x0000084b       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x0000084b       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(SPI2RAM_dma.o)
  .ARM.attributes
-                0x00000868       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x0000087e       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CyFlash.o)
  .ARM.attributes
-                0x00000885       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_aeabi_ldivmod.o)
+                0x000008b1       0x33 .\CortexM3\ARM_GCC_493\Debug\Voltron Main.a(CySpc.o)
  .ARM.attributes
-                0x000008a2       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(bpabi.o)
+                0x000008e4       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubsf3.o)
  .ARM.attributes
-                0x000008cf       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x00000901       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivsf3.o)
  .ARM.attributes
-                0x000008ec       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_divdi3.o)
+                0x0000091e       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x00000919       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_udivdi3.o)
+                0x0000093b       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(bpabi.o)
  .ARM.attributes
-                0x00000946       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00000968       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000973       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                0x00000985       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_divdi3.o)
  .ARM.attributes
-                0x000009a0       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x000009b2       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_udivdi3.o)
  .ARM.attributes
-                0x000009cd       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x000009df       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x000009fa       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x00000a0c       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x00000a27       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00000a39       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000a54       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+                0x00000a66       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x00000a81       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x00000a93       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x00000ac0       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000aed       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+ .ARM.attributes
+                0x00000b1a       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)

@@ -1,0 +1,571 @@
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ShiftBy2_2_ShiftBy2.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.ShiftBy2_2_SetInput,"ax",%progbits
+  19              		.align	2
+  20              		.global	ShiftBy2_2_SetInput
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	ShiftBy2_2_SetInput, %function
+  24              	ShiftBy2_2_SetInput:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\ShiftBy2_2_ShiftBy2.c"
+   1:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** /* ========================================
+   2:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  *
+   3:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * Jay Lin
+   4:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * Copyright ALCH3MY, 2016
+   5:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * All Rights Reserved
+   6:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   7:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  *
+   8:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   9:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * WHICH IS THE PROPERTY OF ALCH3MY.
+  10:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  *
+  11:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  * ========================================
+  12:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** */
+  13:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** 
+  14:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** #include "cytypes.h" 
+  15:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** #include "ShiftBy2_2_ShiftBy2.h" 
+  16:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** #include "ShiftBy2_2_defs.h" 
+  17:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  
+  18:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** void ShiftBy2_2_SetInput(uint16 val) 
+  19:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** { 
+  27              		.loc 1 19 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  20:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     /* Datapath_1 is the instance name from the UDB Editor */ 
+  21:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     CY_SET_REG16(ShiftBy2_2_Datapath_1_A0_PTR,val);  
+  33              		.loc 1 21 0
+  34 0000 014B     		ldr	r3, .L2
+  35 0002 1880     		strh	r0, [r3]	@ movhi
+  36 0004 7047     		bx	lr
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 2
+
+
+  37              	.L3:
+  38 0006 00BF     		.align	2
+  39              	.L2:
+  40 0008 10680040 		.word	1073768464
+  41              		.cfi_endproc
+  42              	.LFE0:
+  43              		.size	ShiftBy2_2_SetInput, .-ShiftBy2_2_SetInput
+  44              		.section	.text.ShiftBy2_2_GetInput,"ax",%progbits
+  45              		.align	2
+  46              		.global	ShiftBy2_2_GetInput
+  47              		.thumb
+  48              		.thumb_func
+  49              		.type	ShiftBy2_2_GetInput, %function
+  50              	ShiftBy2_2_GetInput:
+  51              	.LFB1:
+  22:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** } 
+  23:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  
+  24:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** uint16 ShiftBy2_2_GetInput() 
+  25:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** { 
+  52              		.loc 1 25 0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  26:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     return CY_GET_REG16(ShiftBy2_2_Datapath_1_A0_PTR); 
+  57              		.loc 1 26 0
+  58 0000 014B     		ldr	r3, .L5
+  59 0002 1888     		ldrh	r0, [r3]
+  27:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** } 
+  60              		.loc 1 27 0
+  61 0004 80B2     		uxth	r0, r0
+  62 0006 7047     		bx	lr
+  63              	.L6:
+  64              		.align	2
+  65              	.L5:
+  66 0008 10680040 		.word	1073768464
+  67              		.cfi_endproc
+  68              	.LFE1:
+  69              		.size	ShiftBy2_2_GetInput, .-ShiftBy2_2_GetInput
+  70              		.section	.text.ShiftBy2_2_GetOutput,"ax",%progbits
+  71              		.align	2
+  72              		.global	ShiftBy2_2_GetOutput
+  73              		.thumb
+  74              		.thumb_func
+  75              		.type	ShiftBy2_2_GetOutput, %function
+  76              	ShiftBy2_2_GetOutput:
+  77              	.LFB2:
+  28:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****  
+  29:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** uint16 ShiftBy2_2_GetOutput(void) 
+  30:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** { 
+  78              		.loc 1 30 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  31:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     return CY_GET_REG16(ShiftBy2_2_Datapath_1_A1_PTR); 
+  83              		.loc 1 31 0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 3
+
+
+  84 0000 014B     		ldr	r3, .L8
+  85 0002 1888     		ldrh	r0, [r3]
+  32:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c **** } 
+  86              		.loc 1 32 0
+  87 0004 80B2     		uxth	r0, r0
+  88 0006 7047     		bx	lr
+  89              	.L9:
+  90              		.align	2
+  91              	.L8:
+  92 0008 30680040 		.word	1073768496
+  93              		.cfi_endproc
+  94              	.LFE2:
+  95              		.size	ShiftBy2_2_GetOutput, .-ShiftBy2_2_GetOutput
+  96              		.text
+  97              	.Letext0:
+  98              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+  99              		.section	.debug_info,"",%progbits
+ 100              	.Ldebug_info0:
+ 101 0000 E7000000 		.4byte	0xe7
+ 102 0004 0400     		.2byte	0x4
+ 103 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 104 000a 04       		.byte	0x4
+ 105 000b 01       		.uleb128 0x1
+ 106 000c A4000000 		.4byte	.LASF14
+ 107 0010 01       		.byte	0x1
+ 108 0011 56010000 		.4byte	.LASF15
+ 109 0015 06000000 		.4byte	.LASF16
+ 110 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 111 001d 00000000 		.4byte	0
+ 112 0021 00000000 		.4byte	.Ldebug_line0
+ 113 0025 02       		.uleb128 0x2
+ 114 0026 01       		.byte	0x1
+ 115 0027 06       		.byte	0x6
+ 116 0028 BF010000 		.4byte	.LASF0
+ 117 002c 02       		.uleb128 0x2
+ 118 002d 01       		.byte	0x1
+ 119 002e 08       		.byte	0x8
+ 120 002f 63000000 		.4byte	.LASF1
+ 121 0033 02       		.uleb128 0x2
+ 122 0034 02       		.byte	0x2
+ 123 0035 05       		.byte	0x5
+ 124 0036 98010000 		.4byte	.LASF2
+ 125 003a 02       		.uleb128 0x2
+ 126 003b 02       		.byte	0x2
+ 127 003c 07       		.byte	0x7
+ 128 003d 83000000 		.4byte	.LASF3
+ 129 0041 02       		.uleb128 0x2
+ 130 0042 04       		.byte	0x4
+ 131 0043 05       		.byte	0x5
+ 132 0044 B6010000 		.4byte	.LASF4
+ 133 0048 02       		.uleb128 0x2
+ 134 0049 04       		.byte	0x4
+ 135 004a 07       		.byte	0x7
+ 136 004b 71000000 		.4byte	.LASF5
+ 137 004f 02       		.uleb128 0x2
+ 138 0050 08       		.byte	0x8
+ 139 0051 05       		.byte	0x5
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 4
+
+
+ 140 0052 85010000 		.4byte	.LASF6
+ 141 0056 02       		.uleb128 0x2
+ 142 0057 08       		.byte	0x8
+ 143 0058 07       		.byte	0x7
+ 144 0059 3F010000 		.4byte	.LASF7
+ 145 005d 03       		.uleb128 0x3
+ 146 005e 04       		.byte	0x4
+ 147 005f 05       		.byte	0x5
+ 148 0060 696E7400 		.ascii	"int\000"
+ 149 0064 02       		.uleb128 0x2
+ 150 0065 04       		.byte	0x4
+ 151 0066 07       		.byte	0x7
+ 152 0067 32010000 		.4byte	.LASF8
+ 153 006b 04       		.uleb128 0x4
+ 154 006c 9D000000 		.4byte	.LASF12
+ 155 0070 02       		.byte	0x2
+ 156 0071 9301     		.2byte	0x193
+ 157 0073 3A000000 		.4byte	0x3a
+ 158 0077 02       		.uleb128 0x2
+ 159 0078 04       		.byte	0x4
+ 160 0079 04       		.byte	0x4
+ 161 007a 5D000000 		.4byte	.LASF9
+ 162 007e 02       		.uleb128 0x2
+ 163 007f 08       		.byte	0x8
+ 164 0080 04       		.byte	0x4
+ 165 0081 96000000 		.4byte	.LASF10
+ 166 0085 02       		.uleb128 0x2
+ 167 0086 01       		.byte	0x1
+ 168 0087 08       		.byte	0x8
+ 169 0088 93010000 		.4byte	.LASF11
+ 170 008c 04       		.uleb128 0x4
+ 171 008d 00000000 		.4byte	.LASF13
+ 172 0091 02       		.byte	0x2
+ 173 0092 3D02     		.2byte	0x23d
+ 174 0094 98000000 		.4byte	0x98
+ 175 0098 05       		.uleb128 0x5
+ 176 0099 6B000000 		.4byte	0x6b
+ 177 009d 06       		.uleb128 0x6
+ 178 009e A2010000 		.4byte	.LASF17
+ 179 00a2 01       		.byte	0x1
+ 180 00a3 12       		.byte	0x12
+ 181 00a4 00000000 		.4byte	.LFB0
+ 182 00a8 0C000000 		.4byte	.LFE0-.LFB0
+ 183 00ac 01       		.uleb128 0x1
+ 184 00ad 9C       		.byte	0x9c
+ 185 00ae C0000000 		.4byte	0xc0
+ 186 00b2 07       		.uleb128 0x7
+ 187 00b3 76616C00 		.ascii	"val\000"
+ 188 00b7 01       		.byte	0x1
+ 189 00b8 12       		.byte	0x12
+ 190 00b9 6B000000 		.4byte	0x6b
+ 191 00bd 01       		.uleb128 0x1
+ 192 00be 50       		.byte	0x50
+ 193 00bf 00       		.byte	0
+ 194 00c0 08       		.uleb128 0x8
+ 195 00c1 49000000 		.4byte	.LASF18
+ 196 00c5 01       		.byte	0x1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 5
+
+
+ 197 00c6 18       		.byte	0x18
+ 198 00c7 6B000000 		.4byte	0x6b
+ 199 00cb 00000000 		.4byte	.LFB1
+ 200 00cf 0C000000 		.4byte	.LFE1-.LFB1
+ 201 00d3 01       		.uleb128 0x1
+ 202 00d4 9C       		.byte	0x9c
+ 203 00d5 09       		.uleb128 0x9
+ 204 00d6 CB010000 		.4byte	.LASF19
+ 205 00da 01       		.byte	0x1
+ 206 00db 1D       		.byte	0x1d
+ 207 00dc 6B000000 		.4byte	0x6b
+ 208 00e0 00000000 		.4byte	.LFB2
+ 209 00e4 0C000000 		.4byte	.LFE2-.LFB2
+ 210 00e8 01       		.uleb128 0x1
+ 211 00e9 9C       		.byte	0x9c
+ 212 00ea 00       		.byte	0
+ 213              		.section	.debug_abbrev,"",%progbits
+ 214              	.Ldebug_abbrev0:
+ 215 0000 01       		.uleb128 0x1
+ 216 0001 11       		.uleb128 0x11
+ 217 0002 01       		.byte	0x1
+ 218 0003 25       		.uleb128 0x25
+ 219 0004 0E       		.uleb128 0xe
+ 220 0005 13       		.uleb128 0x13
+ 221 0006 0B       		.uleb128 0xb
+ 222 0007 03       		.uleb128 0x3
+ 223 0008 0E       		.uleb128 0xe
+ 224 0009 1B       		.uleb128 0x1b
+ 225 000a 0E       		.uleb128 0xe
+ 226 000b 55       		.uleb128 0x55
+ 227 000c 17       		.uleb128 0x17
+ 228 000d 11       		.uleb128 0x11
+ 229 000e 01       		.uleb128 0x1
+ 230 000f 10       		.uleb128 0x10
+ 231 0010 17       		.uleb128 0x17
+ 232 0011 00       		.byte	0
+ 233 0012 00       		.byte	0
+ 234 0013 02       		.uleb128 0x2
+ 235 0014 24       		.uleb128 0x24
+ 236 0015 00       		.byte	0
+ 237 0016 0B       		.uleb128 0xb
+ 238 0017 0B       		.uleb128 0xb
+ 239 0018 3E       		.uleb128 0x3e
+ 240 0019 0B       		.uleb128 0xb
+ 241 001a 03       		.uleb128 0x3
+ 242 001b 0E       		.uleb128 0xe
+ 243 001c 00       		.byte	0
+ 244 001d 00       		.byte	0
+ 245 001e 03       		.uleb128 0x3
+ 246 001f 24       		.uleb128 0x24
+ 247 0020 00       		.byte	0
+ 248 0021 0B       		.uleb128 0xb
+ 249 0022 0B       		.uleb128 0xb
+ 250 0023 3E       		.uleb128 0x3e
+ 251 0024 0B       		.uleb128 0xb
+ 252 0025 03       		.uleb128 0x3
+ 253 0026 08       		.uleb128 0x8
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 6
+
+
+ 254 0027 00       		.byte	0
+ 255 0028 00       		.byte	0
+ 256 0029 04       		.uleb128 0x4
+ 257 002a 16       		.uleb128 0x16
+ 258 002b 00       		.byte	0
+ 259 002c 03       		.uleb128 0x3
+ 260 002d 0E       		.uleb128 0xe
+ 261 002e 3A       		.uleb128 0x3a
+ 262 002f 0B       		.uleb128 0xb
+ 263 0030 3B       		.uleb128 0x3b
+ 264 0031 05       		.uleb128 0x5
+ 265 0032 49       		.uleb128 0x49
+ 266 0033 13       		.uleb128 0x13
+ 267 0034 00       		.byte	0
+ 268 0035 00       		.byte	0
+ 269 0036 05       		.uleb128 0x5
+ 270 0037 35       		.uleb128 0x35
+ 271 0038 00       		.byte	0
+ 272 0039 49       		.uleb128 0x49
+ 273 003a 13       		.uleb128 0x13
+ 274 003b 00       		.byte	0
+ 275 003c 00       		.byte	0
+ 276 003d 06       		.uleb128 0x6
+ 277 003e 2E       		.uleb128 0x2e
+ 278 003f 01       		.byte	0x1
+ 279 0040 3F       		.uleb128 0x3f
+ 280 0041 19       		.uleb128 0x19
+ 281 0042 03       		.uleb128 0x3
+ 282 0043 0E       		.uleb128 0xe
+ 283 0044 3A       		.uleb128 0x3a
+ 284 0045 0B       		.uleb128 0xb
+ 285 0046 3B       		.uleb128 0x3b
+ 286 0047 0B       		.uleb128 0xb
+ 287 0048 27       		.uleb128 0x27
+ 288 0049 19       		.uleb128 0x19
+ 289 004a 11       		.uleb128 0x11
+ 290 004b 01       		.uleb128 0x1
+ 291 004c 12       		.uleb128 0x12
+ 292 004d 06       		.uleb128 0x6
+ 293 004e 40       		.uleb128 0x40
+ 294 004f 18       		.uleb128 0x18
+ 295 0050 9742     		.uleb128 0x2117
+ 296 0052 19       		.uleb128 0x19
+ 297 0053 01       		.uleb128 0x1
+ 298 0054 13       		.uleb128 0x13
+ 299 0055 00       		.byte	0
+ 300 0056 00       		.byte	0
+ 301 0057 07       		.uleb128 0x7
+ 302 0058 05       		.uleb128 0x5
+ 303 0059 00       		.byte	0
+ 304 005a 03       		.uleb128 0x3
+ 305 005b 08       		.uleb128 0x8
+ 306 005c 3A       		.uleb128 0x3a
+ 307 005d 0B       		.uleb128 0xb
+ 308 005e 3B       		.uleb128 0x3b
+ 309 005f 0B       		.uleb128 0xb
+ 310 0060 49       		.uleb128 0x49
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 7
+
+
+ 311 0061 13       		.uleb128 0x13
+ 312 0062 02       		.uleb128 0x2
+ 313 0063 18       		.uleb128 0x18
+ 314 0064 00       		.byte	0
+ 315 0065 00       		.byte	0
+ 316 0066 08       		.uleb128 0x8
+ 317 0067 2E       		.uleb128 0x2e
+ 318 0068 00       		.byte	0
+ 319 0069 3F       		.uleb128 0x3f
+ 320 006a 19       		.uleb128 0x19
+ 321 006b 03       		.uleb128 0x3
+ 322 006c 0E       		.uleb128 0xe
+ 323 006d 3A       		.uleb128 0x3a
+ 324 006e 0B       		.uleb128 0xb
+ 325 006f 3B       		.uleb128 0x3b
+ 326 0070 0B       		.uleb128 0xb
+ 327 0071 49       		.uleb128 0x49
+ 328 0072 13       		.uleb128 0x13
+ 329 0073 11       		.uleb128 0x11
+ 330 0074 01       		.uleb128 0x1
+ 331 0075 12       		.uleb128 0x12
+ 332 0076 06       		.uleb128 0x6
+ 333 0077 40       		.uleb128 0x40
+ 334 0078 18       		.uleb128 0x18
+ 335 0079 9742     		.uleb128 0x2117
+ 336 007b 19       		.uleb128 0x19
+ 337 007c 00       		.byte	0
+ 338 007d 00       		.byte	0
+ 339 007e 09       		.uleb128 0x9
+ 340 007f 2E       		.uleb128 0x2e
+ 341 0080 00       		.byte	0
+ 342 0081 3F       		.uleb128 0x3f
+ 343 0082 19       		.uleb128 0x19
+ 344 0083 03       		.uleb128 0x3
+ 345 0084 0E       		.uleb128 0xe
+ 346 0085 3A       		.uleb128 0x3a
+ 347 0086 0B       		.uleb128 0xb
+ 348 0087 3B       		.uleb128 0x3b
+ 349 0088 0B       		.uleb128 0xb
+ 350 0089 27       		.uleb128 0x27
+ 351 008a 19       		.uleb128 0x19
+ 352 008b 49       		.uleb128 0x49
+ 353 008c 13       		.uleb128 0x13
+ 354 008d 11       		.uleb128 0x11
+ 355 008e 01       		.uleb128 0x1
+ 356 008f 12       		.uleb128 0x12
+ 357 0090 06       		.uleb128 0x6
+ 358 0091 40       		.uleb128 0x40
+ 359 0092 18       		.uleb128 0x18
+ 360 0093 9742     		.uleb128 0x2117
+ 361 0095 19       		.uleb128 0x19
+ 362 0096 00       		.byte	0
+ 363 0097 00       		.byte	0
+ 364 0098 00       		.byte	0
+ 365              		.section	.debug_aranges,"",%progbits
+ 366 0000 2C000000 		.4byte	0x2c
+ 367 0004 0200     		.2byte	0x2
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 8
+
+
+ 368 0006 00000000 		.4byte	.Ldebug_info0
+ 369 000a 04       		.byte	0x4
+ 370 000b 00       		.byte	0
+ 371 000c 0000     		.2byte	0
+ 372 000e 0000     		.2byte	0
+ 373 0010 00000000 		.4byte	.LFB0
+ 374 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 375 0018 00000000 		.4byte	.LFB1
+ 376 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 377 0020 00000000 		.4byte	.LFB2
+ 378 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 379 0028 00000000 		.4byte	0
+ 380 002c 00000000 		.4byte	0
+ 381              		.section	.debug_ranges,"",%progbits
+ 382              	.Ldebug_ranges0:
+ 383 0000 00000000 		.4byte	.LFB0
+ 384 0004 0C000000 		.4byte	.LFE0
+ 385 0008 00000000 		.4byte	.LFB1
+ 386 000c 0C000000 		.4byte	.LFE1
+ 387 0010 00000000 		.4byte	.LFB2
+ 388 0014 0C000000 		.4byte	.LFE2
+ 389 0018 00000000 		.4byte	0
+ 390 001c 00000000 		.4byte	0
+ 391              		.section	.debug_line,"",%progbits
+ 392              	.Ldebug_line0:
+ 393 0000 8A000000 		.section	.debug_str,"MS",%progbits,1
+ 393      02005200 
+ 393      00000201 
+ 393      FB0E0D00 
+ 393      01010101 
+ 394              	.LASF13:
+ 395 0000 72656731 		.ascii	"reg16\000"
+ 395      3600
+ 396              	.LASF16:
+ 397 0006 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 397      73657273 
+ 397      5C637275 
+ 397      69736572 
+ 397      5C446F63 
+ 398 0034 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
+ 398      6C74726F 
+ 398      6E204D61 
+ 398      696E2E63 
+ 398      7964736E 
+ 399              	.LASF18:
+ 400 0049 53686966 		.ascii	"ShiftBy2_2_GetInput\000"
+ 400      74427932 
+ 400      5F325F47 
+ 400      6574496E 
+ 400      70757400 
+ 401              	.LASF9:
+ 402 005d 666C6F61 		.ascii	"float\000"
+ 402      7400
+ 403              	.LASF1:
+ 404 0063 756E7369 		.ascii	"unsigned char\000"
+ 404      676E6564 
+ 404      20636861 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 9
+
+
+ 404      7200
+ 405              	.LASF5:
+ 406 0071 6C6F6E67 		.ascii	"long unsigned int\000"
+ 406      20756E73 
+ 406      69676E65 
+ 406      6420696E 
+ 406      7400
+ 407              	.LASF3:
+ 408 0083 73686F72 		.ascii	"short unsigned int\000"
+ 408      7420756E 
+ 408      7369676E 
+ 408      65642069 
+ 408      6E7400
+ 409              	.LASF10:
+ 410 0096 646F7562 		.ascii	"double\000"
+ 410      6C6500
+ 411              	.LASF12:
+ 412 009d 75696E74 		.ascii	"uint16\000"
+ 412      313600
+ 413              	.LASF14:
+ 414 00a4 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 414      4320342E 
+ 414      392E3320 
+ 414      32303135 
+ 414      30333033 
+ 415 00d7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 415      20726576 
+ 415      6973696F 
+ 415      6E203232 
+ 415      31323230 
+ 416 010a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 416      66756E63 
+ 416      74696F6E 
+ 416      2D736563 
+ 416      74696F6E 
+ 417              	.LASF8:
+ 418 0132 756E7369 		.ascii	"unsigned int\000"
+ 418      676E6564 
+ 418      20696E74 
+ 418      00
+ 419              	.LASF7:
+ 420 013f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 420      206C6F6E 
+ 420      6720756E 
+ 420      7369676E 
+ 420      65642069 
+ 421              	.LASF15:
+ 422 0156 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ShiftBy2_2_ShiftBy2.c\000"
+ 422      6E657261 
+ 422      7465645F 
+ 422      536F7572 
+ 422      63655C50 
+ 423              	.LASF6:
+ 424 0185 6C6F6E67 		.ascii	"long long int\000"
+ 424      206C6F6E 
+ 424      6720696E 
+ 424      7400
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 10
+
+
+ 425              	.LASF11:
+ 426 0193 63686172 		.ascii	"char\000"
+ 426      00
+ 427              	.LASF2:
+ 428 0198 73686F72 		.ascii	"short int\000"
+ 428      7420696E 
+ 428      7400
+ 429              	.LASF17:
+ 430 01a2 53686966 		.ascii	"ShiftBy2_2_SetInput\000"
+ 430      74427932 
+ 430      5F325F53 
+ 430      6574496E 
+ 430      70757400 
+ 431              	.LASF4:
+ 432 01b6 6C6F6E67 		.ascii	"long int\000"
+ 432      20696E74 
+ 432      00
+ 433              	.LASF0:
+ 434 01bf 7369676E 		.ascii	"signed char\000"
+ 434      65642063 
+ 434      68617200 
+ 435              	.LASF19:
+ 436 01cb 53686966 		.ascii	"ShiftBy2_2_GetOutput\000"
+ 436      74427932 
+ 436      5F325F47 
+ 436      65744F75 
+ 436      74707574 
+ 437              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

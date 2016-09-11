@@ -13,17 +13,23 @@
 #include <project.h>
 #include <math.h>
 
+#define DECIMATION 16
+
 //I2C
 uint8 i2cbuf[4] = {0,0,0,0};
 
+//SPI
+uint32 spimem[1] = {0};
 
-//DMA variables
+//SAR variables
 uint32 sarmem1[1] = {0};
 uint32 sarmem2[1] = {0};
 
-uint32 filtermem1[25];
-uint32 filtermem2[25];
+//4^N samples for decimation
+uint32 filtermem1[DECIMATION];
+uint32 filtermem2[DECIMATION];
 
+//DMA channels
 uint8 RAM2FILTER1_Chan;
 uint8 RAM2FILTER2_Chan;
 
@@ -79,19 +85,26 @@ CY_ISR(shift_sar2_handler)
 
 CY_ISR(filter_ready1_handler) 
 {
-    i2cbuf[0] = filtermem1[24] >> 8;
-    i2cbuf[1] = filtermem1[24];
+    i2cbuf[0] = filtermem1[DECIMATION - 1] >> 8;
+    i2cbuf[1] = filtermem1[DECIMATION - 1];
 }
 
 CY_ISR(filter_ready2_handler) 
 {
-    i2cbuf[2] = filtermem2[24] >> 8;
-    i2cbuf[3] = filtermem2[24];
+    i2cbuf[2] = filtermem2[DECIMATION - 1] >> 8;
+    i2cbuf[3] = filtermem2[DECIMATION - 1];
 }
 
 CY_ISR(spi_rx_handler)
 {
-    VDAC1_SetValue(SPIS_ReadRxData());
+    //VDAC1_SetValue(SPIS_ReadRxData());
+    //ShiftBy1_1_SetInput(SPIS_ReadRxData());
+    VDAC1_SetValue(spimem[0]);
+}
+
+CY_ISR(shift1_handler)
+{
+    VDAC1_SetValue(ShiftBy1_1_GetOutput());
 }
 
 void start_interrupts()
@@ -101,6 +114,7 @@ void start_interrupts()
     isr_filter_ready1_StartEx(filter_ready1_handler);
     isr_filter_ready2_StartEx(filter_ready2_handler);
     isr_spi_rx_StartEx(spi_rx_handler);
+    isr_shift1_StartEx(shift1_handler);
     
     //SPIS_EnableRxInt();
 }
@@ -265,7 +279,7 @@ void DMA_FILTER2RAM1_config()
     FILTER2RAM1_Chan = FILTER2RAM1_DmaInitialize(FILTER2RAM1_BYTES_PER_BURST, FILTER2RAM1_REQUEST_PER_BURST, 
         HI16(FILTER2RAM1_SRC_BASE), HI16(FILTER2RAM1_DST_BASE));
     FILTER2RAM1_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(FILTER2RAM1_TD[0], 50, FILTER2RAM1_TD[0], FILTER2RAM1__TD_TERMOUT_EN | TD_INC_DST_ADR);
+    CyDmaTdSetConfiguration(FILTER2RAM1_TD[0], DECIMATION*2, FILTER2RAM1_TD[0], FILTER2RAM1__TD_TERMOUT_EN | TD_INC_DST_ADR);
     CyDmaTdSetAddress(FILTER2RAM1_TD[0], LO16((uint32)Filter_HOLDA_PTR), LO16((uint32)filtermem1));
     CyDmaChSetInitialTd(FILTER2RAM1_Chan, FILTER2RAM1_TD[0]);
     CyDmaChEnable(FILTER2RAM1_Chan, 1);
@@ -288,10 +302,31 @@ void DMA_FILTER2RAM2_config()
     FILTER2RAM2_Chan = FILTER2RAM2_DmaInitialize(FILTER2RAM2_BYTES_PER_BURST, FILTER2RAM2_REQUEST_PER_BURST, 
         HI16(FILTER2RAM2_SRC_BASE), HI16(FILTER2RAM2_DST_BASE));
     FILTER2RAM2_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(FILTER2RAM2_TD[0], 50, FILTER2RAM2_TD[0], FILTER2RAM2__TD_TERMOUT_EN | TD_INC_DST_ADR);
+    CyDmaTdSetConfiguration(FILTER2RAM2_TD[0], DECIMATION*2, FILTER2RAM2_TD[0], FILTER2RAM2__TD_TERMOUT_EN | TD_INC_DST_ADR);
     CyDmaTdSetAddress(FILTER2RAM2_TD[0], LO16((uint32)Filter_HOLDB_PTR), LO16((uint32)filtermem2));
     CyDmaChSetInitialTd(FILTER2RAM2_Chan, FILTER2RAM2_TD[0]);
     CyDmaChEnable(FILTER2RAM2_Chan, 1);
+}
+
+void DMA_SPI2RAM_config()
+{
+    /* Defines for SPI2RAM */
+    #define SPI2RAM_BYTES_PER_BURST 1
+    #define SPI2RAM_REQUEST_PER_BURST 1
+    #define SPI2RAM_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SPI2RAM_DST_BASE (CYDEV_SRAM_BASE)
+    
+    uint8 SPI2RAM_Chan;
+    uint8 SPI2RAM_TD[1];
+    
+    SPI2RAM_Chan = SPI2RAM_DmaInitialize(SPI2RAM_BYTES_PER_BURST, SPI2RAM_REQUEST_PER_BURST,
+        HI16(SPI2RAM_SRC_BASE), HI16(SPI2RAM_DST_BASE));
+
+    SPI2RAM_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SPI2RAM_TD[0], 1, SPI2RAM_TD[0], SPI2RAM__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SPI2RAM_TD[0], LO16((uint32)SPIS_RXDATA_PTR), LO16((uint32)spimem));
+    CyDmaChSetInitialTd(SPI2RAM_Chan, SPI2RAM_TD[0]);
+    CyDmaChEnable(SPI2RAM_Chan, 1);
 }
 
 void start_DMAs()
@@ -304,6 +339,7 @@ void start_DMAs()
     DMA_SAR2FILTER2_config();
     DMA_FILTER2RAM1_config();
     DMA_FILTER2RAM2_config();
+    DMA_SPI2RAM_config();
 }
 
 int main()
