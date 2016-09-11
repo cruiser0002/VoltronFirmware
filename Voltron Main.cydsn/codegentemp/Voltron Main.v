@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/11/2016 at 00:01
+// 09/11/2016 at 13:11
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2101,33 +2101,33 @@ endmodule
 // top
 module top ;
 
-          wire  Net_7957;
-          wire  Net_7933;
-          wire  Net_7932;
-          wire  Net_7925;
-          wire  Net_7851;
-    electrical  Net_7850;
-          wire  Net_7849;
-          wire  Net_7848;
-          wire  Net_7847;
-          wire  Net_7846;
-    electrical  Net_7845;
-          wire  Net_7844;
-          wire  Net_7843;
-          wire  Net_7944;
-          wire  Net_7943;
-          wire  Net_7873;
-          wire  Net_7841;
-    electrical  Net_7840;
-          wire  Net_7839;
-          wire  Net_7838;
-          wire  Net_7837;
-          wire  Net_7836;
-          wire  Net_7835;
-          wire  Net_7834;
-          wire  Net_7833;
-          wire  Net_7832;
-          wire  Net_7831;
+          wire  Net_8014;
+          wire  Net_8003;
+          wire  Net_8013;
+          wire  Net_8011;
+          wire  Net_8002;
+    electrical  Net_8001;
+          wire  Net_8000;
+          wire  Net_7999;
+          wire  Net_7998;
+          wire  Net_7997;
+    electrical  Net_7996;
+          wire  Net_7995;
+          wire  Net_7994;
+          wire  Net_7993;
+          wire  Net_7992;
+          wire  Net_8012;
+          wire  Net_7990;
+    electrical  Net_7989;
+          wire  Net_7988;
+          wire  Net_7987;
+          wire  Net_7986;
+          wire  Net_7985;
+          wire  Net_7984;
+          wire  Net_7983;
+          wire  Net_7982;
+          wire  Net_7981;
+          wire  Net_7980;
     electrical  Net_6306;
     electrical  Net_224;
           wire  Net_6565;
@@ -2155,16 +2155,16 @@ module top ;
           wire  Net_6543;
           wire  Net_850;
           wire  Net_837;
-          wire  Net_7935;
-          wire  Net_7942;
-          wire  Net_7824;
-          wire  Net_7823;
-          wire  Net_7822;
-          wire  Net_7821;
-          wire  Net_7820;
-          wire  Net_7819;
-          wire  Net_7818;
-          wire  Net_7817;
+          wire  Net_7979;
+          wire  Net_7978;
+          wire  Net_7977;
+          wire  Net_7976;
+          wire  Net_7975;
+          wire  Net_7974;
+          wire  Net_7973;
+          wire  Net_7972;
+          wire  Net_7971;
+          wire  Net_7970;
           wire  Net_4221;
           wire  Net_2245;
           wire  Net_2244;
@@ -2180,18 +2180,18 @@ module top ;
           wire  Net_6688;
           wire  Net_5353;
           wire  Net_5352;
-    electrical  Net_7816;
-    electrical  Net_7815;
-    electrical  Net_7814;
-    electrical  Net_7813;
-    electrical  Net_7812;
-    electrical  Net_7811;
+    electrical  Net_7969;
+    electrical  Net_7968;
+    electrical  Net_7967;
+    electrical  Net_7966;
+    electrical  Net_7965;
+    electrical  Net_7964;
     electrical  Net_261;
     electrical  Net_156;
     electrical  Net_225;
     electrical  Net_160;
-    electrical  Net_7810;
-    electrical  Net_7809;
+    electrical  Net_7963;
+    electrical  Net_7962;
     electrical  Net_30;
           wire [7:0] Net_246;
           wire  Net_245;
@@ -2208,6 +2208,7 @@ module top ;
     electrical  Net_260;
     electrical  Net_157;
     electrical  Net_259;
+          wire  Net_7925;
           wire  Net_7955;
           wire  Net_7906;
           wire  Net_7871;
@@ -2434,8 +2435,8 @@ module top ;
 
     OpAmp_v1_90_7 Opamp_1 (
         .Vplus(Net_231),
-        .Vout(Net_7809),
-        .Vminus(Net_7810));
+        .Vout(Net_7962),
+        .Vminus(Net_7963));
     defparam Opamp_1.Mode = 1;
 
     OpAmp_v1_90_8 Opamp_4 (
@@ -2455,12 +2456,12 @@ module top ;
     
     cy_psoc3_amux_v1_0 AMux_DelSig_CYAMUXSIDE_A(
         .muxin({
-            Net_7813,
-            Net_7811,
+            Net_7966,
+            Net_7964,
             Net_55,
             Net_61
             }),
-        .vout(Net_7815)
+        .vout(Net_7968)
         );
     
     defparam AMux_DelSig_CYAMUXSIDE_A.muxin_width = 4;
@@ -2473,12 +2474,12 @@ module top ;
     
     cy_psoc3_amux_v1_0 AMux_DelSig_CYAMUXSIDE_B(
         .muxin({
-            Net_7814,
-            Net_7812,
+            Net_7967,
+            Net_7965,
             Net_6630,
             Net_62
             }),
-        .vout(Net_7816)
+        .vout(Net_7969)
         );
     
     defparam AMux_DelSig_CYAMUXSIDE_B.muxin_width = 4;
@@ -3584,7 +3585,7 @@ module top ;
 		 (.oe(tmpOE__Pin_LED_AMPA_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__Pin_LED_AMPA_net[0:0]}),
-		  .analog({Net_7809}),
+		  .analog({Net_7962}),
 		  .io({tmpIO_0__Pin_LED_AMPA_net[0:0]}),
 		  .siovref(tmpSIOVREF__Pin_LED_AMPA_net),
 		  .interrupt({tmpINTERRUPT_0__Pin_LED_AMPA_net[0:0]}),
@@ -3603,21 +3604,21 @@ module top ;
 		SAR2RAM2
 		 (.drq(Net_119),
 		  .trq(1'b0),
-		  .nrq(Net_7818));
+		  .nrq(Net_7971));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_shift_sar1
-		 (.int_signal(Net_7819));
+		 (.int_signal(Net_7972));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_shift_sar2
-		 (.int_signal(Net_7818));
+		 (.int_signal(Net_7971));
 
 
 
@@ -3626,7 +3627,7 @@ module top ;
 		SAR2FILTER1
 		 (.drq(Net_124),
 		  .trq(1'b0),
-		  .nrq(Net_7821));
+		  .nrq(Net_7974));
 
 
 
@@ -3635,7 +3636,7 @@ module top ;
 		SAR2FILTER2
 		 (.drq(Net_119),
 		  .trq(1'b0),
-		  .nrq(Net_7823));
+		  .nrq(Net_7976));
 
 
 
@@ -3648,9 +3649,9 @@ module top ;
     Filter_v2_30_12 Filter (
         .DMA_Req_A(Net_7051),
         .DMA_Req_B(Net_6690),
-        .Interrupt(Net_7824));
+        .Interrupt(Net_7977));
 
-    assign Net_7942 = 1'h1;
+    assign Net_7978 = 1'h1;
 
 
 	cy_dma_v1_0
@@ -4029,7 +4030,7 @@ module top ;
 		RAM2FILTER2
 		 (.drq(1'b0),
 		  .trq(1'b0),
-		  .nrq(Net_7833));
+		  .nrq(Net_7982));
 
 
 
@@ -4038,7 +4039,7 @@ module top ;
 		RAM2FILTER1
 		 (.drq(1'b0),
 		  .trq(1'b0),
-		  .nrq(Net_7836));
+		  .nrq(Net_7985));
 
 
 	wire [0:0] tmpOE__Pin_TIA3_net;
@@ -4122,25 +4123,25 @@ module top ;
     assign Net_6544 = 1'h0;
 
     ADC_DelSig_v3_20_16 DelSig (
-        .vplus(Net_7815),
-        .vminus(Net_7816),
+        .vplus(Net_7968),
+        .vminus(Net_7969),
         .soc(1'b1),
-        .eoc(Net_7838),
+        .eoc(Net_7987),
         .aclk(1'b0),
-        .nVref(Net_7840),
+        .nVref(Net_7989),
         .mi(1'b0));
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_shift1
-		 (.int_signal(Net_7873));
+		 (.int_signal(Net_8012));
 
 
     FreqDiv_v1_0 FreqDiv_1 (
-        .en(Net_7942),
-        .div(Net_7943),
-        .reset(Net_7944),
+        .en(Net_7978),
+        .div(Net_7992),
+        .reset(Net_7993),
         .clock(Net_7906));
     defparam FreqDiv_1.Divider = 2;
     defparam FreqDiv_1.highPulse = 1;
@@ -4152,8 +4153,8 @@ module top ;
         .soc(1'b0),
         .eoc(Net_124),
         .aclk(1'b0),
-        .vdac_ref(Net_7845),
-        .eos(Net_7846));
+        .vdac_ref(Net_7996),
+        .eos(Net_7997));
 
 
 	cy_dma_v1_0
@@ -4161,7 +4162,7 @@ module top ;
 		SAR2RAM1
 		 (.drq(Net_124),
 		  .trq(1'b0),
-		  .nrq(Net_7819));
+		  .nrq(Net_7972));
 
 
     ADC_SAR_v3_0_18 SAR2 (
@@ -4170,14 +4171,21 @@ module top ;
         .soc(1'b0),
         .eoc(Net_119),
         .aclk(1'b0),
-        .vdac_ref(Net_7850),
-        .eos(Net_7851));
+        .vdac_ref(Net_8001),
+        .eos(Net_8002));
 
-    assign Net_7944 = 1'h0;
+    assign Net_7993 = 1'h0;
 
     assign Net_2247 = 1'h0;
 
-    assign Net_7925 = 1'h0;
+
+	cy_dma_v1_0
+		#(.drq_type(2'b10))
+		SHIFT2RAM
+		 (.drq(Net_8011),
+		  .trq(1'b0),
+		  .nrq(Net_8012));
+
 
 
 	cy_dma_v1_0
@@ -4185,7 +4193,7 @@ module top ;
 		SPI2SHIFT
 		 (.drq(Net_7906),
 		  .trq(1'b0),
-		  .nrq(Net_7933));
+		  .nrq(Net_7925));
 
 
 
@@ -4256,7 +4264,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		Pin_test1
 		 (.oe(tmpOE__Pin_test1_net),
-		  .y({Net_7943}),
+		  .y({Net_7992}),
 		  .fb({tmpFB_0__Pin_test1_net[0:0]}),
 		  .io({tmpIO_0__Pin_test1_net[0:0]}),
 		  .siovref(tmpSIOVREF__Pin_test1_net),
@@ -4273,7 +4281,7 @@ module top ;
     ShiftBy1 ShiftBy1_1 (
         .clock(Net_7871),
         .go(Net_7925),
-        .done(Net_7873));
+        .done(Net_8011));
 
 
 	cy_clock_v1_0

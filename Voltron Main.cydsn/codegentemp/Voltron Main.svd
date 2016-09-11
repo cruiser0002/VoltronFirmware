@@ -12697,7 +12697,7 @@
         <register>
           <name>SPIS_RX_DATA</name>
           <description>SPIS RX Data</description>
-          <addressOffset>0x4000640E</addressOffset>
+          <addressOffset>0x4000640C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -12706,62 +12706,16 @@
         <register>
           <name>SPIS_TX_DATA</name>
           <description>SPIS TX Data</description>
-          <addressOffset>0x4000640E</addressOffset>
+          <addressOffset>0x4000640C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>SPIS_RXSTATUS</name>
-          <description>SPIS RX Status Register</description>
-          <addressOffset>0x4000646B</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RX_FIFO_Not_Empty</name>
-              <description>Set when the RX Data FIFO is not empty. That is, at least one byte/word is in the RX FIFO</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RX_FIFO_Empty</name>
-              <description>Set when the RX Data FIFO is empty</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RX_Buf_Overrun</name>
-              <description>Set when RX Data has overrun the 4 byte/word FIFO without being moved to the RX buffer                           cmemory array (if one exists)</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RX_FIFO_Full</name>
-              <description>Set when the RX Data FIFO is full</description>
-              <lsb>6</lsb>
-              <msb>6</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>Interrupt</name>
-              <description>Set when interrupt occurs</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
         </register>
         <register>
           <name>SPIS_TXSTATUS</name>
           <description>SPIS TX Status Register</description>
-          <addressOffset>0x4000646C</addressOffset>
+          <addressOffset>0x4000646A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -12791,6 +12745,52 @@
             <field>
               <name>Byte_Word_Complete</name>
               <description>Set when a byte/word transmit has completed</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>Interrupt</name>
+              <description>Set when interrupt occurs</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SPIS_RXSTATUS</name>
+          <description>SPIS RX Status Register</description>
+          <addressOffset>0x4000646C</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>RX_FIFO_Not_Empty</name>
+              <description>Set when the RX Data FIFO is not empty. That is, at least one byte/word is in the RX FIFO</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_FIFO_Empty</name>
+              <description>Set when the RX Data FIFO is empty</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_Buf_Overrun</name>
+              <description>Set when RX Data has overrun the 4 byte/word FIFO without being moved to the RX buffer                           cmemory array (if one exists)</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_FIFO_Full</name>
+              <description>Set when the RX Data FIFO is full</description>
               <lsb>6</lsb>
               <msb>6</msb>
               <access>read-only</access>

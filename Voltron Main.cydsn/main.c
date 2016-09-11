@@ -33,6 +33,9 @@ uint32 filtermem2[DECIMATION];
 uint8 RAM2FILTER1_Chan;
 uint8 RAM2FILTER2_Chan;
 
+//ShiftBy1
+uint32 shiftmem[1] = {0};
+
 void start_resources()
 {
     I2C_Start();
@@ -99,12 +102,13 @@ CY_ISR(spi_rx_handler)
 {
     //VDAC1_SetValue(SPIS_ReadRxData());
     //ShiftBy1_1_SetInput(SPIS_ReadRxData());
-    VDAC1_SetValue(spimem[0]);
+    //VDAC1_SetValue(spimem[0]);
 }
 
 CY_ISR(shift1_handler)
 {
-    VDAC1_SetValue(ShiftBy1_1_GetOutput());
+    //VDAC1_SetValue(ShiftBy1_1_GetOutput());
+    VDAC1_SetValue(shiftmem[0]);
 }
 
 void start_interrupts()
@@ -329,6 +333,51 @@ void DMA_SPI2RAM_config()
     CyDmaChEnable(SPI2RAM_Chan, 1);
 }
 
+void DMA_SPI2SHIFT_config()
+{
+    /* Defines for SPI2SHIFT */
+    #define SPI2SHIFT_BYTES_PER_BURST 1
+    #define SPI2SHIFT_REQUEST_PER_BURST 1
+    #define SPI2SHIFT_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SPI2SHIFT_DST_BASE (CYDEV_PERIPH_BASE)
+    
+    uint8 SPI2SHIFT_Chan;
+    uint8 SPI2SHIFT_TD[1];
+    
+    SPI2SHIFT_Chan = SPI2SHIFT_DmaInitialize(SPI2SHIFT_BYTES_PER_BURST, SPI2SHIFT_REQUEST_PER_BURST,
+        HI16(SPI2SHIFT_SRC_BASE), HI16(SPI2SHIFT_DST_BASE));
+
+    SPI2SHIFT_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SPI2SHIFT_TD[0], 1, SPI2SHIFT_TD[0], SPI2SHIFT__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SPI2SHIFT_TD[0], LO16((uint32)SPIS_RXDATA_PTR), LO16((uint32)ShiftBy1_1_INPUT_PTR));
+    CyDmaChSetInitialTd(SPI2SHIFT_Chan, SPI2SHIFT_TD[0]);
+    CyDmaChEnable(SPI2SHIFT_Chan, 1);
+}
+
+void DMA_SHIFT2RAM_config()
+{
+    /* Defines for SHIFT2RAM */
+    #define SHIFT2RAM_BYTES_PER_BURST 1
+    #define SHIFT2RAM_REQUEST_PER_BURST 1
+    #define SHIFT2RAM_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SHIFT2RAM_DST_BASE (CYDEV_SRAM_BASE)
+
+    /* Variable declarations for SHIFT2RAM */
+    /* Move these variable declarations to the top of the function */
+    uint8 SHIFT2RAM_Chan;
+    uint8 SHIFT2RAM_TD[1];
+
+    /* DMA Configuration for SHIFT2RAM */
+    SHIFT2RAM_Chan = SHIFT2RAM_DmaInitialize(SHIFT2RAM_BYTES_PER_BURST, SHIFT2RAM_REQUEST_PER_BURST, 
+        HI16(SHIFT2RAM_SRC_BASE), HI16(SHIFT2RAM_DST_BASE));
+    SHIFT2RAM_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SHIFT2RAM_TD[0], 1, SHIFT2RAM_TD[0], SHIFT2RAM__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SHIFT2RAM_TD[0], LO16((uint32)ShiftBy1_1_OUTPUT_PTR), LO16((uint32)shiftmem));
+    CyDmaChSetInitialTd(SHIFT2RAM_Chan, SHIFT2RAM_TD[0]);
+    CyDmaChEnable(SHIFT2RAM_Chan, 1);
+
+}
+
 void start_DMAs()
 {
     //DMA_SAR2RAM1_config();
@@ -339,7 +388,9 @@ void start_DMAs()
     DMA_SAR2FILTER2_config();
     DMA_FILTER2RAM1_config();
     DMA_FILTER2RAM2_config();
-    DMA_SPI2RAM_config();
+    //DMA_SPI2RAM_config();
+    DMA_SPI2SHIFT_config();
+    DMA_SHIFT2RAM_config();
 }
 
 int main()

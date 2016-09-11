@@ -104,6 +104,7 @@
 #include "SAR1.h"
 #include "SAR2RAM1_dma.h"
 #include "SAR2.h"
+#include "SHIFT2RAM_dma.h"
 #include "SPI2SHIFT_dma.h"
 #include "isr_filter_ready1.h"
 #include "Pin_test1_aliases.h"

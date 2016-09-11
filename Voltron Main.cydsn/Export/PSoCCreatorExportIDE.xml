@@ -310,6 +310,8 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2RAM_dma.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2SHIFT_dma.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2SHIFT_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SHIFT2RAM_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SHIFT2RAM_dma.h</File>
         </Files>
       </Folder>
       <Folder BuildType="BUILD" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\ShiftBy2\API">
