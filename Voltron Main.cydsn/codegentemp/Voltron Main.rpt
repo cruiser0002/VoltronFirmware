@@ -1,23 +1,39 @@
-Loading plugins phase: Elapsed time ==> 0s.316ms
+Loading plugins phase: Elapsed time ==> 0s.356ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main.cyprj -d CY8C5888LTI-LP097 -s C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
-ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.AinTerm3" on TopDesign is unconnected.
- * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_7966)
- * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.7)
+ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.BinTerm0" on TopDesign is unconnected.
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_62)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.2)
 
 ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.AinTerm2" on TopDesign is unconnected.
- * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_7964)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_8095)
  * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.5)
 
-ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.BinTerm3" on TopDesign is unconnected.
- * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_7967)
- * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.8)
+ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.AinTerm1" on TopDesign is unconnected.
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_8175)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.3)
 
 ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.BinTerm2" on TopDesign is unconnected.
- * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_7965)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_8096)
  * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.6)
+
+ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.BinTerm1" on TopDesign is unconnected.
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_8176)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.4)
+
+ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.AinTerm0" on TopDesign is unconnected.
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_61)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.1)
+
+ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.BinTerm3" on TopDesign is unconnected.
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_8098)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.8)
+
+ADD: sdb.M0065: information: Analog terminal "AMux_DelSig.AinTerm3" on TopDesign is unconnected.
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Signal: Net_8097)
+ * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Shape_503.7)
 
 ADD: pft.M0035: information: Voltage Reference Information: Vref 'Vdda/2' is connected to terminal 'analog_0' of 'Pin_VDDAdiv2' but no direct hardware connection exists.
  * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Instance:vRef_1)
@@ -28,10 +44,10 @@ ADD: pft.M0035: information: Voltage Reference Information: Vref '0.256V' is con
  * C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\TopDesign\TopDesign.cysch (Instance:Pin_DACREF)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 4s.597ms
+Elaboration phase: Elapsed time ==> 5s.320ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.361ms
+HDL generation phase: Elapsed time ==> 0s.437ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -65,7 +81,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\cruis
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Sep 11 13:26:08 2016
+Sun Sep 11 19:34:37 2016
 
 
 ======================================================================
@@ -75,7 +91,7 @@ Options  :    -yv2 -q10 Voltron Main.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Sep 11 13:26:08 2016
+Sun Sep 11 19:34:37 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -93,6 +109,7 @@ Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\ps
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 
 vpp:  No errors.
@@ -125,7 +142,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\cruis
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Sep 11 13:26:08 2016
+Sun Sep 11 19:34:37 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -166,7 +183,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\cruis
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Sep 11 13:26:09 2016
+Sun Sep 11 19:34:38 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -331,15 +348,6 @@ Detecting unused logic.
 	\FreqDiv_1:MODULE_1:g2:a0:s_12\
 	\FreqDiv_1:MODULE_1:g2:a0:s_11\
 	\FreqDiv_1:MODULE_1:g2:a0:s_10\
-	\FreqDiv_1:MODULE_1:g2:a0:s_9\
-	\FreqDiv_1:MODULE_1:g2:a0:s_8\
-	\FreqDiv_1:MODULE_1:g2:a0:s_7\
-	\FreqDiv_1:MODULE_1:g2:a0:s_6\
-	\FreqDiv_1:MODULE_1:g2:a0:s_5\
-	\FreqDiv_1:MODULE_1:g2:a0:s_4\
-	\FreqDiv_1:MODULE_1:g2:a0:s_3\
-	\FreqDiv_1:MODULE_1:g2:a0:s_2\
-	\FreqDiv_1:MODULE_1:g2:a0:s_1\
 	\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_31\
 	\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_30\
 	\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_29\
@@ -371,18 +379,9 @@ Detecting unused logic.
 	\FreqDiv_1:add_vi_vv_MODGEN_1_12\
 	\FreqDiv_1:add_vi_vv_MODGEN_1_11\
 	\FreqDiv_1:add_vi_vv_MODGEN_1_10\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_9\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_8\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_7\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_6\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_5\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_4\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_3\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_2\
-	\FreqDiv_1:add_vi_vv_MODGEN_1_1\
 
-Deleted 145 User equations/components.
-Deleted 31 Synthesized equations/components.
+Deleted 136 User equations/components.
+Deleted 22 Synthesized equations/components.
 
 ------------------------------------------------------
 Alias Detection
@@ -436,7 +435,7 @@ Aliasing tmpOE__Pin_LED_AMPA_net_0 to tmpOE__Pin_TIA4_net_0
 Aliasing \Filter:Net_1\ to zero
 Aliasing \Filter:Net_4\ to zero
 Aliasing \Filter:Net_5\ to zero
-Aliasing Net_7978 to tmpOE__Pin_TIA4_net_0
+Aliasing Net_8219 to tmpOE__Pin_TIA4_net_0
 Aliasing Net_837 to zero
 Aliasing Net_850 to zero
 Aliasing \PWM2:Net_113\ to tmpOE__Pin_TIA4_net_0
@@ -456,7 +455,7 @@ Aliasing \DelSig:Net_482\ to zero
 Aliasing \DelSig:tmpOE__Bypass_P03_net_0\ to tmpOE__Pin_TIA4_net_0
 Aliasing \DelSig:Net_252\ to zero
 Aliasing \DelSig:soc\ to tmpOE__Pin_TIA4_net_0
-Aliasing Net_7993 to zero
+Aliasing Net_8221 to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_23\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_22\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_21\ to zero
@@ -471,15 +470,6 @@ Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_13\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_12\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_11\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_10\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_9\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_8\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_7\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_6\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_5\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_4\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_3\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_2\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:a_1\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\ to tmpOE__Pin_TIA4_net_0
 Aliasing \SAR1:vp_ctl_0\ to zero
 Aliasing \SAR1:vp_ctl_2\ to zero
@@ -503,6 +493,13 @@ Aliasing \SAR2:vn_ctl_2\ to zero
 Aliasing \SAR2:soc\ to zero
 Aliasing \SAR2:tmpOE__Bypass_net_0\ to tmpOE__Pin_TIA4_net_0
 Aliasing \SAR2:Net_381\ to zero
+Aliasing \ShiftBy2_1:DP_d0_load\ to zero
+Aliasing \ShiftBy2_1:DP_d1_load\ to zero
+Aliasing \ShiftBy2_1:DP_f0_load\ to zero
+Aliasing \ShiftBy2_1:DP_f1_load\ to zero
+Aliasing \ShiftBy2_1:DP_route_si\ to zero
+Aliasing \ShiftBy2_1:DP_route_ci\ to zero
+Aliasing \ShiftBy2_1:DP_select_2\ to zero
 Aliasing tmpOE__Pin_test1_net_0 to tmpOE__Pin_TIA4_net_0
 Aliasing \ShiftBy1_1:Datapath_1_d0_load\ to zero
 Aliasing \ShiftBy1_1:Datapath_1_d1_load\ to zero
@@ -512,6 +509,13 @@ Aliasing \ShiftBy1_1:Datapath_1_route_si\ to zero
 Aliasing \ShiftBy1_1:Datapath_1_route_ci\ to zero
 Aliasing \ShiftBy1_1:Datapath_1_select_1\ to zero
 Aliasing \ShiftBy1_1:Datapath_1_select_2\ to zero
+Aliasing \ShiftBy2_2:DP_d0_load\ to zero
+Aliasing \ShiftBy2_2:DP_d1_load\ to zero
+Aliasing \ShiftBy2_2:DP_f0_load\ to zero
+Aliasing \ShiftBy2_2:DP_f1_load\ to zero
+Aliasing \ShiftBy2_2:DP_route_si\ to zero
+Aliasing \ShiftBy2_2:DP_route_ci\ to zero
+Aliasing \ShiftBy2_2:DP_select_2\ to zero
 Aliasing \ShiftBy1_1:SM1_1\\D\ to zero
 Removing Lhs of wire one[7] = tmpOE__Pin_TIA4_net_0[1]
 Removing Lhs of wire \PGA_Inv_2:Net_36\[17] = zero[2]
@@ -535,145 +539,183 @@ Removing Lhs of wire \VDAC2:Net_82\[53] = zero[2]
 Removing Lhs of wire \VDAC1:Net_83\[58] = zero[2]
 Removing Lhs of wire \VDAC1:Net_81\[59] = zero[2]
 Removing Lhs of wire \VDAC1:Net_82\[60] = zero[2]
-Removing Lhs of wire \USB:tmpOE__Dm_net_0\[90] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \USB:tmpOE__Dp_net_0\[97] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_VDDAdiv2_net_0[146] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_DAC1_net_0[159] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_DAC2_net_0[166] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_DAC3_net_0[173] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_DAC4_net_0[180] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__SPI_SS_net_0[187] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_LED_PWMB_net_0[193] = tmpOE__Pin_TIA4_net_0[1]
-Removing Rhs of wire Net_4245[194] = \PWM2:Net_57\[382]
-Removing Lhs of wire Net_2247[200] = zero[2]
-Removing Rhs of wire \SPIS:BSPIS:tx_load\[202] = \SPIS:BSPIS:load\[203]
-Removing Rhs of wire \SPIS:BSPIS:tx_load\[202] = \SPIS:BSPIS:dpcounter_one\[221]
-Removing Lhs of wire \SPIS:BSPIS:prc_clk_src\[210] = Net_17[211]
-Removing Rhs of wire \SPIS:Net_81\[214] = \SPIS:Net_176\[305]
-Removing Lhs of wire \SPIS:BSPIS:tx_status_2\[234] = \SPIS:BSPIS:miso_tx_empty_reg_fin\[224]
-Removing Rhs of wire \SPIS:BSPIS:tx_status_1\[235] = \SPIS:BSPIS:dpMISO_fifo_not_full\[236]
-Removing Lhs of wire \SPIS:BSPIS:tx_status_6\[237] = \SPIS:BSPIS:byte_complete\[204]
-Removing Lhs of wire \SPIS:BSPIS:rx_status_3\[240] = \SPIS:BSPIS:dpMOSI_fifo_not_empty\[239]
-Removing Lhs of wire \SPIS:BSPIS:rx_status_5\[241] = \SPIS:BSPIS:rx_buf_overrun\[207]
-Removing Lhs of wire \SPIS:BSPIS:rx_status_6\[242] = \SPIS:BSPIS:dpMOSI_fifo_full_reg\[229]
-Removing Lhs of wire \SPIS:BSPIS:tx_status_5\[243] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:tx_status_4\[244] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:tx_status_3\[245] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:rx_status_2\[246] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:rx_status_1\[247] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:rx_status_0\[248] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:mosi_fin\[249] = \SPIS:Net_75\[250]
-Removing Lhs of wire \SPIS:Net_75\[250] = Net_16[304]
-Removing Lhs of wire \SPIS:BSPIS:sR8:Dp:cs_addr_1\[276] = zero[2]
-Removing Rhs of wire Net_1821[307] = \SPIS:BSPIS:inv_ss\[201]
-Removing Lhs of wire tmpOE__SPI_MISO_net_0[309] = Net_1821[307]
-Removing Lhs of wire tmpOE__Pin_LED_PWMA_net_0[315] = tmpOE__Pin_TIA4_net_0[1]
-Removing Rhs of wire Net_4221[316] = \PWM1:Net_57\[392]
-Removing Lhs of wire tmpOE__Pin_TIA2_net_0[322] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_TIA1_net_0[328] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_TIA3P5_net_0[334] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_TIA1P5_net_0[340] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_LED_AMPA_net_0[346] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \Filter:Net_1\[364] = zero[2]
-Removing Lhs of wire \Filter:Net_4\[366] = zero[2]
-Removing Lhs of wire \Filter:Net_5\[367] = zero[2]
-Removing Lhs of wire Net_7978[371] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire Net_837[373] = zero[2]
-Removing Lhs of wire Net_850[374] = zero[2]
-Removing Lhs of wire \PWM2:Net_107\[378] = zero[2]
-Removing Lhs of wire \PWM2:Net_113\[379] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire Net_6544[380] = zero[2]
-Removing Lhs of wire \PWM1:Net_107\[388] = zero[2]
-Removing Lhs of wire \PWM1:Net_113\[389] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire Net_6555[390] = zero[2]
-Removing Lhs of wire tmpOE__SPI_SCLK_net_0[400] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__SPI_MOSI_net_0[405] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__I2C_Pins_net_1[410] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__I2C_Pins_net_0[411] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_DACREF_net_0[419] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \I2C:Net_128\[426] = zero[2]
-Removing Lhs of wire \I2C:tmpOE__cy_bufoe_1_net_0\[433] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \I2C:Net_190\[434] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \I2C:tmpOE__cy_bufoe_2_net_0\[436] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \I2C:Net_145\[437] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire tmpOE__Pin_TIA3_net_0[444] = tmpOE__Pin_TIA4_net_0[1]
-Removing Rhs of wire \DelSig:Net_488\[457] = \DelSig:Net_250\[499]
-Removing Lhs of wire \DelSig:Net_481\[459] = zero[2]
-Removing Lhs of wire \DelSig:Net_482\[460] = zero[2]
-Removing Lhs of wire \DelSig:tmpOE__Bypass_P03_net_0\[484] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \DelSig:Net_252\[501] = zero[2]
-Removing Lhs of wire \DelSig:soc\[503] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire Net_7993[509] = zero[2]
-Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_0\[512] = \FreqDiv_1:MODULE_1:g2:a0:s_0\[672]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_23\[553] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_22\[554] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_21\[555] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_20\[556] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_19\[557] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_18\[558] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_17\[559] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_16\[560] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_15\[561] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_14\[562] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_13\[563] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_12\[564] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_11\[565] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_10\[566] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_9\[567] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_8\[568] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_7\[569] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_6\[570] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_5\[571] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_4\[572] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_3\[573] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_2\[574] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_1\[575] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_0\[576] = \FreqDiv_1:MODIN1_0\[577]
-Removing Lhs of wire \FreqDiv_1:MODIN1_0\[577] = \FreqDiv_1:count_0\[511]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[710] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[711] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \SAR1:vp_ctl_0\[716] = zero[2]
-Removing Lhs of wire \SAR1:vp_ctl_2\[717] = zero[2]
-Removing Lhs of wire \SAR1:vn_ctl_1\[718] = zero[2]
-Removing Lhs of wire \SAR1:vn_ctl_3\[719] = zero[2]
-Removing Lhs of wire \SAR1:vp_ctl_1\[720] = zero[2]
-Removing Lhs of wire \SAR1:vp_ctl_3\[721] = zero[2]
-Removing Lhs of wire \SAR1:vn_ctl_0\[722] = zero[2]
-Removing Lhs of wire \SAR1:vn_ctl_2\[723] = zero[2]
-Removing Rhs of wire \SAR1:Net_188\[726] = \SAR1:Net_221\[727]
-Removing Lhs of wire \SAR1:soc\[732] = zero[2]
-Removing Lhs of wire \SAR1:tmpOE__Bypass_net_0\[750] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \SAR1:Net_381\[764] = zero[2]
-Removing Lhs of wire \SAR2:vp_ctl_0\[770] = zero[2]
-Removing Lhs of wire \SAR2:vp_ctl_2\[771] = zero[2]
-Removing Lhs of wire \SAR2:vn_ctl_1\[772] = zero[2]
-Removing Lhs of wire \SAR2:vn_ctl_3\[773] = zero[2]
-Removing Lhs of wire \SAR2:vp_ctl_1\[774] = zero[2]
-Removing Lhs of wire \SAR2:vp_ctl_3\[775] = zero[2]
-Removing Lhs of wire \SAR2:vn_ctl_0\[776] = zero[2]
-Removing Lhs of wire \SAR2:vn_ctl_2\[777] = zero[2]
-Removing Rhs of wire \SAR2:Net_188\[780] = \SAR2:Net_221\[781]
-Removing Lhs of wire \SAR2:soc\[786] = zero[2]
-Removing Lhs of wire \SAR2:tmpOE__Bypass_net_0\[804] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \SAR2:Net_381\[818] = zero[2]
-Removing Rhs of wire Net_8011[820] = \ShiftBy1_1:dsignal\[830]
-Removing Lhs of wire tmpOE__Pin_test1_net_0[825] = tmpOE__Pin_TIA4_net_0[1]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_d0_load\[831] = zero[2]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_d1_load\[832] = zero[2]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_f0_load\[833] = zero[2]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_f1_load\[834] = zero[2]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_route_si\[835] = zero[2]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_route_ci\[836] = zero[2]
-Removing Rhs of wire \ShiftBy1_1:Datapath_1_select_0\[837] = \ShiftBy1_1:SM1_0\[838]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_select_1\[839] = zero[2]
-Removing Lhs of wire \ShiftBy1_1:Datapath_1_select_2\[840] = zero[2]
-Removing Lhs of wire \SPIS:BSPIS:dpcounter_one_reg\\D\[878] = \SPIS:BSPIS:dpcounter_one_fin\[205]
-Removing Lhs of wire \SPIS:BSPIS:mosi_buf_overrun_fin\\D\[879] = \SPIS:BSPIS:mosi_buf_overrun_reg\[208]
-Removing Lhs of wire \SPIS:BSPIS:mosi_tmp\\D\[880] = Net_16[304]
-Removing Lhs of wire \ShiftBy1_1:SM1_1\\D\[886] = zero[2]
+Removing Lhs of wire \USB:tmpOE__Dm_net_0\[91] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \USB:tmpOE__Dp_net_0\[98] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_VDDAdiv2_net_0[147] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_DAC1_net_0[160] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_DAC2_net_0[167] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_DAC3_net_0[174] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_DAC4_net_0[181] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__SPI_SS_net_0[188] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_LED_PWMB_net_0[194] = tmpOE__Pin_TIA4_net_0[1]
+Removing Rhs of wire Net_4245[195] = \PWM2:Net_57\[384]
+Removing Lhs of wire Net_2247[201] = zero[2]
+Removing Rhs of wire \SPIS:BSPIS:tx_load\[203] = \SPIS:BSPIS:load\[204]
+Removing Rhs of wire \SPIS:BSPIS:tx_load\[203] = \SPIS:BSPIS:dpcounter_one\[222]
+Removing Lhs of wire \SPIS:BSPIS:prc_clk_src\[211] = Net_17[212]
+Removing Rhs of wire \SPIS:Net_81\[215] = \SPIS:Net_176\[306]
+Removing Lhs of wire \SPIS:BSPIS:tx_status_2\[235] = \SPIS:BSPIS:miso_tx_empty_reg_fin\[225]
+Removing Rhs of wire \SPIS:BSPIS:tx_status_1\[236] = \SPIS:BSPIS:dpMISO_fifo_not_full\[237]
+Removing Lhs of wire \SPIS:BSPIS:tx_status_6\[238] = \SPIS:BSPIS:byte_complete\[205]
+Removing Lhs of wire \SPIS:BSPIS:rx_status_3\[241] = \SPIS:BSPIS:dpMOSI_fifo_not_empty\[240]
+Removing Lhs of wire \SPIS:BSPIS:rx_status_5\[242] = \SPIS:BSPIS:rx_buf_overrun\[208]
+Removing Lhs of wire \SPIS:BSPIS:rx_status_6\[243] = \SPIS:BSPIS:dpMOSI_fifo_full_reg\[230]
+Removing Lhs of wire \SPIS:BSPIS:tx_status_5\[244] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:tx_status_4\[245] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:tx_status_3\[246] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:rx_status_2\[247] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:rx_status_1\[248] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:rx_status_0\[249] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:mosi_fin\[250] = \SPIS:Net_75\[251]
+Removing Lhs of wire \SPIS:Net_75\[251] = Net_16[305]
+Removing Lhs of wire \SPIS:BSPIS:sR8:Dp:cs_addr_1\[277] = zero[2]
+Removing Rhs of wire Net_1821[308] = \SPIS:BSPIS:inv_ss\[202]
+Removing Lhs of wire tmpOE__SPI_MISO_net_0[310] = Net_1821[308]
+Removing Lhs of wire tmpOE__Pin_LED_PWMA_net_0[316] = tmpOE__Pin_TIA4_net_0[1]
+Removing Rhs of wire Net_4221[317] = \PWM1:Net_57\[394]
+Removing Lhs of wire tmpOE__Pin_TIA2_net_0[323] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_TIA1_net_0[330] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_TIA3P5_net_0[337] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_TIA1P5_net_0[343] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_LED_AMPA_net_0[349] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \Filter:Net_1\[366] = zero[2]
+Removing Lhs of wire \Filter:Net_4\[368] = zero[2]
+Removing Lhs of wire \Filter:Net_5\[369] = zero[2]
+Removing Lhs of wire Net_8219[373] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire Net_837[375] = zero[2]
+Removing Lhs of wire Net_850[376] = zero[2]
+Removing Lhs of wire \PWM2:Net_107\[380] = zero[2]
+Removing Lhs of wire \PWM2:Net_113\[381] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire Net_6544[382] = zero[2]
+Removing Lhs of wire \PWM1:Net_107\[390] = zero[2]
+Removing Lhs of wire \PWM1:Net_113\[391] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire Net_6555[392] = zero[2]
+Removing Lhs of wire tmpOE__SPI_SCLK_net_0[402] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__SPI_MOSI_net_0[407] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__I2C_Pins_net_1[412] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__I2C_Pins_net_0[413] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire tmpOE__Pin_DACREF_net_0[421] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \I2C:Net_128\[428] = zero[2]
+Removing Lhs of wire \I2C:tmpOE__cy_bufoe_1_net_0\[435] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \I2C:Net_190\[436] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \I2C:tmpOE__cy_bufoe_2_net_0\[438] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \I2C:Net_145\[439] = tmpOE__Pin_TIA4_net_0[1]
+Removing Rhs of wire Net_8028[442] = \ShiftBy2_1:dsignal\[846]
+Removing Rhs of wire Net_8031[445] = \ShiftBy2_2:dsignal\[994]
+Removing Lhs of wire tmpOE__Pin_TIA3_net_0[448] = tmpOE__Pin_TIA4_net_0[1]
+Removing Rhs of wire \DelSig:Net_488\[462] = \DelSig:Net_250\[504]
+Removing Lhs of wire \DelSig:Net_481\[464] = zero[2]
+Removing Lhs of wire \DelSig:Net_482\[465] = zero[2]
+Removing Lhs of wire \DelSig:tmpOE__Bypass_P03_net_0\[489] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \DelSig:Net_252\[506] = zero[2]
+Removing Lhs of wire \DelSig:soc\[508] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire Net_8221[514] = zero[2]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_9\[526] = \FreqDiv_1:MODULE_1:g2:a0:s_9\[686]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_8\[527] = \FreqDiv_1:MODULE_1:g2:a0:s_8\[687]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_7\[528] = \FreqDiv_1:MODULE_1:g2:a0:s_7\[688]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_6\[529] = \FreqDiv_1:MODULE_1:g2:a0:s_6\[689]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_5\[530] = \FreqDiv_1:MODULE_1:g2:a0:s_5\[690]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_4\[531] = \FreqDiv_1:MODULE_1:g2:a0:s_4\[691]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_3\[532] = \FreqDiv_1:MODULE_1:g2:a0:s_3\[692]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_2\[533] = \FreqDiv_1:MODULE_1:g2:a0:s_2\[693]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_1\[534] = \FreqDiv_1:MODULE_1:g2:a0:s_1\[694]
+Removing Lhs of wire \FreqDiv_1:add_vi_vv_MODGEN_1_0\[535] = \FreqDiv_1:MODULE_1:g2:a0:s_0\[695]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_23\[576] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_22\[577] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_21\[578] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_20\[579] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_19\[580] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_18\[581] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_17\[582] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_16\[583] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_15\[584] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_14\[585] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_13\[586] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_12\[587] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_11\[588] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_10\[589] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_9\[590] = \FreqDiv_1:MODIN1_9\[591]
+Removing Lhs of wire \FreqDiv_1:MODIN1_9\[591] = \FreqDiv_1:count_9\[516]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_8\[592] = \FreqDiv_1:MODIN1_8\[593]
+Removing Lhs of wire \FreqDiv_1:MODIN1_8\[593] = \FreqDiv_1:count_8\[517]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_7\[594] = \FreqDiv_1:MODIN1_7\[595]
+Removing Lhs of wire \FreqDiv_1:MODIN1_7\[595] = \FreqDiv_1:count_7\[518]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_6\[596] = \FreqDiv_1:MODIN1_6\[597]
+Removing Lhs of wire \FreqDiv_1:MODIN1_6\[597] = \FreqDiv_1:count_6\[519]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_5\[598] = \FreqDiv_1:MODIN1_5\[599]
+Removing Lhs of wire \FreqDiv_1:MODIN1_5\[599] = \FreqDiv_1:count_5\[520]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_4\[600] = \FreqDiv_1:MODIN1_4\[601]
+Removing Lhs of wire \FreqDiv_1:MODIN1_4\[601] = \FreqDiv_1:count_4\[521]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_3\[602] = \FreqDiv_1:MODIN1_3\[603]
+Removing Lhs of wire \FreqDiv_1:MODIN1_3\[603] = \FreqDiv_1:count_3\[522]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_2\[604] = \FreqDiv_1:MODIN1_2\[605]
+Removing Lhs of wire \FreqDiv_1:MODIN1_2\[605] = \FreqDiv_1:count_2\[523]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_1\[606] = \FreqDiv_1:MODIN1_1\[607]
+Removing Lhs of wire \FreqDiv_1:MODIN1_1\[607] = \FreqDiv_1:count_1\[524]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:a_0\[608] = \FreqDiv_1:MODIN1_0\[609]
+Removing Lhs of wire \FreqDiv_1:MODIN1_0\[609] = \FreqDiv_1:count_0\[525]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[733] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[734] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \SAR1:vp_ctl_0\[739] = zero[2]
+Removing Lhs of wire \SAR1:vp_ctl_2\[740] = zero[2]
+Removing Lhs of wire \SAR1:vn_ctl_1\[741] = zero[2]
+Removing Lhs of wire \SAR1:vn_ctl_3\[742] = zero[2]
+Removing Lhs of wire \SAR1:vp_ctl_1\[743] = zero[2]
+Removing Lhs of wire \SAR1:vp_ctl_3\[744] = zero[2]
+Removing Lhs of wire \SAR1:vn_ctl_0\[745] = zero[2]
+Removing Lhs of wire \SAR1:vn_ctl_2\[746] = zero[2]
+Removing Rhs of wire \SAR1:Net_188\[749] = \SAR1:Net_221\[750]
+Removing Lhs of wire \SAR1:soc\[755] = zero[2]
+Removing Lhs of wire \SAR1:tmpOE__Bypass_net_0\[773] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \SAR1:Net_381\[787] = zero[2]
+Removing Lhs of wire \SAR2:vp_ctl_0\[792] = zero[2]
+Removing Lhs of wire \SAR2:vp_ctl_2\[793] = zero[2]
+Removing Lhs of wire \SAR2:vn_ctl_1\[794] = zero[2]
+Removing Lhs of wire \SAR2:vn_ctl_3\[795] = zero[2]
+Removing Lhs of wire \SAR2:vp_ctl_1\[796] = zero[2]
+Removing Lhs of wire \SAR2:vp_ctl_3\[797] = zero[2]
+Removing Lhs of wire \SAR2:vn_ctl_0\[798] = zero[2]
+Removing Lhs of wire \SAR2:vn_ctl_2\[799] = zero[2]
+Removing Rhs of wire \SAR2:Net_188\[802] = \SAR2:Net_221\[803]
+Removing Lhs of wire \SAR2:soc\[808] = zero[2]
+Removing Lhs of wire \SAR2:tmpOE__Bypass_net_0\[826] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \SAR2:Net_381\[840] = zero[2]
+Removing Rhs of wire Net_8132[842] = \ShiftBy1_1:dsignal\[946]
+Removing Lhs of wire \ShiftBy2_1:DP_d0_load\[847] = zero[2]
+Removing Lhs of wire \ShiftBy2_1:DP_d1_load\[848] = zero[2]
+Removing Lhs of wire \ShiftBy2_1:DP_f0_load\[849] = zero[2]
+Removing Lhs of wire \ShiftBy2_1:DP_f1_load\[850] = zero[2]
+Removing Lhs of wire \ShiftBy2_1:DP_route_si\[851] = zero[2]
+Removing Lhs of wire \ShiftBy2_1:DP_route_ci\[852] = zero[2]
+Removing Rhs of wire \ShiftBy2_1:DP_select_0\[853] = \ShiftBy2_1:S1_0\[854]
+Removing Rhs of wire \ShiftBy2_1:DP_select_1\[855] = \ShiftBy2_1:S1_1\[856]
+Removing Lhs of wire \ShiftBy2_1:DP_select_2\[857] = zero[2]
+Removing Lhs of wire tmpOE__Pin_test1_net_0[941] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_d0_load\[947] = zero[2]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_d1_load\[948] = zero[2]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_f0_load\[949] = zero[2]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_f1_load\[950] = zero[2]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_route_si\[951] = zero[2]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_route_ci\[952] = zero[2]
+Removing Rhs of wire \ShiftBy1_1:Datapath_1_select_0\[953] = \ShiftBy1_1:SM1_0\[954]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_select_1\[955] = zero[2]
+Removing Lhs of wire \ShiftBy1_1:Datapath_1_select_2\[956] = zero[2]
+Removing Lhs of wire \ShiftBy2_2:DP_d0_load\[995] = zero[2]
+Removing Lhs of wire \ShiftBy2_2:DP_d1_load\[996] = zero[2]
+Removing Lhs of wire \ShiftBy2_2:DP_f0_load\[997] = zero[2]
+Removing Lhs of wire \ShiftBy2_2:DP_f1_load\[998] = zero[2]
+Removing Lhs of wire \ShiftBy2_2:DP_route_si\[999] = zero[2]
+Removing Lhs of wire \ShiftBy2_2:DP_route_ci\[1000] = zero[2]
+Removing Rhs of wire \ShiftBy2_2:DP_select_0\[1001] = \ShiftBy2_2:S1_0\[1002]
+Removing Rhs of wire \ShiftBy2_2:DP_select_1\[1003] = \ShiftBy2_2:S1_1\[1004]
+Removing Lhs of wire \ShiftBy2_2:DP_select_2\[1005] = zero[2]
+Removing Lhs of wire \SPIS:BSPIS:dpcounter_one_reg\\D\[1090] = \SPIS:BSPIS:dpcounter_one_fin\[206]
+Removing Lhs of wire \SPIS:BSPIS:mosi_buf_overrun_fin\\D\[1091] = \SPIS:BSPIS:mosi_buf_overrun_reg\[209]
+Removing Lhs of wire \SPIS:BSPIS:mosi_tmp\\D\[1092] = Net_16[305]
+Removing Lhs of wire \ShiftBy1_1:SM1_1\\D\[1110] = zero[2]
 
 ------------------------------------------------------
-Aliased 0 equations, 158 wires.
+Aliased 0 equations, 196 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -694,98 +736,159 @@ Note:  Expanding virtual equation for '\SPIS:BSPIS:tx_load\' (cost = 6):
 Note:  Expanding virtual equation for '\SPIS:BSPIS:byte_complete\' (cost = 1):
 \SPIS:BSPIS:byte_complete\ <= ((not \SPIS:BSPIS:dpcounter_one_reg\ and \SPIS:BSPIS:dpcounter_one_fin\));
 
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\' (cost = 4):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\ <= ((\FreqDiv_1:count_8\ and \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_8\' (cost = 20):
+\FreqDiv_1:MODULE_1:g2:a0:s_8\ <= ((not \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \FreqDiv_1:count_8\)
+	OR (not \FreqDiv_1:count_8\ and \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ <= (\FreqDiv_1:count_0\);
+
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_0\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:s_0\ <= (not \FreqDiv_1:count_0\);
 
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_17\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_17\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\ <=  ('0') ;
-
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ <= (\FreqDiv_1:count_0\);
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\ <= ((\FreqDiv_1:count_9\ and \FreqDiv_1:count_8\ and \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\));
 
 
 Substituting virtuals - pass 2:
 
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_9\' (cost = 30):
+\FreqDiv_1:MODULE_1:g2:a0:s_9\ <= ((not \FreqDiv_1:count_8\ and \FreqDiv_1:count_9\)
+	OR (not \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \FreqDiv_1:count_9\)
+	OR (not \FreqDiv_1:count_9\ and \FreqDiv_1:count_8\ and \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\' (cost = 4):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\ <= ((\FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_1\' (cost = 20):
+\FreqDiv_1:MODULE_1:g2:a0:s_1\ <= ((not \FreqDiv_1:count_0\ and \FreqDiv_1:count_1\)
+	OR (not \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_18\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_18\ <=  ('0') ;
-
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\ <=  ('0') ;
-
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\ <=  ('0') ;
-
-
-Substituting virtuals - pass 3:
-
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\ <=  ('0') ;
 
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_11\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_11\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\ <=  ('0') ;
 
+Substituting virtuals - pass 3:
 
-Substituting virtuals - pass 4:
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\' (cost = 5):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\ <= ((\FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\ <=  ('0') ;
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_2\' (cost = 30):
+\FreqDiv_1:MODULE_1:g2:a0:s_2\ <= ((not \FreqDiv_1:count_1\ and \FreqDiv_1:count_2\)
+	OR (not \FreqDiv_1:count_0\ and \FreqDiv_1:count_2\)
+	OR (not \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\ <=  ('0') ;
 
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_12\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_12\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\ <=  ('0') ;
 
+Substituting virtuals - pass 4:
 
-Substituting virtuals - pass 5:
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\' (cost = 6):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\ <= ((\FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\ <=  ('0') ;
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_3\' (cost = 40):
+\FreqDiv_1:MODULE_1:g2:a0:s_3\ <= ((not \FreqDiv_1:count_2\ and \FreqDiv_1:count_3\)
+	OR (not \FreqDiv_1:count_1\ and \FreqDiv_1:count_3\)
+	OR (not \FreqDiv_1:count_0\ and \FreqDiv_1:count_3\)
+	OR (not \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\ <=  ('0') ;
 
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_13\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_13\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\ <=  ('0') ;
 
+Substituting virtuals - pass 5:
 
-Substituting virtuals - pass 6:
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\' (cost = 7):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\ <= ((\FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\ <=  ('0') ;
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_4\' (cost = 50):
+\FreqDiv_1:MODULE_1:g2:a0:s_4\ <= ((not \FreqDiv_1:count_3\ and \FreqDiv_1:count_4\)
+	OR (not \FreqDiv_1:count_2\ and \FreqDiv_1:count_4\)
+	OR (not \FreqDiv_1:count_1\ and \FreqDiv_1:count_4\)
+	OR (not \FreqDiv_1:count_0\ and \FreqDiv_1:count_4\)
+	OR (not \FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\ <=  ('0') ;
 
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_14\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_14\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\ <=  ('0') ;
 
+Substituting virtuals - pass 6:
 
-Substituting virtuals - pass 7:
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\' (cost = 8):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\ <= ((\FreqDiv_1:count_5\ and \FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\ <=  ('0') ;
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_5\' (cost = 60):
+\FreqDiv_1:MODULE_1:g2:a0:s_5\ <= ((not \FreqDiv_1:count_4\ and \FreqDiv_1:count_5\)
+	OR (not \FreqDiv_1:count_3\ and \FreqDiv_1:count_5\)
+	OR (not \FreqDiv_1:count_2\ and \FreqDiv_1:count_5\)
+	OR (not \FreqDiv_1:count_1\ and \FreqDiv_1:count_5\)
+	OR (not \FreqDiv_1:count_0\ and \FreqDiv_1:count_5\)
+	OR (not \FreqDiv_1:count_5\ and \FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\ <=  ('0') ;
 
 Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_15\' (cost = 0):
 \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_15\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\' (cost = 0):
-\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\ <=  ('0') ;
+
+Substituting virtuals - pass 7:
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\' (cost = 9):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\ <= ((\FreqDiv_1:count_6\ and \FreqDiv_1:count_5\ and \FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_6\' (cost = 70):
+\FreqDiv_1:MODULE_1:g2:a0:s_6\ <= ((not \FreqDiv_1:count_5\ and \FreqDiv_1:count_6\)
+	OR (not \FreqDiv_1:count_4\ and \FreqDiv_1:count_6\)
+	OR (not \FreqDiv_1:count_3\ and \FreqDiv_1:count_6\)
+	OR (not \FreqDiv_1:count_2\ and \FreqDiv_1:count_6\)
+	OR (not \FreqDiv_1:count_1\ and \FreqDiv_1:count_6\)
+	OR (not \FreqDiv_1:count_0\ and \FreqDiv_1:count_6\)
+	OR (not \FreqDiv_1:count_6\ and \FreqDiv_1:count_5\ and \FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\' (cost = 0):
+\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\ <=  ('0') ;
 
 
 Substituting virtuals - pass 8:
+
+Note:  Expanding virtual equation for '\FreqDiv_1:MODULE_1:g2:a0:s_7\' (cost = 80):
+\FreqDiv_1:MODULE_1:g2:a0:s_7\ <= ((not \FreqDiv_1:count_6\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_5\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_4\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_3\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_2\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_1\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_0\ and \FreqDiv_1:count_7\)
+	OR (not \FreqDiv_1:count_7\ and \FreqDiv_1:count_6\ and \FreqDiv_1:count_5\ and \FreqDiv_1:count_4\ and \FreqDiv_1:count_3\ and \FreqDiv_1:count_2\ and \FreqDiv_1:count_1\ and \FreqDiv_1:count_0\));
+
+
+Substituting virtuals - pass 9:
 
 
 ----------------------------------------------------------
 Circuit simplification results:
 
-	Expanded 26 signals.
+	Expanded 35 signals.
 	Turned 0 signals into soft nodes.
 	Maximum default expansion cost was set at 3.
 ----------------------------------------------------------
@@ -795,18 +898,16 @@ Alias Detection
 ------------------------------------------------------
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\ to zero
 Aliasing \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\ to zero
-Aliasing \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ to zero
 Aliasing \FreqDiv_1:not_last_reset\\D\ to tmpOE__Pin_TIA4_net_0
-Removing Lhs of wire \SPIS:BSPIS:cnt_reset\[199] = Net_74[188]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[681] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[691] = zero[2]
-Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[701] = zero[2]
-Removing Lhs of wire \SAR1:Net_188\[726] = \SAR1:Net_376\[725]
-Removing Lhs of wire \SAR2:Net_188\[780] = \SAR2:Net_376\[779]
-Removing Lhs of wire \FreqDiv_1:not_last_reset\\D\[881] = tmpOE__Pin_TIA4_net_0[1]
+Removing Lhs of wire \SPIS:BSPIS:cnt_reset\[200] = Net_74[189]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[704] = zero[2]
+Removing Lhs of wire \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[714] = zero[2]
+Removing Lhs of wire \SAR1:Net_188\[749] = \SAR1:Net_376\[748]
+Removing Lhs of wire \SAR2:Net_188\[802] = \SAR2:Net_376\[801]
+Removing Lhs of wire \FreqDiv_1:not_last_reset\\D\[1093] = tmpOE__Pin_TIA4_net_0[1]
 
 ------------------------------------------------------
-Aliased 0 equations, 7 wires.
+Aliased 0 equations, 6 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -836,21 +937,23 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main.cyprj" -dcpsoc3 "Voltron Main.v" -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.462ms
+Warp synthesis phase: Elapsed time ==> 2s.050ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Sunday, 11 September 2016 13:26:10
+cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Sunday, 11 September 2016 19:34:39
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main.cyprj -d CY8C5888LTI-LP097 Voltron Main.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.061ms
+Design parsing phase: Elapsed time ==> 0s.064ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
     Removed wire end \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\ kept zero
     Removed wire end \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\ kept zero
-    Removed wire end \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ kept zero
+    Removed wire end \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ kept \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
     Converted constant MacroCell: \ShiftBy1_1:SM1_1\ from registered to combinatorial
+Assigning clock Clock_3 to clock BUS_CLK because it is a pass-through
+Assigning clock Clock_2 to clock BUS_CLK because it is a pass-through
 Assigning clock Clock_1 to clock BUS_CLK because it is a pass-through
 Assigning clock Clock_4 to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
@@ -878,9 +981,9 @@ Done removing unused cells.
         ClockOut: SPI_SCLK(0):iocell.fb, EnableOut: Constant 1
 </CYPRESSTAG>
 <CYPRESSTAG name="UDB Routed Clock Assignment">
-    Routed Clock: \SPIS:BSPIS:RxStsReg\:statusicell.interrupt
-        Effective Clock: SPIS_IntClock
-        Enable Signal: \SPIS:BSPIS:RxStsReg\:statusicell.interrupt
+    Routed Clock: FILTER2RAM1:drqcell.termout
+        Effective Clock: FILTER2RAM1:drqcell.termout
+        Enable Signal: True
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
@@ -935,7 +1038,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Pin_TIA4(0)__PA ,
-            analog_term => Net_6630 ,
+            analog_term => Net_8170 ,
             pad => Pin_TIA4(0)_PAD );
         Properties:
         {
@@ -1456,7 +1559,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Pin_TIA2(0)__PA ,
-            analog_term => Net_62 ,
+            analog_term => Net_8177 ,
             pad => Pin_TIA2(0)_PAD );
         Properties:
         {
@@ -1496,7 +1599,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Pin_TIA1(0)__PA ,
-            analog_term => Net_61 ,
+            analog_term => Net_8166 ,
             pad => Pin_TIA1(0)_PAD );
         Properties:
         {
@@ -1616,7 +1719,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Pin_LED_AMPA(0)__PA ,
-            analog_term => Net_7962 ,
+            analog_term => Net_8093 ,
             pad => Pin_LED_AMPA(0)_PAD );
         Properties:
         {
@@ -1860,7 +1963,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Pin_TIA3(0)__PA ,
-            analog_term => Net_55 ,
+            analog_term => Net_6630 ,
             pad => Pin_TIA3(0)_PAD );
         Properties:
         {
@@ -2020,7 +2123,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Pin_test1(0)__PA ,
-            input => Net_7992 ,
+            input => Net_8220 ,
             pad => Pin_test1(0)_PAD );
         Properties:
         {
@@ -2134,6 +2237,18 @@ Design Equations
         );
         Output = Net_1821 (fanout=3)
 
+    MacroCell: Name=\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\, Mode=(Combinatorial)
+        Total # of inputs        : 8
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * \FreqDiv_1:count_5\ * 
+              \FreqDiv_1:count_4\ * \FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ (fanout=2)
+
     MacroCell: Name=__ONE__, Mode=(Combinatorial)
         Total # of inputs        : 0
         Total # of product terms : 0
@@ -2184,39 +2299,235 @@ Design Equations
         Total # of inputs        : 0
         Total # of product terms : 0
         List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: PosEdge(Net_7906)
+            Clock  = (Net_6689)
+            Clock Enable: True
         Main Equation            : 0 pterms
         !(
             0
         );
-        Output = \FreqDiv_1:not_last_reset\ (fanout=2)
+        Output = \FreqDiv_1:not_last_reset\ (fanout=11)
 
-    MacroCell: Name=Net_7992, Mode=(D-Register)
+    MacroCell: Name=Net_8220, Mode=(T-Register)
+        Total # of inputs        : 12
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\FreqDiv_1:not_last_reset\ * !Net_8220
+            + \FreqDiv_1:not_last_reset\ * Net_8220 * !\FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * \FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * !\FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + !Net_8220 * \FreqDiv_1:count_9\ * \FreqDiv_1:count_8\ * 
+              \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * \FreqDiv_1:count_5\ * 
+              !\FreqDiv_1:count_4\ * !\FreqDiv_1:count_3\ * 
+              \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = Net_8220 (fanout=2)
+
+    MacroCell: Name=\FreqDiv_1:count_9\, Mode=(T-Register)
+        Total # of inputs        : 12
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_8\ * 
+              \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+        );
+        Output = \FreqDiv_1:count_9\ (fanout=7)
+
+    MacroCell: Name=\FreqDiv_1:count_8\, Mode=(T-Register)
+        Total # of inputs        : 12
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * 
+              \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+        );
+        Output = \FreqDiv_1:count_8\ (fanout=7)
+
+    MacroCell: Name=\FreqDiv_1:count_7\, Mode=(T-Register)
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * \FreqDiv_1:count_4\ * \FreqDiv_1:count_3\ * 
+              \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_7\ (fanout=8)
+
+    MacroCell: Name=\FreqDiv_1:count_6\, Mode=(T-Register)
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_5\ * 
+              \FreqDiv_1:count_4\ * \FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_6\ (fanout=8)
+
+    MacroCell: Name=\FreqDiv_1:count_5\, Mode=(T-Register)
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_4\ * 
+              \FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * 
+              \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_5\ (fanout=8)
+
+    MacroCell: Name=\FreqDiv_1:count_4\, Mode=(T-Register)
+        Total # of inputs        : 5
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_3\ * 
+              \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_4\ (fanout=8)
+
+    MacroCell: Name=\FreqDiv_1:count_3\, Mode=(T-Register)
+        Total # of inputs        : 11
+        Total # of product terms : 5
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 5 pterms
+        !(
+              !\FreqDiv_1:not_last_reset\
+            + \FreqDiv_1:count_9\ * \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * 
+              \FreqDiv_1:count_6\ * \FreqDiv_1:count_5\ * 
+              !\FreqDiv_1:count_4\ * !\FreqDiv_1:count_3\
+            + !\FreqDiv_1:count_2\
+            + !\FreqDiv_1:count_1\
+            + !\FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_3\ (fanout=9)
+
+    MacroCell: Name=\FreqDiv_1:count_2\, Mode=(T-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_1\ * 
+              \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_2\ (fanout=9)
+
+    MacroCell: Name=\FreqDiv_1:count_1\, Mode=(T-Register)
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: PosEdge(Net_7906)
+            Clock  = (Net_6689)
+            Clock Enable: True
         Main Equation            : 1 pterm
-        !(
-              \FreqDiv_1:not_last_reset\ * !\FreqDiv_1:count_0\
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_0\
         );
-        Output = Net_7992 (fanout=1)
+        Output = \FreqDiv_1:count_1\ (fanout=10)
 
     MacroCell: Name=\FreqDiv_1:count_0\, Mode=(T-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: PosEdge(Net_7906)
+            Clock  = (Net_6689)
+            Clock Enable: True
         Main Equation            : 1 pterm
         (
               \FreqDiv_1:not_last_reset\
         );
-        Output = \FreqDiv_1:count_0\ (fanout=1)
+        Output = \FreqDiv_1:count_0\ (fanout=11)
 
-    MacroCell: Name=Net_8011, Mode=(D-Register)
+    MacroCell: Name=Net_8028, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_8028 * \ShiftBy2_1:DP_select_1\
+            + !\ShiftBy2_1:DP_select_0\ * \ShiftBy2_1:DP_select_1\
+        );
+        Output = Net_8028 (fanout=2)
+
+    MacroCell: Name=\ShiftBy2_1:DP_select_0\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\ShiftBy2_1:DP_select_0\ * !\ShiftBy2_1:DP_select_1\ * 
+              Net_8027
+        );
+        Output = \ShiftBy2_1:DP_select_0\ (fanout=5)
+
+    MacroCell: Name=\ShiftBy2_1:DP_select_1\, Mode=(D-Register)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ShiftBy2_1:DP_select_0\ * !\ShiftBy2_1:DP_select_1\
+        );
+        Output = \ShiftBy2_1:DP_select_1\ (fanout=5)
+
+    MacroCell: Name=Net_8132, Mode=(D-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -2226,7 +2537,7 @@ Design Equations
         (
               \ShiftBy1_1:Datapath_1_select_0\
         );
-        Output = Net_8011 (fanout=1)
+        Output = Net_8132 (fanout=1)
 
     MacroCell: Name=\ShiftBy1_1:Datapath_1_select_0\, Mode=(D-Register)
         Total # of inputs        : 2
@@ -2239,6 +2550,44 @@ Design Equations
               Net_7925 * !\ShiftBy1_1:Datapath_1_select_0\
         );
         Output = \ShiftBy1_1:Datapath_1_select_0\ (fanout=3)
+
+    MacroCell: Name=Net_8031, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_8031 * \ShiftBy2_2:DP_select_1\
+            + !\ShiftBy2_2:DP_select_0\ * \ShiftBy2_2:DP_select_1\
+        );
+        Output = Net_8031 (fanout=2)
+
+    MacroCell: Name=\ShiftBy2_2:DP_select_0\, Mode=(D-Register)
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\ShiftBy2_2:DP_select_0\ * !\ShiftBy2_2:DP_select_1\ * 
+              Net_8030
+        );
+        Output = \ShiftBy2_2:DP_select_0\ (fanout=5)
+
+    MacroCell: Name=\ShiftBy2_2:DP_select_1\, Mode=(D-Register)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ShiftBy2_2:DP_select_0\ * !\ShiftBy2_2:DP_select_1\
+        );
+        Output = \ShiftBy2_2:DP_select_1\ (fanout=5)
     </CYPRESSTAG>
     <CYPRESSTAG name="Datapath listing">
 
@@ -2285,6 +2634,74 @@ Design Equations
         Clock Polarity: Active Low
         Clock Enable: True
 
+    datapathcell: Name =\ShiftBy2_1:DP:u0\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => \ShiftBy2_1:DP_select_1\ ,
+            cs_addr_0 => \ShiftBy2_1:DP_select_0\ ,
+            chain_out => \ShiftBy2_1:DP:carry\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111111111111001000000000110000000000000000000001000000000000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \ShiftBy2_1:DP:u1\
+
+    datapathcell: Name =\ShiftBy2_1:DP:u1\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => \ShiftBy2_1:DP_select_1\ ,
+            cs_addr_0 => \ShiftBy2_1:DP_select_0\ ,
+            chain_in => \ShiftBy2_1:DP:carry\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011110000001100000000111111110001000000000000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \ShiftBy2_1:DP:u0\
+
     datapathcell: Name =\ShiftBy1_1:Datapath_1:u0\
         PORT MAP (
             clock => ClockBlock_BUS_CLK ,
@@ -2315,6 +2732,74 @@ Design Equations
         }
         Clock Polarity: Active High
         Clock Enable: True
+
+    datapathcell: Name =\ShiftBy2_2:DP:u0\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => \ShiftBy2_2:DP_select_1\ ,
+            cs_addr_0 => \ShiftBy2_2:DP_select_0\ ,
+            chain_out => \ShiftBy2_2:DP:carry\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111111111111001000000000110000000000000000000001000000000000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \ShiftBy2_2:DP:u1\
+
+    datapathcell: Name =\ShiftBy2_2:DP:u1\
+        PORT MAP (
+            clock => ClockBlock_BUS_CLK ,
+            cs_addr_1 => \ShiftBy2_2:DP_select_1\ ,
+            cs_addr_0 => \ShiftBy2_2:DP_select_0\ ,
+            chain_in => \ShiftBy2_2:DP:carry\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011110000001100000000111111110001000000000000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \ShiftBy2_2:DP:u0\
     </CYPRESSTAG>
     <CYPRESSTAG name="Status register listing">
     </CYPRESSTAG>
@@ -2450,7 +2935,7 @@ Design Equations
 
     drqcell: Name =FILTER2RAM1
         PORT MAP (
-            dmareq => Net_7051 ,
+            dmareq => Net_8232 ,
             termin => zero ,
             termout => Net_6689 );
         Properties:
@@ -2470,22 +2955,11 @@ Design Equations
             num_tds = 0
         }
 
-    drqcell: Name =SAR2RAM2
-        PORT MAP (
-            dmareq => Net_119 ,
-            termin => zero ,
-            termout => Net_7971 );
-        Properties:
-        {
-            drq_type = "10"
-            num_tds = 0
-        }
-
     drqcell: Name =SAR2FILTER1
         PORT MAP (
             dmareq => Net_124 ,
             termin => zero ,
-            termout => Net_7974 );
+            termout => Net_8106 );
         Properties:
         {
             drq_type = "10"
@@ -2494,9 +2968,9 @@ Design Equations
 
     drqcell: Name =SAR2FILTER2
         PORT MAP (
-            dmareq => Net_119 ,
+            dmareq => Net_8212 ,
             termin => zero ,
-            termout => Net_7976 );
+            termout => Net_8108 );
         Properties:
         {
             drq_type = "10"
@@ -2514,33 +2988,22 @@ Design Equations
             num_tds = 0
         }
 
-    drqcell: Name =RAM2FILTER2
+    drqcell: Name =SHIFT2FILTER1
         PORT MAP (
-            dmareq => zero ,
+            dmareq => Net_8028 ,
             termin => zero ,
-            termout => Net_7982 );
+            termout => Net_8142 );
         Properties:
         {
             drq_type = "10"
             num_tds = 0
         }
 
-    drqcell: Name =RAM2FILTER1
+    drqcell: Name =SHIFT2FILTER2
         PORT MAP (
-            dmareq => zero ,
+            dmareq => Net_8031 ,
             termin => zero ,
-            termout => Net_7985 );
-        Properties:
-        {
-            drq_type = "10"
-            num_tds = 0
-        }
-
-    drqcell: Name =SAR2RAM1
-        PORT MAP (
-            dmareq => Net_124 ,
-            termin => zero ,
-            termout => Net_7972 );
+            termout => Net_8147 );
         Properties:
         {
             drq_type = "10"
@@ -2549,9 +3012,9 @@ Design Equations
 
     drqcell: Name =SHIFT2RAM
         PORT MAP (
-            dmareq => Net_8011 ,
+            dmareq => Net_8132 ,
             termin => zero ,
-            termout => Net_8012 );
+            termout => Net_8121 );
         Properties:
         {
             drq_type = "10"
@@ -2563,6 +3026,28 @@ Design Equations
             dmareq => Net_7906 ,
             termin => zero ,
             termout => Net_7925 );
+        Properties:
+        {
+            drq_type = "10"
+            num_tds = 0
+        }
+
+    drqcell: Name =SAR2SHIFT1
+        PORT MAP (
+            dmareq => Net_124 ,
+            termin => zero ,
+            termout => Net_8027 );
+        Properties:
+        {
+            drq_type = "10"
+            num_tds = 0
+        }
+
+    drqcell: Name =SAR2SHIFT2
+        PORT MAP (
+            dmareq => Net_8212 ,
+            termin => zero ,
+            termout => Net_8030 );
         Properties:
         {
             drq_type = "10"
@@ -2615,22 +3100,6 @@ Design Equations
             int_type = "10"
         }
 
-    interrupt: Name =isr_shift_sar1
-        PORT MAP (
-            interrupt => Net_7972 );
-        Properties:
-        {
-            int_type = "10"
-        }
-
-    interrupt: Name =isr_shift_sar2
-        PORT MAP (
-            interrupt => Net_7971 );
-        Properties:
-        {
-            int_type = "10"
-        }
-
     interrupt: Name =isr_spi_rx
         PORT MAP (
             interrupt => Net_7955 );
@@ -2649,7 +3118,7 @@ Design Equations
 
     interrupt: Name =\DelSig:IRQ\
         PORT MAP (
-            interrupt => Net_7987 );
+            interrupt => Net_8117 );
         Properties:
         {
             int_type = "10"
@@ -2657,7 +3126,7 @@ Design Equations
 
     interrupt: Name =isr_shift1
         PORT MAP (
-            interrupt => Net_8012 );
+            interrupt => Net_8121 );
         Properties:
         {
             int_type = "10"
@@ -2673,7 +3142,7 @@ Design Equations
 
     interrupt: Name =\SAR2:IRQ\
         PORT MAP (
-            interrupt => Net_119 );
+            interrupt => Net_8212 );
         Properties:
         {
             int_type = "10"
@@ -2708,7 +3177,7 @@ Digital Clocks                :    4 :    4 :    8 : 50.00 %
 Analog Clocks                 :    1 :    3 :    4 : 25.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    1 :    0 :    1 : 100.00 %
-Interrupts                    :   15 :   17 :   32 : 46.88 %
+Interrupts                    :   13 :   19 :   32 : 40.63 %
 IO                            :   31 :   17 :   48 : 64.58 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
@@ -2717,10 +3186,10 @@ USB                           :    1 :    0 :    1 : 100.00 %
 DMA Channels                  :   11 :   13 :   24 : 45.83 %
 Timer                         :    2 :    2 :    4 : 50.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :   18 :  174 :  192 :  9.38 %
-  Unique P-terms              :   20 :  364 :  384 :  5.21 %
-  Total P-terms               :   20 :      :      :        
-  Datapath Cells              :    2 :   22 :   24 :  8.33 %
+  Macrocells                  :   34 :  158 :  192 : 17.71 %
+  Unique P-terms              :   45 :  339 :  384 : 11.72 %
+  Total P-terms               :   49 :      :      :        
+  Datapath Cells              :    6 :   18 :   24 : 25.00 %
   Status Cells                :    5 :   19 :   24 : 20.83 %
     StatusI Registers         :    2 :      :      :        
     Sync Cells (x6)           :    2 :      :      :        
@@ -2736,14 +3205,18 @@ Analog (SC/CT) Blocks         :    2 :    2 :    4 : 50.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    4 :    0 :    4 : 100.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.067ms
-Tech mapping phase: Elapsed time ==> 0s.212ms
+Technology Mapping: Elapsed time ==> 0s.065ms
+Tech mapping phase: Elapsed time ==> 0s.221ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
-Info: apr.M0002: Analog signal "Net_7964" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_7966" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_7965" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_7967" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_61" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_8175" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_8095" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_8097" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_62" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_8176" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_8096" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_8098" is connected to one terminal only. (App=cydsfit)
 Initial Analog Placement Results:
 [IOP=(12)][IoId=(4)] : I2C_Pins(0) (fixed)
 IO_5@[IOP=(12)][IoId=(5)] : I2C_Pins(1) (fixed)
@@ -2795,8 +3268,8 @@ Vref[1]@[FFB(Vref,1)] : vRef_1
 Vref[4]@[FFB(Vref,4)] : vRef_4
 IO_1@[IOP=(0)][IoId=(1)] : Dedicated_Output (OPAMP-GPIO)
 IO_6@[IOP=(3)][IoId=(6)] : Dedicated_Output_1 (OPAMP-GPIO)
-Log: apr.M0058: The analog placement iterative improvement is 38% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 84% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 41% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 80% done. (App=cydsfit)
 Analog Placement Results:
 [IOP=(12)][IoId=(4)] : I2C_Pins(0) (fixed)
 IO_5@[IOP=(12)][IoId=(5)] : I2C_Pins(1) (fixed)
@@ -2836,7 +3309,7 @@ SAR[0]@[FFB(SAR,0)] : \SAR1:ADC_SAR\ (fixed, SAR-ExtVref)
 SAR[1]@[FFB(SAR,1)] : \SAR2:ADC_SAR\ (fixed, SAR-ExtVref)
 OpAmp[1]@[FFB(OpAmp,1)] : \Opamp_3:ABuf\ (OPAMP-GPIO)
 OpAmp[0]@[FFB(OpAmp,0)] : \Opamp_4:ABuf\ (OPAMP-GPIO)
-SC[0]@[FFB(SC,0)] : \PGA_Inv_1:SC\
+SC[2]@[FFB(SC,2)] : \PGA_Inv_1:SC\
 SC[1]@[FFB(SC,1)] : \PGA_Inv_2:SC\
 Vref[13]@[FFB(Vref,13)] : \SAR1:vRef_Vdda_1\
 USB[0]@[FFB(USB,0)] : \USB:USB\
@@ -2849,111 +3322,97 @@ Vref[4]@[FFB(Vref,4)] : vRef_4
 IO_1@[IOP=(0)][IoId=(1)] : Dedicated_Output (OPAMP-GPIO)
 IO_6@[IOP=(3)][IoId=(6)] : Dedicated_Output_1 (OPAMP-GPIO)
 
-Analog Placement phase: Elapsed time ==> 2s.849ms
+Analog Placement phase: Elapsed time ==> 3s.448ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Net "Net_55" overuses wire "SAR vplus wire R"
-Net "Net_62" overuses wire "SAR vminus wire L"
-Net "Net_6630" overuses wire "AGR[2]"
+Net "Net_35" overuses wire "AGL[0]"
 Net "Net_35" overuses wire "SAR vminus wire L"
-Net "Net_224" overuses wire "cmp1 v vref6 Mux__0b"
-Net "Net_224" overuses wire "cmp1_vref"
-Net "Net_6576" overuses wire "cmp1 v vref6 Mux__1b"
-Net "Net_6576" overuses wire "cmp1_vref"
-Net "Net_231" overuses wire "AGL[7]"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_B" overuses wire "AGL[7]"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_B" overuses wire "SAR vplus wire R"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_B" overuses wire "AGR[2]"
-Net "Net_35" overuses wire "dsm0+ Wire"
-Net "Net_224" overuses wire "cmp1 v vref6 Mux__0b"
-Net "Net_224" overuses wire "cmp1_vref"
-Net "Net_160" overuses wire "AGL[5]"
-Net "Net_6576" overuses wire "cmp1 v vref6 Mux__1b"
-Net "Net_6576" overuses wire "cmp1_vref"
-Net "Net_231" overuses wire "AGL[5]"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_A" overuses wire "dsm0+ Wire"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_A" overuses wire "dsm0+ Wire"
-Net "Net_61" overuses wire "SAR vplus wire L"
-Net "Net_55" overuses wire "SAR vplus wire R"
-Net "Net_35" overuses wire "SAR vplus wire L"
-Net "Net_6576" overuses wire "SAR vplus wire R"
-Net "Net_61" overuses wire "SAR vplus wire L"
-Net "Net_30" overuses wire "amuxbusL"
-Net "Net_35" overuses wire "amuxbusL"
+Net "Net_35" overuses wire "AGL[6]"
+Net "Net_8166" overuses wire "SAR vplus wire L"
+Net "Net_8177" overuses wire "SAR vminus wire L"
 Net "Net_6576" overuses wire "SAR vplus wire L"
+Net "Net_6576" overuses wire "SAR vplus wire L"
+Net "Net_6576" overuses wire "AGL[0]"
+Net "Net_231" overuses wire "AGL[6]"
+Net "Net_30" overuses wire "v2 Wire"
 Net "Net_30" overuses wire "amuxbusL"
 Net "Net_35" overuses wire "amuxbusL"
-Net "Net_6576" overuses wire "dsm0+ Wire"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_A" overuses wire "dsm0+ Wire"
-Net "Net_30" overuses wire "AGL[5]"
-Net "Net_30" overuses wire "dsm0- Wire"
-Net "Net_30" overuses wire "AGL[7]"
 Net "Net_160" overuses wire "AGL[5]"
-Net "Net_231" overuses wire "AGL[7]"
-Net "AmuxEye::AMux_DelSig_CYAMUXSIDE_B" overuses wire "dsm0- Wire"
-Net "Net_30" overuses wire "amuxbusL"
-Net "Net_35" overuses wire "amuxbusL"
+Net "Net_6630" overuses wire "SAR vplus wire R"
+Net "Net_6576" overuses wire "v2 Wire"
+Net "Net_6576" overuses wire "AGL[5]"
+Net "Net_6576" overuses wire "AGL[5]"
+Net "Net_6576" overuses wire "SAR vplus wire R"
 Net "Net_30" overuses wire "AGL[4]"
+Net "Net_30" overuses wire "SAR vplus wire L"
+Net "Net_224" overuses wire "cmp1 v vref6 Mux__0b"
+Net "Net_224" overuses wire "cmp1_vref"
+Net "Net_8166" overuses wire "SAR vplus wire L"
+Net "Net_6576" overuses wire "cmp1 v vref6 Mux__1b"
+Net "Net_6576" overuses wire "cmp1_vref"
 Net "Net_6577" overuses wire "AGL[4]"
-Net "Net_30" overuses wire "AGL[5]"
-Net "Net_30" overuses wire "sc0 out Wire"
+Net "Net_30" overuses wire "amuxbusL"
+Net "Net_35" overuses wire "amuxbusL"
 Net "Net_160" overuses wire "AGL[5]"
-Net "Net_231" overuses wire "sc0 out Wire"
-Analog Routing phase: Elapsed time ==> 0s.135ms
+Net "Net_6576" overuses wire "sc2 out Wire"
+Net "Net_231" overuses wire "sc2 out Wire"
+Net "Net_6577" overuses wire "AGL[5]"
+Net "Net_30" overuses wire "AGL[4]"
+Net "Net_30" overuses wire "AGL[7]"
+Net "Net_224" overuses wire "cmp1 v vref6 Mux__0b"
+Net "Net_224" overuses wire "cmp1_vref"
+Net "Net_6576" overuses wire "cmp1 v vref6 Mux__1b"
+Net "Net_6576" overuses wire "cmp1_vref"
+Net "Net_6576" overuses wire "cmp1_vref"
+Net "Net_6576" overuses wire "AGL[7]"
+Net "Net_6577" overuses wire "AGL[4]"
+Net "Net_30" overuses wire "amuxbusL"
+Net "Net_35" overuses wire "amuxbusL"
+Net "Net_160" overuses wire "AGL[5]"
+Net "Net_6630" overuses wire "SAR vplus wire R"
+Net "Net_6576" overuses wire "SAR vplus wire R"
+Net "Net_6577" overuses wire "AGL[5]"
+Net "Net_160" overuses wire "AGL[5]"
+Net "Net_6576" overuses wire "sc2 out Wire"
+Net "Net_231" overuses wire "sc2 out Wire"
+Net "Net_6577" overuses wire "AGL[5]"
+Net "Net_231" overuses wire "AGL[6]"
+Net "Net_6577" overuses wire "AGL[6]"
+Analog Routing phase: Elapsed time ==> 0s.157ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
 Dump of CyAnalogRoutingResultsDB
 Map of net to items {
-  Net: Net_7968 {
+  Net: Net_8099 {
     dsm_0_vplus
   }
   Net: Net_61 {
-    sar_0_vplus
-    agl1_x_sar_0_vplus
-    agl1
-    agl1_x_p2_1
-    p2_1
   }
-  Net: Net_55 {
-    sar_1_vplus
-    agr3_x_sar_1_vplus
-    agr3
-    agr3_x_p1_7
-    p1_7
+  Net: Net_8175 {
   }
-  Net: Net_7964 {
+  Net: Net_8095 {
   }
-  Net: Net_7966 {
+  Net: Net_8097 {
   }
-  Net: Net_7969 {
+  Net: Net_8100 {
     dsm_0_vminus
   }
   Net: Net_62 {
-    sar_0_vminus
-    agl2_x_sar_0_vminus
-    agl2
-    agl2_x_p2_2
-    p2_2
   }
-  Net: Net_6630 {
-    sar_1_vminus
-    agr2_x_sar_1_vminus
-    agr2
-    agr2_x_p1_6
-    p1_6
+  Net: Net_8176 {
   }
-  Net: Net_7965 {
+  Net: Net_8096 {
   }
-  Net: Net_7967 {
+  Net: Net_8098 {
   }
   Net: Net_30 {
     vidac_2_vout
     agl4_x_vidac_2_vout
     agl4
-    agl4_x_sc_2_vin
-    sc_2_vin
-    agl7_x_sc_2_vin
+    agl4_x_sc_0_vin
+    sc_0_vin
+    agl7_x_sc_0_vin
     agl7
     agl7_x_p0_7
     p0_7
@@ -2990,7 +3449,7 @@ Map of net to items {
     agr1_x_p1_5
     p1_5
   }
-  Net: Net_7962 {
+  Net: Net_8093 {
     p0_0
     opamp_2_vminus_x_p0_0
     opamp_2_vminus
@@ -3000,6 +3459,13 @@ Map of net to items {
     opamp_3_vminus_x_p3_7
     opamp_3_vminus
   }
+  Net: Net_8166 {
+    sar_0_vplus
+    agl1_x_sar_0_vplus
+    agl1
+    agl1_x_p2_1
+    p2_1
+  }
   Net: Net_160 {
     opamp_0_vplus
     agl5_x_opamp_0_vplus
@@ -3007,10 +3473,31 @@ Map of net to items {
     agl5_x_p0_5
     p0_5
   }
+  Net: Net_8177 {
+    sar_0_vminus
+    agl2_x_sar_0_vminus
+    agl2
+    agl2_x_p2_2
+    p2_2
+  }
+  Net: Net_6630 {
+    sar_1_vplus
+    agr3_x_sar_1_vplus
+    agr3
+    agr3_x_p1_7
+    p1_7
+  }
   Net: Net_156 {
     opamp_1_vplus
     opamp_1_vplus_x_p3_5
     p3_5
+  }
+  Net: Net_8170 {
+    sar_1_vminus
+    agr2_x_sar_1_vminus
+    agr2
+    agr2_x_p1_6
+    p1_6
   }
   Net: Net_6576 {
     common_Vdda/2
@@ -3026,6 +3513,12 @@ Map of net to items {
     agr0
     agr0_x_p1_4
     p1_4
+    abusl0_x_lcd_v1
+    lcd_v1
+    abusl1_x_lcd_v1
+    abusl1
+    abusl1_x_sc_2_vref
+    sc_2_vref
     agr0_x_sc_1_vref
     sc_1_vref
   }
@@ -3040,17 +3533,17 @@ Map of net to items {
   Net: \DelSig:Net_34\ {
   }
   Net: Net_231 {
-    sc_0_vout
-    abusl3_x_sc_0_vout
-    abusl3
-    abusl3_x_opamp_2_vplus
+    sc_2_vout
+    abusl2_x_sc_2_vout
+    abusl2
+    abusl2_x_opamp_2_vplus
     opamp_2_vplus
   }
   Net: Net_259 {
     sc_1_vout
-    agr5_x_sc_1_vout
-    agr5
-    agr5_x_opamp_3_vplus
+    agr7_x_sc_1_vout
+    agr7
+    agr7_x_opamp_3_vplus
     opamp_3_vplus
   }
   Net: Net_155 {
@@ -3063,8 +3556,8 @@ Map of net to items {
     p3_6
   }
   Net: Net_6577 {
-    sc_0_vin
-    agl6_x_sc_0_vin
+    sc_2_vin
+    agl6_x_sc_2_vin
     agl6
     agl6_x_opamp_0_vminus
     opamp_0_vminus
@@ -3103,52 +3596,17 @@ Map of net to items {
   Net: \VDAC4:Net_77\ {
   }
   Net: AmuxNet::AMux_DelSig_CYAMUXSIDE_A {
-    dsm_0_vplus
-    agl3_x_dsm_0_vplus
-    agl3
-    agl3_x_agr3
-    agl3_x_sar_0_vplus
-    sar_0_vplus
   }
   Net: AmuxNet::AMux_DelSig_CYAMUXSIDE_B {
-    dsm_0_vminus
-    abusl1_x_dsm_0_vminus
-    abusl1
-    abusl1_x_abusr1
-    abusr1
-    abusr1_x_sar_1_vminus
-    abusl1_x_sar_0_vminus
-    sar_1_vminus
-    sar_0_vminus
   }
 }
 Map of item to net {
-  sar_0_vplus                                      -> Net_61
-  agl1_x_sar_0_vplus                               -> Net_61
-  agl1                                             -> Net_61
-  agl1_x_p2_1                                      -> Net_61
-  p2_1                                             -> Net_61
-  sar_1_vplus                                      -> Net_55
-  agr3_x_sar_1_vplus                               -> Net_55
-  agr3                                             -> Net_55
-  agr3_x_p1_7                                      -> Net_55
-  p1_7                                             -> Net_55
-  sar_0_vminus                                     -> Net_62
-  agl2_x_sar_0_vminus                              -> Net_62
-  agl2                                             -> Net_62
-  agl2_x_p2_2                                      -> Net_62
-  p2_2                                             -> Net_62
-  sar_1_vminus                                     -> Net_6630
-  agr2_x_sar_1_vminus                              -> Net_6630
-  agr2                                             -> Net_6630
-  agr2_x_p1_6                                      -> Net_6630
-  p1_6                                             -> Net_6630
   vidac_2_vout                                     -> Net_30
   agl4_x_vidac_2_vout                              -> Net_30
   agl4                                             -> Net_30
-  agl4_x_sc_2_vin                                  -> Net_30
-  sc_2_vin                                         -> Net_30
-  agl7_x_sc_2_vin                                  -> Net_30
+  agl4_x_sc_0_vin                                  -> Net_30
+  sc_0_vin                                         -> Net_30
+  agl7_x_sc_0_vin                                  -> Net_30
   agl7                                             -> Net_30
   agl7_x_p0_7                                      -> Net_30
   p0_7                                             -> Net_30
@@ -3176,20 +3634,40 @@ Map of item to net {
   agr1                                             -> Net_224
   agr1_x_p1_5                                      -> Net_224
   p1_5                                             -> Net_224
-  p0_0                                             -> Net_7962
-  opamp_2_vminus_x_p0_0                            -> Net_7962
-  opamp_2_vminus                                   -> Net_7962
+  p0_0                                             -> Net_8093
+  opamp_2_vminus_x_p0_0                            -> Net_8093
+  opamp_2_vminus                                   -> Net_8093
   p3_7                                             -> Net_157
   opamp_3_vminus_x_p3_7                            -> Net_157
   opamp_3_vminus                                   -> Net_157
+  sar_0_vplus                                      -> Net_8166
+  agl1_x_sar_0_vplus                               -> Net_8166
+  agl1                                             -> Net_8166
+  agl1_x_p2_1                                      -> Net_8166
+  p2_1                                             -> Net_8166
   opamp_0_vplus                                    -> Net_160
   agl5_x_opamp_0_vplus                             -> Net_160
   agl5                                             -> Net_160
   agl5_x_p0_5                                      -> Net_160
   p0_5                                             -> Net_160
+  sar_0_vminus                                     -> Net_8177
+  agl2_x_sar_0_vminus                              -> Net_8177
+  agl2                                             -> Net_8177
+  agl2_x_p2_2                                      -> Net_8177
+  p2_2                                             -> Net_8177
+  sar_1_vplus                                      -> Net_6630
+  agr3_x_sar_1_vplus                               -> Net_6630
+  agr3                                             -> Net_6630
+  agr3_x_p1_7                                      -> Net_6630
+  p1_7                                             -> Net_6630
   opamp_1_vplus                                    -> Net_156
   opamp_1_vplus_x_p3_5                             -> Net_156
   p3_5                                             -> Net_156
+  sar_1_vminus                                     -> Net_8170
+  agr2_x_sar_1_vminus                              -> Net_8170
+  agr2                                             -> Net_8170
+  agr2_x_p1_6                                      -> Net_8170
+  p1_6                                             -> Net_8170
   common_Vdda/2                                    -> Net_6576
   common_Vdda/2_x_comp_vref_vdda                   -> Net_6576
   comp_vref_vdda                                   -> Net_6576
@@ -3203,19 +3681,25 @@ Map of item to net {
   agr0                                             -> Net_6576
   agr0_x_p1_4                                      -> Net_6576
   p1_4                                             -> Net_6576
+  abusl0_x_lcd_v1                                  -> Net_6576
+  lcd_v1                                           -> Net_6576
+  abusl1_x_lcd_v1                                  -> Net_6576
+  abusl1                                           -> Net_6576
+  abusl1_x_sc_2_vref                               -> Net_6576
+  sc_2_vref                                        -> Net_6576
   agr0_x_sc_1_vref                                 -> Net_6576
   sc_1_vref                                        -> Net_6576
   p0_3_exvref                                      -> \DelSig:Net_248\
   p0_3                                             -> \DelSig:Net_248\
-  sc_0_vout                                        -> Net_231
-  abusl3_x_sc_0_vout                               -> Net_231
-  abusl3                                           -> Net_231
-  abusl3_x_opamp_2_vplus                           -> Net_231
+  sc_2_vout                                        -> Net_231
+  abusl2_x_sc_2_vout                               -> Net_231
+  abusl2                                           -> Net_231
+  abusl2_x_opamp_2_vplus                           -> Net_231
   opamp_2_vplus                                    -> Net_231
   sc_1_vout                                        -> Net_259
-  agr5_x_sc_1_vout                                 -> Net_259
-  agr5                                             -> Net_259
-  agr5_x_opamp_3_vplus                             -> Net_259
+  agr7_x_sc_1_vout                                 -> Net_259
+  agr7                                             -> Net_259
+  agr7_x_opamp_3_vplus                             -> Net_259
   opamp_3_vplus                                    -> Net_259
   sc_1_vin                                         -> Net_155
   agr6_x_sc_1_vin                                  -> Net_155
@@ -3224,8 +3708,8 @@ Map of item to net {
   opamp_1_vminus                                   -> Net_155
   agr6_x_p3_6                                      -> Net_155
   p3_6                                             -> Net_155
-  sc_0_vin                                         -> Net_6577
-  agl6_x_sc_0_vin                                  -> Net_6577
+  sc_2_vin                                         -> Net_6577
+  agl6_x_sc_2_vin                                  -> Net_6577
   agl6                                             -> Net_6577
   agl6_x_opamp_0_vminus                            -> Net_6577
   opamp_0_vminus                                   -> Net_6577
@@ -3244,58 +3728,39 @@ Map of item to net {
   sar_0_vref                                       -> \SAR1:Net_235\
   p0_2                                             -> \SAR2:Net_210\
   p0_2_exvref                                      -> \SAR2:Net_210\
-  dsm_0_vplus                                      -> Net_7968
-  dsm_0_vminus                                     -> Net_7969
-  agl3_x_dsm_0_vplus                               -> AmuxNet::AMux_DelSig_CYAMUXSIDE_A
-  agl3                                             -> AmuxNet::AMux_DelSig_CYAMUXSIDE_A
-  agl3_x_agr3                                      -> AmuxNet::AMux_DelSig_CYAMUXSIDE_A
-  agl3_x_sar_0_vplus                               -> AmuxNet::AMux_DelSig_CYAMUXSIDE_A
-  abusl1_x_dsm_0_vminus                            -> AmuxNet::AMux_DelSig_CYAMUXSIDE_B
-  abusl1                                           -> AmuxNet::AMux_DelSig_CYAMUXSIDE_B
-  abusl1_x_abusr1                                  -> AmuxNet::AMux_DelSig_CYAMUXSIDE_B
-  abusr1                                           -> AmuxNet::AMux_DelSig_CYAMUXSIDE_B
-  abusr1_x_sar_1_vminus                            -> AmuxNet::AMux_DelSig_CYAMUXSIDE_B
-  abusl1_x_sar_0_vminus                            -> AmuxNet::AMux_DelSig_CYAMUXSIDE_B
+  dsm_0_vplus                                      -> Net_8099
+  dsm_0_vminus                                     -> Net_8100
 }
 Mux Info {
   Mux: AMux_DelSig_CYAMUXSIDE_A {
-     Mouth: Net_7968
+     Mouth: Net_8099
      Guts:  AmuxNet::AMux_DelSig_CYAMUXSIDE_A
      IsSingleSwitching: False
      IsStaticSwitching: True
      IsAtMostOneSwitch: False
     Arm: 0 {
       Net:   Net_61
-      Outer: agl3_x_sar_0_vplus
+      Outer: __open__
       Inner: __open__
       Path {
-        sar_0_vplus
-        agl3_x_sar_0_vplus
-        agl3
-        agl3_x_dsm_0_vplus
-        dsm_0_vplus
       }
     }
     Arm: 1 {
-      Net:   Net_55
-      Outer: agl3_x_agr3
+      Net:   Net_8175
+      Outer: __open__
       Inner: __open__
       Path {
-        agl3_x_agr3
-        agl3
-        agl3_x_dsm_0_vplus
-        dsm_0_vplus
       }
     }
     Arm: 2 {
-      Net:   Net_7964
+      Net:   Net_8095
       Outer: __open__
       Inner: __open__
       Path {
       }
     }
     Arm: 3 {
-      Net:   Net_7966
+      Net:   Net_8097
       Outer: __open__
       Inner: __open__
       Path {
@@ -3303,46 +3768,34 @@ Mux Info {
     }
   }
   Mux: AMux_DelSig_CYAMUXSIDE_B {
-     Mouth: Net_7969
+     Mouth: Net_8100
      Guts:  AmuxNet::AMux_DelSig_CYAMUXSIDE_B
      IsSingleSwitching: False
      IsStaticSwitching: True
      IsAtMostOneSwitch: False
     Arm: 0 {
       Net:   Net_62
-      Outer: abusl1_x_sar_0_vminus
+      Outer: __open__
       Inner: __open__
       Path {
-        sar_0_vminus
-        abusl1_x_sar_0_vminus
-        abusl1
-        abusl1_x_dsm_0_vminus
-        dsm_0_vminus
       }
     }
     Arm: 1 {
-      Net:   Net_6630
-      Outer: abusr1_x_sar_1_vminus
-      Inner: abusl1_x_abusr1
+      Net:   Net_8176
+      Outer: __open__
+      Inner: __open__
       Path {
-        sar_1_vminus
-        abusr1_x_sar_1_vminus
-        abusr1
-        abusl1_x_abusr1
-        abusl1
-        abusl1_x_dsm_0_vminus
-        dsm_0_vminus
       }
     }
     Arm: 2 {
-      Net:   Net_7965
+      Net:   Net_8096
       Outer: __open__
       Inner: __open__
       Path {
       }
     }
     Arm: 3 {
-      Net:   Net_7967
+      Net:   Net_8098
       Outer: __open__
       Inner: __open__
       Path {
@@ -3354,11 +3807,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = True
 IsVddaHalfUsedForSar0 = True
 IsVddaHalfUsedForSar1 = True
-Analog Code Generation phase: Elapsed time ==> 0s.541ms
+Analog Code Generation phase: Elapsed time ==> 0s.637ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 1.2 sec.
+I2076: Total run-time: 2.0 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -3369,33 +3822,33 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   10 :   38 :   48 :  20.83%
+                     PLDs :   21 :   27 :   48 :  43.75%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            3.30
-                   Pterms :            2.00
-               Macrocells :            1.80
+                   Inputs :            5.62
+                   Pterms :            2.33
+               Macrocells :            1.62
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.002ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.272ms
+Partitioning: Elapsed time ==> 0s.364ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
 Annealing: Elapsed time ==> 0s.002ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 423, final cost is 423 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 654, final cost is 654 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -3405,20 +3858,18 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :          6 :       4.17 :       3.00
+                 UDB :         11 :       6.55 :       3.09
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
 ------------------------------------------------------------
 Component Placement Details
 ------------------------------------------------------------
-UDB [UDB=(0,0)] is empty.
-UDB [UDB=(0,1)] is empty.
-UDB [UDB=(0,2)] is empty.
-UDB [UDB=(0,3)] contents:
-LAB@[UDB=(0,3)][LB=0] #macrocells=2, #inputs=2, #pterms=1
+UDB [UDB=(0,0)] contents:
+LAB@[UDB=(0,0)][LB=0] #macrocells=1, #inputs=0, #pterms=0
 {
-    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=1]
         Total # of inputs        : 0
         Total # of product terms : 0
             Clock Enable: True
@@ -3431,108 +3882,28 @@ LAB@[UDB=(0,3)][LB=0] #macrocells=2, #inputs=2, #pterms=1
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\SPIS:BSPIS:rx_buf_overrun\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SPIS:BSPIS:mosi_buf_overrun_reg\ * 
-              !\SPIS:BSPIS:mosi_buf_overrun_fin\
-        );
-        Output = \SPIS:BSPIS:rx_buf_overrun\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,3)][LB=1] #macrocells=1, #inputs=1, #pterms=1
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIS:BSPIS:mosi_buf_overrun_fin\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SPIS:BSPIS:mosi_buf_overrun_reg\
-        );
-        Output = \SPIS:BSPIS:mosi_buf_overrun_fin\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
-synccell: Name =\SPIS:BSPIS:sync_1\
-    PORT MAP (
-        clock => \SPIS:Net_81\ ,
-        in => \SPIS:BSPIS:tx_load\ ,
-        out => \SPIS:BSPIS:dpcounter_one_fin\ );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\SPIS:BSPIS:sync_2\
-    PORT MAP (
-        clock => \SPIS:Net_81\ ,
-        in => \SPIS:BSPIS:dpMISO_fifo_empty\ ,
-        out => \SPIS:BSPIS:miso_tx_empty_reg_fin\ );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\SPIS:BSPIS:sync_3\
-    PORT MAP (
-        clock => \SPIS:Net_81\ ,
-        in => \SPIS:BSPIS:mosi_buf_overrun\ ,
-        out => \SPIS:BSPIS:mosi_buf_overrun_reg\ );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\SPIS:BSPIS:sync_4\
-    PORT MAP (
-        clock => \SPIS:Net_81\ ,
-        in => \SPIS:BSPIS:dpMOSI_fifo_full\ ,
-        out => \SPIS:BSPIS:dpMOSI_fifo_full_reg\ );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(0,4)] contents:
-LAB@[UDB=(0,4)][LB=0] #macrocells=2, #inputs=7, #pterms=2
+UDB [UDB=(0,1)] is empty.
+UDB [UDB=(0,2)] contents:
+LAB@[UDB=(0,2)][LB=0] #macrocells=2, #inputs=6, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\SPIS:BSPIS:byte_complete\, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=0]
-        Total # of inputs        : 2
+    [McSlotId=0]:     MacroCell: Name=Net_1821, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=0]
+        Total # of inputs        : 1
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SPIS:BSPIS:dpcounter_one_fin\ * 
-              !\SPIS:BSPIS:dpcounter_one_reg\
+              !Net_74
         );
-        Output = \SPIS:BSPIS:byte_complete\ (fanout=1)
+        Output = Net_1821 (fanout=4)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIS:BSPIS:mosi_buf_overrun\, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:mosi_buf_overrun\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=1]
         Total # of inputs        : 5
         Total # of product terms : 1
             Clock Enable: True
@@ -3547,12 +3918,14 @@ LAB@[UDB=(0,4)][LB=0] #macrocells=2, #inputs=7, #pterms=2
         {
         }
 
+    [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(0,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+LAB@[UDB=(0,2)][LB=1] #macrocells=2, #inputs=5, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\SPIS:BSPIS:tx_load\, Mode=(Combinatorial) @ [UDB=(0,4)][LB=1][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:tx_load\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=1]
         Total # of inputs        : 4
         Total # of product terms : 1
             Clock Enable: True
@@ -3566,40 +3939,50 @@ LAB@[UDB=(0,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:dpcounter_one_reg\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=1]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\SPIS:BSPIS:mosi_tmp\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
+            Clock  = (Net_17)
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SPIS:BSPIS:dpcounter_one_fin\
+              Net_16
         );
-        Output = \SPIS:BSPIS:dpcounter_one_reg\ (fanout=2)
+        Output = \SPIS:BSPIS:mosi_tmp\ (fanout=1)
         Properties               : 
         {
         }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
 }
 
-synccell: Name =I2C_Pins(1)_SYNC
+count7cell: Name =\SPIS:BSPIS:BitCounter\
     PORT MAP (
-        in => \I2C:Net_181\ ,
-        out => \I2C:Net_181_SYNCOUT\ ,
-        clock => ClockBlock_BUS_CLK );
+        clock => Net_17 ,
+        reset => Net_74 ,
+        enable => Net_1821 ,
+        count_6 => \SPIS:BSPIS:count_6\ ,
+        count_5 => \SPIS:BSPIS:count_5\ ,
+        count_4 => \SPIS:BSPIS:count_4\ ,
+        count_3 => \SPIS:BSPIS:count_3\ ,
+        count_2 => \SPIS:BSPIS:count_2\ ,
+        count_1 => \SPIS:BSPIS:count_1\ ,
+        count_0 => \SPIS:BSPIS:count_0\ );
     Properties:
     {
+        cy_alt_mode = 0
+        cy_init_value = "0000000"
+        cy_period = "0000111"
+        cy_route_en = 1
+        cy_route_ld = 0
     }
-    Clock Polarity: Active High
+    Clock Polarity: Active Low
     Clock Enable: True
 
-UDB [UDB=(0,5)] contents:
-LAB@[UDB=(0,5)][LB=0] #macrocells=3, #inputs=8, #pterms=7
+UDB [UDB=(0,3)] contents:
+LAB@[UDB=(0,3)][LB=0] #macrocells=1, #inputs=6, #pterms=5
 {
-    [McSlotId=0]:     MacroCell: Name=\SPIS:BSPIS:mosi_to_dp\, Mode=(Combinatorial) @ [UDB=(0,5)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\SPIS:BSPIS:mosi_to_dp\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=0]
         Total # of inputs        : 6
         Total # of product terms : 5
             Clock Enable: True
@@ -3617,23 +4000,17 @@ LAB@[UDB=(0,5)][LB=0] #macrocells=3, #inputs=8, #pterms=7
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:mosi_tmp\, Mode=(D-Register) @ [UDB=(0,5)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_17)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_16
-        );
-        Output = \SPIS:BSPIS:mosi_tmp\ (fanout=1)
-        Properties               : 
-        {
-        }
-
+    [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=Net_20, Mode=(Combinatorial) @ [UDB=(0,5)][LB=0][MC=3]
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,3)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=Net_20, Mode=(Combinatorial) @ [UDB=(0,3)][LB=1][MC=3]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -3642,25 +4019,6 @@ LAB@[UDB=(0,5)][LB=0] #macrocells=3, #inputs=8, #pterms=7
               !Net_74 * \SPIS:BSPIS:miso_from_dp\
         );
         Output = Net_20 (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,5)][LB=1] #macrocells=1, #inputs=1, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=Net_1821, Mode=(Combinatorial) @ [UDB=(0,5)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !Net_74
-        );
-        Output = Net_1821 (fanout=4)
         Properties               : 
         {
         }
@@ -3705,36 +4063,116 @@ datapathcell: Name =\SPIS:BSPIS:sR8:Dp:u0\
     Clock Polarity: Active Low
     Clock Enable: True
 
-count7cell: Name =\SPIS:BSPIS:BitCounter\
+synccell: Name =\SPIS:BSPIS:sync_1\
     PORT MAP (
-        clock => Net_17 ,
-        reset => Net_74 ,
-        enable => Net_1821 ,
-        count_6 => \SPIS:BSPIS:count_6\ ,
-        count_5 => \SPIS:BSPIS:count_5\ ,
-        count_4 => \SPIS:BSPIS:count_4\ ,
-        count_3 => \SPIS:BSPIS:count_3\ ,
-        count_2 => \SPIS:BSPIS:count_2\ ,
-        count_1 => \SPIS:BSPIS:count_1\ ,
-        count_0 => \SPIS:BSPIS:count_0\ );
+        clock => \SPIS:Net_81\ ,
+        in => \SPIS:BSPIS:tx_load\ ,
+        out => \SPIS:BSPIS:dpcounter_one_fin\ );
     Properties:
     {
-        cy_alt_mode = 0
-        cy_init_value = "0000000"
-        cy_period = "0000111"
-        cy_route_en = 1
-        cy_route_ld = 0
     }
-    Clock Polarity: Active Low
+    Clock Polarity: Active High
     Clock Enable: True
 
+synccell: Name =\SPIS:BSPIS:sync_4\
+    PORT MAP (
+        clock => \SPIS:Net_81\ ,
+        in => \SPIS:BSPIS:dpMOSI_fifo_full\ ,
+        out => \SPIS:BSPIS:dpMOSI_fifo_full_reg\ );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(0,4)] is empty.
+UDB [UDB=(0,5)] is empty.
 UDB [UDB=(1,0)] is empty.
 UDB [UDB=(1,1)] is empty.
-UDB [UDB=(1,2)] is empty.
-UDB [UDB=(1,3)] contents:
-LAB@[UDB=(1,3)][LB=0] #macrocells=1, #inputs=2, #pterms=1
+UDB [UDB=(1,2)] contents:
+LAB@[UDB=(1,2)][LB=0] #macrocells=1, #inputs=2, #pterms=1
 {
-    [McSlotId=0]:     MacroCell: Name=\ShiftBy1_1:Datapath_1_select_0\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\SPIS:BSPIS:rx_buf_overrun\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIS:BSPIS:mosi_buf_overrun_reg\ * 
+              !\SPIS:BSPIS:mosi_buf_overrun_fin\
+        );
+        Output = \SPIS:BSPIS:rx_buf_overrun\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,2)][LB=1] #macrocells=2, #inputs=2, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:mosi_buf_overrun_fin\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\SPIS:Net_81\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIS:BSPIS:mosi_buf_overrun_reg\
+        );
+        Output = \SPIS:BSPIS:mosi_buf_overrun_fin\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIS:BSPIS:dpcounter_one_reg\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\SPIS:Net_81\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIS:BSPIS:dpcounter_one_fin\
+        );
+        Output = \SPIS:BSPIS:dpcounter_one_reg\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+synccell: Name =\SPIS:BSPIS:sync_2\
+    PORT MAP (
+        clock => \SPIS:Net_81\ ,
+        in => \SPIS:BSPIS:dpMISO_fifo_empty\ ,
+        out => \SPIS:BSPIS:miso_tx_empty_reg_fin\ );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =\SPIS:BSPIS:sync_3\
+    PORT MAP (
+        clock => \SPIS:Net_81\ ,
+        in => \SPIS:BSPIS:mosi_buf_overrun\ ,
+        out => \SPIS:BSPIS:mosi_buf_overrun_reg\ );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,3)] contents:
+LAB@[UDB=(1,3)][LB=0] #macrocells=2, #inputs=3, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ShiftBy1_1:Datapath_1_select_0\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -3749,17 +4187,24 @@ LAB@[UDB=(1,3)][LB=0] #macrocells=1, #inputs=2, #pterms=1
         {
         }
 
-    [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\SPIS:BSPIS:rx_status_4\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\SPIS:BSPIS:dpMOSI_fifo_not_empty\
+        );
+        Output = \SPIS:BSPIS:rx_status_4\ (fanout=1)
+        Properties               : 
+        {
+        }
 }
 
 LAB@[UDB=(1,3)][LB=1] #macrocells=1, #inputs=1, #pterms=1
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=Net_8011, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=3]
+    [McSlotId=0]:     MacroCell: Name=Net_8132, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -3769,10 +4214,14 @@ LAB@[UDB=(1,3)][LB=1] #macrocells=1, #inputs=1, #pterms=1
         (
               \ShiftBy1_1:Datapath_1_select_0\
         );
-        Output = Net_8011 (fanout=1)
+        Output = Net_8132 (fanout=1)
         Properties               : 
         {
         }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
 }
 
 datapathcell: Name =\ShiftBy1_1:Datapath_1:u0\
@@ -3823,72 +4272,240 @@ statusicell: Name =\SPIS:BSPIS:RxStsReg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,4)] contents:
-LAB@[UDB=(1,4)][LB=0] #macrocells=4, #inputs=3, #pterms=3
+UDB [UDB=(1,4)] is empty.
+UDB [UDB=(1,5)] is empty.
+UDB [UDB=(2,0)] contents:
+LAB@[UDB=(2,0)][LB=0] #macrocells=1, #inputs=3, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=Net_7992, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
+    [McSlotId=0]:     MacroCell: Name=Net_8031, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
         List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: PosEdge(Net_7906)
-        Main Equation            : 1 pterm
-        !(
-              \FreqDiv_1:not_last_reset\ * !\FreqDiv_1:count_0\
-        );
-        Output = Net_7992 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\FreqDiv_1:count_0\, Mode=(T-Register) @ [UDB=(1,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: PosEdge(Net_7906)
-        Main Equation            : 1 pterm
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
         (
-              \FreqDiv_1:not_last_reset\
+              Net_8031 * \ShiftBy2_2:DP_select_1\
+            + !\ShiftBy2_2:DP_select_0\ * \ShiftBy2_2:DP_select_1\
         );
-        Output = \FreqDiv_1:count_0\ (fanout=1)
+        Output = Net_8031 (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\FreqDiv_1:not_last_reset\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=2]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-        List of special equations: 
-            Clock  = (\SPIS:Net_81\) => Global
-            Clock Enable: PosEdge(Net_7906)
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = \FreqDiv_1:not_last_reset\ (fanout=2)
-        Properties               : 
-        {
-        }
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
 
-    [McSlotId=3]:     MacroCell: Name=\SPIS:BSPIS:rx_status_4\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=3]
-        Total # of inputs        : 1
+LAB@[UDB=(2,0)][LB=1] #macrocells=3, #inputs=4, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ShiftBy2_1:DP_select_0\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=0]
+        Total # of inputs        : 3
         Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\SPIS:BSPIS:dpMOSI_fifo_not_empty\
+              !\ShiftBy2_1:DP_select_0\ * !\ShiftBy2_1:DP_select_1\ * 
+              Net_8027
         );
-        Output = \SPIS:BSPIS:rx_status_4\ (fanout=1)
+        Output = \ShiftBy2_1:DP_select_0\ (fanout=5)
         Properties               : 
         {
         }
+
+    [McSlotId=1]:     MacroCell: Name=\ShiftBy2_1:DP_select_1\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ShiftBy2_1:DP_select_0\ * !\ShiftBy2_1:DP_select_1\
+        );
+        Output = \ShiftBy2_1:DP_select_1\ (fanout=5)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_8028, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_8028 * \ShiftBy2_1:DP_select_1\
+            + !\ShiftBy2_1:DP_select_0\ * \ShiftBy2_1:DP_select_1\
+        );
+        Output = Net_8028 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(1,4)][LB=1] #macrocells=1, #inputs=3, #pterms=1
+datapathcell: Name =\ShiftBy2_1:DP:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \ShiftBy2_1:DP_select_1\ ,
+        cs_addr_0 => \ShiftBy2_1:DP_select_0\ ,
+        chain_out => \ShiftBy2_1:DP:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111111111111001000000000110000000000000000000001000000000000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \ShiftBy2_1:DP:u1\
+
+UDB [UDB=(2,1)] contents:
+LAB@[UDB=(2,1)][LB=0] #macrocells=1, #inputs=3, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\ShiftBy2_2:DP_select_0\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\ShiftBy2_2:DP_select_0\ * !\ShiftBy2_2:DP_select_1\ * 
+              Net_8030
+        );
+        Output = \ShiftBy2_2:DP_select_0\ (fanout=5)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,1)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\ShiftBy2_2:DP_select_1\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ShiftBy2_2:DP_select_0\ * !\ShiftBy2_2:DP_select_1\
+        );
+        Output = \ShiftBy2_2:DP_select_1\ (fanout=5)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\ShiftBy2_2:DP:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \ShiftBy2_2:DP_select_1\ ,
+        cs_addr_0 => \ShiftBy2_2:DP_select_0\ ,
+        chain_in => \ShiftBy2_2:DP:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011110000001100000000111111110001000000000000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \ShiftBy2_2:DP:u0\
+
+synccell: Name =I2C_Pins(1)_SYNC
+    PORT MAP (
+        in => \I2C:Net_181\ ,
+        out => \I2C:Net_181_SYNCOUT\ ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =I2C_Pins(0)_SYNC
+    PORT MAP (
+        in => \I2C:Net_175\ ,
+        out => \I2C:Net_175_SYNCOUT\ ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=3, #inputs=5, #pterms=2
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:tx_status_0\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\FreqDiv_1:count_1\, Mode=(T-Register) @ [UDB=(2,2)][LB=0][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_1\ (fanout=10)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIS:BSPIS:tx_status_0\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=2]
         Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
@@ -3903,7 +4520,55 @@ LAB@[UDB=(1,4)][LB=1] #macrocells=1, #inputs=3, #pterms=1
         {
         }
 
-    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\FreqDiv_1:not_last_reset\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=3]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = \FreqDiv_1:not_last_reset\ (fanout=11)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,2)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\SPIS:BSPIS:byte_complete\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIS:BSPIS:dpcounter_one_fin\ * 
+              !\SPIS:BSPIS:dpcounter_one_reg\
+        );
+        Output = \SPIS:BSPIS:byte_complete\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\FreqDiv_1:count_2\, Mode=(T-Register) @ [UDB=(2,2)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_1\ * 
+              \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_2\ (fanout=9)
+        Properties               : 
+        {
+        }
+
     [McSlotId=3]: (empty)
 }
 
@@ -3923,35 +4588,323 @@ statusicell: Name =\SPIS:BSPIS:TxStsReg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,5)] contents:
-synccell: Name =I2C_Pins(0)_SYNC
-    PORT MAP (
-        in => \I2C:Net_175\ ,
-        out => \I2C:Net_175_SYNCOUT\ ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,0)] is empty.
-UDB [UDB=(2,1)] is empty.
-UDB [UDB=(2,2)] is empty.
 UDB [UDB=(2,3)] is empty.
 UDB [UDB=(2,4)] is empty.
 UDB [UDB=(2,5)] is empty.
-UDB [UDB=(3,0)] is empty.
-UDB [UDB=(3,1)] is empty.
-UDB [UDB=(3,2)] is empty.
+UDB [UDB=(3,0)] contents:
+LAB@[UDB=(3,0)][LB=0] #macrocells=1, #inputs=11, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\FreqDiv_1:count_7\, Mode=(T-Register) @ [UDB=(3,0)][LB=0][MC=0]
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * \FreqDiv_1:count_4\ * \FreqDiv_1:count_3\ * 
+              \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_7\ (fanout=8)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,0)][LB=1] #macrocells=1, #inputs=12, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=Net_8220, Mode=(T-Register) @ [UDB=(3,0)][LB=1][MC=0]
+        Total # of inputs        : 12
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\FreqDiv_1:not_last_reset\ * !Net_8220
+            + \FreqDiv_1:not_last_reset\ * Net_8220 * !\FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * \FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * !\FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + !Net_8220 * \FreqDiv_1:count_9\ * \FreqDiv_1:count_8\ * 
+              \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * \FreqDiv_1:count_5\ * 
+              !\FreqDiv_1:count_4\ * !\FreqDiv_1:count_3\ * 
+              \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = Net_8220 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\ShiftBy2_1:DP:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \ShiftBy2_1:DP_select_1\ ,
+        cs_addr_0 => \ShiftBy2_1:DP_select_0\ ,
+        chain_in => \ShiftBy2_1:DP:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011110000001100000000111111110001000000000000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \ShiftBy2_1:DP:u0\
+
+UDB [UDB=(3,1)] contents:
+LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=12, #pterms=8
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\FreqDiv_1:count_9\, Mode=(T-Register) @ [UDB=(3,1)][LB=0][MC=1]
+        Total # of inputs        : 12
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_8\ * 
+              \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+        );
+        Output = \FreqDiv_1:count_9\ (fanout=7)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\FreqDiv_1:count_3\, Mode=(T-Register) @ [UDB=(3,1)][LB=0][MC=2]
+        Total # of inputs        : 11
+        Total # of product terms : 5
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 5 pterms
+        !(
+              !\FreqDiv_1:not_last_reset\
+            + \FreqDiv_1:count_9\ * \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * 
+              \FreqDiv_1:count_6\ * \FreqDiv_1:count_5\ * 
+              !\FreqDiv_1:count_4\ * !\FreqDiv_1:count_3\
+            + !\FreqDiv_1:count_2\
+            + !\FreqDiv_1:count_1\
+            + !\FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_3\ (fanout=9)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\FreqDiv_1:count_0\, Mode=(T-Register) @ [UDB=(3,1)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:not_last_reset\
+        );
+        Output = \FreqDiv_1:count_0\ (fanout=11)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,1)][LB=1] #macrocells=3, #inputs=12, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=0]
+        Total # of inputs        : 8
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * \FreqDiv_1:count_5\ * 
+              \FreqDiv_1:count_4\ * \FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\FreqDiv_1:count_8\, Mode=(T-Register) @ [UDB=(3,1)][LB=1][MC=2]
+        Total # of inputs        : 12
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * 
+              \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+        );
+        Output = \FreqDiv_1:count_8\ (fanout=7)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\FreqDiv_1:count_4\, Mode=(T-Register) @ [UDB=(3,1)][LB=1][MC=3]
+        Total # of inputs        : 5
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_3\ * 
+              \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_4\ (fanout=8)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\ShiftBy2_2:DP:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \ShiftBy2_2:DP_select_1\ ,
+        cs_addr_0 => \ShiftBy2_2:DP_select_0\ ,
+        chain_out => \ShiftBy2_2:DP:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000000000000000000010001000000010001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111111111111001000000000110000000000000000000001000000000000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \ShiftBy2_2:DP:u1\
+
+UDB [UDB=(3,2)] contents:
+LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=11, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\FreqDiv_1:count_6\, Mode=(T-Register) @ [UDB=(3,2)][LB=0][MC=2]
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_5\ * 
+              \FreqDiv_1:count_4\ * \FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_6\ (fanout=8)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=11, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\FreqDiv_1:count_5\, Mode=(T-Register) @ [UDB=(3,2)][LB=1][MC=1]
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_6689)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_9\ * 
+              \FreqDiv_1:count_8\ * \FreqDiv_1:count_7\ * \FreqDiv_1:count_6\ * 
+              \FreqDiv_1:count_5\ * !\FreqDiv_1:count_4\ * 
+              !\FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * 
+              \FreqDiv_1:count_1\ * \FreqDiv_1:count_0\
+            + \FreqDiv_1:not_last_reset\ * \FreqDiv_1:count_4\ * 
+              \FreqDiv_1:count_3\ * \FreqDiv_1:count_2\ * \FreqDiv_1:count_1\ * 
+              \FreqDiv_1:count_0\
+        );
+        Output = \FreqDiv_1:count_5\ (fanout=8)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
 UDB [UDB=(3,3)] is empty.
 UDB [UDB=(3,4)] is empty.
 UDB [UDB=(3,5)] is empty.
 Intr container @ [IntrContainer=(0)]: 
   Intr@ [IntrContainer=(0)][IntrId=(0)] 
-    interrupt: Name =isr_shift_sar1
+    interrupt: Name =isr_shift1
         PORT MAP (
-            interrupt => Net_7972 );
+            interrupt => Net_8121 );
         Properties:
         {
             int_type = "10"
@@ -3967,7 +4920,7 @@ Intr container @ [IntrContainer=(0)]:
   Intr@ [IntrContainer=(0)][IntrId=(2)] 
     interrupt: Name =\SAR2:IRQ\
         PORT MAP (
-            interrupt => Net_119 );
+            interrupt => Net_8212 );
         Properties:
         {
             int_type = "10"
@@ -3997,22 +4950,6 @@ Intr container @ [IntrContainer=(0)]:
             int_type = "10"
         }
   Intr@ [IntrContainer=(0)][IntrId=(6)] 
-    interrupt: Name =isr_shift1
-        PORT MAP (
-            interrupt => Net_8012 );
-        Properties:
-        {
-            int_type = "10"
-        }
-  Intr@ [IntrContainer=(0)][IntrId=(7)] 
-    interrupt: Name =isr_shift_sar2
-        PORT MAP (
-            interrupt => Net_7971 );
-        Properties:
-        {
-            int_type = "10"
-        }
-  Intr@ [IntrContainer=(0)][IntrId=(8)] 
     interrupt: Name =isr_spi_rx
         PORT MAP (
             interrupt => Net_7955 );
@@ -4063,46 +5000,24 @@ Intr container @ [IntrContainer=(0)]:
   Intr@ [IntrContainer=(0)][IntrId=(29)] 
     interrupt: Name =\DelSig:IRQ\
         PORT MAP (
-            interrupt => Net_7987 );
+            interrupt => Net_8117 );
         Properties:
         {
             int_type = "10"
         }
 Drq container @ [DrqContainer=(0)]: 
   Dma@ [DrqContainer=(0)][DrqId=(0)] 
-    drqcell: Name =SAR2RAM1
+    drqcell: Name =SHIFT2RAM
         PORT MAP (
-            dmareq => Net_124 ,
+            dmareq => Net_8132 ,
             termin => zero ,
-            termout => Net_7972 );
+            termout => Net_8121 );
         Properties:
         {
             drq_type = "10"
             num_tds = 0
         }
   Dma@ [DrqContainer=(0)][DrqId=(1)] 
-    drqcell: Name =SAR2RAM2
-        PORT MAP (
-            dmareq => Net_119 ,
-            termin => zero ,
-            termout => Net_7971 );
-        Properties:
-        {
-            drq_type = "10"
-            num_tds = 0
-        }
-  Dma@ [DrqContainer=(0)][DrqId=(2)] 
-    drqcell: Name =SHIFT2RAM
-        PORT MAP (
-            dmareq => Net_8011 ,
-            termin => zero ,
-            termout => Net_8012 );
-        Properties:
-        {
-            drq_type = "10"
-            num_tds = 0
-        }
-  Dma@ [DrqContainer=(0)][DrqId=(3)] 
     drqcell: Name =SPI2RAM
         PORT MAP (
             dmareq => Net_7906 ,
@@ -4113,45 +5028,67 @@ Drq container @ [DrqContainer=(0)]:
             drq_type = "10"
             num_tds = 0
         }
-  Dma@ [DrqContainer=(0)][DrqId=(4)] 
-    drqcell: Name =RAM2FILTER1
+  Dma@ [DrqContainer=(0)][DrqId=(2)] 
+    drqcell: Name =SAR2FILTER1
         PORT MAP (
-            dmareq => zero ,
+            dmareq => Net_124 ,
             termin => zero ,
-            termout => Net_7985 );
+            termout => Net_8106 );
+        Properties:
+        {
+            drq_type = "10"
+            num_tds = 0
+        }
+  Dma@ [DrqContainer=(0)][DrqId=(3)] 
+    drqcell: Name =SAR2FILTER2
+        PORT MAP (
+            dmareq => Net_8212 ,
+            termin => zero ,
+            termout => Net_8108 );
+        Properties:
+        {
+            drq_type = "10"
+            num_tds = 0
+        }
+  Dma@ [DrqContainer=(0)][DrqId=(4)] 
+    drqcell: Name =SAR2SHIFT1
+        PORT MAP (
+            dmareq => Net_124 ,
+            termin => zero ,
+            termout => Net_8027 );
         Properties:
         {
             drq_type = "10"
             num_tds = 0
         }
   Dma@ [DrqContainer=(0)][DrqId=(5)] 
-    drqcell: Name =RAM2FILTER2
+    drqcell: Name =SAR2SHIFT2
         PORT MAP (
-            dmareq => zero ,
+            dmareq => Net_8212 ,
             termin => zero ,
-            termout => Net_7982 );
+            termout => Net_8030 );
         Properties:
         {
             drq_type = "10"
             num_tds = 0
         }
   Dma@ [DrqContainer=(0)][DrqId=(6)] 
-    drqcell: Name =SAR2FILTER1
+    drqcell: Name =SHIFT2FILTER1
         PORT MAP (
-            dmareq => Net_124 ,
+            dmareq => Net_8028 ,
             termin => zero ,
-            termout => Net_7974 );
+            termout => Net_8142 );
         Properties:
         {
             drq_type = "10"
             num_tds = 0
         }
   Dma@ [DrqContainer=(0)][DrqId=(7)] 
-    drqcell: Name =SAR2FILTER2
+    drqcell: Name =SHIFT2FILTER2
         PORT MAP (
-            dmareq => Net_119 ,
+            dmareq => Net_8031 ,
             termin => zero ,
-            termout => Net_7976 );
+            termout => Net_8147 );
         Properties:
         {
             drq_type = "10"
@@ -4160,7 +5097,7 @@ Drq container @ [DrqContainer=(0)]:
   Dma@ [DrqContainer=(0)][DrqId=(8)] 
     drqcell: Name =FILTER2RAM1
         PORT MAP (
-            dmareq => Net_7051 ,
+            dmareq => Net_8232 ,
             termin => zero ,
             termout => Net_6689 );
         Properties:
@@ -4226,7 +5163,7 @@ Pin : Name = Pin_LED_AMPA(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Pin_LED_AMPA(0)__PA ,
-        analog_term => Net_7962 ,
+        analog_term => Net_8093 ,
         pad => Pin_LED_AMPA(0)_PAD );
     Properties:
     {
@@ -4636,7 +5573,7 @@ Pin : Name = Pin_TIA4(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Pin_TIA4(0)__PA ,
-        analog_term => Net_6630 ,
+        analog_term => Net_8170 ,
         pad => Pin_TIA4(0)_PAD );
     Properties:
     {
@@ -4677,7 +5614,7 @@ Pin : Name = Pin_TIA3(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Pin_TIA3(0)__PA ,
-        analog_term => Net_55 ,
+        analog_term => Net_6630 ,
         pad => Pin_TIA3(0)_PAD );
     Properties:
     {
@@ -4719,7 +5656,7 @@ Pin : Name = Pin_TIA1(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Pin_TIA1(0)__PA ,
-        analog_term => Net_61 ,
+        analog_term => Net_8166 ,
         pad => Pin_TIA1(0)_PAD );
     Properties:
     {
@@ -4760,7 +5697,7 @@ Pin : Name = Pin_TIA2(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Pin_TIA2(0)__PA ,
-        analog_term => Net_62 ,
+        analog_term => Net_8177 ,
         pad => Pin_TIA2(0)_PAD );
     Properties:
     {
@@ -4967,7 +5904,7 @@ Pin : Name = Pin_test1(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Pin_test1(0)__PA ,
-        input => Net_7992 ,
+        input => Net_8220 ,
         pad => Pin_test1(0)_PAD );
     Properties:
     {
@@ -5536,9 +6473,9 @@ Digital Filter Block group 0:
         PORT MAP (
             out_1 => \Filter:Net_8\ ,
             out_2 => \Filter:Net_9\ ,
-            dmareq_1 => Net_7051 ,
+            dmareq_1 => Net_8232 ,
             dmareq_2 => Net_6690 ,
-            interrupt => Net_7977 );
+            interrupt => Net_8109 );
         Properties:
         {
             cy_registers = ""
@@ -5548,8 +6485,8 @@ Delta-Sigma ADC group 0:
     dsmodcell: Name =\DelSig:DSM\
         PORT MAP (
             aclock => \DelSig:Net_488\ ,
-            vplus => Net_7968 ,
-            vminus => Net_7969 ,
+            vplus => Net_8099 ,
+            vminus => Net_8100 ,
             reset_dec => \DelSig:mod_reset\ ,
             extclk_cp_udb => \DelSig:Net_93_local\ ,
             ext_pin_1 => \DelSig:Net_248\ ,
@@ -5585,7 +6522,7 @@ Decimator group 0:
             mod_dat_0 => \DelSig:mod_dat_0\ ,
             ext_start => __ONE__ ,
             modrst => \DelSig:mod_reset\ ,
-            interrupt => Net_7987 );
+            interrupt => Net_8117 );
         Properties:
         {
             cy_registers = ""
@@ -5609,17 +6546,6 @@ Segment LCD group 0: empty
 LVD group 0: empty
 PM group 0: empty
 Analog (SC/CT) Blocks group 0: 
-    SC Block @ F(SC,0): 
-    sccell: Name =\PGA_Inv_1:SC\
-        PORT MAP (
-            vref => Net_6576 ,
-            vin => Net_6577 ,
-            modout => \PGA_Inv_1:Net_30\ ,
-            vout => Net_231 );
-        Properties:
-        {
-            cy_registers = ""
-        }
     SC Block @ F(SC,1): 
     sccell: Name =\PGA_Inv_2:SC\
         PORT MAP (
@@ -5627,6 +6553,17 @@ Analog (SC/CT) Blocks group 0:
             vin => Net_155 ,
             modout => \PGA_Inv_2:Net_30\ ,
             vout => Net_259 );
+        Properties:
+        {
+            cy_registers = ""
+        }
+    SC Block @ F(SC,2): 
+    sccell: Name =\PGA_Inv_1:SC\
+        PORT MAP (
+            vref => Net_6576 ,
+            vin => Net_6577 ,
+            modout => \PGA_Inv_1:Net_30\ ,
+            vout => Net_231 );
         Properties:
         {
             cy_registers = ""
@@ -5759,8 +6696,8 @@ Opamp group 0:
     abufcell: Name =\Opamp_1:ABuf\
         PORT MAP (
             vplus => Net_231 ,
-            vminus => Net_7962 ,
-            vout => Net_7962 );
+            vminus => Net_8093 ,
+            vout => Net_8093 );
         Properties:
         {
             cy_registers = ""
@@ -5815,14 +6752,14 @@ SAR ADC group 0:
     SAR Block @ F(SAR,0): 
     sarcell: Name =\SAR1:ADC_SAR\
         PORT MAP (
-            vplus => Net_61 ,
-            vminus => Net_62 ,
+            vplus => Net_8166 ,
+            vminus => Net_8177 ,
             ext_pin => \SAR1:Net_210\ ,
             vrefhi_out => \SAR1:Net_255\ ,
             vref => \SAR1:Net_235\ ,
             clk_udb => \SAR1:Net_376_local\ ,
             irq => \SAR1:Net_252\ ,
-            next => Net_7997 ,
+            next => Net_8127 ,
             data_out_udb_11 => \SAR1:Net_207_11\ ,
             data_out_udb_10 => \SAR1:Net_207_10\ ,
             data_out_udb_9 => \SAR1:Net_207_9\ ,
@@ -5843,14 +6780,14 @@ SAR ADC group 0:
     SAR Block @ F(SAR,1): 
     sarcell: Name =\SAR2:ADC_SAR\
         PORT MAP (
-            vplus => Net_55 ,
-            vminus => Net_6630 ,
+            vplus => Net_6630 ,
+            vminus => Net_8170 ,
             ext_pin => \SAR2:Net_210\ ,
             vrefhi_out => \SAR2:Net_255\ ,
             vref => \SAR1:Net_235\ ,
             clk_udb => \SAR2:Net_376_local\ ,
             irq => \SAR2:Net_252\ ,
-            next => Net_8002 ,
+            next => Net_8131 ,
             data_out_udb_11 => \SAR2:Net_207_11\ ,
             data_out_udb_10 => \SAR2:Net_207_10\ ,
             data_out_udb_9 => \SAR2:Net_207_9\ ,
@@ -5863,7 +6800,7 @@ SAR ADC group 0:
             data_out_udb_2 => \SAR2:Net_207_2\ ,
             data_out_udb_1 => \SAR2:Net_207_1\ ,
             data_out_udb_0 => \SAR2:Net_207_0\ ,
-            eof_udb => Net_119 );
+            eof_udb => Net_8212 );
         Properties:
         {
             cy_registers = ""
@@ -5873,11 +6810,11 @@ Blocks not positioned by the digital component placer:
     Amux Block @ <No Location>: 
     amuxcell: Name =AMux_DelSig_CYAMUXSIDE_A
         PORT MAP (
-            muxin_3 => Net_7966 ,
-            muxin_2 => Net_7964 ,
-            muxin_1 => Net_55 ,
+            muxin_3 => Net_8097 ,
+            muxin_2 => Net_8095 ,
+            muxin_1 => Net_8175 ,
             muxin_0 => Net_61 ,
-            vout => Net_7968 );
+            vout => Net_8099 );
         Properties:
         {
             api_type = 0
@@ -5891,11 +6828,11 @@ Blocks not positioned by the digital component placer:
     Amux Block @ <No Location>: 
     amuxcell: Name =AMux_DelSig_CYAMUXSIDE_B
         PORT MAP (
-            muxin_3 => Net_7967 ,
-            muxin_2 => Net_7965 ,
-            muxin_1 => Net_6630 ,
+            muxin_3 => Net_8098 ,
+            muxin_2 => Net_8096 ,
+            muxin_1 => Net_8176 ,
             muxin_0 => Net_62 ,
-            vout => Net_7969 );
+            vout => Net_8100 );
         Properties:
         {
             api_type = 0
@@ -5915,7 +6852,7 @@ Port Configuration report
      |     |       | Interrupt |                  |                        | 
 Port | Pin | Fixed |      Type |       Drive Mode |                   Name | Connections
 -----+-----+-------+-----------+------------------+------------------------+-------------------------------------
-   0 |   0 |     * |      NONE |      HI_Z_ANALOG |        Pin_LED_AMPA(0) | Analog(Net_7962)
+   0 |   0 |     * |      NONE |      HI_Z_ANALOG |        Pin_LED_AMPA(0) | Analog(Net_8093)
      |   1 |       |      NONE |      HI_Z_ANALOG |       Dedicated_Output | Analog(Net_6577)
      |   2 |     * |      NONE |      HI_Z_ANALOG |       \SAR2:Bypass(0)\ | Analog(\SAR2:Net_210\)
      |   3 |     * |      NONE |      HI_Z_ANALOG | \DelSig:Bypass_P03(0)\ | Analog(\DelSig:Net_248\)
@@ -5926,17 +6863,17 @@ Port | Pin | Fixed |      Type |       Drive Mode |                   Name | Con
 -----+-----+-------+-----------+------------------+------------------------+-------------------------------------
    1 |   4 |     * |      NONE |      HI_Z_ANALOG |        Pin_VDDAdiv2(0) | Analog(Net_6576)
      |   5 |     * |      NONE |      HI_Z_ANALOG |          Pin_DACREF(0) | Analog(Net_224)
-     |   6 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA4(0) | Analog(Net_6630)
-     |   7 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA3(0) | Analog(Net_55)
+     |   6 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA4(0) | Analog(Net_8170)
+     |   7 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA3(0) | Analog(Net_6630)
 -----+-----+-------+-----------+------------------+------------------------+-------------------------------------
-   2 |   1 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA1(0) | Analog(Net_61)
-     |   2 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA2(0) | Analog(Net_62)
+   2 |   1 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA1(0) | Analog(Net_8166)
+     |   2 |     * |      NONE |      HI_Z_ANALOG |            Pin_TIA2(0) | Analog(Net_8177)
      |   4 |     * |      NONE |     HI_Z_DIGITAL |              SPI_SS(0) | FB(Net_74)
      |   5 |     * |      NONE |         CMOS_OUT |            SPI_MISO(0) | In(Net_20), OE(Net_1821)
      |   6 |     * |      NONE |     HI_Z_DIGITAL |            SPI_MOSI(0) | FB(Net_16)
      |   7 |     * |      NONE |     HI_Z_DIGITAL |            SPI_SCLK(0) | FB(Net_17)
 -----+-----+-------+-----------+------------------+------------------------+-------------------------------------
-   3 |   3 |     * |      NONE |         CMOS_OUT |           Pin_test1(0) | In(Net_7992)
+   3 |   3 |     * |      NONE |         CMOS_OUT |           Pin_test1(0) | In(Net_8220)
      |   5 |     * |      NONE |      HI_Z_ANALOG |          Pin_TIA3P5(0) | Analog(Net_156)
      |   6 |       |      NONE |      HI_Z_ANALOG |     Dedicated_Output_1 | Analog(Net_155)
      |   7 |     * |      NONE |      HI_Z_ANALOG |        Pin_LED_AMPB(0) | Analog(Net_157)
@@ -5955,33 +6892,34 @@ Port | Pin | Fixed |      Type |       Drive Mode |                   Name | Con
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.005ms
-Digital Placement phase: Elapsed time ==> 1s.848ms
+Digital Placement phase: Elapsed time ==> 2s.886ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 2s.812ms
+Digital Routing phase: Elapsed time ==> 4s.022ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.346ms
+Info: pft.M0106: AMux component (AMux_DelSig_CYAMUXSIDE_A) has been optimized out of the design and will not do anything.
+Info: pft.M0106: AMux component (AMux_DelSig_CYAMUXSIDE_B) has been optimized out of the design and will not do anything.
+Bitstream and API generation phase: Elapsed time ==> 0s.440ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.053ms
+Bitstream verification phase: Elapsed time ==> 0s.102ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0019: Voltron Main_timing.html: Warning-1366: Setup time violation found in a path from clock ( CyBUS_CLK ) to clock ( CyBUS_CLK ). (File=C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main_timing.html)
-Warning: sta.M0019: Voltron Main_timing.html: Warning-1366: Setup time violation found in a path from clock ( CyBUS_CLK ) to clock ( SPIS_IntClock ). (File=C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main_timing.html)
 Timing report is in Voltron Main_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.545ms
+Static timing analysis phase: Elapsed time ==> 0s.922ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.416ms
+Design database save phase: Elapsed time ==> 0s.411ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 9s.845ms
+cydsfit: Elapsed time ==> 13s.335ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 9s.920ms
-API generation phase: Elapsed time ==> 8s.734ms
-Dependency generation phase: Elapsed time ==> 0s.063ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 13s.402ms
+API generation phase: Elapsed time ==> 9s.444ms
+Dependency generation phase: Elapsed time ==> 0s.069ms
+Cleanup phase: Elapsed time ==> 0s.002ms

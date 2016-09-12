@@ -1,5 +1,5 @@
 # Voltron Main
-# 2016-09-11 20:26:14Z
+# 2016-09-12 02:34:44Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -38,7 +38,7 @@ set_io "\SAR2:Bypass(0)\" iocell 0 2
 set_io "Pin_test1(0)" iocell 3 3
 set_location "\Opamp_2:ABuf\" abufcell -1 -1 3
 set_location "\PGA_Inv_2:SC\" sccell -1 -1 1
-set_location "\PGA_Inv_1:SC\" sccell -1 -1 0
+set_location "\PGA_Inv_1:SC\" sccell -1 -1 2
 set_location "\VDAC4:viDAC8\" vidaccell -1 -1 3
 set_location "\VDAC3:viDAC8\" vidaccell -1 -1 1
 set_location "\VDAC2:viDAC8\" vidaccell -1 -1 0

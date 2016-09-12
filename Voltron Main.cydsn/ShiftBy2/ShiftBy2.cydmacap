@@ -38,16 +38,18 @@
         direction: "source", "destination", or "both".
   -->
 
+
 <DMACapability>
 
-  <Category name="UDB" 
+  <Category name="Catagory 1, 1 byte strict" 
             enabled="true" 
             bytes_in_burst="2"
             bytes_in_burst_is_strict="true" 
-            spoke_width="1" 
+            spoke_width="2" 
             inc_addr="false" 
             each_burst_req_request="true">
-    <Location name="input" enabled="true" direction="source"/>
+    <Location name="`$INSTANCE_NAME`_INPUT_PTR" enabled="true" direction="destination"/>
+    <Location name="`$INSTANCE_NAME`_OUTPUT_PTR" enabled="true" direction="source"/>
   </Category>
   
 </DMACapability>

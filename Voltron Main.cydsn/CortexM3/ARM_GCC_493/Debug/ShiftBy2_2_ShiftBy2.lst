@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 1
 
 
    1              		.syntax unified
@@ -53,18 +53,18 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
   31              		@ link register save eliminated.
   32              	.LVL0:
   20:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     /* Datapath_1 is the instance name from the UDB Editor */ 
-  21:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     CY_SET_REG16(ShiftBy2_2_Datapath_1_A0_PTR,val);  
+  21:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     CY_SET_REG16(ShiftBy2_2_DP_A0_PTR,val);  
   33              		.loc 1 21 0
   34 0000 014B     		ldr	r3, .L2
   35 0002 1880     		strh	r0, [r3]	@ movhi
   36 0004 7047     		bx	lr
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 2
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 2
 
 
   37              	.L3:
   38 0006 00BF     		.align	2
   39              	.L2:
-  40 0008 10680040 		.word	1073768464
+  40 0008 0C6A0040 		.word	1073768972
   41              		.cfi_endproc
   42              	.LFE0:
   43              		.size	ShiftBy2_2_SetInput, .-ShiftBy2_2_SetInput
@@ -85,7 +85,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
   54              		@ args = 0, pretend = 0, frame = 0
   55              		@ frame_needed = 0, uses_anonymous_args = 0
   56              		@ link register save eliminated.
-  26:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     return CY_GET_REG16(ShiftBy2_2_Datapath_1_A0_PTR); 
+  26:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     return CY_GET_REG16(ShiftBy2_2_DP_A0_PTR); 
   57              		.loc 1 26 0
   58 0000 014B     		ldr	r3, .L5
   59 0002 1888     		ldrh	r0, [r3]
@@ -96,7 +96,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
   63              	.L6:
   64              		.align	2
   65              	.L5:
-  66 0008 10680040 		.word	1073768464
+  66 0008 0C6A0040 		.word	1073768972
   67              		.cfi_endproc
   68              	.LFE1:
   69              		.size	ShiftBy2_2_GetInput, .-ShiftBy2_2_GetInput
@@ -116,9 +116,9 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
   80              		@ args = 0, pretend = 0, frame = 0
   81              		@ frame_needed = 0, uses_anonymous_args = 0
   82              		@ link register save eliminated.
-  31:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     return CY_GET_REG16(ShiftBy2_2_Datapath_1_A1_PTR); 
+  31:.\Generated_Source\PSoC5/ShiftBy2_2_ShiftBy2.c ****     return CY_GET_REG16(ShiftBy2_2_DP_A1_PTR); 
   83              		.loc 1 31 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 3
 
 
   84 0000 014B     		ldr	r3, .L8
@@ -130,7 +130,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
   89              	.L9:
   90              		.align	2
   91              	.L8:
-  92 0008 30680040 		.word	1073768496
+  92 0008 2C6A0040 		.word	1073769004
   93              		.cfi_endproc
   94              	.LFE2:
   95              		.size	ShiftBy2_2_GetOutput, .-ShiftBy2_2_GetOutput
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  137 004f 02       		.uleb128 0x2
  138 0050 08       		.byte	0x8
  139 0051 05       		.byte	0x5
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 4
 
 
  140 0052 85010000 		.4byte	.LASF6
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  194 00c0 08       		.uleb128 0x8
  195 00c1 49000000 		.4byte	.LASF18
  196 00c5 01       		.byte	0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 5
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 5
 
 
  197 00c6 18       		.byte	0x18
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  251 0024 0B       		.uleb128 0xb
  252 0025 03       		.uleb128 0x3
  253 0026 08       		.uleb128 0x8
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 6
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 6
 
 
  254 0027 00       		.byte	0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  308 005e 3B       		.uleb128 0x3b
  309 005f 0B       		.uleb128 0xb
  310 0060 49       		.uleb128 0x49
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 7
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 7
 
 
  311 0061 13       		.uleb128 0x13
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  365              		.section	.debug_aranges,"",%progbits
  366 0000 2C000000 		.4byte	0x2c
  367 0004 0200     		.2byte	0x2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 8
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 8
 
 
  368 0006 00000000 		.4byte	.Ldebug_info0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  404 0063 756E7369 		.ascii	"unsigned char\000"
  404      676E6564 
  404      20636861 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 9
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 9
 
 
  404      7200
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 1
  424      206C6F6E 
  424      6720696E 
  424      7400
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccKlszcZ.s 			page 10
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccovUEZf.s 			page 10
 
 
  425              	.LASF11:

@@ -26,8 +26,8 @@ uint32 sarmem1[1] = {0};
 uint32 sarmem2[1] = {0};
 
 //4^N samples for decimation
-uint32 filtermem1[DECIMATION];
-uint32 filtermem2[DECIMATION];
+uint16 filtermem1[DECIMATION];
+uint16 filtermem2[DECIMATION];
 
 //DMA channels
 uint8 RAM2FILTER1_Chan;
@@ -123,53 +123,6 @@ void start_interrupts()
     //SPIS_EnableRxInt();
 }
 
-void DMA_SAR2RAM1_config()
-{
-    /* Defines for SAR2RAM1 */
-    #define SAR2RAM1_BYTES_PER_BURST 2
-    #define SAR2RAM1_REQUEST_PER_BURST 1
-    #define SAR2RAM1_SRC_BASE (CYDEV_PERIPH_BASE)
-    #define SAR2RAM1_DST_BASE (CYDEV_SRAM_BASE)
-
-    /* Variable declarations for SAR2RAM1 */
-    /* Move these variable declarations to the top of the function */
-    uint8 SAR2RAM1_Chan;
-    uint8 SAR2RAM1_TD[1];
-
-    /* DMA Configuration for SAR2RAM1 */
-    SAR2RAM1_Chan = SAR2RAM1_DmaInitialize(SAR2RAM1_BYTES_PER_BURST, SAR2RAM1_REQUEST_PER_BURST, 
-        HI16(SAR2RAM1_SRC_BASE), HI16(SAR2RAM1_DST_BASE));
-    SAR2RAM1_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(SAR2RAM1_TD[0], 2, SAR2RAM1_TD[0], SAR2RAM1__TD_TERMOUT_EN);
-    CyDmaTdSetAddress(SAR2RAM1_TD[0], LO16((uint32)SAR1_SAR_WRK0_PTR), LO16((uint32)sarmem1));
-    CyDmaChSetInitialTd(SAR2RAM1_Chan, SAR2RAM1_TD[0]);
-    CyDmaChEnable(SAR2RAM1_Chan, 1);
-
-}
-
-void DMA_SAR2RAM2_config()
-{
-    /* Defines for SAR2RAM2 */
-    #define SAR2RAM2_BYTES_PER_BURST 2
-    #define SAR2RAM2_REQUEST_PER_BURST 1
-    #define SAR2RAM2_SRC_BASE (CYDEV_PERIPH_BASE)
-    #define SAR2RAM2_DST_BASE (CYDEV_SRAM_BASE)
-
-    /* Variable declarations for SAR2RAM2 */
-    /* Move these variable declarations to the top of the function */
-    uint8 SAR2RAM2_Chan;
-    uint8 SAR2RAM2_TD[1];
-
-    /* DMA Configuration for SAR2RAM2 */
-    SAR2RAM2_Chan = SAR2RAM2_DmaInitialize(SAR2RAM2_BYTES_PER_BURST, SAR2RAM2_REQUEST_PER_BURST, 
-        HI16(SAR2RAM2_SRC_BASE), HI16(SAR2RAM2_DST_BASE));
-    SAR2RAM2_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(SAR2RAM2_TD[0], 2, SAR2RAM2_TD[0], SAR2RAM2__TD_TERMOUT_EN);
-    CyDmaTdSetAddress(SAR2RAM2_TD[0], LO16((uint32)SAR2_SAR_WRK0_PTR), LO16((uint32)sarmem2));
-    CyDmaChSetInitialTd(SAR2RAM2_Chan, SAR2RAM2_TD[0]);
-    CyDmaChEnable(SAR2RAM2_Chan, 1);
-
-}
 
 void DMA_SAR2FILTER1_config()
 {
@@ -217,53 +170,6 @@ void DMA_SAR2FILTER2_config()
     CyDmaChSetInitialTd(SAR2FILTER2_Chan, SAR2FILTER2_TD[0]);
     CyDmaChEnable(SAR2FILTER2_Chan, 1);
 
-}
-
-void DMA_RAM2FILTER1_config()
-{ 
-    /* Defines for RAM2FILTER1 */
-    #define RAM2FILTER1_BYTES_PER_BURST 2
-    #define RAM2FILTER1_REQUEST_PER_BURST 1
-    #define RAM2FILTER1_SRC_BASE (CYDEV_SRAM_BASE)
-    #define RAM2FILTER1_DST_BASE (CYDEV_PERIPH_BASE)
-
-    /* Variable declarations for RAM2FILTER1 */
-    /* Move these variable declarations to the top of the function */
-    //uint8 RAM2FILTER1_Chan;
-    uint8 RAM2FILTER1_TD[1];
-
-    /* DMA Configuration for RAM2FILTER1 */
-    RAM2FILTER1_Chan = RAM2FILTER1_DmaInitialize(RAM2FILTER1_BYTES_PER_BURST, RAM2FILTER1_REQUEST_PER_BURST, 
-        HI16(RAM2FILTER1_SRC_BASE), HI16(RAM2FILTER1_DST_BASE));
-    RAM2FILTER1_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(RAM2FILTER1_TD[0], 2, RAM2FILTER1_TD[0], RAM2FILTER1__TD_TERMOUT_EN | TD_INC_SRC_ADR | TD_INC_DST_ADR);
-    CyDmaTdSetAddress(RAM2FILTER1_TD[0], LO16((uint32)sarmem1), LO16((uint32)Filter_STAGEA_PTR));
-    CyDmaChSetInitialTd(RAM2FILTER1_Chan, RAM2FILTER1_TD[0]);
-    CyDmaChEnable(RAM2FILTER1_Chan, 1);
-
-}
-
-void DMA_RAM2FILTER2_config()
-{
-    /* Defines for RAM2FILTER1 */
-    #define RAM2FILTER2_BYTES_PER_BURST 2
-    #define RAM2FILTER2_REQUEST_PER_BURST 1
-    #define RAM2FILTER2_SRC_BASE (CYDEV_SRAM_BASE)
-    #define RAM2FILTER2_DST_BASE (CYDEV_PERIPH_BASE)
-
-    /* Variable declarations for RAM2FILTER1 */
-    /* Move these variable declarations to the top of the function */
-    //uint8 RAM2FILTER1_Chan;
-    uint8 RAM2FILTER2_TD[1];
-
-    /* DMA Configuration for RAM2FILTER1 */
-    RAM2FILTER2_Chan = RAM2FILTER2_DmaInitialize(RAM2FILTER2_BYTES_PER_BURST, RAM2FILTER2_REQUEST_PER_BURST, 
-        HI16(RAM2FILTER2_SRC_BASE), HI16(RAM2FILTER2_DST_BASE));
-    RAM2FILTER2_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(RAM2FILTER2_TD[0], 2, RAM2FILTER2_TD[0], RAM2FILTER2__TD_TERMOUT_EN | TD_INC_SRC_ADR | TD_INC_DST_ADR);
-    CyDmaTdSetAddress(RAM2FILTER2_TD[0], LO16((uint32)sarmem2), LO16((uint32)Filter_STAGEB_PTR));
-    CyDmaChSetInitialTd(RAM2FILTER2_Chan, RAM2FILTER2_TD[0]);
-    CyDmaChEnable(RAM2FILTER2_Chan, 1);
 }
 
 void DMA_FILTER2RAM1_config()
@@ -378,16 +284,110 @@ void DMA_SHIFT2RAM_config()
 
 }
 
+void DMA_SAR2SHIFT1_config()
+{
+    /* Defines for SAR2SHIFT1 */
+    #define SAR2SHIFT1_BYTES_PER_BURST 2
+    #define SAR2SHIFT1_REQUEST_PER_BURST 1
+    #define SAR2SHIFT1_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SAR2SHIFT1_DST_BASE (CYDEV_PERIPH_BASE)
+
+    /* Variable declarations for SAR2SHIFT1 */
+    /* Move these variable declarations to the top of the function */
+    uint8 SAR2SHIFT1_Chan;
+    uint8 SAR2SHIFT1_TD[1];
+
+    /* DMA Configuration for SAR2SHIFT1 */
+    SAR2SHIFT1_Chan = SAR2SHIFT1_DmaInitialize(SAR2SHIFT1_BYTES_PER_BURST, SAR2SHIFT1_REQUEST_PER_BURST, 
+        HI16(SAR2SHIFT1_SRC_BASE), HI16(SAR2SHIFT1_DST_BASE));
+    SAR2SHIFT1_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SAR2SHIFT1_TD[0], 2, SAR2SHIFT1_TD[0], SAR2SHIFT1__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SAR2SHIFT1_TD[0], LO16((uint32)SAR1_SAR_WRK0_PTR), LO16((uint32)ShiftBy2_1_INPUT_PTR));
+    CyDmaChSetInitialTd(SAR2SHIFT1_Chan, SAR2SHIFT1_TD[0]);
+    CyDmaChEnable(SAR2SHIFT1_Chan, 1);
+}
+
+void DMA_SAR2SHIFT2_config()
+{
+    /* Defines for SAR2SHIFT2 */
+    #define SAR2SHIFT2_BYTES_PER_BURST 2
+    #define SAR2SHIFT2_REQUEST_PER_BURST 1
+    #define SAR2SHIFT2_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SAR2SHIFT2_DST_BASE (CYDEV_PERIPH_BASE)
+
+    /* Variable declarations for SAR2SHIFT2 */
+    /* Move these variable declarations to the top of the function */
+    uint8 SAR2SHIFT2_Chan;
+    uint8 SAR2SHIFT2_TD[1];
+
+    /* DMA Configuration for SAR2SHIFT2 */
+    SAR2SHIFT2_Chan = SAR2SHIFT2_DmaInitialize(SAR2SHIFT2_BYTES_PER_BURST, SAR2SHIFT2_REQUEST_PER_BURST, 
+        HI16(SAR2SHIFT2_SRC_BASE), HI16(SAR2SHIFT2_DST_BASE));
+    SAR2SHIFT2_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SAR2SHIFT2_TD[0], 2, SAR2SHIFT2_TD[0], SAR2SHIFT2__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SAR2SHIFT2_TD[0], LO16((uint32)SAR2_SAR_WRK0_PTR), LO16((uint32)ShiftBy2_2_INPUT_PTR));
+    CyDmaChSetInitialTd(SAR2SHIFT2_Chan, SAR2SHIFT2_TD[0]);
+    CyDmaChEnable(SAR2SHIFT2_Chan, 1);
+}
+
+void DMA_SHIFT2FILTER1_config()
+{
+    /* Defines for SHIFT2FILTER1 */
+    #define SHIFT2FILTER1_BYTES_PER_BURST 2
+    #define SHIFT2FILTER1_REQUEST_PER_BURST 1
+    #define SHIFT2FILTER1_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SHIFT2FILTER1_DST_BASE (CYDEV_PERIPH_BASE)
+
+    /* Variable declarations for SHIFT2FILTER1 */
+    /* Move these variable declarations to the top of the function */
+    uint8 SHIFT2FILTER1_Chan;
+    uint8 SHIFT2FILTER1_TD[1];
+
+    /* DMA Configuration for SHIFT2FILTER1 */
+    SHIFT2FILTER1_Chan = SHIFT2FILTER1_DmaInitialize(SHIFT2FILTER1_BYTES_PER_BURST, SHIFT2FILTER1_REQUEST_PER_BURST, 
+        HI16(SHIFT2FILTER1_SRC_BASE), HI16(SHIFT2FILTER1_DST_BASE));
+    SHIFT2FILTER1_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SHIFT2FILTER1_TD[0], 2, SHIFT2FILTER1_TD[0], SHIFT2FILTER1__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SHIFT2FILTER1_TD[0], LO16((uint32)ShiftBy2_1_OUTPUT_PTR), LO16((uint32)Filter_STAGEA_PTR));
+    CyDmaChSetInitialTd(SHIFT2FILTER1_Chan, SHIFT2FILTER1_TD[0]);
+    CyDmaChEnable(SHIFT2FILTER1_Chan, 1);
+
+}
+
+void DMA_SHIFT2FILTER2_config()
+{
+    /* Defines for SHIFT2FILTER2 */
+    #define SHIFT2FILTER2_BYTES_PER_BURST 2
+    #define SHIFT2FILTER2_REQUEST_PER_BURST 1
+    #define SHIFT2FILTER2_SRC_BASE (CYDEV_PERIPH_BASE)
+    #define SHIFT2FILTER2_DST_BASE (CYDEV_PERIPH_BASE)
+
+    /* Variable declarations for SHIFT2FILTER2 */
+    /* Move these variable declarations to the top of the function */
+    uint8 SHIFT2FILTER2_Chan;
+    uint8 SHIFT2FILTER2_TD[1];
+
+    /* DMA Configuration for SHIFT2FILTER2 */
+    SHIFT2FILTER2_Chan = SHIFT2FILTER2_DmaInitialize(SHIFT2FILTER2_BYTES_PER_BURST, SHIFT2FILTER2_REQUEST_PER_BURST, 
+        HI16(SHIFT2FILTER2_SRC_BASE), HI16(SHIFT2FILTER2_DST_BASE));
+    SHIFT2FILTER2_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(SHIFT2FILTER2_TD[0], 2, SHIFT2FILTER2_TD[0], SHIFT2FILTER2__TD_TERMOUT_EN);
+    CyDmaTdSetAddress(SHIFT2FILTER2_TD[0], LO16((uint32)ShiftBy2_2_OUTPUT_PTR), LO16((uint32)Filter_STAGEB_PTR));
+    CyDmaChSetInitialTd(SHIFT2FILTER2_Chan, SHIFT2FILTER2_TD[0]);
+    CyDmaChEnable(SHIFT2FILTER2_Chan, 1);
+}
+
 void start_DMAs()
 {
-    //DMA_SAR2RAM1_config();
-    //DMA_SAR2RAM2_config();
-    //DMA_RAM2FILTER1_config();
-    //DMA_RAM2FILTER2_config();
-    DMA_SAR2FILTER1_config();
-    DMA_SAR2FILTER2_config();
+//    DMA_SAR2FILTER1_config();
+//    DMA_SAR2FILTER2_config();
+    DMA_SAR2SHIFT1_config();
+    DMA_SAR2SHIFT2_config();
+    DMA_SHIFT2FILTER1_config();
+    DMA_SHIFT2FILTER2_config();
     DMA_FILTER2RAM1_config();
     DMA_FILTER2RAM2_config();
+
     //DMA_SPI2RAM_config();
     DMA_SPI2SHIFT_config();
     DMA_SHIFT2RAM_config();

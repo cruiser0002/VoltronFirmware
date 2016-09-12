@@ -1,5 +1,5 @@
 /******************************************************************************
-* File Name: SAR2RAM1_dma.h  
+* File Name: SAR2SHIFT1_dma.h  
 * Version 1.70
 *
 *  Description:
@@ -12,24 +12,24 @@
 * disclaimers, and limitations in the end user license agreement accompanying 
 * the software package with which this file was provided.
 ********************************************************************************/
-#if !defined(CY_DMA_SAR2RAM1_DMA_H__)
-#define CY_DMA_SAR2RAM1_DMA_H__
+#if !defined(CY_DMA_SAR2SHIFT1_DMA_H__)
+#define CY_DMA_SAR2SHIFT1_DMA_H__
 
 
 
 #include <CYDMAC.H>
 #include <CYFITTER.H>
 
-#define SAR2RAM1__TD_TERMOUT_EN (((0 != SAR2RAM1__TERMOUT0_EN) ? TD_TERMOUT0_EN : 0) | \
-    (SAR2RAM1__TERMOUT1_EN ? TD_TERMOUT1_EN : 0))
+#define SAR2SHIFT1__TD_TERMOUT_EN (((0 != SAR2SHIFT1__TERMOUT0_EN) ? TD_TERMOUT0_EN : 0) | \
+    (SAR2SHIFT1__TERMOUT1_EN ? TD_TERMOUT1_EN : 0))
 
-/* Zero based index of SAR2RAM1 dma channel */
-extern uint8 SAR2RAM1_DmaHandle;
-
-
-uint8 SAR2RAM1_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 UpperSrcAddress, uint16 UpperDestAddress) ;
-void  SAR2RAM1_DmaRelease(void) ;
+/* Zero based index of SAR2SHIFT1 dma channel */
+extern uint8 SAR2SHIFT1_DmaHandle;
 
 
-/* CY_DMA_SAR2RAM1_DMA_H__ */
+uint8 SAR2SHIFT1_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 UpperSrcAddress, uint16 UpperDestAddress) ;
+void  SAR2SHIFT1_DmaRelease(void) ;
+
+
+/* CY_DMA_SAR2SHIFT1_DMA_H__ */
 #endif

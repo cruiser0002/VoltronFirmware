@@ -18,15 +18,15 @@
 void `$INSTANCE_NAME`_SetInput(uint16 val) 
 { 
     /* Datapath_1 is the instance name from the UDB Editor */ 
-    CY_SET_REG16(`$INSTANCE_NAME`_Datapath_1_A0_PTR,val);  
+    CY_SET_REG16(`$INSTANCE_NAME`_DP_A0_PTR,val);  
 } 
  
 uint16 `$INSTANCE_NAME`_GetInput() 
 { 
-    return CY_GET_REG16(`$INSTANCE_NAME`_Datapath_1_A0_PTR); 
+    return CY_GET_REG16(`$INSTANCE_NAME`_DP_A0_PTR); 
 } 
  
 uint16 `$INSTANCE_NAME`_GetOutput(void) 
 { 
-    return CY_GET_REG16(`$INSTANCE_NAME`_Datapath_1_A1_PTR); 
+    return CY_GET_REG16(`$INSTANCE_NAME`_DP_A1_PTR); 
 } 

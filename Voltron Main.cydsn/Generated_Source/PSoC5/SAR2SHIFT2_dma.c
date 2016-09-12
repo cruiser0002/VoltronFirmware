@@ -1,5 +1,5 @@
 /***************************************************************************
-* File Name: RAM2FILTER2_dma.c  
+* File Name: SAR2SHIFT2_dma.c  
 * Version 1.70
 *
 *  Description:
@@ -19,7 +19,7 @@
 ********************************************************************************/
 #include <CYLIB.H>
 #include <CYDMAC.H>
-#include <RAM2FILTER2_dma.H>
+#include <SAR2SHIFT2_dma.H>
 
 
 
@@ -29,47 +29,47 @@
 * 
 * 
 * 
-* RAM2FILTER2__DRQ_CTL_REG
+* SAR2SHIFT2__DRQ_CTL_REG
 * 
 * 
-* RAM2FILTER2__DRQ_NUMBER
+* SAR2SHIFT2__DRQ_NUMBER
 * 
 * Number of TD's used by this channel.
-* RAM2FILTER2__NUMBEROF_TDS
+* SAR2SHIFT2__NUMBEROF_TDS
 * 
 * Priority of this channel.
-* RAM2FILTER2__PRIORITY
+* SAR2SHIFT2__PRIORITY
 * 
-* True if RAM2FILTER2_TERMIN_SEL is used.
-* RAM2FILTER2__TERMIN_EN
+* True if SAR2SHIFT2_TERMIN_SEL is used.
+* SAR2SHIFT2__TERMIN_EN
 * 
 * TERMIN interrupt line to signal terminate.
-* RAM2FILTER2__TERMIN_SEL
+* SAR2SHIFT2__TERMIN_SEL
 * 
 * 
-* True if RAM2FILTER2_TERMOUT0_SEL is used.
-* RAM2FILTER2__TERMOUT0_EN
+* True if SAR2SHIFT2_TERMOUT0_SEL is used.
+* SAR2SHIFT2__TERMOUT0_EN
 * 
 * 
 * TERMOUT0 interrupt line to signal completion.
-* RAM2FILTER2__TERMOUT0_SEL
+* SAR2SHIFT2__TERMOUT0_SEL
 * 
 * 
-* True if RAM2FILTER2_TERMOUT1_SEL is used.
-* RAM2FILTER2__TERMOUT1_EN
+* True if SAR2SHIFT2_TERMOUT1_SEL is used.
+* SAR2SHIFT2__TERMOUT1_EN
 * 
 * 
 * TERMOUT1 interrupt line to signal completion.
-* RAM2FILTER2__TERMOUT1_SEL
+* SAR2SHIFT2__TERMOUT1_SEL
 * 
 ****************************************************************************/
 
 
-/* Zero based index of RAM2FILTER2 dma channel */
-uint8 RAM2FILTER2_DmaHandle = DMA_INVALID_CHANNEL;
+/* Zero based index of SAR2SHIFT2 dma channel */
+uint8 SAR2SHIFT2_DmaHandle = DMA_INVALID_CHANNEL;
 
 /*********************************************************************
-* Function Name: uint8 RAM2FILTER2_DmaInitalize
+* Function Name: uint8 SAR2SHIFT2_DmaInitalize
 **********************************************************************
 * Summary:
 *   Allocates and initialises a channel of the DMAC to be used by the
@@ -94,34 +94,34 @@ uint8 RAM2FILTER2_DmaHandle = DMA_INVALID_CHANNEL;
 *
 *
 *******************************************************************/
-uint8 RAM2FILTER2_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 UpperSrcAddress, uint16 UpperDestAddress) 
+uint8 SAR2SHIFT2_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 UpperSrcAddress, uint16 UpperDestAddress) 
 {
 
     /* Allocate a DMA channel. */
-    RAM2FILTER2_DmaHandle = (uint8)RAM2FILTER2__DRQ_NUMBER;
+    SAR2SHIFT2_DmaHandle = (uint8)SAR2SHIFT2__DRQ_NUMBER;
 
     /* Configure the channel. */
-    (void)CyDmaChSetConfiguration(RAM2FILTER2_DmaHandle,
+    (void)CyDmaChSetConfiguration(SAR2SHIFT2_DmaHandle,
                                   BurstCount,
                                   ReqestPerBurst,
-                                  (uint8)RAM2FILTER2__TERMOUT0_SEL,
-                                  (uint8)RAM2FILTER2__TERMOUT1_SEL,
-                                  (uint8)RAM2FILTER2__TERMIN_SEL);
+                                  (uint8)SAR2SHIFT2__TERMOUT0_SEL,
+                                  (uint8)SAR2SHIFT2__TERMOUT1_SEL,
+                                  (uint8)SAR2SHIFT2__TERMIN_SEL);
 
     /* Set the extended address for the transfers */
-    (void)CyDmaChSetExtendedAddress(RAM2FILTER2_DmaHandle, UpperSrcAddress, UpperDestAddress);
+    (void)CyDmaChSetExtendedAddress(SAR2SHIFT2_DmaHandle, UpperSrcAddress, UpperDestAddress);
 
     /* Set the priority for this channel */
-    (void)CyDmaChPriority(RAM2FILTER2_DmaHandle, (uint8)RAM2FILTER2__PRIORITY);
+    (void)CyDmaChPriority(SAR2SHIFT2_DmaHandle, (uint8)SAR2SHIFT2__PRIORITY);
     
-    return RAM2FILTER2_DmaHandle;
+    return SAR2SHIFT2_DmaHandle;
 }
 
 /*********************************************************************
-* Function Name: void RAM2FILTER2_DmaRelease
+* Function Name: void SAR2SHIFT2_DmaRelease
 **********************************************************************
 * Summary:
-*   Frees the channel associated with RAM2FILTER2.
+*   Frees the channel associated with SAR2SHIFT2.
 *
 *
 * Parameters:
@@ -133,9 +133,9 @@ uint8 RAM2FILTER2_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 U
 *   void.
 *
 *******************************************************************/
-void RAM2FILTER2_DmaRelease(void) 
+void SAR2SHIFT2_DmaRelease(void) 
 {
     /* Disable the channel */
-    (void)CyDmaChDisable(RAM2FILTER2_DmaHandle);
+    (void)CyDmaChDisable(SAR2SHIFT2_DmaHandle);
 }
 
