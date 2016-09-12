@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 25 2016 12:55:34
 
-#File Generated:     Sep 11 2016 19:34:44
+#File Generated:     Sep 11 2016 21:08:51
 
 #Purpose:            
 
@@ -45,15 +45,15 @@ Phase 3
 
 Design Statistics after Packing
     Number of Combinational MCs 	:	11
-    Number of Sequential MCs    	:	23
-    Number of DPs               	:	6
+    Number of Sequential MCs    	:	21
+    Number of DPs               	:	5
     Number of Controls          	:	1
     Number of Status            	:	2
     Number of SyncCells         	:	6
     Number of count7cells       	:	1
 
 Device Utilization Summary after Packing
-    Macrocells                  :	34/192
+    Macrocells                  :	32/192
     UDBS                        :	9/24
     IOs                         :	30/72
 
@@ -80,7 +80,7 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 18
-Clock: CyBUS_CLK            | Frequency:  45.0 MHz | Target:  72.0 MHz
+Clock: CyBUS_CLK            | Frequency:  46.3 MHz | Target:  72.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  72.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -95,7 +95,7 @@ Clock: SAR1_theACLK         | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR1_theACLK(routed) | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR2_theACLK         | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR2_theACLK(routed) | Frequency: N/A       | Target:  18.0 MHz
-Clock: SPIS_IntClock        | Frequency:  38.6 MHz | Target:   2.0 MHz
+Clock: SPIS_IntClock        | Frequency:  66.3 MHz | Target:   2.0 MHz
 Clock: SPI_SCLK(0)_PAD      | Frequency:  45.2 MHz | Target:   0.1 MHz
 Clock: \DelSig:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
@@ -110,7 +110,7 @@ Phase 7
                      Clock Summary 
 ======================================================================
 Number of clocks: 18
-Clock: CyBUS_CLK            | Frequency:  45.0 MHz | Target:  72.0 MHz
+Clock: CyBUS_CLK            | Frequency:  46.3 MHz | Target:  72.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  72.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -125,8 +125,8 @@ Clock: SAR1_theACLK         | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR1_theACLK(routed) | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR2_theACLK         | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR2_theACLK(routed) | Frequency: N/A       | Target:  18.0 MHz
-Clock: SPIS_IntClock        | Frequency:  43.1 MHz | Target:   2.0 MHz
-Clock: SPI_SCLK(0)_PAD      | Frequency:  45.2 MHz | Target:   0.1 MHz
+Clock: SPIS_IntClock        | Frequency:  70.1 MHz | Target:   2.0 MHz
+Clock: SPI_SCLK(0)_PAD      | Frequency:  29.6 MHz | Target:   0.1 MHz
 Clock: \DelSig:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
@@ -136,8 +136,8 @@ D2088: Phase 7, elapsed time : 0.7 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	11
-    Number of Sequential MCs    	:	23
-    Number of DPs               	:	6
+    Number of Sequential MCs    	:	21
+    Number of DPs               	:	5
     Number of Controls          	:	1
     Number of Status            	:	2
     Number of SyncCells         	:	6
@@ -145,7 +145,7 @@ Final Design Statistics
     Number of IOs       	:	30
 
 Device Utilization Summary
-    Macrocells                  :	34/192
+    Macrocells                  :	32/192
     IOs                         :	30/72
 
 
@@ -173,13 +173,13 @@ Clock: DelSig_Ext_CP_Clk    | Frequency: N/A       | Target:  72.0 MHz
 Clock: DelSig_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  72.0 MHz
 Clock: DelSig_theACLK       | Frequency: N/A       | Target:   0.2 MHz
 Clock: DelSig_theACLK(fixed-function) | Frequency: N/A       | Target:   0.2 MHz
-Clock: FILTER2RAM1/termout  | Frequency:  56.8 MHz | Target:  36.0 MHz
+Clock: FILTER2RAM1/termout  | Frequency:  57.5 MHz | Target:  36.0 MHz
 Clock: SAR1_theACLK         | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR1_theACLK(routed) | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR2_theACLK         | Frequency: N/A       | Target:  18.0 MHz
 Clock: SAR2_theACLK(routed) | Frequency: N/A       | Target:  18.0 MHz
-Clock: SPIS_IntClock        | Frequency:  67.1 MHz | Target:   2.0 MHz
-Clock: SPI_SCLK(0)_PAD      | Frequency:  33.2 MHz | Target:   0.1 MHz
+Clock: SPIS_IntClock        | Frequency:  78.0 MHz | Target:   2.0 MHz
+Clock: SPI_SCLK(0)_PAD      | Frequency:  30.9 MHz | Target:   0.1 MHz
 Clock: \DelSig:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
@@ -191,5 +191,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 2.0 sec.
+I2076: Total run-time: 1.6 sec.
 

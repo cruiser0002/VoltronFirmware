@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/11/2016 at 19:34
+// 09/11/2016 at 21:08
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2105,128 +2105,11 @@ end
 
 endmodule
 
-`include "cypress.v"
-/* ==================== Include Component Definitions ==================== */
-
-module ShiftBy1 (
-    input wire clock, 
-    input wire go, 
-    output wire done
-);
-
-/* ==================== Wire and Register Declarations ==================== */
-localparam [1:0] Start = 2'b00;
-localparam [1:0] shift1 = 2'b01;
-wire Datapath_1_d0_load;
-wire Datapath_1_d1_load;
-wire Datapath_1_f0_load;
-wire Datapath_1_f1_load;
-wire Datapath_1_route_si;
-wire Datapath_1_route_ci;
-wire  [2:0] Datapath_1_select;
-reg dsignal;
-reg  [1:0] SM1;
-
-/* ==================== Assignment of Combinatorial Variables ==================== */
-assign done = (dsignal);
-assign Datapath_1_d0_load = (1'b0);
-assign Datapath_1_d1_load = (1'b0);
-assign Datapath_1_f0_load = (1'b0);
-assign Datapath_1_f1_load = (1'b0);
-assign Datapath_1_route_si = (1'b0);
-assign Datapath_1_route_ci = (1'b0);
-assign Datapath_1_select[0] = (SM1[0]);
-assign Datapath_1_select[1] = (1'b0);
-assign Datapath_1_select[2] = (1'b0);
-
-/* ==================== Datapath_1 (Width: 8) Instantiation ==================== */
-parameter Datapath_1_dpconfig0 = 
-{
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM0: Start */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP___SL, `CS_A0_SRC_NONE, `CS_A1_SRC__ALU, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM1: Shift */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM2:  */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM3:  */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM4:  */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM5:  */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM6:  */
-    `CS_ALU_OP_PASS, `CS_SRCA_A0, `CS_SRCB_D0, `CS_SHFT_OP_PASS, `CS_A0_SRC_NONE, `CS_A1_SRC_NONE, `CS_FEEDBACK_DSBL, `CS_CI_SEL_CFGA, `CS_SI_SEL_CFGA, `CS_CMP_SEL_CFGA,  /*CFGRAM7:  */
-    8'hFF, 8'h00, /* CFG9 */
-    8'hFF, 8'hFF, /* CFG11-10 */
-    `SC_CMPB_A1_D1, `SC_CMPA_A0_D1, `SC_CI_B_ARITH, `SC_CI_A_ARITH, `SC_C1_MASK_DSBL, `SC_C0_MASK_DSBL, `SC_A_MASK_DSBL, `SC_DEF_SI_0, `SC_SI_B_DEFSI, `SC_SI_A_DEFSI, /* CFG13-12 */
-    `SC_A0_SRC_ACC, `SC_SHIFT_SL, 1'b0, `SC_SR_SRC_REG, `SC_FIFO1_BUS, `SC_FIFO0_BUS, `SC_MSB_ENBL, `SC_MSB_BIT7, `SC_MSB_NOCHN, `SC_FB_NOCHN, `SC_CMP1_NOCHN, `SC_CMP0_NOCHN, /* CFG15-14 */
-    3'b000, `SC_FIFO_SYNC__ADD, 2'b000, `SC_FIFO1_DYN_OF, `SC_FIFO0_DYN_OF, `SC_FIFO_CLK1_POS, `SC_FIFO_CLK0_POS, `SC_FIFO_CLK__DP, `SC_FIFO_CAP_AX, `SC_FIFO_LEVEL, `SC_FIFO__SYNC, `SC_EXTCRC_DSBL, `SC_WRK16CAT_DSBL /* CFG17-16 */
-};
-cy_psoc3_dp8 #(
-    .cy_dpconfig_a( Datapath_1_dpconfig0 ),
-    .d0_init_a( 8'b00000000 ),
-    .d1_init_a( 8'b00000000 ),
-    .a0_init_a( 8'b00000000 ),
-    .a1_init_a( 8'b00000000 ))
-    Datapath_1(
-        .clk( clock ),
-        .cs_addr( Datapath_1_select ),
-        .route_si( Datapath_1_route_si ),
-        .route_ci( Datapath_1_route_ci ),
-        .f0_load( Datapath_1_f0_load ),
-        .f1_load( Datapath_1_f1_load ),
-        .d0_load( Datapath_1_d0_load ),
-        .d1_load( Datapath_1_d1_load ),
-        .ce0(  ), 
-        .cl0(  ), 
-        .z0(  ), 
-        .ff0(  ), 
-        .ce1(  ), 
-        .cl1(  ), 
-        .z1(  ), 
-        .ff1(  ), 
-        .ov_msb(  ), 
-        .co_msb(  ), 
-        .cmsb(  ), 
-        .so(  ), 
-        .f0_bus_stat(  ), 
-        .f0_blk_stat(  ), 
-        .f1_bus_stat(  ), 
-        .f1_blk_stat(  )
-    );
-
-/* ==================== State Machine: SM1 ==================== */
-always @ (posedge clock)
-begin : Start_state_logic
-    case(SM1)
-        Start : 
-        begin
-            dsignal <= (1'b0);
-            if (( go ) == 1'b1)
-            begin
-                SM1 <= shift1 ;
-            end
-        end
-        shift1 : 
-        begin
-            dsignal <= (1'b1);
-            if (( 1'b1 ) == 1'b1)
-            begin
-                SM1 <= Start ;
-            end
-        end
-        default :
-        begin
-            SM1 <= Start;
-        end
-    endcase
-end
-
-endmodule
-
 // top
 module top ;
 
           wire  Net_8137;
           wire  Net_8136;
-          wire  Net_8231;
-          wire  Net_8134;
-          wire  Net_8133;
-          wire  Net_8132;
           wire  Net_8131;
     electrical  Net_8130;
           wire  Net_8129;
@@ -2237,7 +2120,6 @@ module top ;
           wire  Net_8124;
           wire  Net_8221;
           wire  Net_8220;
-          wire  Net_8121;
           wire  Net_8120;
     electrical  Net_8119;
           wire  Net_8118;
@@ -2281,10 +2163,7 @@ module top ;
           wire  Net_8107;
           wire  Net_8106;
           wire  Net_8105;
-          wire  Net_8230;
-          wire  Net_8103;
-          wire  Net_8229;
-          wire  Net_8101;
+          wire  Net_8289;
           wire  Net_4221;
           wire  Net_2245;
           wire  Net_2244;
@@ -2331,16 +2210,15 @@ module top ;
     electrical  Net_260;
     electrical  Net_157;
     electrical  Net_259;
+          wire  Net_7955;
+          wire  Net_7906;
+          wire  Net_8103;
+          wire  Net_8030;
+          wire  Net_8027;
           wire  Net_6689;
           wire  Net_8031;
           wire  Net_8028;
-          wire  Net_8030;
-          wire  Net_8027;
           wire  Net_124;
-          wire  Net_7925;
-          wire  Net_7955;
-          wire  Net_7906;
-          wire  Net_7871;
           wire  Net_2247;
           wire  Net_8232;
           wire  Net_6690;
@@ -3728,18 +3606,6 @@ module top ;
 
 
 	cy_clock_v1_0
-		#(.id("6b8319a7-ac56-436b-af66-5b2e8f214d3f"),
-		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
-		  .divisor(0),
-		  .period("0"),
-		  .is_direct(1),
-		  .is_digital(1))
-		Clock_3
-		 (.clock_out(Net_8101));
-
-
-
-	cy_clock_v1_0
 		#(.id("136a0538-4afd-451e-af14-55ac5ebba12a"),
 		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
 		  .divisor(0),
@@ -4260,13 +4126,6 @@ module top ;
         .nVref(Net_8119),
         .mi(1'b0));
 
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		isr_shift1
-		 (.int_signal(Net_8121));
-
-
     FreqDiv_v1_0 FreqDiv_1 (
         .en(Net_8219),
         .div(Net_8220),
@@ -4297,24 +4156,6 @@ module top ;
     assign Net_8221 = 1'h0;
 
     assign Net_2247 = 1'h0;
-
-
-	cy_dma_v1_0
-		#(.drq_type(2'b10))
-		SHIFT2RAM
-		 (.drq(Net_8132),
-		  .trq(1'b0),
-		  .nrq(Net_8121));
-
-
-
-	cy_dma_v1_0
-		#(.drq_type(2'b10))
-		SPI2SHIFT
-		 (.drq(Net_7906),
-		  .trq(1'b0),
-		  .nrq(Net_7925));
-
 
 
 	cy_isr_v1_0
@@ -4403,23 +4244,6 @@ module top ;
 
 	assign tmpOE__Pin_test1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-    ShiftBy1 ShiftBy1_1 (
-        .clock(Net_7871),
-        .go(Net_7925),
-        .done(Net_8132));
-
-
-	cy_clock_v1_0
-		#(.id("2e9d3660-d219-4bd2-8a93-308effd3a111"),
-		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
-		  .divisor(0),
-		  .period("0"),
-		  .is_direct(1),
-		  .is_digital(1))
-		Clock_4
-		 (.clock_out(Net_7871));
-
-
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
@@ -4428,7 +4252,7 @@ module top ;
 
 
     ShiftBy2 ShiftBy2_2 (
-        .clock(Net_8101),
+        .clock(Net_8103),
         .go(Net_8030),
         .done(Net_8031));
 

@@ -295,17 +295,8 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy2_2_ShiftBy2.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy2_2_ShiftBy2.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy2_2_defs.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy1_1_ShiftBy1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ShiftBy1_1_defs.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_shift1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_shift1.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2RAM_dma.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2RAM_dma.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2SHIFT_dma.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SPI2SHIFT_dma.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SHIFT2RAM_dma.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SHIFT2RAM_dma.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SAR2SHIFT1_dma.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SAR2SHIFT1_dma.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\SAR2SHIFT2_dma.c</File>
