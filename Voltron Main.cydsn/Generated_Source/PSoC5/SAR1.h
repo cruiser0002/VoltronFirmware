@@ -168,7 +168,7 @@ extern volatile int16 SAR1_shift;
 #define SAR1_DEFAULT_CONV_MODE      (0u)        /* Default conversion method */
 #define SAR1_DEFAULT_INTERNAL_CLK   (1u)             /* Default clock selection */
 #define SAR1_DEFAULT_REFERENCE      (1u)         /* Default reference */
-#define SAR1_DEFAULT_RANGE          (5u)       /* ADC Input Range selection */
+#define SAR1_DEFAULT_RANGE          (3u)       /* ADC Input Range selection */
 #define SAR1_CLOCK_FREQUENCY        (18000000u)   /* Clock frequency */
 #define SAR1_NOMINAL_CLOCK_FREQ     (18000000)  /* Nominal Clock Frequency */
 #define SAR1_HIGH_POWER_PULSE       (0u)        /* Not zero when clock pulse > 50 ns */
@@ -182,7 +182,7 @@ extern volatile int16 SAR1_shift;
                                      (CYDEV_VDDA / 2) : \
                                    (((SAR1_DEFAULT_REFERENCE != (uint8)SAR1__EXT_REF) && \
                                      (SAR1_DEFAULT_RANGE == (uint8)SAR1__VNEG_VDDA_2_DIFF)) ? \
-                                     CYDEV_VDDA : (2.5)))      /* ADC reference voltage. */
+                                     CYDEV_VDDA : (1.024)))      /* ADC reference voltage. */
 #define SAR1_DEFAULT_REF_VOLTAGE_MV \
                                    (((SAR1_DEFAULT_REFERENCE != (uint8)SAR1__EXT_REF) && \
                                     ((SAR1_DEFAULT_RANGE == (uint8)SAR1__VSSA_TO_VDDA) || \
@@ -190,7 +190,7 @@ extern volatile int16 SAR1_shift;
                                      (CYDEV_VDDA_MV / 2) : \
                                   (((SAR1_DEFAULT_REFERENCE != (uint8)SAR1__EXT_REF) && \
                                     (SAR1_DEFAULT_RANGE == (uint8)SAR1__VNEG_VDDA_2_DIFF)) ? \
-                                     CYDEV_VDDA_MV : (2500)))   /* ADC reference voltage in mV */
+                                     CYDEV_VDDA_MV : (1024)))   /* ADC reference voltage in mV */
 /* The power is set to normal power, 1/2, 1/4 power depend on the clock setting. */
 #define SAR1_DEFAULT_POWER \
        ((SAR1_NOMINAL_CLOCK_FREQ > (SAR1_MAX_FREQUENCY / 4)) ? SAR1__HIGHPOWER : \

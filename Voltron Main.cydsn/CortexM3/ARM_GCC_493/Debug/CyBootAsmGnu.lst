@@ -11927,106 +11927,106 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  600              	.set SPIS_IntClock__PM_STBY_MSK, 0x08
  601              	
  602              	/* VDAC1_viDAC8 */
- 603              	.set VDAC1_viDAC8__CR0, CYREG_DAC2_CR0
- 604              	.set VDAC1_viDAC8__CR1, CYREG_DAC2_CR1
- 605              	.set VDAC1_viDAC8__D, CYREG_DAC2_D
+ 603              	.set VDAC1_viDAC8__CR0, CYREG_DAC0_CR0
+ 604              	.set VDAC1_viDAC8__CR1, CYREG_DAC0_CR1
+ 605              	.set VDAC1_viDAC8__D, CYREG_DAC0_D
  606              	.set VDAC1_viDAC8__PM_ACT_CFG, CYREG_PM_ACT_CFG8
- 607              	.set VDAC1_viDAC8__PM_ACT_MSK, 0x04
+ 607              	.set VDAC1_viDAC8__PM_ACT_MSK, 0x01
  608              	.set VDAC1_viDAC8__PM_STBY_CFG, CYREG_PM_STBY_CFG8
- 609              	.set VDAC1_viDAC8__PM_STBY_MSK, 0x04
- 610              	.set VDAC1_viDAC8__STROBE, CYREG_DAC2_STROBE
- 611              	.set VDAC1_viDAC8__SW0, CYREG_DAC2_SW0
- 612              	.set VDAC1_viDAC8__SW2, CYREG_DAC2_SW2
- 613              	.set VDAC1_viDAC8__SW3, CYREG_DAC2_SW3
+ 609              	.set VDAC1_viDAC8__PM_STBY_MSK, 0x01
+ 610              	.set VDAC1_viDAC8__STROBE, CYREG_DAC0_STROBE
+ 611              	.set VDAC1_viDAC8__SW0, CYREG_DAC0_SW0
+ 612              	.set VDAC1_viDAC8__SW2, CYREG_DAC0_SW2
+ 613              	.set VDAC1_viDAC8__SW3, CYREG_DAC0_SW3
 ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 200
 
 
- 614              	.set VDAC1_viDAC8__SW4, CYREG_DAC2_SW4
- 615              	.set VDAC1_viDAC8__TR, CYREG_DAC2_TR
- 616              	.set VDAC1_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC2_M1
- 617              	.set VDAC1_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC2_M2
- 618              	.set VDAC1_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC2_M3
- 619              	.set VDAC1_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC2_M4
- 620              	.set VDAC1_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC2_M5
- 621              	.set VDAC1_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC2_M6
- 622              	.set VDAC1_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC2_M7
- 623              	.set VDAC1_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC2_M8
- 624              	.set VDAC1_viDAC8__TST, CYREG_DAC2_TST
+ 614              	.set VDAC1_viDAC8__SW4, CYREG_DAC0_SW4
+ 615              	.set VDAC1_viDAC8__TR, CYREG_DAC0_TR
+ 616              	.set VDAC1_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC0_M1
+ 617              	.set VDAC1_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC0_M2
+ 618              	.set VDAC1_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC0_M3
+ 619              	.set VDAC1_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC0_M4
+ 620              	.set VDAC1_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC0_M5
+ 621              	.set VDAC1_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC0_M6
+ 622              	.set VDAC1_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC0_M7
+ 623              	.set VDAC1_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC0_M8
+ 624              	.set VDAC1_viDAC8__TST, CYREG_DAC0_TST
  625              	
  626              	/* VDAC2_viDAC8 */
- 627              	.set VDAC2_viDAC8__CR0, CYREG_DAC0_CR0
- 628              	.set VDAC2_viDAC8__CR1, CYREG_DAC0_CR1
- 629              	.set VDAC2_viDAC8__D, CYREG_DAC0_D
+ 627              	.set VDAC2_viDAC8__CR0, CYREG_DAC2_CR0
+ 628              	.set VDAC2_viDAC8__CR1, CYREG_DAC2_CR1
+ 629              	.set VDAC2_viDAC8__D, CYREG_DAC2_D
  630              	.set VDAC2_viDAC8__PM_ACT_CFG, CYREG_PM_ACT_CFG8
- 631              	.set VDAC2_viDAC8__PM_ACT_MSK, 0x01
+ 631              	.set VDAC2_viDAC8__PM_ACT_MSK, 0x04
  632              	.set VDAC2_viDAC8__PM_STBY_CFG, CYREG_PM_STBY_CFG8
- 633              	.set VDAC2_viDAC8__PM_STBY_MSK, 0x01
- 634              	.set VDAC2_viDAC8__STROBE, CYREG_DAC0_STROBE
- 635              	.set VDAC2_viDAC8__SW0, CYREG_DAC0_SW0
- 636              	.set VDAC2_viDAC8__SW2, CYREG_DAC0_SW2
- 637              	.set VDAC2_viDAC8__SW3, CYREG_DAC0_SW3
- 638              	.set VDAC2_viDAC8__SW4, CYREG_DAC0_SW4
- 639              	.set VDAC2_viDAC8__TR, CYREG_DAC0_TR
- 640              	.set VDAC2_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC0_M1
- 641              	.set VDAC2_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC0_M2
- 642              	.set VDAC2_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC0_M3
- 643              	.set VDAC2_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC0_M4
- 644              	.set VDAC2_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC0_M5
- 645              	.set VDAC2_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC0_M6
- 646              	.set VDAC2_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC0_M7
- 647              	.set VDAC2_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC0_M8
- 648              	.set VDAC2_viDAC8__TST, CYREG_DAC0_TST
+ 633              	.set VDAC2_viDAC8__PM_STBY_MSK, 0x04
+ 634              	.set VDAC2_viDAC8__STROBE, CYREG_DAC2_STROBE
+ 635              	.set VDAC2_viDAC8__SW0, CYREG_DAC2_SW0
+ 636              	.set VDAC2_viDAC8__SW2, CYREG_DAC2_SW2
+ 637              	.set VDAC2_viDAC8__SW3, CYREG_DAC2_SW3
+ 638              	.set VDAC2_viDAC8__SW4, CYREG_DAC2_SW4
+ 639              	.set VDAC2_viDAC8__TR, CYREG_DAC2_TR
+ 640              	.set VDAC2_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC2_M1
+ 641              	.set VDAC2_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC2_M2
+ 642              	.set VDAC2_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC2_M3
+ 643              	.set VDAC2_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC2_M4
+ 644              	.set VDAC2_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC2_M5
+ 645              	.set VDAC2_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC2_M6
+ 646              	.set VDAC2_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC2_M7
+ 647              	.set VDAC2_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC2_M8
+ 648              	.set VDAC2_viDAC8__TST, CYREG_DAC2_TST
  649              	
  650              	/* VDAC3_viDAC8 */
- 651              	.set VDAC3_viDAC8__CR0, CYREG_DAC1_CR0
- 652              	.set VDAC3_viDAC8__CR1, CYREG_DAC1_CR1
- 653              	.set VDAC3_viDAC8__D, CYREG_DAC1_D
+ 651              	.set VDAC3_viDAC8__CR0, CYREG_DAC3_CR0
+ 652              	.set VDAC3_viDAC8__CR1, CYREG_DAC3_CR1
+ 653              	.set VDAC3_viDAC8__D, CYREG_DAC3_D
  654              	.set VDAC3_viDAC8__PM_ACT_CFG, CYREG_PM_ACT_CFG8
- 655              	.set VDAC3_viDAC8__PM_ACT_MSK, 0x02
+ 655              	.set VDAC3_viDAC8__PM_ACT_MSK, 0x08
  656              	.set VDAC3_viDAC8__PM_STBY_CFG, CYREG_PM_STBY_CFG8
- 657              	.set VDAC3_viDAC8__PM_STBY_MSK, 0x02
- 658              	.set VDAC3_viDAC8__STROBE, CYREG_DAC1_STROBE
- 659              	.set VDAC3_viDAC8__SW0, CYREG_DAC1_SW0
- 660              	.set VDAC3_viDAC8__SW2, CYREG_DAC1_SW2
- 661              	.set VDAC3_viDAC8__SW3, CYREG_DAC1_SW3
- 662              	.set VDAC3_viDAC8__SW4, CYREG_DAC1_SW4
- 663              	.set VDAC3_viDAC8__TR, CYREG_DAC1_TR
- 664              	.set VDAC3_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC1_M1
- 665              	.set VDAC3_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC1_M2
- 666              	.set VDAC3_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC1_M3
- 667              	.set VDAC3_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC1_M4
- 668              	.set VDAC3_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC1_M5
- 669              	.set VDAC3_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC1_M6
- 670              	.set VDAC3_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC1_M7
+ 657              	.set VDAC3_viDAC8__PM_STBY_MSK, 0x08
+ 658              	.set VDAC3_viDAC8__STROBE, CYREG_DAC3_STROBE
+ 659              	.set VDAC3_viDAC8__SW0, CYREG_DAC3_SW0
+ 660              	.set VDAC3_viDAC8__SW2, CYREG_DAC3_SW2
+ 661              	.set VDAC3_viDAC8__SW3, CYREG_DAC3_SW3
+ 662              	.set VDAC3_viDAC8__SW4, CYREG_DAC3_SW4
+ 663              	.set VDAC3_viDAC8__TR, CYREG_DAC3_TR
+ 664              	.set VDAC3_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC3_M1
+ 665              	.set VDAC3_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC3_M2
+ 666              	.set VDAC3_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC3_M3
+ 667              	.set VDAC3_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC3_M4
+ 668              	.set VDAC3_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC3_M5
+ 669              	.set VDAC3_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC3_M6
+ 670              	.set VDAC3_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC3_M7
 ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 201
 
 
- 671              	.set VDAC3_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC1_M8
- 672              	.set VDAC3_viDAC8__TST, CYREG_DAC1_TST
+ 671              	.set VDAC3_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC3_M8
+ 672              	.set VDAC3_viDAC8__TST, CYREG_DAC3_TST
  673              	
  674              	/* VDAC4_viDAC8 */
- 675              	.set VDAC4_viDAC8__CR0, CYREG_DAC3_CR0
- 676              	.set VDAC4_viDAC8__CR1, CYREG_DAC3_CR1
- 677              	.set VDAC4_viDAC8__D, CYREG_DAC3_D
+ 675              	.set VDAC4_viDAC8__CR0, CYREG_DAC1_CR0
+ 676              	.set VDAC4_viDAC8__CR1, CYREG_DAC1_CR1
+ 677              	.set VDAC4_viDAC8__D, CYREG_DAC1_D
  678              	.set VDAC4_viDAC8__PM_ACT_CFG, CYREG_PM_ACT_CFG8
- 679              	.set VDAC4_viDAC8__PM_ACT_MSK, 0x08
+ 679              	.set VDAC4_viDAC8__PM_ACT_MSK, 0x02
  680              	.set VDAC4_viDAC8__PM_STBY_CFG, CYREG_PM_STBY_CFG8
- 681              	.set VDAC4_viDAC8__PM_STBY_MSK, 0x08
- 682              	.set VDAC4_viDAC8__STROBE, CYREG_DAC3_STROBE
- 683              	.set VDAC4_viDAC8__SW0, CYREG_DAC3_SW0
- 684              	.set VDAC4_viDAC8__SW2, CYREG_DAC3_SW2
- 685              	.set VDAC4_viDAC8__SW3, CYREG_DAC3_SW3
- 686              	.set VDAC4_viDAC8__SW4, CYREG_DAC3_SW4
- 687              	.set VDAC4_viDAC8__TR, CYREG_DAC3_TR
- 688              	.set VDAC4_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC3_M1
- 689              	.set VDAC4_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC3_M2
- 690              	.set VDAC4_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC3_M3
- 691              	.set VDAC4_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC3_M4
- 692              	.set VDAC4_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC3_M5
- 693              	.set VDAC4_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC3_M6
- 694              	.set VDAC4_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC3_M7
- 695              	.set VDAC4_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC3_M8
- 696              	.set VDAC4_viDAC8__TST, CYREG_DAC3_TST
+ 681              	.set VDAC4_viDAC8__PM_STBY_MSK, 0x02
+ 682              	.set VDAC4_viDAC8__STROBE, CYREG_DAC1_STROBE
+ 683              	.set VDAC4_viDAC8__SW0, CYREG_DAC1_SW0
+ 684              	.set VDAC4_viDAC8__SW2, CYREG_DAC1_SW2
+ 685              	.set VDAC4_viDAC8__SW3, CYREG_DAC1_SW3
+ 686              	.set VDAC4_viDAC8__SW4, CYREG_DAC1_SW4
+ 687              	.set VDAC4_viDAC8__TR, CYREG_DAC1_TR
+ 688              	.set VDAC4_viDAC8__TRIM__M1, CYREG_FLSHID_CUST_TABLES_DAC1_M1
+ 689              	.set VDAC4_viDAC8__TRIM__M2, CYREG_FLSHID_CUST_TABLES_DAC1_M2
+ 690              	.set VDAC4_viDAC8__TRIM__M3, CYREG_FLSHID_CUST_TABLES_DAC1_M3
+ 691              	.set VDAC4_viDAC8__TRIM__M4, CYREG_FLSHID_CUST_TABLES_DAC1_M4
+ 692              	.set VDAC4_viDAC8__TRIM__M5, CYREG_FLSHID_CUST_TABLES_DAC1_M5
+ 693              	.set VDAC4_viDAC8__TRIM__M6, CYREG_FLSHID_CUST_TABLES_DAC1_M6
+ 694              	.set VDAC4_viDAC8__TRIM__M7, CYREG_FLSHID_CUST_TABLES_DAC1_M7
+ 695              	.set VDAC4_viDAC8__TRIM__M8, CYREG_FLSHID_CUST_TABLES_DAC1_M8
+ 696              	.set VDAC4_viDAC8__TST, CYREG_DAC1_TST
  697              	
  698              	/* DelSig_Bypass_P03 */
  699              	.set DelSig_Bypass_P03__0__INTTYPE, CYREG_PICU0_INTTYPE3
@@ -12713,65 +12713,65 @@ ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1347              	.set SPI_SCLK__SLW, CYREG_PRT2_SLW
  1348              	
  1349              	/* PGA_Inv_1_SC */
- 1350              	.set PGA_Inv_1_SC__BST, CYREG_SC2_BST
- 1351              	.set PGA_Inv_1_SC__CLK, CYREG_SC2_CLK
+ 1350              	.set PGA_Inv_1_SC__BST, CYREG_SC0_BST
+ 1351              	.set PGA_Inv_1_SC__CLK, CYREG_SC0_CLK
  1352              	.set PGA_Inv_1_SC__CMPINV, CYREG_SC_CMPINV
- 1353              	.set PGA_Inv_1_SC__CMPINV_MASK, 0x04
+ 1353              	.set PGA_Inv_1_SC__CMPINV_MASK, 0x01
  1354              	.set PGA_Inv_1_SC__CPTR, CYREG_SC_CPTR
 ARM GAS  .\Generated_Source\PSoC5\CyBootAsmGnu.s 			page 213
 
 
- 1355              	.set PGA_Inv_1_SC__CPTR_MASK, 0x04
- 1356              	.set PGA_Inv_1_SC__CR0, CYREG_SC2_CR0
- 1357              	.set PGA_Inv_1_SC__CR1, CYREG_SC2_CR1
- 1358              	.set PGA_Inv_1_SC__CR2, CYREG_SC2_CR2
+ 1355              	.set PGA_Inv_1_SC__CPTR_MASK, 0x01
+ 1356              	.set PGA_Inv_1_SC__CR0, CYREG_SC0_CR0
+ 1357              	.set PGA_Inv_1_SC__CR1, CYREG_SC0_CR1
+ 1358              	.set PGA_Inv_1_SC__CR2, CYREG_SC0_CR2
  1359              	.set PGA_Inv_1_SC__MSK, CYREG_SC_MSK
- 1360              	.set PGA_Inv_1_SC__MSK_MASK, 0x04
+ 1360              	.set PGA_Inv_1_SC__MSK_MASK, 0x01
  1361              	.set PGA_Inv_1_SC__PM_ACT_CFG, CYREG_PM_ACT_CFG9
- 1362              	.set PGA_Inv_1_SC__PM_ACT_MSK, 0x04
+ 1362              	.set PGA_Inv_1_SC__PM_ACT_MSK, 0x01
  1363              	.set PGA_Inv_1_SC__PM_STBY_CFG, CYREG_PM_STBY_CFG9
- 1364              	.set PGA_Inv_1_SC__PM_STBY_MSK, 0x04
+ 1364              	.set PGA_Inv_1_SC__PM_STBY_MSK, 0x01
  1365              	.set PGA_Inv_1_SC__SR, CYREG_SC_SR
- 1366              	.set PGA_Inv_1_SC__SR_MASK, 0x04
- 1367              	.set PGA_Inv_1_SC__SW0, CYREG_SC2_SW0
- 1368              	.set PGA_Inv_1_SC__SW10, CYREG_SC2_SW10
- 1369              	.set PGA_Inv_1_SC__SW2, CYREG_SC2_SW2
- 1370              	.set PGA_Inv_1_SC__SW3, CYREG_SC2_SW3
- 1371              	.set PGA_Inv_1_SC__SW4, CYREG_SC2_SW4
- 1372              	.set PGA_Inv_1_SC__SW6, CYREG_SC2_SW6
- 1373              	.set PGA_Inv_1_SC__SW7, CYREG_SC2_SW7
- 1374              	.set PGA_Inv_1_SC__SW8, CYREG_SC2_SW8
+ 1366              	.set PGA_Inv_1_SC__SR_MASK, 0x01
+ 1367              	.set PGA_Inv_1_SC__SW0, CYREG_SC0_SW0
+ 1368              	.set PGA_Inv_1_SC__SW10, CYREG_SC0_SW10
+ 1369              	.set PGA_Inv_1_SC__SW2, CYREG_SC0_SW2
+ 1370              	.set PGA_Inv_1_SC__SW3, CYREG_SC0_SW3
+ 1371              	.set PGA_Inv_1_SC__SW4, CYREG_SC0_SW4
+ 1372              	.set PGA_Inv_1_SC__SW6, CYREG_SC0_SW6
+ 1373              	.set PGA_Inv_1_SC__SW7, CYREG_SC0_SW7
+ 1374              	.set PGA_Inv_1_SC__SW8, CYREG_SC0_SW8
  1375              	.set PGA_Inv_1_SC__WRK1, CYREG_SC_WRK1
- 1376              	.set PGA_Inv_1_SC__WRK1_MASK, 0x04
+ 1376              	.set PGA_Inv_1_SC__WRK1_MASK, 0x01
  1377              	
  1378              	/* PGA_Inv_2_SC */
- 1379              	.set PGA_Inv_2_SC__BST, CYREG_SC1_BST
- 1380              	.set PGA_Inv_2_SC__CLK, CYREG_SC1_CLK
+ 1379              	.set PGA_Inv_2_SC__BST, CYREG_SC3_BST
+ 1380              	.set PGA_Inv_2_SC__CLK, CYREG_SC3_CLK
  1381              	.set PGA_Inv_2_SC__CMPINV, CYREG_SC_CMPINV
- 1382              	.set PGA_Inv_2_SC__CMPINV_MASK, 0x02
+ 1382              	.set PGA_Inv_2_SC__CMPINV_MASK, 0x08
  1383              	.set PGA_Inv_2_SC__CPTR, CYREG_SC_CPTR
- 1384              	.set PGA_Inv_2_SC__CPTR_MASK, 0x02
- 1385              	.set PGA_Inv_2_SC__CR0, CYREG_SC1_CR0
- 1386              	.set PGA_Inv_2_SC__CR1, CYREG_SC1_CR1
- 1387              	.set PGA_Inv_2_SC__CR2, CYREG_SC1_CR2
+ 1384              	.set PGA_Inv_2_SC__CPTR_MASK, 0x08
+ 1385              	.set PGA_Inv_2_SC__CR0, CYREG_SC3_CR0
+ 1386              	.set PGA_Inv_2_SC__CR1, CYREG_SC3_CR1
+ 1387              	.set PGA_Inv_2_SC__CR2, CYREG_SC3_CR2
  1388              	.set PGA_Inv_2_SC__MSK, CYREG_SC_MSK
- 1389              	.set PGA_Inv_2_SC__MSK_MASK, 0x02
+ 1389              	.set PGA_Inv_2_SC__MSK_MASK, 0x08
  1390              	.set PGA_Inv_2_SC__PM_ACT_CFG, CYREG_PM_ACT_CFG9
- 1391              	.set PGA_Inv_2_SC__PM_ACT_MSK, 0x02
+ 1391              	.set PGA_Inv_2_SC__PM_ACT_MSK, 0x08
  1392              	.set PGA_Inv_2_SC__PM_STBY_CFG, CYREG_PM_STBY_CFG9
- 1393              	.set PGA_Inv_2_SC__PM_STBY_MSK, 0x02
+ 1393              	.set PGA_Inv_2_SC__PM_STBY_MSK, 0x08
  1394              	.set PGA_Inv_2_SC__SR, CYREG_SC_SR
- 1395              	.set PGA_Inv_2_SC__SR_MASK, 0x02
- 1396              	.set PGA_Inv_2_SC__SW0, CYREG_SC1_SW0
- 1397              	.set PGA_Inv_2_SC__SW10, CYREG_SC1_SW10
- 1398              	.set PGA_Inv_2_SC__SW2, CYREG_SC1_SW2
- 1399              	.set PGA_Inv_2_SC__SW3, CYREG_SC1_SW3
- 1400              	.set PGA_Inv_2_SC__SW4, CYREG_SC1_SW4
- 1401              	.set PGA_Inv_2_SC__SW6, CYREG_SC1_SW6
- 1402              	.set PGA_Inv_2_SC__SW7, CYREG_SC1_SW7
- 1403              	.set PGA_Inv_2_SC__SW8, CYREG_SC1_SW8
+ 1395              	.set PGA_Inv_2_SC__SR_MASK, 0x08
+ 1396              	.set PGA_Inv_2_SC__SW0, CYREG_SC3_SW0
+ 1397              	.set PGA_Inv_2_SC__SW10, CYREG_SC3_SW10
+ 1398              	.set PGA_Inv_2_SC__SW2, CYREG_SC3_SW2
+ 1399              	.set PGA_Inv_2_SC__SW3, CYREG_SC3_SW3
+ 1400              	.set PGA_Inv_2_SC__SW4, CYREG_SC3_SW4
+ 1401              	.set PGA_Inv_2_SC__SW6, CYREG_SC3_SW6
+ 1402              	.set PGA_Inv_2_SC__SW7, CYREG_SC3_SW7
+ 1403              	.set PGA_Inv_2_SC__SW8, CYREG_SC3_SW8
  1404              	.set PGA_Inv_2_SC__WRK1, CYREG_SC_WRK1
- 1405              	.set PGA_Inv_2_SC__WRK1_MASK, 0x02
+ 1405              	.set PGA_Inv_2_SC__WRK1_MASK, 0x08
  1406              	
  1407              	/* Pin_test1 */
  1408              	.set Pin_test1__0__INTTYPE, CYREG_PICU3_INTTYPE3

@@ -6,14 +6,14 @@
 <CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
 <userData>
 <dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
-<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Components">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
 <TreeKeys>
 <v>Source</v>
 <v>Components</v>
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Voltron\Voltron Main\Source Files\resources.c">
 <ExpandedNodeIds>
 <v>Voltron</v>
 <v>Voltron\Design01</v>
@@ -261,9 +261,12 @@
 <v>Voltron\Voltron Main</v>
 <v>Voltron\Voltron Main\TopDesign</v>
 <v>Voltron\Voltron Main\Voltron Main.cydwr</v>
+<v>Voltron\Voltron Main\Header Files</v>
 <v>Voltron\Voltron Main\Header Files\cyapicallbacks.h</v>
+<v>Voltron\Voltron Main\Header Files\resources.h</v>
 <v>Voltron\Voltron Main\Source Files</v>
 <v>Voltron\Voltron Main\Source Files\main.c</v>
+<v>Voltron\Voltron Main\Source Files\resources.c</v>
 <v>Voltron\Voltron Main\Generated_Source</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\AMux_DelSig\AMux_DelSig.c</v>
@@ -377,7 +380,6 @@
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_PWMB\Pin_LED_PWMB.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_PWMB\Pin_LED_PWMB.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_PWMB\Pin_LED_PWMB_aliases.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1\Pin_test1.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1\Pin_test1.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1\Pin_test1_aliases.h</v>
@@ -434,23 +436,17 @@
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2FILTER1\SAR2FILTER1_dma.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2FILTER2\SAR2FILTER2_dma.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2FILTER2\SAR2FILTER2_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT1</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT1\SAR2SHIFT1_dma.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT1\SAR2SHIFT1_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT2</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT2\SAR2SHIFT2_dma.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT2\SAR2SHIFT2_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER1</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER1\SHIFT2FILTER1_dma.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER1\SHIFT2FILTER1_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER2</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER2\SHIFT2FILTER2_dma.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER2\SHIFT2FILTER2_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1\ShiftBy2_1_defs.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1\ShiftBy2_1_ShiftBy2.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1\ShiftBy2_1_ShiftBy2.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_2</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_2\ShiftBy2_2_defs.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_2\ShiftBy2_2_ShiftBy2.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_2\ShiftBy2_2_ShiftBy2.h</v>
@@ -468,7 +464,6 @@
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SPI_SS\SPI_SS_aliases.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SPI2RAM\SPI2RAM_dma.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SPI2RAM\SPI2RAM_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SPIS</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SPIS\SPIS.c</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SPIS\SPIS.h</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\SPIS\SPIS_BOOT.c</v>
@@ -540,6 +535,45 @@
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Voltron</v>
+<v>Voltron\Design01</v>
+<v>Voltron\Design01\TopDesign</v>
+<v>Voltron\Design01\Design01.cydwr</v>
+<v>Voltron\Design01\Header Files</v>
+<v>Voltron\Design01\Header Files\cyapicallbacks.h</v>
+<v>Voltron\Design01\Source Files</v>
+<v>Voltron\Design01\Source Files\main.c</v>
+<v>Voltron\Design01\Generated_Source</v>
+<v>Voltron\testcode</v>
+<v>Voltron\testcode\TopDesign</v>
+<v>Voltron\testcode\testcode.cydwr</v>
+<v>Voltron\testcode\Header Files</v>
+<v>Voltron\testcode\Header Files\cyapicallbacks.h</v>
+<v>Voltron\testcode\Source Files</v>
+<v>Voltron\testcode\Source Files\main.c</v>
+<v>Voltron\testcode\Generated_Source</v>
+<v>Voltron\Voltron Main</v>
+<v>Voltron\Voltron Main\TopDesign</v>
+<v>Voltron\Voltron Main\Voltron Main.cydwr</v>
+<v>Voltron\Voltron Main\Header Files</v>
+<v>Voltron\Voltron Main\Header Files\cyapicallbacks.h</v>
+<v>Voltron\Voltron Main\Header Files\resources.h</v>
+<v>Voltron\Voltron Main\Source Files</v>
+<v>Voltron\Voltron Main\Source Files\main.c</v>
+<v>Voltron\Voltron Main\Source Files\resources.c</v>
+<v>Voltron\Voltron Main\Generated_Source</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\AMux_DelSig</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\cy_boot</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\DelSig</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\DelSig_Bypass_P03</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\DelSig_Ext_CP_Clk</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\DelSig_IRQ</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\DelSig_theACLK</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\Filter</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\FILTER2RAM1</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\FILTER2RAM2</v>
+<v>Voltron\Voltron Main\Generated_Source\PSoC5\I2C</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\I2C_Pins</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\isr_filter_ready1</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\isr_filter_ready2</v>
@@ -558,47 +592,6 @@
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_AMPA</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_AMPB</v>
 <v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_PWMA</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_LED_PWMB</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1\Pin_test1.c</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1\Pin_test1.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_test1\Pin_test1_aliases.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_TIA1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_TIA1P5</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_TIA2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_TIA3</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_TIA3P5</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_TIA4</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\Pin_VDDAdiv2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\PWM1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\PWM2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR1_Bypass</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR1_IRQ</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR1_theACLK</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2_Bypass</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2_IRQ</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2_theACLK</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2FILTER1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2FILTER2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT1\SAR2SHIFT1_dma.c</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT1\SAR2SHIFT1_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT2\SAR2SHIFT2_dma.c</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SAR2SHIFT2\SAR2SHIFT2_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER1\SHIFT2FILTER1_dma.c</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER1\SHIFT2FILTER1_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER2</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER2\SHIFT2FILTER2_dma.c</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\SHIFT2FILTER2\SHIFT2FILTER2_dma.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1\ShiftBy2_1_defs.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1\ShiftBy2_1_ShiftBy2.c</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_1\ShiftBy2_1_ShiftBy2.h</v>
-<v>Voltron\Voltron Main\Generated_Source\PSoC5\ShiftBy2_2</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Voltron\Voltron Main\ShiftBy2\ShiftBy2.cyudb">
@@ -822,6 +815,7 @@
 <v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM1_PM.lst</v>
 <v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM2.lst</v>
 <v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM2_PM.lst</v>
+<v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\resources.lst</v>
 <v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\SAR1.lst</v>
 <v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\SAR1_Bypass.lst</v>
 <v>Voltron\Voltron Main\CortexM3\ARM_GCC_493\Debug\Listing Files\SAR1_INT.lst</v>
@@ -941,7 +935,6 @@
 <v>Voltron\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\TIA_1_PM.lst</v>
 <v>Voltron\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\TIA_2.lst</v>
 <v>Voltron\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\TIA_2_PM.lst</v>
-<v>Voltron\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\VDACH.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -1081,7 +1074,6 @@
 <v>Voltron\Voltron Main\cy_pins_v2_20</v>
 <v>Voltron\Voltron Main\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>Voltron\Voltron Main\cy_vref_v1_70</v>
-<v>Voltron\Voltron Main\cy_vref_v1_70\cy_vref_v1_70.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -1097,14 +1089,17 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\Voltron Main.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Voltron Main.cydsn\Voltron Main.cydwr" />
-<name v=".\HelloWorld_Blinky01.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\HelloWorld_Blinky01.cydsn\HelloWorld_Blinky01.cydwr" />
+<name v=".\Voltron Main.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Voltron Main.cydsn\main.c" />
 <name v=".\testcode.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\testcode.cydsn\testcode.cydwr" />
 <name v=".\testcode.cydsn\main.c" />
-<name v=".\Voltron Main.cydsn\main.c" />
+<name v=".\Design01.cydsn\main.c" />
+<name v=".\Voltron Main.cydsn\ShiftBy2\ShiftBy2.cydmacap" />
+<name v=".\Voltron Main.cydsn\ShiftBy2\API\ShiftBy2.c" />
+<name v=".\Voltron Main.cydsn\ShiftBy2\API\ShiftBy2.h" />
+<name v=".\Voltron Main.cydsn\ShiftBy2\ShiftBy2.cyudb" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

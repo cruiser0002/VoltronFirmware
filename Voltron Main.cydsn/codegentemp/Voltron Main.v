@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/11/2016 at 21:08
+// 09/13/2016 at 23:37
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -962,7 +962,7 @@ module SPI_Slave_v2_70_11 (
 
 endmodule
 
-// Filter_v2_30(ChannelEnableA=true, ChannelEnableB=true, ChannelSettingsA=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=1.48901437909182>\r\n<filterGain_Linear=1.187>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=40>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelSettingsB=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=5.9508333563632>\r\n<filterGain_Linear=1.984>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=20>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelTypeA=1, ChannelTypeB=1, CoefficientEntryEnableA=false, CoefficientEntryEnableB=false, DisplaySettingsA=50307, DisplaySettingsB=50307, DmaEnableA=true, DmaEnableB=true, IrqEnableA=false, IrqEnableB=false, MinBusClockVal=66, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=Filter_v2_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Filter, CY_INSTANCE_SHORT_NAME=Filter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Filter, )
+// Filter_v2_30(ChannelEnableA=true, ChannelEnableB=true, ChannelSettingsA=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=1.48901437909182>\r\n<filterGain_Linear=1.187>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=40>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelSettingsB=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=1.48901437909182>\r\n<filterGain_Linear=1.187>\r\n<gainScale=LINEAR>\r\n<width=WIDTH_16>\r\n<signal=DMA>\r\n<stage_count=1>\r\n<bus_clock=66>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=25>\r\n    <primary_freq=40>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelTypeA=1, ChannelTypeB=1, CoefficientEntryEnableA=false, CoefficientEntryEnableB=false, DisplaySettingsA=50307, DisplaySettingsB=50307, DmaEnableA=true, DmaEnableB=true, IrqEnableA=false, IrqEnableB=false, MinBusClockVal=66, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=Filter_v2_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Filter, CY_INSTANCE_SHORT_NAME=Filter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Filter, )
 module Filter_v2_30_12 (
     DMA_Req_A,
     DMA_Req_B,
@@ -1027,7 +1027,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v"
 `endif
 
-// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=false, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=500, CompareValue2=63, CONTROL3=1, ControlReg=false, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=1, DitherOffset=0, EnableMode=0, FF16=true, FF8=false, FixedFunction=true, FixedFunctionUsed=1, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=1, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=1000, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=true, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=false, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP16, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=PWM_v3_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=PWM2, CY_INSTANCE_SHORT_NAME=PWM2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=PWM2, )
+// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=false, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=10, CompareValue2=63, CONTROL3=1, ControlReg=false, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=1, DitherOffset=0, EnableMode=0, FF16=true, FF8=false, FixedFunction=true, FixedFunctionUsed=1, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=1, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=100, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=true, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=false, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP16, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=PWM_v3_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=PWM2, CY_INSTANCE_SHORT_NAME=PWM2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=PWM2, )
 module PWM_v3_30_13 (
     pwm2,
     tc,
@@ -1102,7 +1102,7 @@ module PWM_v3_30_13 (
 
 endmodule
 
-// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=false, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=100, CompareValue2=63, CONTROL3=1, ControlReg=false, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=1, DitherOffset=0, EnableMode=0, FF16=true, FF8=false, FixedFunction=true, FixedFunctionUsed=1, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=1, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=100, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=true, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=false, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP16, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=PWM_v3_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=PWM1, CY_INSTANCE_SHORT_NAME=PWM1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=PWM1, )
+// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=false, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=10, CompareValue2=63, CONTROL3=1, ControlReg=false, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=1, DitherOffset=0, EnableMode=0, FF16=true, FF8=false, FixedFunction=true, FixedFunctionUsed=1, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=1, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=100, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=true, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=false, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP16, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=PWM_v3_30, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=PWM1, CY_INSTANCE_SHORT_NAME=PWM1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=PWM1, )
 module PWM_v3_30_14 (
     pwm2,
     tc,
@@ -1525,7 +1525,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v"
 `endif
 
-// ADC_SAR_v3_0(ADC_Clock=1, ADC_Clock_Frequency=18000000, ADC_Input_Range=5, ADC_Power=0, ADC_Reference=1, ADC_Resolution=12, ADC_SampleMode=0, Enable_next_out=false, Ref_Voltage=2.5, Ref_Voltage_mV=2500, rm_int=false, Sample_Precharge=6, Sample_Rate=1000000, Sample_Rate_def=631579, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=ADC_SAR_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SAR1, CY_INSTANCE_SHORT_NAME=SAR1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SAR1, )
+// ADC_SAR_v3_0(ADC_Clock=1, ADC_Clock_Frequency=18000000, ADC_Input_Range=3, ADC_Power=0, ADC_Reference=1, ADC_Resolution=12, ADC_SampleMode=0, Enable_next_out=false, Ref_Voltage=1.024, Ref_Voltage_mV=1024, rm_int=false, Sample_Precharge=6, Sample_Rate=1000000, Sample_Rate_def=631579, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=ADC_SAR_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SAR1, CY_INSTANCE_SHORT_NAME=SAR1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SAR1, )
 module ADC_SAR_v3_0_17 (
     vplus,
     vminus,
@@ -1571,7 +1571,7 @@ module ADC_SAR_v3_0_17 (
           wire  Net_188;
 
 	// cy_analog_virtualmux_3 (cy_analog_virtualmux_v1_0)
-	cy_connect_v1_0 cy_analog_virtualmux_3_connect(Net_248, Net_235);
+	cy_connect_v1_0 cy_analog_virtualmux_3_connect(Net_248, Net_233);
 	defparam cy_analog_virtualmux_3_connect.sig_width = 1;
 
 
@@ -1718,21 +1718,21 @@ module ADC_SAR_v3_0_17 (
     cy_analog_noconnect_v1_0 noconnect (
         .noconnect(Net_209));
 
+
+	cy_vref_v1_0
+		#(.autoenable(1),
+		  .guid("89B398AD-36A8-4627-9212-707F2986319E"),
+		  .name("1.024V"))
+		vRef_1024
+		 (.vout(Net_233));
+
+
 	// cy_analog_virtualmux_4 (cy_analog_virtualmux_v1_0)
 	cy_connect_v1_0 cy_analog_virtualmux_4_connect(Net_257, Net_255);
 	defparam cy_analog_virtualmux_4_connect.sig_width = 1;
 
     cy_analog_noconnect_v1_0 cy_analog_noconnect_1 (
         .noconnect(Net_255));
-
-
-	cy_vref_v1_0
-		#(.autoenable(1),
-		  .guid("4720866E-BC14-478d-B8A0-3E44F38CADAC"),
-		  .name("Vdda/2"))
-		vRef_Vdda_1
-		 (.vout(Net_235));
-
 
     cy_analog_noconnect_v1_0 noconnect_1 (
         .noconnect(Net_368));
@@ -1746,7 +1746,7 @@ module ADC_SAR_v3_0_17 (
 
 endmodule
 
-// ADC_SAR_v3_0(ADC_Clock=1, ADC_Clock_Frequency=18000000, ADC_Input_Range=5, ADC_Power=0, ADC_Reference=1, ADC_Resolution=12, ADC_SampleMode=0, Enable_next_out=false, Ref_Voltage=2.5, Ref_Voltage_mV=2500, rm_int=false, Sample_Precharge=6, Sample_Rate=1000000, Sample_Rate_def=631579, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=ADC_SAR_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SAR2, CY_INSTANCE_SHORT_NAME=SAR2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SAR2, )
+// ADC_SAR_v3_0(ADC_Clock=1, ADC_Clock_Frequency=18000000, ADC_Input_Range=3, ADC_Power=0, ADC_Reference=1, ADC_Resolution=12, ADC_SampleMode=0, Enable_next_out=false, Ref_Voltage=1.024, Ref_Voltage_mV=1024, rm_int=false, Sample_Precharge=6, Sample_Rate=1000000, Sample_Rate_def=631579, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=ADC_SAR_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SAR2, CY_INSTANCE_SHORT_NAME=SAR2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=SAR2, )
 module ADC_SAR_v3_0_18 (
     vplus,
     vminus,
@@ -1792,7 +1792,7 @@ module ADC_SAR_v3_0_18 (
           wire  Net_188;
 
 	// cy_analog_virtualmux_3 (cy_analog_virtualmux_v1_0)
-	cy_connect_v1_0 cy_analog_virtualmux_3_connect(Net_248, Net_235);
+	cy_connect_v1_0 cy_analog_virtualmux_3_connect(Net_248, Net_233);
 	defparam cy_analog_virtualmux_3_connect.sig_width = 1;
 
 
@@ -1939,21 +1939,21 @@ module ADC_SAR_v3_0_18 (
     cy_analog_noconnect_v1_0 noconnect (
         .noconnect(Net_209));
 
+
+	cy_vref_v1_0
+		#(.autoenable(1),
+		  .guid("89B398AD-36A8-4627-9212-707F2986319E"),
+		  .name("1.024V"))
+		vRef_1024
+		 (.vout(Net_233));
+
+
 	// cy_analog_virtualmux_4 (cy_analog_virtualmux_v1_0)
 	cy_connect_v1_0 cy_analog_virtualmux_4_connect(Net_257, Net_255);
 	defparam cy_analog_virtualmux_4_connect.sig_width = 1;
 
     cy_analog_noconnect_v1_0 cy_analog_noconnect_1 (
         .noconnect(Net_255));
-
-
-	cy_vref_v1_0
-		#(.autoenable(1),
-		  .guid("4720866E-BC14-478d-B8A0-3E44F38CADAC"),
-		  .name("Vdda/2"))
-		vRef_Vdda_1
-		 (.vout(Net_235));
-
 
     cy_analog_noconnect_v1_0 noconnect_1 (
         .noconnect(Net_368));
@@ -2158,12 +2158,12 @@ module top ;
           wire  Net_837;
           wire  Net_8111;
           wire  Net_8219;
-          wire  Net_8109;
+          wire  Net_8294;
           wire  Net_8108;
           wire  Net_8107;
           wire  Net_8106;
           wire  Net_8105;
-          wire  Net_8289;
+          wire  Net_8293;
           wire  Net_4221;
           wire  Net_2245;
           wire  Net_2244;
@@ -3644,7 +3644,7 @@ module top ;
     Filter_v2_30_12 Filter (
         .DMA_Req_A(Net_8232),
         .DMA_Req_B(Net_6690),
-        .Interrupt(Net_8109));
+        .Interrupt(Net_8294));
 
     assign Net_8219 = 1'h1;
 

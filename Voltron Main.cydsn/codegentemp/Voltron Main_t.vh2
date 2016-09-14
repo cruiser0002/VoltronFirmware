@@ -1,5 +1,5 @@
 -- Project:   C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Voltron Main.cyprj
--- Generated: 09/11/2016 21:08:57
+-- Generated: 09/13/2016 23:38:00
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Voltron Main\ IS
@@ -65,7 +65,6 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE placement_force OF Net_8031 : SIGNAL IS "U(2,2,B)2";
     SIGNAL Net_8106 : bit;
     SIGNAL Net_8108 : bit;
-    SIGNAL Net_8109 : bit;
     SIGNAL Net_8117 : bit;
     SIGNAL Net_8127 : bit;
     SIGNAL Net_8131 : bit;
@@ -75,6 +74,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Net_8220 : bit;
     ATTRIBUTE placement_force OF Net_8220 : SIGNAL IS "U(3,0,A)1";
     SIGNAL Net_8232 : bit;
+    SIGNAL Net_8294 : bit;
     SIGNAL Pin_DAC1(0)__PA : bit;
     SIGNAL Pin_DAC2(0)__PA : bit;
     SIGNAL Pin_DAC3(0)__PA : bit;
@@ -383,14 +383,14 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE lib_model OF \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "U(3,2)";
     ATTRIBUTE Location OF \Opamp_2:ABuf\ : LABEL IS "F(OpAmp,3)";
-    ATTRIBUTE Location OF \PGA_Inv_2:SC\ : LABEL IS "F(SC,1)";
+    ATTRIBUTE Location OF \PGA_Inv_2:SC\ : LABEL IS "F(SC,3)";
     ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell30";
     ATTRIBUTE Location OF Dedicated_Output_1 : LABEL IS "P3[6]";
-    ATTRIBUTE Location OF \PGA_Inv_1:SC\ : LABEL IS "F(SC,2)";
-    ATTRIBUTE Location OF \VDAC4:viDAC8\ : LABEL IS "F(VIDAC,3)";
-    ATTRIBUTE Location OF \VDAC3:viDAC8\ : LABEL IS "F(VIDAC,1)";
-    ATTRIBUTE Location OF \VDAC2:viDAC8\ : LABEL IS "F(VIDAC,0)";
-    ATTRIBUTE Location OF \VDAC1:viDAC8\ : LABEL IS "F(VIDAC,2)";
+    ATTRIBUTE Location OF \PGA_Inv_1:SC\ : LABEL IS "F(SC,0)";
+    ATTRIBUTE Location OF \VDAC4:viDAC8\ : LABEL IS "F(VIDAC,1)";
+    ATTRIBUTE Location OF \VDAC3:viDAC8\ : LABEL IS "F(VIDAC,3)";
+    ATTRIBUTE Location OF \VDAC2:viDAC8\ : LABEL IS "F(VIDAC,2)";
+    ATTRIBUTE Location OF \VDAC1:viDAC8\ : LABEL IS "F(VIDAC,0)";
     ATTRIBUTE Location OF \Opamp_1:ABuf\ : LABEL IS "F(OpAmp,2)";
     ATTRIBUTE Location OF \Opamp_4:ABuf\ : LABEL IS "F(OpAmp,0)";
     ATTRIBUTE Location OF \Opamp_3:ABuf\ : LABEL IS "F(OpAmp,1)";
@@ -3901,7 +3901,7 @@ BEGIN
             out_2 => \Filter:Net_9\,
             dmareq_1 => Net_8232,
             dmareq_2 => Net_6690,
-            interrupt => Net_8109);
+            interrupt => Net_8294);
 
     SPI2RAM:drqcell
         GENERIC MAP(

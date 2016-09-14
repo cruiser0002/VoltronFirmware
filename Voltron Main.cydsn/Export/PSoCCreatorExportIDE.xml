@@ -37,7 +37,9 @@
       <Folder BuildType="BUILD" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn">
         <Files Root="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn">
           <File BuildType="BUILD" Toolchain="">.\main.c</File>
+          <File BuildType="BUILD" Toolchain="">.\resources.c</File>
           <File BuildType="BUILD" Toolchain="">.\cyapicallbacks.h</File>
+          <File BuildType="BUILD" Toolchain="">.\resources.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\cruiser\Documents\PSoC Creator\Voltron\Voltron Main.cydsn\Generated_Source\PSoC5">

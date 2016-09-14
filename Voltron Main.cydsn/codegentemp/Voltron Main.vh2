@@ -2,7 +2,7 @@
 --	Conversion of Voltron Main.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Sep 11 21:08:46 2016
+--	Tue Sep 13 23:37:50 2016
 --
 
 USE cypress.cypress.all;
@@ -345,7 +345,7 @@ SIGNAL \Filter:Net_4\ : bit;
 SIGNAL \Filter:Net_5\ : bit;
 SIGNAL \Filter:Net_8\ : bit;
 SIGNAL \Filter:Net_9\ : bit;
-SIGNAL Net_8109 : bit;
+SIGNAL Net_8294 : bit;
 SIGNAL Net_8219 : bit;
 SIGNAL Net_837 : bit;
 SIGNAL Net_850 : bit;
@@ -672,7 +672,7 @@ SIGNAL \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
 SIGNAL \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
 SIGNAL \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
 TERMINAL \SAR1:Net_248\ : bit;
-TERMINAL \SAR1:Net_235\ : bit;
+TERMINAL \SAR1:Net_233\ : bit;
 SIGNAL \SAR1:vp_ctl_0\ : bit;
 SIGNAL \SAR1:vp_ctl_2\ : bit;
 SIGNAL \SAR1:vn_ctl_1\ : bit;
@@ -713,7 +713,7 @@ TERMINAL \SAR1:Net_255\ : bit;
 TERMINAL \SAR1:Net_368\ : bit;
 SIGNAL \SAR1:Net_381\ : bit;
 TERMINAL \SAR2:Net_248\ : bit;
-TERMINAL \SAR2:Net_235\ : bit;
+TERMINAL \SAR2:Net_233\ : bit;
 SIGNAL \SAR2:vp_ctl_0\ : bit;
 SIGNAL \SAR2:vp_ctl_2\ : bit;
 SIGNAL \SAR2:vn_ctl_1\ : bit;
@@ -2881,7 +2881,7 @@ isr_spi_rx:cy_isr_v1_0
 		out_2=>\Filter:Net_9\,
 		dmareq_1=>Net_8232,
 		dmareq_2=>Net_6690,
-		interrupt=>Net_8109);
+		interrupt=>Net_8294);
 SPI2RAM:cy_dma_v1_0
 	GENERIC MAP(drq_type=>"10",
 		num_tds=>0)
@@ -3478,7 +3478,7 @@ Pin_TIA3:cy_psoc3_pins_v1_10
 	GENERIC MAP(sig_width=>1,
 		is_net_join=>'0')
 	PORT MAP(signal1=>\SAR1:Net_248\,
-		signal2=>\SAR1:Net_235\);
+		signal2=>\SAR1:Net_233\);
 \SAR1:IRQ\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_124);
@@ -3593,6 +3593,12 @@ Pin_TIA3:cy_psoc3_pins_v1_10
 		signal2=>Net_8177);
 \SAR1:noconnect\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\SAR1:Net_209\);
+\SAR1:vRef_1024\:cy_vref_v1_0
+	GENERIC MAP(guid=>"89B398AD-36A8-4627-9212-707F2986319E",
+		name=>"1.024V",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\SAR1:Net_233\);
 \SAR1:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
 	GENERIC MAP(sig_width=>1,
 		is_net_join=>'0')
@@ -3600,19 +3606,13 @@ Pin_TIA3:cy_psoc3_pins_v1_10
 		signal2=>\SAR1:Net_255\);
 \SAR1:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\SAR1:Net_255\);
-\SAR1:vRef_Vdda_1\:cy_vref_v1_0
-	GENERIC MAP(guid=>"4720866E-BC14-478d-B8A0-3E44F38CADAC",
-		name=>"Vdda/2",
-		autoenable=>'1',
-		ignoresleep=>'0')
-	PORT MAP(vout=>\SAR1:Net_235\);
 \SAR1:noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\SAR1:Net_368\);
 \SAR2:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
 	GENERIC MAP(sig_width=>1,
 		is_net_join=>'0')
 	PORT MAP(signal1=>\SAR2:Net_248\,
-		signal2=>\SAR2:Net_235\);
+		signal2=>\SAR2:Net_233\);
 \SAR2:IRQ\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_8212);
@@ -3727,6 +3727,12 @@ Pin_TIA3:cy_psoc3_pins_v1_10
 		signal2=>Net_8170);
 \SAR2:noconnect\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\SAR2:Net_209\);
+\SAR2:vRef_1024\:cy_vref_v1_0
+	GENERIC MAP(guid=>"89B398AD-36A8-4627-9212-707F2986319E",
+		name=>"1.024V",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\SAR2:Net_233\);
 \SAR2:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
 	GENERIC MAP(sig_width=>1,
 		is_net_join=>'0')
@@ -3734,12 +3740,6 @@ Pin_TIA3:cy_psoc3_pins_v1_10
 		signal2=>\SAR2:Net_255\);
 \SAR2:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\SAR2:Net_255\);
-\SAR2:vRef_Vdda_1\:cy_vref_v1_0
-	GENERIC MAP(guid=>"4720866E-BC14-478d-B8A0-3E44F38CADAC",
-		name=>"Vdda/2",
-		autoenable=>'1',
-		ignoresleep=>'0')
-	PORT MAP(vout=>\SAR2:Net_235\);
 \SAR2:noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\SAR2:Net_368\);
 isr_filter_ready1:cy_isr_v1_0

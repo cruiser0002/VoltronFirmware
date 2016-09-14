@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 1
 
 
    1              		.syntax unified
@@ -18,14 +18,14 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.filter_ready1_handler,"ax",%progbits
+  18              		.section	.text.main,"ax",%progbits
   19              		.align	2
-  20              		.global	filter_ready1_handler
+  20              		.global	main
   21              		.thumb
   22              		.thumb_func
-  23              		.type	filter_ready1_handler, %function
-  24              	filter_ready1_handler:
-  25              	.LFB66:
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB63:
   26              		.file 1 ".\\main.c"
    1:.\main.c      **** /* ========================================
    2:.\main.c      ****  *
@@ -41,4848 +41,598 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 1
   12:.\main.c      **** */
   13:.\main.c      **** #include <project.h>
   14:.\main.c      **** #include <math.h>
-  15:.\main.c      **** 
-  16:.\main.c      **** #define DECIMATION 25
+  15:.\main.c      **** #include <resources.h>
+  16:.\main.c      **** 
   17:.\main.c      **** 
-  18:.\main.c      **** //I2C
-  19:.\main.c      **** uint8 i2cbuf[4] = {0,0,0,0};
-  20:.\main.c      **** 
-  21:.\main.c      **** //SPI
-  22:.\main.c      **** uint32 spimem[1] = {0};
-  23:.\main.c      **** 
-  24:.\main.c      **** //SAR variables
-  25:.\main.c      **** uint32 sarmem1[1] = {0};
-  26:.\main.c      **** uint32 sarmem2[1] = {0};
-  27:.\main.c      **** 
-  28:.\main.c      **** //4^N samples for decimation
-  29:.\main.c      **** uint16 filtermem1[DECIMATION];
-  30:.\main.c      **** uint16 filtermem2[DECIMATION];
-  31:.\main.c      **** 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 2
-
-
-  32:.\main.c      **** //DMA channels
-  33:.\main.c      **** uint8 RAM2FILTER1_Chan;
-  34:.\main.c      **** uint8 RAM2FILTER2_Chan;
-  35:.\main.c      **** 
-  36:.\main.c      **** 
-  37:.\main.c      **** 
-  38:.\main.c      **** void start_resources()
-  39:.\main.c      **** {
-  40:.\main.c      ****     I2C_Start();
-  41:.\main.c      ****     
-  42:.\main.c      ****     I2C_SetBuffer1(4, 4, i2cbuf);
-  43:.\main.c      ****     
-  44:.\main.c      ****     PWM1_Start();
-  45:.\main.c      ****     PWM2_Start();
-  46:.\main.c      ****     
-  47:.\main.c      ****     VDAC1_Start();
-  48:.\main.c      ****     VDAC2_Start();
-  49:.\main.c      ****     VDAC3_Start();
-  50:.\main.c      ****     VDAC4_Start();
-  51:.\main.c      ****     VDAC1_SetValue(127);
-  52:.\main.c      ****     VDAC2_SetValue(127);
-  53:.\main.c      ****     VDAC3_SetValue(127);
-  54:.\main.c      ****     VDAC4_SetValue(127);
-  55:.\main.c      ****     
-  56:.\main.c      ****     SAR1_Start();
-  57:.\main.c      ****     SAR2_Start();
-  58:.\main.c      ****     SAR1_StartConvert();
-  59:.\main.c      ****     SAR2_StartConvert();
-  60:.\main.c      ****     
-  61:.\main.c      ****     Filter_Start();
-  62:.\main.c      ****     Filter_SetDalign(Filter_STAGEA_DALIGN, Filter_ENABLED);
-  63:.\main.c      ****     Filter_SetDalign(Filter_HOLDA_DALIGN, Filter_ENABLED);
-  64:.\main.c      ****     Filter_SetCoherency(Filter_CHANNEL_A, Filter_KEY_MID);
-  65:.\main.c      ****     
-  66:.\main.c      ****     Filter_SetDalign(Filter_STAGEB_DALIGN, Filter_ENABLED);
-  67:.\main.c      ****     Filter_SetDalign(Filter_HOLDB_DALIGN, Filter_ENABLED);
-  68:.\main.c      ****     Filter_SetCoherency(Filter_CHANNEL_B, Filter_KEY_MID);
-  69:.\main.c      ****     
-  70:.\main.c      ****     SPIS_Start();
-  71:.\main.c      ****     
-  72:.\main.c      **** }
-  73:.\main.c      **** 
-  74:.\main.c      **** CY_ISR(shift_sar1_handler) 
-  75:.\main.c      **** {
-  76:.\main.c      ****     //sarmem1[0] = sarmem1[0] << 3;
-  77:.\main.c      ****     //Filter_Write16(Filter_CHANNEL_A, sarmem1[0]);
-  78:.\main.c      ****     //CyDmaChSetRequest(RAM2FILTER1_Chan, CPU_REQ);
-  79:.\main.c      **** }
-  80:.\main.c      **** 
-  81:.\main.c      **** CY_ISR(shift_sar2_handler) 
-  82:.\main.c      **** {
-  83:.\main.c      ****     //sarmem2[0] = sarmem2[0] << 3;
-  84:.\main.c      ****     //Filter_Write16(Filter_CHANNEL_B, sarmem2[0]);
-  85:.\main.c      ****     //CyDmaChSetRequest(RAM2FILTER2_Chan, CPU_REQ);
-  86:.\main.c      **** }
-  87:.\main.c      **** 
-  88:.\main.c      **** CY_ISR(filter_ready1_handler) 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 3
-
-
-  89:.\main.c      **** {
-  27              		.loc 1 89 0
+  18:.\main.c      **** int main()
+  19:.\main.c      **** {
+  27              		.loc 1 19 0
   28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 0
-  30              		@ frame_needed = 0, uses_anonymous_args = 0
-  31              		@ link register save eliminated.
-  90:.\main.c      ****     i2cbuf[0] = filtermem1[DECIMATION - 1] >> 8;
-  32              		.loc 1 90 0
-  33 0000 034B     		ldr	r3, .L2
-  34 0002 1A8E     		ldrh	r2, [r3, #48]
-  35 0004 034B     		ldr	r3, .L2+4
-  36 0006 110A     		lsrs	r1, r2, #8
-  37 0008 1970     		strb	r1, [r3]
-  91:.\main.c      ****     i2cbuf[1] = filtermem1[DECIMATION - 1];
-  38              		.loc 1 91 0
-  39 000a 5A70     		strb	r2, [r3, #1]
-  40 000c 7047     		bx	lr
-  41              	.L3:
-  42 000e 00BF     		.align	2
-  43              	.L2:
-  44 0010 00000000 		.word	filtermem1
-  45 0014 00000000 		.word	.LANCHOR0
-  46              		.cfi_endproc
-  47              	.LFE66:
-  48              		.size	filter_ready1_handler, .-filter_ready1_handler
-  49              		.section	.text.filter_ready2_handler,"ax",%progbits
-  50              		.align	2
-  51              		.global	filter_ready2_handler
-  52              		.thumb
-  53              		.thumb_func
-  54              		.type	filter_ready2_handler, %function
-  55              	filter_ready2_handler:
-  56              	.LFB67:
-  92:.\main.c      **** }
-  93:.\main.c      **** 
-  94:.\main.c      **** CY_ISR(filter_ready2_handler) 
-  95:.\main.c      **** {
-  57              		.loc 1 95 0
-  58              		.cfi_startproc
-  59              		@ args = 0, pretend = 0, frame = 0
-  60              		@ frame_needed = 0, uses_anonymous_args = 0
-  61              		@ link register save eliminated.
-  96:.\main.c      ****     i2cbuf[2] = filtermem2[DECIMATION - 1] >> 8;
-  62              		.loc 1 96 0
-  63 0000 034B     		ldr	r3, .L5
-  64 0002 1A8E     		ldrh	r2, [r3, #48]
-  65 0004 034B     		ldr	r3, .L5+4
-  66 0006 110A     		lsrs	r1, r2, #8
-  67 0008 9970     		strb	r1, [r3, #2]
-  97:.\main.c      ****     i2cbuf[3] = filtermem2[DECIMATION - 1];
-  68              		.loc 1 97 0
-  69 000a DA70     		strb	r2, [r3, #3]
-  70 000c 7047     		bx	lr
-  71              	.L6:
-  72 000e 00BF     		.align	2
-  73              	.L5:
-  74 0010 00000000 		.word	filtermem2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 4
-
-
-  75 0014 00000000 		.word	.LANCHOR0
-  76              		.cfi_endproc
-  77              	.LFE67:
-  78              		.size	filter_ready2_handler, .-filter_ready2_handler
-  79              		.section	.text.spi_rx_handler,"ax",%progbits
-  80              		.align	2
-  81              		.global	spi_rx_handler
-  82              		.thumb
-  83              		.thumb_func
-  84              		.type	spi_rx_handler, %function
-  85              	spi_rx_handler:
-  86              	.LFB68:
-  98:.\main.c      **** }
-  99:.\main.c      **** 
- 100:.\main.c      **** CY_ISR(spi_rx_handler)
- 101:.\main.c      **** {
-  87              		.loc 1 101 0
-  88              		.cfi_startproc
-  89              		@ args = 0, pretend = 0, frame = 0
-  90              		@ frame_needed = 0, uses_anonymous_args = 0
-  91 0000 08B5     		push	{r3, lr}
-  92              		.cfi_def_cfa_offset 8
-  93              		.cfi_offset 3, -8
-  94              		.cfi_offset 14, -4
- 102:.\main.c      ****     VDAC1_SetValue(spimem[0]);
-  95              		.loc 1 102 0
-  96 0002 024B     		ldr	r3, .L9
-  97 0004 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
-  98 0006 FFF7FEFF 		bl	VDAC1_SetValue
-  99              	.LVL0:
- 100 000a 08BD     		pop	{r3, pc}
- 101              	.L10:
- 102              		.align	2
- 103              	.L9:
- 104 000c 00000000 		.word	.LANCHOR0
- 105              		.cfi_endproc
- 106              	.LFE68:
- 107              		.size	spi_rx_handler, .-spi_rx_handler
- 108              		.section	.text.start_resources,"ax",%progbits
- 109              		.align	2
- 110              		.global	start_resources
- 111              		.thumb
- 112              		.thumb_func
- 113              		.type	start_resources, %function
- 114              	start_resources:
- 115              	.LFB63:
-  39:.\main.c      ****     I2C_Start();
- 116              		.loc 1 39 0
- 117              		.cfi_startproc
- 118              		@ args = 0, pretend = 0, frame = 0
- 119              		@ frame_needed = 0, uses_anonymous_args = 0
- 120 0000 08B5     		push	{r3, lr}
- 121              		.cfi_def_cfa_offset 8
- 122              		.cfi_offset 3, -8
- 123              		.cfi_offset 14, -4
-  40:.\main.c      ****     
- 124              		.loc 1 40 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 5
-
-
- 125 0002 FFF7FEFF 		bl	I2C_Start
- 126              	.LVL1:
-  42:.\main.c      ****     
- 127              		.loc 1 42 0
- 128 0006 0420     		movs	r0, #4
- 129 0008 0146     		mov	r1, r0
- 130 000a 204A     		ldr	r2, .L13
- 131 000c FFF7FEFF 		bl	I2C_SetBuffer1
- 132              	.LVL2:
-  44:.\main.c      ****     PWM2_Start();
- 133              		.loc 1 44 0
- 134 0010 FFF7FEFF 		bl	PWM1_Start
- 135              	.LVL3:
-  45:.\main.c      ****     
- 136              		.loc 1 45 0
- 137 0014 FFF7FEFF 		bl	PWM2_Start
- 138              	.LVL4:
-  47:.\main.c      ****     VDAC2_Start();
- 139              		.loc 1 47 0
- 140 0018 FFF7FEFF 		bl	VDAC1_Start
- 141              	.LVL5:
-  48:.\main.c      ****     VDAC3_Start();
- 142              		.loc 1 48 0
- 143 001c FFF7FEFF 		bl	VDAC2_Start
- 144              	.LVL6:
-  49:.\main.c      ****     VDAC4_Start();
- 145              		.loc 1 49 0
- 146 0020 FFF7FEFF 		bl	VDAC3_Start
- 147              	.LVL7:
-  50:.\main.c      ****     VDAC1_SetValue(127);
- 148              		.loc 1 50 0
- 149 0024 FFF7FEFF 		bl	VDAC4_Start
- 150              	.LVL8:
-  51:.\main.c      ****     VDAC2_SetValue(127);
- 151              		.loc 1 51 0
- 152 0028 7F20     		movs	r0, #127
- 153 002a FFF7FEFF 		bl	VDAC1_SetValue
- 154              	.LVL9:
-  52:.\main.c      ****     VDAC3_SetValue(127);
- 155              		.loc 1 52 0
- 156 002e 7F20     		movs	r0, #127
- 157 0030 FFF7FEFF 		bl	VDAC2_SetValue
- 158              	.LVL10:
-  53:.\main.c      ****     VDAC4_SetValue(127);
- 159              		.loc 1 53 0
- 160 0034 7F20     		movs	r0, #127
- 161 0036 FFF7FEFF 		bl	VDAC3_SetValue
- 162              	.LVL11:
-  54:.\main.c      ****     
- 163              		.loc 1 54 0
- 164 003a 7F20     		movs	r0, #127
- 165 003c FFF7FEFF 		bl	VDAC4_SetValue
- 166              	.LVL12:
-  56:.\main.c      ****     SAR2_Start();
- 167              		.loc 1 56 0
- 168 0040 FFF7FEFF 		bl	SAR1_Start
- 169              	.LVL13:
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 6
-
-
-  57:.\main.c      ****     SAR1_StartConvert();
- 170              		.loc 1 57 0
- 171 0044 FFF7FEFF 		bl	SAR2_Start
- 172              	.LVL14:
-  58:.\main.c      ****     SAR2_StartConvert();
- 173              		.loc 1 58 0
- 174 0048 FFF7FEFF 		bl	SAR1_StartConvert
- 175              	.LVL15:
-  59:.\main.c      ****     
- 176              		.loc 1 59 0
- 177 004c FFF7FEFF 		bl	SAR2_StartConvert
- 178              	.LVL16:
-  61:.\main.c      ****     Filter_SetDalign(Filter_STAGEA_DALIGN, Filter_ENABLED);
- 179              		.loc 1 61 0
- 180 0050 FFF7FEFF 		bl	Filter_Start
- 181              	.LVL17:
-  62:.\main.c      ****     Filter_SetDalign(Filter_HOLDA_DALIGN, Filter_ENABLED);
- 182              		.loc 1 62 0
- 183 0054 0120     		movs	r0, #1
- 184 0056 0146     		mov	r1, r0
- 185 0058 FFF7FEFF 		bl	Filter_SetDalign
- 186              	.LVL18:
-  63:.\main.c      ****     Filter_SetCoherency(Filter_CHANNEL_A, Filter_KEY_MID);
- 187              		.loc 1 63 0
- 188 005c 0420     		movs	r0, #4
- 189 005e 0121     		movs	r1, #1
- 190 0060 FFF7FEFF 		bl	Filter_SetDalign
- 191              	.LVL19:
-  64:.\main.c      ****     
- 192              		.loc 1 64 0
- 193 0064 0020     		movs	r0, #0
- 194 0066 0121     		movs	r1, #1
- 195 0068 FFF7FEFF 		bl	Filter_SetCoherency
- 196              	.LVL20:
-  66:.\main.c      ****     Filter_SetDalign(Filter_HOLDB_DALIGN, Filter_ENABLED);
- 197              		.loc 1 66 0
- 198 006c 0220     		movs	r0, #2
- 199 006e 0121     		movs	r1, #1
- 200 0070 FFF7FEFF 		bl	Filter_SetDalign
- 201              	.LVL21:
-  67:.\main.c      ****     Filter_SetCoherency(Filter_CHANNEL_B, Filter_KEY_MID);
- 202              		.loc 1 67 0
- 203 0074 0820     		movs	r0, #8
- 204 0076 0121     		movs	r1, #1
- 205 0078 FFF7FEFF 		bl	Filter_SetDalign
- 206              	.LVL22:
-  68:.\main.c      ****     
- 207              		.loc 1 68 0
- 208 007c 0120     		movs	r0, #1
- 209 007e 0146     		mov	r1, r0
- 210 0080 FFF7FEFF 		bl	Filter_SetCoherency
- 211              	.LVL23:
-  70:.\main.c      ****     
- 212              		.loc 1 70 0
- 213 0084 FFF7FEFF 		bl	SPIS_Start
- 214              	.LVL24:
- 215 0088 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 7
-
-
- 216              	.L14:
- 217 008a 00BF     		.align	2
- 218              	.L13:
- 219 008c 00000000 		.word	.LANCHOR0
- 220              		.cfi_endproc
- 221              	.LFE63:
- 222              		.size	start_resources, .-start_resources
- 223              		.section	.text.shift_sar1_handler,"ax",%progbits
- 224              		.align	2
- 225              		.global	shift_sar1_handler
- 226              		.thumb
- 227              		.thumb_func
- 228              		.type	shift_sar1_handler, %function
- 229              	shift_sar1_handler:
- 230              	.LFB64:
-  75:.\main.c      ****     //sarmem1[0] = sarmem1[0] << 3;
- 231              		.loc 1 75 0
- 232              		.cfi_startproc
- 233              		@ args = 0, pretend = 0, frame = 0
- 234              		@ frame_needed = 0, uses_anonymous_args = 0
- 235              		@ link register save eliminated.
- 236 0000 7047     		bx	lr
- 237              		.cfi_endproc
- 238              	.LFE64:
- 239              		.size	shift_sar1_handler, .-shift_sar1_handler
- 240 0002 00BF     		.section	.text.shift_sar2_handler,"ax",%progbits
- 241              		.align	2
- 242              		.global	shift_sar2_handler
- 243              		.thumb
- 244              		.thumb_func
- 245              		.type	shift_sar2_handler, %function
- 246              	shift_sar2_handler:
- 247              	.LFB65:
-  82:.\main.c      ****     //sarmem2[0] = sarmem2[0] << 3;
- 248              		.loc 1 82 0
- 249              		.cfi_startproc
- 250              		@ args = 0, pretend = 0, frame = 0
- 251              		@ frame_needed = 0, uses_anonymous_args = 0
- 252              		@ link register save eliminated.
- 253 0000 7047     		bx	lr
- 254              		.cfi_endproc
- 255              	.LFE65:
- 256              		.size	shift_sar2_handler, .-shift_sar2_handler
- 257 0002 00BF     		.section	.text.start_interrupts,"ax",%progbits
- 258              		.align	2
- 259              		.global	start_interrupts
- 260              		.thumb
- 261              		.thumb_func
- 262              		.type	start_interrupts, %function
- 263              	start_interrupts:
- 264              	.LFB69:
- 103:.\main.c      **** }
- 104:.\main.c      **** 
- 105:.\main.c      **** 
- 106:.\main.c      **** 
- 107:.\main.c      **** void start_interrupts()
- 108:.\main.c      **** {
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 8
-
-
- 265              		.loc 1 108 0
- 266              		.cfi_startproc
- 267              		@ args = 0, pretend = 0, frame = 0
- 268              		@ frame_needed = 0, uses_anonymous_args = 0
- 269              		.loc 1 108 0
- 270 0000 08B5     		push	{r3, lr}
- 271              		.cfi_def_cfa_offset 8
- 272              		.cfi_offset 3, -8
- 273              		.cfi_offset 14, -4
- 109:.\main.c      ****     //isr_shift_sar1_StartEx(shift_sar1_handler);
- 110:.\main.c      ****     //isr_shift_sar2_StartEx(shift_sar2_handler);
- 111:.\main.c      ****     isr_filter_ready1_StartEx(filter_ready1_handler);
- 274              		.loc 1 111 0
- 275 0002 0648     		ldr	r0, .L19
- 276 0004 FFF7FEFF 		bl	isr_filter_ready1_StartEx
- 277              	.LVL25:
- 112:.\main.c      ****     isr_filter_ready2_StartEx(filter_ready2_handler);
- 278              		.loc 1 112 0
- 279 0008 0548     		ldr	r0, .L19+4
- 280 000a FFF7FEFF 		bl	isr_filter_ready2_StartEx
- 281              	.LVL26:
- 113:.\main.c      ****     isr_spi_rx_StartEx(spi_rx_handler);
- 282              		.loc 1 113 0
- 283 000e 0548     		ldr	r0, .L19+8
- 284 0010 FFF7FEFF 		bl	isr_spi_rx_StartEx
- 285              	.LVL27:
- 114:.\main.c      ****     
- 115:.\main.c      ****     SPIS_EnableRxInt();
- 286              		.loc 1 115 0
- 287 0014 FFF7FEFF 		bl	SPIS_EnableRxInt
- 288              	.LVL28:
- 289 0018 08BD     		pop	{r3, pc}
- 290              	.L20:
- 291 001a 00BF     		.align	2
- 292              	.L19:
- 293 001c 00000000 		.word	filter_ready1_handler
- 294 0020 00000000 		.word	filter_ready2_handler
- 295 0024 00000000 		.word	spi_rx_handler
- 296              		.cfi_endproc
- 297              	.LFE69:
- 298              		.size	start_interrupts, .-start_interrupts
- 299              		.section	.text.DMA_SAR2FILTER1_config,"ax",%progbits
- 300              		.align	2
- 301              		.global	DMA_SAR2FILTER1_config
- 302              		.thumb
- 303              		.thumb_func
- 304              		.type	DMA_SAR2FILTER1_config, %function
- 305              	DMA_SAR2FILTER1_config:
- 306              	.LFB70:
- 116:.\main.c      **** }
- 117:.\main.c      **** 
- 118:.\main.c      **** 
- 119:.\main.c      **** void DMA_SAR2FILTER1_config()
- 120:.\main.c      **** {
- 307              		.loc 1 120 0
- 308              		.cfi_startproc
- 309              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 9
-
-
- 310              		@ frame_needed = 0, uses_anonymous_args = 0
- 311 0000 38B5     		push	{r3, r4, r5, lr}
- 312              		.cfi_def_cfa_offset 16
- 313              		.cfi_offset 3, -16
- 314              		.cfi_offset 4, -12
- 315              		.cfi_offset 5, -8
- 316              		.cfi_offset 14, -4
- 121:.\main.c      ****     /* Defines for SAR2FILTER1 */
- 122:.\main.c      ****     #define SAR2FILTER1_BYTES_PER_BURST 2
- 123:.\main.c      ****     #define SAR2FILTER1_REQUEST_PER_BURST 1
- 124:.\main.c      ****     #define SAR2FILTER1_SRC_BASE (CYDEV_PERIPH_BASE)
- 125:.\main.c      ****     #define SAR2FILTER1_DST_BASE (CYDEV_PERIPH_BASE)
- 126:.\main.c      **** 
- 127:.\main.c      ****     /* Variable declarations for SAR2FILTER1 */
- 128:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 129:.\main.c      ****     uint8 SAR2FILTER1_Chan;
- 130:.\main.c      ****     uint8 SAR2FILTER1_TD[1];
- 131:.\main.c      **** 
- 132:.\main.c      ****     /* DMA Configuration for SAR2FILTER1 */
- 133:.\main.c      ****     SAR2FILTER1_Chan = SAR2FILTER1_DmaInitialize(SAR2FILTER1_BYTES_PER_BURST, SAR2FILTER1_REQUEST_P
- 317              		.loc 1 133 0
- 318 0002 0220     		movs	r0, #2
- 319 0004 0121     		movs	r1, #1
- 320 0006 4FF48042 		mov	r2, #16384
- 321 000a 1346     		mov	r3, r2
- 322 000c FFF7FEFF 		bl	SAR2FILTER1_DmaInitialize
- 323              	.LVL29:
- 324 0010 0546     		mov	r5, r0
- 325              	.LVL30:
- 134:.\main.c      ****         HI16(SAR2FILTER1_SRC_BASE), HI16(SAR2FILTER1_DST_BASE));
- 135:.\main.c      ****     SAR2FILTER1_TD[0] = CyDmaTdAllocate();
- 326              		.loc 1 135 0
- 327 0012 FFF7FEFF 		bl	CyDmaTdAllocate
- 328              	.LVL31:
- 329 0016 0446     		mov	r4, r0
- 136:.\main.c      ****     CyDmaTdSetConfiguration(SAR2FILTER1_TD[0], 2, SAR2FILTER1_TD[0], SAR2FILTER1__TD_TERMOUT_EN); /
- 330              		.loc 1 136 0
- 331 0018 0221     		movs	r1, #2
- 332 001a 0246     		mov	r2, r0
- 333 001c 0023     		movs	r3, #0
- 334 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 335              	.LVL32:
- 137:.\main.c      ****     CyDmaTdSetAddress(SAR2FILTER1_TD[0], LO16((uint32)SAR1_SAR_WRK0_PTR), LO16((uint32)Filter_STAGE
- 336              		.loc 1 137 0
- 337 0022 2046     		mov	r0, r4
- 338 0024 45F6A031 		movw	r1, #23456
- 339 0028 4CF2A072 		movw	r2, #51104
- 340 002c FFF7FEFF 		bl	CyDmaTdSetAddress
- 341              	.LVL33:
- 138:.\main.c      ****     CyDmaChSetInitialTd(SAR2FILTER1_Chan, SAR2FILTER1_TD[0]);
- 342              		.loc 1 138 0
- 343 0030 2846     		mov	r0, r5
- 344 0032 2146     		mov	r1, r4
- 345 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 346              	.LVL34:
- 139:.\main.c      ****     CyDmaChEnable(SAR2FILTER1_Chan, 1);
- 347              		.loc 1 139 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 10
-
-
- 348 0038 2846     		mov	r0, r5
- 349 003a 0121     		movs	r1, #1
- 350 003c FFF7FEFF 		bl	CyDmaChEnable
- 351              	.LVL35:
- 352 0040 38BD     		pop	{r3, r4, r5, pc}
- 353              		.cfi_endproc
- 354              	.LFE70:
- 355              		.size	DMA_SAR2FILTER1_config, .-DMA_SAR2FILTER1_config
- 356 0042 00BF     		.section	.text.DMA_SAR2FILTER2_config,"ax",%progbits
- 357              		.align	2
- 358              		.global	DMA_SAR2FILTER2_config
- 359              		.thumb
- 360              		.thumb_func
- 361              		.type	DMA_SAR2FILTER2_config, %function
- 362              	DMA_SAR2FILTER2_config:
- 363              	.LFB71:
- 140:.\main.c      **** 
- 141:.\main.c      **** }
- 142:.\main.c      **** 
- 143:.\main.c      **** void DMA_SAR2FILTER2_config()
- 144:.\main.c      **** {
- 364              		.loc 1 144 0
- 365              		.cfi_startproc
- 366              		@ args = 0, pretend = 0, frame = 0
- 367              		@ frame_needed = 0, uses_anonymous_args = 0
- 368 0000 38B5     		push	{r3, r4, r5, lr}
- 369              		.cfi_def_cfa_offset 16
- 370              		.cfi_offset 3, -16
- 371              		.cfi_offset 4, -12
- 372              		.cfi_offset 5, -8
- 373              		.cfi_offset 14, -4
- 145:.\main.c      ****     /* Defines for SAR2FILTER2 */
- 146:.\main.c      ****     #define SAR2FILTER2_BYTES_PER_BURST 2
- 147:.\main.c      ****     #define SAR2FILTER2_REQUEST_PER_BURST 1
- 148:.\main.c      ****     #define SAR2FILTER2_SRC_BASE (CYDEV_PERIPH_BASE)
- 149:.\main.c      ****     #define SAR2FILTER2_DST_BASE (CYDEV_PERIPH_BASE)
- 150:.\main.c      **** 
- 151:.\main.c      ****     /* Variable declarations for SAR2FILTER1 */
- 152:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 153:.\main.c      ****     uint8 SAR2FILTER2_Chan;
- 154:.\main.c      ****     uint8 SAR2FILTER2_TD[1];
- 155:.\main.c      **** 
- 156:.\main.c      ****     /* DMA Configuration for SAR2FILTER1 */
- 157:.\main.c      ****     SAR2FILTER2_Chan = SAR2FILTER2_DmaInitialize(SAR2FILTER2_BYTES_PER_BURST, SAR2FILTER2_REQUEST_P
- 374              		.loc 1 157 0
- 375 0002 0220     		movs	r0, #2
- 376 0004 0121     		movs	r1, #1
- 377 0006 4FF48042 		mov	r2, #16384
- 378 000a 1346     		mov	r3, r2
- 379 000c FFF7FEFF 		bl	SAR2FILTER2_DmaInitialize
- 380              	.LVL36:
- 381 0010 0546     		mov	r5, r0
- 382              	.LVL37:
- 158:.\main.c      ****         HI16(SAR2FILTER2_SRC_BASE), HI16(SAR2FILTER2_DST_BASE));
- 159:.\main.c      ****     SAR2FILTER2_TD[0] = CyDmaTdAllocate();
- 383              		.loc 1 159 0
- 384 0012 FFF7FEFF 		bl	CyDmaTdAllocate
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 11
-
-
- 385              	.LVL38:
- 386 0016 0446     		mov	r4, r0
- 160:.\main.c      ****     CyDmaTdSetConfiguration(SAR2FILTER2_TD[0], 2, SAR2FILTER2_TD[0], SAR2FILTER2__TD_TERMOUT_EN); /
- 387              		.loc 1 160 0
- 388 0018 0221     		movs	r1, #2
- 389 001a 0246     		mov	r2, r0
- 390 001c 0023     		movs	r3, #0
- 391 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 392              	.LVL39:
- 161:.\main.c      ****     CyDmaTdSetAddress(SAR2FILTER2_TD[0], LO16((uint32)SAR2_SAR_WRK0_PTR), LO16((uint32)Filter_STAGE
- 393              		.loc 1 161 0
- 394 0022 2046     		mov	r0, r4
- 395 0024 45F6A231 		movw	r1, #23458
- 396 0028 4CF2A472 		movw	r2, #51108
- 397 002c FFF7FEFF 		bl	CyDmaTdSetAddress
- 398              	.LVL40:
- 162:.\main.c      ****     CyDmaChSetInitialTd(SAR2FILTER2_Chan, SAR2FILTER2_TD[0]);
- 399              		.loc 1 162 0
- 400 0030 2846     		mov	r0, r5
- 401 0032 2146     		mov	r1, r4
- 402 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 403              	.LVL41:
- 163:.\main.c      ****     CyDmaChEnable(SAR2FILTER2_Chan, 1);
- 404              		.loc 1 163 0
- 405 0038 2846     		mov	r0, r5
- 406 003a 0121     		movs	r1, #1
- 407 003c FFF7FEFF 		bl	CyDmaChEnable
- 408              	.LVL42:
- 409 0040 38BD     		pop	{r3, r4, r5, pc}
- 410              		.cfi_endproc
- 411              	.LFE71:
- 412              		.size	DMA_SAR2FILTER2_config, .-DMA_SAR2FILTER2_config
- 413 0042 00BF     		.section	.text.DMA_FILTER2RAM1_config,"ax",%progbits
- 414              		.align	2
- 415              		.global	DMA_FILTER2RAM1_config
- 416              		.thumb
- 417              		.thumb_func
- 418              		.type	DMA_FILTER2RAM1_config, %function
- 419              	DMA_FILTER2RAM1_config:
- 420              	.LFB72:
- 164:.\main.c      **** 
- 165:.\main.c      **** }
- 166:.\main.c      **** 
- 167:.\main.c      **** void DMA_FILTER2RAM1_config()
- 168:.\main.c      **** {
- 421              		.loc 1 168 0
- 422              		.cfi_startproc
- 423              		@ args = 0, pretend = 0, frame = 0
- 424              		@ frame_needed = 0, uses_anonymous_args = 0
- 425 0000 38B5     		push	{r3, r4, r5, lr}
- 426              		.cfi_def_cfa_offset 16
- 427              		.cfi_offset 3, -16
- 428              		.cfi_offset 4, -12
- 429              		.cfi_offset 5, -8
- 430              		.cfi_offset 14, -4
- 169:.\main.c      ****     /* Defines for FILTER2RAM1 */
- 170:.\main.c      ****     #define FILTER2RAM1_BYTES_PER_BURST 2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 12
-
-
- 171:.\main.c      ****     #define FILTER2RAM1_REQUEST_PER_BURST 1
- 172:.\main.c      ****     #define FILTER2RAM1_SRC_BASE (CYDEV_PERIPH_BASE)
- 173:.\main.c      ****     #define FILTER2RAM1_DST_BASE (CYDEV_SRAM_BASE)
- 174:.\main.c      **** 
- 175:.\main.c      ****     /* Variable declarations for FILTER2RAM1 */
- 176:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 177:.\main.c      ****     uint8 FILTER2RAM1_Chan;
- 178:.\main.c      ****     uint8 FILTER2RAM1_TD[1];
- 179:.\main.c      **** 
- 180:.\main.c      ****     /* DMA Configuration for FILTER2RAM1 */
- 181:.\main.c      ****     FILTER2RAM1_Chan = FILTER2RAM1_DmaInitialize(FILTER2RAM1_BYTES_PER_BURST, FILTER2RAM1_REQUEST_P
- 431              		.loc 1 181 0
- 432 0002 0220     		movs	r0, #2
- 433 0004 0121     		movs	r1, #1
- 434 0006 4FF48042 		mov	r2, #16384
- 435 000a 41F6FF73 		movw	r3, #8191
- 436 000e FFF7FEFF 		bl	FILTER2RAM1_DmaInitialize
- 437              	.LVL43:
- 438 0012 0546     		mov	r5, r0
- 439              	.LVL44:
- 182:.\main.c      ****         HI16(FILTER2RAM1_SRC_BASE), HI16(FILTER2RAM1_DST_BASE));
- 183:.\main.c      ****     FILTER2RAM1_TD[0] = CyDmaTdAllocate();
- 440              		.loc 1 183 0
- 441 0014 FFF7FEFF 		bl	CyDmaTdAllocate
- 442              	.LVL45:
- 443 0018 0446     		mov	r4, r0
- 184:.\main.c      ****     CyDmaTdSetConfiguration(FILTER2RAM1_TD[0], DECIMATION*2, FILTER2RAM1_TD[0], FILTER2RAM1__TD_TER
- 444              		.loc 1 184 0
- 445 001a 3221     		movs	r1, #50
- 446 001c 0246     		mov	r2, r0
- 447 001e 0623     		movs	r3, #6
- 448 0020 FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 449              	.LVL46:
- 185:.\main.c      ****     CyDmaTdSetAddress(FILTER2RAM1_TD[0], LO16((uint32)Filter_HOLDA_PTR), LO16((uint32)filtermem1));
- 450              		.loc 1 185 0
- 451 0024 2046     		mov	r0, r4
- 452 0026 4CF2A871 		movw	r1, #51112
- 453 002a 064A     		ldr	r2, .L27
- 454 002c 92B2     		uxth	r2, r2
- 455 002e FFF7FEFF 		bl	CyDmaTdSetAddress
- 456              	.LVL47:
- 186:.\main.c      ****     CyDmaChSetInitialTd(FILTER2RAM1_Chan, FILTER2RAM1_TD[0]);
- 457              		.loc 1 186 0
- 458 0032 2846     		mov	r0, r5
- 459 0034 2146     		mov	r1, r4
- 460 0036 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 461              	.LVL48:
- 187:.\main.c      ****     CyDmaChEnable(FILTER2RAM1_Chan, 1);
- 462              		.loc 1 187 0
- 463 003a 2846     		mov	r0, r5
- 464 003c 0121     		movs	r1, #1
- 465 003e FFF7FEFF 		bl	CyDmaChEnable
- 466              	.LVL49:
- 467 0042 38BD     		pop	{r3, r4, r5, pc}
- 468              	.LVL50:
- 469              	.L28:
- 470              		.align	2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 13
-
-
- 471              	.L27:
- 472 0044 00000000 		.word	filtermem1
- 473              		.cfi_endproc
- 474              	.LFE72:
- 475              		.size	DMA_FILTER2RAM1_config, .-DMA_FILTER2RAM1_config
- 476              		.section	.text.DMA_FILTER2RAM2_config,"ax",%progbits
- 477              		.align	2
- 478              		.global	DMA_FILTER2RAM2_config
- 479              		.thumb
- 480              		.thumb_func
- 481              		.type	DMA_FILTER2RAM2_config, %function
- 482              	DMA_FILTER2RAM2_config:
- 483              	.LFB73:
- 188:.\main.c      **** }
- 189:.\main.c      **** 
- 190:.\main.c      **** void DMA_FILTER2RAM2_config()
- 191:.\main.c      **** {
- 484              		.loc 1 191 0
- 485              		.cfi_startproc
- 486              		@ args = 0, pretend = 0, frame = 0
- 487              		@ frame_needed = 0, uses_anonymous_args = 0
- 488 0000 38B5     		push	{r3, r4, r5, lr}
- 489              		.cfi_def_cfa_offset 16
- 490              		.cfi_offset 3, -16
- 491              		.cfi_offset 4, -12
- 492              		.cfi_offset 5, -8
- 493              		.cfi_offset 14, -4
- 192:.\main.c      ****     /* Defines for FILTER2RAM2 */
- 193:.\main.c      ****     #define FILTER2RAM2_BYTES_PER_BURST 2
- 194:.\main.c      ****     #define FILTER2RAM2_REQUEST_PER_BURST 1
- 195:.\main.c      ****     #define FILTER2RAM2_SRC_BASE (CYDEV_PERIPH_BASE)
- 196:.\main.c      ****     #define FILTER2RAM2_DST_BASE (CYDEV_SRAM_BASE)
- 197:.\main.c      **** 
- 198:.\main.c      ****     /* Variable declarations for FILTER2RAM1 */
- 199:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 200:.\main.c      ****     uint8 FILTER2RAM2_Chan;
- 201:.\main.c      ****     uint8 FILTER2RAM2_TD[1];
- 202:.\main.c      **** 
- 203:.\main.c      ****     /* DMA Configuration for FILTER2RAM1 */
- 204:.\main.c      ****     FILTER2RAM2_Chan = FILTER2RAM2_DmaInitialize(FILTER2RAM2_BYTES_PER_BURST, FILTER2RAM2_REQUEST_P
- 494              		.loc 1 204 0
- 495 0002 0220     		movs	r0, #2
- 496 0004 0121     		movs	r1, #1
- 497 0006 4FF48042 		mov	r2, #16384
- 498 000a 41F6FF73 		movw	r3, #8191
- 499 000e FFF7FEFF 		bl	FILTER2RAM2_DmaInitialize
- 500              	.LVL51:
- 501 0012 0546     		mov	r5, r0
- 502              	.LVL52:
- 205:.\main.c      ****         HI16(FILTER2RAM2_SRC_BASE), HI16(FILTER2RAM2_DST_BASE));
- 206:.\main.c      ****     FILTER2RAM2_TD[0] = CyDmaTdAllocate();
- 503              		.loc 1 206 0
- 504 0014 FFF7FEFF 		bl	CyDmaTdAllocate
- 505              	.LVL53:
- 506 0018 0446     		mov	r4, r0
- 207:.\main.c      ****     CyDmaTdSetConfiguration(FILTER2RAM2_TD[0], DECIMATION*2, FILTER2RAM2_TD[0], FILTER2RAM2__TD_TER
- 507              		.loc 1 207 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 14
-
-
- 508 001a 3221     		movs	r1, #50
- 509 001c 0246     		mov	r2, r0
- 510 001e 0623     		movs	r3, #6
- 511 0020 FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 512              	.LVL54:
- 208:.\main.c      ****     CyDmaTdSetAddress(FILTER2RAM2_TD[0], LO16((uint32)Filter_HOLDB_PTR), LO16((uint32)filtermem2));
- 513              		.loc 1 208 0
- 514 0024 2046     		mov	r0, r4
- 515 0026 4CF2AC71 		movw	r1, #51116
- 516 002a 064A     		ldr	r2, .L31
- 517 002c 92B2     		uxth	r2, r2
- 518 002e FFF7FEFF 		bl	CyDmaTdSetAddress
- 519              	.LVL55:
- 209:.\main.c      ****     CyDmaChSetInitialTd(FILTER2RAM2_Chan, FILTER2RAM2_TD[0]);
- 520              		.loc 1 209 0
- 521 0032 2846     		mov	r0, r5
- 522 0034 2146     		mov	r1, r4
- 523 0036 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 524              	.LVL56:
- 210:.\main.c      ****     CyDmaChEnable(FILTER2RAM2_Chan, 1);
- 525              		.loc 1 210 0
- 526 003a 2846     		mov	r0, r5
- 527 003c 0121     		movs	r1, #1
- 528 003e FFF7FEFF 		bl	CyDmaChEnable
- 529              	.LVL57:
- 530 0042 38BD     		pop	{r3, r4, r5, pc}
- 531              	.LVL58:
- 532              	.L32:
- 533              		.align	2
- 534              	.L31:
- 535 0044 00000000 		.word	filtermem2
- 536              		.cfi_endproc
- 537              	.LFE73:
- 538              		.size	DMA_FILTER2RAM2_config, .-DMA_FILTER2RAM2_config
- 539              		.section	.text.DMA_SPI2RAM_config,"ax",%progbits
- 540              		.align	2
- 541              		.global	DMA_SPI2RAM_config
- 542              		.thumb
- 543              		.thumb_func
- 544              		.type	DMA_SPI2RAM_config, %function
- 545              	DMA_SPI2RAM_config:
- 546              	.LFB74:
- 211:.\main.c      **** }
- 212:.\main.c      **** 
- 213:.\main.c      **** void DMA_SPI2RAM_config()
- 214:.\main.c      **** {
- 547              		.loc 1 214 0
- 548              		.cfi_startproc
- 549              		@ args = 0, pretend = 0, frame = 0
- 550              		@ frame_needed = 0, uses_anonymous_args = 0
- 551 0000 38B5     		push	{r3, r4, r5, lr}
- 552              		.cfi_def_cfa_offset 16
- 553              		.cfi_offset 3, -16
- 554              		.cfi_offset 4, -12
- 555              		.cfi_offset 5, -8
- 556              		.cfi_offset 14, -4
- 215:.\main.c      ****     /* Defines for SPI2RAM */
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 15
-
-
- 216:.\main.c      ****     #define SPI2RAM_BYTES_PER_BURST 1
- 217:.\main.c      ****     #define SPI2RAM_REQUEST_PER_BURST 1
- 218:.\main.c      ****     #define SPI2RAM_SRC_BASE (CYDEV_PERIPH_BASE)
- 219:.\main.c      ****     #define SPI2RAM_DST_BASE (CYDEV_SRAM_BASE)
- 220:.\main.c      ****     
- 221:.\main.c      ****     uint8 SPI2RAM_Chan;
- 222:.\main.c      ****     uint8 SPI2RAM_TD[1];
- 223:.\main.c      ****     
- 224:.\main.c      ****     SPI2RAM_Chan = SPI2RAM_DmaInitialize(SPI2RAM_BYTES_PER_BURST, SPI2RAM_REQUEST_PER_BURST,
- 557              		.loc 1 224 0
- 558 0002 0120     		movs	r0, #1
- 559 0004 0146     		mov	r1, r0
- 560 0006 4FF48042 		mov	r2, #16384
- 561 000a 41F6FF73 		movw	r3, #8191
- 562 000e FFF7FEFF 		bl	SPI2RAM_DmaInitialize
- 563              	.LVL59:
- 564 0012 0546     		mov	r5, r0
- 565              	.LVL60:
- 225:.\main.c      ****         HI16(SPI2RAM_SRC_BASE), HI16(SPI2RAM_DST_BASE));
- 226:.\main.c      **** 
- 227:.\main.c      ****     SPI2RAM_TD[0] = CyDmaTdAllocate();
- 566              		.loc 1 227 0
- 567 0014 FFF7FEFF 		bl	CyDmaTdAllocate
- 568              	.LVL61:
- 569 0018 0446     		mov	r4, r0
- 228:.\main.c      ****     CyDmaTdSetConfiguration(SPI2RAM_TD[0], 1, SPI2RAM_TD[0], SPI2RAM__TD_TERMOUT_EN);
- 570              		.loc 1 228 0
- 571 001a 0121     		movs	r1, #1
- 572 001c 0246     		mov	r2, r0
- 573 001e 0423     		movs	r3, #4
- 574 0020 FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 575              	.LVL62:
- 229:.\main.c      ****     CyDmaTdSetAddress(SPI2RAM_TD[0], LO16((uint32)SPIS_RXDATA_PTR), LO16((uint32)spimem));
- 576              		.loc 1 229 0
- 577 0024 2046     		mov	r0, r4
- 578 0026 46F25441 		movw	r1, #25684
- 579 002a 064A     		ldr	r2, .L35
- 580 002c 92B2     		uxth	r2, r2
- 581 002e FFF7FEFF 		bl	CyDmaTdSetAddress
- 582              	.LVL63:
- 230:.\main.c      ****     CyDmaChSetInitialTd(SPI2RAM_Chan, SPI2RAM_TD[0]);
- 583              		.loc 1 230 0
- 584 0032 2846     		mov	r0, r5
- 585 0034 2146     		mov	r1, r4
- 586 0036 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 587              	.LVL64:
- 231:.\main.c      ****     CyDmaChEnable(SPI2RAM_Chan, 1);
- 588              		.loc 1 231 0
- 589 003a 2846     		mov	r0, r5
- 590 003c 0121     		movs	r1, #1
- 591 003e FFF7FEFF 		bl	CyDmaChEnable
- 592              	.LVL65:
- 593 0042 38BD     		pop	{r3, r4, r5, pc}
- 594              	.LVL66:
- 595              	.L36:
- 596              		.align	2
- 597              	.L35:
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 16
-
-
- 598 0044 04000000 		.word	.LANCHOR0+4
- 599              		.cfi_endproc
- 600              	.LFE74:
- 601              		.size	DMA_SPI2RAM_config, .-DMA_SPI2RAM_config
- 602              		.section	.text.DMA_SAR2SHIFT1_config,"ax",%progbits
- 603              		.align	2
- 604              		.global	DMA_SAR2SHIFT1_config
- 605              		.thumb
- 606              		.thumb_func
- 607              		.type	DMA_SAR2SHIFT1_config, %function
- 608              	DMA_SAR2SHIFT1_config:
- 609              	.LFB75:
- 232:.\main.c      **** }
- 233:.\main.c      **** 
- 234:.\main.c      **** 
- 235:.\main.c      **** void DMA_SAR2SHIFT1_config()
- 236:.\main.c      **** {
- 610              		.loc 1 236 0
- 611              		.cfi_startproc
- 612              		@ args = 0, pretend = 0, frame = 0
- 613              		@ frame_needed = 0, uses_anonymous_args = 0
- 614 0000 38B5     		push	{r3, r4, r5, lr}
- 615              		.cfi_def_cfa_offset 16
- 616              		.cfi_offset 3, -16
- 617              		.cfi_offset 4, -12
- 618              		.cfi_offset 5, -8
- 619              		.cfi_offset 14, -4
- 237:.\main.c      ****     /* Defines for SAR2SHIFT1 */
- 238:.\main.c      ****     #define SAR2SHIFT1_BYTES_PER_BURST 2
- 239:.\main.c      ****     #define SAR2SHIFT1_REQUEST_PER_BURST 1
- 240:.\main.c      ****     #define SAR2SHIFT1_SRC_BASE (CYDEV_PERIPH_BASE)
- 241:.\main.c      ****     #define SAR2SHIFT1_DST_BASE (CYDEV_PERIPH_BASE)
- 242:.\main.c      **** 
- 243:.\main.c      ****     /* Variable declarations for SAR2SHIFT1 */
- 244:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 245:.\main.c      ****     uint8 SAR2SHIFT1_Chan;
- 246:.\main.c      ****     uint8 SAR2SHIFT1_TD[1];
- 247:.\main.c      **** 
- 248:.\main.c      ****     /* DMA Configuration for SAR2SHIFT1 */
- 249:.\main.c      ****     SAR2SHIFT1_Chan = SAR2SHIFT1_DmaInitialize(SAR2SHIFT1_BYTES_PER_BURST, SAR2SHIFT1_REQUEST_PER_B
- 620              		.loc 1 249 0
- 621 0002 0220     		movs	r0, #2
- 622 0004 0121     		movs	r1, #1
- 623 0006 4FF48042 		mov	r2, #16384
- 624 000a 1346     		mov	r3, r2
- 625 000c FFF7FEFF 		bl	SAR2SHIFT1_DmaInitialize
- 626              	.LVL67:
- 627 0010 0546     		mov	r5, r0
- 628              	.LVL68:
- 250:.\main.c      ****         HI16(SAR2SHIFT1_SRC_BASE), HI16(SAR2SHIFT1_DST_BASE));
- 251:.\main.c      ****     SAR2SHIFT1_TD[0] = CyDmaTdAllocate();
- 629              		.loc 1 251 0
- 630 0012 FFF7FEFF 		bl	CyDmaTdAllocate
- 631              	.LVL69:
- 632 0016 0446     		mov	r4, r0
- 252:.\main.c      ****     CyDmaTdSetConfiguration(SAR2SHIFT1_TD[0], 2, SAR2SHIFT1_TD[0], SAR2SHIFT1__TD_TERMOUT_EN);
- 633              		.loc 1 252 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 17
-
-
- 634 0018 0221     		movs	r1, #2
- 635 001a 0246     		mov	r2, r0
- 636 001c 0423     		movs	r3, #4
- 637 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 638              	.LVL70:
- 253:.\main.c      ****     CyDmaTdSetAddress(SAR2SHIFT1_TD[0], LO16((uint32)SAR1_SAR_WRK0_PTR), LO16((uint32)ShiftBy2_1_IN
- 639              		.loc 1 253 0
- 640 0022 2046     		mov	r0, r4
- 641 0024 45F6A031 		movw	r1, #23456
- 642 0028 46F60822 		movw	r2, #27144
- 643 002c FFF7FEFF 		bl	CyDmaTdSetAddress
- 644              	.LVL71:
- 254:.\main.c      ****     CyDmaChSetInitialTd(SAR2SHIFT1_Chan, SAR2SHIFT1_TD[0]);
- 645              		.loc 1 254 0
- 646 0030 2846     		mov	r0, r5
- 647 0032 2146     		mov	r1, r4
- 648 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 649              	.LVL72:
- 255:.\main.c      ****     CyDmaChEnable(SAR2SHIFT1_Chan, 1);
- 650              		.loc 1 255 0
- 651 0038 2846     		mov	r0, r5
- 652 003a 0121     		movs	r1, #1
- 653 003c FFF7FEFF 		bl	CyDmaChEnable
- 654              	.LVL73:
- 655 0040 38BD     		pop	{r3, r4, r5, pc}
- 656              		.cfi_endproc
- 657              	.LFE75:
- 658              		.size	DMA_SAR2SHIFT1_config, .-DMA_SAR2SHIFT1_config
- 659 0042 00BF     		.section	.text.DMA_SAR2SHIFT2_config,"ax",%progbits
- 660              		.align	2
- 661              		.global	DMA_SAR2SHIFT2_config
- 662              		.thumb
- 663              		.thumb_func
- 664              		.type	DMA_SAR2SHIFT2_config, %function
- 665              	DMA_SAR2SHIFT2_config:
- 666              	.LFB76:
- 256:.\main.c      **** }
- 257:.\main.c      **** 
- 258:.\main.c      **** void DMA_SAR2SHIFT2_config()
- 259:.\main.c      **** {
- 667              		.loc 1 259 0
- 668              		.cfi_startproc
- 669              		@ args = 0, pretend = 0, frame = 0
- 670              		@ frame_needed = 0, uses_anonymous_args = 0
- 671 0000 38B5     		push	{r3, r4, r5, lr}
- 672              		.cfi_def_cfa_offset 16
- 673              		.cfi_offset 3, -16
- 674              		.cfi_offset 4, -12
- 675              		.cfi_offset 5, -8
- 676              		.cfi_offset 14, -4
- 260:.\main.c      ****     /* Defines for SAR2SHIFT2 */
- 261:.\main.c      ****     #define SAR2SHIFT2_BYTES_PER_BURST 2
- 262:.\main.c      ****     #define SAR2SHIFT2_REQUEST_PER_BURST 1
- 263:.\main.c      ****     #define SAR2SHIFT2_SRC_BASE (CYDEV_PERIPH_BASE)
- 264:.\main.c      ****     #define SAR2SHIFT2_DST_BASE (CYDEV_PERIPH_BASE)
- 265:.\main.c      **** 
- 266:.\main.c      ****     /* Variable declarations for SAR2SHIFT2 */
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 18
-
-
- 267:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 268:.\main.c      ****     uint8 SAR2SHIFT2_Chan;
- 269:.\main.c      ****     uint8 SAR2SHIFT2_TD[1];
- 270:.\main.c      **** 
- 271:.\main.c      ****     /* DMA Configuration for SAR2SHIFT2 */
- 272:.\main.c      ****     SAR2SHIFT2_Chan = SAR2SHIFT2_DmaInitialize(SAR2SHIFT2_BYTES_PER_BURST, SAR2SHIFT2_REQUEST_PER_B
- 677              		.loc 1 272 0
- 678 0002 0220     		movs	r0, #2
- 679 0004 0121     		movs	r1, #1
- 680 0006 4FF48042 		mov	r2, #16384
- 681 000a 1346     		mov	r3, r2
- 682 000c FFF7FEFF 		bl	SAR2SHIFT2_DmaInitialize
- 683              	.LVL74:
- 684 0010 0546     		mov	r5, r0
- 685              	.LVL75:
- 273:.\main.c      ****         HI16(SAR2SHIFT2_SRC_BASE), HI16(SAR2SHIFT2_DST_BASE));
- 274:.\main.c      ****     SAR2SHIFT2_TD[0] = CyDmaTdAllocate();
- 686              		.loc 1 274 0
- 687 0012 FFF7FEFF 		bl	CyDmaTdAllocate
- 688              	.LVL76:
- 689 0016 0446     		mov	r4, r0
- 275:.\main.c      ****     CyDmaTdSetConfiguration(SAR2SHIFT2_TD[0], 2, SAR2SHIFT2_TD[0], SAR2SHIFT2__TD_TERMOUT_EN);
- 690              		.loc 1 275 0
- 691 0018 0221     		movs	r1, #2
- 692 001a 0246     		mov	r2, r0
- 693 001c 0423     		movs	r3, #4
- 694 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 695              	.LVL77:
- 276:.\main.c      ****     CyDmaTdSetAddress(SAR2SHIFT2_TD[0], LO16((uint32)SAR2_SAR_WRK0_PTR), LO16((uint32)ShiftBy2_2_IN
- 696              		.loc 1 276 0
- 697 0022 2046     		mov	r0, r4
- 698 0024 45F6A231 		movw	r1, #23458
- 699 0028 46F60C02 		movw	r2, #26636
- 700 002c FFF7FEFF 		bl	CyDmaTdSetAddress
- 701              	.LVL78:
- 277:.\main.c      ****     CyDmaChSetInitialTd(SAR2SHIFT2_Chan, SAR2SHIFT2_TD[0]);
- 702              		.loc 1 277 0
- 703 0030 2846     		mov	r0, r5
- 704 0032 2146     		mov	r1, r4
- 705 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 706              	.LVL79:
- 278:.\main.c      ****     CyDmaChEnable(SAR2SHIFT2_Chan, 1);
- 707              		.loc 1 278 0
- 708 0038 2846     		mov	r0, r5
- 709 003a 0121     		movs	r1, #1
- 710 003c FFF7FEFF 		bl	CyDmaChEnable
- 711              	.LVL80:
- 712 0040 38BD     		pop	{r3, r4, r5, pc}
- 713              		.cfi_endproc
- 714              	.LFE76:
- 715              		.size	DMA_SAR2SHIFT2_config, .-DMA_SAR2SHIFT2_config
- 716 0042 00BF     		.section	.text.DMA_SHIFT2FILTER1_config,"ax",%progbits
- 717              		.align	2
- 718              		.global	DMA_SHIFT2FILTER1_config
- 719              		.thumb
- 720              		.thumb_func
- 721              		.type	DMA_SHIFT2FILTER1_config, %function
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 19
-
-
- 722              	DMA_SHIFT2FILTER1_config:
- 723              	.LFB77:
- 279:.\main.c      **** }
- 280:.\main.c      **** 
- 281:.\main.c      **** void DMA_SHIFT2FILTER1_config()
- 282:.\main.c      **** {
- 724              		.loc 1 282 0
- 725              		.cfi_startproc
- 726              		@ args = 0, pretend = 0, frame = 0
- 727              		@ frame_needed = 0, uses_anonymous_args = 0
- 728 0000 38B5     		push	{r3, r4, r5, lr}
- 729              		.cfi_def_cfa_offset 16
- 730              		.cfi_offset 3, -16
- 731              		.cfi_offset 4, -12
- 732              		.cfi_offset 5, -8
- 733              		.cfi_offset 14, -4
- 283:.\main.c      ****     /* Defines for SHIFT2FILTER1 */
- 284:.\main.c      ****     #define SHIFT2FILTER1_BYTES_PER_BURST 2
- 285:.\main.c      ****     #define SHIFT2FILTER1_REQUEST_PER_BURST 1
- 286:.\main.c      ****     #define SHIFT2FILTER1_SRC_BASE (CYDEV_PERIPH_BASE)
- 287:.\main.c      ****     #define SHIFT2FILTER1_DST_BASE (CYDEV_PERIPH_BASE)
- 288:.\main.c      **** 
- 289:.\main.c      ****     /* Variable declarations for SHIFT2FILTER1 */
- 290:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 291:.\main.c      ****     uint8 SHIFT2FILTER1_Chan;
- 292:.\main.c      ****     uint8 SHIFT2FILTER1_TD[1];
- 293:.\main.c      **** 
- 294:.\main.c      ****     /* DMA Configuration for SHIFT2FILTER1 */
- 295:.\main.c      ****     SHIFT2FILTER1_Chan = SHIFT2FILTER1_DmaInitialize(SHIFT2FILTER1_BYTES_PER_BURST, SHIFT2FILTER1_R
- 734              		.loc 1 295 0
- 735 0002 0220     		movs	r0, #2
- 736 0004 0121     		movs	r1, #1
- 737 0006 4FF48042 		mov	r2, #16384
- 738 000a 1346     		mov	r3, r2
- 739 000c FFF7FEFF 		bl	SHIFT2FILTER1_DmaInitialize
- 740              	.LVL81:
- 741 0010 0546     		mov	r5, r0
- 742              	.LVL82:
- 296:.\main.c      ****         HI16(SHIFT2FILTER1_SRC_BASE), HI16(SHIFT2FILTER1_DST_BASE));
- 297:.\main.c      ****     SHIFT2FILTER1_TD[0] = CyDmaTdAllocate();
- 743              		.loc 1 297 0
- 744 0012 FFF7FEFF 		bl	CyDmaTdAllocate
- 745              	.LVL83:
- 746 0016 0446     		mov	r4, r0
- 298:.\main.c      ****     CyDmaTdSetConfiguration(SHIFT2FILTER1_TD[0], 2, SHIFT2FILTER1_TD[0], SHIFT2FILTER1__TD_TERMOUT_
- 747              		.loc 1 298 0
- 748 0018 0221     		movs	r1, #2
- 749 001a 0246     		mov	r2, r0
- 750 001c 0023     		movs	r3, #0
- 751 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 752              	.LVL84:
- 299:.\main.c      ****     CyDmaTdSetAddress(SHIFT2FILTER1_TD[0], LO16((uint32)ShiftBy2_1_OUTPUT_PTR), LO16((uint32)Filter
- 753              		.loc 1 299 0
- 754 0022 2046     		mov	r0, r4
- 755 0024 46F62821 		movw	r1, #27176
- 756 0028 4CF2A072 		movw	r2, #51104
- 757 002c FFF7FEFF 		bl	CyDmaTdSetAddress
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 20
-
-
- 758              	.LVL85:
- 300:.\main.c      ****     CyDmaChSetInitialTd(SHIFT2FILTER1_Chan, SHIFT2FILTER1_TD[0]);
- 759              		.loc 1 300 0
- 760 0030 2846     		mov	r0, r5
- 761 0032 2146     		mov	r1, r4
- 762 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 763              	.LVL86:
- 301:.\main.c      ****     CyDmaChEnable(SHIFT2FILTER1_Chan, 1);
- 764              		.loc 1 301 0
- 765 0038 2846     		mov	r0, r5
- 766 003a 0121     		movs	r1, #1
- 767 003c FFF7FEFF 		bl	CyDmaChEnable
- 768              	.LVL87:
- 769 0040 38BD     		pop	{r3, r4, r5, pc}
- 770              		.cfi_endproc
- 771              	.LFE77:
- 772              		.size	DMA_SHIFT2FILTER1_config, .-DMA_SHIFT2FILTER1_config
- 773 0042 00BF     		.section	.text.DMA_SHIFT2FILTER2_config,"ax",%progbits
- 774              		.align	2
- 775              		.global	DMA_SHIFT2FILTER2_config
- 776              		.thumb
- 777              		.thumb_func
- 778              		.type	DMA_SHIFT2FILTER2_config, %function
- 779              	DMA_SHIFT2FILTER2_config:
- 780              	.LFB78:
- 302:.\main.c      **** 
- 303:.\main.c      **** }
- 304:.\main.c      **** 
- 305:.\main.c      **** void DMA_SHIFT2FILTER2_config()
- 306:.\main.c      **** {
- 781              		.loc 1 306 0
- 782              		.cfi_startproc
- 783              		@ args = 0, pretend = 0, frame = 0
- 784              		@ frame_needed = 0, uses_anonymous_args = 0
- 785 0000 38B5     		push	{r3, r4, r5, lr}
- 786              		.cfi_def_cfa_offset 16
- 787              		.cfi_offset 3, -16
- 788              		.cfi_offset 4, -12
- 789              		.cfi_offset 5, -8
- 790              		.cfi_offset 14, -4
- 307:.\main.c      ****     /* Defines for SHIFT2FILTER2 */
- 308:.\main.c      ****     #define SHIFT2FILTER2_BYTES_PER_BURST 2
- 309:.\main.c      ****     #define SHIFT2FILTER2_REQUEST_PER_BURST 1
- 310:.\main.c      ****     #define SHIFT2FILTER2_SRC_BASE (CYDEV_PERIPH_BASE)
- 311:.\main.c      ****     #define SHIFT2FILTER2_DST_BASE (CYDEV_PERIPH_BASE)
- 312:.\main.c      **** 
- 313:.\main.c      ****     /* Variable declarations for SHIFT2FILTER2 */
- 314:.\main.c      ****     /* Move these variable declarations to the top of the function */
- 315:.\main.c      ****     uint8 SHIFT2FILTER2_Chan;
- 316:.\main.c      ****     uint8 SHIFT2FILTER2_TD[1];
- 317:.\main.c      **** 
- 318:.\main.c      ****     /* DMA Configuration for SHIFT2FILTER2 */
- 319:.\main.c      ****     SHIFT2FILTER2_Chan = SHIFT2FILTER2_DmaInitialize(SHIFT2FILTER2_BYTES_PER_BURST, SHIFT2FILTER2_R
- 791              		.loc 1 319 0
- 792 0002 0220     		movs	r0, #2
- 793 0004 0121     		movs	r1, #1
- 794 0006 4FF48042 		mov	r2, #16384
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 21
-
-
- 795 000a 1346     		mov	r3, r2
- 796 000c FFF7FEFF 		bl	SHIFT2FILTER2_DmaInitialize
- 797              	.LVL88:
- 798 0010 0546     		mov	r5, r0
- 799              	.LVL89:
- 320:.\main.c      ****         HI16(SHIFT2FILTER2_SRC_BASE), HI16(SHIFT2FILTER2_DST_BASE));
- 321:.\main.c      ****     SHIFT2FILTER2_TD[0] = CyDmaTdAllocate();
- 800              		.loc 1 321 0
- 801 0012 FFF7FEFF 		bl	CyDmaTdAllocate
- 802              	.LVL90:
- 803 0016 0446     		mov	r4, r0
- 322:.\main.c      ****     CyDmaTdSetConfiguration(SHIFT2FILTER2_TD[0], 2, SHIFT2FILTER2_TD[0], SHIFT2FILTER2__TD_TERMOUT_
- 804              		.loc 1 322 0
- 805 0018 0221     		movs	r1, #2
- 806 001a 0246     		mov	r2, r0
- 807 001c 0023     		movs	r3, #0
- 808 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
- 809              	.LVL91:
- 323:.\main.c      ****     CyDmaTdSetAddress(SHIFT2FILTER2_TD[0], LO16((uint32)ShiftBy2_2_OUTPUT_PTR), LO16((uint32)Filter
- 810              		.loc 1 323 0
- 811 0022 2046     		mov	r0, r4
- 812 0024 46F62C01 		movw	r1, #26668
- 813 0028 4CF2A472 		movw	r2, #51108
- 814 002c FFF7FEFF 		bl	CyDmaTdSetAddress
- 815              	.LVL92:
- 324:.\main.c      ****     CyDmaChSetInitialTd(SHIFT2FILTER2_Chan, SHIFT2FILTER2_TD[0]);
- 816              		.loc 1 324 0
- 817 0030 2846     		mov	r0, r5
- 818 0032 2146     		mov	r1, r4
- 819 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
- 820              	.LVL93:
- 325:.\main.c      ****     CyDmaChEnable(SHIFT2FILTER2_Chan, 1);
- 821              		.loc 1 325 0
- 822 0038 2846     		mov	r0, r5
- 823 003a 0121     		movs	r1, #1
- 824 003c FFF7FEFF 		bl	CyDmaChEnable
- 825              	.LVL94:
- 826 0040 38BD     		pop	{r3, r4, r5, pc}
- 827              		.cfi_endproc
- 828              	.LFE78:
- 829              		.size	DMA_SHIFT2FILTER2_config, .-DMA_SHIFT2FILTER2_config
- 830 0042 00BF     		.section	.text.start_DMAs,"ax",%progbits
- 831              		.align	2
- 832              		.global	start_DMAs
- 833              		.thumb
- 834              		.thumb_func
- 835              		.type	start_DMAs, %function
- 836              	start_DMAs:
- 837              	.LFB79:
- 326:.\main.c      **** }
- 327:.\main.c      **** 
- 328:.\main.c      **** void start_DMAs()
- 329:.\main.c      **** {
- 838              		.loc 1 329 0
- 839              		.cfi_startproc
- 840              		@ args = 0, pretend = 0, frame = 0
- 841              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 22
-
-
- 842 0000 08B5     		push	{r3, lr}
- 843              		.cfi_def_cfa_offset 8
- 844              		.cfi_offset 3, -8
- 845              		.cfi_offset 14, -4
- 330:.\main.c      **** //    DMA_SAR2FILTER1_config();
- 331:.\main.c      **** //    DMA_SAR2FILTER2_config();
- 332:.\main.c      ****     DMA_SAR2SHIFT1_config();
- 846              		.loc 1 332 0
- 847 0002 FFF7FEFF 		bl	DMA_SAR2SHIFT1_config
- 848              	.LVL95:
- 333:.\main.c      ****     DMA_SAR2SHIFT2_config();
- 849              		.loc 1 333 0
- 850 0006 FFF7FEFF 		bl	DMA_SAR2SHIFT2_config
- 851              	.LVL96:
- 334:.\main.c      ****     DMA_SHIFT2FILTER1_config();
- 852              		.loc 1 334 0
- 853 000a FFF7FEFF 		bl	DMA_SHIFT2FILTER1_config
- 854              	.LVL97:
- 335:.\main.c      ****     DMA_SHIFT2FILTER2_config();
- 855              		.loc 1 335 0
- 856 000e FFF7FEFF 		bl	DMA_SHIFT2FILTER2_config
- 857              	.LVL98:
- 336:.\main.c      ****     DMA_FILTER2RAM1_config();
- 858              		.loc 1 336 0
- 859 0012 FFF7FEFF 		bl	DMA_FILTER2RAM1_config
- 860              	.LVL99:
- 337:.\main.c      ****     DMA_FILTER2RAM2_config();
- 861              		.loc 1 337 0
- 862 0016 FFF7FEFF 		bl	DMA_FILTER2RAM2_config
- 863              	.LVL100:
- 338:.\main.c      **** 
- 339:.\main.c      ****     DMA_SPI2RAM_config();
- 864              		.loc 1 339 0
- 865 001a FFF7FEFF 		bl	DMA_SPI2RAM_config
- 866              	.LVL101:
- 867 001e 08BD     		pop	{r3, pc}
- 868              		.cfi_endproc
- 869              	.LFE79:
- 870              		.size	start_DMAs, .-start_DMAs
- 871              		.section	.text.main,"ax",%progbits
- 872              		.align	2
- 873              		.global	main
- 874              		.thumb
- 875              		.thumb_func
- 876              		.type	main, %function
- 877              	main:
- 878              	.LFB80:
- 340:.\main.c      **** 
- 341:.\main.c      **** }
- 342:.\main.c      **** 
- 343:.\main.c      **** int main()
- 344:.\main.c      **** {
- 879              		.loc 1 344 0
- 880              		.cfi_startproc
- 881              		@ Volatile: function does not return.
- 882              		@ args = 0, pretend = 0, frame = 0
- 883              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 23
-
-
- 884 0000 08B5     		push	{r3, lr}
- 885              		.cfi_def_cfa_offset 8
- 886              		.cfi_offset 3, -8
- 887              		.cfi_offset 14, -4
- 345:.\main.c      ****     
- 346:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
- 888              		.loc 1 346 0
- 889              	@ 346 ".\main.c" 1
- 890 0002 62B6     		CPSIE   i
- 891              	@ 0 "" 2
- 347:.\main.c      ****     start_resources();
- 892              		.loc 1 347 0
- 893              		.thumb
- 894 0004 FFF7FEFF 		bl	start_resources
- 895              	.LVL102:
- 348:.\main.c      ****     start_DMAs();
- 896              		.loc 1 348 0
- 897 0008 FFF7FEFF 		bl	start_DMAs
- 898              	.LVL103:
- 349:.\main.c      ****     start_interrupts();
- 899              		.loc 1 349 0
- 900 000c FFF7FEFF 		bl	start_interrupts
- 901              	.LVL104:
- 902              	.L48:
- 350:.\main.c      ****     
- 351:.\main.c      ****     for(;;)
- 352:.\main.c      ****     {
- 353:.\main.c      **** //        i2cbuf[0] = filtermem1[0] >> 8;
- 354:.\main.c      **** //        i2cbuf[1] = filtermem1[0];
- 355:.\main.c      **** //        i2cbuf[2] = filtermem2[0] >> 8;
- 356:.\main.c      **** //        i2cbuf[3] = filtermem2[0];
- 357:.\main.c      **** 
- 358:.\main.c      ****         //VDAC1_SetValue(SPIS_ReadRxData());
- 359:.\main.c      ****         //VDAC4_SetValue(SPIS_ReadRxData());
- 360:.\main.c      ****         //SPIS_ClearRxBuffer();
- 361:.\main.c      ****         
- 362:.\main.c      ****         CyDelay(1);
- 903              		.loc 1 362 0 discriminator 1
- 904 0010 0120     		movs	r0, #1
- 905 0012 FFF7FEFF 		bl	CyDelay
- 906              	.LVL105:
- 363:.\main.c      ****     }
- 907              		.loc 1 363 0 discriminator 1
- 908 0016 FBE7     		b	.L48
- 909              		.cfi_endproc
- 910              	.LFE80:
- 911              		.size	main, .-main
- 912              		.comm	RAM2FILTER2_Chan,1,1
- 913              		.comm	RAM2FILTER1_Chan,1,1
- 914              		.comm	filtermem2,50,4
- 915              		.comm	filtermem1,50,4
- 916              		.global	sarmem2
- 917              		.global	sarmem1
- 918              		.global	spimem
- 919              		.global	i2cbuf
- 920              		.bss
- 921              		.align	2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 24
-
-
- 922              		.set	.LANCHOR0,. + 0
- 923              		.type	i2cbuf, %object
- 924              		.size	i2cbuf, 4
- 925              	i2cbuf:
- 926 0000 00000000 		.space	4
- 927              		.type	spimem, %object
- 928              		.size	spimem, 4
- 929              	spimem:
- 930 0004 00000000 		.space	4
- 931              		.type	sarmem2, %object
- 932              		.size	sarmem2, 4
- 933              	sarmem2:
- 934 0008 00000000 		.space	4
- 935              		.type	sarmem1, %object
- 936              		.size	sarmem1, 4
- 937              	sarmem1:
- 938 000c 00000000 		.space	4
- 939              		.text
- 940              	.Letext0:
- 941              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 942              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 943              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 944              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
- 945              		.file 6 "Generated_Source\\PSoC5/VDAC1.h"
- 946              		.file 7 "Generated_Source\\PSoC5/I2C.h"
- 947              		.file 8 "Generated_Source\\PSoC5/PWM1.h"
- 948              		.file 9 "Generated_Source\\PSoC5/PWM2.h"
- 949              		.file 10 "Generated_Source\\PSoC5/VDAC2.h"
- 950              		.file 11 "Generated_Source\\PSoC5/VDAC3.h"
- 951              		.file 12 "Generated_Source\\PSoC5/VDAC4.h"
- 952              		.file 13 "Generated_Source\\PSoC5/SAR1.h"
- 953              		.file 14 "Generated_Source\\PSoC5/SAR2.h"
- 954              		.file 15 "Generated_Source\\PSoC5/Filter.h"
- 955              		.file 16 "Generated_Source\\PSoC5/SPIS.h"
- 956              		.file 17 "Generated_Source\\PSoC5/isr_filter_ready1.h"
- 957              		.file 18 "Generated_Source\\PSoC5/isr_filter_ready2.h"
- 958              		.file 19 "Generated_Source\\PSoC5/isr_spi_rx.h"
- 959              		.file 20 "Generated_Source\\PSoC5/SAR2FILTER1_dma.h"
- 960              		.file 21 "Generated_Source\\PSoC5/CYDMAC.H"
- 961              		.file 22 "Generated_Source\\PSoC5/SAR2FILTER2_dma.h"
- 962              		.file 23 "Generated_Source\\PSoC5/FILTER2RAM1_dma.h"
- 963              		.file 24 "Generated_Source\\PSoC5/FILTER2RAM2_dma.h"
- 964              		.file 25 "Generated_Source\\PSoC5/SPI2RAM_dma.h"
- 965              		.file 26 "Generated_Source\\PSoC5/SAR2SHIFT1_dma.h"
- 966              		.file 27 "Generated_Source\\PSoC5/SAR2SHIFT2_dma.h"
- 967              		.file 28 "Generated_Source\\PSoC5/SHIFT2FILTER1_dma.h"
- 968              		.file 29 "Generated_Source\\PSoC5/SHIFT2FILTER2_dma.h"
- 969              		.file 30 "Generated_Source\\PSoC5/CyLib.h"
- 970              		.section	.debug_info,"",%progbits
- 971              	.Ldebug_info0:
- 972 0000 3F0F0000 		.4byte	0xf3f
- 973 0004 0400     		.2byte	0x4
- 974 0006 00000000 		.4byte	.Ldebug_abbrev0
- 975 000a 04       		.byte	0x4
- 976 000b 01       		.uleb128 0x1
- 977 000c E3050000 		.4byte	.LASF105
- 978 0010 01       		.byte	0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 25
-
-
- 979 0011 9A010000 		.4byte	.LASF106
- 980 0015 6E020000 		.4byte	.LASF107
- 981 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 982 001d 00000000 		.4byte	0
- 983 0021 00000000 		.4byte	.Ldebug_line0
- 984 0025 02       		.uleb128 0x2
- 985 0026 01       		.byte	0x1
- 986 0027 06       		.byte	0x6
- 987 0028 BB030000 		.4byte	.LASF0
- 988 002c 02       		.uleb128 0x2
- 989 002d 01       		.byte	0x1
- 990 002e 08       		.byte	0x8
- 991 002f 3F030000 		.4byte	.LASF1
- 992 0033 02       		.uleb128 0x2
- 993 0034 02       		.byte	0x2
- 994 0035 05       		.byte	0x5
- 995 0036 84000000 		.4byte	.LASF2
- 996 003a 02       		.uleb128 0x2
- 997 003b 02       		.byte	0x2
- 998 003c 07       		.byte	0x7
- 999 003d 58040000 		.4byte	.LASF3
- 1000 0041 03       		.uleb128 0x3
- 1001 0042 D9050000 		.4byte	.LASF9
- 1002 0046 02       		.byte	0x2
- 1003 0047 3F       		.byte	0x3f
- 1004 0048 4C000000 		.4byte	0x4c
- 1005 004c 02       		.uleb128 0x2
- 1006 004d 04       		.byte	0x4
- 1007 004e 05       		.byte	0x5
- 1008 004f 65020000 		.4byte	.LASF4
- 1009 0053 02       		.uleb128 0x2
- 1010 0054 04       		.byte	0x4
- 1011 0055 07       		.byte	0x7
- 1012 0056 22050000 		.4byte	.LASF5
- 1013 005a 02       		.uleb128 0x2
- 1014 005b 08       		.byte	0x8
- 1015 005c 05       		.byte	0x5
- 1016 005d 57020000 		.4byte	.LASF6
- 1017 0061 02       		.uleb128 0x2
- 1018 0062 08       		.byte	0x8
- 1019 0063 07       		.byte	0x7
- 1020 0064 CF030000 		.4byte	.LASF7
- 1021 0068 04       		.uleb128 0x4
- 1022 0069 04       		.byte	0x4
- 1023 006a 05       		.byte	0x5
- 1024 006b 696E7400 		.ascii	"int\000"
- 1025 006f 02       		.uleb128 0x2
- 1026 0070 04       		.byte	0x4
- 1027 0071 07       		.byte	0x7
- 1028 0072 FE030000 		.4byte	.LASF8
- 1029 0076 03       		.uleb128 0x3
- 1030 0077 C7030000 		.4byte	.LASF10
- 1031 007b 03       		.byte	0x3
- 1032 007c 2C       		.byte	0x2c
- 1033 007d 41000000 		.4byte	0x41
- 1034 0081 05       		.uleb128 0x5
- 1035 0082 D3040000 		.4byte	.LASF11
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 26
-
-
- 1036 0086 04       		.byte	0x4
- 1037 0087 9201     		.2byte	0x192
- 1038 0089 2C000000 		.4byte	0x2c
- 1039 008d 05       		.uleb128 0x5
- 1040 008e 0F050000 		.4byte	.LASF12
- 1041 0092 04       		.byte	0x4
- 1042 0093 9301     		.2byte	0x193
- 1043 0095 3A000000 		.4byte	0x3a
- 1044 0099 05       		.uleb128 0x5
- 1045 009a 16050000 		.4byte	.LASF13
- 1046 009e 04       		.byte	0x4
- 1047 009f 9401     		.2byte	0x194
- 1048 00a1 53000000 		.4byte	0x53
- 1049 00a5 02       		.uleb128 0x2
- 1050 00a6 04       		.byte	0x4
- 1051 00a7 04       		.byte	0x4
- 1052 00a8 34020000 		.4byte	.LASF14
- 1053 00ac 02       		.uleb128 0x2
- 1054 00ad 08       		.byte	0x8
- 1055 00ae 04       		.byte	0x4
- 1056 00af 4D000000 		.4byte	.LASF15
- 1057 00b3 02       		.uleb128 0x2
- 1058 00b4 01       		.byte	0x1
- 1059 00b5 08       		.byte	0x8
- 1060 00b6 7E040000 		.4byte	.LASF16
- 1061 00ba 05       		.uleb128 0x5
- 1062 00bb 9C040000 		.4byte	.LASF17
- 1063 00bf 04       		.byte	0x4
- 1064 00c0 3402     		.2byte	0x234
- 1065 00c2 53000000 		.4byte	0x53
- 1066 00c6 05       		.uleb128 0x5
- 1067 00c7 1D050000 		.4byte	.LASF18
- 1068 00cb 04       		.byte	0x4
- 1069 00cc 3C02     		.2byte	0x23c
- 1070 00ce D2000000 		.4byte	0xd2
- 1071 00d2 06       		.uleb128 0x6
- 1072 00d3 81000000 		.4byte	0x81
- 1073 00d7 05       		.uleb128 0x5
- 1074 00d8 7E000000 		.4byte	.LASF19
- 1075 00dc 04       		.byte	0x4
- 1076 00dd 3D02     		.2byte	0x23d
- 1077 00df E3000000 		.4byte	0xe3
- 1078 00e3 06       		.uleb128 0x6
- 1079 00e4 8D000000 		.4byte	0x8d
- 1080 00e8 05       		.uleb128 0x5
- 1081 00e9 9B030000 		.4byte	.LASF20
- 1082 00ed 04       		.byte	0x4
- 1083 00ee 4E02     		.2byte	0x24e
- 1084 00f0 F4000000 		.4byte	0xf4
- 1085 00f4 07       		.uleb128 0x7
- 1086 00f5 04       		.byte	0x4
- 1087 00f6 FA000000 		.4byte	0xfa
- 1088 00fa 08       		.uleb128 0x8
- 1089 00fb 02       		.uleb128 0x2
- 1090 00fc 04       		.byte	0x4
- 1091 00fd 07       		.byte	0x7
- 1092 00fe B2060000 		.4byte	.LASF21
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 27
-
-
- 1093 0102 07       		.uleb128 0x7
- 1094 0103 04       		.byte	0x4
- 1095 0104 D2000000 		.4byte	0xd2
- 1096 0108 09       		.uleb128 0x9
- 1097 0109 81000000 		.4byte	0x81
- 1098 010d 18010000 		.4byte	0x118
- 1099 0111 0A       		.uleb128 0xa
- 1100 0112 FB000000 		.4byte	0xfb
- 1101 0116 03       		.byte	0x3
- 1102 0117 00       		.byte	0
- 1103 0118 02       		.uleb128 0x2
- 1104 0119 08       		.byte	0x8
- 1105 011a 04       		.byte	0x4
- 1106 011b 8F030000 		.4byte	.LASF22
- 1107 011f 0B       		.uleb128 0xb
- 1108 0120 C6000000 		.4byte	.LASF23
- 1109 0124 01       		.byte	0x1
- 1110 0125 58       		.byte	0x58
- 1111 0126 00000000 		.4byte	.LFB66
- 1112 012a 18000000 		.4byte	.LFE66-.LFB66
- 1113 012e 01       		.uleb128 0x1
- 1114 012f 9C       		.byte	0x9c
- 1115 0130 0B       		.uleb128 0xb
- 1116 0131 ED000000 		.4byte	.LASF24
- 1117 0135 01       		.byte	0x1
- 1118 0136 5E       		.byte	0x5e
- 1119 0137 00000000 		.4byte	.LFB67
- 1120 013b 18000000 		.4byte	.LFE67-.LFB67
- 1121 013f 01       		.uleb128 0x1
- 1122 0140 9C       		.byte	0x9c
- 1123 0141 0C       		.uleb128 0xc
- 1124 0142 5F000000 		.4byte	.LASF57
- 1125 0146 01       		.byte	0x1
- 1126 0147 64       		.byte	0x64
- 1127 0148 00000000 		.4byte	.LFB68
- 1128 014c 10000000 		.4byte	.LFE68-.LFB68
- 1129 0150 01       		.uleb128 0x1
- 1130 0151 9C       		.byte	0x9c
- 1131 0152 60010000 		.4byte	0x160
- 1132 0156 0D       		.uleb128 0xd
- 1133 0157 0A000000 		.4byte	.LVL0
- 1134 015b 4F0C0000 		.4byte	0xc4f
- 1135 015f 00       		.byte	0
- 1136 0160 0E       		.uleb128 0xe
- 1137 0161 F8020000 		.4byte	.LASF27
- 1138 0165 01       		.byte	0x1
- 1139 0166 26       		.byte	0x26
- 1140 0167 00000000 		.4byte	.LFB63
- 1141 016b 90000000 		.4byte	.LFE63-.LFB63
- 1142 016f 01       		.uleb128 0x1
- 1143 0170 9C       		.byte	0x9c
- 1144 0171 EC020000 		.4byte	0x2ec
- 1145 0175 0D       		.uleb128 0xd
- 1146 0176 06000000 		.4byte	.LVL1
- 1147 017a 600C0000 		.4byte	0xc60
- 1148 017e 0F       		.uleb128 0xf
- 1149 017f 10000000 		.4byte	.LVL2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 28
-
-
- 1150 0183 670C0000 		.4byte	0xc67
- 1151 0187 9F010000 		.4byte	0x19f
- 1152 018b 10       		.uleb128 0x10
- 1153 018c 01       		.uleb128 0x1
- 1154 018d 52       		.byte	0x52
- 1155 018e 05       		.uleb128 0x5
- 1156 018f 03       		.byte	0x3
- 1157 0190 00000000 		.4byte	.LANCHOR0
- 1158 0194 10       		.uleb128 0x10
- 1159 0195 01       		.uleb128 0x1
- 1160 0196 51       		.byte	0x51
- 1161 0197 01       		.uleb128 0x1
- 1162 0198 34       		.byte	0x34
- 1163 0199 10       		.uleb128 0x10
- 1164 019a 01       		.uleb128 0x1
- 1165 019b 50       		.byte	0x50
- 1166 019c 01       		.uleb128 0x1
- 1167 019d 34       		.byte	0x34
- 1168 019e 00       		.byte	0
- 1169 019f 0D       		.uleb128 0xd
- 1170 01a0 14000000 		.4byte	.LVL3
- 1171 01a4 820C0000 		.4byte	0xc82
- 1172 01a8 0D       		.uleb128 0xd
- 1173 01a9 18000000 		.4byte	.LVL4
- 1174 01ad 890C0000 		.4byte	0xc89
- 1175 01b1 0D       		.uleb128 0xd
- 1176 01b2 1C000000 		.4byte	.LVL5
- 1177 01b6 900C0000 		.4byte	0xc90
- 1178 01ba 0D       		.uleb128 0xd
- 1179 01bb 20000000 		.4byte	.LVL6
- 1180 01bf 970C0000 		.4byte	0xc97
- 1181 01c3 0D       		.uleb128 0xd
- 1182 01c4 24000000 		.4byte	.LVL7
- 1183 01c8 9E0C0000 		.4byte	0xc9e
- 1184 01cc 0D       		.uleb128 0xd
- 1185 01cd 28000000 		.4byte	.LVL8
- 1186 01d1 A50C0000 		.4byte	0xca5
- 1187 01d5 0F       		.uleb128 0xf
- 1188 01d6 2E000000 		.4byte	.LVL9
- 1189 01da 4F0C0000 		.4byte	0xc4f
- 1190 01de E9010000 		.4byte	0x1e9
- 1191 01e2 10       		.uleb128 0x10
- 1192 01e3 01       		.uleb128 0x1
- 1193 01e4 50       		.byte	0x50
- 1194 01e5 02       		.uleb128 0x2
- 1195 01e6 08       		.byte	0x8
- 1196 01e7 7F       		.byte	0x7f
- 1197 01e8 00       		.byte	0
- 1198 01e9 0F       		.uleb128 0xf
- 1199 01ea 34000000 		.4byte	.LVL10
- 1200 01ee AC0C0000 		.4byte	0xcac
- 1201 01f2 FD010000 		.4byte	0x1fd
- 1202 01f6 10       		.uleb128 0x10
- 1203 01f7 01       		.uleb128 0x1
- 1204 01f8 50       		.byte	0x50
- 1205 01f9 02       		.uleb128 0x2
- 1206 01fa 08       		.byte	0x8
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 29
-
-
- 1207 01fb 7F       		.byte	0x7f
- 1208 01fc 00       		.byte	0
- 1209 01fd 0F       		.uleb128 0xf
- 1210 01fe 3A000000 		.4byte	.LVL11
- 1211 0202 BD0C0000 		.4byte	0xcbd
- 1212 0206 11020000 		.4byte	0x211
- 1213 020a 10       		.uleb128 0x10
- 1214 020b 01       		.uleb128 0x1
- 1215 020c 50       		.byte	0x50
- 1216 020d 02       		.uleb128 0x2
- 1217 020e 08       		.byte	0x8
- 1218 020f 7F       		.byte	0x7f
- 1219 0210 00       		.byte	0
- 1220 0211 0F       		.uleb128 0xf
- 1221 0212 40000000 		.4byte	.LVL12
- 1222 0216 CE0C0000 		.4byte	0xcce
- 1223 021a 25020000 		.4byte	0x225
- 1224 021e 10       		.uleb128 0x10
- 1225 021f 01       		.uleb128 0x1
- 1226 0220 50       		.byte	0x50
- 1227 0221 02       		.uleb128 0x2
- 1228 0222 08       		.byte	0x8
- 1229 0223 7F       		.byte	0x7f
- 1230 0224 00       		.byte	0
- 1231 0225 0D       		.uleb128 0xd
- 1232 0226 44000000 		.4byte	.LVL13
- 1233 022a DF0C0000 		.4byte	0xcdf
- 1234 022e 0D       		.uleb128 0xd
- 1235 022f 48000000 		.4byte	.LVL14
- 1236 0233 E60C0000 		.4byte	0xce6
- 1237 0237 0D       		.uleb128 0xd
- 1238 0238 4C000000 		.4byte	.LVL15
- 1239 023c ED0C0000 		.4byte	0xced
- 1240 0240 0D       		.uleb128 0xd
- 1241 0241 50000000 		.4byte	.LVL16
- 1242 0245 F40C0000 		.4byte	0xcf4
- 1243 0249 0D       		.uleb128 0xd
- 1244 024a 54000000 		.4byte	.LVL17
- 1245 024e FB0C0000 		.4byte	0xcfb
- 1246 0252 0F       		.uleb128 0xf
- 1247 0253 5C000000 		.4byte	.LVL18
- 1248 0257 020D0000 		.4byte	0xd02
- 1249 025b 6A020000 		.4byte	0x26a
- 1250 025f 10       		.uleb128 0x10
- 1251 0260 01       		.uleb128 0x1
- 1252 0261 51       		.byte	0x51
- 1253 0262 01       		.uleb128 0x1
- 1254 0263 31       		.byte	0x31
- 1255 0264 10       		.uleb128 0x10
- 1256 0265 01       		.uleb128 0x1
- 1257 0266 50       		.byte	0x50
- 1258 0267 01       		.uleb128 0x1
- 1259 0268 31       		.byte	0x31
- 1260 0269 00       		.byte	0
- 1261 026a 0F       		.uleb128 0xf
- 1262 026b 64000000 		.4byte	.LVL19
- 1263 026f 020D0000 		.4byte	0xd02
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 30
-
-
- 1264 0273 82020000 		.4byte	0x282
- 1265 0277 10       		.uleb128 0x10
- 1266 0278 01       		.uleb128 0x1
- 1267 0279 51       		.byte	0x51
- 1268 027a 01       		.uleb128 0x1
- 1269 027b 31       		.byte	0x31
- 1270 027c 10       		.uleb128 0x10
- 1271 027d 01       		.uleb128 0x1
- 1272 027e 50       		.byte	0x50
- 1273 027f 01       		.uleb128 0x1
- 1274 0280 34       		.byte	0x34
- 1275 0281 00       		.byte	0
- 1276 0282 0F       		.uleb128 0xf
- 1277 0283 6C000000 		.4byte	.LVL20
- 1278 0287 180D0000 		.4byte	0xd18
- 1279 028b 9A020000 		.4byte	0x29a
- 1280 028f 10       		.uleb128 0x10
- 1281 0290 01       		.uleb128 0x1
- 1282 0291 51       		.byte	0x51
- 1283 0292 01       		.uleb128 0x1
- 1284 0293 31       		.byte	0x31
- 1285 0294 10       		.uleb128 0x10
- 1286 0295 01       		.uleb128 0x1
- 1287 0296 50       		.byte	0x50
- 1288 0297 01       		.uleb128 0x1
- 1289 0298 30       		.byte	0x30
- 1290 0299 00       		.byte	0
- 1291 029a 0F       		.uleb128 0xf
- 1292 029b 74000000 		.4byte	.LVL21
- 1293 029f 020D0000 		.4byte	0xd02
- 1294 02a3 B2020000 		.4byte	0x2b2
- 1295 02a7 10       		.uleb128 0x10
- 1296 02a8 01       		.uleb128 0x1
- 1297 02a9 51       		.byte	0x51
- 1298 02aa 01       		.uleb128 0x1
- 1299 02ab 31       		.byte	0x31
- 1300 02ac 10       		.uleb128 0x10
- 1301 02ad 01       		.uleb128 0x1
- 1302 02ae 50       		.byte	0x50
- 1303 02af 01       		.uleb128 0x1
- 1304 02b0 32       		.byte	0x32
- 1305 02b1 00       		.byte	0
- 1306 02b2 0F       		.uleb128 0xf
- 1307 02b3 7C000000 		.4byte	.LVL22
- 1308 02b7 020D0000 		.4byte	0xd02
- 1309 02bb CA020000 		.4byte	0x2ca
- 1310 02bf 10       		.uleb128 0x10
- 1311 02c0 01       		.uleb128 0x1
- 1312 02c1 51       		.byte	0x51
- 1313 02c2 01       		.uleb128 0x1
- 1314 02c3 31       		.byte	0x31
- 1315 02c4 10       		.uleb128 0x10
- 1316 02c5 01       		.uleb128 0x1
- 1317 02c6 50       		.byte	0x50
- 1318 02c7 01       		.uleb128 0x1
- 1319 02c8 38       		.byte	0x38
- 1320 02c9 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 31
-
-
- 1321 02ca 0F       		.uleb128 0xf
- 1322 02cb 84000000 		.4byte	.LVL23
- 1323 02cf 180D0000 		.4byte	0xd18
- 1324 02d3 E2020000 		.4byte	0x2e2
- 1325 02d7 10       		.uleb128 0x10
- 1326 02d8 01       		.uleb128 0x1
- 1327 02d9 51       		.byte	0x51
- 1328 02da 01       		.uleb128 0x1
- 1329 02db 31       		.byte	0x31
- 1330 02dc 10       		.uleb128 0x10
- 1331 02dd 01       		.uleb128 0x1
- 1332 02de 50       		.byte	0x50
- 1333 02df 01       		.uleb128 0x1
- 1334 02e0 31       		.byte	0x31
- 1335 02e1 00       		.byte	0
- 1336 02e2 0D       		.uleb128 0xd
- 1337 02e3 88000000 		.4byte	.LVL24
- 1338 02e7 2E0D0000 		.4byte	0xd2e
- 1339 02eb 00       		.byte	0
- 1340 02ec 0B       		.uleb128 0xb
- 1341 02ed 69030000 		.4byte	.LASF25
- 1342 02f1 01       		.byte	0x1
- 1343 02f2 4A       		.byte	0x4a
- 1344 02f3 00000000 		.4byte	.LFB64
- 1345 02f7 02000000 		.4byte	.LFE64-.LFB64
- 1346 02fb 01       		.uleb128 0x1
- 1347 02fc 9C       		.byte	0x9c
- 1348 02fd 0B       		.uleb128 0xb
- 1349 02fe A8030000 		.4byte	.LASF26
- 1350 0302 01       		.byte	0x1
- 1351 0303 51       		.byte	0x51
- 1352 0304 00000000 		.4byte	.LFB65
- 1353 0308 02000000 		.4byte	.LFE65-.LFB65
- 1354 030c 01       		.uleb128 0x1
- 1355 030d 9C       		.byte	0x9c
- 1356 030e 0E       		.uleb128 0xe
- 1357 030f 3A020000 		.4byte	.LASF28
- 1358 0313 01       		.byte	0x1
- 1359 0314 6B       		.byte	0x6b
- 1360 0315 00000000 		.4byte	.LFB69
- 1361 0319 28000000 		.4byte	.LFE69-.LFB69
- 1362 031d 01       		.uleb128 0x1
- 1363 031e 9C       		.byte	0x9c
- 1364 031f 72030000 		.4byte	0x372
- 1365 0323 0F       		.uleb128 0xf
- 1366 0324 08000000 		.4byte	.LVL25
- 1367 0328 350D0000 		.4byte	0xd35
- 1368 032c 3A030000 		.4byte	0x33a
- 1369 0330 10       		.uleb128 0x10
- 1370 0331 01       		.uleb128 0x1
- 1371 0332 50       		.byte	0x50
- 1372 0333 05       		.uleb128 0x5
- 1373 0334 03       		.byte	0x3
- 1374 0335 00000000 		.4byte	filter_ready1_handler
- 1375 0339 00       		.byte	0
- 1376 033a 0F       		.uleb128 0xf
- 1377 033b 0E000000 		.4byte	.LVL26
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 32
-
-
- 1378 033f 460D0000 		.4byte	0xd46
- 1379 0343 51030000 		.4byte	0x351
- 1380 0347 10       		.uleb128 0x10
- 1381 0348 01       		.uleb128 0x1
- 1382 0349 50       		.byte	0x50
- 1383 034a 05       		.uleb128 0x5
- 1384 034b 03       		.byte	0x3
- 1385 034c 00000000 		.4byte	filter_ready2_handler
- 1386 0350 00       		.byte	0
- 1387 0351 0F       		.uleb128 0xf
- 1388 0352 14000000 		.4byte	.LVL27
- 1389 0356 570D0000 		.4byte	0xd57
- 1390 035a 68030000 		.4byte	0x368
- 1391 035e 10       		.uleb128 0x10
- 1392 035f 01       		.uleb128 0x1
- 1393 0360 50       		.byte	0x50
- 1394 0361 05       		.uleb128 0x5
- 1395 0362 03       		.byte	0x3
- 1396 0363 00000000 		.4byte	spi_rx_handler
- 1397 0367 00       		.byte	0
- 1398 0368 0D       		.uleb128 0xd
- 1399 0369 18000000 		.4byte	.LVL28
- 1400 036d 680D0000 		.4byte	0xd68
- 1401 0371 00       		.byte	0
- 1402 0372 0E       		.uleb128 0xe
- 1403 0373 B2010000 		.4byte	.LASF29
- 1404 0377 01       		.byte	0x1
- 1405 0378 77       		.byte	0x77
- 1406 0379 00000000 		.4byte	.LFB70
- 1407 037d 42000000 		.4byte	.LFE70-.LFB70
- 1408 0381 01       		.uleb128 0x1
- 1409 0382 9C       		.byte	0x9c
- 1410 0383 44040000 		.4byte	0x444
- 1411 0387 11       		.uleb128 0x11
- 1412 0388 1D070000 		.4byte	.LASF31
- 1413 038c 01       		.byte	0x1
- 1414 038d 81       		.byte	0x81
- 1415 038e 81000000 		.4byte	0x81
- 1416 0392 01       		.uleb128 0x1
- 1417 0393 55       		.byte	0x55
- 1418 0394 12       		.uleb128 0x12
- 1419 0395 51070000 		.4byte	.LASF33
- 1420 0399 01       		.byte	0x1
- 1421 039a 82       		.byte	0x82
- 1422 039b 44040000 		.4byte	0x444
- 1423 039f 0F       		.uleb128 0xf
- 1424 03a0 10000000 		.4byte	.LVL29
- 1425 03a4 6F0D0000 		.4byte	0xd6f
- 1426 03a8 C5030000 		.4byte	0x3c5
- 1427 03ac 10       		.uleb128 0x10
- 1428 03ad 01       		.uleb128 0x1
- 1429 03ae 53       		.byte	0x53
- 1430 03af 03       		.uleb128 0x3
- 1431 03b0 0A       		.byte	0xa
- 1432 03b1 0040     		.2byte	0x4000
- 1433 03b3 10       		.uleb128 0x10
- 1434 03b4 01       		.uleb128 0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 33
-
-
- 1435 03b5 52       		.byte	0x52
- 1436 03b6 03       		.uleb128 0x3
- 1437 03b7 0A       		.byte	0xa
- 1438 03b8 0040     		.2byte	0x4000
- 1439 03ba 10       		.uleb128 0x10
- 1440 03bb 01       		.uleb128 0x1
- 1441 03bc 51       		.byte	0x51
- 1442 03bd 01       		.uleb128 0x1
- 1443 03be 31       		.byte	0x31
- 1444 03bf 10       		.uleb128 0x10
- 1445 03c0 01       		.uleb128 0x1
- 1446 03c1 50       		.byte	0x50
- 1447 03c2 01       		.uleb128 0x1
- 1448 03c3 32       		.byte	0x32
- 1449 03c4 00       		.byte	0
- 1450 03c5 0D       		.uleb128 0xd
- 1451 03c6 16000000 		.4byte	.LVL31
- 1452 03ca 930D0000 		.4byte	0xd93
- 1453 03ce 0F       		.uleb128 0xf
- 1454 03cf 22000000 		.4byte	.LVL32
- 1455 03d3 9E0D0000 		.4byte	0xd9e
- 1456 03d7 F2030000 		.4byte	0x3f2
- 1457 03db 10       		.uleb128 0x10
- 1458 03dc 01       		.uleb128 0x1
- 1459 03dd 53       		.byte	0x53
- 1460 03de 01       		.uleb128 0x1
- 1461 03df 30       		.byte	0x30
- 1462 03e0 10       		.uleb128 0x10
- 1463 03e1 01       		.uleb128 0x1
- 1464 03e2 52       		.byte	0x52
- 1465 03e3 02       		.uleb128 0x2
- 1466 03e4 74       		.byte	0x74
- 1467 03e5 00       		.sleb128 0
- 1468 03e6 10       		.uleb128 0x10
- 1469 03e7 01       		.uleb128 0x1
- 1470 03e8 51       		.byte	0x51
- 1471 03e9 01       		.uleb128 0x1
- 1472 03ea 32       		.byte	0x32
- 1473 03eb 10       		.uleb128 0x10
- 1474 03ec 01       		.uleb128 0x1
- 1475 03ed 50       		.byte	0x50
- 1476 03ee 02       		.uleb128 0x2
- 1477 03ef 74       		.byte	0x74
- 1478 03f0 00       		.sleb128 0
- 1479 03f1 00       		.byte	0
- 1480 03f2 0F       		.uleb128 0xf
- 1481 03f3 30000000 		.4byte	.LVL33
- 1482 03f7 C20D0000 		.4byte	0xdc2
- 1483 03fb 14040000 		.4byte	0x414
- 1484 03ff 10       		.uleb128 0x10
- 1485 0400 01       		.uleb128 0x1
- 1486 0401 52       		.byte	0x52
- 1487 0402 03       		.uleb128 0x3
- 1488 0403 0B       		.byte	0xb
- 1489 0404 A0C7     		.2byte	0xc7a0
- 1490 0406 10       		.uleb128 0x10
- 1491 0407 01       		.uleb128 0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 34
-
-
- 1492 0408 51       		.byte	0x51
- 1493 0409 03       		.uleb128 0x3
- 1494 040a 0A       		.byte	0xa
- 1495 040b A05B     		.2byte	0x5ba0
- 1496 040d 10       		.uleb128 0x10
- 1497 040e 01       		.uleb128 0x1
- 1498 040f 50       		.byte	0x50
- 1499 0410 02       		.uleb128 0x2
- 1500 0411 74       		.byte	0x74
- 1501 0412 00       		.sleb128 0
- 1502 0413 00       		.byte	0
- 1503 0414 0F       		.uleb128 0xf
- 1504 0415 38000000 		.4byte	.LVL34
- 1505 0419 E10D0000 		.4byte	0xde1
- 1506 041d 2E040000 		.4byte	0x42e
- 1507 0421 10       		.uleb128 0x10
- 1508 0422 01       		.uleb128 0x1
- 1509 0423 51       		.byte	0x51
- 1510 0424 02       		.uleb128 0x2
- 1511 0425 74       		.byte	0x74
- 1512 0426 00       		.sleb128 0
- 1513 0427 10       		.uleb128 0x10
- 1514 0428 01       		.uleb128 0x1
- 1515 0429 50       		.byte	0x50
- 1516 042a 02       		.uleb128 0x2
- 1517 042b 75       		.byte	0x75
- 1518 042c 00       		.sleb128 0
- 1519 042d 00       		.byte	0
- 1520 042e 13       		.uleb128 0x13
- 1521 042f 40000000 		.4byte	.LVL35
- 1522 0433 FB0D0000 		.4byte	0xdfb
- 1523 0437 10       		.uleb128 0x10
- 1524 0438 01       		.uleb128 0x1
- 1525 0439 51       		.byte	0x51
- 1526 043a 01       		.uleb128 0x1
- 1527 043b 31       		.byte	0x31
- 1528 043c 10       		.uleb128 0x10
- 1529 043d 01       		.uleb128 0x1
- 1530 043e 50       		.byte	0x50
- 1531 043f 02       		.uleb128 0x2
- 1532 0440 75       		.byte	0x75
- 1533 0441 00       		.sleb128 0
- 1534 0442 00       		.byte	0
- 1535 0443 00       		.byte	0
- 1536 0444 09       		.uleb128 0x9
- 1537 0445 81000000 		.4byte	0x81
- 1538 0449 54040000 		.4byte	0x454
- 1539 044d 0A       		.uleb128 0xa
- 1540 044e FB000000 		.4byte	0xfb
- 1541 0452 00       		.byte	0
- 1542 0453 00       		.byte	0
- 1543 0454 0E       		.uleb128 0xe
- 1544 0455 1D040000 		.4byte	.LASF30
- 1545 0459 01       		.byte	0x1
- 1546 045a 8F       		.byte	0x8f
- 1547 045b 00000000 		.4byte	.LFB71
- 1548 045f 42000000 		.4byte	.LFE71-.LFB71
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 35
-
-
- 1549 0463 01       		.uleb128 0x1
- 1550 0464 9C       		.byte	0x9c
- 1551 0465 26050000 		.4byte	0x526
- 1552 0469 11       		.uleb128 0x11
- 1553 046a 23020000 		.4byte	.LASF32
- 1554 046e 01       		.byte	0x1
- 1555 046f 99       		.byte	0x99
- 1556 0470 81000000 		.4byte	0x81
- 1557 0474 01       		.uleb128 0x1
- 1558 0475 55       		.byte	0x55
- 1559 0476 12       		.uleb128 0x12
- 1560 0477 8B010000 		.4byte	.LASF34
- 1561 047b 01       		.byte	0x1
- 1562 047c 9A       		.byte	0x9a
- 1563 047d 44040000 		.4byte	0x444
- 1564 0481 0F       		.uleb128 0xf
- 1565 0482 10000000 		.4byte	.LVL36
- 1566 0486 150E0000 		.4byte	0xe15
- 1567 048a A7040000 		.4byte	0x4a7
- 1568 048e 10       		.uleb128 0x10
- 1569 048f 01       		.uleb128 0x1
- 1570 0490 53       		.byte	0x53
- 1571 0491 03       		.uleb128 0x3
- 1572 0492 0A       		.byte	0xa
- 1573 0493 0040     		.2byte	0x4000
- 1574 0495 10       		.uleb128 0x10
- 1575 0496 01       		.uleb128 0x1
- 1576 0497 52       		.byte	0x52
- 1577 0498 03       		.uleb128 0x3
- 1578 0499 0A       		.byte	0xa
- 1579 049a 0040     		.2byte	0x4000
- 1580 049c 10       		.uleb128 0x10
- 1581 049d 01       		.uleb128 0x1
- 1582 049e 51       		.byte	0x51
- 1583 049f 01       		.uleb128 0x1
- 1584 04a0 31       		.byte	0x31
- 1585 04a1 10       		.uleb128 0x10
- 1586 04a2 01       		.uleb128 0x1
- 1587 04a3 50       		.byte	0x50
- 1588 04a4 01       		.uleb128 0x1
- 1589 04a5 32       		.byte	0x32
- 1590 04a6 00       		.byte	0
- 1591 04a7 0D       		.uleb128 0xd
- 1592 04a8 16000000 		.4byte	.LVL38
- 1593 04ac 930D0000 		.4byte	0xd93
- 1594 04b0 0F       		.uleb128 0xf
- 1595 04b1 22000000 		.4byte	.LVL39
- 1596 04b5 9E0D0000 		.4byte	0xd9e
- 1597 04b9 D4040000 		.4byte	0x4d4
- 1598 04bd 10       		.uleb128 0x10
- 1599 04be 01       		.uleb128 0x1
- 1600 04bf 53       		.byte	0x53
- 1601 04c0 01       		.uleb128 0x1
- 1602 04c1 30       		.byte	0x30
- 1603 04c2 10       		.uleb128 0x10
- 1604 04c3 01       		.uleb128 0x1
- 1605 04c4 52       		.byte	0x52
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 36
-
-
- 1606 04c5 02       		.uleb128 0x2
- 1607 04c6 74       		.byte	0x74
- 1608 04c7 00       		.sleb128 0
- 1609 04c8 10       		.uleb128 0x10
- 1610 04c9 01       		.uleb128 0x1
- 1611 04ca 51       		.byte	0x51
- 1612 04cb 01       		.uleb128 0x1
- 1613 04cc 32       		.byte	0x32
- 1614 04cd 10       		.uleb128 0x10
- 1615 04ce 01       		.uleb128 0x1
- 1616 04cf 50       		.byte	0x50
- 1617 04d0 02       		.uleb128 0x2
- 1618 04d1 74       		.byte	0x74
- 1619 04d2 00       		.sleb128 0
- 1620 04d3 00       		.byte	0
- 1621 04d4 0F       		.uleb128 0xf
- 1622 04d5 30000000 		.4byte	.LVL40
- 1623 04d9 C20D0000 		.4byte	0xdc2
- 1624 04dd F6040000 		.4byte	0x4f6
- 1625 04e1 10       		.uleb128 0x10
- 1626 04e2 01       		.uleb128 0x1
- 1627 04e3 52       		.byte	0x52
- 1628 04e4 03       		.uleb128 0x3
- 1629 04e5 0B       		.byte	0xb
- 1630 04e6 A4C7     		.2byte	0xc7a4
- 1631 04e8 10       		.uleb128 0x10
- 1632 04e9 01       		.uleb128 0x1
- 1633 04ea 51       		.byte	0x51
- 1634 04eb 03       		.uleb128 0x3
- 1635 04ec 0A       		.byte	0xa
- 1636 04ed A25B     		.2byte	0x5ba2
- 1637 04ef 10       		.uleb128 0x10
- 1638 04f0 01       		.uleb128 0x1
- 1639 04f1 50       		.byte	0x50
- 1640 04f2 02       		.uleb128 0x2
- 1641 04f3 74       		.byte	0x74
- 1642 04f4 00       		.sleb128 0
- 1643 04f5 00       		.byte	0
- 1644 04f6 0F       		.uleb128 0xf
- 1645 04f7 38000000 		.4byte	.LVL41
- 1646 04fb E10D0000 		.4byte	0xde1
- 1647 04ff 10050000 		.4byte	0x510
- 1648 0503 10       		.uleb128 0x10
- 1649 0504 01       		.uleb128 0x1
- 1650 0505 51       		.byte	0x51
- 1651 0506 02       		.uleb128 0x2
- 1652 0507 74       		.byte	0x74
- 1653 0508 00       		.sleb128 0
- 1654 0509 10       		.uleb128 0x10
- 1655 050a 01       		.uleb128 0x1
- 1656 050b 50       		.byte	0x50
- 1657 050c 02       		.uleb128 0x2
- 1658 050d 75       		.byte	0x75
- 1659 050e 00       		.sleb128 0
- 1660 050f 00       		.byte	0
- 1661 0510 13       		.uleb128 0x13
- 1662 0511 40000000 		.4byte	.LVL42
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 37
-
-
- 1663 0515 FB0D0000 		.4byte	0xdfb
- 1664 0519 10       		.uleb128 0x10
- 1665 051a 01       		.uleb128 0x1
- 1666 051b 51       		.byte	0x51
- 1667 051c 01       		.uleb128 0x1
- 1668 051d 31       		.byte	0x31
- 1669 051e 10       		.uleb128 0x10
- 1670 051f 01       		.uleb128 0x1
- 1671 0520 50       		.byte	0x50
- 1672 0521 02       		.uleb128 0x2
- 1673 0522 75       		.byte	0x75
- 1674 0523 00       		.sleb128 0
- 1675 0524 00       		.byte	0
- 1676 0525 00       		.byte	0
- 1677 0526 0E       		.uleb128 0xe
- 1678 0527 36000000 		.4byte	.LASF35
- 1679 052b 01       		.byte	0x1
- 1680 052c A7       		.byte	0xa7
- 1681 052d 00000000 		.4byte	.LFB72
- 1682 0531 48000000 		.4byte	.LFE72-.LFB72
- 1683 0535 01       		.uleb128 0x1
- 1684 0536 9C       		.byte	0x9c
- 1685 0537 FD050000 		.4byte	0x5fd
- 1686 053b 14       		.uleb128 0x14
- 1687 053c 47040000 		.4byte	.LASF36
- 1688 0540 01       		.byte	0x1
- 1689 0541 B1       		.byte	0xb1
- 1690 0542 81000000 		.4byte	0x81
- 1691 0546 00000000 		.4byte	.LLST0
- 1692 054a 12       		.uleb128 0x12
- 1693 054b 11010000 		.4byte	.LASF37
- 1694 054f 01       		.byte	0x1
- 1695 0550 B2       		.byte	0xb2
- 1696 0551 44040000 		.4byte	0x444
- 1697 0555 0F       		.uleb128 0xf
- 1698 0556 12000000 		.4byte	.LVL43
- 1699 055a 390E0000 		.4byte	0xe39
- 1700 055e 7B050000 		.4byte	0x57b
- 1701 0562 10       		.uleb128 0x10
- 1702 0563 01       		.uleb128 0x1
- 1703 0564 53       		.byte	0x53
- 1704 0565 03       		.uleb128 0x3
- 1705 0566 0A       		.byte	0xa
- 1706 0567 FF1F     		.2byte	0x1fff
- 1707 0569 10       		.uleb128 0x10
- 1708 056a 01       		.uleb128 0x1
- 1709 056b 52       		.byte	0x52
- 1710 056c 03       		.uleb128 0x3
- 1711 056d 0A       		.byte	0xa
- 1712 056e 0040     		.2byte	0x4000
- 1713 0570 10       		.uleb128 0x10
- 1714 0571 01       		.uleb128 0x1
- 1715 0572 51       		.byte	0x51
- 1716 0573 01       		.uleb128 0x1
- 1717 0574 31       		.byte	0x31
- 1718 0575 10       		.uleb128 0x10
- 1719 0576 01       		.uleb128 0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 38
-
-
- 1720 0577 50       		.byte	0x50
- 1721 0578 01       		.uleb128 0x1
- 1722 0579 32       		.byte	0x32
- 1723 057a 00       		.byte	0
- 1724 057b 0D       		.uleb128 0xd
- 1725 057c 18000000 		.4byte	.LVL45
- 1726 0580 930D0000 		.4byte	0xd93
- 1727 0584 0F       		.uleb128 0xf
- 1728 0585 24000000 		.4byte	.LVL46
- 1729 0589 9E0D0000 		.4byte	0xd9e
- 1730 058d A9050000 		.4byte	0x5a9
- 1731 0591 10       		.uleb128 0x10
- 1732 0592 01       		.uleb128 0x1
- 1733 0593 53       		.byte	0x53
- 1734 0594 01       		.uleb128 0x1
- 1735 0595 36       		.byte	0x36
- 1736 0596 10       		.uleb128 0x10
- 1737 0597 01       		.uleb128 0x1
- 1738 0598 52       		.byte	0x52
- 1739 0599 02       		.uleb128 0x2
- 1740 059a 74       		.byte	0x74
- 1741 059b 00       		.sleb128 0
- 1742 059c 10       		.uleb128 0x10
- 1743 059d 01       		.uleb128 0x1
- 1744 059e 51       		.byte	0x51
- 1745 059f 02       		.uleb128 0x2
- 1746 05a0 08       		.byte	0x8
- 1747 05a1 32       		.byte	0x32
- 1748 05a2 10       		.uleb128 0x10
- 1749 05a3 01       		.uleb128 0x1
- 1750 05a4 50       		.byte	0x50
- 1751 05a5 02       		.uleb128 0x2
- 1752 05a6 74       		.byte	0x74
- 1753 05a7 00       		.sleb128 0
- 1754 05a8 00       		.byte	0
- 1755 05a9 0F       		.uleb128 0xf
- 1756 05aa 32000000 		.4byte	.LVL47
- 1757 05ae C20D0000 		.4byte	0xdc2
- 1758 05b2 CD050000 		.4byte	0x5cd
- 1759 05b6 10       		.uleb128 0x10
- 1760 05b7 01       		.uleb128 0x1
- 1761 05b8 52       		.byte	0x52
- 1762 05b9 05       		.uleb128 0x5
- 1763 05ba 03       		.byte	0x3
- 1764 05bb 00000000 		.4byte	filtermem1
- 1765 05bf 10       		.uleb128 0x10
- 1766 05c0 01       		.uleb128 0x1
- 1767 05c1 51       		.byte	0x51
- 1768 05c2 03       		.uleb128 0x3
- 1769 05c3 0B       		.byte	0xb
- 1770 05c4 A8C7     		.2byte	0xc7a8
- 1771 05c6 10       		.uleb128 0x10
- 1772 05c7 01       		.uleb128 0x1
- 1773 05c8 50       		.byte	0x50
- 1774 05c9 02       		.uleb128 0x2
- 1775 05ca 74       		.byte	0x74
- 1776 05cb 00       		.sleb128 0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 39
-
-
- 1777 05cc 00       		.byte	0
- 1778 05cd 0F       		.uleb128 0xf
- 1779 05ce 3A000000 		.4byte	.LVL48
- 1780 05d2 E10D0000 		.4byte	0xde1
- 1781 05d6 E7050000 		.4byte	0x5e7
- 1782 05da 10       		.uleb128 0x10
- 1783 05db 01       		.uleb128 0x1
- 1784 05dc 51       		.byte	0x51
- 1785 05dd 02       		.uleb128 0x2
- 1786 05de 74       		.byte	0x74
- 1787 05df 00       		.sleb128 0
- 1788 05e0 10       		.uleb128 0x10
- 1789 05e1 01       		.uleb128 0x1
- 1790 05e2 50       		.byte	0x50
- 1791 05e3 02       		.uleb128 0x2
- 1792 05e4 75       		.byte	0x75
- 1793 05e5 00       		.sleb128 0
- 1794 05e6 00       		.byte	0
- 1795 05e7 13       		.uleb128 0x13
- 1796 05e8 42000000 		.4byte	.LVL49
- 1797 05ec FB0D0000 		.4byte	0xdfb
- 1798 05f0 10       		.uleb128 0x10
- 1799 05f1 01       		.uleb128 0x1
- 1800 05f2 51       		.byte	0x51
- 1801 05f3 01       		.uleb128 0x1
- 1802 05f4 31       		.byte	0x31
- 1803 05f5 10       		.uleb128 0x10
- 1804 05f6 01       		.uleb128 0x1
- 1805 05f7 50       		.byte	0x50
- 1806 05f8 02       		.uleb128 0x2
- 1807 05f9 75       		.byte	0x75
- 1808 05fa 00       		.sleb128 0
- 1809 05fb 00       		.byte	0
- 1810 05fc 00       		.byte	0
- 1811 05fd 0E       		.uleb128 0xe
- 1812 05fe 87050000 		.4byte	.LASF38
- 1813 0602 01       		.byte	0x1
- 1814 0603 BE       		.byte	0xbe
- 1815 0604 00000000 		.4byte	.LFB73
- 1816 0608 48000000 		.4byte	.LFE73-.LFB73
- 1817 060c 01       		.uleb128 0x1
- 1818 060d 9C       		.byte	0x9c
- 1819 060e D4060000 		.4byte	0x6d4
- 1820 0612 14       		.uleb128 0x14
- 1821 0613 DE060000 		.4byte	.LASF39
- 1822 0617 01       		.byte	0x1
- 1823 0618 C8       		.byte	0xc8
- 1824 0619 81000000 		.4byte	0x81
- 1825 061d 13000000 		.4byte	.LLST1
- 1826 0621 12       		.uleb128 0x12
- 1827 0622 21030000 		.4byte	.LASF40
- 1828 0626 01       		.byte	0x1
- 1829 0627 C9       		.byte	0xc9
- 1830 0628 44040000 		.4byte	0x444
- 1831 062c 0F       		.uleb128 0xf
- 1832 062d 12000000 		.4byte	.LVL51
- 1833 0631 5D0E0000 		.4byte	0xe5d
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 40
-
-
- 1834 0635 52060000 		.4byte	0x652
- 1835 0639 10       		.uleb128 0x10
- 1836 063a 01       		.uleb128 0x1
- 1837 063b 53       		.byte	0x53
- 1838 063c 03       		.uleb128 0x3
- 1839 063d 0A       		.byte	0xa
- 1840 063e FF1F     		.2byte	0x1fff
- 1841 0640 10       		.uleb128 0x10
- 1842 0641 01       		.uleb128 0x1
- 1843 0642 52       		.byte	0x52
- 1844 0643 03       		.uleb128 0x3
- 1845 0644 0A       		.byte	0xa
- 1846 0645 0040     		.2byte	0x4000
- 1847 0647 10       		.uleb128 0x10
- 1848 0648 01       		.uleb128 0x1
- 1849 0649 51       		.byte	0x51
- 1850 064a 01       		.uleb128 0x1
- 1851 064b 31       		.byte	0x31
- 1852 064c 10       		.uleb128 0x10
- 1853 064d 01       		.uleb128 0x1
- 1854 064e 50       		.byte	0x50
- 1855 064f 01       		.uleb128 0x1
- 1856 0650 32       		.byte	0x32
- 1857 0651 00       		.byte	0
- 1858 0652 0D       		.uleb128 0xd
- 1859 0653 18000000 		.4byte	.LVL53
- 1860 0657 930D0000 		.4byte	0xd93
- 1861 065b 0F       		.uleb128 0xf
- 1862 065c 24000000 		.4byte	.LVL54
- 1863 0660 9E0D0000 		.4byte	0xd9e
- 1864 0664 80060000 		.4byte	0x680
- 1865 0668 10       		.uleb128 0x10
- 1866 0669 01       		.uleb128 0x1
- 1867 066a 53       		.byte	0x53
- 1868 066b 01       		.uleb128 0x1
- 1869 066c 36       		.byte	0x36
- 1870 066d 10       		.uleb128 0x10
- 1871 066e 01       		.uleb128 0x1
- 1872 066f 52       		.byte	0x52
- 1873 0670 02       		.uleb128 0x2
- 1874 0671 74       		.byte	0x74
- 1875 0672 00       		.sleb128 0
- 1876 0673 10       		.uleb128 0x10
- 1877 0674 01       		.uleb128 0x1
- 1878 0675 51       		.byte	0x51
- 1879 0676 02       		.uleb128 0x2
- 1880 0677 08       		.byte	0x8
- 1881 0678 32       		.byte	0x32
- 1882 0679 10       		.uleb128 0x10
- 1883 067a 01       		.uleb128 0x1
- 1884 067b 50       		.byte	0x50
- 1885 067c 02       		.uleb128 0x2
- 1886 067d 74       		.byte	0x74
- 1887 067e 00       		.sleb128 0
- 1888 067f 00       		.byte	0
- 1889 0680 0F       		.uleb128 0xf
- 1890 0681 32000000 		.4byte	.LVL55
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 41
-
-
- 1891 0685 C20D0000 		.4byte	0xdc2
- 1892 0689 A4060000 		.4byte	0x6a4
- 1893 068d 10       		.uleb128 0x10
- 1894 068e 01       		.uleb128 0x1
- 1895 068f 52       		.byte	0x52
- 1896 0690 05       		.uleb128 0x5
- 1897 0691 03       		.byte	0x3
- 1898 0692 00000000 		.4byte	filtermem2
- 1899 0696 10       		.uleb128 0x10
- 1900 0697 01       		.uleb128 0x1
- 1901 0698 51       		.byte	0x51
- 1902 0699 03       		.uleb128 0x3
- 1903 069a 0B       		.byte	0xb
- 1904 069b ACC7     		.2byte	0xc7ac
- 1905 069d 10       		.uleb128 0x10
- 1906 069e 01       		.uleb128 0x1
- 1907 069f 50       		.byte	0x50
- 1908 06a0 02       		.uleb128 0x2
- 1909 06a1 74       		.byte	0x74
- 1910 06a2 00       		.sleb128 0
- 1911 06a3 00       		.byte	0
- 1912 06a4 0F       		.uleb128 0xf
- 1913 06a5 3A000000 		.4byte	.LVL56
- 1914 06a9 E10D0000 		.4byte	0xde1
- 1915 06ad BE060000 		.4byte	0x6be
- 1916 06b1 10       		.uleb128 0x10
- 1917 06b2 01       		.uleb128 0x1
- 1918 06b3 51       		.byte	0x51
- 1919 06b4 02       		.uleb128 0x2
- 1920 06b5 74       		.byte	0x74
- 1921 06b6 00       		.sleb128 0
- 1922 06b7 10       		.uleb128 0x10
- 1923 06b8 01       		.uleb128 0x1
- 1924 06b9 50       		.byte	0x50
- 1925 06ba 02       		.uleb128 0x2
- 1926 06bb 75       		.byte	0x75
- 1927 06bc 00       		.sleb128 0
- 1928 06bd 00       		.byte	0
- 1929 06be 13       		.uleb128 0x13
- 1930 06bf 42000000 		.4byte	.LVL57
- 1931 06c3 FB0D0000 		.4byte	0xdfb
- 1932 06c7 10       		.uleb128 0x10
- 1933 06c8 01       		.uleb128 0x1
- 1934 06c9 51       		.byte	0x51
- 1935 06ca 01       		.uleb128 0x1
- 1936 06cb 31       		.byte	0x31
- 1937 06cc 10       		.uleb128 0x10
- 1938 06cd 01       		.uleb128 0x1
- 1939 06ce 50       		.byte	0x50
- 1940 06cf 02       		.uleb128 0x2
- 1941 06d0 75       		.byte	0x75
- 1942 06d1 00       		.sleb128 0
- 1943 06d2 00       		.byte	0
- 1944 06d3 00       		.byte	0
- 1945 06d4 0E       		.uleb128 0xe
- 1946 06d5 7C030000 		.4byte	.LASF41
- 1947 06d9 01       		.byte	0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 42
-
-
- 1948 06da D5       		.byte	0xd5
- 1949 06db 00000000 		.4byte	.LFB74
- 1950 06df 48000000 		.4byte	.LFE74-.LFB74
- 1951 06e3 01       		.uleb128 0x1
- 1952 06e4 9C       		.byte	0x9c
- 1953 06e5 AA070000 		.4byte	0x7aa
- 1954 06e9 14       		.uleb128 0x14
- 1955 06ea 14030000 		.4byte	.LASF42
- 1956 06ee 01       		.byte	0x1
- 1957 06ef DD       		.byte	0xdd
- 1958 06f0 81000000 		.4byte	0x81
- 1959 06f4 26000000 		.4byte	.LLST2
- 1960 06f8 12       		.uleb128 0x12
- 1961 06f9 54000000 		.4byte	.LASF43
- 1962 06fd 01       		.byte	0x1
- 1963 06fe DE       		.byte	0xde
- 1964 06ff 44040000 		.4byte	0x444
- 1965 0703 0F       		.uleb128 0xf
- 1966 0704 12000000 		.4byte	.LVL59
- 1967 0708 810E0000 		.4byte	0xe81
- 1968 070c 29070000 		.4byte	0x729
- 1969 0710 10       		.uleb128 0x10
- 1970 0711 01       		.uleb128 0x1
- 1971 0712 53       		.byte	0x53
- 1972 0713 03       		.uleb128 0x3
- 1973 0714 0A       		.byte	0xa
- 1974 0715 FF1F     		.2byte	0x1fff
- 1975 0717 10       		.uleb128 0x10
- 1976 0718 01       		.uleb128 0x1
- 1977 0719 52       		.byte	0x52
- 1978 071a 03       		.uleb128 0x3
- 1979 071b 0A       		.byte	0xa
- 1980 071c 0040     		.2byte	0x4000
- 1981 071e 10       		.uleb128 0x10
- 1982 071f 01       		.uleb128 0x1
- 1983 0720 51       		.byte	0x51
- 1984 0721 01       		.uleb128 0x1
- 1985 0722 31       		.byte	0x31
- 1986 0723 10       		.uleb128 0x10
- 1987 0724 01       		.uleb128 0x1
- 1988 0725 50       		.byte	0x50
- 1989 0726 01       		.uleb128 0x1
- 1990 0727 31       		.byte	0x31
- 1991 0728 00       		.byte	0
- 1992 0729 0D       		.uleb128 0xd
- 1993 072a 18000000 		.4byte	.LVL61
- 1994 072e 930D0000 		.4byte	0xd93
- 1995 0732 0F       		.uleb128 0xf
- 1996 0733 24000000 		.4byte	.LVL62
- 1997 0737 9E0D0000 		.4byte	0xd9e
- 1998 073b 56070000 		.4byte	0x756
- 1999 073f 10       		.uleb128 0x10
- 2000 0740 01       		.uleb128 0x1
- 2001 0741 53       		.byte	0x53
- 2002 0742 01       		.uleb128 0x1
- 2003 0743 34       		.byte	0x34
- 2004 0744 10       		.uleb128 0x10
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 43
-
-
- 2005 0745 01       		.uleb128 0x1
- 2006 0746 52       		.byte	0x52
- 2007 0747 02       		.uleb128 0x2
- 2008 0748 74       		.byte	0x74
- 2009 0749 00       		.sleb128 0
- 2010 074a 10       		.uleb128 0x10
- 2011 074b 01       		.uleb128 0x1
- 2012 074c 51       		.byte	0x51
- 2013 074d 01       		.uleb128 0x1
- 2014 074e 31       		.byte	0x31
- 2015 074f 10       		.uleb128 0x10
- 2016 0750 01       		.uleb128 0x1
- 2017 0751 50       		.byte	0x50
- 2018 0752 02       		.uleb128 0x2
- 2019 0753 74       		.byte	0x74
- 2020 0754 00       		.sleb128 0
- 2021 0755 00       		.byte	0
- 2022 0756 0F       		.uleb128 0xf
- 2023 0757 32000000 		.4byte	.LVL63
- 2024 075b C20D0000 		.4byte	0xdc2
- 2025 075f 7A070000 		.4byte	0x77a
- 2026 0763 10       		.uleb128 0x10
- 2027 0764 01       		.uleb128 0x1
- 2028 0765 52       		.byte	0x52
- 2029 0766 05       		.uleb128 0x5
- 2030 0767 03       		.byte	0x3
- 2031 0768 04000000 		.4byte	.LANCHOR0+4
- 2032 076c 10       		.uleb128 0x10
- 2033 076d 01       		.uleb128 0x1
- 2034 076e 51       		.byte	0x51
- 2035 076f 03       		.uleb128 0x3
- 2036 0770 0A       		.byte	0xa
- 2037 0771 5464     		.2byte	0x6454
- 2038 0773 10       		.uleb128 0x10
- 2039 0774 01       		.uleb128 0x1
- 2040 0775 50       		.byte	0x50
- 2041 0776 02       		.uleb128 0x2
- 2042 0777 74       		.byte	0x74
- 2043 0778 00       		.sleb128 0
- 2044 0779 00       		.byte	0
- 2045 077a 0F       		.uleb128 0xf
- 2046 077b 3A000000 		.4byte	.LVL64
- 2047 077f E10D0000 		.4byte	0xde1
- 2048 0783 94070000 		.4byte	0x794
- 2049 0787 10       		.uleb128 0x10
- 2050 0788 01       		.uleb128 0x1
- 2051 0789 51       		.byte	0x51
- 2052 078a 02       		.uleb128 0x2
- 2053 078b 74       		.byte	0x74
- 2054 078c 00       		.sleb128 0
- 2055 078d 10       		.uleb128 0x10
- 2056 078e 01       		.uleb128 0x1
- 2057 078f 50       		.byte	0x50
- 2058 0790 02       		.uleb128 0x2
- 2059 0791 75       		.byte	0x75
- 2060 0792 00       		.sleb128 0
- 2061 0793 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 44
-
-
- 2062 0794 13       		.uleb128 0x13
- 2063 0795 42000000 		.4byte	.LVL65
- 2064 0799 FB0D0000 		.4byte	0xdfb
- 2065 079d 10       		.uleb128 0x10
- 2066 079e 01       		.uleb128 0x1
- 2067 079f 51       		.byte	0x51
- 2068 07a0 01       		.uleb128 0x1
- 2069 07a1 31       		.byte	0x31
- 2070 07a2 10       		.uleb128 0x10
- 2071 07a3 01       		.uleb128 0x1
- 2072 07a4 50       		.byte	0x50
- 2073 07a5 02       		.uleb128 0x2
- 2074 07a6 75       		.byte	0x75
- 2075 07a7 00       		.sleb128 0
- 2076 07a8 00       		.byte	0
- 2077 07a9 00       		.byte	0
- 2078 07aa 0E       		.uleb128 0xe
- 2079 07ab C1020000 		.4byte	.LASF44
- 2080 07af 01       		.byte	0x1
- 2081 07b0 EB       		.byte	0xeb
- 2082 07b1 00000000 		.4byte	.LFB75
- 2083 07b5 42000000 		.4byte	.LFE75-.LFB75
- 2084 07b9 01       		.uleb128 0x1
- 2085 07ba 9C       		.byte	0x9c
- 2086 07bb 7C080000 		.4byte	0x87c
- 2087 07bf 11       		.uleb128 0x11
- 2088 07c0 B1020000 		.4byte	.LASF45
- 2089 07c4 01       		.byte	0x1
- 2090 07c5 F5       		.byte	0xf5
- 2091 07c6 81000000 		.4byte	0x81
- 2092 07ca 01       		.uleb128 0x1
- 2093 07cb 55       		.byte	0x55
- 2094 07cc 12       		.uleb128 0x12
- 2095 07cd EF060000 		.4byte	.LASF46
- 2096 07d1 01       		.byte	0x1
- 2097 07d2 F6       		.byte	0xf6
- 2098 07d3 44040000 		.4byte	0x444
- 2099 07d7 0F       		.uleb128 0xf
- 2100 07d8 10000000 		.4byte	.LVL67
- 2101 07dc A50E0000 		.4byte	0xea5
- 2102 07e0 FD070000 		.4byte	0x7fd
- 2103 07e4 10       		.uleb128 0x10
- 2104 07e5 01       		.uleb128 0x1
- 2105 07e6 53       		.byte	0x53
- 2106 07e7 03       		.uleb128 0x3
- 2107 07e8 0A       		.byte	0xa
- 2108 07e9 0040     		.2byte	0x4000
- 2109 07eb 10       		.uleb128 0x10
- 2110 07ec 01       		.uleb128 0x1
- 2111 07ed 52       		.byte	0x52
- 2112 07ee 03       		.uleb128 0x3
- 2113 07ef 0A       		.byte	0xa
- 2114 07f0 0040     		.2byte	0x4000
- 2115 07f2 10       		.uleb128 0x10
- 2116 07f3 01       		.uleb128 0x1
- 2117 07f4 51       		.byte	0x51
- 2118 07f5 01       		.uleb128 0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 45
-
-
- 2119 07f6 31       		.byte	0x31
- 2120 07f7 10       		.uleb128 0x10
- 2121 07f8 01       		.uleb128 0x1
- 2122 07f9 50       		.byte	0x50
- 2123 07fa 01       		.uleb128 0x1
- 2124 07fb 32       		.byte	0x32
- 2125 07fc 00       		.byte	0
- 2126 07fd 0D       		.uleb128 0xd
- 2127 07fe 16000000 		.4byte	.LVL69
- 2128 0802 930D0000 		.4byte	0xd93
- 2129 0806 0F       		.uleb128 0xf
- 2130 0807 22000000 		.4byte	.LVL70
- 2131 080b 9E0D0000 		.4byte	0xd9e
- 2132 080f 2A080000 		.4byte	0x82a
- 2133 0813 10       		.uleb128 0x10
- 2134 0814 01       		.uleb128 0x1
- 2135 0815 53       		.byte	0x53
- 2136 0816 01       		.uleb128 0x1
- 2137 0817 34       		.byte	0x34
- 2138 0818 10       		.uleb128 0x10
- 2139 0819 01       		.uleb128 0x1
- 2140 081a 52       		.byte	0x52
- 2141 081b 02       		.uleb128 0x2
- 2142 081c 74       		.byte	0x74
- 2143 081d 00       		.sleb128 0
- 2144 081e 10       		.uleb128 0x10
- 2145 081f 01       		.uleb128 0x1
- 2146 0820 51       		.byte	0x51
- 2147 0821 01       		.uleb128 0x1
- 2148 0822 32       		.byte	0x32
- 2149 0823 10       		.uleb128 0x10
- 2150 0824 01       		.uleb128 0x1
- 2151 0825 50       		.byte	0x50
- 2152 0826 02       		.uleb128 0x2
- 2153 0827 74       		.byte	0x74
- 2154 0828 00       		.sleb128 0
- 2155 0829 00       		.byte	0
- 2156 082a 0F       		.uleb128 0xf
- 2157 082b 30000000 		.4byte	.LVL71
- 2158 082f C20D0000 		.4byte	0xdc2
- 2159 0833 4C080000 		.4byte	0x84c
- 2160 0837 10       		.uleb128 0x10
- 2161 0838 01       		.uleb128 0x1
- 2162 0839 52       		.byte	0x52
- 2163 083a 03       		.uleb128 0x3
- 2164 083b 0A       		.byte	0xa
- 2165 083c 086A     		.2byte	0x6a08
- 2166 083e 10       		.uleb128 0x10
- 2167 083f 01       		.uleb128 0x1
- 2168 0840 51       		.byte	0x51
- 2169 0841 03       		.uleb128 0x3
- 2170 0842 0A       		.byte	0xa
- 2171 0843 A05B     		.2byte	0x5ba0
- 2172 0845 10       		.uleb128 0x10
- 2173 0846 01       		.uleb128 0x1
- 2174 0847 50       		.byte	0x50
- 2175 0848 02       		.uleb128 0x2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 46
-
-
- 2176 0849 74       		.byte	0x74
- 2177 084a 00       		.sleb128 0
- 2178 084b 00       		.byte	0
- 2179 084c 0F       		.uleb128 0xf
- 2180 084d 38000000 		.4byte	.LVL72
- 2181 0851 E10D0000 		.4byte	0xde1
- 2182 0855 66080000 		.4byte	0x866
- 2183 0859 10       		.uleb128 0x10
- 2184 085a 01       		.uleb128 0x1
- 2185 085b 51       		.byte	0x51
- 2186 085c 02       		.uleb128 0x2
- 2187 085d 74       		.byte	0x74
- 2188 085e 00       		.sleb128 0
- 2189 085f 10       		.uleb128 0x10
- 2190 0860 01       		.uleb128 0x1
- 2191 0861 50       		.byte	0x50
- 2192 0862 02       		.uleb128 0x2
- 2193 0863 75       		.byte	0x75
- 2194 0864 00       		.sleb128 0
- 2195 0865 00       		.byte	0
- 2196 0866 13       		.uleb128 0x13
- 2197 0867 40000000 		.4byte	.LVL73
- 2198 086b FB0D0000 		.4byte	0xdfb
- 2199 086f 10       		.uleb128 0x10
- 2200 0870 01       		.uleb128 0x1
- 2201 0871 51       		.byte	0x51
- 2202 0872 01       		.uleb128 0x1
- 2203 0873 31       		.byte	0x31
- 2204 0874 10       		.uleb128 0x10
- 2205 0875 01       		.uleb128 0x1
- 2206 0876 50       		.byte	0x50
- 2207 0877 02       		.uleb128 0x2
- 2208 0878 75       		.byte	0x75
- 2209 0879 00       		.sleb128 0
- 2210 087a 00       		.byte	0
- 2211 087b 00       		.byte	0
- 2212 087c 15       		.uleb128 0x15
- 2213 087d 9E050000 		.4byte	.LASF47
- 2214 0881 01       		.byte	0x1
- 2215 0882 0201     		.2byte	0x102
- 2216 0884 00000000 		.4byte	.LFB76
- 2217 0888 42000000 		.4byte	.LFE76-.LFB76
- 2218 088c 01       		.uleb128 0x1
- 2219 088d 9C       		.byte	0x9c
- 2220 088e 51090000 		.4byte	0x951
- 2221 0892 16       		.uleb128 0x16
- 2222 0893 C7060000 		.4byte	.LASF48
- 2223 0897 01       		.byte	0x1
- 2224 0898 0C01     		.2byte	0x10c
- 2225 089a 81000000 		.4byte	0x81
- 2226 089e 01       		.uleb128 0x1
- 2227 089f 55       		.byte	0x55
- 2228 08a0 17       		.uleb128 0x17
- 2229 08a1 03010000 		.4byte	.LASF49
- 2230 08a5 01       		.byte	0x1
- 2231 08a6 0D01     		.2byte	0x10d
- 2232 08a8 44040000 		.4byte	0x444
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 47
-
-
- 2233 08ac 0F       		.uleb128 0xf
- 2234 08ad 10000000 		.4byte	.LVL74
- 2235 08b1 C90E0000 		.4byte	0xec9
- 2236 08b5 D2080000 		.4byte	0x8d2
- 2237 08b9 10       		.uleb128 0x10
- 2238 08ba 01       		.uleb128 0x1
- 2239 08bb 53       		.byte	0x53
- 2240 08bc 03       		.uleb128 0x3
- 2241 08bd 0A       		.byte	0xa
- 2242 08be 0040     		.2byte	0x4000
- 2243 08c0 10       		.uleb128 0x10
- 2244 08c1 01       		.uleb128 0x1
- 2245 08c2 52       		.byte	0x52
- 2246 08c3 03       		.uleb128 0x3
- 2247 08c4 0A       		.byte	0xa
- 2248 08c5 0040     		.2byte	0x4000
- 2249 08c7 10       		.uleb128 0x10
- 2250 08c8 01       		.uleb128 0x1
- 2251 08c9 51       		.byte	0x51
- 2252 08ca 01       		.uleb128 0x1
- 2253 08cb 31       		.byte	0x31
- 2254 08cc 10       		.uleb128 0x10
- 2255 08cd 01       		.uleb128 0x1
- 2256 08ce 50       		.byte	0x50
- 2257 08cf 01       		.uleb128 0x1
- 2258 08d0 32       		.byte	0x32
- 2259 08d1 00       		.byte	0
- 2260 08d2 0D       		.uleb128 0xd
- 2261 08d3 16000000 		.4byte	.LVL76
- 2262 08d7 930D0000 		.4byte	0xd93
- 2263 08db 0F       		.uleb128 0xf
- 2264 08dc 22000000 		.4byte	.LVL77
- 2265 08e0 9E0D0000 		.4byte	0xd9e
- 2266 08e4 FF080000 		.4byte	0x8ff
- 2267 08e8 10       		.uleb128 0x10
- 2268 08e9 01       		.uleb128 0x1
- 2269 08ea 53       		.byte	0x53
- 2270 08eb 01       		.uleb128 0x1
- 2271 08ec 34       		.byte	0x34
- 2272 08ed 10       		.uleb128 0x10
- 2273 08ee 01       		.uleb128 0x1
- 2274 08ef 52       		.byte	0x52
- 2275 08f0 02       		.uleb128 0x2
- 2276 08f1 74       		.byte	0x74
- 2277 08f2 00       		.sleb128 0
- 2278 08f3 10       		.uleb128 0x10
- 2279 08f4 01       		.uleb128 0x1
- 2280 08f5 51       		.byte	0x51
- 2281 08f6 01       		.uleb128 0x1
- 2282 08f7 32       		.byte	0x32
- 2283 08f8 10       		.uleb128 0x10
- 2284 08f9 01       		.uleb128 0x1
- 2285 08fa 50       		.byte	0x50
- 2286 08fb 02       		.uleb128 0x2
- 2287 08fc 74       		.byte	0x74
- 2288 08fd 00       		.sleb128 0
- 2289 08fe 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 48
-
-
- 2290 08ff 0F       		.uleb128 0xf
- 2291 0900 30000000 		.4byte	.LVL78
- 2292 0904 C20D0000 		.4byte	0xdc2
- 2293 0908 21090000 		.4byte	0x921
- 2294 090c 10       		.uleb128 0x10
- 2295 090d 01       		.uleb128 0x1
- 2296 090e 52       		.byte	0x52
- 2297 090f 03       		.uleb128 0x3
- 2298 0910 0A       		.byte	0xa
- 2299 0911 0C68     		.2byte	0x680c
- 2300 0913 10       		.uleb128 0x10
- 2301 0914 01       		.uleb128 0x1
- 2302 0915 51       		.byte	0x51
- 2303 0916 03       		.uleb128 0x3
- 2304 0917 0A       		.byte	0xa
- 2305 0918 A25B     		.2byte	0x5ba2
- 2306 091a 10       		.uleb128 0x10
- 2307 091b 01       		.uleb128 0x1
- 2308 091c 50       		.byte	0x50
- 2309 091d 02       		.uleb128 0x2
- 2310 091e 74       		.byte	0x74
- 2311 091f 00       		.sleb128 0
- 2312 0920 00       		.byte	0
- 2313 0921 0F       		.uleb128 0xf
- 2314 0922 38000000 		.4byte	.LVL79
- 2315 0926 E10D0000 		.4byte	0xde1
- 2316 092a 3B090000 		.4byte	0x93b
- 2317 092e 10       		.uleb128 0x10
- 2318 092f 01       		.uleb128 0x1
- 2319 0930 51       		.byte	0x51
- 2320 0931 02       		.uleb128 0x2
- 2321 0932 74       		.byte	0x74
- 2322 0933 00       		.sleb128 0
- 2323 0934 10       		.uleb128 0x10
- 2324 0935 01       		.uleb128 0x1
- 2325 0936 50       		.byte	0x50
- 2326 0937 02       		.uleb128 0x2
- 2327 0938 75       		.byte	0x75
- 2328 0939 00       		.sleb128 0
- 2329 093a 00       		.byte	0
- 2330 093b 13       		.uleb128 0x13
- 2331 093c 40000000 		.4byte	.LVL80
- 2332 0940 FB0D0000 		.4byte	0xdfb
- 2333 0944 10       		.uleb128 0x10
- 2334 0945 01       		.uleb128 0x1
- 2335 0946 51       		.byte	0x51
- 2336 0947 01       		.uleb128 0x1
- 2337 0948 31       		.byte	0x31
- 2338 0949 10       		.uleb128 0x10
- 2339 094a 01       		.uleb128 0x1
- 2340 094b 50       		.byte	0x50
- 2341 094c 02       		.uleb128 0x2
- 2342 094d 75       		.byte	0x75
- 2343 094e 00       		.sleb128 0
- 2344 094f 00       		.byte	0
- 2345 0950 00       		.byte	0
- 2346 0951 15       		.uleb128 0x15
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 49
-
-
- 2347 0952 6E050000 		.4byte	.LASF50
- 2348 0956 01       		.byte	0x1
- 2349 0957 1901     		.2byte	0x119
- 2350 0959 00000000 		.4byte	.LFB77
- 2351 095d 42000000 		.4byte	.LFE77-.LFB77
- 2352 0961 01       		.uleb128 0x1
- 2353 0962 9C       		.byte	0x9c
- 2354 0963 260A0000 		.4byte	0xa26
- 2355 0967 16       		.uleb128 0x16
- 2356 0968 6B040000 		.4byte	.LASF51
- 2357 096c 01       		.byte	0x1
- 2358 096d 2301     		.2byte	0x123
- 2359 096f 81000000 		.4byte	0x81
- 2360 0973 01       		.uleb128 0x1
- 2361 0974 55       		.byte	0x55
- 2362 0975 17       		.uleb128 0x17
- 2363 0976 DC000000 		.4byte	.LASF52
- 2364 097a 01       		.byte	0x1
- 2365 097b 2401     		.2byte	0x124
- 2366 097d 44040000 		.4byte	0x444
- 2367 0981 0F       		.uleb128 0xf
- 2368 0982 10000000 		.4byte	.LVL81
- 2369 0986 ED0E0000 		.4byte	0xeed
- 2370 098a A7090000 		.4byte	0x9a7
- 2371 098e 10       		.uleb128 0x10
- 2372 098f 01       		.uleb128 0x1
- 2373 0990 53       		.byte	0x53
- 2374 0991 03       		.uleb128 0x3
- 2375 0992 0A       		.byte	0xa
- 2376 0993 0040     		.2byte	0x4000
- 2377 0995 10       		.uleb128 0x10
- 2378 0996 01       		.uleb128 0x1
- 2379 0997 52       		.byte	0x52
- 2380 0998 03       		.uleb128 0x3
- 2381 0999 0A       		.byte	0xa
- 2382 099a 0040     		.2byte	0x4000
- 2383 099c 10       		.uleb128 0x10
- 2384 099d 01       		.uleb128 0x1
- 2385 099e 51       		.byte	0x51
- 2386 099f 01       		.uleb128 0x1
- 2387 09a0 31       		.byte	0x31
- 2388 09a1 10       		.uleb128 0x10
- 2389 09a2 01       		.uleb128 0x1
- 2390 09a3 50       		.byte	0x50
- 2391 09a4 01       		.uleb128 0x1
- 2392 09a5 32       		.byte	0x32
- 2393 09a6 00       		.byte	0
- 2394 09a7 0D       		.uleb128 0xd
- 2395 09a8 16000000 		.4byte	.LVL83
- 2396 09ac 930D0000 		.4byte	0xd93
- 2397 09b0 0F       		.uleb128 0xf
- 2398 09b1 22000000 		.4byte	.LVL84
- 2399 09b5 9E0D0000 		.4byte	0xd9e
- 2400 09b9 D4090000 		.4byte	0x9d4
- 2401 09bd 10       		.uleb128 0x10
- 2402 09be 01       		.uleb128 0x1
- 2403 09bf 53       		.byte	0x53
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 50
-
-
- 2404 09c0 01       		.uleb128 0x1
- 2405 09c1 30       		.byte	0x30
- 2406 09c2 10       		.uleb128 0x10
- 2407 09c3 01       		.uleb128 0x1
- 2408 09c4 52       		.byte	0x52
- 2409 09c5 02       		.uleb128 0x2
- 2410 09c6 74       		.byte	0x74
- 2411 09c7 00       		.sleb128 0
- 2412 09c8 10       		.uleb128 0x10
- 2413 09c9 01       		.uleb128 0x1
- 2414 09ca 51       		.byte	0x51
- 2415 09cb 01       		.uleb128 0x1
- 2416 09cc 32       		.byte	0x32
- 2417 09cd 10       		.uleb128 0x10
- 2418 09ce 01       		.uleb128 0x1
- 2419 09cf 50       		.byte	0x50
- 2420 09d0 02       		.uleb128 0x2
- 2421 09d1 74       		.byte	0x74
- 2422 09d2 00       		.sleb128 0
- 2423 09d3 00       		.byte	0
- 2424 09d4 0F       		.uleb128 0xf
- 2425 09d5 30000000 		.4byte	.LVL85
- 2426 09d9 C20D0000 		.4byte	0xdc2
- 2427 09dd F6090000 		.4byte	0x9f6
- 2428 09e1 10       		.uleb128 0x10
- 2429 09e2 01       		.uleb128 0x1
- 2430 09e3 52       		.byte	0x52
- 2431 09e4 03       		.uleb128 0x3
- 2432 09e5 0B       		.byte	0xb
- 2433 09e6 A0C7     		.2byte	0xc7a0
- 2434 09e8 10       		.uleb128 0x10
- 2435 09e9 01       		.uleb128 0x1
- 2436 09ea 51       		.byte	0x51
- 2437 09eb 03       		.uleb128 0x3
- 2438 09ec 0A       		.byte	0xa
- 2439 09ed 286A     		.2byte	0x6a28
- 2440 09ef 10       		.uleb128 0x10
- 2441 09f0 01       		.uleb128 0x1
- 2442 09f1 50       		.byte	0x50
- 2443 09f2 02       		.uleb128 0x2
- 2444 09f3 74       		.byte	0x74
- 2445 09f4 00       		.sleb128 0
- 2446 09f5 00       		.byte	0
- 2447 09f6 0F       		.uleb128 0xf
- 2448 09f7 38000000 		.4byte	.LVL86
- 2449 09fb E10D0000 		.4byte	0xde1
- 2450 09ff 100A0000 		.4byte	0xa10
- 2451 0a03 10       		.uleb128 0x10
- 2452 0a04 01       		.uleb128 0x1
- 2453 0a05 51       		.byte	0x51
- 2454 0a06 02       		.uleb128 0x2
- 2455 0a07 74       		.byte	0x74
- 2456 0a08 00       		.sleb128 0
- 2457 0a09 10       		.uleb128 0x10
- 2458 0a0a 01       		.uleb128 0x1
- 2459 0a0b 50       		.byte	0x50
- 2460 0a0c 02       		.uleb128 0x2
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 51
-
-
- 2461 0a0d 75       		.byte	0x75
- 2462 0a0e 00       		.sleb128 0
- 2463 0a0f 00       		.byte	0
- 2464 0a10 13       		.uleb128 0x13
- 2465 0a11 40000000 		.4byte	.LVL87
- 2466 0a15 FB0D0000 		.4byte	0xdfb
- 2467 0a19 10       		.uleb128 0x10
- 2468 0a1a 01       		.uleb128 0x1
- 2469 0a1b 51       		.byte	0x51
- 2470 0a1c 01       		.uleb128 0x1
- 2471 0a1d 31       		.byte	0x31
- 2472 0a1e 10       		.uleb128 0x10
- 2473 0a1f 01       		.uleb128 0x1
- 2474 0a20 50       		.byte	0x50
- 2475 0a21 02       		.uleb128 0x2
- 2476 0a22 75       		.byte	0x75
- 2477 0a23 00       		.sleb128 0
- 2478 0a24 00       		.byte	0
- 2479 0a25 00       		.byte	0
- 2480 0a26 15       		.uleb128 0x15
- 2481 0a27 83040000 		.4byte	.LASF53
- 2482 0a2b 01       		.byte	0x1
- 2483 0a2c 3101     		.2byte	0x131
- 2484 0a2e 00000000 		.4byte	.LFB78
- 2485 0a32 42000000 		.4byte	.LFE78-.LFB78
- 2486 0a36 01       		.uleb128 0x1
- 2487 0a37 9C       		.byte	0x9c
- 2488 0a38 FB0A0000 		.4byte	0xafb
- 2489 0a3c 16       		.uleb128 0x16
- 2490 0a3d 34040000 		.4byte	.LASF54
- 2491 0a41 01       		.byte	0x1
- 2492 0a42 3B01     		.2byte	0x13b
- 2493 0a44 81000000 		.4byte	0x81
- 2494 0a48 01       		.uleb128 0x1
- 2495 0a49 55       		.byte	0x55
- 2496 0a4a 17       		.uleb128 0x17
- 2497 0a4b 50050000 		.4byte	.LASF55
- 2498 0a4f 01       		.byte	0x1
- 2499 0a50 3C01     		.2byte	0x13c
- 2500 0a52 44040000 		.4byte	0x444
- 2501 0a56 0F       		.uleb128 0xf
- 2502 0a57 10000000 		.4byte	.LVL88
- 2503 0a5b 110F0000 		.4byte	0xf11
- 2504 0a5f 7C0A0000 		.4byte	0xa7c
- 2505 0a63 10       		.uleb128 0x10
- 2506 0a64 01       		.uleb128 0x1
- 2507 0a65 53       		.byte	0x53
- 2508 0a66 03       		.uleb128 0x3
- 2509 0a67 0A       		.byte	0xa
- 2510 0a68 0040     		.2byte	0x4000
- 2511 0a6a 10       		.uleb128 0x10
- 2512 0a6b 01       		.uleb128 0x1
- 2513 0a6c 52       		.byte	0x52
- 2514 0a6d 03       		.uleb128 0x3
- 2515 0a6e 0A       		.byte	0xa
- 2516 0a6f 0040     		.2byte	0x4000
- 2517 0a71 10       		.uleb128 0x10
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 52
-
-
- 2518 0a72 01       		.uleb128 0x1
- 2519 0a73 51       		.byte	0x51
- 2520 0a74 01       		.uleb128 0x1
- 2521 0a75 31       		.byte	0x31
- 2522 0a76 10       		.uleb128 0x10
- 2523 0a77 01       		.uleb128 0x1
- 2524 0a78 50       		.byte	0x50
- 2525 0a79 01       		.uleb128 0x1
- 2526 0a7a 32       		.byte	0x32
- 2527 0a7b 00       		.byte	0
- 2528 0a7c 0D       		.uleb128 0xd
- 2529 0a7d 16000000 		.4byte	.LVL90
- 2530 0a81 930D0000 		.4byte	0xd93
- 2531 0a85 0F       		.uleb128 0xf
- 2532 0a86 22000000 		.4byte	.LVL91
- 2533 0a8a 9E0D0000 		.4byte	0xd9e
- 2534 0a8e A90A0000 		.4byte	0xaa9
- 2535 0a92 10       		.uleb128 0x10
- 2536 0a93 01       		.uleb128 0x1
- 2537 0a94 53       		.byte	0x53
- 2538 0a95 01       		.uleb128 0x1
- 2539 0a96 30       		.byte	0x30
- 2540 0a97 10       		.uleb128 0x10
- 2541 0a98 01       		.uleb128 0x1
- 2542 0a99 52       		.byte	0x52
- 2543 0a9a 02       		.uleb128 0x2
- 2544 0a9b 74       		.byte	0x74
- 2545 0a9c 00       		.sleb128 0
- 2546 0a9d 10       		.uleb128 0x10
- 2547 0a9e 01       		.uleb128 0x1
- 2548 0a9f 51       		.byte	0x51
- 2549 0aa0 01       		.uleb128 0x1
- 2550 0aa1 32       		.byte	0x32
- 2551 0aa2 10       		.uleb128 0x10
- 2552 0aa3 01       		.uleb128 0x1
- 2553 0aa4 50       		.byte	0x50
- 2554 0aa5 02       		.uleb128 0x2
- 2555 0aa6 74       		.byte	0x74
- 2556 0aa7 00       		.sleb128 0
- 2557 0aa8 00       		.byte	0
- 2558 0aa9 0F       		.uleb128 0xf
- 2559 0aaa 30000000 		.4byte	.LVL92
- 2560 0aae C20D0000 		.4byte	0xdc2
- 2561 0ab2 CB0A0000 		.4byte	0xacb
- 2562 0ab6 10       		.uleb128 0x10
- 2563 0ab7 01       		.uleb128 0x1
- 2564 0ab8 52       		.byte	0x52
- 2565 0ab9 03       		.uleb128 0x3
- 2566 0aba 0B       		.byte	0xb
- 2567 0abb A4C7     		.2byte	0xc7a4
- 2568 0abd 10       		.uleb128 0x10
- 2569 0abe 01       		.uleb128 0x1
- 2570 0abf 51       		.byte	0x51
- 2571 0ac0 03       		.uleb128 0x3
- 2572 0ac1 0A       		.byte	0xa
- 2573 0ac2 2C68     		.2byte	0x682c
- 2574 0ac4 10       		.uleb128 0x10
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 53
-
-
- 2575 0ac5 01       		.uleb128 0x1
- 2576 0ac6 50       		.byte	0x50
- 2577 0ac7 02       		.uleb128 0x2
- 2578 0ac8 74       		.byte	0x74
- 2579 0ac9 00       		.sleb128 0
- 2580 0aca 00       		.byte	0
- 2581 0acb 0F       		.uleb128 0xf
- 2582 0acc 38000000 		.4byte	.LVL93
- 2583 0ad0 E10D0000 		.4byte	0xde1
- 2584 0ad4 E50A0000 		.4byte	0xae5
- 2585 0ad8 10       		.uleb128 0x10
- 2586 0ad9 01       		.uleb128 0x1
- 2587 0ada 51       		.byte	0x51
- 2588 0adb 02       		.uleb128 0x2
- 2589 0adc 74       		.byte	0x74
- 2590 0add 00       		.sleb128 0
- 2591 0ade 10       		.uleb128 0x10
- 2592 0adf 01       		.uleb128 0x1
- 2593 0ae0 50       		.byte	0x50
- 2594 0ae1 02       		.uleb128 0x2
- 2595 0ae2 75       		.byte	0x75
- 2596 0ae3 00       		.sleb128 0
- 2597 0ae4 00       		.byte	0
- 2598 0ae5 13       		.uleb128 0x13
- 2599 0ae6 40000000 		.4byte	.LVL94
- 2600 0aea FB0D0000 		.4byte	0xdfb
- 2601 0aee 10       		.uleb128 0x10
- 2602 0aef 01       		.uleb128 0x1
- 2603 0af0 51       		.byte	0x51
- 2604 0af1 01       		.uleb128 0x1
- 2605 0af2 31       		.byte	0x31
- 2606 0af3 10       		.uleb128 0x10
- 2607 0af4 01       		.uleb128 0x1
- 2608 0af5 50       		.byte	0x50
- 2609 0af6 02       		.uleb128 0x2
- 2610 0af7 75       		.byte	0x75
- 2611 0af8 00       		.sleb128 0
- 2612 0af9 00       		.byte	0
- 2613 0afa 00       		.byte	0
- 2614 0afb 15       		.uleb128 0x15
- 2615 0afc B4050000 		.4byte	.LASF56
- 2616 0b00 01       		.byte	0x1
- 2617 0b01 4801     		.2byte	0x148
- 2618 0b03 00000000 		.4byte	.LFB79
- 2619 0b07 20000000 		.4byte	.LFE79-.LFB79
- 2620 0b0b 01       		.uleb128 0x1
- 2621 0b0c 9C       		.byte	0x9c
- 2622 0b0d 510B0000 		.4byte	0xb51
- 2623 0b11 0D       		.uleb128 0xd
- 2624 0b12 06000000 		.4byte	.LVL95
- 2625 0b16 AA070000 		.4byte	0x7aa
- 2626 0b1a 0D       		.uleb128 0xd
- 2627 0b1b 0A000000 		.4byte	.LVL96
- 2628 0b1f 7C080000 		.4byte	0x87c
- 2629 0b23 0D       		.uleb128 0xd
- 2630 0b24 0E000000 		.4byte	.LVL97
- 2631 0b28 51090000 		.4byte	0x951
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 54
-
-
- 2632 0b2c 0D       		.uleb128 0xd
- 2633 0b2d 12000000 		.4byte	.LVL98
- 2634 0b31 260A0000 		.4byte	0xa26
- 2635 0b35 0D       		.uleb128 0xd
- 2636 0b36 16000000 		.4byte	.LVL99
- 2637 0b3a 26050000 		.4byte	0x526
- 2638 0b3e 0D       		.uleb128 0xd
- 2639 0b3f 1A000000 		.4byte	.LVL100
- 2640 0b43 FD050000 		.4byte	0x5fd
- 2641 0b47 0D       		.uleb128 0xd
- 2642 0b48 1E000000 		.4byte	.LVL101
- 2643 0b4c D4060000 		.4byte	0x6d4
- 2644 0b50 00       		.byte	0
- 2645 0b51 18       		.uleb128 0x18
- 2646 0b52 A5040000 		.4byte	.LASF58
- 2647 0b56 01       		.byte	0x1
- 2648 0b57 5701     		.2byte	0x157
- 2649 0b59 68000000 		.4byte	0x68
- 2650 0b5d 00000000 		.4byte	.LFB80
- 2651 0b61 18000000 		.4byte	.LFE80-.LFB80
- 2652 0b65 01       		.uleb128 0x1
- 2653 0b66 9C       		.byte	0x9c
- 2654 0b67 960B0000 		.4byte	0xb96
- 2655 0b6b 0D       		.uleb128 0xd
- 2656 0b6c 08000000 		.4byte	.LVL102
- 2657 0b70 60010000 		.4byte	0x160
- 2658 0b74 0D       		.uleb128 0xd
- 2659 0b75 0C000000 		.4byte	.LVL103
- 2660 0b79 FB0A0000 		.4byte	0xafb
- 2661 0b7d 0D       		.uleb128 0xd
- 2662 0b7e 10000000 		.4byte	.LVL104
- 2663 0b82 0E030000 		.4byte	0x30e
- 2664 0b86 13       		.uleb128 0x13
- 2665 0b87 16000000 		.4byte	.LVL105
- 2666 0b8b 350F0000 		.4byte	0xf35
- 2667 0b8f 10       		.uleb128 0x10
- 2668 0b90 01       		.uleb128 0x1
- 2669 0b91 50       		.byte	0x50
- 2670 0b92 01       		.uleb128 0x1
- 2671 0b93 31       		.byte	0x31
- 2672 0b94 00       		.byte	0
- 2673 0b95 00       		.byte	0
- 2674 0b96 19       		.uleb128 0x19
- 2675 0b97 61050000 		.4byte	.LASF59
- 2676 0b9b 05       		.byte	0x5
- 2677 0b9c 9606     		.2byte	0x696
- 2678 0b9e A20B0000 		.4byte	0xba2
- 2679 0ba2 06       		.uleb128 0x6
- 2680 0ba3 76000000 		.4byte	0x76
- 2681 0ba7 1A       		.uleb128 0x1a
- 2682 0ba8 D7060000 		.4byte	.LASF60
- 2683 0bac 01       		.byte	0x1
- 2684 0bad 13       		.byte	0x13
- 2685 0bae 08010000 		.4byte	0x108
- 2686 0bb2 05       		.uleb128 0x5
- 2687 0bb3 03       		.byte	0x3
- 2688 0bb4 00000000 		.4byte	i2cbuf
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 55
-
-
- 2689 0bb8 09       		.uleb128 0x9
- 2690 0bb9 99000000 		.4byte	0x99
- 2691 0bbd C80B0000 		.4byte	0xbc8
- 2692 0bc1 0A       		.uleb128 0xa
- 2693 0bc2 FB000000 		.4byte	0xfb
- 2694 0bc6 00       		.byte	0
- 2695 0bc7 00       		.byte	0
- 2696 0bc8 1A       		.uleb128 0x1a
- 2697 0bc9 F7030000 		.4byte	.LASF61
- 2698 0bcd 01       		.byte	0x1
- 2699 0bce 16       		.byte	0x16
- 2700 0bcf B80B0000 		.4byte	0xbb8
- 2701 0bd3 05       		.uleb128 0x5
- 2702 0bd4 03       		.byte	0x3
- 2703 0bd5 00000000 		.4byte	spimem
- 2704 0bd9 1A       		.uleb128 0x1a
- 2705 0bda 6E000000 		.4byte	.LASF62
- 2706 0bde 01       		.byte	0x1
- 2707 0bdf 19       		.byte	0x19
- 2708 0be0 B80B0000 		.4byte	0xbb8
- 2709 0be4 05       		.uleb128 0x5
- 2710 0be5 03       		.byte	0x3
- 2711 0be6 00000000 		.4byte	sarmem1
- 2712 0bea 1A       		.uleb128 0x1a
- 2713 0beb 76000000 		.4byte	.LASF63
- 2714 0bef 01       		.byte	0x1
- 2715 0bf0 1A       		.byte	0x1a
- 2716 0bf1 B80B0000 		.4byte	0xbb8
- 2717 0bf5 05       		.uleb128 0x5
- 2718 0bf6 03       		.byte	0x3
- 2719 0bf7 00000000 		.4byte	sarmem2
- 2720 0bfb 09       		.uleb128 0x9
- 2721 0bfc 8D000000 		.4byte	0x8d
- 2722 0c00 0B0C0000 		.4byte	0xc0b
- 2723 0c04 0A       		.uleb128 0xa
- 2724 0c05 FB000000 		.4byte	0xfb
- 2725 0c09 18       		.byte	0x18
- 2726 0c0a 00       		.byte	0
- 2727 0c0b 1A       		.uleb128 0x1a
- 2728 0c0c BD040000 		.4byte	.LASF64
- 2729 0c10 01       		.byte	0x1
- 2730 0c11 1D       		.byte	0x1d
- 2731 0c12 FB0B0000 		.4byte	0xbfb
- 2732 0c16 05       		.uleb128 0x5
- 2733 0c17 03       		.byte	0x3
- 2734 0c18 00000000 		.4byte	filtermem1
- 2735 0c1c 1A       		.uleb128 0x1a
- 2736 0c1d C8040000 		.4byte	.LASF65
- 2737 0c21 01       		.byte	0x1
- 2738 0c22 1E       		.byte	0x1e
- 2739 0c23 FB0B0000 		.4byte	0xbfb
- 2740 0c27 05       		.uleb128 0x5
- 2741 0c28 03       		.byte	0x3
- 2742 0c29 00000000 		.4byte	filtermem2
- 2743 0c2d 1A       		.uleb128 0x1a
- 2744 0c2e FD060000 		.4byte	.LASF66
- 2745 0c32 01       		.byte	0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 56
-
-
- 2746 0c33 21       		.byte	0x21
- 2747 0c34 81000000 		.4byte	0x81
- 2748 0c38 05       		.uleb128 0x5
- 2749 0c39 03       		.byte	0x3
- 2750 0c3a 00000000 		.4byte	RAM2FILTER1_Chan
- 2751 0c3e 1A       		.uleb128 0x1a
- 2752 0c3f 34050000 		.4byte	.LASF67
- 2753 0c43 01       		.byte	0x1
- 2754 0c44 22       		.byte	0x22
- 2755 0c45 81000000 		.4byte	0x81
- 2756 0c49 05       		.uleb128 0x5
- 2757 0c4a 03       		.byte	0x3
- 2758 0c4b 00000000 		.4byte	RAM2FILTER2_Chan
- 2759 0c4f 1B       		.uleb128 0x1b
- 2760 0c50 A3010000 		.4byte	.LASF68
- 2761 0c54 06       		.byte	0x6
- 2762 0c55 37       		.byte	0x37
- 2763 0c56 600C0000 		.4byte	0xc60
- 2764 0c5a 1C       		.uleb128 0x1c
- 2765 0c5b 81000000 		.4byte	0x81
- 2766 0c5f 00       		.byte	0
- 2767 0c60 1D       		.uleb128 0x1d
- 2768 0c61 47070000 		.4byte	.LASF70
- 2769 0c65 07       		.byte	0x7
- 2770 0c66 54       		.byte	0x54
- 2771 0c67 1B       		.uleb128 0x1b
- 2772 0c68 0E070000 		.4byte	.LASF69
- 2773 0c6c 07       		.byte	0x7
- 2774 0c6d 63       		.byte	0x63
- 2775 0c6e 820C0000 		.4byte	0xc82
- 2776 0c72 1C       		.uleb128 0x1c
- 2777 0c73 8D000000 		.4byte	0x8d
- 2778 0c77 1C       		.uleb128 0x1c
- 2779 0c78 8D000000 		.4byte	0x8d
- 2780 0c7c 1C       		.uleb128 0x1c
- 2781 0c7d 02010000 		.4byte	0x102
- 2782 0c81 00       		.byte	0
- 2783 0c82 1D       		.uleb128 0x1d
- 2784 0c83 80010000 		.4byte	.LASF71
- 2785 0c87 08       		.byte	0x8
- 2786 0c88 92       		.byte	0x92
- 2787 0c89 1D       		.uleb128 0x1d
- 2788 0c8a 45050000 		.4byte	.LASF72
- 2789 0c8e 09       		.byte	0x9
- 2790 0c8f 92       		.byte	0x92
- 2791 0c90 1D       		.uleb128 0x1d
- 2792 0c91 2A000000 		.4byte	.LASF73
- 2793 0c95 06       		.byte	0x6
- 2794 0c96 33       		.byte	0x33
- 2795 0c97 1D       		.uleb128 0x1d
- 2796 0c98 4B020000 		.4byte	.LASF74
- 2797 0c9c 0A       		.byte	0xa
- 2798 0c9d 33       		.byte	0x33
- 2799 0c9e 1D       		.uleb128 0x1d
- 2800 0c9f BB060000 		.4byte	.LASF75
- 2801 0ca3 0B       		.byte	0xb
- 2802 0ca4 33       		.byte	0x33
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 57
-
-
- 2803 0ca5 1D       		.uleb128 0x1d
- 2804 0ca6 08030000 		.4byte	.LASF76
- 2805 0caa 0C       		.byte	0xc
- 2806 0cab 33       		.byte	0x33
- 2807 0cac 1B       		.uleb128 0x1b
- 2808 0cad 30030000 		.4byte	.LASF77
- 2809 0cb1 0A       		.byte	0xa
- 2810 0cb2 37       		.byte	0x37
- 2811 0cb3 BD0C0000 		.4byte	0xcbd
- 2812 0cb7 1C       		.uleb128 0x1c
- 2813 0cb8 81000000 		.4byte	0x81
- 2814 0cbc 00       		.byte	0
- 2815 0cbd 1B       		.uleb128 0x1b
- 2816 0cbe 98060000 		.4byte	.LASF78
- 2817 0cc2 0B       		.byte	0xb
- 2818 0cc3 37       		.byte	0x37
- 2819 0cc4 CE0C0000 		.4byte	0xcce
- 2820 0cc8 1C       		.uleb128 0x1c
- 2821 0cc9 81000000 		.4byte	0x81
- 2822 0ccd 00       		.byte	0
- 2823 0cce 1B       		.uleb128 0x1b
- 2824 0ccf C9010000 		.4byte	.LASF79
- 2825 0cd3 0C       		.byte	0xc
- 2826 0cd4 37       		.byte	0x37
- 2827 0cd5 DF0C0000 		.4byte	0xcdf
- 2828 0cd9 1C       		.uleb128 0x1c
- 2829 0cda 81000000 		.4byte	0x81
- 2830 0cde 00       		.byte	0
- 2831 0cdf 1D       		.uleb128 0x1d
- 2832 0ce0 A7060000 		.4byte	.LASF80
- 2833 0ce4 0D       		.byte	0xd
- 2834 0ce5 34       		.byte	0x34
- 2835 0ce6 1D       		.uleb128 0x1d
- 2836 0ce7 ED020000 		.4byte	.LASF81
- 2837 0ceb 0E       		.byte	0xe
- 2838 0cec 34       		.byte	0x34
- 2839 0ced 1D       		.uleb128 0x1d
- 2840 0cee E3010000 		.4byte	.LASF82
- 2841 0cf2 0D       		.byte	0xd
- 2842 0cf3 D1       		.byte	0xd1
- 2843 0cf4 1D       		.uleb128 0x1d
- 2844 0cf5 B4000000 		.4byte	.LASF83
- 2845 0cf9 0E       		.byte	0xe
- 2846 0cfa D1       		.byte	0xd1
- 2847 0cfb 1D       		.uleb128 0x1d
- 2848 0cfc 71060000 		.4byte	.LASF84
- 2849 0d00 0F       		.byte	0xf
- 2850 0d01 3E       		.byte	0x3e
- 2851 0d02 1B       		.uleb128 0x1b
- 2852 0d03 36070000 		.4byte	.LASF85
- 2853 0d07 0F       		.byte	0xf
- 2854 0d08 4E       		.byte	0x4e
- 2855 0d09 180D0000 		.4byte	0xd18
- 2856 0d0d 1C       		.uleb128 0x1c
- 2857 0d0e 81000000 		.4byte	0x81
- 2858 0d12 1C       		.uleb128 0x1c
- 2859 0d13 81000000 		.4byte	0x81
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 58
-
-
- 2860 0d17 00       		.byte	0
- 2861 0d18 1B       		.uleb128 0x1b
- 2862 0d19 0F020000 		.4byte	.LASF86
- 2863 0d1d 0F       		.byte	0xf
- 2864 0d1e 4C       		.byte	0x4c
- 2865 0d1f 2E0D0000 		.4byte	0xd2e
- 2866 0d23 1C       		.uleb128 0x1c
- 2867 0d24 81000000 		.4byte	0x81
- 2868 0d28 1C       		.uleb128 0x1c
- 2869 0d29 81000000 		.4byte	0x81
- 2870 0d2d 00       		.byte	0
- 2871 0d2e 1D       		.uleb128 0x1d
- 2872 0d2f D8010000 		.4byte	.LASF87
- 2873 0d33 10       		.byte	0x10
- 2874 0d34 4B       		.byte	0x4b
- 2875 0d35 1B       		.uleb128 0x1b
- 2876 0d36 BF050000 		.4byte	.LASF88
- 2877 0d3a 11       		.byte	0x11
- 2878 0d3b 18       		.byte	0x18
- 2879 0d3c 460D0000 		.4byte	0xd46
- 2880 0d40 1C       		.uleb128 0x1c
- 2881 0d41 E8000000 		.4byte	0xe8
- 2882 0d45 00       		.byte	0
- 2883 0d46 1B       		.uleb128 0x1b
- 2884 0d47 52010000 		.4byte	.LASF89
- 2885 0d4b 12       		.byte	0x12
- 2886 0d4c 18       		.byte	0x18
- 2887 0d4d 570D0000 		.4byte	0xd57
- 2888 0d51 1C       		.uleb128 0x1c
- 2889 0d52 E8000000 		.4byte	0xe8
- 2890 0d56 00       		.byte	0
- 2891 0d57 1B       		.uleb128 0x1b
- 2892 0d58 AA040000 		.4byte	.LASF90
- 2893 0d5c 13       		.byte	0x13
- 2894 0d5d 18       		.byte	0x18
- 2895 0d5e 680D0000 		.4byte	0xd68
- 2896 0d62 1C       		.uleb128 0x1c
- 2897 0d63 E8000000 		.4byte	0xe8
- 2898 0d67 00       		.byte	0
- 2899 0d68 1D       		.uleb128 0x1d
- 2900 0d69 E6030000 		.4byte	.LASF91
- 2901 0d6d 10       		.byte	0x10
- 2902 0d6e 4E       		.byte	0x4e
- 2903 0d6f 1E       		.uleb128 0x1e
- 2904 0d70 10000000 		.4byte	.LASF92
- 2905 0d74 14       		.byte	0x14
- 2906 0d75 1E       		.byte	0x1e
- 2907 0d76 81000000 		.4byte	0x81
- 2908 0d7a 930D0000 		.4byte	0xd93
- 2909 0d7e 1C       		.uleb128 0x1c
- 2910 0d7f 81000000 		.4byte	0x81
- 2911 0d83 1C       		.uleb128 0x1c
- 2912 0d84 81000000 		.4byte	0x81
- 2913 0d88 1C       		.uleb128 0x1c
- 2914 0d89 8D000000 		.4byte	0x8d
- 2915 0d8d 1C       		.uleb128 0x1c
- 2916 0d8e 8D000000 		.4byte	0x8d
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 59
-
-
- 2917 0d92 00       		.byte	0
- 2918 0d93 1F       		.uleb128 0x1f
- 2919 0d94 00000000 		.4byte	.LASF108
- 2920 0d98 15       		.byte	0x15
- 2921 0d99 38       		.byte	0x38
- 2922 0d9a 81000000 		.4byte	0x81
- 2923 0d9e 1E       		.uleb128 0x1e
- 2924 0d9f 8E000000 		.4byte	.LASF93
- 2925 0da3 15       		.byte	0x15
- 2926 0da4 3B       		.byte	0x3b
- 2927 0da5 BA000000 		.4byte	0xba
- 2928 0da9 C20D0000 		.4byte	0xdc2
- 2929 0dad 1C       		.uleb128 0x1c
- 2930 0dae 81000000 		.4byte	0x81
- 2931 0db2 1C       		.uleb128 0x1c
- 2932 0db3 8D000000 		.4byte	0x8d
- 2933 0db7 1C       		.uleb128 0x1c
- 2934 0db8 81000000 		.4byte	0x81
- 2935 0dbc 1C       		.uleb128 0x1c
- 2936 0dbd 81000000 		.4byte	0x81
- 2937 0dc1 00       		.byte	0
- 2938 0dc2 1E       		.uleb128 0x1e
- 2939 0dc3 0B040000 		.4byte	.LASF94
- 2940 0dc7 15       		.byte	0x15
- 2941 0dc8 3F       		.byte	0x3f
- 2942 0dc9 BA000000 		.4byte	0xba
- 2943 0dcd E10D0000 		.4byte	0xde1
- 2944 0dd1 1C       		.uleb128 0x1c
- 2945 0dd2 81000000 		.4byte	0x81
- 2946 0dd6 1C       		.uleb128 0x1c
- 2947 0dd7 8D000000 		.4byte	0x8d
- 2948 0ddb 1C       		.uleb128 0x1c
- 2949 0ddc 8D000000 		.4byte	0x8d
- 2950 0de0 00       		.byte	0
- 2951 0de1 1E       		.uleb128 0x1e
- 2952 0de2 6C010000 		.4byte	.LASF95
- 2953 0de6 15       		.byte	0x15
- 2954 0de7 2F       		.byte	0x2f
- 2955 0de8 BA000000 		.4byte	0xba
- 2956 0dec FB0D0000 		.4byte	0xdfb
- 2957 0df0 1C       		.uleb128 0x1c
- 2958 0df1 81000000 		.4byte	0x81
- 2959 0df5 1C       		.uleb128 0x1c
- 2960 0df6 81000000 		.4byte	0x81
- 2961 0dfa 00       		.byte	0
- 2962 0dfb 1E       		.uleb128 0x1e
- 2963 0dfc A6000000 		.4byte	.LASF96
- 2964 0e00 15       		.byte	0x15
- 2965 0e01 29       		.byte	0x29
- 2966 0e02 BA000000 		.4byte	0xba
- 2967 0e06 150E0000 		.4byte	0xe15
- 2968 0e0a 1C       		.uleb128 0x1c
- 2969 0e0b 81000000 		.4byte	0x81
- 2970 0e0f 1C       		.uleb128 0x1c
- 2971 0e10 81000000 		.4byte	0x81
- 2972 0e14 00       		.byte	0
- 2973 0e15 1E       		.uleb128 0x1e
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 60
-
-
- 2974 0e16 F5010000 		.4byte	.LASF97
- 2975 0e1a 16       		.byte	0x16
- 2976 0e1b 1E       		.byte	0x1e
- 2977 0e1c 81000000 		.4byte	0x81
- 2978 0e20 390E0000 		.4byte	0xe39
- 2979 0e24 1C       		.uleb128 0x1c
- 2980 0e25 81000000 		.4byte	0x81
- 2981 0e29 1C       		.uleb128 0x1c
- 2982 0e2a 81000000 		.4byte	0x81
- 2983 0e2e 1C       		.uleb128 0x1c
- 2984 0e2f 8D000000 		.4byte	0x8d
- 2985 0e33 1C       		.uleb128 0x1c
- 2986 0e34 8D000000 		.4byte	0x8d
- 2987 0e38 00       		.byte	0
- 2988 0e39 1E       		.uleb128 0x1e
- 2989 0e3a F5040000 		.4byte	.LASF98
- 2990 0e3e 17       		.byte	0x17
- 2991 0e3f 1E       		.byte	0x1e
- 2992 0e40 81000000 		.4byte	0x81
- 2993 0e44 5D0E0000 		.4byte	0xe5d
- 2994 0e48 1C       		.uleb128 0x1c
- 2995 0e49 81000000 		.4byte	0x81
- 2996 0e4d 1C       		.uleb128 0x1c
- 2997 0e4e 81000000 		.4byte	0x81
- 2998 0e52 1C       		.uleb128 0x1c
- 2999 0e53 8D000000 		.4byte	0x8d
- 3000 0e57 1C       		.uleb128 0x1c
- 3001 0e58 8D000000 		.4byte	0x8d
- 3002 0e5c 00       		.byte	0
- 3003 0e5d 1E       		.uleb128 0x1e
- 3004 0e5e 7E060000 		.4byte	.LASF99
- 3005 0e62 18       		.byte	0x18
- 3006 0e63 1E       		.byte	0x1e
- 3007 0e64 81000000 		.4byte	0x81
- 3008 0e68 810E0000 		.4byte	0xe81
- 3009 0e6c 1C       		.uleb128 0x1c
- 3010 0e6d 81000000 		.4byte	0x81
- 3011 0e71 1C       		.uleb128 0x1c
- 3012 0e72 81000000 		.4byte	0x81
- 3013 0e76 1C       		.uleb128 0x1c
- 3014 0e77 8D000000 		.4byte	0x8d
- 3015 0e7b 1C       		.uleb128 0x1c
- 3016 0e7c 8D000000 		.4byte	0x8d
- 3017 0e80 00       		.byte	0
- 3018 0e81 1E       		.uleb128 0x1e
- 3019 0e82 D7020000 		.4byte	.LASF100
- 3020 0e86 19       		.byte	0x19
- 3021 0e87 1E       		.byte	0x1e
- 3022 0e88 81000000 		.4byte	0x81
- 3023 0e8c A50E0000 		.4byte	0xea5
- 3024 0e90 1C       		.uleb128 0x1c
- 3025 0e91 81000000 		.4byte	0x81
- 3026 0e95 1C       		.uleb128 0x1c
- 3027 0e96 81000000 		.4byte	0x81
- 3028 0e9a 1C       		.uleb128 0x1c
- 3029 0e9b 8D000000 		.4byte	0x8d
- 3030 0e9f 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 61
-
-
- 3031 0ea0 8D000000 		.4byte	0x8d
- 3032 0ea4 00       		.byte	0
- 3033 0ea5 1E       		.uleb128 0x1e
- 3034 0ea6 20010000 		.4byte	.LASF101
- 3035 0eaa 1A       		.byte	0x1a
- 3036 0eab 1E       		.byte	0x1e
- 3037 0eac 81000000 		.4byte	0x81
- 3038 0eb0 C90E0000 		.4byte	0xec9
- 3039 0eb4 1C       		.uleb128 0x1c
- 3040 0eb5 81000000 		.4byte	0x81
- 3041 0eb9 1C       		.uleb128 0x1c
- 3042 0eba 81000000 		.4byte	0x81
- 3043 0ebe 1C       		.uleb128 0x1c
- 3044 0ebf 8D000000 		.4byte	0x8d
- 3045 0ec3 1C       		.uleb128 0x1c
- 3046 0ec4 8D000000 		.4byte	0x8d
- 3047 0ec8 00       		.byte	0
- 3048 0ec9 1E       		.uleb128 0x1e
- 3049 0eca 39010000 		.4byte	.LASF102
- 3050 0ece 1B       		.byte	0x1b
- 3051 0ecf 1E       		.byte	0x1e
- 3052 0ed0 81000000 		.4byte	0x81
- 3053 0ed4 ED0E0000 		.4byte	0xeed
- 3054 0ed8 1C       		.uleb128 0x1c
- 3055 0ed9 81000000 		.4byte	0x81
- 3056 0edd 1C       		.uleb128 0x1c
- 3057 0ede 81000000 		.4byte	0x81
- 3058 0ee2 1C       		.uleb128 0x1c
- 3059 0ee3 8D000000 		.4byte	0x8d
- 3060 0ee7 1C       		.uleb128 0x1c
- 3061 0ee8 8D000000 		.4byte	0x8d
- 3062 0eec 00       		.byte	0
- 3063 0eed 1E       		.uleb128 0x1e
- 3064 0eee D9040000 		.4byte	.LASF103
- 3065 0ef2 1C       		.byte	0x1c
- 3066 0ef3 1E       		.byte	0x1e
- 3067 0ef4 81000000 		.4byte	0x81
- 3068 0ef8 110F0000 		.4byte	0xf11
- 3069 0efc 1C       		.uleb128 0x1c
- 3070 0efd 81000000 		.4byte	0x81
- 3071 0f01 1C       		.uleb128 0x1c
- 3072 0f02 81000000 		.4byte	0x81
- 3073 0f06 1C       		.uleb128 0x1c
- 3074 0f07 8D000000 		.4byte	0x8d
- 3075 0f0b 1C       		.uleb128 0x1c
- 3076 0f0c 8D000000 		.4byte	0x8d
- 3077 0f10 00       		.byte	0
- 3078 0f11 1E       		.uleb128 0x1e
- 3079 0f12 4D030000 		.4byte	.LASF104
- 3080 0f16 1D       		.byte	0x1d
- 3081 0f17 1E       		.byte	0x1e
- 3082 0f18 81000000 		.4byte	0x81
- 3083 0f1c 350F0000 		.4byte	0xf35
- 3084 0f20 1C       		.uleb128 0x1c
- 3085 0f21 81000000 		.4byte	0x81
- 3086 0f25 1C       		.uleb128 0x1c
- 3087 0f26 81000000 		.4byte	0x81
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 62
-
-
- 3088 0f2a 1C       		.uleb128 0x1c
- 3089 0f2b 8D000000 		.4byte	0x8d
- 3090 0f2f 1C       		.uleb128 0x1c
- 3091 0f30 8D000000 		.4byte	0x8d
- 3092 0f34 00       		.byte	0
- 3093 0f35 20       		.uleb128 0x20
- 3094 0f36 2E070000 		.4byte	.LASF109
- 3095 0f3a 1E       		.byte	0x1e
- 3096 0f3b 76       		.byte	0x76
- 3097 0f3c 1C       		.uleb128 0x1c
- 3098 0f3d 99000000 		.4byte	0x99
- 3099 0f41 00       		.byte	0
- 3100 0f42 00       		.byte	0
- 3101              		.section	.debug_abbrev,"",%progbits
- 3102              	.Ldebug_abbrev0:
- 3103 0000 01       		.uleb128 0x1
- 3104 0001 11       		.uleb128 0x11
- 3105 0002 01       		.byte	0x1
- 3106 0003 25       		.uleb128 0x25
- 3107 0004 0E       		.uleb128 0xe
- 3108 0005 13       		.uleb128 0x13
- 3109 0006 0B       		.uleb128 0xb
- 3110 0007 03       		.uleb128 0x3
- 3111 0008 0E       		.uleb128 0xe
- 3112 0009 1B       		.uleb128 0x1b
- 3113 000a 0E       		.uleb128 0xe
- 3114 000b 55       		.uleb128 0x55
- 3115 000c 17       		.uleb128 0x17
- 3116 000d 11       		.uleb128 0x11
- 3117 000e 01       		.uleb128 0x1
- 3118 000f 10       		.uleb128 0x10
- 3119 0010 17       		.uleb128 0x17
- 3120 0011 00       		.byte	0
- 3121 0012 00       		.byte	0
- 3122 0013 02       		.uleb128 0x2
- 3123 0014 24       		.uleb128 0x24
- 3124 0015 00       		.byte	0
- 3125 0016 0B       		.uleb128 0xb
- 3126 0017 0B       		.uleb128 0xb
- 3127 0018 3E       		.uleb128 0x3e
- 3128 0019 0B       		.uleb128 0xb
- 3129 001a 03       		.uleb128 0x3
- 3130 001b 0E       		.uleb128 0xe
- 3131 001c 00       		.byte	0
- 3132 001d 00       		.byte	0
- 3133 001e 03       		.uleb128 0x3
- 3134 001f 16       		.uleb128 0x16
- 3135 0020 00       		.byte	0
- 3136 0021 03       		.uleb128 0x3
- 3137 0022 0E       		.uleb128 0xe
- 3138 0023 3A       		.uleb128 0x3a
- 3139 0024 0B       		.uleb128 0xb
- 3140 0025 3B       		.uleb128 0x3b
- 3141 0026 0B       		.uleb128 0xb
- 3142 0027 49       		.uleb128 0x49
- 3143 0028 13       		.uleb128 0x13
- 3144 0029 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 63
-
-
- 3145 002a 00       		.byte	0
- 3146 002b 04       		.uleb128 0x4
- 3147 002c 24       		.uleb128 0x24
- 3148 002d 00       		.byte	0
- 3149 002e 0B       		.uleb128 0xb
- 3150 002f 0B       		.uleb128 0xb
- 3151 0030 3E       		.uleb128 0x3e
- 3152 0031 0B       		.uleb128 0xb
- 3153 0032 03       		.uleb128 0x3
- 3154 0033 08       		.uleb128 0x8
- 3155 0034 00       		.byte	0
- 3156 0035 00       		.byte	0
- 3157 0036 05       		.uleb128 0x5
- 3158 0037 16       		.uleb128 0x16
- 3159 0038 00       		.byte	0
- 3160 0039 03       		.uleb128 0x3
- 3161 003a 0E       		.uleb128 0xe
- 3162 003b 3A       		.uleb128 0x3a
- 3163 003c 0B       		.uleb128 0xb
- 3164 003d 3B       		.uleb128 0x3b
- 3165 003e 05       		.uleb128 0x5
- 3166 003f 49       		.uleb128 0x49
- 3167 0040 13       		.uleb128 0x13
- 3168 0041 00       		.byte	0
- 3169 0042 00       		.byte	0
- 3170 0043 06       		.uleb128 0x6
- 3171 0044 35       		.uleb128 0x35
- 3172 0045 00       		.byte	0
- 3173 0046 49       		.uleb128 0x49
- 3174 0047 13       		.uleb128 0x13
- 3175 0048 00       		.byte	0
- 3176 0049 00       		.byte	0
- 3177 004a 07       		.uleb128 0x7
- 3178 004b 0F       		.uleb128 0xf
- 3179 004c 00       		.byte	0
- 3180 004d 0B       		.uleb128 0xb
- 3181 004e 0B       		.uleb128 0xb
- 3182 004f 49       		.uleb128 0x49
- 3183 0050 13       		.uleb128 0x13
- 3184 0051 00       		.byte	0
- 3185 0052 00       		.byte	0
- 3186 0053 08       		.uleb128 0x8
- 3187 0054 15       		.uleb128 0x15
- 3188 0055 00       		.byte	0
- 3189 0056 27       		.uleb128 0x27
- 3190 0057 19       		.uleb128 0x19
- 3191 0058 00       		.byte	0
- 3192 0059 00       		.byte	0
- 3193 005a 09       		.uleb128 0x9
- 3194 005b 01       		.uleb128 0x1
- 3195 005c 01       		.byte	0x1
- 3196 005d 49       		.uleb128 0x49
- 3197 005e 13       		.uleb128 0x13
- 3198 005f 01       		.uleb128 0x1
- 3199 0060 13       		.uleb128 0x13
- 3200 0061 00       		.byte	0
- 3201 0062 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 64
-
-
- 3202 0063 0A       		.uleb128 0xa
- 3203 0064 21       		.uleb128 0x21
- 3204 0065 00       		.byte	0
- 3205 0066 49       		.uleb128 0x49
- 3206 0067 13       		.uleb128 0x13
- 3207 0068 2F       		.uleb128 0x2f
- 3208 0069 0B       		.uleb128 0xb
- 3209 006a 00       		.byte	0
- 3210 006b 00       		.byte	0
- 3211 006c 0B       		.uleb128 0xb
- 3212 006d 2E       		.uleb128 0x2e
- 3213 006e 00       		.byte	0
- 3214 006f 3F       		.uleb128 0x3f
- 3215 0070 19       		.uleb128 0x19
- 3216 0071 03       		.uleb128 0x3
- 3217 0072 0E       		.uleb128 0xe
- 3218 0073 3A       		.uleb128 0x3a
- 3219 0074 0B       		.uleb128 0xb
- 3220 0075 3B       		.uleb128 0x3b
- 3221 0076 0B       		.uleb128 0xb
- 3222 0077 27       		.uleb128 0x27
- 3223 0078 19       		.uleb128 0x19
- 3224 0079 11       		.uleb128 0x11
- 3225 007a 01       		.uleb128 0x1
- 3226 007b 12       		.uleb128 0x12
- 3227 007c 06       		.uleb128 0x6
- 3228 007d 40       		.uleb128 0x40
- 3229 007e 18       		.uleb128 0x18
- 3230 007f 9742     		.uleb128 0x2117
- 3231 0081 19       		.uleb128 0x19
- 3232 0082 00       		.byte	0
- 3233 0083 00       		.byte	0
- 3234 0084 0C       		.uleb128 0xc
- 3235 0085 2E       		.uleb128 0x2e
- 3236 0086 01       		.byte	0x1
- 3237 0087 3F       		.uleb128 0x3f
- 3238 0088 19       		.uleb128 0x19
- 3239 0089 03       		.uleb128 0x3
- 3240 008a 0E       		.uleb128 0xe
- 3241 008b 3A       		.uleb128 0x3a
- 3242 008c 0B       		.uleb128 0xb
- 3243 008d 3B       		.uleb128 0x3b
- 3244 008e 0B       		.uleb128 0xb
- 3245 008f 27       		.uleb128 0x27
- 3246 0090 19       		.uleb128 0x19
- 3247 0091 11       		.uleb128 0x11
- 3248 0092 01       		.uleb128 0x1
- 3249 0093 12       		.uleb128 0x12
- 3250 0094 06       		.uleb128 0x6
- 3251 0095 40       		.uleb128 0x40
- 3252 0096 18       		.uleb128 0x18
- 3253 0097 9742     		.uleb128 0x2117
- 3254 0099 19       		.uleb128 0x19
- 3255 009a 01       		.uleb128 0x1
- 3256 009b 13       		.uleb128 0x13
- 3257 009c 00       		.byte	0
- 3258 009d 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 65
-
-
- 3259 009e 0D       		.uleb128 0xd
- 3260 009f 898201   		.uleb128 0x4109
- 3261 00a2 00       		.byte	0
- 3262 00a3 11       		.uleb128 0x11
- 3263 00a4 01       		.uleb128 0x1
- 3264 00a5 31       		.uleb128 0x31
- 3265 00a6 13       		.uleb128 0x13
- 3266 00a7 00       		.byte	0
- 3267 00a8 00       		.byte	0
- 3268 00a9 0E       		.uleb128 0xe
- 3269 00aa 2E       		.uleb128 0x2e
- 3270 00ab 01       		.byte	0x1
- 3271 00ac 3F       		.uleb128 0x3f
- 3272 00ad 19       		.uleb128 0x19
- 3273 00ae 03       		.uleb128 0x3
- 3274 00af 0E       		.uleb128 0xe
- 3275 00b0 3A       		.uleb128 0x3a
- 3276 00b1 0B       		.uleb128 0xb
- 3277 00b2 3B       		.uleb128 0x3b
- 3278 00b3 0B       		.uleb128 0xb
- 3279 00b4 11       		.uleb128 0x11
- 3280 00b5 01       		.uleb128 0x1
- 3281 00b6 12       		.uleb128 0x12
- 3282 00b7 06       		.uleb128 0x6
- 3283 00b8 40       		.uleb128 0x40
- 3284 00b9 18       		.uleb128 0x18
- 3285 00ba 9742     		.uleb128 0x2117
- 3286 00bc 19       		.uleb128 0x19
- 3287 00bd 01       		.uleb128 0x1
- 3288 00be 13       		.uleb128 0x13
- 3289 00bf 00       		.byte	0
- 3290 00c0 00       		.byte	0
- 3291 00c1 0F       		.uleb128 0xf
- 3292 00c2 898201   		.uleb128 0x4109
- 3293 00c5 01       		.byte	0x1
- 3294 00c6 11       		.uleb128 0x11
- 3295 00c7 01       		.uleb128 0x1
- 3296 00c8 31       		.uleb128 0x31
- 3297 00c9 13       		.uleb128 0x13
- 3298 00ca 01       		.uleb128 0x1
- 3299 00cb 13       		.uleb128 0x13
- 3300 00cc 00       		.byte	0
- 3301 00cd 00       		.byte	0
- 3302 00ce 10       		.uleb128 0x10
- 3303 00cf 8A8201   		.uleb128 0x410a
- 3304 00d2 00       		.byte	0
- 3305 00d3 02       		.uleb128 0x2
- 3306 00d4 18       		.uleb128 0x18
- 3307 00d5 9142     		.uleb128 0x2111
- 3308 00d7 18       		.uleb128 0x18
- 3309 00d8 00       		.byte	0
- 3310 00d9 00       		.byte	0
- 3311 00da 11       		.uleb128 0x11
- 3312 00db 34       		.uleb128 0x34
- 3313 00dc 00       		.byte	0
- 3314 00dd 03       		.uleb128 0x3
- 3315 00de 0E       		.uleb128 0xe
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 66
-
-
- 3316 00df 3A       		.uleb128 0x3a
- 3317 00e0 0B       		.uleb128 0xb
- 3318 00e1 3B       		.uleb128 0x3b
- 3319 00e2 0B       		.uleb128 0xb
- 3320 00e3 49       		.uleb128 0x49
- 3321 00e4 13       		.uleb128 0x13
- 3322 00e5 02       		.uleb128 0x2
- 3323 00e6 18       		.uleb128 0x18
- 3324 00e7 00       		.byte	0
- 3325 00e8 00       		.byte	0
- 3326 00e9 12       		.uleb128 0x12
- 3327 00ea 34       		.uleb128 0x34
- 3328 00eb 00       		.byte	0
- 3329 00ec 03       		.uleb128 0x3
- 3330 00ed 0E       		.uleb128 0xe
- 3331 00ee 3A       		.uleb128 0x3a
- 3332 00ef 0B       		.uleb128 0xb
- 3333 00f0 3B       		.uleb128 0x3b
- 3334 00f1 0B       		.uleb128 0xb
- 3335 00f2 49       		.uleb128 0x49
- 3336 00f3 13       		.uleb128 0x13
- 3337 00f4 00       		.byte	0
- 3338 00f5 00       		.byte	0
- 3339 00f6 13       		.uleb128 0x13
- 3340 00f7 898201   		.uleb128 0x4109
- 3341 00fa 01       		.byte	0x1
- 3342 00fb 11       		.uleb128 0x11
- 3343 00fc 01       		.uleb128 0x1
- 3344 00fd 31       		.uleb128 0x31
- 3345 00fe 13       		.uleb128 0x13
- 3346 00ff 00       		.byte	0
- 3347 0100 00       		.byte	0
- 3348 0101 14       		.uleb128 0x14
- 3349 0102 34       		.uleb128 0x34
- 3350 0103 00       		.byte	0
- 3351 0104 03       		.uleb128 0x3
- 3352 0105 0E       		.uleb128 0xe
- 3353 0106 3A       		.uleb128 0x3a
- 3354 0107 0B       		.uleb128 0xb
- 3355 0108 3B       		.uleb128 0x3b
- 3356 0109 0B       		.uleb128 0xb
- 3357 010a 49       		.uleb128 0x49
- 3358 010b 13       		.uleb128 0x13
- 3359 010c 02       		.uleb128 0x2
- 3360 010d 17       		.uleb128 0x17
- 3361 010e 00       		.byte	0
- 3362 010f 00       		.byte	0
- 3363 0110 15       		.uleb128 0x15
- 3364 0111 2E       		.uleb128 0x2e
- 3365 0112 01       		.byte	0x1
- 3366 0113 3F       		.uleb128 0x3f
- 3367 0114 19       		.uleb128 0x19
- 3368 0115 03       		.uleb128 0x3
- 3369 0116 0E       		.uleb128 0xe
- 3370 0117 3A       		.uleb128 0x3a
- 3371 0118 0B       		.uleb128 0xb
- 3372 0119 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 67
-
-
- 3373 011a 05       		.uleb128 0x5
- 3374 011b 11       		.uleb128 0x11
- 3375 011c 01       		.uleb128 0x1
- 3376 011d 12       		.uleb128 0x12
- 3377 011e 06       		.uleb128 0x6
- 3378 011f 40       		.uleb128 0x40
- 3379 0120 18       		.uleb128 0x18
- 3380 0121 9742     		.uleb128 0x2117
- 3381 0123 19       		.uleb128 0x19
- 3382 0124 01       		.uleb128 0x1
- 3383 0125 13       		.uleb128 0x13
- 3384 0126 00       		.byte	0
- 3385 0127 00       		.byte	0
- 3386 0128 16       		.uleb128 0x16
- 3387 0129 34       		.uleb128 0x34
- 3388 012a 00       		.byte	0
- 3389 012b 03       		.uleb128 0x3
- 3390 012c 0E       		.uleb128 0xe
- 3391 012d 3A       		.uleb128 0x3a
- 3392 012e 0B       		.uleb128 0xb
- 3393 012f 3B       		.uleb128 0x3b
- 3394 0130 05       		.uleb128 0x5
- 3395 0131 49       		.uleb128 0x49
- 3396 0132 13       		.uleb128 0x13
- 3397 0133 02       		.uleb128 0x2
- 3398 0134 18       		.uleb128 0x18
- 3399 0135 00       		.byte	0
- 3400 0136 00       		.byte	0
- 3401 0137 17       		.uleb128 0x17
- 3402 0138 34       		.uleb128 0x34
- 3403 0139 00       		.byte	0
- 3404 013a 03       		.uleb128 0x3
- 3405 013b 0E       		.uleb128 0xe
- 3406 013c 3A       		.uleb128 0x3a
- 3407 013d 0B       		.uleb128 0xb
- 3408 013e 3B       		.uleb128 0x3b
- 3409 013f 05       		.uleb128 0x5
- 3410 0140 49       		.uleb128 0x49
- 3411 0141 13       		.uleb128 0x13
- 3412 0142 00       		.byte	0
- 3413 0143 00       		.byte	0
- 3414 0144 18       		.uleb128 0x18
- 3415 0145 2E       		.uleb128 0x2e
- 3416 0146 01       		.byte	0x1
- 3417 0147 3F       		.uleb128 0x3f
- 3418 0148 19       		.uleb128 0x19
- 3419 0149 03       		.uleb128 0x3
- 3420 014a 0E       		.uleb128 0xe
- 3421 014b 3A       		.uleb128 0x3a
- 3422 014c 0B       		.uleb128 0xb
- 3423 014d 3B       		.uleb128 0x3b
- 3424 014e 05       		.uleb128 0x5
- 3425 014f 49       		.uleb128 0x49
- 3426 0150 13       		.uleb128 0x13
- 3427 0151 11       		.uleb128 0x11
- 3428 0152 01       		.uleb128 0x1
- 3429 0153 12       		.uleb128 0x12
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 68
-
-
- 3430 0154 06       		.uleb128 0x6
- 3431 0155 40       		.uleb128 0x40
- 3432 0156 18       		.uleb128 0x18
- 3433 0157 9742     		.uleb128 0x2117
- 3434 0159 19       		.uleb128 0x19
- 3435 015a 01       		.uleb128 0x1
- 3436 015b 13       		.uleb128 0x13
- 3437 015c 00       		.byte	0
- 3438 015d 00       		.byte	0
- 3439 015e 19       		.uleb128 0x19
- 3440 015f 34       		.uleb128 0x34
- 3441 0160 00       		.byte	0
- 3442 0161 03       		.uleb128 0x3
- 3443 0162 0E       		.uleb128 0xe
- 3444 0163 3A       		.uleb128 0x3a
- 3445 0164 0B       		.uleb128 0xb
- 3446 0165 3B       		.uleb128 0x3b
- 3447 0166 05       		.uleb128 0x5
- 3448 0167 49       		.uleb128 0x49
- 3449 0168 13       		.uleb128 0x13
- 3450 0169 3F       		.uleb128 0x3f
- 3451 016a 19       		.uleb128 0x19
- 3452 016b 3C       		.uleb128 0x3c
- 3453 016c 19       		.uleb128 0x19
- 3454 016d 00       		.byte	0
- 3455 016e 00       		.byte	0
- 3456 016f 1A       		.uleb128 0x1a
- 3457 0170 34       		.uleb128 0x34
- 3458 0171 00       		.byte	0
- 3459 0172 03       		.uleb128 0x3
- 3460 0173 0E       		.uleb128 0xe
- 3461 0174 3A       		.uleb128 0x3a
- 3462 0175 0B       		.uleb128 0xb
- 3463 0176 3B       		.uleb128 0x3b
- 3464 0177 0B       		.uleb128 0xb
- 3465 0178 49       		.uleb128 0x49
- 3466 0179 13       		.uleb128 0x13
- 3467 017a 3F       		.uleb128 0x3f
- 3468 017b 19       		.uleb128 0x19
- 3469 017c 02       		.uleb128 0x2
- 3470 017d 18       		.uleb128 0x18
- 3471 017e 00       		.byte	0
- 3472 017f 00       		.byte	0
- 3473 0180 1B       		.uleb128 0x1b
- 3474 0181 2E       		.uleb128 0x2e
- 3475 0182 01       		.byte	0x1
- 3476 0183 3F       		.uleb128 0x3f
- 3477 0184 19       		.uleb128 0x19
- 3478 0185 03       		.uleb128 0x3
- 3479 0186 0E       		.uleb128 0xe
- 3480 0187 3A       		.uleb128 0x3a
- 3481 0188 0B       		.uleb128 0xb
- 3482 0189 3B       		.uleb128 0x3b
- 3483 018a 0B       		.uleb128 0xb
- 3484 018b 27       		.uleb128 0x27
- 3485 018c 19       		.uleb128 0x19
- 3486 018d 3C       		.uleb128 0x3c
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 69
-
-
- 3487 018e 19       		.uleb128 0x19
- 3488 018f 01       		.uleb128 0x1
- 3489 0190 13       		.uleb128 0x13
- 3490 0191 00       		.byte	0
- 3491 0192 00       		.byte	0
- 3492 0193 1C       		.uleb128 0x1c
- 3493 0194 05       		.uleb128 0x5
- 3494 0195 00       		.byte	0
- 3495 0196 49       		.uleb128 0x49
- 3496 0197 13       		.uleb128 0x13
- 3497 0198 00       		.byte	0
- 3498 0199 00       		.byte	0
- 3499 019a 1D       		.uleb128 0x1d
- 3500 019b 2E       		.uleb128 0x2e
- 3501 019c 00       		.byte	0
- 3502 019d 3F       		.uleb128 0x3f
- 3503 019e 19       		.uleb128 0x19
- 3504 019f 03       		.uleb128 0x3
- 3505 01a0 0E       		.uleb128 0xe
- 3506 01a1 3A       		.uleb128 0x3a
- 3507 01a2 0B       		.uleb128 0xb
- 3508 01a3 3B       		.uleb128 0x3b
- 3509 01a4 0B       		.uleb128 0xb
- 3510 01a5 27       		.uleb128 0x27
- 3511 01a6 19       		.uleb128 0x19
- 3512 01a7 3C       		.uleb128 0x3c
- 3513 01a8 19       		.uleb128 0x19
- 3514 01a9 00       		.byte	0
- 3515 01aa 00       		.byte	0
- 3516 01ab 1E       		.uleb128 0x1e
- 3517 01ac 2E       		.uleb128 0x2e
- 3518 01ad 01       		.byte	0x1
- 3519 01ae 3F       		.uleb128 0x3f
- 3520 01af 19       		.uleb128 0x19
- 3521 01b0 03       		.uleb128 0x3
- 3522 01b1 0E       		.uleb128 0xe
- 3523 01b2 3A       		.uleb128 0x3a
- 3524 01b3 0B       		.uleb128 0xb
- 3525 01b4 3B       		.uleb128 0x3b
- 3526 01b5 0B       		.uleb128 0xb
- 3527 01b6 27       		.uleb128 0x27
- 3528 01b7 19       		.uleb128 0x19
- 3529 01b8 49       		.uleb128 0x49
- 3530 01b9 13       		.uleb128 0x13
- 3531 01ba 3C       		.uleb128 0x3c
- 3532 01bb 19       		.uleb128 0x19
- 3533 01bc 01       		.uleb128 0x1
- 3534 01bd 13       		.uleb128 0x13
- 3535 01be 00       		.byte	0
- 3536 01bf 00       		.byte	0
- 3537 01c0 1F       		.uleb128 0x1f
- 3538 01c1 2E       		.uleb128 0x2e
- 3539 01c2 00       		.byte	0
- 3540 01c3 3F       		.uleb128 0x3f
- 3541 01c4 19       		.uleb128 0x19
- 3542 01c5 03       		.uleb128 0x3
- 3543 01c6 0E       		.uleb128 0xe
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 70
-
-
- 3544 01c7 3A       		.uleb128 0x3a
- 3545 01c8 0B       		.uleb128 0xb
- 3546 01c9 3B       		.uleb128 0x3b
- 3547 01ca 0B       		.uleb128 0xb
- 3548 01cb 27       		.uleb128 0x27
- 3549 01cc 19       		.uleb128 0x19
- 3550 01cd 49       		.uleb128 0x49
- 3551 01ce 13       		.uleb128 0x13
- 3552 01cf 3C       		.uleb128 0x3c
- 3553 01d0 19       		.uleb128 0x19
- 3554 01d1 00       		.byte	0
- 3555 01d2 00       		.byte	0
- 3556 01d3 20       		.uleb128 0x20
- 3557 01d4 2E       		.uleb128 0x2e
- 3558 01d5 01       		.byte	0x1
- 3559 01d6 3F       		.uleb128 0x3f
- 3560 01d7 19       		.uleb128 0x19
- 3561 01d8 03       		.uleb128 0x3
- 3562 01d9 0E       		.uleb128 0xe
- 3563 01da 3A       		.uleb128 0x3a
- 3564 01db 0B       		.uleb128 0xb
- 3565 01dc 3B       		.uleb128 0x3b
- 3566 01dd 0B       		.uleb128 0xb
- 3567 01de 27       		.uleb128 0x27
- 3568 01df 19       		.uleb128 0x19
- 3569 01e0 3C       		.uleb128 0x3c
- 3570 01e1 19       		.uleb128 0x19
- 3571 01e2 00       		.byte	0
- 3572 01e3 00       		.byte	0
- 3573 01e4 00       		.byte	0
- 3574              		.section	.debug_loc,"",%progbits
- 3575              	.Ldebug_loc0:
- 3576              	.LLST0:
- 3577 0000 14000000 		.4byte	.LVL44
- 3578 0004 44000000 		.4byte	.LVL50
- 3579 0008 0100     		.2byte	0x1
- 3580 000a 55       		.byte	0x55
- 3581 000b 00000000 		.4byte	0
- 3582 000f 00000000 		.4byte	0
- 3583              	.LLST1:
- 3584 0013 14000000 		.4byte	.LVL52
- 3585 0017 44000000 		.4byte	.LVL58
- 3586 001b 0100     		.2byte	0x1
- 3587 001d 55       		.byte	0x55
- 3588 001e 00000000 		.4byte	0
- 3589 0022 00000000 		.4byte	0
- 3590              	.LLST2:
- 3591 0026 14000000 		.4byte	.LVL60
- 3592 002a 44000000 		.4byte	.LVL66
- 3593 002e 0100     		.2byte	0x1
- 3594 0030 55       		.byte	0x55
- 3595 0031 00000000 		.4byte	0
- 3596 0035 00000000 		.4byte	0
- 3597              		.section	.debug_aranges,"",%progbits
- 3598 0000 A4000000 		.4byte	0xa4
- 3599 0004 0200     		.2byte	0x2
- 3600 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 71
-
-
- 3601 000a 04       		.byte	0x4
- 3602 000b 00       		.byte	0
- 3603 000c 0000     		.2byte	0
- 3604 000e 0000     		.2byte	0
- 3605 0010 00000000 		.4byte	.LFB66
- 3606 0014 18000000 		.4byte	.LFE66-.LFB66
- 3607 0018 00000000 		.4byte	.LFB67
- 3608 001c 18000000 		.4byte	.LFE67-.LFB67
- 3609 0020 00000000 		.4byte	.LFB68
- 3610 0024 10000000 		.4byte	.LFE68-.LFB68
- 3611 0028 00000000 		.4byte	.LFB63
- 3612 002c 90000000 		.4byte	.LFE63-.LFB63
- 3613 0030 00000000 		.4byte	.LFB64
- 3614 0034 02000000 		.4byte	.LFE64-.LFB64
- 3615 0038 00000000 		.4byte	.LFB65
- 3616 003c 02000000 		.4byte	.LFE65-.LFB65
- 3617 0040 00000000 		.4byte	.LFB69
- 3618 0044 28000000 		.4byte	.LFE69-.LFB69
- 3619 0048 00000000 		.4byte	.LFB70
- 3620 004c 42000000 		.4byte	.LFE70-.LFB70
- 3621 0050 00000000 		.4byte	.LFB71
- 3622 0054 42000000 		.4byte	.LFE71-.LFB71
- 3623 0058 00000000 		.4byte	.LFB72
- 3624 005c 48000000 		.4byte	.LFE72-.LFB72
- 3625 0060 00000000 		.4byte	.LFB73
- 3626 0064 48000000 		.4byte	.LFE73-.LFB73
- 3627 0068 00000000 		.4byte	.LFB74
- 3628 006c 48000000 		.4byte	.LFE74-.LFB74
- 3629 0070 00000000 		.4byte	.LFB75
- 3630 0074 42000000 		.4byte	.LFE75-.LFB75
- 3631 0078 00000000 		.4byte	.LFB76
- 3632 007c 42000000 		.4byte	.LFE76-.LFB76
- 3633 0080 00000000 		.4byte	.LFB77
- 3634 0084 42000000 		.4byte	.LFE77-.LFB77
- 3635 0088 00000000 		.4byte	.LFB78
- 3636 008c 42000000 		.4byte	.LFE78-.LFB78
- 3637 0090 00000000 		.4byte	.LFB79
- 3638 0094 20000000 		.4byte	.LFE79-.LFB79
- 3639 0098 00000000 		.4byte	.LFB80
- 3640 009c 18000000 		.4byte	.LFE80-.LFB80
- 3641 00a0 00000000 		.4byte	0
- 3642 00a4 00000000 		.4byte	0
- 3643              		.section	.debug_ranges,"",%progbits
- 3644              	.Ldebug_ranges0:
- 3645 0000 00000000 		.4byte	.LFB66
- 3646 0004 18000000 		.4byte	.LFE66
- 3647 0008 00000000 		.4byte	.LFB67
- 3648 000c 18000000 		.4byte	.LFE67
- 3649 0010 00000000 		.4byte	.LFB68
- 3650 0014 10000000 		.4byte	.LFE68
- 3651 0018 00000000 		.4byte	.LFB63
- 3652 001c 90000000 		.4byte	.LFE63
- 3653 0020 00000000 		.4byte	.LFB64
- 3654 0024 02000000 		.4byte	.LFE64
- 3655 0028 00000000 		.4byte	.LFB65
- 3656 002c 02000000 		.4byte	.LFE65
- 3657 0030 00000000 		.4byte	.LFB69
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 72
-
-
- 3658 0034 28000000 		.4byte	.LFE69
- 3659 0038 00000000 		.4byte	.LFB70
- 3660 003c 42000000 		.4byte	.LFE70
- 3661 0040 00000000 		.4byte	.LFB71
- 3662 0044 42000000 		.4byte	.LFE71
- 3663 0048 00000000 		.4byte	.LFB72
- 3664 004c 48000000 		.4byte	.LFE72
- 3665 0050 00000000 		.4byte	.LFB73
- 3666 0054 48000000 		.4byte	.LFE73
- 3667 0058 00000000 		.4byte	.LFB74
- 3668 005c 48000000 		.4byte	.LFE74
- 3669 0060 00000000 		.4byte	.LFB75
- 3670 0064 42000000 		.4byte	.LFE75
- 3671 0068 00000000 		.4byte	.LFB76
- 3672 006c 42000000 		.4byte	.LFE76
- 3673 0070 00000000 		.4byte	.LFB77
- 3674 0074 42000000 		.4byte	.LFE77
- 3675 0078 00000000 		.4byte	.LFB78
- 3676 007c 42000000 		.4byte	.LFE78
- 3677 0080 00000000 		.4byte	.LFB79
- 3678 0084 20000000 		.4byte	.LFE79
- 3679 0088 00000000 		.4byte	.LFB80
- 3680 008c 18000000 		.4byte	.LFE80
- 3681 0090 00000000 		.4byte	0
- 3682 0094 00000000 		.4byte	0
- 3683              		.section	.debug_line,"",%progbits
- 3684              	.Ldebug_line0:
- 3685 0000 72040000 		.section	.debug_str,"MS",%progbits,1
- 3685      0200CC02 
- 3685      00000201 
- 3685      FB0E0D00 
- 3685      01010101 
- 3686              	.LASF108:
- 3687 0000 4379446D 		.ascii	"CyDmaTdAllocate\000"
- 3687      61546441 
- 3687      6C6C6F63 
- 3687      61746500 
- 3688              	.LASF92:
- 3689 0010 53415232 		.ascii	"SAR2FILTER1_DmaInitialize\000"
- 3689      46494C54 
- 3689      4552315F 
- 3689      446D6149 
- 3689      6E697469 
- 3690              	.LASF73:
- 3691 002a 56444143 		.ascii	"VDAC1_Start\000"
- 3691      315F5374 
- 3691      61727400 
- 3692              	.LASF35:
- 3693 0036 444D415F 		.ascii	"DMA_FILTER2RAM1_config\000"
- 3693      46494C54 
- 3693      45523252 
- 3693      414D315F 
- 3693      636F6E66 
- 3694              	.LASF15:
- 3695 004d 646F7562 		.ascii	"double\000"
- 3695      6C6500
- 3696              	.LASF43:
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 73
-
-
- 3697 0054 53504932 		.ascii	"SPI2RAM_TD\000"
- 3697      52414D5F 
- 3697      544400
- 3698              	.LASF57:
- 3699 005f 7370695F 		.ascii	"spi_rx_handler\000"
- 3699      72785F68 
- 3699      616E646C 
- 3699      657200
- 3700              	.LASF62:
- 3701 006e 7361726D 		.ascii	"sarmem1\000"
- 3701      656D3100 
- 3702              	.LASF63:
- 3703 0076 7361726D 		.ascii	"sarmem2\000"
- 3703      656D3200 
- 3704              	.LASF19:
- 3705 007e 72656731 		.ascii	"reg16\000"
- 3705      3600
- 3706              	.LASF2:
- 3707 0084 73686F72 		.ascii	"short int\000"
- 3707      7420696E 
- 3707      7400
- 3708              	.LASF93:
- 3709 008e 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
- 3709      61546453 
- 3709      6574436F 
- 3709      6E666967 
- 3709      75726174 
- 3710              	.LASF96:
- 3711 00a6 4379446D 		.ascii	"CyDmaChEnable\000"
- 3711      61436845 
- 3711      6E61626C 
- 3711      6500
- 3712              	.LASF83:
- 3713 00b4 53415232 		.ascii	"SAR2_StartConvert\000"
- 3713      5F537461 
- 3713      7274436F 
- 3713      6E766572 
- 3713      7400
- 3714              	.LASF23:
- 3715 00c6 66696C74 		.ascii	"filter_ready1_handler\000"
- 3715      65725F72 
- 3715      65616479 
- 3715      315F6861 
- 3715      6E646C65 
- 3716              	.LASF52:
- 3717 00dc 53484946 		.ascii	"SHIFT2FILTER1_TD\000"
- 3717      54324649 
- 3717      4C544552 
- 3717      315F5444 
- 3717      00
- 3718              	.LASF24:
- 3719 00ed 66696C74 		.ascii	"filter_ready2_handler\000"
- 3719      65725F72 
- 3719      65616479 
- 3719      325F6861 
- 3719      6E646C65 
- 3720              	.LASF49:
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 74
-
-
- 3721 0103 53415232 		.ascii	"SAR2SHIFT2_TD\000"
- 3721      53484946 
- 3721      54325F54 
- 3721      4400
- 3722              	.LASF37:
- 3723 0111 46494C54 		.ascii	"FILTER2RAM1_TD\000"
- 3723      45523252 
- 3723      414D315F 
- 3723      544400
- 3724              	.LASF101:
- 3725 0120 53415232 		.ascii	"SAR2SHIFT1_DmaInitialize\000"
- 3725      53484946 
- 3725      54315F44 
- 3725      6D61496E 
- 3725      69746961 
- 3726              	.LASF102:
- 3727 0139 53415232 		.ascii	"SAR2SHIFT2_DmaInitialize\000"
- 3727      53484946 
- 3727      54325F44 
- 3727      6D61496E 
- 3727      69746961 
- 3728              	.LASF89:
- 3729 0152 6973725F 		.ascii	"isr_filter_ready2_StartEx\000"
- 3729      66696C74 
- 3729      65725F72 
- 3729      65616479 
- 3729      325F5374 
- 3730              	.LASF95:
- 3731 016c 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
- 3731      61436853 
- 3731      6574496E 
- 3731      69746961 
- 3731      6C546400 
- 3732              	.LASF71:
- 3733 0180 50574D31 		.ascii	"PWM1_Start\000"
- 3733      5F537461 
- 3733      727400
- 3734              	.LASF34:
- 3735 018b 53415232 		.ascii	"SAR2FILTER2_TD\000"
- 3735      46494C54 
- 3735      4552325F 
- 3735      544400
- 3736              	.LASF106:
- 3737 019a 2E5C6D61 		.ascii	".\\main.c\000"
- 3737      696E2E63 
- 3737      00
- 3738              	.LASF68:
- 3739 01a3 56444143 		.ascii	"VDAC1_SetValue\000"
- 3739      315F5365 
- 3739      7456616C 
- 3739      756500
- 3740              	.LASF29:
- 3741 01b2 444D415F 		.ascii	"DMA_SAR2FILTER1_config\000"
- 3741      53415232 
- 3741      46494C54 
- 3741      4552315F 
- 3741      636F6E66 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 75
-
-
- 3742              	.LASF79:
- 3743 01c9 56444143 		.ascii	"VDAC4_SetValue\000"
- 3743      345F5365 
- 3743      7456616C 
- 3743      756500
- 3744              	.LASF87:
- 3745 01d8 53504953 		.ascii	"SPIS_Start\000"
- 3745      5F537461 
- 3745      727400
- 3746              	.LASF82:
- 3747 01e3 53415231 		.ascii	"SAR1_StartConvert\000"
- 3747      5F537461 
- 3747      7274436F 
- 3747      6E766572 
- 3747      7400
- 3748              	.LASF97:
- 3749 01f5 53415232 		.ascii	"SAR2FILTER2_DmaInitialize\000"
- 3749      46494C54 
- 3749      4552325F 
- 3749      446D6149 
- 3749      6E697469 
- 3750              	.LASF86:
- 3751 020f 46696C74 		.ascii	"Filter_SetCoherency\000"
- 3751      65725F53 
- 3751      6574436F 
- 3751      68657265 
- 3751      6E637900 
- 3752              	.LASF32:
- 3753 0223 53415232 		.ascii	"SAR2FILTER2_Chan\000"
- 3753      46494C54 
- 3753      4552325F 
- 3753      4368616E 
- 3753      00
- 3754              	.LASF14:
- 3755 0234 666C6F61 		.ascii	"float\000"
- 3755      7400
- 3756              	.LASF28:
- 3757 023a 73746172 		.ascii	"start_interrupts\000"
- 3757      745F696E 
- 3757      74657272 
- 3757      75707473 
- 3757      00
- 3758              	.LASF74:
- 3759 024b 56444143 		.ascii	"VDAC2_Start\000"
- 3759      325F5374 
- 3759      61727400 
- 3760              	.LASF6:
- 3761 0257 6C6F6E67 		.ascii	"long long int\000"
- 3761      206C6F6E 
- 3761      6720696E 
- 3761      7400
- 3762              	.LASF4:
- 3763 0265 6C6F6E67 		.ascii	"long int\000"
- 3763      20696E74 
- 3763      00
- 3764              	.LASF107:
- 3765 026e 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 76
-
-
- 3765      73657273 
- 3765      5C637275 
- 3765      69736572 
- 3765      5C446F63 
- 3766 029c 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
- 3766      6C74726F 
- 3766      6E204D61 
- 3766      696E2E63 
- 3766      7964736E 
- 3767              	.LASF45:
- 3768 02b1 53415232 		.ascii	"SAR2SHIFT1_Chan\000"
- 3768      53484946 
- 3768      54315F43 
- 3768      68616E00 
- 3769              	.LASF44:
- 3770 02c1 444D415F 		.ascii	"DMA_SAR2SHIFT1_config\000"
- 3770      53415232 
- 3770      53484946 
- 3770      54315F63 
- 3770      6F6E6669 
- 3771              	.LASF100:
- 3772 02d7 53504932 		.ascii	"SPI2RAM_DmaInitialize\000"
- 3772      52414D5F 
- 3772      446D6149 
- 3772      6E697469 
- 3772      616C697A 
- 3773              	.LASF81:
- 3774 02ed 53415232 		.ascii	"SAR2_Start\000"
- 3774      5F537461 
- 3774      727400
- 3775              	.LASF27:
- 3776 02f8 73746172 		.ascii	"start_resources\000"
- 3776      745F7265 
- 3776      736F7572 
- 3776      63657300 
- 3777              	.LASF76:
- 3778 0308 56444143 		.ascii	"VDAC4_Start\000"
- 3778      345F5374 
- 3778      61727400 
- 3779              	.LASF42:
- 3780 0314 53504932 		.ascii	"SPI2RAM_Chan\000"
- 3780      52414D5F 
- 3780      4368616E 
- 3780      00
- 3781              	.LASF40:
- 3782 0321 46494C54 		.ascii	"FILTER2RAM2_TD\000"
- 3782      45523252 
- 3782      414D325F 
- 3782      544400
- 3783              	.LASF77:
- 3784 0330 56444143 		.ascii	"VDAC2_SetValue\000"
- 3784      325F5365 
- 3784      7456616C 
- 3784      756500
- 3785              	.LASF1:
- 3786 033f 756E7369 		.ascii	"unsigned char\000"
- 3786      676E6564 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 77
-
-
- 3786      20636861 
- 3786      7200
- 3787              	.LASF104:
- 3788 034d 53484946 		.ascii	"SHIFT2FILTER2_DmaInitialize\000"
- 3788      54324649 
- 3788      4C544552 
- 3788      325F446D 
- 3788      61496E69 
- 3789              	.LASF25:
- 3790 0369 73686966 		.ascii	"shift_sar1_handler\000"
- 3790      745F7361 
- 3790      72315F68 
- 3790      616E646C 
- 3790      657200
- 3791              	.LASF41:
- 3792 037c 444D415F 		.ascii	"DMA_SPI2RAM_config\000"
- 3792      53504932 
- 3792      52414D5F 
- 3792      636F6E66 
- 3792      696700
- 3793              	.LASF22:
- 3794 038f 6C6F6E67 		.ascii	"long double\000"
- 3794      20646F75 
- 3794      626C6500 
- 3795              	.LASF20:
- 3796 039b 63796973 		.ascii	"cyisraddress\000"
- 3796      72616464 
- 3796      72657373 
- 3796      00
- 3797              	.LASF26:
- 3798 03a8 73686966 		.ascii	"shift_sar2_handler\000"
- 3798      745F7361 
- 3798      72325F68 
- 3798      616E646C 
- 3798      657200
- 3799              	.LASF0:
- 3800 03bb 7369676E 		.ascii	"signed char\000"
- 3800      65642063 
- 3800      68617200 
- 3801              	.LASF10:
- 3802 03c7 696E7433 		.ascii	"int32_t\000"
- 3802      325F7400 
- 3803              	.LASF7:
- 3804 03cf 6C6F6E67 		.ascii	"long long unsigned int\000"
- 3804      206C6F6E 
- 3804      6720756E 
- 3804      7369676E 
- 3804      65642069 
- 3805              	.LASF91:
- 3806 03e6 53504953 		.ascii	"SPIS_EnableRxInt\000"
- 3806      5F456E61 
- 3806      626C6552 
- 3806      78496E74 
- 3806      00
- 3807              	.LASF61:
- 3808 03f7 7370696D 		.ascii	"spimem\000"
- 3808      656D00
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 78
-
-
- 3809              	.LASF8:
- 3810 03fe 756E7369 		.ascii	"unsigned int\000"
- 3810      676E6564 
- 3810      20696E74 
- 3810      00
- 3811              	.LASF94:
- 3812 040b 4379446D 		.ascii	"CyDmaTdSetAddress\000"
- 3812      61546453 
- 3812      65744164 
- 3812      64726573 
- 3812      7300
- 3813              	.LASF30:
- 3814 041d 444D415F 		.ascii	"DMA_SAR2FILTER2_config\000"
- 3814      53415232 
- 3814      46494C54 
- 3814      4552325F 
- 3814      636F6E66 
- 3815              	.LASF54:
- 3816 0434 53484946 		.ascii	"SHIFT2FILTER2_Chan\000"
- 3816      54324649 
- 3816      4C544552 
- 3816      325F4368 
- 3816      616E00
- 3817              	.LASF36:
- 3818 0447 46494C54 		.ascii	"FILTER2RAM1_Chan\000"
- 3818      45523252 
- 3818      414D315F 
- 3818      4368616E 
- 3818      00
- 3819              	.LASF3:
- 3820 0458 73686F72 		.ascii	"short unsigned int\000"
- 3820      7420756E 
- 3820      7369676E 
- 3820      65642069 
- 3820      6E7400
- 3821              	.LASF51:
- 3822 046b 53484946 		.ascii	"SHIFT2FILTER1_Chan\000"
- 3822      54324649 
- 3822      4C544552 
- 3822      315F4368 
- 3822      616E00
- 3823              	.LASF16:
- 3824 047e 63686172 		.ascii	"char\000"
- 3824      00
- 3825              	.LASF53:
- 3826 0483 444D415F 		.ascii	"DMA_SHIFT2FILTER2_config\000"
- 3826      53484946 
- 3826      54324649 
- 3826      4C544552 
- 3826      325F636F 
- 3827              	.LASF17:
- 3828 049c 63797374 		.ascii	"cystatus\000"
- 3828      61747573 
- 3828      00
- 3829              	.LASF58:
- 3830 04a5 6D61696E 		.ascii	"main\000"
- 3830      00
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 79
-
-
- 3831              	.LASF90:
- 3832 04aa 6973725F 		.ascii	"isr_spi_rx_StartEx\000"
- 3832      7370695F 
- 3832      72785F53 
- 3832      74617274 
- 3832      457800
- 3833              	.LASF64:
- 3834 04bd 66696C74 		.ascii	"filtermem1\000"
- 3834      65726D65 
- 3834      6D3100
- 3835              	.LASF65:
- 3836 04c8 66696C74 		.ascii	"filtermem2\000"
- 3836      65726D65 
- 3836      6D3200
- 3837              	.LASF11:
- 3838 04d3 75696E74 		.ascii	"uint8\000"
- 3838      3800
- 3839              	.LASF103:
- 3840 04d9 53484946 		.ascii	"SHIFT2FILTER1_DmaInitialize\000"
- 3840      54324649 
- 3840      4C544552 
- 3840      315F446D 
- 3840      61496E69 
- 3841              	.LASF98:
- 3842 04f5 46494C54 		.ascii	"FILTER2RAM1_DmaInitialize\000"
- 3842      45523252 
- 3842      414D315F 
- 3842      446D6149 
- 3842      6E697469 
- 3843              	.LASF12:
- 3844 050f 75696E74 		.ascii	"uint16\000"
- 3844      313600
- 3845              	.LASF13:
- 3846 0516 75696E74 		.ascii	"uint32\000"
- 3846      333200
- 3847              	.LASF18:
- 3848 051d 72656738 		.ascii	"reg8\000"
- 3848      00
- 3849              	.LASF5:
- 3850 0522 6C6F6E67 		.ascii	"long unsigned int\000"
- 3850      20756E73 
- 3850      69676E65 
- 3850      6420696E 
- 3850      7400
- 3851              	.LASF67:
- 3852 0534 52414D32 		.ascii	"RAM2FILTER2_Chan\000"
- 3852      46494C54 
- 3852      4552325F 
- 3852      4368616E 
- 3852      00
- 3853              	.LASF72:
- 3854 0545 50574D32 		.ascii	"PWM2_Start\000"
- 3854      5F537461 
- 3854      727400
- 3855              	.LASF55:
- 3856 0550 53484946 		.ascii	"SHIFT2FILTER2_TD\000"
- 3856      54324649 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 80
-
-
- 3856      4C544552 
- 3856      325F5444 
- 3856      00
- 3857              	.LASF59:
- 3858 0561 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 3858      52784275 
- 3858      66666572 
- 3858      00
- 3859              	.LASF50:
- 3860 056e 444D415F 		.ascii	"DMA_SHIFT2FILTER1_config\000"
- 3860      53484946 
- 3860      54324649 
- 3860      4C544552 
- 3860      315F636F 
- 3861              	.LASF38:
- 3862 0587 444D415F 		.ascii	"DMA_FILTER2RAM2_config\000"
- 3862      46494C54 
- 3862      45523252 
- 3862      414D325F 
- 3862      636F6E66 
- 3863              	.LASF47:
- 3864 059e 444D415F 		.ascii	"DMA_SAR2SHIFT2_config\000"
- 3864      53415232 
- 3864      53484946 
- 3864      54325F63 
- 3864      6F6E6669 
- 3865              	.LASF56:
- 3866 05b4 73746172 		.ascii	"start_DMAs\000"
- 3866      745F444D 
- 3866      417300
- 3867              	.LASF88:
- 3868 05bf 6973725F 		.ascii	"isr_filter_ready1_StartEx\000"
- 3868      66696C74 
- 3868      65725F72 
- 3868      65616479 
- 3868      315F5374 
- 3869              	.LASF9:
- 3870 05d9 5F5F696E 		.ascii	"__int32_t\000"
- 3870      7433325F 
- 3870      7400
- 3871              	.LASF105:
- 3872 05e3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 3872      4320342E 
- 3872      392E3320 
- 3872      32303135 
- 3872      30333033 
- 3873 0616 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 3873      20726576 
- 3873      6973696F 
- 3873      6E203232 
- 3873      31323230 
- 3874 0649 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 3874      66756E63 
- 3874      74696F6E 
- 3874      2D736563 
- 3874      74696F6E 
- 3875              	.LASF84:
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 81
-
-
- 3876 0671 46696C74 		.ascii	"Filter_Start\000"
- 3876      65725F53 
- 3876      74617274 
- 3876      00
- 3877              	.LASF99:
- 3878 067e 46494C54 		.ascii	"FILTER2RAM2_DmaInitialize\000"
- 3878      45523252 
- 3878      414D325F 
- 3878      446D6149 
- 3878      6E697469 
- 3879              	.LASF78:
- 3880 0698 56444143 		.ascii	"VDAC3_SetValue\000"
- 3880      335F5365 
- 3880      7456616C 
- 3880      756500
- 3881              	.LASF80:
- 3882 06a7 53415231 		.ascii	"SAR1_Start\000"
- 3882      5F537461 
- 3882      727400
- 3883              	.LASF21:
- 3884 06b2 73697A65 		.ascii	"sizetype\000"
- 3884      74797065 
- 3884      00
- 3885              	.LASF75:
- 3886 06bb 56444143 		.ascii	"VDAC3_Start\000"
- 3886      335F5374 
- 3886      61727400 
- 3887              	.LASF48:
- 3888 06c7 53415232 		.ascii	"SAR2SHIFT2_Chan\000"
- 3888      53484946 
- 3888      54325F43 
- 3888      68616E00 
- 3889              	.LASF60:
- 3890 06d7 69326362 		.ascii	"i2cbuf\000"
- 3890      756600
- 3891              	.LASF39:
- 3892 06de 46494C54 		.ascii	"FILTER2RAM2_Chan\000"
- 3892      45523252 
- 3892      414D325F 
- 3892      4368616E 
- 3892      00
- 3893              	.LASF46:
- 3894 06ef 53415232 		.ascii	"SAR2SHIFT1_TD\000"
- 3894      53484946 
- 3894      54315F54 
- 3894      4400
- 3895              	.LASF66:
- 3896 06fd 52414D32 		.ascii	"RAM2FILTER1_Chan\000"
- 3896      46494C54 
- 3896      4552315F 
- 3896      4368616E 
- 3896      00
- 3897              	.LASF69:
- 3898 070e 4932435F 		.ascii	"I2C_SetBuffer1\000"
- 3898      53657442 
- 3898      75666665 
- 3898      723100
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccTybGgx.s 			page 82
-
-
- 3899              	.LASF31:
- 3900 071d 53415232 		.ascii	"SAR2FILTER1_Chan\000"
- 3900      46494C54 
- 3900      4552315F 
- 3900      4368616E 
- 3900      00
- 3901              	.LASF109:
- 3902 072e 43794465 		.ascii	"CyDelay\000"
- 3902      6C617900 
- 3903              	.LASF85:
- 3904 0736 46696C74 		.ascii	"Filter_SetDalign\000"
- 3904      65725F53 
- 3904      65744461 
- 3904      6C69676E 
- 3904      00
- 3905              	.LASF70:
- 3906 0747 4932435F 		.ascii	"I2C_Start\000"
- 3906      53746172 
- 3906      7400
- 3907              	.LASF33:
- 3908 0751 53415232 		.ascii	"SAR2FILTER1_TD\000"
- 3908      46494C54 
- 3908      4552315F 
- 3908      544400
- 3909              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  20:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  36              		.loc 1 20 0
+  37              	@ 20 ".\main.c" 1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 2
+
+
+  38 0002 62B6     		CPSIE   i
+  39              	@ 0 "" 2
+  21:.\main.c      ****     start_resources();
+  40              		.loc 1 21 0
+  41              		.thumb
+  42 0004 FFF7FEFF 		bl	start_resources
+  43              	.LVL0:
+  22:.\main.c      ****     start_DMAs();
+  44              		.loc 1 22 0
+  45 0008 FFF7FEFF 		bl	start_DMAs
+  46              	.LVL1:
+  23:.\main.c      ****     start_interrupts();
+  47              		.loc 1 23 0
+  48 000c FFF7FEFF 		bl	start_interrupts
+  49              	.LVL2:
+  50              	.L2:
+  24:.\main.c      ****     
+  25:.\main.c      ****     for(;;)
+  26:.\main.c      ****     {
+  27:.\main.c      **** //        i2cbuf[0] = filtermem1[0] >> 8;
+  28:.\main.c      **** //        i2cbuf[1] = filtermem1[0];
+  29:.\main.c      **** //        i2cbuf[2] = filtermem2[0] >> 8;
+  30:.\main.c      **** //        i2cbuf[3] = filtermem2[0];
+  31:.\main.c      **** 
+  32:.\main.c      ****         //VDAC1_SetValue(SPIS_ReadRxData());
+  33:.\main.c      ****         //VDAC4_SetValue(SPIS_ReadRxData());
+  34:.\main.c      ****         //SPIS_ClearRxBuffer();
+  35:.\main.c      ****         
+  36:.\main.c      ****         CyDelay(1);
+  51              		.loc 1 36 0 discriminator 1
+  52 0010 0120     		movs	r0, #1
+  53 0012 FFF7FEFF 		bl	CyDelay
+  54              	.LVL3:
+  37:.\main.c      ****     }
+  55              		.loc 1 37 0 discriminator 1
+  56 0016 FBE7     		b	.L2
+  57              		.cfi_endproc
+  58              	.LFE63:
+  59              		.size	main, .-main
+  60              		.text
+  61              	.Letext0:
+  62              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  63              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  64              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  65              		.file 5 "./resources.h"
+  66              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
+  67              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+  68              		.section	.debug_info,"",%progbits
+  69              	.Ldebug_info0:
+  70 0000 36010000 		.4byte	0x136
+  71 0004 0400     		.2byte	0x4
+  72 0006 00000000 		.4byte	.Ldebug_abbrev0
+  73 000a 04       		.byte	0x4
+  74 000b 01       		.uleb128 0x1
+  75 000c FB000000 		.4byte	.LASF21
+  76 0010 01       		.byte	0x1
+  77 0011 94000000 		.4byte	.LASF22
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 3
+
+
+  78 0015 37000000 		.4byte	.LASF23
+  79 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  80 001d 00000000 		.4byte	0
+  81 0021 00000000 		.4byte	.Ldebug_line0
+  82 0025 02       		.uleb128 0x2
+  83 0026 01       		.byte	0x1
+  84 0027 06       		.byte	0x6
+  85 0028 A1010000 		.4byte	.LASF0
+  86 002c 02       		.uleb128 0x2
+  87 002d 01       		.byte	0x1
+  88 002e 08       		.byte	0x8
+  89 002f D8000000 		.4byte	.LASF1
+  90 0033 02       		.uleb128 0x2
+  91 0034 02       		.byte	0x2
+  92 0035 05       		.byte	0x5
+  93 0036 C9010000 		.4byte	.LASF2
+  94 003a 02       		.uleb128 0x2
+  95 003b 02       		.byte	0x2
+  96 003c 07       		.byte	0x7
+  97 003d B4000000 		.4byte	.LASF3
+  98 0041 03       		.uleb128 0x3
+  99 0042 B9010000 		.4byte	.LASF9
+ 100 0046 02       		.byte	0x2
+ 101 0047 3F       		.byte	0x3f
+ 102 0048 4C000000 		.4byte	0x4c
+ 103 004c 02       		.uleb128 0x2
+ 104 004d 04       		.byte	0x4
+ 105 004e 05       		.byte	0x5
+ 106 004f EB000000 		.4byte	.LASF4
+ 107 0053 02       		.uleb128 0x2
+ 108 0054 04       		.byte	0x4
+ 109 0055 07       		.byte	0x7
+ 110 0056 82000000 		.4byte	.LASF5
+ 111 005a 02       		.uleb128 0x2
+ 112 005b 08       		.byte	0x8
+ 113 005c 05       		.byte	0x5
+ 114 005d 00000000 		.4byte	.LASF6
+ 115 0061 02       		.uleb128 0x2
+ 116 0062 08       		.byte	0x8
+ 117 0063 07       		.byte	0x7
+ 118 0064 9D000000 		.4byte	.LASF7
+ 119 0068 04       		.uleb128 0x4
+ 120 0069 04       		.byte	0x4
+ 121 006a 05       		.byte	0x5
+ 122 006b 696E7400 		.ascii	"int\000"
+ 123 006f 02       		.uleb128 0x2
+ 124 0070 04       		.byte	0x4
+ 125 0071 07       		.byte	0x7
+ 126 0072 15000000 		.4byte	.LASF8
+ 127 0076 03       		.uleb128 0x3
+ 128 0077 D3010000 		.4byte	.LASF10
+ 129 007b 03       		.byte	0x3
+ 130 007c 2C       		.byte	0x2c
+ 131 007d 41000000 		.4byte	0x41
+ 132 0081 05       		.uleb128 0x5
+ 133 0082 0E000000 		.4byte	.LASF11
+ 134 0086 04       		.byte	0x4
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 4
+
+
+ 135 0087 9401     		.2byte	0x194
+ 136 0089 53000000 		.4byte	0x53
+ 137 008d 02       		.uleb128 0x2
+ 138 008e 04       		.byte	0x4
+ 139 008f 04       		.byte	0x4
+ 140 0090 C3010000 		.4byte	.LASF12
+ 141 0094 02       		.uleb128 0x2
+ 142 0095 08       		.byte	0x8
+ 143 0096 04       		.byte	0x4
+ 144 0097 F4000000 		.4byte	.LASF13
+ 145 009b 02       		.uleb128 0x2
+ 146 009c 01       		.byte	0x1
+ 147 009d 08       		.byte	0x8
+ 148 009e E6000000 		.4byte	.LASF14
+ 149 00a2 02       		.uleb128 0x2
+ 150 00a3 04       		.byte	0x4
+ 151 00a4 07       		.byte	0x7
+ 152 00a5 DB010000 		.4byte	.LASF15
+ 153 00a9 02       		.uleb128 0x2
+ 154 00aa 08       		.byte	0x8
+ 155 00ab 04       		.byte	0x4
+ 156 00ac AD010000 		.4byte	.LASF16
+ 157 00b0 06       		.uleb128 0x6
+ 158 00b1 32000000 		.4byte	.LASF24
+ 159 00b5 01       		.byte	0x1
+ 160 00b6 12       		.byte	0x12
+ 161 00b7 68000000 		.4byte	0x68
+ 162 00bb 00000000 		.4byte	.LFB63
+ 163 00bf 18000000 		.4byte	.LFE63-.LFB63
+ 164 00c3 01       		.uleb128 0x1
+ 165 00c4 9C       		.byte	0x9c
+ 166 00c5 F4000000 		.4byte	0xf4
+ 167 00c9 07       		.uleb128 0x7
+ 168 00ca 08000000 		.4byte	.LVL0
+ 169 00ce 05010000 		.4byte	0x105
+ 170 00d2 07       		.uleb128 0x7
+ 171 00d3 0C000000 		.4byte	.LVL1
+ 172 00d7 12010000 		.4byte	0x112
+ 173 00db 07       		.uleb128 0x7
+ 174 00dc 10000000 		.4byte	.LVL2
+ 175 00e0 1F010000 		.4byte	0x11f
+ 176 00e4 08       		.uleb128 0x8
+ 177 00e5 16000000 		.4byte	.LVL3
+ 178 00e9 2C010000 		.4byte	0x12c
+ 179 00ed 09       		.uleb128 0x9
+ 180 00ee 01       		.uleb128 0x1
+ 181 00ef 50       		.byte	0x50
+ 182 00f0 01       		.uleb128 0x1
+ 183 00f1 31       		.byte	0x31
+ 184 00f2 00       		.byte	0
+ 185 00f3 00       		.byte	0
+ 186 00f4 0A       		.uleb128 0xa
+ 187 00f5 94010000 		.4byte	.LASF25
+ 188 00f9 07       		.byte	0x7
+ 189 00fa 9606     		.2byte	0x696
+ 190 00fc 00010000 		.4byte	0x100
+ 191 0100 0B       		.uleb128 0xb
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 5
+
+
+ 192 0101 76000000 		.4byte	0x76
+ 193 0105 0C       		.uleb128 0xc
+ 194 0106 22000000 		.4byte	.LASF17
+ 195 010a 05       		.byte	0x5
+ 196 010b 12       		.byte	0x12
+ 197 010c 12010000 		.4byte	0x112
+ 198 0110 0D       		.uleb128 0xd
+ 199 0111 00       		.byte	0
+ 200 0112 0C       		.uleb128 0xc
+ 201 0113 89010000 		.4byte	.LASF18
+ 202 0117 05       		.byte	0x5
+ 203 0118 2E       		.byte	0x2e
+ 204 0119 1F010000 		.4byte	0x11f
+ 205 011d 0D       		.uleb128 0xd
+ 206 011e 00       		.byte	0
+ 207 011f 0C       		.uleb128 0xc
+ 208 0120 C7000000 		.4byte	.LASF19
+ 209 0124 05       		.byte	0x5
+ 210 0125 1A       		.byte	0x1a
+ 211 0126 2C010000 		.4byte	0x12c
+ 212 012a 0D       		.uleb128 0xd
+ 213 012b 00       		.byte	0
+ 214 012c 0E       		.uleb128 0xe
+ 215 012d 7A000000 		.4byte	.LASF20
+ 216 0131 06       		.byte	0x6
+ 217 0132 76       		.byte	0x76
+ 218 0133 0F       		.uleb128 0xf
+ 219 0134 81000000 		.4byte	0x81
+ 220 0138 00       		.byte	0
+ 221 0139 00       		.byte	0
+ 222              		.section	.debug_abbrev,"",%progbits
+ 223              	.Ldebug_abbrev0:
+ 224 0000 01       		.uleb128 0x1
+ 225 0001 11       		.uleb128 0x11
+ 226 0002 01       		.byte	0x1
+ 227 0003 25       		.uleb128 0x25
+ 228 0004 0E       		.uleb128 0xe
+ 229 0005 13       		.uleb128 0x13
+ 230 0006 0B       		.uleb128 0xb
+ 231 0007 03       		.uleb128 0x3
+ 232 0008 0E       		.uleb128 0xe
+ 233 0009 1B       		.uleb128 0x1b
+ 234 000a 0E       		.uleb128 0xe
+ 235 000b 55       		.uleb128 0x55
+ 236 000c 17       		.uleb128 0x17
+ 237 000d 11       		.uleb128 0x11
+ 238 000e 01       		.uleb128 0x1
+ 239 000f 10       		.uleb128 0x10
+ 240 0010 17       		.uleb128 0x17
+ 241 0011 00       		.byte	0
+ 242 0012 00       		.byte	0
+ 243 0013 02       		.uleb128 0x2
+ 244 0014 24       		.uleb128 0x24
+ 245 0015 00       		.byte	0
+ 246 0016 0B       		.uleb128 0xb
+ 247 0017 0B       		.uleb128 0xb
+ 248 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 6
+
+
+ 249 0019 0B       		.uleb128 0xb
+ 250 001a 03       		.uleb128 0x3
+ 251 001b 0E       		.uleb128 0xe
+ 252 001c 00       		.byte	0
+ 253 001d 00       		.byte	0
+ 254 001e 03       		.uleb128 0x3
+ 255 001f 16       		.uleb128 0x16
+ 256 0020 00       		.byte	0
+ 257 0021 03       		.uleb128 0x3
+ 258 0022 0E       		.uleb128 0xe
+ 259 0023 3A       		.uleb128 0x3a
+ 260 0024 0B       		.uleb128 0xb
+ 261 0025 3B       		.uleb128 0x3b
+ 262 0026 0B       		.uleb128 0xb
+ 263 0027 49       		.uleb128 0x49
+ 264 0028 13       		.uleb128 0x13
+ 265 0029 00       		.byte	0
+ 266 002a 00       		.byte	0
+ 267 002b 04       		.uleb128 0x4
+ 268 002c 24       		.uleb128 0x24
+ 269 002d 00       		.byte	0
+ 270 002e 0B       		.uleb128 0xb
+ 271 002f 0B       		.uleb128 0xb
+ 272 0030 3E       		.uleb128 0x3e
+ 273 0031 0B       		.uleb128 0xb
+ 274 0032 03       		.uleb128 0x3
+ 275 0033 08       		.uleb128 0x8
+ 276 0034 00       		.byte	0
+ 277 0035 00       		.byte	0
+ 278 0036 05       		.uleb128 0x5
+ 279 0037 16       		.uleb128 0x16
+ 280 0038 00       		.byte	0
+ 281 0039 03       		.uleb128 0x3
+ 282 003a 0E       		.uleb128 0xe
+ 283 003b 3A       		.uleb128 0x3a
+ 284 003c 0B       		.uleb128 0xb
+ 285 003d 3B       		.uleb128 0x3b
+ 286 003e 05       		.uleb128 0x5
+ 287 003f 49       		.uleb128 0x49
+ 288 0040 13       		.uleb128 0x13
+ 289 0041 00       		.byte	0
+ 290 0042 00       		.byte	0
+ 291 0043 06       		.uleb128 0x6
+ 292 0044 2E       		.uleb128 0x2e
+ 293 0045 01       		.byte	0x1
+ 294 0046 3F       		.uleb128 0x3f
+ 295 0047 19       		.uleb128 0x19
+ 296 0048 03       		.uleb128 0x3
+ 297 0049 0E       		.uleb128 0xe
+ 298 004a 3A       		.uleb128 0x3a
+ 299 004b 0B       		.uleb128 0xb
+ 300 004c 3B       		.uleb128 0x3b
+ 301 004d 0B       		.uleb128 0xb
+ 302 004e 49       		.uleb128 0x49
+ 303 004f 13       		.uleb128 0x13
+ 304 0050 11       		.uleb128 0x11
+ 305 0051 01       		.uleb128 0x1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 7
+
+
+ 306 0052 12       		.uleb128 0x12
+ 307 0053 06       		.uleb128 0x6
+ 308 0054 40       		.uleb128 0x40
+ 309 0055 18       		.uleb128 0x18
+ 310 0056 9742     		.uleb128 0x2117
+ 311 0058 19       		.uleb128 0x19
+ 312 0059 01       		.uleb128 0x1
+ 313 005a 13       		.uleb128 0x13
+ 314 005b 00       		.byte	0
+ 315 005c 00       		.byte	0
+ 316 005d 07       		.uleb128 0x7
+ 317 005e 898201   		.uleb128 0x4109
+ 318 0061 00       		.byte	0
+ 319 0062 11       		.uleb128 0x11
+ 320 0063 01       		.uleb128 0x1
+ 321 0064 31       		.uleb128 0x31
+ 322 0065 13       		.uleb128 0x13
+ 323 0066 00       		.byte	0
+ 324 0067 00       		.byte	0
+ 325 0068 08       		.uleb128 0x8
+ 326 0069 898201   		.uleb128 0x4109
+ 327 006c 01       		.byte	0x1
+ 328 006d 11       		.uleb128 0x11
+ 329 006e 01       		.uleb128 0x1
+ 330 006f 31       		.uleb128 0x31
+ 331 0070 13       		.uleb128 0x13
+ 332 0071 00       		.byte	0
+ 333 0072 00       		.byte	0
+ 334 0073 09       		.uleb128 0x9
+ 335 0074 8A8201   		.uleb128 0x410a
+ 336 0077 00       		.byte	0
+ 337 0078 02       		.uleb128 0x2
+ 338 0079 18       		.uleb128 0x18
+ 339 007a 9142     		.uleb128 0x2111
+ 340 007c 18       		.uleb128 0x18
+ 341 007d 00       		.byte	0
+ 342 007e 00       		.byte	0
+ 343 007f 0A       		.uleb128 0xa
+ 344 0080 34       		.uleb128 0x34
+ 345 0081 00       		.byte	0
+ 346 0082 03       		.uleb128 0x3
+ 347 0083 0E       		.uleb128 0xe
+ 348 0084 3A       		.uleb128 0x3a
+ 349 0085 0B       		.uleb128 0xb
+ 350 0086 3B       		.uleb128 0x3b
+ 351 0087 05       		.uleb128 0x5
+ 352 0088 49       		.uleb128 0x49
+ 353 0089 13       		.uleb128 0x13
+ 354 008a 3F       		.uleb128 0x3f
+ 355 008b 19       		.uleb128 0x19
+ 356 008c 3C       		.uleb128 0x3c
+ 357 008d 19       		.uleb128 0x19
+ 358 008e 00       		.byte	0
+ 359 008f 00       		.byte	0
+ 360 0090 0B       		.uleb128 0xb
+ 361 0091 35       		.uleb128 0x35
+ 362 0092 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 8
+
+
+ 363 0093 49       		.uleb128 0x49
+ 364 0094 13       		.uleb128 0x13
+ 365 0095 00       		.byte	0
+ 366 0096 00       		.byte	0
+ 367 0097 0C       		.uleb128 0xc
+ 368 0098 2E       		.uleb128 0x2e
+ 369 0099 01       		.byte	0x1
+ 370 009a 3F       		.uleb128 0x3f
+ 371 009b 19       		.uleb128 0x19
+ 372 009c 03       		.uleb128 0x3
+ 373 009d 0E       		.uleb128 0xe
+ 374 009e 3A       		.uleb128 0x3a
+ 375 009f 0B       		.uleb128 0xb
+ 376 00a0 3B       		.uleb128 0x3b
+ 377 00a1 0B       		.uleb128 0xb
+ 378 00a2 3C       		.uleb128 0x3c
+ 379 00a3 19       		.uleb128 0x19
+ 380 00a4 01       		.uleb128 0x1
+ 381 00a5 13       		.uleb128 0x13
+ 382 00a6 00       		.byte	0
+ 383 00a7 00       		.byte	0
+ 384 00a8 0D       		.uleb128 0xd
+ 385 00a9 18       		.uleb128 0x18
+ 386 00aa 00       		.byte	0
+ 387 00ab 00       		.byte	0
+ 388 00ac 00       		.byte	0
+ 389 00ad 0E       		.uleb128 0xe
+ 390 00ae 2E       		.uleb128 0x2e
+ 391 00af 01       		.byte	0x1
+ 392 00b0 3F       		.uleb128 0x3f
+ 393 00b1 19       		.uleb128 0x19
+ 394 00b2 03       		.uleb128 0x3
+ 395 00b3 0E       		.uleb128 0xe
+ 396 00b4 3A       		.uleb128 0x3a
+ 397 00b5 0B       		.uleb128 0xb
+ 398 00b6 3B       		.uleb128 0x3b
+ 399 00b7 0B       		.uleb128 0xb
+ 400 00b8 27       		.uleb128 0x27
+ 401 00b9 19       		.uleb128 0x19
+ 402 00ba 3C       		.uleb128 0x3c
+ 403 00bb 19       		.uleb128 0x19
+ 404 00bc 00       		.byte	0
+ 405 00bd 00       		.byte	0
+ 406 00be 0F       		.uleb128 0xf
+ 407 00bf 05       		.uleb128 0x5
+ 408 00c0 00       		.byte	0
+ 409 00c1 49       		.uleb128 0x49
+ 410 00c2 13       		.uleb128 0x13
+ 411 00c3 00       		.byte	0
+ 412 00c4 00       		.byte	0
+ 413 00c5 00       		.byte	0
+ 414              		.section	.debug_aranges,"",%progbits
+ 415 0000 1C000000 		.4byte	0x1c
+ 416 0004 0200     		.2byte	0x2
+ 417 0006 00000000 		.4byte	.Ldebug_info0
+ 418 000a 04       		.byte	0x4
+ 419 000b 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 9
+
+
+ 420 000c 0000     		.2byte	0
+ 421 000e 0000     		.2byte	0
+ 422 0010 00000000 		.4byte	.LFB63
+ 423 0014 18000000 		.4byte	.LFE63-.LFB63
+ 424 0018 00000000 		.4byte	0
+ 425 001c 00000000 		.4byte	0
+ 426              		.section	.debug_ranges,"",%progbits
+ 427              	.Ldebug_ranges0:
+ 428 0000 00000000 		.4byte	.LFB63
+ 429 0004 18000000 		.4byte	.LFE63
+ 430 0008 00000000 		.4byte	0
+ 431 000c 00000000 		.4byte	0
+ 432              		.section	.debug_line,"",%progbits
+ 433              	.Ldebug_line0:
+ 434 0000 8A010000 		.section	.debug_str,"MS",%progbits,1
+ 434      02006501 
+ 434      00000201 
+ 434      FB0E0D00 
+ 434      01010101 
+ 435              	.LASF6:
+ 436 0000 6C6F6E67 		.ascii	"long long int\000"
+ 436      206C6F6E 
+ 436      6720696E 
+ 436      7400
+ 437              	.LASF11:
+ 438 000e 75696E74 		.ascii	"uint32\000"
+ 438      333200
+ 439              	.LASF8:
+ 440 0015 756E7369 		.ascii	"unsigned int\000"
+ 440      676E6564 
+ 440      20696E74 
+ 440      00
+ 441              	.LASF17:
+ 442 0022 73746172 		.ascii	"start_resources\000"
+ 442      745F7265 
+ 442      736F7572 
+ 442      63657300 
+ 443              	.LASF24:
+ 444 0032 6D61696E 		.ascii	"main\000"
+ 444      00
+ 445              	.LASF23:
+ 446 0037 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 446      73657273 
+ 446      5C637275 
+ 446      69736572 
+ 446      5C446F63 
+ 447 0065 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
+ 447      6C74726F 
+ 447      6E204D61 
+ 447      696E2E63 
+ 447      7964736E 
+ 448              	.LASF20:
+ 449 007a 43794465 		.ascii	"CyDelay\000"
+ 449      6C617900 
+ 450              	.LASF5:
+ 451 0082 6C6F6E67 		.ascii	"long unsigned int\000"
+ 451      20756E73 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 10
+
+
+ 451      69676E65 
+ 451      6420696E 
+ 451      7400
+ 452              	.LASF22:
+ 453 0094 2E5C6D61 		.ascii	".\\main.c\000"
+ 453      696E2E63 
+ 453      00
+ 454              	.LASF7:
+ 455 009d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 455      206C6F6E 
+ 455      6720756E 
+ 455      7369676E 
+ 455      65642069 
+ 456              	.LASF3:
+ 457 00b4 73686F72 		.ascii	"short unsigned int\000"
+ 457      7420756E 
+ 457      7369676E 
+ 457      65642069 
+ 457      6E7400
+ 458              	.LASF19:
+ 459 00c7 73746172 		.ascii	"start_interrupts\000"
+ 459      745F696E 
+ 459      74657272 
+ 459      75707473 
+ 459      00
+ 460              	.LASF1:
+ 461 00d8 756E7369 		.ascii	"unsigned char\000"
+ 461      676E6564 
+ 461      20636861 
+ 461      7200
+ 462              	.LASF14:
+ 463 00e6 63686172 		.ascii	"char\000"
+ 463      00
+ 464              	.LASF4:
+ 465 00eb 6C6F6E67 		.ascii	"long int\000"
+ 465      20696E74 
+ 465      00
+ 466              	.LASF13:
+ 467 00f4 646F7562 		.ascii	"double\000"
+ 467      6C6500
+ 468              	.LASF21:
+ 469 00fb 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 469      4320342E 
+ 469      392E3320 
+ 469      32303135 
+ 469      30333033 
+ 470 012e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 470      20726576 
+ 470      6973696F 
+ 470      6E203232 
+ 470      31323230 
+ 471 0161 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 471      66756E63 
+ 471      74696F6E 
+ 471      2D736563 
+ 471      74696F6E 
+ 472              	.LASF18:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 11
+
+
+ 473 0189 73746172 		.ascii	"start_DMAs\000"
+ 473      745F444D 
+ 473      417300
+ 474              	.LASF25:
+ 475 0194 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 475      52784275 
+ 475      66666572 
+ 475      00
+ 476              	.LASF0:
+ 477 01a1 7369676E 		.ascii	"signed char\000"
+ 477      65642063 
+ 477      68617200 
+ 478              	.LASF16:
+ 479 01ad 6C6F6E67 		.ascii	"long double\000"
+ 479      20646F75 
+ 479      626C6500 
+ 480              	.LASF9:
+ 481 01b9 5F5F696E 		.ascii	"__int32_t\000"
+ 481      7433325F 
+ 481      7400
+ 482              	.LASF12:
+ 483 01c3 666C6F61 		.ascii	"float\000"
+ 483      7400
+ 484              	.LASF2:
+ 485 01c9 73686F72 		.ascii	"short int\000"
+ 485      7420696E 
+ 485      7400
+ 486              	.LASF10:
+ 487 01d3 696E7433 		.ascii	"int32_t\000"
+ 487      325F7400 
+ 488              	.LASF15:
+ 489 01db 73697A65 		.ascii	"sizetype\000"
+ 489      74797065 
+ 489      00
+ 490              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
