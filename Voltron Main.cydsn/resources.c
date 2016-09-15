@@ -10,21 +10,22 @@
  * ========================================
 */
 
+
 #include <resources.h>
 
-//I2C
-uint8 i2cbuf[4] = {0,0,0,0};
+uint8 i2cbuf[4];
 
 //SPI
-uint32 spimem[1] = {0};
+uint32 spimem[1];
 
 //SAR variables
-uint32 sarmem1[1] = {0};
-uint32 sarmem2[1] = {0};
+uint32 sarmem1[1];
+uint32 sarmem2[1];
 
 //4^N samples for decimation
 uint16 filtermem1[DECIMATION];
 uint16 filtermem2[DECIMATION];
+
 
 void start_resources()
 {
@@ -63,33 +64,6 @@ void start_resources()
     SPIS_Start();
 }
 
-CY_ISR(filter_ready1_handler) 
-{
-    i2cbuf[0] = filtermem1[DECIMATION - 1] >> 8;
-    i2cbuf[1] = filtermem1[DECIMATION - 1];
-    VDAC2_SetValue(filtermem1[DECIMATION - 1] >> 6);
-}
-
-CY_ISR(filter_ready2_handler) 
-{
-    i2cbuf[2] = filtermem2[DECIMATION - 1] >> 8;
-    i2cbuf[3] = filtermem2[DECIMATION - 1];
-    VDAC4_SetValue(filtermem2[DECIMATION - 1] >> 6);
-}
-
-CY_ISR(spi_rx_handler)
-{
-    VDAC1_SetValue(spimem[0]);
-}
-
-void start_interrupts()
-{
-    isr_filter_ready1_StartEx(filter_ready1_handler);
-    isr_filter_ready2_StartEx(filter_ready2_handler);
-    isr_spi_rx_StartEx(spi_rx_handler);
-    
-    SPIS_EnableRxInt();
-}
 
 void DMA_SAR2FILTER1_config()
 {
@@ -311,3 +285,5 @@ void start_DMAs()
     DMA_SPI2RAM_config();
 
 }
+
+

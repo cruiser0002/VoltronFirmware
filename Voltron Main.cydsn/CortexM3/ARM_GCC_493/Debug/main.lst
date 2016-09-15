@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 1
 
 
    1              		.syntax unified
@@ -18,13 +18,13 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.main,"ax",%progbits
+  18              		.section	.text.filter_ready1_handler,"ax",%progbits
   19              		.align	2
-  20              		.global	main
+  20              		.global	filter_ready1_handler
   21              		.thumb
   22              		.thumb_func
-  23              		.type	main, %function
-  24              	main:
+  23              		.type	filter_ready1_handler, %function
+  24              	filter_ready1_handler:
   25              	.LFB63:
   26              		.file 1 ".\\main.c"
    1:.\main.c      **** /* ========================================
@@ -44,595 +44,1813 @@ ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 1
   15:.\main.c      **** #include <resources.h>
   16:.\main.c      **** 
   17:.\main.c      **** 
-  18:.\main.c      **** int main()
-  19:.\main.c      **** {
-  27              		.loc 1 19 0
+  18:.\main.c      **** int filter1_ready = 0;
+  19:.\main.c      **** int filter2_ready = 0;
+  20:.\main.c      **** 
+  21:.\main.c      **** //PID variables
+  22:.\main.c      **** unsigned long lastTime;
+  23:.\main.c      **** int Input, Output, Setpoint;
+  24:.\main.c      **** int errSum, lastErr;
+  25:.\main.c      **** int kp, ki, kd;
+  26:.\main.c      **** int timeChange = 25;
+  27:.\main.c      **** 
+  28:.\main.c      **** 
+  29:.\main.c      **** CY_ISR(filter_ready1_handler) 
+  30:.\main.c      **** {
+  27              		.loc 1 30 0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 2
+
+
   28              		.cfi_startproc
-  29              		@ Volatile: function does not return.
-  30              		@ args = 0, pretend = 0, frame = 0
-  31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32 0000 08B5     		push	{r3, lr}
-  33              		.cfi_def_cfa_offset 8
-  34              		.cfi_offset 3, -8
-  35              		.cfi_offset 14, -4
-  20:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
-  36              		.loc 1 20 0
-  37              	@ 20 ".\main.c" 1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 2
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  31:.\main.c      ****     i2cbuf[0] = filtermem1[DECIMATION - 1] >> 8;
+  32              		.loc 1 31 0
+  33 0000 044B     		ldr	r3, .L2
+  34 0002 1A8E     		ldrh	r2, [r3, #48]
+  35 0004 044B     		ldr	r3, .L2+4
+  36 0006 110A     		lsrs	r1, r2, #8
+  37 0008 1970     		strb	r1, [r3]
+  32:.\main.c      ****     i2cbuf[1] = filtermem1[DECIMATION - 1];
+  38              		.loc 1 32 0
+  39 000a 5A70     		strb	r2, [r3, #1]
+  33:.\main.c      ****     //VDAC2_SetValue(filtermem1[DECIMATION - 1] >> 6);
+  34:.\main.c      ****     filter1_ready = 1;
+  40              		.loc 1 34 0
+  41 000c 0122     		movs	r2, #1
+  42 000e 034B     		ldr	r3, .L2+8
+  43 0010 1A60     		str	r2, [r3]
+  44 0012 7047     		bx	lr
+  45              	.L3:
+  46              		.align	2
+  47              	.L2:
+  48 0014 00000000 		.word	filtermem1
+  49 0018 00000000 		.word	i2cbuf
+  50 001c 00000000 		.word	.LANCHOR0
+  51              		.cfi_endproc
+  52              	.LFE63:
+  53              		.size	filter_ready1_handler, .-filter_ready1_handler
+  54              		.section	.text.filter_ready2_handler,"ax",%progbits
+  55              		.align	2
+  56              		.global	filter_ready2_handler
+  57              		.thumb
+  58              		.thumb_func
+  59              		.type	filter_ready2_handler, %function
+  60              	filter_ready2_handler:
+  61              	.LFB64:
+  35:.\main.c      **** }
+  36:.\main.c      **** 
+  37:.\main.c      **** CY_ISR(filter_ready2_handler) 
+  38:.\main.c      **** {
+  62              		.loc 1 38 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  39:.\main.c      ****     i2cbuf[2] = filtermem2[DECIMATION - 1] >> 8;
+  67              		.loc 1 39 0
+  68 0000 044B     		ldr	r3, .L5
+  69 0002 1A8E     		ldrh	r2, [r3, #48]
+  70 0004 044B     		ldr	r3, .L5+4
+  71 0006 110A     		lsrs	r1, r2, #8
+  72 0008 9970     		strb	r1, [r3, #2]
+  40:.\main.c      ****     i2cbuf[3] = filtermem2[DECIMATION - 1];
+  73              		.loc 1 40 0
+  74 000a DA70     		strb	r2, [r3, #3]
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 3
 
 
-  38 0002 62B6     		CPSIE   i
-  39              	@ 0 "" 2
-  21:.\main.c      ****     start_resources();
-  40              		.loc 1 21 0
-  41              		.thumb
-  42 0004 FFF7FEFF 		bl	start_resources
-  43              	.LVL0:
-  22:.\main.c      ****     start_DMAs();
-  44              		.loc 1 22 0
-  45 0008 FFF7FEFF 		bl	start_DMAs
-  46              	.LVL1:
-  23:.\main.c      ****     start_interrupts();
-  47              		.loc 1 23 0
-  48 000c FFF7FEFF 		bl	start_interrupts
-  49              	.LVL2:
-  50              	.L2:
-  24:.\main.c      ****     
-  25:.\main.c      ****     for(;;)
-  26:.\main.c      ****     {
-  27:.\main.c      **** //        i2cbuf[0] = filtermem1[0] >> 8;
-  28:.\main.c      **** //        i2cbuf[1] = filtermem1[0];
-  29:.\main.c      **** //        i2cbuf[2] = filtermem2[0] >> 8;
-  30:.\main.c      **** //        i2cbuf[3] = filtermem2[0];
-  31:.\main.c      **** 
-  32:.\main.c      ****         //VDAC1_SetValue(SPIS_ReadRxData());
-  33:.\main.c      ****         //VDAC4_SetValue(SPIS_ReadRxData());
-  34:.\main.c      ****         //SPIS_ClearRxBuffer();
-  35:.\main.c      ****         
-  36:.\main.c      ****         CyDelay(1);
-  51              		.loc 1 36 0 discriminator 1
-  52 0010 0120     		movs	r0, #1
-  53 0012 FFF7FEFF 		bl	CyDelay
-  54              	.LVL3:
-  37:.\main.c      ****     }
-  55              		.loc 1 37 0 discriminator 1
-  56 0016 FBE7     		b	.L2
-  57              		.cfi_endproc
-  58              	.LFE63:
-  59              		.size	main, .-main
-  60              		.text
-  61              	.Letext0:
-  62              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
-  63              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
-  64              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
-  65              		.file 5 "./resources.h"
-  66              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
-  67              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
-  68              		.section	.debug_info,"",%progbits
-  69              	.Ldebug_info0:
-  70 0000 36010000 		.4byte	0x136
-  71 0004 0400     		.2byte	0x4
-  72 0006 00000000 		.4byte	.Ldebug_abbrev0
-  73 000a 04       		.byte	0x4
-  74 000b 01       		.uleb128 0x1
-  75 000c FB000000 		.4byte	.LASF21
-  76 0010 01       		.byte	0x1
-  77 0011 94000000 		.4byte	.LASF22
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 3
+  41:.\main.c      ****     //VDAC4_SetValue(filtermem2[DECIMATION - 1] >> 6);
+  42:.\main.c      ****     filter2_ready = 1;
+  75              		.loc 1 42 0
+  76 000c 0122     		movs	r2, #1
+  77 000e 034B     		ldr	r3, .L5+8
+  78 0010 5A60     		str	r2, [r3, #4]
+  79 0012 7047     		bx	lr
+  80              	.L6:
+  81              		.align	2
+  82              	.L5:
+  83 0014 00000000 		.word	filtermem2
+  84 0018 00000000 		.word	i2cbuf
+  85 001c 00000000 		.word	.LANCHOR0
+  86              		.cfi_endproc
+  87              	.LFE64:
+  88              		.size	filter_ready2_handler, .-filter_ready2_handler
+  89              		.section	.text.spi_rx_handler,"ax",%progbits
+  90              		.align	2
+  91              		.global	spi_rx_handler
+  92              		.thumb
+  93              		.thumb_func
+  94              		.type	spi_rx_handler, %function
+  95              	spi_rx_handler:
+  96              	.LFB65:
+  43:.\main.c      **** }
+  44:.\main.c      **** 
+  45:.\main.c      **** CY_ISR(spi_rx_handler)
+  46:.\main.c      **** {
+  97              		.loc 1 46 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101 0000 10B5     		push	{r4, lr}
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 4, -8
+ 104              		.cfi_offset 14, -4
+  47:.\main.c      ****     VDAC2_SetValue(spimem[0]);
+ 105              		.loc 1 47 0
+ 106 0002 044C     		ldr	r4, .L9
+ 107 0004 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 108 0006 FFF7FEFF 		bl	VDAC2_SetValue
+ 109              	.LVL0:
+  48:.\main.c      ****     Setpoint = spimem[0] << 6;
+ 110              		.loc 1 48 0
+ 111 000a 2368     		ldr	r3, [r4]
+ 112 000c 9B01     		lsls	r3, r3, #6
+ 113 000e 024A     		ldr	r2, .L9+4
+ 114 0010 1360     		str	r3, [r2]
+ 115 0012 10BD     		pop	{r4, pc}
+ 116              	.L10:
+ 117              		.align	2
+ 118              	.L9:
+ 119 0014 00000000 		.word	spimem
+ 120 0018 00000000 		.word	Setpoint
+ 121              		.cfi_endproc
+ 122              	.LFE65:
+ 123              		.size	spi_rx_handler, .-spi_rx_handler
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 4
 
 
-  78 0015 37000000 		.4byte	.LASF23
-  79 0019 00000000 		.4byte	.Ldebug_ranges0+0
-  80 001d 00000000 		.4byte	0
-  81 0021 00000000 		.4byte	.Ldebug_line0
-  82 0025 02       		.uleb128 0x2
-  83 0026 01       		.byte	0x1
-  84 0027 06       		.byte	0x6
-  85 0028 A1010000 		.4byte	.LASF0
-  86 002c 02       		.uleb128 0x2
-  87 002d 01       		.byte	0x1
-  88 002e 08       		.byte	0x8
-  89 002f D8000000 		.4byte	.LASF1
-  90 0033 02       		.uleb128 0x2
-  91 0034 02       		.byte	0x2
-  92 0035 05       		.byte	0x5
-  93 0036 C9010000 		.4byte	.LASF2
-  94 003a 02       		.uleb128 0x2
-  95 003b 02       		.byte	0x2
-  96 003c 07       		.byte	0x7
-  97 003d B4000000 		.4byte	.LASF3
-  98 0041 03       		.uleb128 0x3
-  99 0042 B9010000 		.4byte	.LASF9
- 100 0046 02       		.byte	0x2
- 101 0047 3F       		.byte	0x3f
- 102 0048 4C000000 		.4byte	0x4c
- 103 004c 02       		.uleb128 0x2
- 104 004d 04       		.byte	0x4
- 105 004e 05       		.byte	0x5
- 106 004f EB000000 		.4byte	.LASF4
- 107 0053 02       		.uleb128 0x2
- 108 0054 04       		.byte	0x4
- 109 0055 07       		.byte	0x7
- 110 0056 82000000 		.4byte	.LASF5
- 111 005a 02       		.uleb128 0x2
- 112 005b 08       		.byte	0x8
- 113 005c 05       		.byte	0x5
- 114 005d 00000000 		.4byte	.LASF6
- 115 0061 02       		.uleb128 0x2
- 116 0062 08       		.byte	0x8
- 117 0063 07       		.byte	0x7
- 118 0064 9D000000 		.4byte	.LASF7
- 119 0068 04       		.uleb128 0x4
- 120 0069 04       		.byte	0x4
- 121 006a 05       		.byte	0x5
- 122 006b 696E7400 		.ascii	"int\000"
- 123 006f 02       		.uleb128 0x2
- 124 0070 04       		.byte	0x4
- 125 0071 07       		.byte	0x7
- 126 0072 15000000 		.4byte	.LASF8
- 127 0076 03       		.uleb128 0x3
- 128 0077 D3010000 		.4byte	.LASF10
- 129 007b 03       		.byte	0x3
- 130 007c 2C       		.byte	0x2c
- 131 007d 41000000 		.4byte	0x41
- 132 0081 05       		.uleb128 0x5
- 133 0082 0E000000 		.4byte	.LASF11
- 134 0086 04       		.byte	0x4
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 4
+ 124              		.section	.text.Compute,"ax",%progbits
+ 125              		.align	2
+ 126              		.global	Compute
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.type	Compute, %function
+ 130              	Compute:
+ 131              	.LFB66:
+  49:.\main.c      **** }
+  50:.\main.c      **** 
+  51:.\main.c      **** void Compute()
+  52:.\main.c      **** {
+ 132              		.loc 1 52 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		@ link register save eliminated.
+ 137 0000 10B4     		push	{r4}
+ 138              		.cfi_def_cfa_offset 4
+ 139              		.cfi_offset 4, -4
+  53:.\main.c      ****     /*Compute all the working error variables*/
+  54:.\main.c      ****     int error = Setpoint - Input;
+ 140              		.loc 1 54 0
+ 141 0002 184B     		ldr	r3, .L15
+ 142 0004 1B68     		ldr	r3, [r3]
+ 143 0006 184A     		ldr	r2, .L15+4
+ 144 0008 1268     		ldr	r2, [r2]
+ 145 000a 9B1A     		subs	r3, r3, r2
+ 146              	.LVL1:
+  55:.\main.c      ****     errSum += (error * timeChange);
+ 147              		.loc 1 55 0
+ 148 000c 174A     		ldr	r2, .L15+8
+ 149 000e 1268     		ldr	r2, [r2]
+ 150 0010 1748     		ldr	r0, .L15+12
+ 151 0012 0168     		ldr	r1, [r0]
+ 152 0014 02FB0311 		mla	r1, r2, r3, r1
+ 153 0018 0160     		str	r1, [r0]
+  56:.\main.c      ****     int dErr = error - lastErr;
+ 154              		.loc 1 56 0
+ 155 001a 164A     		ldr	r2, .L15+16
+ 156 001c 1268     		ldr	r2, [r2]
+ 157 001e 9A1A     		subs	r2, r3, r2
+ 158              	.LVL2:
+  57:.\main.c      **** 
+  58:.\main.c      ****     /*Compute PID Output*/
+  59:.\main.c      ****     Output = kp * error + ki * errSum + kd * dErr;
+ 159              		.loc 1 59 0
+ 160 0020 1548     		ldr	r0, .L15+20
+ 161 0022 0468     		ldr	r4, [r0]
+ 162 0024 1548     		ldr	r0, .L15+24
+ 163 0026 0068     		ldr	r0, [r0]
+ 164 0028 00FB01F1 		mul	r1, r0, r1
+ 165 002c 04FB0313 		mla	r3, r4, r3, r1
+ 166              	.LVL3:
+ 167 0030 1349     		ldr	r1, .L15+28
+ 168 0032 0968     		ldr	r1, [r1]
+ 169 0034 01FB0233 		mla	r3, r1, r2, r3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 5
 
 
- 135 0087 9401     		.2byte	0x194
- 136 0089 53000000 		.4byte	0x53
- 137 008d 02       		.uleb128 0x2
- 138 008e 04       		.byte	0x4
- 139 008f 04       		.byte	0x4
- 140 0090 C3010000 		.4byte	.LASF12
- 141 0094 02       		.uleb128 0x2
- 142 0095 08       		.byte	0x8
- 143 0096 04       		.byte	0x4
- 144 0097 F4000000 		.4byte	.LASF13
- 145 009b 02       		.uleb128 0x2
- 146 009c 01       		.byte	0x1
- 147 009d 08       		.byte	0x8
- 148 009e E6000000 		.4byte	.LASF14
- 149 00a2 02       		.uleb128 0x2
- 150 00a3 04       		.byte	0x4
- 151 00a4 07       		.byte	0x7
- 152 00a5 DB010000 		.4byte	.LASF15
- 153 00a9 02       		.uleb128 0x2
- 154 00aa 08       		.byte	0x8
- 155 00ab 04       		.byte	0x4
- 156 00ac AD010000 		.4byte	.LASF16
- 157 00b0 06       		.uleb128 0x6
- 158 00b1 32000000 		.4byte	.LASF24
- 159 00b5 01       		.byte	0x1
- 160 00b6 12       		.byte	0x12
- 161 00b7 68000000 		.4byte	0x68
- 162 00bb 00000000 		.4byte	.LFB63
- 163 00bf 18000000 		.4byte	.LFE63-.LFB63
- 164 00c3 01       		.uleb128 0x1
- 165 00c4 9C       		.byte	0x9c
- 166 00c5 F4000000 		.4byte	0xf4
- 167 00c9 07       		.uleb128 0x7
- 168 00ca 08000000 		.4byte	.LVL0
- 169 00ce 05010000 		.4byte	0x105
- 170 00d2 07       		.uleb128 0x7
- 171 00d3 0C000000 		.4byte	.LVL1
- 172 00d7 12010000 		.4byte	0x112
- 173 00db 07       		.uleb128 0x7
- 174 00dc 10000000 		.4byte	.LVL2
- 175 00e0 1F010000 		.4byte	0x11f
- 176 00e4 08       		.uleb128 0x8
- 177 00e5 16000000 		.4byte	.LVL3
- 178 00e9 2C010000 		.4byte	0x12c
- 179 00ed 09       		.uleb128 0x9
- 180 00ee 01       		.uleb128 0x1
- 181 00ef 50       		.byte	0x50
- 182 00f0 01       		.uleb128 0x1
- 183 00f1 31       		.byte	0x31
- 184 00f2 00       		.byte	0
- 185 00f3 00       		.byte	0
- 186 00f4 0A       		.uleb128 0xa
- 187 00f5 94010000 		.4byte	.LASF25
- 188 00f9 07       		.byte	0x7
- 189 00fa 9606     		.2byte	0x696
- 190 00fc 00010000 		.4byte	0x100
- 191 0100 0B       		.uleb128 0xb
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 5
+ 170 0038 124A     		ldr	r2, .L15+32
+ 171              	.LVL4:
+ 172 003a 1360     		str	r3, [r2]
+  60:.\main.c      ****     if (Output >= 8192+1024) Output = 8192+1024;
+ 173              		.loc 1 60 0
+ 174 003c B3F5105F 		cmp	r3, #9216
+ 175 0040 03DB     		blt	.L12
+ 176              		.loc 1 60 0 is_stmt 0 discriminator 1
+ 177 0042 4FF41052 		mov	r2, #9216
+ 178 0046 0F4B     		ldr	r3, .L15+32
+ 179 0048 1A60     		str	r2, [r3]
+ 180              	.L12:
+  61:.\main.c      ****     if (Output <= 8192-1024) Output = 8192-1024;
+ 181              		.loc 1 61 0 is_stmt 1
+ 182 004a 0E4B     		ldr	r3, .L15+32
+ 183 004c 1B68     		ldr	r3, [r3]
+ 184 004e B3F5E05F 		cmp	r3, #7168
+ 185 0052 03DC     		bgt	.L11
+ 186              		.loc 1 61 0 is_stmt 0 discriminator 1
+ 187 0054 4FF4E052 		mov	r2, #7168
+ 188 0058 0A4B     		ldr	r3, .L15+32
+ 189 005a 1A60     		str	r2, [r3]
+ 190              	.L11:
+  62:.\main.c      **** }
+ 191              		.loc 1 62 0 is_stmt 1
+ 192 005c 5DF8044B 		ldr	r4, [sp], #4
+ 193              		.cfi_restore 4
+ 194              		.cfi_def_cfa_offset 0
+ 195 0060 7047     		bx	lr
+ 196              	.L16:
+ 197 0062 00BF     		.align	2
+ 198              	.L15:
+ 199 0064 00000000 		.word	Setpoint
+ 200 0068 00000000 		.word	Input
+ 201 006c 00000000 		.word	.LANCHOR1
+ 202 0070 00000000 		.word	errSum
+ 203 0074 00000000 		.word	lastErr
+ 204 0078 00000000 		.word	kp
+ 205 007c 00000000 		.word	ki
+ 206 0080 00000000 		.word	kd
+ 207 0084 00000000 		.word	Output
+ 208              		.cfi_endproc
+ 209              	.LFE66:
+ 210              		.size	Compute, .-Compute
+ 211              		.section	.text.SetTunings,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	SetTunings
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.type	SetTunings, %function
+ 217              	SetTunings:
+ 218              	.LFB67:
+  63:.\main.c      ****   
+  64:.\main.c      **** void SetTunings(int Kp, int Ki, int Kd)
+  65:.\main.c      **** {
+ 219              		.loc 1 65 0
+ 220              		.cfi_startproc
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 6
 
 
- 192 0101 76000000 		.4byte	0x76
- 193 0105 0C       		.uleb128 0xc
- 194 0106 22000000 		.4byte	.LASF17
- 195 010a 05       		.byte	0x5
- 196 010b 12       		.byte	0x12
- 197 010c 12010000 		.4byte	0x112
- 198 0110 0D       		.uleb128 0xd
- 199 0111 00       		.byte	0
- 200 0112 0C       		.uleb128 0xc
- 201 0113 89010000 		.4byte	.LASF18
- 202 0117 05       		.byte	0x5
- 203 0118 2E       		.byte	0x2e
- 204 0119 1F010000 		.4byte	0x11f
- 205 011d 0D       		.uleb128 0xd
- 206 011e 00       		.byte	0
- 207 011f 0C       		.uleb128 0xc
- 208 0120 C7000000 		.4byte	.LASF19
- 209 0124 05       		.byte	0x5
- 210 0125 1A       		.byte	0x1a
- 211 0126 2C010000 		.4byte	0x12c
- 212 012a 0D       		.uleb128 0xd
- 213 012b 00       		.byte	0
- 214 012c 0E       		.uleb128 0xe
- 215 012d 7A000000 		.4byte	.LASF20
- 216 0131 06       		.byte	0x6
- 217 0132 76       		.byte	0x76
- 218 0133 0F       		.uleb128 0xf
- 219 0134 81000000 		.4byte	0x81
- 220 0138 00       		.byte	0
- 221 0139 00       		.byte	0
- 222              		.section	.debug_abbrev,"",%progbits
- 223              	.Ldebug_abbrev0:
- 224 0000 01       		.uleb128 0x1
- 225 0001 11       		.uleb128 0x11
- 226 0002 01       		.byte	0x1
- 227 0003 25       		.uleb128 0x25
- 228 0004 0E       		.uleb128 0xe
- 229 0005 13       		.uleb128 0x13
- 230 0006 0B       		.uleb128 0xb
- 231 0007 03       		.uleb128 0x3
- 232 0008 0E       		.uleb128 0xe
- 233 0009 1B       		.uleb128 0x1b
- 234 000a 0E       		.uleb128 0xe
- 235 000b 55       		.uleb128 0x55
- 236 000c 17       		.uleb128 0x17
- 237 000d 11       		.uleb128 0x11
- 238 000e 01       		.uleb128 0x1
- 239 000f 10       		.uleb128 0x10
- 240 0010 17       		.uleb128 0x17
- 241 0011 00       		.byte	0
- 242 0012 00       		.byte	0
- 243 0013 02       		.uleb128 0x2
- 244 0014 24       		.uleb128 0x24
- 245 0015 00       		.byte	0
- 246 0016 0B       		.uleb128 0xb
- 247 0017 0B       		.uleb128 0xb
- 248 0018 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 6
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224              	.LVL5:
+  66:.\main.c      ****    kp = Kp;
+ 225              		.loc 1 66 0
+ 226 0000 034B     		ldr	r3, .L18
+ 227 0002 1860     		str	r0, [r3]
+  67:.\main.c      ****    ki = Ki;
+ 228              		.loc 1 67 0
+ 229 0004 034B     		ldr	r3, .L18+4
+ 230 0006 1960     		str	r1, [r3]
+  68:.\main.c      ****    kd = Kd;
+ 231              		.loc 1 68 0
+ 232 0008 034B     		ldr	r3, .L18+8
+ 233 000a 1A60     		str	r2, [r3]
+ 234 000c 7047     		bx	lr
+ 235              	.L19:
+ 236 000e 00BF     		.align	2
+ 237              	.L18:
+ 238 0010 00000000 		.word	kp
+ 239 0014 00000000 		.word	ki
+ 240 0018 00000000 		.word	kd
+ 241              		.cfi_endproc
+ 242              	.LFE67:
+ 243              		.size	SetTunings, .-SetTunings
+ 244              		.section	.text.start_interrupts,"ax",%progbits
+ 245              		.align	2
+ 246              		.global	start_interrupts
+ 247              		.thumb
+ 248              		.thumb_func
+ 249              		.type	start_interrupts, %function
+ 250              	start_interrupts:
+ 251              	.LFB68:
+  69:.\main.c      **** }
+  70:.\main.c      **** 
+  71:.\main.c      **** void start_interrupts()
+  72:.\main.c      **** {
+ 252              		.loc 1 72 0
+ 253              		.cfi_startproc
+ 254              		@ args = 0, pretend = 0, frame = 0
+ 255              		@ frame_needed = 0, uses_anonymous_args = 0
+ 256 0000 08B5     		push	{r3, lr}
+ 257              		.cfi_def_cfa_offset 8
+ 258              		.cfi_offset 3, -8
+ 259              		.cfi_offset 14, -4
+  73:.\main.c      ****     isr_filter_ready1_StartEx(filter_ready1_handler);
+ 260              		.loc 1 73 0
+ 261 0002 0648     		ldr	r0, .L22
+ 262 0004 FFF7FEFF 		bl	isr_filter_ready1_StartEx
+ 263              	.LVL6:
+  74:.\main.c      ****     isr_filter_ready2_StartEx(filter_ready2_handler);
+ 264              		.loc 1 74 0
+ 265 0008 0548     		ldr	r0, .L22+4
+ 266 000a FFF7FEFF 		bl	isr_filter_ready2_StartEx
+ 267              	.LVL7:
+  75:.\main.c      ****     isr_spi_rx_StartEx(spi_rx_handler);
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 7
 
 
- 249 0019 0B       		.uleb128 0xb
- 250 001a 03       		.uleb128 0x3
- 251 001b 0E       		.uleb128 0xe
- 252 001c 00       		.byte	0
- 253 001d 00       		.byte	0
- 254 001e 03       		.uleb128 0x3
- 255 001f 16       		.uleb128 0x16
- 256 0020 00       		.byte	0
- 257 0021 03       		.uleb128 0x3
- 258 0022 0E       		.uleb128 0xe
- 259 0023 3A       		.uleb128 0x3a
- 260 0024 0B       		.uleb128 0xb
- 261 0025 3B       		.uleb128 0x3b
- 262 0026 0B       		.uleb128 0xb
- 263 0027 49       		.uleb128 0x49
- 264 0028 13       		.uleb128 0x13
- 265 0029 00       		.byte	0
- 266 002a 00       		.byte	0
- 267 002b 04       		.uleb128 0x4
- 268 002c 24       		.uleb128 0x24
- 269 002d 00       		.byte	0
- 270 002e 0B       		.uleb128 0xb
- 271 002f 0B       		.uleb128 0xb
- 272 0030 3E       		.uleb128 0x3e
- 273 0031 0B       		.uleb128 0xb
- 274 0032 03       		.uleb128 0x3
- 275 0033 08       		.uleb128 0x8
- 276 0034 00       		.byte	0
- 277 0035 00       		.byte	0
- 278 0036 05       		.uleb128 0x5
- 279 0037 16       		.uleb128 0x16
- 280 0038 00       		.byte	0
- 281 0039 03       		.uleb128 0x3
- 282 003a 0E       		.uleb128 0xe
- 283 003b 3A       		.uleb128 0x3a
- 284 003c 0B       		.uleb128 0xb
- 285 003d 3B       		.uleb128 0x3b
- 286 003e 05       		.uleb128 0x5
- 287 003f 49       		.uleb128 0x49
- 288 0040 13       		.uleb128 0x13
- 289 0041 00       		.byte	0
- 290 0042 00       		.byte	0
- 291 0043 06       		.uleb128 0x6
- 292 0044 2E       		.uleb128 0x2e
- 293 0045 01       		.byte	0x1
- 294 0046 3F       		.uleb128 0x3f
- 295 0047 19       		.uleb128 0x19
- 296 0048 03       		.uleb128 0x3
- 297 0049 0E       		.uleb128 0xe
- 298 004a 3A       		.uleb128 0x3a
- 299 004b 0B       		.uleb128 0xb
- 300 004c 3B       		.uleb128 0x3b
- 301 004d 0B       		.uleb128 0xb
- 302 004e 49       		.uleb128 0x49
- 303 004f 13       		.uleb128 0x13
- 304 0050 11       		.uleb128 0x11
- 305 0051 01       		.uleb128 0x1
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 7
+ 268              		.loc 1 75 0
+ 269 000e 0548     		ldr	r0, .L22+8
+ 270 0010 FFF7FEFF 		bl	isr_spi_rx_StartEx
+ 271              	.LVL8:
+  76:.\main.c      ****     
+  77:.\main.c      ****     SPIS_EnableRxInt();
+ 272              		.loc 1 77 0
+ 273 0014 FFF7FEFF 		bl	SPIS_EnableRxInt
+ 274              	.LVL9:
+ 275 0018 08BD     		pop	{r3, pc}
+ 276              	.L23:
+ 277 001a 00BF     		.align	2
+ 278              	.L22:
+ 279 001c 00000000 		.word	filter_ready1_handler
+ 280 0020 00000000 		.word	filter_ready2_handler
+ 281 0024 00000000 		.word	spi_rx_handler
+ 282              		.cfi_endproc
+ 283              	.LFE68:
+ 284              		.size	start_interrupts, .-start_interrupts
+ 285              		.section	.text.main,"ax",%progbits
+ 286              		.align	2
+ 287              		.global	main
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.type	main, %function
+ 291              	main:
+ 292              	.LFB69:
+  78:.\main.c      **** }
+  79:.\main.c      **** 
+  80:.\main.c      **** int main()
+  81:.\main.c      **** {
+ 293              		.loc 1 81 0
+ 294              		.cfi_startproc
+ 295              		@ Volatile: function does not return.
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298 0000 08B5     		push	{r3, lr}
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 3, -8
+ 301              		.cfi_offset 14, -4
+  82:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 302              		.loc 1 82 0
+ 303              	@ 82 ".\main.c" 1
+ 304 0002 62B6     		CPSIE   i
+ 305              	@ 0 "" 2
+  83:.\main.c      ****     start_resources();
+ 306              		.loc 1 83 0
+ 307              		.thumb
+ 308 0004 FFF7FEFF 		bl	start_resources
+ 309              	.LVL10:
+  84:.\main.c      ****     start_DMAs();
+ 310              		.loc 1 84 0
+ 311 0008 FFF7FEFF 		bl	start_DMAs
+ 312              	.LVL11:
+  85:.\main.c      ****     start_interrupts();
+ 313              		.loc 1 85 0
+ 314 000c FFF7FEFF 		bl	start_interrupts
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 8
 
 
- 306 0052 12       		.uleb128 0x12
- 307 0053 06       		.uleb128 0x6
- 308 0054 40       		.uleb128 0x40
- 309 0055 18       		.uleb128 0x18
- 310 0056 9742     		.uleb128 0x2117
- 311 0058 19       		.uleb128 0x19
- 312 0059 01       		.uleb128 0x1
- 313 005a 13       		.uleb128 0x13
- 314 005b 00       		.byte	0
- 315 005c 00       		.byte	0
- 316 005d 07       		.uleb128 0x7
- 317 005e 898201   		.uleb128 0x4109
- 318 0061 00       		.byte	0
- 319 0062 11       		.uleb128 0x11
- 320 0063 01       		.uleb128 0x1
- 321 0064 31       		.uleb128 0x31
- 322 0065 13       		.uleb128 0x13
- 323 0066 00       		.byte	0
- 324 0067 00       		.byte	0
- 325 0068 08       		.uleb128 0x8
- 326 0069 898201   		.uleb128 0x4109
- 327 006c 01       		.byte	0x1
- 328 006d 11       		.uleb128 0x11
- 329 006e 01       		.uleb128 0x1
- 330 006f 31       		.uleb128 0x31
- 331 0070 13       		.uleb128 0x13
- 332 0071 00       		.byte	0
- 333 0072 00       		.byte	0
- 334 0073 09       		.uleb128 0x9
- 335 0074 8A8201   		.uleb128 0x410a
- 336 0077 00       		.byte	0
- 337 0078 02       		.uleb128 0x2
- 338 0079 18       		.uleb128 0x18
- 339 007a 9142     		.uleb128 0x2111
- 340 007c 18       		.uleb128 0x18
- 341 007d 00       		.byte	0
- 342 007e 00       		.byte	0
- 343 007f 0A       		.uleb128 0xa
- 344 0080 34       		.uleb128 0x34
- 345 0081 00       		.byte	0
- 346 0082 03       		.uleb128 0x3
- 347 0083 0E       		.uleb128 0xe
- 348 0084 3A       		.uleb128 0x3a
- 349 0085 0B       		.uleb128 0xb
- 350 0086 3B       		.uleb128 0x3b
- 351 0087 05       		.uleb128 0x5
- 352 0088 49       		.uleb128 0x49
- 353 0089 13       		.uleb128 0x13
- 354 008a 3F       		.uleb128 0x3f
- 355 008b 19       		.uleb128 0x19
- 356 008c 3C       		.uleb128 0x3c
- 357 008d 19       		.uleb128 0x19
- 358 008e 00       		.byte	0
- 359 008f 00       		.byte	0
- 360 0090 0B       		.uleb128 0xb
- 361 0091 35       		.uleb128 0x35
- 362 0092 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 8
+ 315              	.LVL12:
+  86:.\main.c      ****     
+  87:.\main.c      ****     SetTunings(32, 0, 32);
+ 316              		.loc 1 87 0
+ 317 0010 2020     		movs	r0, #32
+ 318 0012 0021     		movs	r1, #0
+ 319 0014 0246     		mov	r2, r0
+ 320 0016 FFF7FEFF 		bl	SetTunings
+ 321              	.LVL13:
+ 322              	.L25:
+  88:.\main.c      ****     
+  89:.\main.c      ****     for(;;)
+  90:.\main.c      ****     {
+  91:.\main.c      ****         if(filter1_ready){
+ 323              		.loc 1 91 0
+ 324 001a 0C4B     		ldr	r3, .L28
+ 325 001c 1B68     		ldr	r3, [r3]
+ 326 001e 002B     		cmp	r3, #0
+ 327 0020 FBD0     		beq	.L25
+  92:.\main.c      ****             
+  93:.\main.c      ****             Input = filtermem1[0];
+ 328              		.loc 1 93 0
+ 329 0022 0B4C     		ldr	r4, .L28+4
+ 330 0024 2288     		ldrh	r2, [r4]
+ 331 0026 0B4B     		ldr	r3, .L28+8
+ 332 0028 1A60     		str	r2, [r3]
+  94:.\main.c      ****             Compute();
+ 333              		.loc 1 94 0
+ 334 002a FFF7FEFF 		bl	Compute
+ 335              	.LVL14:
+  95:.\main.c      ****             
+  96:.\main.c      ****             VDAC1_SetValue(Output >> 6);
+ 336              		.loc 1 96 0
+ 337 002e 0A4B     		ldr	r3, .L28+12
+ 338 0030 1868     		ldr	r0, [r3]
+ 339 0032 C0F38710 		ubfx	r0, r0, #6, #8
+ 340 0036 FFF7FEFF 		bl	VDAC1_SetValue
+ 341              	.LVL15:
+  97:.\main.c      ****             VDAC4_SetValue(filtermem1[0] >> 6);
+ 342              		.loc 1 97 0
+ 343 003a 2088     		ldrh	r0, [r4]
+ 344 003c C0F38710 		ubfx	r0, r0, #6, #8
+ 345 0040 FFF7FEFF 		bl	VDAC4_SetValue
+ 346              	.LVL16:
+  98:.\main.c      ****             
+  99:.\main.c      ****             filter1_ready = 0;
+ 347              		.loc 1 99 0
+ 348 0044 0022     		movs	r2, #0
+ 349 0046 014B     		ldr	r3, .L28
+ 350 0048 1A60     		str	r2, [r3]
+ 351 004a E6E7     		b	.L25
+ 352              	.L29:
+ 353              		.align	2
+ 354              	.L28:
+ 355 004c 00000000 		.word	.LANCHOR0
+ 356 0050 00000000 		.word	filtermem1
+ 357 0054 00000000 		.word	Input
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 9
 
 
- 363 0093 49       		.uleb128 0x49
- 364 0094 13       		.uleb128 0x13
- 365 0095 00       		.byte	0
- 366 0096 00       		.byte	0
- 367 0097 0C       		.uleb128 0xc
- 368 0098 2E       		.uleb128 0x2e
- 369 0099 01       		.byte	0x1
- 370 009a 3F       		.uleb128 0x3f
- 371 009b 19       		.uleb128 0x19
- 372 009c 03       		.uleb128 0x3
- 373 009d 0E       		.uleb128 0xe
- 374 009e 3A       		.uleb128 0x3a
- 375 009f 0B       		.uleb128 0xb
- 376 00a0 3B       		.uleb128 0x3b
- 377 00a1 0B       		.uleb128 0xb
- 378 00a2 3C       		.uleb128 0x3c
- 379 00a3 19       		.uleb128 0x19
- 380 00a4 01       		.uleb128 0x1
- 381 00a5 13       		.uleb128 0x13
- 382 00a6 00       		.byte	0
- 383 00a7 00       		.byte	0
- 384 00a8 0D       		.uleb128 0xd
- 385 00a9 18       		.uleb128 0x18
- 386 00aa 00       		.byte	0
- 387 00ab 00       		.byte	0
- 388 00ac 00       		.byte	0
- 389 00ad 0E       		.uleb128 0xe
- 390 00ae 2E       		.uleb128 0x2e
- 391 00af 01       		.byte	0x1
- 392 00b0 3F       		.uleb128 0x3f
- 393 00b1 19       		.uleb128 0x19
- 394 00b2 03       		.uleb128 0x3
- 395 00b3 0E       		.uleb128 0xe
- 396 00b4 3A       		.uleb128 0x3a
- 397 00b5 0B       		.uleb128 0xb
- 398 00b6 3B       		.uleb128 0x3b
- 399 00b7 0B       		.uleb128 0xb
- 400 00b8 27       		.uleb128 0x27
- 401 00b9 19       		.uleb128 0x19
- 402 00ba 3C       		.uleb128 0x3c
- 403 00bb 19       		.uleb128 0x19
- 404 00bc 00       		.byte	0
- 405 00bd 00       		.byte	0
- 406 00be 0F       		.uleb128 0xf
- 407 00bf 05       		.uleb128 0x5
- 408 00c0 00       		.byte	0
- 409 00c1 49       		.uleb128 0x49
- 410 00c2 13       		.uleb128 0x13
- 411 00c3 00       		.byte	0
- 412 00c4 00       		.byte	0
- 413 00c5 00       		.byte	0
- 414              		.section	.debug_aranges,"",%progbits
- 415 0000 1C000000 		.4byte	0x1c
- 416 0004 0200     		.2byte	0x2
- 417 0006 00000000 		.4byte	.Ldebug_info0
- 418 000a 04       		.byte	0x4
- 419 000b 00       		.byte	0
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 9
+ 358 0058 00000000 		.word	Output
+ 359              		.cfi_endproc
+ 360              	.LFE69:
+ 361              		.size	main, .-main
+ 362              		.global	timeChange
+ 363              		.comm	kd,4,4
+ 364              		.comm	ki,4,4
+ 365              		.comm	kp,4,4
+ 366              		.comm	lastErr,4,4
+ 367              		.comm	errSum,4,4
+ 368              		.comm	Setpoint,4,4
+ 369              		.comm	Output,4,4
+ 370              		.comm	Input,4,4
+ 371              		.comm	lastTime,4,4
+ 372              		.global	filter2_ready
+ 373              		.global	filter1_ready
+ 374              		.data
+ 375              		.align	2
+ 376              		.set	.LANCHOR1,. + 0
+ 377              		.type	timeChange, %object
+ 378              		.size	timeChange, 4
+ 379              	timeChange:
+ 380 0000 19000000 		.word	25
+ 381              		.bss
+ 382              		.align	2
+ 383              		.set	.LANCHOR0,. + 0
+ 384              		.type	filter1_ready, %object
+ 385              		.size	filter1_ready, 4
+ 386              	filter1_ready:
+ 387 0000 00000000 		.space	4
+ 388              		.type	filter2_ready, %object
+ 389              		.size	filter2_ready, 4
+ 390              	filter2_ready:
+ 391 0004 00000000 		.space	4
+ 392              		.text
+ 393              	.Letext0:
+ 394              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 395              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 396              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 397              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 398              		.file 6 "./resources.h"
+ 399              		.file 7 "Generated_Source\\PSoC5/VDAC2.h"
+ 400              		.file 8 "Generated_Source\\PSoC5/isr_filter_ready1.h"
+ 401              		.file 9 "Generated_Source\\PSoC5/isr_filter_ready2.h"
+ 402              		.file 10 "Generated_Source\\PSoC5/isr_spi_rx.h"
+ 403              		.file 11 "Generated_Source\\PSoC5/VDAC1.h"
+ 404              		.file 12 "Generated_Source\\PSoC5/VDAC4.h"
+ 405              		.file 13 "Generated_Source\\PSoC5/SPIS.h"
+ 406              		.section	.debug_info,"",%progbits
+ 407              	.Ldebug_info0:
+ 408 0000 13040000 		.4byte	0x413
+ 409 0004 0400     		.2byte	0x4
+ 410 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 411 000a 04       		.byte	0x4
+ 412 000b 01       		.uleb128 0x1
+ 413 000c C6010000 		.4byte	.LASF51
+ 414 0010 01       		.byte	0x1
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 10
 
 
- 420 000c 0000     		.2byte	0
- 421 000e 0000     		.2byte	0
- 422 0010 00000000 		.4byte	.LFB63
- 423 0014 18000000 		.4byte	.LFE63-.LFB63
- 424 0018 00000000 		.4byte	0
- 425 001c 00000000 		.4byte	0
- 426              		.section	.debug_ranges,"",%progbits
- 427              	.Ldebug_ranges0:
- 428 0000 00000000 		.4byte	.LFB63
- 429 0004 18000000 		.4byte	.LFE63
- 430 0008 00000000 		.4byte	0
- 431 000c 00000000 		.4byte	0
- 432              		.section	.debug_line,"",%progbits
- 433              	.Ldebug_line0:
- 434 0000 8A010000 		.section	.debug_str,"MS",%progbits,1
- 434      02006501 
- 434      00000201 
- 434      FB0E0D00 
- 434      01010101 
- 435              	.LASF6:
- 436 0000 6C6F6E67 		.ascii	"long long int\000"
- 436      206C6F6E 
- 436      6720696E 
- 436      7400
- 437              	.LASF11:
- 438 000e 75696E74 		.ascii	"uint32\000"
- 438      333200
- 439              	.LASF8:
- 440 0015 756E7369 		.ascii	"unsigned int\000"
- 440      676E6564 
- 440      20696E74 
- 440      00
- 441              	.LASF17:
- 442 0022 73746172 		.ascii	"start_resources\000"
- 442      745F7265 
- 442      736F7572 
- 442      63657300 
- 443              	.LASF24:
- 444 0032 6D61696E 		.ascii	"main\000"
- 444      00
- 445              	.LASF23:
- 446 0037 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
- 446      73657273 
- 446      5C637275 
- 446      69736572 
- 446      5C446F63 
- 447 0065 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
- 447      6C74726F 
- 447      6E204D61 
- 447      696E2E63 
- 447      7964736E 
- 448              	.LASF20:
- 449 007a 43794465 		.ascii	"CyDelay\000"
- 449      6C617900 
- 450              	.LASF5:
- 451 0082 6C6F6E67 		.ascii	"long unsigned int\000"
- 451      20756E73 
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 10
+ 415 0011 0B010000 		.4byte	.LASF52
+ 416 0015 15000000 		.4byte	.LASF53
+ 417 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 418 001d 00000000 		.4byte	0
+ 419 0021 00000000 		.4byte	.Ldebug_line0
+ 420 0025 02       		.uleb128 0x2
+ 421 0026 01       		.byte	0x1
+ 422 0027 06       		.byte	0x6
+ 423 0028 41030000 		.4byte	.LASF0
+ 424 002c 02       		.uleb128 0x2
+ 425 002d 01       		.byte	0x1
+ 426 002e 08       		.byte	0x8
+ 427 002f F2000000 		.4byte	.LASF1
+ 428 0033 02       		.uleb128 0x2
+ 429 0034 02       		.byte	0x2
+ 430 0035 05       		.byte	0x5
+ 431 0036 FB020000 		.4byte	.LASF2
+ 432 003a 02       		.uleb128 0x2
+ 433 003b 02       		.byte	0x2
+ 434 003c 07       		.byte	0x7
+ 435 003d 26010000 		.4byte	.LASF3
+ 436 0041 03       		.uleb128 0x3
+ 437 0042 86000000 		.4byte	.LASF9
+ 438 0046 02       		.byte	0x2
+ 439 0047 3F       		.byte	0x3f
+ 440 0048 4C000000 		.4byte	0x4c
+ 441 004c 02       		.uleb128 0x2
+ 442 004d 04       		.byte	0x4
+ 443 004e 05       		.byte	0x5
+ 444 004f 12030000 		.4byte	.LASF4
+ 445 0053 02       		.uleb128 0x2
+ 446 0054 04       		.byte	0x4
+ 447 0055 07       		.byte	0x7
+ 448 0056 14010000 		.4byte	.LASF5
+ 449 005a 02       		.uleb128 0x2
+ 450 005b 08       		.byte	0x8
+ 451 005c 05       		.byte	0x5
+ 452 005d 00000000 		.4byte	.LASF6
+ 453 0061 02       		.uleb128 0x2
+ 454 0062 08       		.byte	0x8
+ 455 0063 07       		.byte	0x7
+ 456 0064 77020000 		.4byte	.LASF7
+ 457 0068 04       		.uleb128 0x4
+ 458 0069 04       		.byte	0x4
+ 459 006a 05       		.byte	0x5
+ 460 006b 696E7400 		.ascii	"int\000"
+ 461 006f 02       		.uleb128 0x2
+ 462 0070 04       		.byte	0x4
+ 463 0071 07       		.byte	0x7
+ 464 0072 54020000 		.4byte	.LASF8
+ 465 0076 03       		.uleb128 0x3
+ 466 0077 B8020000 		.4byte	.LASF10
+ 467 007b 03       		.byte	0x3
+ 468 007c 2C       		.byte	0x2c
+ 469 007d 41000000 		.4byte	0x41
+ 470 0081 05       		.uleb128 0x5
+ 471 0082 0C030000 		.4byte	.LASF11
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 11
 
 
- 451      69676E65 
- 451      6420696E 
- 451      7400
- 452              	.LASF22:
- 453 0094 2E5C6D61 		.ascii	".\\main.c\000"
- 453      696E2E63 
- 453      00
- 454              	.LASF7:
- 455 009d 6C6F6E67 		.ascii	"long long unsigned int\000"
- 455      206C6F6E 
- 455      6720756E 
- 455      7369676E 
- 455      65642069 
- 456              	.LASF3:
- 457 00b4 73686F72 		.ascii	"short unsigned int\000"
- 457      7420756E 
- 457      7369676E 
- 457      65642069 
- 457      6E7400
- 458              	.LASF19:
- 459 00c7 73746172 		.ascii	"start_interrupts\000"
- 459      745F696E 
- 459      74657272 
- 459      75707473 
- 459      00
- 460              	.LASF1:
- 461 00d8 756E7369 		.ascii	"unsigned char\000"
- 461      676E6564 
- 461      20636861 
- 461      7200
- 462              	.LASF14:
- 463 00e6 63686172 		.ascii	"char\000"
- 463      00
- 464              	.LASF4:
- 465 00eb 6C6F6E67 		.ascii	"long int\000"
- 465      20696E74 
- 465      00
- 466              	.LASF13:
- 467 00f4 646F7562 		.ascii	"double\000"
- 467      6C6500
- 468              	.LASF21:
- 469 00fb 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 469      4320342E 
- 469      392E3320 
- 469      32303135 
- 469      30333033 
- 470 012e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 470      20726576 
- 470      6973696F 
- 470      6E203232 
- 470      31323230 
- 471 0161 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 471      66756E63 
- 471      74696F6E 
- 471      2D736563 
- 471      74696F6E 
- 472              	.LASF18:
-ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccLCpjCn.s 			page 11
+ 472 0086 04       		.byte	0x4
+ 473 0087 9201     		.2byte	0x192
+ 474 0089 2C000000 		.4byte	0x2c
+ 475 008d 05       		.uleb128 0x5
+ 476 008e 76010000 		.4byte	.LASF12
+ 477 0092 04       		.byte	0x4
+ 478 0093 9301     		.2byte	0x193
+ 479 0095 3A000000 		.4byte	0x3a
+ 480 0099 05       		.uleb128 0x5
+ 481 009a BF010000 		.4byte	.LASF13
+ 482 009e 04       		.byte	0x4
+ 483 009f 9401     		.2byte	0x194
+ 484 00a1 53000000 		.4byte	0x53
+ 485 00a5 02       		.uleb128 0x2
+ 486 00a6 04       		.byte	0x4
+ 487 00a7 04       		.byte	0x4
+ 488 00a8 E1000000 		.4byte	.LASF14
+ 489 00ac 02       		.uleb128 0x2
+ 490 00ad 08       		.byte	0x8
+ 491 00ae 04       		.byte	0x4
+ 492 00af 6F010000 		.4byte	.LASF15
+ 493 00b3 02       		.uleb128 0x2
+ 494 00b4 01       		.byte	0x1
+ 495 00b5 08       		.byte	0x8
+ 496 00b6 ED020000 		.4byte	.LASF16
+ 497 00ba 05       		.uleb128 0x5
+ 498 00bb 97020000 		.4byte	.LASF17
+ 499 00bf 04       		.byte	0x4
+ 500 00c0 4E02     		.2byte	0x24e
+ 501 00c2 C6000000 		.4byte	0xc6
+ 502 00c6 06       		.uleb128 0x6
+ 503 00c7 04       		.byte	0x4
+ 504 00c8 CC000000 		.4byte	0xcc
+ 505 00cc 07       		.uleb128 0x7
+ 506 00cd 02       		.uleb128 0x2
+ 507 00ce 04       		.byte	0x4
+ 508 00cf 07       		.byte	0x7
+ 509 00d0 C0020000 		.4byte	.LASF18
+ 510 00d4 08       		.uleb128 0x8
+ 511 00d5 81000000 		.4byte	0x81
+ 512 00d9 E4000000 		.4byte	0xe4
+ 513 00dd 09       		.uleb128 0x9
+ 514 00de CD000000 		.4byte	0xcd
+ 515 00e2 03       		.byte	0x3
+ 516 00e3 00       		.byte	0
+ 517 00e4 02       		.uleb128 0x2
+ 518 00e5 08       		.byte	0x8
+ 519 00e6 04       		.byte	0x4
+ 520 00e7 1B030000 		.4byte	.LASF19
+ 521 00eb 0A       		.uleb128 0xa
+ 522 00ec 60000000 		.4byte	.LASF20
+ 523 00f0 01       		.byte	0x1
+ 524 00f1 1D       		.byte	0x1d
+ 525 00f2 00000000 		.4byte	.LFB63
+ 526 00f6 20000000 		.4byte	.LFE63-.LFB63
+ 527 00fa 01       		.uleb128 0x1
+ 528 00fb 9C       		.byte	0x9c
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 12
 
 
- 473 0189 73746172 		.ascii	"start_DMAs\000"
- 473      745F444D 
- 473      417300
- 474              	.LASF25:
- 475 0194 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 475      52784275 
- 475      66666572 
- 475      00
- 476              	.LASF0:
- 477 01a1 7369676E 		.ascii	"signed char\000"
- 477      65642063 
- 477      68617200 
- 478              	.LASF16:
- 479 01ad 6C6F6E67 		.ascii	"long double\000"
- 479      20646F75 
- 479      626C6500 
- 480              	.LASF9:
- 481 01b9 5F5F696E 		.ascii	"__int32_t\000"
- 481      7433325F 
- 481      7400
- 482              	.LASF12:
- 483 01c3 666C6F61 		.ascii	"float\000"
- 483      7400
- 484              	.LASF2:
- 485 01c9 73686F72 		.ascii	"short int\000"
- 485      7420696E 
- 485      7400
- 486              	.LASF10:
- 487 01d3 696E7433 		.ascii	"int32_t\000"
- 487      325F7400 
- 488              	.LASF15:
- 489 01db 73697A65 		.ascii	"sizetype\000"
- 489      74797065 
- 489      00
- 490              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 529 00fc 0A       		.uleb128 0xa
+ 530 00fd AE000000 		.4byte	.LASF21
+ 531 0101 01       		.byte	0x1
+ 532 0102 25       		.byte	0x25
+ 533 0103 00000000 		.4byte	.LFB64
+ 534 0107 20000000 		.4byte	.LFE64-.LFB64
+ 535 010b 01       		.uleb128 0x1
+ 536 010c 9C       		.byte	0x9c
+ 537 010d 0B       		.uleb128 0xb
+ 538 010e 9F000000 		.4byte	.LASF24
+ 539 0112 01       		.byte	0x1
+ 540 0113 2D       		.byte	0x2d
+ 541 0114 00000000 		.4byte	.LFB65
+ 542 0118 1C000000 		.4byte	.LFE65-.LFB65
+ 543 011c 01       		.uleb128 0x1
+ 544 011d 9C       		.byte	0x9c
+ 545 011e 2C010000 		.4byte	0x12c
+ 546 0122 0C       		.uleb128 0xc
+ 547 0123 0A000000 		.4byte	.LVL0
+ 548 0127 93030000 		.4byte	0x393
+ 549 012b 00       		.byte	0
+ 550 012c 0D       		.uleb128 0xd
+ 551 012d 97000000 		.4byte	.LASF26
+ 552 0131 01       		.byte	0x1
+ 553 0132 33       		.byte	0x33
+ 554 0133 00000000 		.4byte	.LFB66
+ 555 0137 88000000 		.4byte	.LFE66-.LFB66
+ 556 013b 01       		.uleb128 0x1
+ 557 013c 9C       		.byte	0x9c
+ 558 013d 60010000 		.4byte	0x160
+ 559 0141 0E       		.uleb128 0xe
+ 560 0142 C9020000 		.4byte	.LASF22
+ 561 0146 01       		.byte	0x1
+ 562 0147 36       		.byte	0x36
+ 563 0148 68000000 		.4byte	0x68
+ 564 014c 00000000 		.4byte	.LLST0
+ 565 0150 0E       		.uleb128 0xe
+ 566 0151 A4020000 		.4byte	.LASF23
+ 567 0155 01       		.byte	0x1
+ 568 0156 38       		.byte	0x38
+ 569 0157 68000000 		.4byte	0x68
+ 570 015b 2B000000 		.4byte	.LLST1
+ 571 015f 00       		.byte	0
+ 572 0160 0B       		.uleb128 0xb
+ 573 0161 00010000 		.4byte	.LASF25
+ 574 0165 01       		.byte	0x1
+ 575 0166 40       		.byte	0x40
+ 576 0167 00000000 		.4byte	.LFB67
+ 577 016b 1C000000 		.4byte	.LFE67-.LFB67
+ 578 016f 01       		.uleb128 0x1
+ 579 0170 9C       		.byte	0x9c
+ 580 0171 9A010000 		.4byte	0x19a
+ 581 0175 0F       		.uleb128 0xf
+ 582 0176 4B7000   		.ascii	"Kp\000"
+ 583 0179 01       		.byte	0x1
+ 584 017a 40       		.byte	0x40
+ 585 017b 68000000 		.4byte	0x68
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 13
+
+
+ 586 017f 01       		.uleb128 0x1
+ 587 0180 50       		.byte	0x50
+ 588 0181 0F       		.uleb128 0xf
+ 589 0182 4B6900   		.ascii	"Ki\000"
+ 590 0185 01       		.byte	0x1
+ 591 0186 40       		.byte	0x40
+ 592 0187 68000000 		.4byte	0x68
+ 593 018b 01       		.uleb128 0x1
+ 594 018c 51       		.byte	0x51
+ 595 018d 0F       		.uleb128 0xf
+ 596 018e 4B6400   		.ascii	"Kd\000"
+ 597 0191 01       		.byte	0x1
+ 598 0192 40       		.byte	0x40
+ 599 0193 68000000 		.4byte	0x68
+ 600 0197 01       		.uleb128 0x1
+ 601 0198 52       		.byte	0x52
+ 602 0199 00       		.byte	0
+ 603 019a 0D       		.uleb128 0xd
+ 604 019b 5E010000 		.4byte	.LASF27
+ 605 019f 01       		.byte	0x1
+ 606 01a0 47       		.byte	0x47
+ 607 01a1 00000000 		.4byte	.LFB68
+ 608 01a5 28000000 		.4byte	.LFE68-.LFB68
+ 609 01a9 01       		.uleb128 0x1
+ 610 01aa 9C       		.byte	0x9c
+ 611 01ab FE010000 		.4byte	0x1fe
+ 612 01af 10       		.uleb128 0x10
+ 613 01b0 08000000 		.4byte	.LVL6
+ 614 01b4 A4030000 		.4byte	0x3a4
+ 615 01b8 C6010000 		.4byte	0x1c6
+ 616 01bc 11       		.uleb128 0x11
+ 617 01bd 01       		.uleb128 0x1
+ 618 01be 50       		.byte	0x50
+ 619 01bf 05       		.uleb128 0x5
+ 620 01c0 03       		.byte	0x3
+ 621 01c1 00000000 		.4byte	filter_ready1_handler
+ 622 01c5 00       		.byte	0
+ 623 01c6 10       		.uleb128 0x10
+ 624 01c7 0E000000 		.4byte	.LVL7
+ 625 01cb B5030000 		.4byte	0x3b5
+ 626 01cf DD010000 		.4byte	0x1dd
+ 627 01d3 11       		.uleb128 0x11
+ 628 01d4 01       		.uleb128 0x1
+ 629 01d5 50       		.byte	0x50
+ 630 01d6 05       		.uleb128 0x5
+ 631 01d7 03       		.byte	0x3
+ 632 01d8 00000000 		.4byte	filter_ready2_handler
+ 633 01dc 00       		.byte	0
+ 634 01dd 10       		.uleb128 0x10
+ 635 01de 14000000 		.4byte	.LVL8
+ 636 01e2 C6030000 		.4byte	0x3c6
+ 637 01e6 F4010000 		.4byte	0x1f4
+ 638 01ea 11       		.uleb128 0x11
+ 639 01eb 01       		.uleb128 0x1
+ 640 01ec 50       		.byte	0x50
+ 641 01ed 05       		.uleb128 0x5
+ 642 01ee 03       		.byte	0x3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 14
+
+
+ 643 01ef 00000000 		.4byte	spi_rx_handler
+ 644 01f3 00       		.byte	0
+ 645 01f4 0C       		.uleb128 0xc
+ 646 01f5 18000000 		.4byte	.LVL9
+ 647 01f9 D7030000 		.4byte	0x3d7
+ 648 01fd 00       		.byte	0
+ 649 01fe 12       		.uleb128 0x12
+ 650 01ff 8B010000 		.4byte	.LASF28
+ 651 0203 01       		.byte	0x1
+ 652 0204 50       		.byte	0x50
+ 653 0205 68000000 		.4byte	0x68
+ 654 0209 00000000 		.4byte	.LFB69
+ 655 020d 5C000000 		.4byte	.LFE69-.LFB69
+ 656 0211 01       		.uleb128 0x1
+ 657 0212 9C       		.byte	0x9c
+ 658 0213 6D020000 		.4byte	0x26d
+ 659 0217 0C       		.uleb128 0xc
+ 660 0218 08000000 		.4byte	.LVL10
+ 661 021c DE030000 		.4byte	0x3de
+ 662 0220 0C       		.uleb128 0xc
+ 663 0221 0C000000 		.4byte	.LVL11
+ 664 0225 EB030000 		.4byte	0x3eb
+ 665 0229 0C       		.uleb128 0xc
+ 666 022a 10000000 		.4byte	.LVL12
+ 667 022e 9A010000 		.4byte	0x19a
+ 668 0232 10       		.uleb128 0x10
+ 669 0233 1A000000 		.4byte	.LVL13
+ 670 0237 60010000 		.4byte	0x160
+ 671 023b 51020000 		.4byte	0x251
+ 672 023f 11       		.uleb128 0x11
+ 673 0240 01       		.uleb128 0x1
+ 674 0241 52       		.byte	0x52
+ 675 0242 02       		.uleb128 0x2
+ 676 0243 08       		.byte	0x8
+ 677 0244 20       		.byte	0x20
+ 678 0245 11       		.uleb128 0x11
+ 679 0246 01       		.uleb128 0x1
+ 680 0247 51       		.byte	0x51
+ 681 0248 01       		.uleb128 0x1
+ 682 0249 30       		.byte	0x30
+ 683 024a 11       		.uleb128 0x11
+ 684 024b 01       		.uleb128 0x1
+ 685 024c 50       		.byte	0x50
+ 686 024d 02       		.uleb128 0x2
+ 687 024e 08       		.byte	0x8
+ 688 024f 20       		.byte	0x20
+ 689 0250 00       		.byte	0
+ 690 0251 0C       		.uleb128 0xc
+ 691 0252 2E000000 		.4byte	.LVL14
+ 692 0256 2C010000 		.4byte	0x12c
+ 693 025a 0C       		.uleb128 0xc
+ 694 025b 3A000000 		.4byte	.LVL15
+ 695 025f F8030000 		.4byte	0x3f8
+ 696 0263 0C       		.uleb128 0xc
+ 697 0264 44000000 		.4byte	.LVL16
+ 698 0268 09040000 		.4byte	0x409
+ 699 026c 00       		.byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 15
+
+
+ 700 026d 13       		.uleb128 0x13
+ 701 026e 51010000 		.4byte	.LASF29
+ 702 0272 05       		.byte	0x5
+ 703 0273 9606     		.2byte	0x696
+ 704 0275 79020000 		.4byte	0x279
+ 705 0279 14       		.uleb128 0x14
+ 706 027a 76000000 		.4byte	0x76
+ 707 027e 15       		.uleb128 0x15
+ 708 027f 0E000000 		.4byte	.LASF30
+ 709 0283 06       		.byte	0x6
+ 710 0284 14       		.byte	0x14
+ 711 0285 D4000000 		.4byte	0xd4
+ 712 0289 08       		.uleb128 0x8
+ 713 028a 99000000 		.4byte	0x99
+ 714 028e 99020000 		.4byte	0x299
+ 715 0292 09       		.uleb128 0x9
+ 716 0293 CD000000 		.4byte	0xcd
+ 717 0297 00       		.byte	0
+ 718 0298 00       		.byte	0
+ 719 0299 15       		.uleb128 0x15
+ 720 029a 05030000 		.4byte	.LASF31
+ 721 029e 06       		.byte	0x6
+ 722 029f 17       		.byte	0x17
+ 723 02a0 89020000 		.4byte	0x289
+ 724 02a4 08       		.uleb128 0x8
+ 725 02a5 8D000000 		.4byte	0x8d
+ 726 02a9 B4020000 		.4byte	0x2b4
+ 727 02ad 09       		.uleb128 0x9
+ 728 02ae CD000000 		.4byte	0xcd
+ 729 02b2 18       		.byte	0x18
+ 730 02b3 00       		.byte	0
+ 731 02b4 15       		.uleb128 0x15
+ 732 02b5 61020000 		.4byte	.LASF32
+ 733 02b9 06       		.byte	0x6
+ 734 02ba 1E       		.byte	0x1e
+ 735 02bb A4020000 		.4byte	0x2a4
+ 736 02bf 15       		.uleb128 0x15
+ 737 02c0 6C020000 		.4byte	.LASF33
+ 738 02c4 06       		.byte	0x6
+ 739 02c5 1F       		.byte	0x1f
+ 740 02c6 A4020000 		.4byte	0x2a4
+ 741 02ca 16       		.uleb128 0x16
+ 742 02cb 7D010000 		.4byte	.LASF34
+ 743 02cf 01       		.byte	0x1
+ 744 02d0 12       		.byte	0x12
+ 745 02d1 68000000 		.4byte	0x68
+ 746 02d5 05       		.uleb128 0x5
+ 747 02d6 03       		.byte	0x3
+ 748 02d7 00000000 		.4byte	filter1_ready
+ 749 02db 16       		.uleb128 0x16
+ 750 02dc C4000000 		.4byte	.LASF35
+ 751 02e0 01       		.byte	0x1
+ 752 02e1 13       		.byte	0x13
+ 753 02e2 68000000 		.4byte	0x68
+ 754 02e6 05       		.uleb128 0x5
+ 755 02e7 03       		.byte	0x3
+ 756 02e8 00000000 		.4byte	filter2_ready
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 16
+
+
+ 757 02ec 16       		.uleb128 0x16
+ 758 02ed F2020000 		.4byte	.LASF36
+ 759 02f1 01       		.byte	0x1
+ 760 02f2 16       		.byte	0x16
+ 761 02f3 53000000 		.4byte	0x53
+ 762 02f7 05       		.uleb128 0x5
+ 763 02f8 03       		.byte	0x3
+ 764 02f9 00000000 		.4byte	lastTime
+ 765 02fd 16       		.uleb128 0x16
+ 766 02fe 90010000 		.4byte	.LASF37
+ 767 0302 01       		.byte	0x1
+ 768 0303 17       		.byte	0x17
+ 769 0304 68000000 		.4byte	0x68
+ 770 0308 05       		.uleb128 0x5
+ 771 0309 03       		.byte	0x3
+ 772 030a 00000000 		.4byte	Input
+ 773 030e 16       		.uleb128 0x16
+ 774 030f 90000000 		.4byte	.LASF38
+ 775 0313 01       		.byte	0x1
+ 776 0314 17       		.byte	0x17
+ 777 0315 68000000 		.4byte	0x68
+ 778 0319 05       		.uleb128 0x5
+ 779 031a 03       		.byte	0x3
+ 780 031b 00000000 		.4byte	Output
+ 781 031f 16       		.uleb128 0x16
+ 782 0320 8E020000 		.4byte	.LASF39
+ 783 0324 01       		.byte	0x1
+ 784 0325 17       		.byte	0x17
+ 785 0326 68000000 		.4byte	0x68
+ 786 032a 05       		.uleb128 0x5
+ 787 032b 03       		.byte	0x3
+ 788 032c 00000000 		.4byte	Setpoint
+ 789 0330 16       		.uleb128 0x16
+ 790 0331 4A010000 		.4byte	.LASF40
+ 791 0335 01       		.byte	0x1
+ 792 0336 18       		.byte	0x18
+ 793 0337 68000000 		.4byte	0x68
+ 794 033b 05       		.uleb128 0x5
+ 795 033c 03       		.byte	0x3
+ 796 033d 00000000 		.4byte	errSum
+ 797 0341 16       		.uleb128 0x16
+ 798 0342 58000000 		.4byte	.LASF41
+ 799 0346 01       		.byte	0x1
+ 800 0347 18       		.byte	0x18
+ 801 0348 68000000 		.4byte	0x68
+ 802 034c 05       		.uleb128 0x5
+ 803 034d 03       		.byte	0x3
+ 804 034e 00000000 		.4byte	lastErr
+ 805 0352 17       		.uleb128 0x17
+ 806 0353 6B7000   		.ascii	"kp\000"
+ 807 0356 01       		.byte	0x1
+ 808 0357 19       		.byte	0x19
+ 809 0358 68000000 		.4byte	0x68
+ 810 035c 05       		.uleb128 0x5
+ 811 035d 03       		.byte	0x3
+ 812 035e 00000000 		.4byte	kp
+ 813 0362 17       		.uleb128 0x17
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 17
+
+
+ 814 0363 6B6900   		.ascii	"ki\000"
+ 815 0366 01       		.byte	0x1
+ 816 0367 19       		.byte	0x19
+ 817 0368 68000000 		.4byte	0x68
+ 818 036c 05       		.uleb128 0x5
+ 819 036d 03       		.byte	0x3
+ 820 036e 00000000 		.4byte	ki
+ 821 0372 17       		.uleb128 0x17
+ 822 0373 6B6400   		.ascii	"kd\000"
+ 823 0376 01       		.byte	0x1
+ 824 0377 19       		.byte	0x19
+ 825 0378 68000000 		.4byte	0x68
+ 826 037c 05       		.uleb128 0x5
+ 827 037d 03       		.byte	0x3
+ 828 037e 00000000 		.4byte	kd
+ 829 0382 16       		.uleb128 0x16
+ 830 0383 E2020000 		.4byte	.LASF42
+ 831 0387 01       		.byte	0x1
+ 832 0388 1A       		.byte	0x1a
+ 833 0389 68000000 		.4byte	0x68
+ 834 038d 05       		.uleb128 0x5
+ 835 038e 03       		.byte	0x3
+ 836 038f 00000000 		.4byte	timeChange
+ 837 0393 18       		.uleb128 0x18
+ 838 0394 B0010000 		.4byte	.LASF43
+ 839 0398 07       		.byte	0x7
+ 840 0399 37       		.byte	0x37
+ 841 039a A4030000 		.4byte	0x3a4
+ 842 039e 19       		.uleb128 0x19
+ 843 039f 81000000 		.4byte	0x81
+ 844 03a3 00       		.byte	0
+ 845 03a4 18       		.uleb128 0x18
+ 846 03a5 96010000 		.4byte	.LASF44
+ 847 03a9 08       		.byte	0x8
+ 848 03aa 18       		.byte	0x18
+ 849 03ab B5030000 		.4byte	0x3b5
+ 850 03af 19       		.uleb128 0x19
+ 851 03b0 BA000000 		.4byte	0xba
+ 852 03b4 00       		.byte	0
+ 853 03b5 18       		.uleb128 0x18
+ 854 03b6 27030000 		.4byte	.LASF45
+ 855 03ba 09       		.byte	0x9
+ 856 03bb 18       		.byte	0x18
+ 857 03bc C6030000 		.4byte	0x3c6
+ 858 03c0 19       		.uleb128 0x19
+ 859 03c1 BA000000 		.4byte	0xba
+ 860 03c5 00       		.byte	0
+ 861 03c6 18       		.uleb128 0x18
+ 862 03c7 CF020000 		.4byte	.LASF46
+ 863 03cb 0A       		.byte	0xa
+ 864 03cc 18       		.byte	0x18
+ 865 03cd D7030000 		.4byte	0x3d7
+ 866 03d1 19       		.uleb128 0x19
+ 867 03d2 BA000000 		.4byte	0xba
+ 868 03d6 00       		.byte	0
+ 869 03d7 1A       		.uleb128 0x1a
+ 870 03d8 39010000 		.4byte	.LASF54
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 18
+
+
+ 871 03dc 0D       		.byte	0xd
+ 872 03dd 4E       		.byte	0x4e
+ 873 03de 1B       		.uleb128 0x1b
+ 874 03df 76000000 		.4byte	.LASF47
+ 875 03e3 06       		.byte	0x6
+ 876 03e4 21       		.byte	0x21
+ 877 03e5 EB030000 		.4byte	0x3eb
+ 878 03e9 1C       		.uleb128 0x1c
+ 879 03ea 00       		.byte	0
+ 880 03eb 1B       		.uleb128 0x1b
+ 881 03ec E7000000 		.4byte	.LASF48
+ 882 03f0 06       		.byte	0x6
+ 883 03f1 3D       		.byte	0x3d
+ 884 03f2 F8030000 		.4byte	0x3f8
+ 885 03f6 1C       		.uleb128 0x1c
+ 886 03f7 00       		.byte	0
+ 887 03f8 18       		.uleb128 0x18
+ 888 03f9 A9020000 		.4byte	.LASF49
+ 889 03fd 0B       		.byte	0xb
+ 890 03fe 37       		.byte	0x37
+ 891 03ff 09040000 		.4byte	0x409
+ 892 0403 19       		.uleb128 0x19
+ 893 0404 81000000 		.4byte	0x81
+ 894 0408 00       		.byte	0
+ 895 0409 1D       		.uleb128 0x1d
+ 896 040a D2000000 		.4byte	.LASF50
+ 897 040e 0C       		.byte	0xc
+ 898 040f 37       		.byte	0x37
+ 899 0410 19       		.uleb128 0x19
+ 900 0411 81000000 		.4byte	0x81
+ 901 0415 00       		.byte	0
+ 902 0416 00       		.byte	0
+ 903              		.section	.debug_abbrev,"",%progbits
+ 904              	.Ldebug_abbrev0:
+ 905 0000 01       		.uleb128 0x1
+ 906 0001 11       		.uleb128 0x11
+ 907 0002 01       		.byte	0x1
+ 908 0003 25       		.uleb128 0x25
+ 909 0004 0E       		.uleb128 0xe
+ 910 0005 13       		.uleb128 0x13
+ 911 0006 0B       		.uleb128 0xb
+ 912 0007 03       		.uleb128 0x3
+ 913 0008 0E       		.uleb128 0xe
+ 914 0009 1B       		.uleb128 0x1b
+ 915 000a 0E       		.uleb128 0xe
+ 916 000b 55       		.uleb128 0x55
+ 917 000c 17       		.uleb128 0x17
+ 918 000d 11       		.uleb128 0x11
+ 919 000e 01       		.uleb128 0x1
+ 920 000f 10       		.uleb128 0x10
+ 921 0010 17       		.uleb128 0x17
+ 922 0011 00       		.byte	0
+ 923 0012 00       		.byte	0
+ 924 0013 02       		.uleb128 0x2
+ 925 0014 24       		.uleb128 0x24
+ 926 0015 00       		.byte	0
+ 927 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 19
+
+
+ 928 0017 0B       		.uleb128 0xb
+ 929 0018 3E       		.uleb128 0x3e
+ 930 0019 0B       		.uleb128 0xb
+ 931 001a 03       		.uleb128 0x3
+ 932 001b 0E       		.uleb128 0xe
+ 933 001c 00       		.byte	0
+ 934 001d 00       		.byte	0
+ 935 001e 03       		.uleb128 0x3
+ 936 001f 16       		.uleb128 0x16
+ 937 0020 00       		.byte	0
+ 938 0021 03       		.uleb128 0x3
+ 939 0022 0E       		.uleb128 0xe
+ 940 0023 3A       		.uleb128 0x3a
+ 941 0024 0B       		.uleb128 0xb
+ 942 0025 3B       		.uleb128 0x3b
+ 943 0026 0B       		.uleb128 0xb
+ 944 0027 49       		.uleb128 0x49
+ 945 0028 13       		.uleb128 0x13
+ 946 0029 00       		.byte	0
+ 947 002a 00       		.byte	0
+ 948 002b 04       		.uleb128 0x4
+ 949 002c 24       		.uleb128 0x24
+ 950 002d 00       		.byte	0
+ 951 002e 0B       		.uleb128 0xb
+ 952 002f 0B       		.uleb128 0xb
+ 953 0030 3E       		.uleb128 0x3e
+ 954 0031 0B       		.uleb128 0xb
+ 955 0032 03       		.uleb128 0x3
+ 956 0033 08       		.uleb128 0x8
+ 957 0034 00       		.byte	0
+ 958 0035 00       		.byte	0
+ 959 0036 05       		.uleb128 0x5
+ 960 0037 16       		.uleb128 0x16
+ 961 0038 00       		.byte	0
+ 962 0039 03       		.uleb128 0x3
+ 963 003a 0E       		.uleb128 0xe
+ 964 003b 3A       		.uleb128 0x3a
+ 965 003c 0B       		.uleb128 0xb
+ 966 003d 3B       		.uleb128 0x3b
+ 967 003e 05       		.uleb128 0x5
+ 968 003f 49       		.uleb128 0x49
+ 969 0040 13       		.uleb128 0x13
+ 970 0041 00       		.byte	0
+ 971 0042 00       		.byte	0
+ 972 0043 06       		.uleb128 0x6
+ 973 0044 0F       		.uleb128 0xf
+ 974 0045 00       		.byte	0
+ 975 0046 0B       		.uleb128 0xb
+ 976 0047 0B       		.uleb128 0xb
+ 977 0048 49       		.uleb128 0x49
+ 978 0049 13       		.uleb128 0x13
+ 979 004a 00       		.byte	0
+ 980 004b 00       		.byte	0
+ 981 004c 07       		.uleb128 0x7
+ 982 004d 15       		.uleb128 0x15
+ 983 004e 00       		.byte	0
+ 984 004f 27       		.uleb128 0x27
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 20
+
+
+ 985 0050 19       		.uleb128 0x19
+ 986 0051 00       		.byte	0
+ 987 0052 00       		.byte	0
+ 988 0053 08       		.uleb128 0x8
+ 989 0054 01       		.uleb128 0x1
+ 990 0055 01       		.byte	0x1
+ 991 0056 49       		.uleb128 0x49
+ 992 0057 13       		.uleb128 0x13
+ 993 0058 01       		.uleb128 0x1
+ 994 0059 13       		.uleb128 0x13
+ 995 005a 00       		.byte	0
+ 996 005b 00       		.byte	0
+ 997 005c 09       		.uleb128 0x9
+ 998 005d 21       		.uleb128 0x21
+ 999 005e 00       		.byte	0
+ 1000 005f 49       		.uleb128 0x49
+ 1001 0060 13       		.uleb128 0x13
+ 1002 0061 2F       		.uleb128 0x2f
+ 1003 0062 0B       		.uleb128 0xb
+ 1004 0063 00       		.byte	0
+ 1005 0064 00       		.byte	0
+ 1006 0065 0A       		.uleb128 0xa
+ 1007 0066 2E       		.uleb128 0x2e
+ 1008 0067 00       		.byte	0
+ 1009 0068 3F       		.uleb128 0x3f
+ 1010 0069 19       		.uleb128 0x19
+ 1011 006a 03       		.uleb128 0x3
+ 1012 006b 0E       		.uleb128 0xe
+ 1013 006c 3A       		.uleb128 0x3a
+ 1014 006d 0B       		.uleb128 0xb
+ 1015 006e 3B       		.uleb128 0x3b
+ 1016 006f 0B       		.uleb128 0xb
+ 1017 0070 27       		.uleb128 0x27
+ 1018 0071 19       		.uleb128 0x19
+ 1019 0072 11       		.uleb128 0x11
+ 1020 0073 01       		.uleb128 0x1
+ 1021 0074 12       		.uleb128 0x12
+ 1022 0075 06       		.uleb128 0x6
+ 1023 0076 40       		.uleb128 0x40
+ 1024 0077 18       		.uleb128 0x18
+ 1025 0078 9742     		.uleb128 0x2117
+ 1026 007a 19       		.uleb128 0x19
+ 1027 007b 00       		.byte	0
+ 1028 007c 00       		.byte	0
+ 1029 007d 0B       		.uleb128 0xb
+ 1030 007e 2E       		.uleb128 0x2e
+ 1031 007f 01       		.byte	0x1
+ 1032 0080 3F       		.uleb128 0x3f
+ 1033 0081 19       		.uleb128 0x19
+ 1034 0082 03       		.uleb128 0x3
+ 1035 0083 0E       		.uleb128 0xe
+ 1036 0084 3A       		.uleb128 0x3a
+ 1037 0085 0B       		.uleb128 0xb
+ 1038 0086 3B       		.uleb128 0x3b
+ 1039 0087 0B       		.uleb128 0xb
+ 1040 0088 27       		.uleb128 0x27
+ 1041 0089 19       		.uleb128 0x19
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 21
+
+
+ 1042 008a 11       		.uleb128 0x11
+ 1043 008b 01       		.uleb128 0x1
+ 1044 008c 12       		.uleb128 0x12
+ 1045 008d 06       		.uleb128 0x6
+ 1046 008e 40       		.uleb128 0x40
+ 1047 008f 18       		.uleb128 0x18
+ 1048 0090 9742     		.uleb128 0x2117
+ 1049 0092 19       		.uleb128 0x19
+ 1050 0093 01       		.uleb128 0x1
+ 1051 0094 13       		.uleb128 0x13
+ 1052 0095 00       		.byte	0
+ 1053 0096 00       		.byte	0
+ 1054 0097 0C       		.uleb128 0xc
+ 1055 0098 898201   		.uleb128 0x4109
+ 1056 009b 00       		.byte	0
+ 1057 009c 11       		.uleb128 0x11
+ 1058 009d 01       		.uleb128 0x1
+ 1059 009e 31       		.uleb128 0x31
+ 1060 009f 13       		.uleb128 0x13
+ 1061 00a0 00       		.byte	0
+ 1062 00a1 00       		.byte	0
+ 1063 00a2 0D       		.uleb128 0xd
+ 1064 00a3 2E       		.uleb128 0x2e
+ 1065 00a4 01       		.byte	0x1
+ 1066 00a5 3F       		.uleb128 0x3f
+ 1067 00a6 19       		.uleb128 0x19
+ 1068 00a7 03       		.uleb128 0x3
+ 1069 00a8 0E       		.uleb128 0xe
+ 1070 00a9 3A       		.uleb128 0x3a
+ 1071 00aa 0B       		.uleb128 0xb
+ 1072 00ab 3B       		.uleb128 0x3b
+ 1073 00ac 0B       		.uleb128 0xb
+ 1074 00ad 11       		.uleb128 0x11
+ 1075 00ae 01       		.uleb128 0x1
+ 1076 00af 12       		.uleb128 0x12
+ 1077 00b0 06       		.uleb128 0x6
+ 1078 00b1 40       		.uleb128 0x40
+ 1079 00b2 18       		.uleb128 0x18
+ 1080 00b3 9742     		.uleb128 0x2117
+ 1081 00b5 19       		.uleb128 0x19
+ 1082 00b6 01       		.uleb128 0x1
+ 1083 00b7 13       		.uleb128 0x13
+ 1084 00b8 00       		.byte	0
+ 1085 00b9 00       		.byte	0
+ 1086 00ba 0E       		.uleb128 0xe
+ 1087 00bb 34       		.uleb128 0x34
+ 1088 00bc 00       		.byte	0
+ 1089 00bd 03       		.uleb128 0x3
+ 1090 00be 0E       		.uleb128 0xe
+ 1091 00bf 3A       		.uleb128 0x3a
+ 1092 00c0 0B       		.uleb128 0xb
+ 1093 00c1 3B       		.uleb128 0x3b
+ 1094 00c2 0B       		.uleb128 0xb
+ 1095 00c3 49       		.uleb128 0x49
+ 1096 00c4 13       		.uleb128 0x13
+ 1097 00c5 02       		.uleb128 0x2
+ 1098 00c6 17       		.uleb128 0x17
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 22
+
+
+ 1099 00c7 00       		.byte	0
+ 1100 00c8 00       		.byte	0
+ 1101 00c9 0F       		.uleb128 0xf
+ 1102 00ca 05       		.uleb128 0x5
+ 1103 00cb 00       		.byte	0
+ 1104 00cc 03       		.uleb128 0x3
+ 1105 00cd 08       		.uleb128 0x8
+ 1106 00ce 3A       		.uleb128 0x3a
+ 1107 00cf 0B       		.uleb128 0xb
+ 1108 00d0 3B       		.uleb128 0x3b
+ 1109 00d1 0B       		.uleb128 0xb
+ 1110 00d2 49       		.uleb128 0x49
+ 1111 00d3 13       		.uleb128 0x13
+ 1112 00d4 02       		.uleb128 0x2
+ 1113 00d5 18       		.uleb128 0x18
+ 1114 00d6 00       		.byte	0
+ 1115 00d7 00       		.byte	0
+ 1116 00d8 10       		.uleb128 0x10
+ 1117 00d9 898201   		.uleb128 0x4109
+ 1118 00dc 01       		.byte	0x1
+ 1119 00dd 11       		.uleb128 0x11
+ 1120 00de 01       		.uleb128 0x1
+ 1121 00df 31       		.uleb128 0x31
+ 1122 00e0 13       		.uleb128 0x13
+ 1123 00e1 01       		.uleb128 0x1
+ 1124 00e2 13       		.uleb128 0x13
+ 1125 00e3 00       		.byte	0
+ 1126 00e4 00       		.byte	0
+ 1127 00e5 11       		.uleb128 0x11
+ 1128 00e6 8A8201   		.uleb128 0x410a
+ 1129 00e9 00       		.byte	0
+ 1130 00ea 02       		.uleb128 0x2
+ 1131 00eb 18       		.uleb128 0x18
+ 1132 00ec 9142     		.uleb128 0x2111
+ 1133 00ee 18       		.uleb128 0x18
+ 1134 00ef 00       		.byte	0
+ 1135 00f0 00       		.byte	0
+ 1136 00f1 12       		.uleb128 0x12
+ 1137 00f2 2E       		.uleb128 0x2e
+ 1138 00f3 01       		.byte	0x1
+ 1139 00f4 3F       		.uleb128 0x3f
+ 1140 00f5 19       		.uleb128 0x19
+ 1141 00f6 03       		.uleb128 0x3
+ 1142 00f7 0E       		.uleb128 0xe
+ 1143 00f8 3A       		.uleb128 0x3a
+ 1144 00f9 0B       		.uleb128 0xb
+ 1145 00fa 3B       		.uleb128 0x3b
+ 1146 00fb 0B       		.uleb128 0xb
+ 1147 00fc 49       		.uleb128 0x49
+ 1148 00fd 13       		.uleb128 0x13
+ 1149 00fe 11       		.uleb128 0x11
+ 1150 00ff 01       		.uleb128 0x1
+ 1151 0100 12       		.uleb128 0x12
+ 1152 0101 06       		.uleb128 0x6
+ 1153 0102 40       		.uleb128 0x40
+ 1154 0103 18       		.uleb128 0x18
+ 1155 0104 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 23
+
+
+ 1156 0106 19       		.uleb128 0x19
+ 1157 0107 01       		.uleb128 0x1
+ 1158 0108 13       		.uleb128 0x13
+ 1159 0109 00       		.byte	0
+ 1160 010a 00       		.byte	0
+ 1161 010b 13       		.uleb128 0x13
+ 1162 010c 34       		.uleb128 0x34
+ 1163 010d 00       		.byte	0
+ 1164 010e 03       		.uleb128 0x3
+ 1165 010f 0E       		.uleb128 0xe
+ 1166 0110 3A       		.uleb128 0x3a
+ 1167 0111 0B       		.uleb128 0xb
+ 1168 0112 3B       		.uleb128 0x3b
+ 1169 0113 05       		.uleb128 0x5
+ 1170 0114 49       		.uleb128 0x49
+ 1171 0115 13       		.uleb128 0x13
+ 1172 0116 3F       		.uleb128 0x3f
+ 1173 0117 19       		.uleb128 0x19
+ 1174 0118 3C       		.uleb128 0x3c
+ 1175 0119 19       		.uleb128 0x19
+ 1176 011a 00       		.byte	0
+ 1177 011b 00       		.byte	0
+ 1178 011c 14       		.uleb128 0x14
+ 1179 011d 35       		.uleb128 0x35
+ 1180 011e 00       		.byte	0
+ 1181 011f 49       		.uleb128 0x49
+ 1182 0120 13       		.uleb128 0x13
+ 1183 0121 00       		.byte	0
+ 1184 0122 00       		.byte	0
+ 1185 0123 15       		.uleb128 0x15
+ 1186 0124 34       		.uleb128 0x34
+ 1187 0125 00       		.byte	0
+ 1188 0126 03       		.uleb128 0x3
+ 1189 0127 0E       		.uleb128 0xe
+ 1190 0128 3A       		.uleb128 0x3a
+ 1191 0129 0B       		.uleb128 0xb
+ 1192 012a 3B       		.uleb128 0x3b
+ 1193 012b 0B       		.uleb128 0xb
+ 1194 012c 49       		.uleb128 0x49
+ 1195 012d 13       		.uleb128 0x13
+ 1196 012e 3F       		.uleb128 0x3f
+ 1197 012f 19       		.uleb128 0x19
+ 1198 0130 3C       		.uleb128 0x3c
+ 1199 0131 19       		.uleb128 0x19
+ 1200 0132 00       		.byte	0
+ 1201 0133 00       		.byte	0
+ 1202 0134 16       		.uleb128 0x16
+ 1203 0135 34       		.uleb128 0x34
+ 1204 0136 00       		.byte	0
+ 1205 0137 03       		.uleb128 0x3
+ 1206 0138 0E       		.uleb128 0xe
+ 1207 0139 3A       		.uleb128 0x3a
+ 1208 013a 0B       		.uleb128 0xb
+ 1209 013b 3B       		.uleb128 0x3b
+ 1210 013c 0B       		.uleb128 0xb
+ 1211 013d 49       		.uleb128 0x49
+ 1212 013e 13       		.uleb128 0x13
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 24
+
+
+ 1213 013f 3F       		.uleb128 0x3f
+ 1214 0140 19       		.uleb128 0x19
+ 1215 0141 02       		.uleb128 0x2
+ 1216 0142 18       		.uleb128 0x18
+ 1217 0143 00       		.byte	0
+ 1218 0144 00       		.byte	0
+ 1219 0145 17       		.uleb128 0x17
+ 1220 0146 34       		.uleb128 0x34
+ 1221 0147 00       		.byte	0
+ 1222 0148 03       		.uleb128 0x3
+ 1223 0149 08       		.uleb128 0x8
+ 1224 014a 3A       		.uleb128 0x3a
+ 1225 014b 0B       		.uleb128 0xb
+ 1226 014c 3B       		.uleb128 0x3b
+ 1227 014d 0B       		.uleb128 0xb
+ 1228 014e 49       		.uleb128 0x49
+ 1229 014f 13       		.uleb128 0x13
+ 1230 0150 3F       		.uleb128 0x3f
+ 1231 0151 19       		.uleb128 0x19
+ 1232 0152 02       		.uleb128 0x2
+ 1233 0153 18       		.uleb128 0x18
+ 1234 0154 00       		.byte	0
+ 1235 0155 00       		.byte	0
+ 1236 0156 18       		.uleb128 0x18
+ 1237 0157 2E       		.uleb128 0x2e
+ 1238 0158 01       		.byte	0x1
+ 1239 0159 3F       		.uleb128 0x3f
+ 1240 015a 19       		.uleb128 0x19
+ 1241 015b 03       		.uleb128 0x3
+ 1242 015c 0E       		.uleb128 0xe
+ 1243 015d 3A       		.uleb128 0x3a
+ 1244 015e 0B       		.uleb128 0xb
+ 1245 015f 3B       		.uleb128 0x3b
+ 1246 0160 0B       		.uleb128 0xb
+ 1247 0161 27       		.uleb128 0x27
+ 1248 0162 19       		.uleb128 0x19
+ 1249 0163 3C       		.uleb128 0x3c
+ 1250 0164 19       		.uleb128 0x19
+ 1251 0165 01       		.uleb128 0x1
+ 1252 0166 13       		.uleb128 0x13
+ 1253 0167 00       		.byte	0
+ 1254 0168 00       		.byte	0
+ 1255 0169 19       		.uleb128 0x19
+ 1256 016a 05       		.uleb128 0x5
+ 1257 016b 00       		.byte	0
+ 1258 016c 49       		.uleb128 0x49
+ 1259 016d 13       		.uleb128 0x13
+ 1260 016e 00       		.byte	0
+ 1261 016f 00       		.byte	0
+ 1262 0170 1A       		.uleb128 0x1a
+ 1263 0171 2E       		.uleb128 0x2e
+ 1264 0172 00       		.byte	0
+ 1265 0173 3F       		.uleb128 0x3f
+ 1266 0174 19       		.uleb128 0x19
+ 1267 0175 03       		.uleb128 0x3
+ 1268 0176 0E       		.uleb128 0xe
+ 1269 0177 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 25
+
+
+ 1270 0178 0B       		.uleb128 0xb
+ 1271 0179 3B       		.uleb128 0x3b
+ 1272 017a 0B       		.uleb128 0xb
+ 1273 017b 27       		.uleb128 0x27
+ 1274 017c 19       		.uleb128 0x19
+ 1275 017d 3C       		.uleb128 0x3c
+ 1276 017e 19       		.uleb128 0x19
+ 1277 017f 00       		.byte	0
+ 1278 0180 00       		.byte	0
+ 1279 0181 1B       		.uleb128 0x1b
+ 1280 0182 2E       		.uleb128 0x2e
+ 1281 0183 01       		.byte	0x1
+ 1282 0184 3F       		.uleb128 0x3f
+ 1283 0185 19       		.uleb128 0x19
+ 1284 0186 03       		.uleb128 0x3
+ 1285 0187 0E       		.uleb128 0xe
+ 1286 0188 3A       		.uleb128 0x3a
+ 1287 0189 0B       		.uleb128 0xb
+ 1288 018a 3B       		.uleb128 0x3b
+ 1289 018b 0B       		.uleb128 0xb
+ 1290 018c 3C       		.uleb128 0x3c
+ 1291 018d 19       		.uleb128 0x19
+ 1292 018e 01       		.uleb128 0x1
+ 1293 018f 13       		.uleb128 0x13
+ 1294 0190 00       		.byte	0
+ 1295 0191 00       		.byte	0
+ 1296 0192 1C       		.uleb128 0x1c
+ 1297 0193 18       		.uleb128 0x18
+ 1298 0194 00       		.byte	0
+ 1299 0195 00       		.byte	0
+ 1300 0196 00       		.byte	0
+ 1301 0197 1D       		.uleb128 0x1d
+ 1302 0198 2E       		.uleb128 0x2e
+ 1303 0199 01       		.byte	0x1
+ 1304 019a 3F       		.uleb128 0x3f
+ 1305 019b 19       		.uleb128 0x19
+ 1306 019c 03       		.uleb128 0x3
+ 1307 019d 0E       		.uleb128 0xe
+ 1308 019e 3A       		.uleb128 0x3a
+ 1309 019f 0B       		.uleb128 0xb
+ 1310 01a0 3B       		.uleb128 0x3b
+ 1311 01a1 0B       		.uleb128 0xb
+ 1312 01a2 27       		.uleb128 0x27
+ 1313 01a3 19       		.uleb128 0x19
+ 1314 01a4 3C       		.uleb128 0x3c
+ 1315 01a5 19       		.uleb128 0x19
+ 1316 01a6 00       		.byte	0
+ 1317 01a7 00       		.byte	0
+ 1318 01a8 00       		.byte	0
+ 1319              		.section	.debug_loc,"",%progbits
+ 1320              	.Ldebug_loc0:
+ 1321              	.LLST0:
+ 1322 0000 0C000000 		.4byte	.LVL1
+ 1323 0004 30000000 		.4byte	.LVL3
+ 1324 0008 0100     		.2byte	0x1
+ 1325 000a 53       		.byte	0x53
+ 1326 000b 30000000 		.4byte	.LVL3
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 26
+
+
+ 1327 000f 88000000 		.4byte	.LFE66
+ 1328 0013 0E00     		.2byte	0xe
+ 1329 0015 03       		.byte	0x3
+ 1330 0016 00000000 		.4byte	Setpoint
+ 1331 001a 06       		.byte	0x6
+ 1332 001b 03       		.byte	0x3
+ 1333 001c 00000000 		.4byte	Input
+ 1334 0020 06       		.byte	0x6
+ 1335 0021 1C       		.byte	0x1c
+ 1336 0022 9F       		.byte	0x9f
+ 1337 0023 00000000 		.4byte	0
+ 1338 0027 00000000 		.4byte	0
+ 1339              	.LLST1:
+ 1340 002b 20000000 		.4byte	.LVL2
+ 1341 002f 3A000000 		.4byte	.LVL4
+ 1342 0033 0100     		.2byte	0x1
+ 1343 0035 52       		.byte	0x52
+ 1344 0036 3A000000 		.4byte	.LVL4
+ 1345 003a 88000000 		.4byte	.LFE66
+ 1346 003e 1500     		.2byte	0x15
+ 1347 0040 03       		.byte	0x3
+ 1348 0041 00000000 		.4byte	Setpoint
+ 1349 0045 06       		.byte	0x6
+ 1350 0046 03       		.byte	0x3
+ 1351 0047 00000000 		.4byte	Input
+ 1352 004b 06       		.byte	0x6
+ 1353 004c 1C       		.byte	0x1c
+ 1354 004d 03       		.byte	0x3
+ 1355 004e 00000000 		.4byte	lastErr
+ 1356 0052 06       		.byte	0x6
+ 1357 0053 1C       		.byte	0x1c
+ 1358 0054 9F       		.byte	0x9f
+ 1359 0055 00000000 		.4byte	0
+ 1360 0059 00000000 		.4byte	0
+ 1361              		.section	.debug_aranges,"",%progbits
+ 1362 0000 4C000000 		.4byte	0x4c
+ 1363 0004 0200     		.2byte	0x2
+ 1364 0006 00000000 		.4byte	.Ldebug_info0
+ 1365 000a 04       		.byte	0x4
+ 1366 000b 00       		.byte	0
+ 1367 000c 0000     		.2byte	0
+ 1368 000e 0000     		.2byte	0
+ 1369 0010 00000000 		.4byte	.LFB63
+ 1370 0014 20000000 		.4byte	.LFE63-.LFB63
+ 1371 0018 00000000 		.4byte	.LFB64
+ 1372 001c 20000000 		.4byte	.LFE64-.LFB64
+ 1373 0020 00000000 		.4byte	.LFB65
+ 1374 0024 1C000000 		.4byte	.LFE65-.LFB65
+ 1375 0028 00000000 		.4byte	.LFB66
+ 1376 002c 88000000 		.4byte	.LFE66-.LFB66
+ 1377 0030 00000000 		.4byte	.LFB67
+ 1378 0034 1C000000 		.4byte	.LFE67-.LFB67
+ 1379 0038 00000000 		.4byte	.LFB68
+ 1380 003c 28000000 		.4byte	.LFE68-.LFB68
+ 1381 0040 00000000 		.4byte	.LFB69
+ 1382 0044 5C000000 		.4byte	.LFE69-.LFB69
+ 1383 0048 00000000 		.4byte	0
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 27
+
+
+ 1384 004c 00000000 		.4byte	0
+ 1385              		.section	.debug_ranges,"",%progbits
+ 1386              	.Ldebug_ranges0:
+ 1387 0000 00000000 		.4byte	.LFB63
+ 1388 0004 20000000 		.4byte	.LFE63
+ 1389 0008 00000000 		.4byte	.LFB64
+ 1390 000c 20000000 		.4byte	.LFE64
+ 1391 0010 00000000 		.4byte	.LFB65
+ 1392 0014 1C000000 		.4byte	.LFE65
+ 1393 0018 00000000 		.4byte	.LFB66
+ 1394 001c 88000000 		.4byte	.LFE66
+ 1395 0020 00000000 		.4byte	.LFB67
+ 1396 0024 1C000000 		.4byte	.LFE67
+ 1397 0028 00000000 		.4byte	.LFB68
+ 1398 002c 28000000 		.4byte	.LFE68
+ 1399 0030 00000000 		.4byte	.LFB69
+ 1400 0034 5C000000 		.4byte	.LFE69
+ 1401 0038 00000000 		.4byte	0
+ 1402 003c 00000000 		.4byte	0
+ 1403              		.section	.debug_line,"",%progbits
+ 1404              	.Ldebug_line0:
+ 1405 0000 64020000 		.section	.debug_str,"MS",%progbits,1
+ 1405      0200C301 
+ 1405      00000201 
+ 1405      FB0E0D00 
+ 1405      01010101 
+ 1406              	.LASF6:
+ 1407 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1407      206C6F6E 
+ 1407      6720696E 
+ 1407      7400
+ 1408              	.LASF30:
+ 1409 000e 69326362 		.ascii	"i2cbuf\000"
+ 1409      756600
+ 1410              	.LASF53:
+ 1411 0015 433A5C55 		.ascii	"C:\\Users\\cruiser\\Documents\\PSoC Creator\\Voltro"
+ 1411      73657273 
+ 1411      5C637275 
+ 1411      69736572 
+ 1411      5C446F63 
+ 1412 0043 6E5C566F 		.ascii	"n\\Voltron Main.cydsn\000"
+ 1412      6C74726F 
+ 1412      6E204D61 
+ 1412      696E2E63 
+ 1412      7964736E 
+ 1413              	.LASF41:
+ 1414 0058 6C617374 		.ascii	"lastErr\000"
+ 1414      45727200 
+ 1415              	.LASF20:
+ 1416 0060 66696C74 		.ascii	"filter_ready1_handler\000"
+ 1416      65725F72 
+ 1416      65616479 
+ 1416      315F6861 
+ 1416      6E646C65 
+ 1417              	.LASF47:
+ 1418 0076 73746172 		.ascii	"start_resources\000"
+ 1418      745F7265 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 28
+
+
+ 1418      736F7572 
+ 1418      63657300 
+ 1419              	.LASF9:
+ 1420 0086 5F5F696E 		.ascii	"__int32_t\000"
+ 1420      7433325F 
+ 1420      7400
+ 1421              	.LASF38:
+ 1422 0090 4F757470 		.ascii	"Output\000"
+ 1422      757400
+ 1423              	.LASF26:
+ 1424 0097 436F6D70 		.ascii	"Compute\000"
+ 1424      75746500 
+ 1425              	.LASF24:
+ 1426 009f 7370695F 		.ascii	"spi_rx_handler\000"
+ 1426      72785F68 
+ 1426      616E646C 
+ 1426      657200
+ 1427              	.LASF21:
+ 1428 00ae 66696C74 		.ascii	"filter_ready2_handler\000"
+ 1428      65725F72 
+ 1428      65616479 
+ 1428      325F6861 
+ 1428      6E646C65 
+ 1429              	.LASF35:
+ 1430 00c4 66696C74 		.ascii	"filter2_ready\000"
+ 1430      6572325F 
+ 1430      72656164 
+ 1430      7900
+ 1431              	.LASF50:
+ 1432 00d2 56444143 		.ascii	"VDAC4_SetValue\000"
+ 1432      345F5365 
+ 1432      7456616C 
+ 1432      756500
+ 1433              	.LASF14:
+ 1434 00e1 666C6F61 		.ascii	"float\000"
+ 1434      7400
+ 1435              	.LASF48:
+ 1436 00e7 73746172 		.ascii	"start_DMAs\000"
+ 1436      745F444D 
+ 1436      417300
+ 1437              	.LASF1:
+ 1438 00f2 756E7369 		.ascii	"unsigned char\000"
+ 1438      676E6564 
+ 1438      20636861 
+ 1438      7200
+ 1439              	.LASF25:
+ 1440 0100 53657454 		.ascii	"SetTunings\000"
+ 1440      756E696E 
+ 1440      677300
+ 1441              	.LASF52:
+ 1442 010b 2E5C6D61 		.ascii	".\\main.c\000"
+ 1442      696E2E63 
+ 1442      00
+ 1443              	.LASF5:
+ 1444 0114 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1444      20756E73 
+ 1444      69676E65 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 29
+
+
+ 1444      6420696E 
+ 1444      7400
+ 1445              	.LASF3:
+ 1446 0126 73686F72 		.ascii	"short unsigned int\000"
+ 1446      7420756E 
+ 1446      7369676E 
+ 1446      65642069 
+ 1446      6E7400
+ 1447              	.LASF54:
+ 1448 0139 53504953 		.ascii	"SPIS_EnableRxInt\000"
+ 1448      5F456E61 
+ 1448      626C6552 
+ 1448      78496E74 
+ 1448      00
+ 1449              	.LASF40:
+ 1450 014a 65727253 		.ascii	"errSum\000"
+ 1450      756D00
+ 1451              	.LASF29:
+ 1452 0151 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1452      52784275 
+ 1452      66666572 
+ 1452      00
+ 1453              	.LASF27:
+ 1454 015e 73746172 		.ascii	"start_interrupts\000"
+ 1454      745F696E 
+ 1454      74657272 
+ 1454      75707473 
+ 1454      00
+ 1455              	.LASF15:
+ 1456 016f 646F7562 		.ascii	"double\000"
+ 1456      6C6500
+ 1457              	.LASF12:
+ 1458 0176 75696E74 		.ascii	"uint16\000"
+ 1458      313600
+ 1459              	.LASF34:
+ 1460 017d 66696C74 		.ascii	"filter1_ready\000"
+ 1460      6572315F 
+ 1460      72656164 
+ 1460      7900
+ 1461              	.LASF28:
+ 1462 018b 6D61696E 		.ascii	"main\000"
+ 1462      00
+ 1463              	.LASF37:
+ 1464 0190 496E7075 		.ascii	"Input\000"
+ 1464      7400
+ 1465              	.LASF44:
+ 1466 0196 6973725F 		.ascii	"isr_filter_ready1_StartEx\000"
+ 1466      66696C74 
+ 1466      65725F72 
+ 1466      65616479 
+ 1466      315F5374 
+ 1467              	.LASF43:
+ 1468 01b0 56444143 		.ascii	"VDAC2_SetValue\000"
+ 1468      325F5365 
+ 1468      7456616C 
+ 1468      756500
+ 1469              	.LASF13:
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 30
+
+
+ 1470 01bf 75696E74 		.ascii	"uint32\000"
+ 1470      333200
+ 1471              	.LASF51:
+ 1472 01c6 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1472      4320342E 
+ 1472      392E3320 
+ 1472      32303135 
+ 1472      30333033 
+ 1473 01f9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1473      20726576 
+ 1473      6973696F 
+ 1473      6E203232 
+ 1473      31323230 
+ 1474 022c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1474      66756E63 
+ 1474      74696F6E 
+ 1474      2D736563 
+ 1474      74696F6E 
+ 1475              	.LASF8:
+ 1476 0254 756E7369 		.ascii	"unsigned int\000"
+ 1476      676E6564 
+ 1476      20696E74 
+ 1476      00
+ 1477              	.LASF32:
+ 1478 0261 66696C74 		.ascii	"filtermem1\000"
+ 1478      65726D65 
+ 1478      6D3100
+ 1479              	.LASF33:
+ 1480 026c 66696C74 		.ascii	"filtermem2\000"
+ 1480      65726D65 
+ 1480      6D3200
+ 1481              	.LASF7:
+ 1482 0277 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1482      206C6F6E 
+ 1482      6720756E 
+ 1482      7369676E 
+ 1482      65642069 
+ 1483              	.LASF39:
+ 1484 028e 53657470 		.ascii	"Setpoint\000"
+ 1484      6F696E74 
+ 1484      00
+ 1485              	.LASF17:
+ 1486 0297 63796973 		.ascii	"cyisraddress\000"
+ 1486      72616464 
+ 1486      72657373 
+ 1486      00
+ 1487              	.LASF23:
+ 1488 02a4 64457272 		.ascii	"dErr\000"
+ 1488      00
+ 1489              	.LASF49:
+ 1490 02a9 56444143 		.ascii	"VDAC1_SetValue\000"
+ 1490      315F5365 
+ 1490      7456616C 
+ 1490      756500
+ 1491              	.LASF10:
+ 1492 02b8 696E7433 		.ascii	"int32_t\000"
+ 1492      325F7400 
+ARM GAS  C:\Users\cruiser\AppData\Local\Temp\ccmTK1Kv.s 			page 31
+
+
+ 1493              	.LASF18:
+ 1494 02c0 73697A65 		.ascii	"sizetype\000"
+ 1494      74797065 
+ 1494      00
+ 1495              	.LASF22:
+ 1496 02c9 6572726F 		.ascii	"error\000"
+ 1496      7200
+ 1497              	.LASF46:
+ 1498 02cf 6973725F 		.ascii	"isr_spi_rx_StartEx\000"
+ 1498      7370695F 
+ 1498      72785F53 
+ 1498      74617274 
+ 1498      457800
+ 1499              	.LASF42:
+ 1500 02e2 74696D65 		.ascii	"timeChange\000"
+ 1500      4368616E 
+ 1500      676500
+ 1501              	.LASF16:
+ 1502 02ed 63686172 		.ascii	"char\000"
+ 1502      00
+ 1503              	.LASF36:
+ 1504 02f2 6C617374 		.ascii	"lastTime\000"
+ 1504      54696D65 
+ 1504      00
+ 1505              	.LASF2:
+ 1506 02fb 73686F72 		.ascii	"short int\000"
+ 1506      7420696E 
+ 1506      7400
+ 1507              	.LASF31:
+ 1508 0305 7370696D 		.ascii	"spimem\000"
+ 1508      656D00
+ 1509              	.LASF11:
+ 1510 030c 75696E74 		.ascii	"uint8\000"
+ 1510      3800
+ 1511              	.LASF4:
+ 1512 0312 6C6F6E67 		.ascii	"long int\000"
+ 1512      20696E74 
+ 1512      00
+ 1513              	.LASF19:
+ 1514 031b 6C6F6E67 		.ascii	"long double\000"
+ 1514      20646F75 
+ 1514      626C6500 
+ 1515              	.LASF45:
+ 1516 0327 6973725F 		.ascii	"isr_filter_ready2_StartEx\000"
+ 1516      66696C74 
+ 1516      65725F72 
+ 1516      65616479 
+ 1516      325F5374 
+ 1517              	.LASF0:
+ 1518 0341 7369676E 		.ascii	"signed char\000"
+ 1518      65642063 
+ 1518      68617200 
+ 1519              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
