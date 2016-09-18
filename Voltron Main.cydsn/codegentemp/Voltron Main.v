@@ -1,6 +1,6 @@
 // ======================================================================
 // Voltron Main.v generated from TopDesign.cysch
-// 09/13/2016 at 23:37
+// 09/17/2016 at 17:23
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1499,19 +1499,6 @@ module ADC_DelSig_v3_20_16 (
 
 endmodule
 
-// Component: FreqDiv_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
-`endif
-
 // Component: cy_vref_v1_60
 `ifdef CY_BLK_DIR
 `undef CY_BLK_DIR
@@ -2118,8 +2105,6 @@ module top ;
     electrical  Net_8126;
           wire  Net_8125;
           wire  Net_8124;
-          wire  Net_8221;
-          wire  Net_8220;
           wire  Net_8120;
     electrical  Net_8119;
           wire  Net_8118;
@@ -2157,7 +2142,6 @@ module top ;
           wire  Net_850;
           wire  Net_837;
           wire  Net_8111;
-          wire  Net_8219;
           wire  Net_8294;
           wire  Net_8108;
           wire  Net_8107;
@@ -2175,6 +2159,7 @@ module top ;
     electrical  Net_90;
           wire  Net_6692;
           wire  Net_6691;
+          wire  Net_6689;
           wire  Net_6688;
           wire  Net_5353;
           wire  Net_5352;
@@ -2215,7 +2200,6 @@ module top ;
           wire  Net_8103;
           wire  Net_8030;
           wire  Net_8027;
-          wire  Net_6689;
           wire  Net_8031;
           wire  Net_8028;
           wire  Net_124;
@@ -3646,8 +3630,6 @@ module top ;
         .DMA_Req_B(Net_6690),
         .Interrupt(Net_8294));
 
-    assign Net_8219 = 1'h1;
-
 
 	cy_dma_v1_0
 		#(.drq_type(2'b10))
@@ -4126,15 +4108,6 @@ module top ;
         .nVref(Net_8119),
         .mi(1'b0));
 
-    FreqDiv_v1_0 FreqDiv_1 (
-        .en(Net_8219),
-        .div(Net_8220),
-        .reset(Net_8221),
-        .clock(Net_6689));
-    defparam FreqDiv_1.Divider = 1000;
-    defparam FreqDiv_1.highPulse = 500;
-    defparam FreqDiv_1.numBits = 10;
-
     ADC_SAR_v3_0_17 SAR1 (
         .vplus(Net_8166),
         .vminus(Net_8177),
@@ -4153,8 +4126,6 @@ module top ;
         .vdac_ref(Net_8130),
         .eos(Net_8131));
 
-    assign Net_8221 = 1'h0;
-
     assign Net_2247 = 1'h0;
 
 
@@ -4168,81 +4139,6 @@ module top ;
         .clock(Net_8103),
         .go(Net_8027),
         .done(Net_8028));
-
-	wire [0:0] tmpOE__Pin_test1_net;
-	wire [0:0] tmpFB_0__Pin_test1_net;
-	wire [0:0] tmpIO_0__Pin_test1_net;
-	wire [0:0] tmpINTERRUPT_0__Pin_test1_net;
-	electrical [0:0] tmpSIOVREF__Pin_test1_net;
-
-	cy_psoc3_pins_v1_10
-		#(.id("9737cd6b-90d4-4bcb-aa8b-6375accff437"),
-		  .drive_mode(3'b110),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
-		  .input_clk_en(0),
-		  .input_sync(1'b1),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("O"),
-		  .por_state(4),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b1),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
-		  .width(1),
-		  .ovt_hyst_trim(1'b0),
-		  .ovt_needed(1'b0),
-		  .ovt_slew_control(2'b00),
-		  .input_buffer_sel(2'b00))
-		Pin_test1
-		 (.oe(tmpOE__Pin_test1_net),
-		  .y({Net_8220}),
-		  .fb({tmpFB_0__Pin_test1_net[0:0]}),
-		  .io({tmpIO_0__Pin_test1_net[0:0]}),
-		  .siovref(tmpSIOVREF__Pin_test1_net),
-		  .interrupt({tmpINTERRUPT_0__Pin_test1_net[0:0]}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
-
-	assign tmpOE__Pin_test1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 	cy_isr_v1_0

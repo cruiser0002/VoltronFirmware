@@ -1,5 +1,5 @@
 -- Project:   Voltron Main
--- Generated: 09/13/2016 23:37:56
+-- Generated: 09/17/2016 17:23:49
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Voltron Main\ IS
@@ -11,8 +11,7 @@ ENTITY \Voltron Main\ IS
         SPI_SCLK(0)_PAD : IN std_ulogic;
         SPI_MOSI(0)_PAD : IN std_ulogic;
         I2C_Pins(0)_PAD : INOUT std_ulogic;
-        I2C_Pins(1)_PAD : INOUT std_ulogic;
-        Pin_test1(0)_PAD : OUT std_ulogic);
+        I2C_Pins(1)_PAD : INOUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -45,9 +44,9 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Net_17 : bit;
     ATTRIBUTE udbclken_assigned OF Net_17 : SIGNAL IS "False";
     SIGNAL Net_1821 : bit;
-    ATTRIBUTE placement_force OF Net_1821 : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF Net_1821 : SIGNAL IS "U(2,2,A)3";
     SIGNAL Net_20 : bit;
-    ATTRIBUTE placement_force OF Net_20 : SIGNAL IS "U(2,3,B)3";
+    ATTRIBUTE placement_force OF Net_20 : SIGNAL IS "U(2,2,B)1";
     SIGNAL Net_4221 : bit;
     SIGNAL Net_4245 : bit;
     SIGNAL Net_5352 : bit;
@@ -59,10 +58,10 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Net_7955 : bit;
     SIGNAL Net_8027 : bit;
     SIGNAL Net_8028 : bit;
-    ATTRIBUTE placement_force OF Net_8028 : SIGNAL IS "U(2,0,A)2";
+    ATTRIBUTE placement_force OF Net_8028 : SIGNAL IS "U(3,0,A)2";
     SIGNAL Net_8030 : bit;
     SIGNAL Net_8031 : bit;
-    ATTRIBUTE placement_force OF Net_8031 : SIGNAL IS "U(2,2,B)2";
+    ATTRIBUTE placement_force OF Net_8031 : SIGNAL IS "U(2,2,A)2";
     SIGNAL Net_8106 : bit;
     SIGNAL Net_8108 : bit;
     SIGNAL Net_8117 : bit;
@@ -71,8 +70,6 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Net_8142 : bit;
     SIGNAL Net_8147 : bit;
     SIGNAL Net_8212 : bit;
-    SIGNAL Net_8220 : bit;
-    ATTRIBUTE placement_force OF Net_8220 : SIGNAL IS "U(3,0,A)1";
     SIGNAL Net_8232 : bit;
     SIGNAL Net_8294 : bit;
     SIGNAL Pin_DAC1(0)__PA : bit;
@@ -91,7 +88,6 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL Pin_TIA3P5(0)__PA : bit;
     SIGNAL Pin_TIA4(0)__PA : bit;
     SIGNAL Pin_VDDAdiv2(0)__PA : bit;
-    SIGNAL Pin_test1(0)__PA : bit;
     SIGNAL SPI_MISO(0)__PA : bit;
     SIGNAL SPI_MOSI(0)__PA : bit;
     SIGNAL SPI_SCLK(0)__PA : bit;
@@ -121,30 +117,6 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL \DelSig:mod_reset\ : bit;
     SIGNAL \Filter:Net_8\ : bit;
     SIGNAL \Filter:Net_9\ : bit;
-    SIGNAL \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : SIGNAL IS "U(3,2,B)3";
-    SIGNAL \FreqDiv_1:count_0\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_0\ : SIGNAL IS "U(3,2,B)0";
-    SIGNAL \FreqDiv_1:count_1\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_1\ : SIGNAL IS "U(3,2,A)1";
-    SIGNAL \FreqDiv_1:count_2\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_2\ : SIGNAL IS "U(3,2,A)3";
-    SIGNAL \FreqDiv_1:count_3\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_3\ : SIGNAL IS "U(3,1,B)1";
-    SIGNAL \FreqDiv_1:count_4\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_4\ : SIGNAL IS "U(3,3,B)0";
-    SIGNAL \FreqDiv_1:count_5\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_5\ : SIGNAL IS "U(3,3,A)2";
-    SIGNAL \FreqDiv_1:count_6\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_6\ : SIGNAL IS "U(3,3,A)3";
-    SIGNAL \FreqDiv_1:count_7\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_7\ : SIGNAL IS "U(3,0,B)0";
-    SIGNAL \FreqDiv_1:count_8\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_8\ : SIGNAL IS "U(3,1,A)2";
-    SIGNAL \FreqDiv_1:count_9\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:count_9\ : SIGNAL IS "U(3,2,B)1";
-    SIGNAL \FreqDiv_1:not_last_reset\ : bit;
-    ATTRIBUTE placement_force OF \FreqDiv_1:not_last_reset\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \I2C:Net_172\ : bit;
     SIGNAL \I2C:Net_173\ : bit;
     SIGNAL \I2C:Net_174\ : bit;
@@ -193,7 +165,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE global_signal OF \SAR2:Net_376\ : SIGNAL IS true;
     SIGNAL \SAR2:Net_376_local\ : bit;
     SIGNAL \SPIS:BSPIS:byte_complete\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:byte_complete\ : SIGNAL IS "U(2,0,B)1";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:byte_complete\ : SIGNAL IS "U(2,0,B)3";
     SIGNAL \SPIS:BSPIS:count_0\ : bit;
     SIGNAL \SPIS:BSPIS:count_1\ : bit;
     SIGNAL \SPIS:BSPIS:count_2\ : bit;
@@ -207,26 +179,26 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL \SPIS:BSPIS:dpMOSI_fifo_not_empty\ : bit;
     SIGNAL \SPIS:BSPIS:dpcounter_one_fin\ : bit;
     SIGNAL \SPIS:BSPIS:dpcounter_one_reg\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:dpcounter_one_reg\ : SIGNAL IS "U(2,1,A)3";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:dpcounter_one_reg\ : SIGNAL IS "U(3,0,B)0";
     SIGNAL \SPIS:BSPIS:miso_from_dp\ : bit;
     SIGNAL \SPIS:BSPIS:miso_tx_empty_reg_fin\ : bit;
     SIGNAL \SPIS:BSPIS:mosi_buf_overrun\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_buf_overrun\ : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_buf_overrun\ : SIGNAL IS "U(3,1,A)2";
     SIGNAL \SPIS:BSPIS:mosi_buf_overrun_fin\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : SIGNAL IS "U(2,3,A)1";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : SIGNAL IS "U(3,1,B)3";
     SIGNAL \SPIS:BSPIS:mosi_buf_overrun_reg\ : bit;
     SIGNAL \SPIS:BSPIS:mosi_tmp\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_tmp\ : SIGNAL IS "U(2,1,B)1";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_tmp\ : SIGNAL IS "U(3,2,B)2";
     SIGNAL \SPIS:BSPIS:mosi_to_dp\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_to_dp\ : SIGNAL IS "U(2,2,A)0";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:mosi_to_dp\ : SIGNAL IS "U(3,2,A)0";
     SIGNAL \SPIS:BSPIS:rx_buf_overrun\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:rx_buf_overrun\ : SIGNAL IS "U(2,3,A)0";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:rx_buf_overrun\ : SIGNAL IS "U(3,1,A)3";
     SIGNAL \SPIS:BSPIS:rx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:rx_status_4\ : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:rx_status_4\ : SIGNAL IS "U(2,1,B)0";
     SIGNAL \SPIS:BSPIS:tx_load\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:tx_load\ : SIGNAL IS "U(2,1,B)3";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:tx_load\ : SIGNAL IS "U(3,1,B)0";
     SIGNAL \SPIS:BSPIS:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIS:BSPIS:tx_status_0\ : SIGNAL IS "U(2,0,A)3";
+    ATTRIBUTE placement_force OF \SPIS:BSPIS:tx_status_0\ : SIGNAL IS "U(2,0,A)1";
     SIGNAL \SPIS:BSPIS:tx_status_1\ : bit;
     SIGNAL \SPIS:Net_81\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIS:Net_81\ : SIGNAL IS "True";
@@ -234,13 +206,13 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL \SPIS:Net_81_local\ : bit;
     SIGNAL \ShiftBy2_2:DP:u0.ce0__sig\ : bit;
     SIGNAL \ShiftBy2_1:DP_select_0\ : bit;
-    ATTRIBUTE placement_force OF \ShiftBy2_1:DP_select_0\ : SIGNAL IS "U(2,0,A)0";
+    ATTRIBUTE placement_force OF \ShiftBy2_1:DP_select_0\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \ShiftBy2_1:DP_select_1\ : bit;
-    ATTRIBUTE placement_force OF \ShiftBy2_1:DP_select_1\ : SIGNAL IS "U(2,0,A)1";
+    ATTRIBUTE placement_force OF \ShiftBy2_1:DP_select_1\ : SIGNAL IS "U(2,0,B)1";
     SIGNAL \ShiftBy2_2:DP_select_0\ : bit;
-    ATTRIBUTE placement_force OF \ShiftBy2_2:DP_select_0\ : SIGNAL IS "U(2,2,B)0";
+    ATTRIBUTE placement_force OF \ShiftBy2_2:DP_select_0\ : SIGNAL IS "U(2,2,A)0";
     SIGNAL \ShiftBy2_2:DP_select_1\ : bit;
-    ATTRIBUTE placement_force OF \ShiftBy2_2:DP_select_1\ : SIGNAL IS "U(2,2,B)1";
+    ATTRIBUTE placement_force OF \ShiftBy2_2:DP_select_1\ : SIGNAL IS "U(2,2,A)1";
     SIGNAL \\\USB:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USB:Dp(0)\\__PA\ : bit;
     SIGNAL \USB:Net_1010\ : bit;
@@ -266,7 +238,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     SIGNAL \USB:ep_int_7\ : bit;
     SIGNAL \USB:ep_int_8\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,2,B)2";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,0,A)0";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -359,38 +331,34 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE Location OF \SAR1:Bypass(0)\ : LABEL IS "P0[4]";
     ATTRIBUTE lib_model OF \SAR2:Bypass(0)\ : LABEL IS "iocell28";
     ATTRIBUTE Location OF \SAR2:Bypass(0)\ : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF Pin_test1(0) : LABEL IS "iocell29";
-    ATTRIBUTE Location OF Pin_test1(0) : LABEL IS "P3[3]";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:tx_load\ : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF \SPIS:BSPIS:tx_load\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:tx_load\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:byte_complete\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \SPIS:BSPIS:byte_complete\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:rx_buf_overrun\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \SPIS:BSPIS:rx_buf_overrun\ : LABEL IS "U(2,3)";
-    ATTRIBUTE Location OF I2C_Pins(0)_SYNC : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:rx_buf_overrun\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF I2C_Pins(0)_SYNC : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF Net_20 : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF Net_20 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_20 : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_buf_overrun\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_buf_overrun\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_buf_overrun\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:tx_status_0\ : LABEL IS "macrocell6";
     ATTRIBUTE Location OF \SPIS:BSPIS:tx_status_0\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:rx_status_4\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \SPIS:BSPIS:rx_status_4\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:rx_status_4\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_to_dp\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_to_dp\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_to_dp\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF Net_1821 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_1821 : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF Net_1821 : LABEL IS "U(2,2)";
     ATTRIBUTE Location OF \Opamp_2:ABuf\ : LABEL IS "F(OpAmp,3)";
     ATTRIBUTE Location OF \PGA_Inv_2:SC\ : LABEL IS "F(SC,3)";
-    ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell30";
+    ATTRIBUTE lib_model OF Dedicated_Output_1 : LABEL IS "iocell29";
     ATTRIBUTE Location OF Dedicated_Output_1 : LABEL IS "P3[6]";
     ATTRIBUTE Location OF \PGA_Inv_1:SC\ : LABEL IS "F(SC,0)";
     ATTRIBUTE Location OF \VDAC4:viDAC8\ : LABEL IS "F(VIDAC,1)";
     ATTRIBUTE Location OF \VDAC3:viDAC8\ : LABEL IS "F(VIDAC,3)";
-    ATTRIBUTE Location OF \VDAC2:viDAC8\ : LABEL IS "F(VIDAC,2)";
-    ATTRIBUTE Location OF \VDAC1:viDAC8\ : LABEL IS "F(VIDAC,0)";
+    ATTRIBUTE Location OF \VDAC2:viDAC8\ : LABEL IS "F(VIDAC,0)";
+    ATTRIBUTE Location OF \VDAC1:viDAC8\ : LABEL IS "F(VIDAC,2)";
     ATTRIBUTE Location OF \Opamp_1:ABuf\ : LABEL IS "F(OpAmp,2)";
     ATTRIBUTE Location OF \Opamp_4:ABuf\ : LABEL IS "F(OpAmp,0)";
     ATTRIBUTE Location OF \Opamp_3:ABuf\ : LABEL IS "F(OpAmp,1)";
@@ -404,19 +372,19 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE Location OF FILTER2RAM1 : LABEL IS "[DrqContainer=(0)][DrqId=(8)]";
     ATTRIBUTE lib_model OF FILTER2RAM2 : LABEL IS "drqcell2";
     ATTRIBUTE Location OF FILTER2RAM2 : LABEL IS "[DrqContainer=(0)][DrqId=(9)]";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,2)";
-    ATTRIBUTE Location OF \SPIS:BSPIS:sync_1\ : LABEL IS "U(3,1)";
-    ATTRIBUTE Location OF \SPIS:BSPIS:sync_2\ : LABEL IS "U(2,2)";
-    ATTRIBUTE Location OF \SPIS:BSPIS:sync_3\ : LABEL IS "U(2,2)";
-    ATTRIBUTE Location OF \SPIS:BSPIS:sync_4\ : LABEL IS "U(3,3)";
-    ATTRIBUTE Location OF \SPIS:BSPIS:BitCounter\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell10";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:sync_1\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:sync_2\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:sync_3\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:sync_4\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:BitCounter\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:TxStsReg\ : LABEL IS "statusicell1";
     ATTRIBUTE Location OF \SPIS:BSPIS:TxStsReg\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:RxStsReg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \SPIS:BSPIS:RxStsReg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:RxStsReg\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \SPIS:BSPIS:sR8:Dp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \SPIS:BSPIS:sR8:Dp:u0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SPIS:BSPIS:sR8:Dp:u0\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF SAR2FILTER1 : LABEL IS "drqcell3";
     ATTRIBUTE Location OF SAR2FILTER1 : LABEL IS "[DrqContainer=(0)][DrqId=(1)]";
     ATTRIBUTE lib_model OF SAR2FILTER2 : LABEL IS "drqcell4";
@@ -435,7 +403,7 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE Location OF SHIFT2FILTER2 : LABEL IS "[DrqContainer=(0)][DrqId=(6)]";
     ATTRIBUTE Location OF \DelSig:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE Location OF \DelSig:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(29)]";
-    ATTRIBUTE Location OF I2C_Pins(1)_SYNC : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF I2C_Pins(1)_SYNC : LABEL IS "U(2,2)";
     ATTRIBUTE Location OF \DelSig:DEC\ : LABEL IS "F(Decimator,0)";
     ATTRIBUTE Location OF \SAR1:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE Location OF \SAR1:ADC_SAR\ : LABEL IS "F(SAR,0)";
@@ -455,47 +423,23 @@ ARCHITECTURE __DEFAULT__ OF \Voltron Main\ IS
     ATTRIBUTE Location OF SAR2SHIFT1 : LABEL IS "[DrqContainer=(0)][DrqId=(3)]";
     ATTRIBUTE lib_model OF SAR2SHIFT2 : LABEL IS "drqcell9";
     ATTRIBUTE Location OF SAR2SHIFT2 : LABEL IS "[DrqContainer=(0)][DrqId=(4)]";
-    ATTRIBUTE lib_model OF \SPIS:BSPIS:dpcounter_one_reg\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \SPIS:BSPIS:dpcounter_one_reg\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_tmp\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_tmp\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:not_last_reset\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \FreqDiv_1:not_last_reset\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF Net_8220 : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF Net_8220 : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_9\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \FreqDiv_1:count_9\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_8\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \FreqDiv_1:count_8\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_7\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \FreqDiv_1:count_7\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_6\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \FreqDiv_1:count_6\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_5\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \FreqDiv_1:count_5\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_4\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \FreqDiv_1:count_4\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_3\ : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF \FreqDiv_1:count_3\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_2\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \FreqDiv_1:count_2\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_1\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \FreqDiv_1:count_1\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \FreqDiv_1:count_0\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \FreqDiv_1:count_0\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF Net_8028 : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF Net_8028 : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \ShiftBy2_1:DP_select_0\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \ShiftBy2_1:DP_select_0\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \ShiftBy2_1:DP_select_1\ : LABEL IS "macrocell29";
+    ATTRIBUTE lib_model OF \SPIS:BSPIS:dpcounter_one_reg\ : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF \SPIS:BSPIS:dpcounter_one_reg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : LABEL IS "macrocell12";
+    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_buf_overrun_fin\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \SPIS:BSPIS:mosi_tmp\ : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF \SPIS:BSPIS:mosi_tmp\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF Net_8028 : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF Net_8028 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \ShiftBy2_1:DP_select_0\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \ShiftBy2_1:DP_select_0\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \ShiftBy2_1:DP_select_1\ : LABEL IS "macrocell16";
     ATTRIBUTE Location OF \ShiftBy2_1:DP_select_1\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF Net_8031 : LABEL IS "macrocell30";
+    ATTRIBUTE lib_model OF Net_8031 : LABEL IS "macrocell17";
     ATTRIBUTE Location OF Net_8031 : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \ShiftBy2_2:DP_select_0\ : LABEL IS "macrocell31";
+    ATTRIBUTE lib_model OF \ShiftBy2_2:DP_select_0\ : LABEL IS "macrocell18";
     ATTRIBUTE Location OF \ShiftBy2_2:DP_select_0\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \ShiftBy2_2:DP_select_1\ : LABEL IS "macrocell32";
+    ATTRIBUTE lib_model OF \ShiftBy2_2:DP_select_1\ : LABEL IS "macrocell19";
     ATTRIBUTE Location OF \ShiftBy2_2:DP_select_1\ : LABEL IS "U(2,2)";
     COMPONENT abufcell
     END COMPONENT;
@@ -3351,98 +3295,6 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_test1:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "9737cd6b-90d4-4bcb-aa8b-6375accff437",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "1",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Pin_test1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Pin_test1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Pin_test1(0)__PA,
-            oe => open,
-            pin_input => Net_8220,
-            pad_out => Pin_test1(0)_PAD,
-            pad_in => Pin_test1(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
     \SPIS:BSPIS:tx_load\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * main_3)",
@@ -3540,21 +3392,6 @@ BEGIN
         PORT MAP(
             q => Net_1821,
             main_0 => Net_74);
-
-    \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * main_6 * main_7)",
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\,
-            main_0 => \FreqDiv_1:count_7\,
-            main_1 => \FreqDiv_1:count_6\,
-            main_2 => \FreqDiv_1:count_5\,
-            main_3 => \FreqDiv_1:count_4\,
-            main_4 => \FreqDiv_1:count_3\,
-            main_5 => \FreqDiv_1:count_2\,
-            main_6 => \FreqDiv_1:count_1\,
-            main_7 => \FreqDiv_1:count_0\);
 
     \Opamp_2:ABuf\:abufcell
         GENERIC MAP(
@@ -4351,217 +4188,6 @@ BEGIN
             q => \SPIS:BSPIS:mosi_tmp\,
             clock_0 => Net_17,
             main_0 => Net_16);
-
-    \FreqDiv_1:not_last_reset\:macrocell
-        GENERIC MAP(
-            eqn_main => "1'b0",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:not_last_reset\,
-            clk_en => open,
-            clock_0 => Net_6689);
-
-    Net_8220:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1) + (main_0 * main_1 * !main_2 * main_3 * main_4 * main_5 * main_6 * main_7 * !main_8 * !main_9 * main_10 * main_11) + (!main_1 * main_2 * main_3 * main_4 * main_5 * main_6 * !main_7 * !main_8 * main_9 * main_10 * main_11)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_8220,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => Net_8220,
-            main_2 => \FreqDiv_1:count_9\,
-            main_3 => \FreqDiv_1:count_8\,
-            main_4 => \FreqDiv_1:count_7\,
-            main_5 => \FreqDiv_1:count_6\,
-            main_6 => \FreqDiv_1:count_5\,
-            main_7 => \FreqDiv_1:count_4\,
-            main_8 => \FreqDiv_1:count_3\,
-            main_9 => \FreqDiv_1:count_2\,
-            main_10 => \FreqDiv_1:count_1\,
-            main_11 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_9\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * !main_6 * !main_7 * main_8 * main_9 * main_10) + (main_0 * main_2 * main_11)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_9\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_9\,
-            main_2 => \FreqDiv_1:count_8\,
-            main_3 => \FreqDiv_1:count_7\,
-            main_4 => \FreqDiv_1:count_6\,
-            main_5 => \FreqDiv_1:count_5\,
-            main_6 => \FreqDiv_1:count_4\,
-            main_7 => \FreqDiv_1:count_3\,
-            main_8 => \FreqDiv_1:count_2\,
-            main_9 => \FreqDiv_1:count_1\,
-            main_10 => \FreqDiv_1:count_0\,
-            main_11 => \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\);
-
-    \FreqDiv_1:count_8\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * !main_6 * !main_7 * main_8 * main_9 * main_10) + (main_0 * main_11)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_8\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_9\,
-            main_2 => \FreqDiv_1:count_8\,
-            main_3 => \FreqDiv_1:count_7\,
-            main_4 => \FreqDiv_1:count_6\,
-            main_5 => \FreqDiv_1:count_5\,
-            main_6 => \FreqDiv_1:count_4\,
-            main_7 => \FreqDiv_1:count_3\,
-            main_8 => \FreqDiv_1:count_2\,
-            main_9 => \FreqDiv_1:count_1\,
-            main_10 => \FreqDiv_1:count_0\,
-            main_11 => \FreqDiv_1:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\);
-
-    \FreqDiv_1:count_7\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * !main_6 * !main_7 * main_8 * main_9 * main_10) + (main_0 * main_4 * main_5 * main_6 * main_7 * main_8 * main_9 * main_10)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_7\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_9\,
-            main_2 => \FreqDiv_1:count_8\,
-            main_3 => \FreqDiv_1:count_7\,
-            main_4 => \FreqDiv_1:count_6\,
-            main_5 => \FreqDiv_1:count_5\,
-            main_6 => \FreqDiv_1:count_4\,
-            main_7 => \FreqDiv_1:count_3\,
-            main_8 => \FreqDiv_1:count_2\,
-            main_9 => \FreqDiv_1:count_1\,
-            main_10 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_6\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * !main_6 * !main_7 * main_8 * main_9 * main_10) + (main_0 * main_5 * main_6 * main_7 * main_8 * main_9 * main_10)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_6\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_9\,
-            main_2 => \FreqDiv_1:count_8\,
-            main_3 => \FreqDiv_1:count_7\,
-            main_4 => \FreqDiv_1:count_6\,
-            main_5 => \FreqDiv_1:count_5\,
-            main_6 => \FreqDiv_1:count_4\,
-            main_7 => \FreqDiv_1:count_3\,
-            main_8 => \FreqDiv_1:count_2\,
-            main_9 => \FreqDiv_1:count_1\,
-            main_10 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_5\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * !main_6 * !main_7 * main_8 * main_9 * main_10) + (main_0 * main_6 * main_7 * main_8 * main_9 * main_10)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_5\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_9\,
-            main_2 => \FreqDiv_1:count_8\,
-            main_3 => \FreqDiv_1:count_7\,
-            main_4 => \FreqDiv_1:count_6\,
-            main_5 => \FreqDiv_1:count_5\,
-            main_6 => \FreqDiv_1:count_4\,
-            main_7 => \FreqDiv_1:count_3\,
-            main_8 => \FreqDiv_1:count_2\,
-            main_9 => \FreqDiv_1:count_1\,
-            main_10 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_4\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_4\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_3\,
-            main_2 => \FreqDiv_1:count_2\,
-            main_3 => \FreqDiv_1:count_1\,
-            main_4 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_3\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0) + (main_1 * main_2 * main_3 * main_4 * main_5 * !main_6 * !main_7) + (!main_8) + (!main_9) + (!main_10)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_3\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_9\,
-            main_2 => \FreqDiv_1:count_8\,
-            main_3 => \FreqDiv_1:count_7\,
-            main_4 => \FreqDiv_1:count_6\,
-            main_5 => \FreqDiv_1:count_5\,
-            main_6 => \FreqDiv_1:count_4\,
-            main_7 => \FreqDiv_1:count_3\,
-            main_8 => \FreqDiv_1:count_2\,
-            main_9 => \FreqDiv_1:count_1\,
-            main_10 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_2\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * main_2)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_2\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_1\,
-            main_2 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_1\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_1\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\,
-            main_1 => \FreqDiv_1:count_0\);
-
-    \FreqDiv_1:count_0\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \FreqDiv_1:count_0\,
-            clk_en => open,
-            clock_0 => Net_6689,
-            main_0 => \FreqDiv_1:not_last_reset\);
 
     Net_8028:macrocell
         GENERIC MAP(

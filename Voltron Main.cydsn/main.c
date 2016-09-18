@@ -57,8 +57,8 @@ void Compute()
 
     /*Compute PID Output*/
     Output = kp * error + ki * errSum + kd * dErr;
-    if (Output >= 8192+1024) Output = 8192+1024;
-    if (Output <= 8192-1024) Output = 8192-1024;
+    if (Output >= 8192+2048) Output = 8192+2048;
+    if (Output <= 8192-2048) Output = 8192-2048;
 }
   
 void SetTunings(int Kp, int Ki, int Kd)
@@ -84,7 +84,7 @@ int main()
     start_DMAs();
     start_interrupts();
     
-    SetTunings(32, 0, 32);
+    SetTunings(128, 0, 128);
     
     for(;;)
     {

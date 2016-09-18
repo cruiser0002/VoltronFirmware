@@ -254,9 +254,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\I2C_Pins_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\I2C_Pins.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\I2C_Pins.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Pin_test1.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready1.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready1.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_filter_ready2.c</File>

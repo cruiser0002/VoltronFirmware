@@ -102,8 +102,6 @@
 #include "isr_filter_ready1.h"
 #include "ShiftBy2_1_ShiftBy2.h"
 #include "ShiftBy2_1_defs.h"
-#include "Pin_test1_aliases.h"
-#include "Pin_test1.h"
 #include "isr_filter_ready2.h"
 #include "ShiftBy2_2_ShiftBy2.h"
 #include "ShiftBy2_2_defs.h"

@@ -1278,67 +1278,7 @@
 <name v="link_deps">
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" xml_contents_version="2">
-<CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM3\ARM_GCC_493\Debug\Design01.hex">
-<dep name=".\CortexM3\ARM_GCC_493\Debug\main.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cymetadata.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_SAR_1.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_SAR_1_INT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_SAR_1_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\I2C.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\I2C_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\I2C_INT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_1.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_SAR_1_IRQ.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_SAR_1_theACLK.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_SAR_1_Bypass.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Cm3Start.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyDmac.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyFlash.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyLib.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cyPm.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CySpc.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cyutils.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_2.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_3.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_TIA2.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_TIA1.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_PD2.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_PD1.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\TIA_1.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\TIA_1_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\TIA_2.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\TIA_2_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_Status_1.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\DMA_FILT2RAM_dma.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\DMA_ADC2FILT_dma.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\ISR_DMA_FILT2RAM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Filter.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Filter_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Filter_PVT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Filter_RAM_Data.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Filter_Coefficients.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\DMA_ADC2RAM_dma.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\DMA_RAM2DAC_dma.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\IDACH.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\IDACH_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\IDACL.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\IDACL_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_IDACH.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_IDACL.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_VDACH.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\VDACL.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\VDACL_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\VDACH.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\VDACH_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Pin_VDACL.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\DMA_RAM2FILT_dma.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Design01.a" />
-<dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" />
-</file>
-</CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
+<CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1" />
 </dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
 </name>
@@ -2820,7 +2760,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131174938061202569" />
+<deps_time v="131186318822513441" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="237c8ed1-e161-4c9d-af97-582eda6d6952">
